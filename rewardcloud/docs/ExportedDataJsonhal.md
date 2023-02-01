@@ -1,0 +1,350 @@
+# ExportedDataJsonhal
+
+## Properties
+
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**Links** | Pointer to [**ComponentJsonhalLinks**](ComponentJsonhalLinks.md) |  | [optional] 
+**Id** | Pointer to **int32** |  | [optional] [readonly] 
+**Uuid** | Pointer to **NullableString** |  | [optional] [readonly] 
+**Url** | Pointer to **NullableString** |  | [optional] 
+**DataTransferDataType** | Pointer to **NullableString** |  | [optional] 
+**Environment** | Pointer to **NullableString** |  | [optional] 
+**CreatedAt** | Pointer to **time.Time** |  | [optional] 
+**UpdatedAt** | Pointer to **time.Time** |  | [optional] 
+**CreatedBy** | Pointer to **NullableString** |  | [optional] 
+**UpdatedBy** | Pointer to **NullableString** |  | [optional] 
+
+## Methods
+
+### NewExportedDataJsonhal
+
+`func NewExportedDataJsonhal() *ExportedDataJsonhal`
+
+NewExportedDataJsonhal instantiates a new ExportedDataJsonhal object
+This constructor will assign default values to properties that have it defined,
+and makes sure properties required by API are set, but the set of arguments
+will change when the set of required properties is changed
+
+### NewExportedDataJsonhalWithDefaults
+
+`func NewExportedDataJsonhalWithDefaults() *ExportedDataJsonhal`
+
+NewExportedDataJsonhalWithDefaults instantiates a new ExportedDataJsonhal object
+This constructor will only assign default values to properties that have it defined,
+but it doesn't guarantee that properties required by API are set
+
+### GetLinks
+
+`func (o *ExportedDataJsonhal) GetLinks() ComponentJsonhalLinks`
+
+GetLinks returns the Links field if non-nil, zero value otherwise.
+
+### GetLinksOk
+
+`func (o *ExportedDataJsonhal) GetLinksOk() (*ComponentJsonhalLinks, bool)`
+
+GetLinksOk returns a tuple with the Links field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLinks
+
+`func (o *ExportedDataJsonhal) SetLinks(v ComponentJsonhalLinks)`
+
+SetLinks sets Links field to given value.
+
+### HasLinks
+
+`func (o *ExportedDataJsonhal) HasLinks() bool`
+
+HasLinks returns a boolean if a field has been set.
+
+### GetId
+
+`func (o *ExportedDataJsonhal) GetId() int32`
+
+GetId returns the Id field if non-nil, zero value otherwise.
+
+### GetIdOk
+
+`func (o *ExportedDataJsonhal) GetIdOk() (*int32, bool)`
+
+GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetId
+
+`func (o *ExportedDataJsonhal) SetId(v int32)`
+
+SetId sets Id field to given value.
+
+### HasId
+
+`func (o *ExportedDataJsonhal) HasId() bool`
+
+HasId returns a boolean if a field has been set.
+
+### GetUuid
+
+`func (o *ExportedDataJsonhal) GetUuid() string`
+
+GetUuid returns the Uuid field if non-nil, zero value otherwise.
+
+### GetUuidOk
+
+`func (o *ExportedDataJsonhal) GetUuidOk() (*string, bool)`
+
+GetUuidOk returns a tuple with the Uuid field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUuid
+
+`func (o *ExportedDataJsonhal) SetUuid(v string)`
+
+SetUuid sets Uuid field to given value.
+
+### HasUuid
+
+`func (o *ExportedDataJsonhal) HasUuid() bool`
+
+HasUuid returns a boolean if a field has been set.
+
+### SetUuidNil
+
+`func (o *ExportedDataJsonhal) SetUuidNil(b bool)`
+
+ SetUuidNil sets the value for Uuid to be an explicit nil
+
+### UnsetUuid
+`func (o *ExportedDataJsonhal) UnsetUuid()`
+
+UnsetUuid ensures that no value is present for Uuid, not even an explicit nil
+### GetUrl
+
+`func (o *ExportedDataJsonhal) GetUrl() string`
+
+GetUrl returns the Url field if non-nil, zero value otherwise.
+
+### GetUrlOk
+
+`func (o *ExportedDataJsonhal) GetUrlOk() (*string, bool)`
+
+GetUrlOk returns a tuple with the Url field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUrl
+
+`func (o *ExportedDataJsonhal) SetUrl(v string)`
+
+SetUrl sets Url field to given value.
+
+### HasUrl
+
+`func (o *ExportedDataJsonhal) HasUrl() bool`
+
+HasUrl returns a boolean if a field has been set.
+
+### SetUrlNil
+
+`func (o *ExportedDataJsonhal) SetUrlNil(b bool)`
+
+ SetUrlNil sets the value for Url to be an explicit nil
+
+### UnsetUrl
+`func (o *ExportedDataJsonhal) UnsetUrl()`
+
+UnsetUrl ensures that no value is present for Url, not even an explicit nil
+### GetDataTransferDataType
+
+`func (o *ExportedDataJsonhal) GetDataTransferDataType() string`
+
+GetDataTransferDataType returns the DataTransferDataType field if non-nil, zero value otherwise.
+
+### GetDataTransferDataTypeOk
+
+`func (o *ExportedDataJsonhal) GetDataTransferDataTypeOk() (*string, bool)`
+
+GetDataTransferDataTypeOk returns a tuple with the DataTransferDataType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDataTransferDataType
+
+`func (o *ExportedDataJsonhal) SetDataTransferDataType(v string)`
+
+SetDataTransferDataType sets DataTransferDataType field to given value.
+
+### HasDataTransferDataType
+
+`func (o *ExportedDataJsonhal) HasDataTransferDataType() bool`
+
+HasDataTransferDataType returns a boolean if a field has been set.
+
+### SetDataTransferDataTypeNil
+
+`func (o *ExportedDataJsonhal) SetDataTransferDataTypeNil(b bool)`
+
+ SetDataTransferDataTypeNil sets the value for DataTransferDataType to be an explicit nil
+
+### UnsetDataTransferDataType
+`func (o *ExportedDataJsonhal) UnsetDataTransferDataType()`
+
+UnsetDataTransferDataType ensures that no value is present for DataTransferDataType, not even an explicit nil
+### GetEnvironment
+
+`func (o *ExportedDataJsonhal) GetEnvironment() string`
+
+GetEnvironment returns the Environment field if non-nil, zero value otherwise.
+
+### GetEnvironmentOk
+
+`func (o *ExportedDataJsonhal) GetEnvironmentOk() (*string, bool)`
+
+GetEnvironmentOk returns a tuple with the Environment field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEnvironment
+
+`func (o *ExportedDataJsonhal) SetEnvironment(v string)`
+
+SetEnvironment sets Environment field to given value.
+
+### HasEnvironment
+
+`func (o *ExportedDataJsonhal) HasEnvironment() bool`
+
+HasEnvironment returns a boolean if a field has been set.
+
+### SetEnvironmentNil
+
+`func (o *ExportedDataJsonhal) SetEnvironmentNil(b bool)`
+
+ SetEnvironmentNil sets the value for Environment to be an explicit nil
+
+### UnsetEnvironment
+`func (o *ExportedDataJsonhal) UnsetEnvironment()`
+
+UnsetEnvironment ensures that no value is present for Environment, not even an explicit nil
+### GetCreatedAt
+
+`func (o *ExportedDataJsonhal) GetCreatedAt() time.Time`
+
+GetCreatedAt returns the CreatedAt field if non-nil, zero value otherwise.
+
+### GetCreatedAtOk
+
+`func (o *ExportedDataJsonhal) GetCreatedAtOk() (*time.Time, bool)`
+
+GetCreatedAtOk returns a tuple with the CreatedAt field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCreatedAt
+
+`func (o *ExportedDataJsonhal) SetCreatedAt(v time.Time)`
+
+SetCreatedAt sets CreatedAt field to given value.
+
+### HasCreatedAt
+
+`func (o *ExportedDataJsonhal) HasCreatedAt() bool`
+
+HasCreatedAt returns a boolean if a field has been set.
+
+### GetUpdatedAt
+
+`func (o *ExportedDataJsonhal) GetUpdatedAt() time.Time`
+
+GetUpdatedAt returns the UpdatedAt field if non-nil, zero value otherwise.
+
+### GetUpdatedAtOk
+
+`func (o *ExportedDataJsonhal) GetUpdatedAtOk() (*time.Time, bool)`
+
+GetUpdatedAtOk returns a tuple with the UpdatedAt field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUpdatedAt
+
+`func (o *ExportedDataJsonhal) SetUpdatedAt(v time.Time)`
+
+SetUpdatedAt sets UpdatedAt field to given value.
+
+### HasUpdatedAt
+
+`func (o *ExportedDataJsonhal) HasUpdatedAt() bool`
+
+HasUpdatedAt returns a boolean if a field has been set.
+
+### GetCreatedBy
+
+`func (o *ExportedDataJsonhal) GetCreatedBy() string`
+
+GetCreatedBy returns the CreatedBy field if non-nil, zero value otherwise.
+
+### GetCreatedByOk
+
+`func (o *ExportedDataJsonhal) GetCreatedByOk() (*string, bool)`
+
+GetCreatedByOk returns a tuple with the CreatedBy field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCreatedBy
+
+`func (o *ExportedDataJsonhal) SetCreatedBy(v string)`
+
+SetCreatedBy sets CreatedBy field to given value.
+
+### HasCreatedBy
+
+`func (o *ExportedDataJsonhal) HasCreatedBy() bool`
+
+HasCreatedBy returns a boolean if a field has been set.
+
+### SetCreatedByNil
+
+`func (o *ExportedDataJsonhal) SetCreatedByNil(b bool)`
+
+ SetCreatedByNil sets the value for CreatedBy to be an explicit nil
+
+### UnsetCreatedBy
+`func (o *ExportedDataJsonhal) UnsetCreatedBy()`
+
+UnsetCreatedBy ensures that no value is present for CreatedBy, not even an explicit nil
+### GetUpdatedBy
+
+`func (o *ExportedDataJsonhal) GetUpdatedBy() string`
+
+GetUpdatedBy returns the UpdatedBy field if non-nil, zero value otherwise.
+
+### GetUpdatedByOk
+
+`func (o *ExportedDataJsonhal) GetUpdatedByOk() (*string, bool)`
+
+GetUpdatedByOk returns a tuple with the UpdatedBy field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUpdatedBy
+
+`func (o *ExportedDataJsonhal) SetUpdatedBy(v string)`
+
+SetUpdatedBy sets UpdatedBy field to given value.
+
+### HasUpdatedBy
+
+`func (o *ExportedDataJsonhal) HasUpdatedBy() bool`
+
+HasUpdatedBy returns a boolean if a field has been set.
+
+### SetUpdatedByNil
+
+`func (o *ExportedDataJsonhal) SetUpdatedByNil(b bool)`
+
+ SetUpdatedByNil sets the value for UpdatedBy to be an explicit nil
+
+### UnsetUpdatedBy
+`func (o *ExportedDataJsonhal) UnsetUpdatedBy()`
+
+UnsetUpdatedBy ensures that no value is present for UpdatedBy, not even an explicit nil
+
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+

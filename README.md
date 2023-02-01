@@ -1,12 +1,8 @@
-# hcloud: A Go library for the Hetzner Cloud API
-
-[![GitHub Actions status](https://github.com/hetznercloud/hcloud-go/workflows/Continuous%20Integration/badge.svg)](https://github.com/hetznercloud/hcloud-go/actions)
-[![GoDoc](https://godoc.org/github.com/hetznercloud/hcloud-go/hcloud?status.svg)](https://godoc.org/github.com/hetznercloud/hcloud-go/hcloud)
+# rewardcloud: A Go library for the Reward Cloud API
 
 Package rewardcloud is a library for the Reward Cloud API.
 
-The library’s documentation is available at [GoDoc](https://godoc.org/github.com/hetznercloud/hcloud-go/hcloud),
-the public API documentation is available at [docs.hetzner.cloud](https://docs.hetzner.cloud/).
+The library’s documentation is available at [GoDoc](https://godoc.org/github.com/rewardenv/reward-cloud-sdk-go/rewardcloud).
 
 ## Example
 
@@ -18,7 +14,7 @@ import (
     "fmt"
     "log"
 
-    "github.com/rewardenv/rewardcloud-go/rewardcloud"
+    "github.com/rewardenv/reward-cloud-sdk-go"
 )
 
 func main() {
