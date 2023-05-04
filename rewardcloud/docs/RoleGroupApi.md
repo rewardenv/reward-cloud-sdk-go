@@ -15,7 +15,7 @@ Method | HTTP request | Description
 
 ## ApiRoleGroupsGetCollection
 
-> []RoleGroup ApiRoleGroupsGetCollection(ctx).Page(page).ItemsPerPage(itemsPerPage).Execute()
+> ApiRoleGroupsGetCollection200Response ApiRoleGroupsGetCollection(ctx).Page(page).ItemsPerPage(itemsPerPage).Execute()
 
 Retrieves the collection of RoleGroup resources.
 
@@ -44,7 +44,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `RoleGroupApi.ApiRoleGroupsGetCollection``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiRoleGroupsGetCollection`: []RoleGroup
+    // response from `ApiRoleGroupsGetCollection`: ApiRoleGroupsGetCollection200Response
     fmt.Fprintf(os.Stdout, "Response from `RoleGroupApi.ApiRoleGroupsGetCollection`: %v\n", resp)
 }
 ```
@@ -65,7 +65,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]RoleGroup**](RoleGroup.md)
+[**ApiRoleGroupsGetCollection200Response**](ApiRoleGroupsGetCollection200Response.md)
 
 ### Authorization
 
@@ -74,7 +74,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json, application/hal+json, text/html
+- **Accept**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -151,7 +151,7 @@ Name | Type | Description  | Notes
 
 ## ApiRoleGroupsIdGet
 
-> RoleGroup ApiRoleGroupsIdGet(ctx, id).Execute()
+> RoleGroupJsonhal ApiRoleGroupsIdGet(ctx, id).Execute()
 
 Retrieves a RoleGroup resource.
 
@@ -179,7 +179,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `RoleGroupApi.ApiRoleGroupsIdGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiRoleGroupsIdGet`: RoleGroup
+    // response from `ApiRoleGroupsIdGet`: RoleGroupJsonhal
     fmt.Fprintf(os.Stdout, "Response from `RoleGroupApi.ApiRoleGroupsIdGet`: %v\n", resp)
 }
 ```
@@ -203,7 +203,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**RoleGroup**](RoleGroup.md)
+[**RoleGroupJsonhal**](RoleGroupJsonhal.md)
 
 ### Authorization
 
@@ -212,7 +212,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json, application/hal+json, text/html
+- **Accept**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -221,7 +221,7 @@ Name | Type | Description  | Notes
 
 ## ApiRoleGroupsIdPatch
 
-> RoleGroup ApiRoleGroupsIdPatch(ctx, id).RoleGroup(roleGroup).Execute()
+> RoleGroupJsonhal ApiRoleGroupsIdPatch(ctx, id).RoleGroup(roleGroup).Execute()
 
 Updates the RoleGroup resource.
 
@@ -250,7 +250,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `RoleGroupApi.ApiRoleGroupsIdPatch``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiRoleGroupsIdPatch`: RoleGroup
+    // response from `ApiRoleGroupsIdPatch`: RoleGroupJsonhal
     fmt.Fprintf(os.Stdout, "Response from `RoleGroupApi.ApiRoleGroupsIdPatch`: %v\n", resp)
 }
 ```
@@ -275,7 +275,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**RoleGroup**](RoleGroup.md)
+[**RoleGroupJsonhal**](RoleGroupJsonhal.md)
 
 ### Authorization
 
@@ -283,8 +283,8 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: application/json, application/hal+json, text/html
-- **Accept**: application/json, application/hal+json, text/html
+- **Content-Type**: application/vnd.api+json
+- **Accept**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -293,7 +293,7 @@ Name | Type | Description  | Notes
 
 ## ApiRoleGroupsIdPut
 
-> RoleGroup ApiRoleGroupsIdPut(ctx, id).RoleGroup(roleGroup).Execute()
+> RoleGroupJsonhal ApiRoleGroupsIdPut(ctx, id).RoleGroupJsonhal(roleGroupJsonhal).Execute()
 
 Replaces the RoleGroup resource.
 
@@ -313,16 +313,16 @@ import (
 
 func main() {
     id := "id_example" // string | RoleGroup identifier
-    roleGroup := *openapiclient.NewRoleGroup() // RoleGroup | The updated RoleGroup resource
+    roleGroupJsonhal := *openapiclient.NewRoleGroupJsonhal() // RoleGroupJsonhal | The updated RoleGroup resource
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.RoleGroupApi.ApiRoleGroupsIdPut(context.Background(), id).RoleGroup(roleGroup).Execute()
+    resp, r, err := apiClient.RoleGroupApi.ApiRoleGroupsIdPut(context.Background(), id).RoleGroupJsonhal(roleGroupJsonhal).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `RoleGroupApi.ApiRoleGroupsIdPut``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiRoleGroupsIdPut`: RoleGroup
+    // response from `ApiRoleGroupsIdPut`: RoleGroupJsonhal
     fmt.Fprintf(os.Stdout, "Response from `RoleGroupApi.ApiRoleGroupsIdPut`: %v\n", resp)
 }
 ```
@@ -343,11 +343,11 @@ Other parameters are passed through a pointer to a apiApiRoleGroupsIdPutRequest 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **roleGroup** | [**RoleGroup**](RoleGroup.md) | The updated RoleGroup resource | 
+ **roleGroupJsonhal** | [**RoleGroupJsonhal**](RoleGroupJsonhal.md) | The updated RoleGroup resource | 
 
 ### Return type
 
-[**RoleGroup**](RoleGroup.md)
+[**RoleGroupJsonhal**](RoleGroupJsonhal.md)
 
 ### Authorization
 
@@ -355,8 +355,8 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: application/json, application/hal+json, text/html
-- **Accept**: application/json, application/hal+json, text/html
+- **Content-Type**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
+- **Accept**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -365,7 +365,7 @@ Name | Type | Description  | Notes
 
 ## ApiRoleGroupsPost
 
-> RoleGroup ApiRoleGroupsPost(ctx).RoleGroup(roleGroup).Execute()
+> RoleGroupJsonhal ApiRoleGroupsPost(ctx).RoleGroupJsonhal(roleGroupJsonhal).Execute()
 
 Creates a RoleGroup resource.
 
@@ -384,16 +384,16 @@ import (
 )
 
 func main() {
-    roleGroup := *openapiclient.NewRoleGroup() // RoleGroup | The new RoleGroup resource
+    roleGroupJsonhal := *openapiclient.NewRoleGroupJsonhal() // RoleGroupJsonhal | The new RoleGroup resource
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.RoleGroupApi.ApiRoleGroupsPost(context.Background()).RoleGroup(roleGroup).Execute()
+    resp, r, err := apiClient.RoleGroupApi.ApiRoleGroupsPost(context.Background()).RoleGroupJsonhal(roleGroupJsonhal).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `RoleGroupApi.ApiRoleGroupsPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiRoleGroupsPost`: RoleGroup
+    // response from `ApiRoleGroupsPost`: RoleGroupJsonhal
     fmt.Fprintf(os.Stdout, "Response from `RoleGroupApi.ApiRoleGroupsPost`: %v\n", resp)
 }
 ```
@@ -409,11 +409,11 @@ Other parameters are passed through a pointer to a apiApiRoleGroupsPostRequest s
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **roleGroup** | [**RoleGroup**](RoleGroup.md) | The new RoleGroup resource | 
+ **roleGroupJsonhal** | [**RoleGroupJsonhal**](RoleGroupJsonhal.md) | The new RoleGroup resource | 
 
 ### Return type
 
-[**RoleGroup**](RoleGroup.md)
+[**RoleGroupJsonhal**](RoleGroupJsonhal.md)
 
 ### Authorization
 
@@ -421,8 +421,8 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: application/json, application/hal+json, text/html
-- **Accept**: application/json, application/hal+json, text/html
+- **Content-Type**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
+- **Accept**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)

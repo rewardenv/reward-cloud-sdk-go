@@ -17,7 +17,7 @@ Method | HTTP request | Description
 
 ## ApiRegionsGetCollection
 
-> []Region ApiRegionsGetCollection(ctx).Page(page).ItemsPerPage(itemsPerPage).Provider(provider).Provider2(provider2).Execute()
+> ApiRegionsGetCollection200Response ApiRegionsGetCollection(ctx).Page(page).ItemsPerPage(itemsPerPage).Provider(provider).Provider2(provider2).Execute()
 
 Retrieves the collection of Region resources.
 
@@ -48,7 +48,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `RegionApi.ApiRegionsGetCollection``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiRegionsGetCollection`: []Region
+    // response from `ApiRegionsGetCollection`: ApiRegionsGetCollection200Response
     fmt.Fprintf(os.Stdout, "Response from `RegionApi.ApiRegionsGetCollection`: %v\n", resp)
 }
 ```
@@ -71,7 +71,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]Region**](Region.md)
+[**ApiRegionsGetCollection200Response**](ApiRegionsGetCollection200Response.md)
 
 ### Authorization
 
@@ -80,7 +80,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json, application/hal+json, text/html
+- **Accept**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -157,7 +157,7 @@ Name | Type | Description  | Notes
 
 ## ApiRegionsIdGet
 
-> Region ApiRegionsIdGet(ctx, id).Execute()
+> RegionJsonhal ApiRegionsIdGet(ctx, id).Execute()
 
 Retrieves a Region resource.
 
@@ -185,7 +185,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `RegionApi.ApiRegionsIdGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiRegionsIdGet`: Region
+    // response from `ApiRegionsIdGet`: RegionJsonhal
     fmt.Fprintf(os.Stdout, "Response from `RegionApi.ApiRegionsIdGet`: %v\n", resp)
 }
 ```
@@ -209,7 +209,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Region**](Region.md)
+[**RegionJsonhal**](RegionJsonhal.md)
 
 ### Authorization
 
@@ -218,7 +218,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json, application/hal+json, text/html
+- **Accept**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -227,7 +227,7 @@ Name | Type | Description  | Notes
 
 ## ApiRegionsIdPatch
 
-> Region ApiRegionsIdPatch(ctx, id).Region(region).Execute()
+> RegionJsonhal ApiRegionsIdPatch(ctx, id).Region(region).Execute()
 
 Updates the Region resource.
 
@@ -256,7 +256,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `RegionApi.ApiRegionsIdPatch``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiRegionsIdPatch`: Region
+    // response from `ApiRegionsIdPatch`: RegionJsonhal
     fmt.Fprintf(os.Stdout, "Response from `RegionApi.ApiRegionsIdPatch`: %v\n", resp)
 }
 ```
@@ -281,7 +281,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Region**](Region.md)
+[**RegionJsonhal**](RegionJsonhal.md)
 
 ### Authorization
 
@@ -289,8 +289,8 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: application/json, application/hal+json, text/html
-- **Accept**: application/json, application/hal+json, text/html
+- **Content-Type**: application/vnd.api+json
+- **Accept**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -299,7 +299,7 @@ Name | Type | Description  | Notes
 
 ## ApiRegionsIdPut
 
-> Region ApiRegionsIdPut(ctx, id).Region(region).Execute()
+> RegionJsonhal ApiRegionsIdPut(ctx, id).RegionJsonhal(regionJsonhal).Execute()
 
 Replaces the Region resource.
 
@@ -319,16 +319,16 @@ import (
 
 func main() {
     id := "id_example" // string | Region identifier
-    region := *openapiclient.NewRegion() // Region | The updated Region resource
+    regionJsonhal := *openapiclient.NewRegionJsonhal() // RegionJsonhal | The updated Region resource
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.RegionApi.ApiRegionsIdPut(context.Background(), id).Region(region).Execute()
+    resp, r, err := apiClient.RegionApi.ApiRegionsIdPut(context.Background(), id).RegionJsonhal(regionJsonhal).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `RegionApi.ApiRegionsIdPut``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiRegionsIdPut`: Region
+    // response from `ApiRegionsIdPut`: RegionJsonhal
     fmt.Fprintf(os.Stdout, "Response from `RegionApi.ApiRegionsIdPut`: %v\n", resp)
 }
 ```
@@ -349,11 +349,11 @@ Other parameters are passed through a pointer to a apiApiRegionsIdPutRequest str
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **region** | [**Region**](Region.md) | The updated Region resource | 
+ **regionJsonhal** | [**RegionJsonhal**](RegionJsonhal.md) | The updated Region resource | 
 
 ### Return type
 
-[**Region**](Region.md)
+[**RegionJsonhal**](RegionJsonhal.md)
 
 ### Authorization
 
@@ -361,8 +361,8 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: application/json, application/hal+json, text/html
-- **Accept**: application/json, application/hal+json, text/html
+- **Content-Type**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
+- **Accept**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -371,7 +371,7 @@ Name | Type | Description  | Notes
 
 ## ApiRegionsIdgetWithProviderGet
 
-> Region ApiRegionsIdgetWithProviderGet(ctx, id).Execute()
+> RegionJsonhal ApiRegionsIdgetWithProviderGet(ctx).Execute()
 
 Retrieves a Region resource.
 
@@ -390,40 +390,31 @@ import (
 )
 
 func main() {
-    id := "id_example" // string | Region identifier
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.RegionApi.ApiRegionsIdgetWithProviderGet(context.Background(), id).Execute()
+    resp, r, err := apiClient.RegionApi.ApiRegionsIdgetWithProviderGet(context.Background()).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `RegionApi.ApiRegionsIdgetWithProviderGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiRegionsIdgetWithProviderGet`: Region
+    // response from `ApiRegionsIdgetWithProviderGet`: RegionJsonhal
     fmt.Fprintf(os.Stdout, "Response from `RegionApi.ApiRegionsIdgetWithProviderGet`: %v\n", resp)
 }
 ```
 
 ### Path Parameters
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** | Region identifier | 
+This endpoint does not need any parameter.
 
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiApiRegionsIdgetWithProviderGetRequest struct via the builder pattern
 
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
 ### Return type
 
-[**Region**](Region.md)
+[**RegionJsonhal**](RegionJsonhal.md)
 
 ### Authorization
 
@@ -432,7 +423,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json, application/hal+json, text/html
+- **Accept**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -441,7 +432,7 @@ Name | Type | Description  | Notes
 
 ## ApiRegionsPost
 
-> Region ApiRegionsPost(ctx).Region(region).Execute()
+> RegionJsonhal ApiRegionsPost(ctx).RegionJsonhal(regionJsonhal).Execute()
 
 Creates a Region resource.
 
@@ -460,16 +451,16 @@ import (
 )
 
 func main() {
-    region := *openapiclient.NewRegion() // Region | The new Region resource
+    regionJsonhal := *openapiclient.NewRegionJsonhal() // RegionJsonhal | The new Region resource
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.RegionApi.ApiRegionsPost(context.Background()).Region(region).Execute()
+    resp, r, err := apiClient.RegionApi.ApiRegionsPost(context.Background()).RegionJsonhal(regionJsonhal).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `RegionApi.ApiRegionsPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiRegionsPost`: Region
+    // response from `ApiRegionsPost`: RegionJsonhal
     fmt.Fprintf(os.Stdout, "Response from `RegionApi.ApiRegionsPost`: %v\n", resp)
 }
 ```
@@ -485,11 +476,11 @@ Other parameters are passed through a pointer to a apiApiRegionsPostRequest stru
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **region** | [**Region**](Region.md) | The new Region resource | 
+ **regionJsonhal** | [**RegionJsonhal**](RegionJsonhal.md) | The new Region resource | 
 
 ### Return type
 
-[**Region**](Region.md)
+[**RegionJsonhal**](RegionJsonhal.md)
 
 ### Authorization
 
@@ -497,8 +488,8 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: application/json, application/hal+json, text/html
-- **Accept**: application/json, application/hal+json, text/html
+- **Content-Type**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
+- **Accept**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -507,7 +498,7 @@ Name | Type | Description  | Notes
 
 ## ApiRegionsgetWithProviderGet
 
-> Region ApiRegionsgetWithProviderGet(ctx).Execute()
+> RegionJsonhal ApiRegionsgetWithProviderGet(ctx).Execute()
 
 Retrieves a Region resource.
 
@@ -534,7 +525,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `RegionApi.ApiRegionsgetWithProviderGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiRegionsgetWithProviderGet`: Region
+    // response from `ApiRegionsgetWithProviderGet`: RegionJsonhal
     fmt.Fprintf(os.Stdout, "Response from `RegionApi.ApiRegionsgetWithProviderGet`: %v\n", resp)
 }
 ```
@@ -550,7 +541,7 @@ Other parameters are passed through a pointer to a apiApiRegionsgetWithProviderG
 
 ### Return type
 
-[**Region**](Region.md)
+[**RegionJsonhal**](RegionJsonhal.md)
 
 ### Authorization
 
@@ -559,7 +550,7 @@ Other parameters are passed through a pointer to a apiApiRegionsgetWithProviderG
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json, application/hal+json, text/html
+- **Accept**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)

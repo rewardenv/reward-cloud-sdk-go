@@ -16,24 +16,24 @@ import (
 	"io/ioutil"
 	"net/http"
 	"net/url"
-	"strings"
 	"reflect"
+	"strings"
 )
-
 
 // TeamApiService TeamApi service
 type TeamApiService service
 
 type ApiApiTeamsGetCollectionRequest struct {
-	ctx context.Context
-	ApiService *TeamApiService
-	page *int32
-	itemsPerPage *int32
+	ctx                context.Context
+	ApiService         *TeamApiService
+	page               *int32
+	itemsPerPage       *int32
 	existsOrganisation *bool
-	user *string
-	user2 *[]string
-	organisation *string
-	organisation2 *[]string
+	name               *string
+	user               *string
+	user2              *[]string
+	organisation       *string
+	organisation2      *[]string
 }
 
 // The collection page number
@@ -48,37 +48,37 @@ func (r ApiApiTeamsGetCollectionRequest) ItemsPerPage(itemsPerPage int32) ApiApi
 	return r
 }
 
-// 
 func (r ApiApiTeamsGetCollectionRequest) ExistsOrganisation(existsOrganisation bool) ApiApiTeamsGetCollectionRequest {
 	r.existsOrganisation = &existsOrganisation
 	return r
 }
 
-// 
+func (r ApiApiTeamsGetCollectionRequest) Name(name string) ApiApiTeamsGetCollectionRequest {
+	r.name = &name
+	return r
+}
+
 func (r ApiApiTeamsGetCollectionRequest) User(user string) ApiApiTeamsGetCollectionRequest {
 	r.user = &user
 	return r
 }
 
-// 
 func (r ApiApiTeamsGetCollectionRequest) User2(user2 []string) ApiApiTeamsGetCollectionRequest {
 	r.user2 = &user2
 	return r
 }
 
-// 
 func (r ApiApiTeamsGetCollectionRequest) Organisation(organisation string) ApiApiTeamsGetCollectionRequest {
 	r.organisation = &organisation
 	return r
 }
 
-// 
 func (r ApiApiTeamsGetCollectionRequest) Organisation2(organisation2 []string) ApiApiTeamsGetCollectionRequest {
 	r.organisation2 = &organisation2
 	return r
 }
 
-func (r ApiApiTeamsGetCollectionRequest) Execute() ([]TeamTeamGet, *http.Response, error) {
+func (r ApiApiTeamsGetCollectionRequest) Execute() (*ApiTeamsGetCollection200Response, *http.Response, error) {
 	return r.ApiService.ApiTeamsGetCollectionExecute(r)
 }
 
@@ -87,24 +87,25 @@ ApiTeamsGetCollection Retrieves the collection of Team resources.
 
 Retrieves the collection of Team resources.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiApiTeamsGetCollectionRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiApiTeamsGetCollectionRequest
 */
 func (a *TeamApiService) ApiTeamsGetCollection(ctx context.Context) ApiApiTeamsGetCollectionRequest {
 	return ApiApiTeamsGetCollectionRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return []TeamTeamGet
-func (a *TeamApiService) ApiTeamsGetCollectionExecute(r ApiApiTeamsGetCollectionRequest) ([]TeamTeamGet, *http.Response, error) {
+//
+//	@return ApiTeamsGetCollection200Response
+func (a *TeamApiService) ApiTeamsGetCollectionExecute(r ApiApiTeamsGetCollectionRequest) (*ApiTeamsGetCollection200Response, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  []TeamTeamGet
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *ApiTeamsGetCollection200Response
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TeamApiService.ApiTeamsGetCollection")
@@ -126,6 +127,9 @@ func (a *TeamApiService) ApiTeamsGetCollectionExecute(r ApiApiTeamsGetCollection
 	}
 	if r.existsOrganisation != nil {
 		localVarQueryParams.Add("exists[organisation]", parameterToString(*r.existsOrganisation, ""))
+	}
+	if r.name != nil {
+		localVarQueryParams.Add("name", parameterToString(*r.name, ""))
 	}
 	if r.user != nil {
 		localVarQueryParams.Add("user", parameterToString(*r.user, ""))
@@ -165,7 +169,7 @@ func (a *TeamApiService) ApiTeamsGetCollectionExecute(r ApiApiTeamsGetCollection
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json", "application/hal+json", "text/html"}
+	localVarHTTPHeaderAccepts := []string{"application/hal+json", "application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -224,9 +228,9 @@ func (a *TeamApiService) ApiTeamsGetCollectionExecute(r ApiApiTeamsGetCollection
 }
 
 type ApiApiTeamsIdDeleteRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *TeamApiService
-	id string
+	id         string
 }
 
 func (r ApiApiTeamsIdDeleteRequest) Execute() (*http.Response, error) {
@@ -238,24 +242,24 @@ ApiTeamsIdDelete Removes the Team resource.
 
 Removes the Team resource.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id Team identifier
- @return ApiApiTeamsIdDeleteRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id Team identifier
+	@return ApiApiTeamsIdDeleteRequest
 */
 func (a *TeamApiService) ApiTeamsIdDelete(ctx context.Context, id string) ApiApiTeamsIdDeleteRequest {
 	return ApiApiTeamsIdDeleteRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
 // Execute executes the request
 func (a *TeamApiService) ApiTeamsIdDeleteExecute(r ApiApiTeamsIdDeleteRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodDelete
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TeamApiService.ApiTeamsIdDelete")
@@ -330,12 +334,12 @@ func (a *TeamApiService) ApiTeamsIdDeleteExecute(r ApiApiTeamsIdDeleteRequest) (
 }
 
 type ApiApiTeamsIdGetRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *TeamApiService
-	id string
+	id         string
 }
 
-func (r ApiApiTeamsIdGetRequest) Execute() (*TeamTeamGet, *http.Response, error) {
+func (r ApiApiTeamsIdGetRequest) Execute() (*TeamJsonhalTeamGet, *http.Response, error) {
 	return r.ApiService.ApiTeamsIdGetExecute(r)
 }
 
@@ -344,26 +348,27 @@ ApiTeamsIdGet Retrieves a Team resource.
 
 Retrieves a Team resource.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id Team identifier
- @return ApiApiTeamsIdGetRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id Team identifier
+	@return ApiApiTeamsIdGetRequest
 */
 func (a *TeamApiService) ApiTeamsIdGet(ctx context.Context, id string) ApiApiTeamsIdGetRequest {
 	return ApiApiTeamsIdGetRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
 // Execute executes the request
-//  @return TeamTeamGet
-func (a *TeamApiService) ApiTeamsIdGetExecute(r ApiApiTeamsIdGetRequest) (*TeamTeamGet, *http.Response, error) {
+//
+//	@return TeamJsonhalTeamGet
+func (a *TeamApiService) ApiTeamsIdGetExecute(r ApiApiTeamsIdGetRequest) (*TeamJsonhalTeamGet, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *TeamTeamGet
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *TeamJsonhalTeamGet
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TeamApiService.ApiTeamsIdGet")
@@ -388,7 +393,7 @@ func (a *TeamApiService) ApiTeamsIdGetExecute(r ApiApiTeamsIdGetRequest) (*TeamT
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json", "application/hal+json", "text/html"}
+	localVarHTTPHeaderAccepts := []string{"application/hal+json", "application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -447,9 +452,9 @@ func (a *TeamApiService) ApiTeamsIdGetExecute(r ApiApiTeamsIdGetRequest) (*TeamT
 }
 
 type ApiApiTeamsIdPatchRequest struct {
-	ctx context.Context
-	ApiService *TeamApiService
-	id string
+	ctx          context.Context
+	ApiService   *TeamApiService
+	id           string
 	teamTeamPost *TeamTeamPost
 }
 
@@ -459,7 +464,7 @@ func (r ApiApiTeamsIdPatchRequest) TeamTeamPost(teamTeamPost TeamTeamPost) ApiAp
 	return r
 }
 
-func (r ApiApiTeamsIdPatchRequest) Execute() (*TeamTeamGet, *http.Response, error) {
+func (r ApiApiTeamsIdPatchRequest) Execute() (*TeamJsonhalTeamGet, *http.Response, error) {
 	return r.ApiService.ApiTeamsIdPatchExecute(r)
 }
 
@@ -468,26 +473,27 @@ ApiTeamsIdPatch Updates the Team resource.
 
 Updates the Team resource.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id Team identifier
- @return ApiApiTeamsIdPatchRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id Team identifier
+	@return ApiApiTeamsIdPatchRequest
 */
 func (a *TeamApiService) ApiTeamsIdPatch(ctx context.Context, id string) ApiApiTeamsIdPatchRequest {
 	return ApiApiTeamsIdPatchRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
 // Execute executes the request
-//  @return TeamTeamGet
-func (a *TeamApiService) ApiTeamsIdPatchExecute(r ApiApiTeamsIdPatchRequest) (*TeamTeamGet, *http.Response, error) {
+//
+//	@return TeamJsonhalTeamGet
+func (a *TeamApiService) ApiTeamsIdPatchExecute(r ApiApiTeamsIdPatchRequest) (*TeamJsonhalTeamGet, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPatch
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *TeamTeamGet
+		localVarHTTPMethod  = http.MethodPatch
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *TeamJsonhalTeamGet
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TeamApiService.ApiTeamsIdPatch")
@@ -506,7 +512,7 @@ func (a *TeamApiService) ApiTeamsIdPatchExecute(r ApiApiTeamsIdPatchRequest) (*T
 	}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json", "application/hal+json", "text/html"}
+	localVarHTTPContentTypes := []string{"application/vnd.api+json"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -515,7 +521,7 @@ func (a *TeamApiService) ApiTeamsIdPatchExecute(r ApiApiTeamsIdPatchRequest) (*T
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json", "application/hal+json", "text/html"}
+	localVarHTTPHeaderAccepts := []string{"application/hal+json", "application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -576,19 +582,19 @@ func (a *TeamApiService) ApiTeamsIdPatchExecute(r ApiApiTeamsIdPatchRequest) (*T
 }
 
 type ApiApiTeamsIdPutRequest struct {
-	ctx context.Context
-	ApiService *TeamApiService
-	id string
-	teamTeamPost *TeamTeamPost
+	ctx                 context.Context
+	ApiService          *TeamApiService
+	id                  string
+	teamJsonhalTeamPost *TeamJsonhalTeamPost
 }
 
 // The updated Team resource
-func (r ApiApiTeamsIdPutRequest) TeamTeamPost(teamTeamPost TeamTeamPost) ApiApiTeamsIdPutRequest {
-	r.teamTeamPost = &teamTeamPost
+func (r ApiApiTeamsIdPutRequest) TeamJsonhalTeamPost(teamJsonhalTeamPost TeamJsonhalTeamPost) ApiApiTeamsIdPutRequest {
+	r.teamJsonhalTeamPost = &teamJsonhalTeamPost
 	return r
 }
 
-func (r ApiApiTeamsIdPutRequest) Execute() (*TeamTeamGet, *http.Response, error) {
+func (r ApiApiTeamsIdPutRequest) Execute() (*TeamJsonhalTeamGet, *http.Response, error) {
 	return r.ApiService.ApiTeamsIdPutExecute(r)
 }
 
@@ -597,26 +603,27 @@ ApiTeamsIdPut Replaces the Team resource.
 
 Replaces the Team resource.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id Team identifier
- @return ApiApiTeamsIdPutRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id Team identifier
+	@return ApiApiTeamsIdPutRequest
 */
 func (a *TeamApiService) ApiTeamsIdPut(ctx context.Context, id string) ApiApiTeamsIdPutRequest {
 	return ApiApiTeamsIdPutRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
 // Execute executes the request
-//  @return TeamTeamGet
-func (a *TeamApiService) ApiTeamsIdPutExecute(r ApiApiTeamsIdPutRequest) (*TeamTeamGet, *http.Response, error) {
+//
+//	@return TeamJsonhalTeamGet
+func (a *TeamApiService) ApiTeamsIdPutExecute(r ApiApiTeamsIdPutRequest) (*TeamJsonhalTeamGet, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPut
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *TeamTeamGet
+		localVarHTTPMethod  = http.MethodPut
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *TeamJsonhalTeamGet
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TeamApiService.ApiTeamsIdPut")
@@ -630,12 +637,12 @@ func (a *TeamApiService) ApiTeamsIdPutExecute(r ApiApiTeamsIdPutRequest) (*TeamT
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.teamTeamPost == nil {
-		return localVarReturnValue, nil, reportError("teamTeamPost is required and must be specified")
+	if r.teamJsonhalTeamPost == nil {
+		return localVarReturnValue, nil, reportError("teamJsonhalTeamPost is required and must be specified")
 	}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json", "application/hal+json", "text/html"}
+	localVarHTTPContentTypes := []string{"application/hal+json", "application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -644,7 +651,7 @@ func (a *TeamApiService) ApiTeamsIdPutExecute(r ApiApiTeamsIdPutRequest) (*TeamT
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json", "application/hal+json", "text/html"}
+	localVarHTTPHeaderAccepts := []string{"application/hal+json", "application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -652,7 +659,7 @@ func (a *TeamApiService) ApiTeamsIdPutExecute(r ApiApiTeamsIdPutRequest) (*TeamT
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.teamTeamPost
+	localVarPostBody = r.teamJsonhalTeamPost
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
@@ -705,18 +712,18 @@ func (a *TeamApiService) ApiTeamsIdPutExecute(r ApiApiTeamsIdPutRequest) (*TeamT
 }
 
 type ApiApiTeamsPostRequest struct {
-	ctx context.Context
-	ApiService *TeamApiService
-	teamTeamPost *TeamTeamPost
+	ctx                 context.Context
+	ApiService          *TeamApiService
+	teamJsonhalTeamPost *TeamJsonhalTeamPost
 }
 
 // The new Team resource
-func (r ApiApiTeamsPostRequest) TeamTeamPost(teamTeamPost TeamTeamPost) ApiApiTeamsPostRequest {
-	r.teamTeamPost = &teamTeamPost
+func (r ApiApiTeamsPostRequest) TeamJsonhalTeamPost(teamJsonhalTeamPost TeamJsonhalTeamPost) ApiApiTeamsPostRequest {
+	r.teamJsonhalTeamPost = &teamJsonhalTeamPost
 	return r
 }
 
-func (r ApiApiTeamsPostRequest) Execute() (*TeamTeamGet, *http.Response, error) {
+func (r ApiApiTeamsPostRequest) Execute() (*TeamJsonhalTeamGet, *http.Response, error) {
 	return r.ApiService.ApiTeamsPostExecute(r)
 }
 
@@ -725,24 +732,25 @@ ApiTeamsPost Creates a Team resource.
 
 Creates a Team resource.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiApiTeamsPostRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiApiTeamsPostRequest
 */
 func (a *TeamApiService) ApiTeamsPost(ctx context.Context) ApiApiTeamsPostRequest {
 	return ApiApiTeamsPostRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return TeamTeamGet
-func (a *TeamApiService) ApiTeamsPostExecute(r ApiApiTeamsPostRequest) (*TeamTeamGet, *http.Response, error) {
+//
+//	@return TeamJsonhalTeamGet
+func (a *TeamApiService) ApiTeamsPostExecute(r ApiApiTeamsPostRequest) (*TeamJsonhalTeamGet, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *TeamTeamGet
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *TeamJsonhalTeamGet
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TeamApiService.ApiTeamsPost")
@@ -755,12 +763,12 @@ func (a *TeamApiService) ApiTeamsPostExecute(r ApiApiTeamsPostRequest) (*TeamTea
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.teamTeamPost == nil {
-		return localVarReturnValue, nil, reportError("teamTeamPost is required and must be specified")
+	if r.teamJsonhalTeamPost == nil {
+		return localVarReturnValue, nil, reportError("teamJsonhalTeamPost is required and must be specified")
 	}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json", "application/hal+json", "text/html"}
+	localVarHTTPContentTypes := []string{"application/hal+json", "application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -769,7 +777,7 @@ func (a *TeamApiService) ApiTeamsPostExecute(r ApiApiTeamsPostRequest) (*TeamTea
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json", "application/hal+json", "text/html"}
+	localVarHTTPHeaderAccepts := []string{"application/hal+json", "application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -777,7 +785,7 @@ func (a *TeamApiService) ApiTeamsPostExecute(r ApiApiTeamsPostRequest) (*TeamTea
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.teamTeamPost
+	localVarPostBody = r.teamJsonhalTeamPost
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {

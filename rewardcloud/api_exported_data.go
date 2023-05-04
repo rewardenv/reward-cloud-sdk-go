@@ -16,25 +16,24 @@ import (
 	"io/ioutil"
 	"net/http"
 	"net/url"
-	"strings"
 	"reflect"
+	"strings"
 )
-
 
 // ExportedDataApiService ExportedDataApi service
 type ExportedDataApiService service
 
 type ApiApiExportedDatasGetCollectionRequest struct {
-	ctx context.Context
-	ApiService *ExportedDataApiService
-	page *int32
-	itemsPerPage *int32
-	dataTransferDataType *string
+	ctx                   context.Context
+	ApiService            *ExportedDataApiService
+	page                  *int32
+	itemsPerPage          *int32
+	dataTransferDataType  *string
 	dataTransferDataType2 *[]string
-	environment *string
-	environment2 *[]string
-	orderCreatedAt *string
-	orderUpdatedAt *string
+	environment           *string
+	environment2          *[]string
+	orderCreatedAt        *string
+	orderUpdatedAt        *string
 }
 
 // The collection page number
@@ -49,43 +48,37 @@ func (r ApiApiExportedDatasGetCollectionRequest) ItemsPerPage(itemsPerPage int32
 	return r
 }
 
-// 
 func (r ApiApiExportedDatasGetCollectionRequest) DataTransferDataType(dataTransferDataType string) ApiApiExportedDatasGetCollectionRequest {
 	r.dataTransferDataType = &dataTransferDataType
 	return r
 }
 
-// 
 func (r ApiApiExportedDatasGetCollectionRequest) DataTransferDataType2(dataTransferDataType2 []string) ApiApiExportedDatasGetCollectionRequest {
 	r.dataTransferDataType2 = &dataTransferDataType2
 	return r
 }
 
-// 
 func (r ApiApiExportedDatasGetCollectionRequest) Environment(environment string) ApiApiExportedDatasGetCollectionRequest {
 	r.environment = &environment
 	return r
 }
 
-// 
 func (r ApiApiExportedDatasGetCollectionRequest) Environment2(environment2 []string) ApiApiExportedDatasGetCollectionRequest {
 	r.environment2 = &environment2
 	return r
 }
 
-// 
 func (r ApiApiExportedDatasGetCollectionRequest) OrderCreatedAt(orderCreatedAt string) ApiApiExportedDatasGetCollectionRequest {
 	r.orderCreatedAt = &orderCreatedAt
 	return r
 }
 
-// 
 func (r ApiApiExportedDatasGetCollectionRequest) OrderUpdatedAt(orderUpdatedAt string) ApiApiExportedDatasGetCollectionRequest {
 	r.orderUpdatedAt = &orderUpdatedAt
 	return r
 }
 
-func (r ApiApiExportedDatasGetCollectionRequest) Execute() ([]ExportedData, *http.Response, error) {
+func (r ApiApiExportedDatasGetCollectionRequest) Execute() (*ApiExportedDatasGetCollection200Response, *http.Response, error) {
 	return r.ApiService.ApiExportedDatasGetCollectionExecute(r)
 }
 
@@ -94,24 +87,25 @@ ApiExportedDatasGetCollection Retrieves the collection of ExportedData resources
 
 Retrieves the collection of ExportedData resources.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiApiExportedDatasGetCollectionRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiApiExportedDatasGetCollectionRequest
 */
 func (a *ExportedDataApiService) ApiExportedDatasGetCollection(ctx context.Context) ApiApiExportedDatasGetCollectionRequest {
 	return ApiApiExportedDatasGetCollectionRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return []ExportedData
-func (a *ExportedDataApiService) ApiExportedDatasGetCollectionExecute(r ApiApiExportedDatasGetCollectionRequest) ([]ExportedData, *http.Response, error) {
+//
+//	@return ApiExportedDatasGetCollection200Response
+func (a *ExportedDataApiService) ApiExportedDatasGetCollectionExecute(r ApiApiExportedDatasGetCollectionRequest) (*ApiExportedDatasGetCollection200Response, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  []ExportedData
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *ApiExportedDatasGetCollection200Response
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ExportedDataApiService.ApiExportedDatasGetCollection")
@@ -175,7 +169,7 @@ func (a *ExportedDataApiService) ApiExportedDatasGetCollectionExecute(r ApiApiEx
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json", "application/hal+json", "text/html"}
+	localVarHTTPHeaderAccepts := []string{"application/hal+json", "application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -234,9 +228,9 @@ func (a *ExportedDataApiService) ApiExportedDatasGetCollectionExecute(r ApiApiEx
 }
 
 type ApiApiExportedDatasIdDeleteRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *ExportedDataApiService
-	id string
+	id         string
 }
 
 func (r ApiApiExportedDatasIdDeleteRequest) Execute() (*http.Response, error) {
@@ -248,24 +242,24 @@ ApiExportedDatasIdDelete Removes the ExportedData resource.
 
 Removes the ExportedData resource.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id ExportedData identifier
- @return ApiApiExportedDatasIdDeleteRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id ExportedData identifier
+	@return ApiApiExportedDatasIdDeleteRequest
 */
 func (a *ExportedDataApiService) ApiExportedDatasIdDelete(ctx context.Context, id string) ApiApiExportedDatasIdDeleteRequest {
 	return ApiApiExportedDatasIdDeleteRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
 // Execute executes the request
 func (a *ExportedDataApiService) ApiExportedDatasIdDeleteExecute(r ApiApiExportedDatasIdDeleteRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodDelete
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ExportedDataApiService.ApiExportedDatasIdDelete")
@@ -340,12 +334,12 @@ func (a *ExportedDataApiService) ApiExportedDatasIdDeleteExecute(r ApiApiExporte
 }
 
 type ApiApiExportedDatasIdGetRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *ExportedDataApiService
-	id string
+	id         string
 }
 
-func (r ApiApiExportedDatasIdGetRequest) Execute() (*ExportedData, *http.Response, error) {
+func (r ApiApiExportedDatasIdGetRequest) Execute() (*ExportedDataJsonhal, *http.Response, error) {
 	return r.ApiService.ApiExportedDatasIdGetExecute(r)
 }
 
@@ -354,26 +348,27 @@ ApiExportedDatasIdGet Retrieves a ExportedData resource.
 
 Retrieves a ExportedData resource.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id ExportedData identifier
- @return ApiApiExportedDatasIdGetRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id ExportedData identifier
+	@return ApiApiExportedDatasIdGetRequest
 */
 func (a *ExportedDataApiService) ApiExportedDatasIdGet(ctx context.Context, id string) ApiApiExportedDatasIdGetRequest {
 	return ApiApiExportedDatasIdGetRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
 // Execute executes the request
-//  @return ExportedData
-func (a *ExportedDataApiService) ApiExportedDatasIdGetExecute(r ApiApiExportedDatasIdGetRequest) (*ExportedData, *http.Response, error) {
+//
+//	@return ExportedDataJsonhal
+func (a *ExportedDataApiService) ApiExportedDatasIdGetExecute(r ApiApiExportedDatasIdGetRequest) (*ExportedDataJsonhal, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *ExportedData
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *ExportedDataJsonhal
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ExportedDataApiService.ApiExportedDatasIdGet")
@@ -398,7 +393,7 @@ func (a *ExportedDataApiService) ApiExportedDatasIdGetExecute(r ApiApiExportedDa
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json", "application/hal+json", "text/html"}
+	localVarHTTPHeaderAccepts := []string{"application/hal+json", "application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -457,9 +452,9 @@ func (a *ExportedDataApiService) ApiExportedDatasIdGetExecute(r ApiApiExportedDa
 }
 
 type ApiApiExportedDatasIdPatchRequest struct {
-	ctx context.Context
-	ApiService *ExportedDataApiService
-	id string
+	ctx          context.Context
+	ApiService   *ExportedDataApiService
+	id           string
 	exportedData *ExportedData
 }
 
@@ -469,7 +464,7 @@ func (r ApiApiExportedDatasIdPatchRequest) ExportedData(exportedData ExportedDat
 	return r
 }
 
-func (r ApiApiExportedDatasIdPatchRequest) Execute() (*ExportedData, *http.Response, error) {
+func (r ApiApiExportedDatasIdPatchRequest) Execute() (*ExportedDataJsonhal, *http.Response, error) {
 	return r.ApiService.ApiExportedDatasIdPatchExecute(r)
 }
 
@@ -478,26 +473,27 @@ ApiExportedDatasIdPatch Updates the ExportedData resource.
 
 Updates the ExportedData resource.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id ExportedData identifier
- @return ApiApiExportedDatasIdPatchRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id ExportedData identifier
+	@return ApiApiExportedDatasIdPatchRequest
 */
 func (a *ExportedDataApiService) ApiExportedDatasIdPatch(ctx context.Context, id string) ApiApiExportedDatasIdPatchRequest {
 	return ApiApiExportedDatasIdPatchRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
 // Execute executes the request
-//  @return ExportedData
-func (a *ExportedDataApiService) ApiExportedDatasIdPatchExecute(r ApiApiExportedDatasIdPatchRequest) (*ExportedData, *http.Response, error) {
+//
+//	@return ExportedDataJsonhal
+func (a *ExportedDataApiService) ApiExportedDatasIdPatchExecute(r ApiApiExportedDatasIdPatchRequest) (*ExportedDataJsonhal, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPatch
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *ExportedData
+		localVarHTTPMethod  = http.MethodPatch
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *ExportedDataJsonhal
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ExportedDataApiService.ApiExportedDatasIdPatch")
@@ -516,7 +512,7 @@ func (a *ExportedDataApiService) ApiExportedDatasIdPatchExecute(r ApiApiExported
 	}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json", "application/hal+json", "text/html"}
+	localVarHTTPContentTypes := []string{"application/vnd.api+json"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -525,7 +521,7 @@ func (a *ExportedDataApiService) ApiExportedDatasIdPatchExecute(r ApiApiExported
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json", "application/hal+json", "text/html"}
+	localVarHTTPHeaderAccepts := []string{"application/hal+json", "application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -586,19 +582,19 @@ func (a *ExportedDataApiService) ApiExportedDatasIdPatchExecute(r ApiApiExported
 }
 
 type ApiApiExportedDatasIdPutRequest struct {
-	ctx context.Context
-	ApiService *ExportedDataApiService
-	id string
-	exportedData *ExportedData
+	ctx                 context.Context
+	ApiService          *ExportedDataApiService
+	id                  string
+	exportedDataJsonhal *ExportedDataJsonhal
 }
 
 // The updated ExportedData resource
-func (r ApiApiExportedDatasIdPutRequest) ExportedData(exportedData ExportedData) ApiApiExportedDatasIdPutRequest {
-	r.exportedData = &exportedData
+func (r ApiApiExportedDatasIdPutRequest) ExportedDataJsonhal(exportedDataJsonhal ExportedDataJsonhal) ApiApiExportedDatasIdPutRequest {
+	r.exportedDataJsonhal = &exportedDataJsonhal
 	return r
 }
 
-func (r ApiApiExportedDatasIdPutRequest) Execute() (*ExportedData, *http.Response, error) {
+func (r ApiApiExportedDatasIdPutRequest) Execute() (*ExportedDataJsonhal, *http.Response, error) {
 	return r.ApiService.ApiExportedDatasIdPutExecute(r)
 }
 
@@ -607,26 +603,27 @@ ApiExportedDatasIdPut Replaces the ExportedData resource.
 
 Replaces the ExportedData resource.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id ExportedData identifier
- @return ApiApiExportedDatasIdPutRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id ExportedData identifier
+	@return ApiApiExportedDatasIdPutRequest
 */
 func (a *ExportedDataApiService) ApiExportedDatasIdPut(ctx context.Context, id string) ApiApiExportedDatasIdPutRequest {
 	return ApiApiExportedDatasIdPutRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
 // Execute executes the request
-//  @return ExportedData
-func (a *ExportedDataApiService) ApiExportedDatasIdPutExecute(r ApiApiExportedDatasIdPutRequest) (*ExportedData, *http.Response, error) {
+//
+//	@return ExportedDataJsonhal
+func (a *ExportedDataApiService) ApiExportedDatasIdPutExecute(r ApiApiExportedDatasIdPutRequest) (*ExportedDataJsonhal, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPut
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *ExportedData
+		localVarHTTPMethod  = http.MethodPut
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *ExportedDataJsonhal
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ExportedDataApiService.ApiExportedDatasIdPut")
@@ -640,12 +637,12 @@ func (a *ExportedDataApiService) ApiExportedDatasIdPutExecute(r ApiApiExportedDa
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.exportedData == nil {
-		return localVarReturnValue, nil, reportError("exportedData is required and must be specified")
+	if r.exportedDataJsonhal == nil {
+		return localVarReturnValue, nil, reportError("exportedDataJsonhal is required and must be specified")
 	}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json", "application/hal+json", "text/html"}
+	localVarHTTPContentTypes := []string{"application/hal+json", "application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -654,7 +651,7 @@ func (a *ExportedDataApiService) ApiExportedDatasIdPutExecute(r ApiApiExportedDa
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json", "application/hal+json", "text/html"}
+	localVarHTTPHeaderAccepts := []string{"application/hal+json", "application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -662,7 +659,7 @@ func (a *ExportedDataApiService) ApiExportedDatasIdPutExecute(r ApiApiExportedDa
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.exportedData
+	localVarPostBody = r.exportedDataJsonhal
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
@@ -715,18 +712,18 @@ func (a *ExportedDataApiService) ApiExportedDatasIdPutExecute(r ApiApiExportedDa
 }
 
 type ApiApiExportedDatasPostRequest struct {
-	ctx context.Context
-	ApiService *ExportedDataApiService
-	exportedData *ExportedData
+	ctx                 context.Context
+	ApiService          *ExportedDataApiService
+	exportedDataJsonhal *ExportedDataJsonhal
 }
 
 // The new ExportedData resource
-func (r ApiApiExportedDatasPostRequest) ExportedData(exportedData ExportedData) ApiApiExportedDatasPostRequest {
-	r.exportedData = &exportedData
+func (r ApiApiExportedDatasPostRequest) ExportedDataJsonhal(exportedDataJsonhal ExportedDataJsonhal) ApiApiExportedDatasPostRequest {
+	r.exportedDataJsonhal = &exportedDataJsonhal
 	return r
 }
 
-func (r ApiApiExportedDatasPostRequest) Execute() (*ExportedData, *http.Response, error) {
+func (r ApiApiExportedDatasPostRequest) Execute() (*ExportedDataJsonhal, *http.Response, error) {
 	return r.ApiService.ApiExportedDatasPostExecute(r)
 }
 
@@ -735,24 +732,25 @@ ApiExportedDatasPost Creates a ExportedData resource.
 
 Creates a ExportedData resource.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiApiExportedDatasPostRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiApiExportedDatasPostRequest
 */
 func (a *ExportedDataApiService) ApiExportedDatasPost(ctx context.Context) ApiApiExportedDatasPostRequest {
 	return ApiApiExportedDatasPostRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return ExportedData
-func (a *ExportedDataApiService) ApiExportedDatasPostExecute(r ApiApiExportedDatasPostRequest) (*ExportedData, *http.Response, error) {
+//
+//	@return ExportedDataJsonhal
+func (a *ExportedDataApiService) ApiExportedDatasPostExecute(r ApiApiExportedDatasPostRequest) (*ExportedDataJsonhal, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *ExportedData
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *ExportedDataJsonhal
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ExportedDataApiService.ApiExportedDatasPost")
@@ -765,12 +763,12 @@ func (a *ExportedDataApiService) ApiExportedDatasPostExecute(r ApiApiExportedDat
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.exportedData == nil {
-		return localVarReturnValue, nil, reportError("exportedData is required and must be specified")
+	if r.exportedDataJsonhal == nil {
+		return localVarReturnValue, nil, reportError("exportedDataJsonhal is required and must be specified")
 	}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json", "application/hal+json", "text/html"}
+	localVarHTTPContentTypes := []string{"application/hal+json", "application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -779,7 +777,7 @@ func (a *ExportedDataApiService) ApiExportedDatasPostExecute(r ApiApiExportedDat
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json", "application/hal+json", "text/html"}
+	localVarHTTPHeaderAccepts := []string{"application/hal+json", "application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -787,7 +785,7 @@ func (a *ExportedDataApiService) ApiExportedDatasPostExecute(r ApiApiExportedDat
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.exportedData
+	localVarPostBody = r.exportedDataJsonhal
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {

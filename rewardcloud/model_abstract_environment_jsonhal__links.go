@@ -14,9 +14,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the AbstractEnvironmentJsonhalLinks type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &AbstractEnvironmentJsonhalLinks{}
-
 // AbstractEnvironmentJsonhalLinks struct for AbstractEnvironmentJsonhalLinks
 type AbstractEnvironmentJsonhalLinks struct {
 	Self *ApiComponentResourceLimitsGetCollection200ResponseLinksSelf `json:"self,omitempty"`
@@ -41,7 +38,7 @@ func NewAbstractEnvironmentJsonhalLinksWithDefaults() *AbstractEnvironmentJsonha
 
 // GetSelf returns the Self field value if set, zero value otherwise.
 func (o *AbstractEnvironmentJsonhalLinks) GetSelf() ApiComponentResourceLimitsGetCollection200ResponseLinksSelf {
-	if o == nil || IsNil(o.Self) {
+	if o == nil || isNil(o.Self) {
 		var ret ApiComponentResourceLimitsGetCollection200ResponseLinksSelf
 		return ret
 	}
@@ -51,7 +48,7 @@ func (o *AbstractEnvironmentJsonhalLinks) GetSelf() ApiComponentResourceLimitsGe
 // GetSelfOk returns a tuple with the Self field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AbstractEnvironmentJsonhalLinks) GetSelfOk() (*ApiComponentResourceLimitsGetCollection200ResponseLinksSelf, bool) {
-	if o == nil || IsNil(o.Self) {
+	if o == nil || isNil(o.Self) {
 		return nil, false
 	}
 	return o.Self, true
@@ -59,7 +56,7 @@ func (o *AbstractEnvironmentJsonhalLinks) GetSelfOk() (*ApiComponentResourceLimi
 
 // HasSelf returns a boolean if a field has been set.
 func (o *AbstractEnvironmentJsonhalLinks) HasSelf() bool {
-	if o != nil && !IsNil(o.Self) {
+	if o != nil && !isNil(o.Self) {
 		return true
 	}
 
@@ -72,19 +69,11 @@ func (o *AbstractEnvironmentJsonhalLinks) SetSelf(v ApiComponentResourceLimitsGe
 }
 
 func (o AbstractEnvironmentJsonhalLinks) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o AbstractEnvironmentJsonhalLinks) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Self) {
+	if !isNil(o.Self) {
 		toSerialize["self"] = o.Self
 	}
-	return toSerialize, nil
+	return json.Marshal(toSerialize)
 }
 
 type NullableAbstractEnvironmentJsonhalLinks struct {
@@ -122,5 +111,3 @@ func (v *NullableAbstractEnvironmentJsonhalLinks) UnmarshalJSON(src []byte) erro
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

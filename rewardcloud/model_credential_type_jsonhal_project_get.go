@@ -14,14 +14,11 @@ import (
 	"encoding/json"
 )
 
-// checks if the CredentialTypeJsonhalProjectGet type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &CredentialTypeJsonhalProjectGet{}
-
-// CredentialTypeJsonhalProjectGet 
+// CredentialTypeJsonhalProjectGet
 type CredentialTypeJsonhalProjectGet struct {
 	Links *AbstractEnvironmentJsonhalLinks `json:"_links,omitempty"`
-	Uuid NullableString `json:"uuid,omitempty"`
-	Name NullableString `json:"name,omitempty"`
+	Uuid  NullableString                   `json:"uuid,omitempty"`
+	Name  NullableString                   `json:"name,omitempty"`
 }
 
 // NewCredentialTypeJsonhalProjectGet instantiates a new CredentialTypeJsonhalProjectGet object
@@ -43,7 +40,7 @@ func NewCredentialTypeJsonhalProjectGetWithDefaults() *CredentialTypeJsonhalProj
 
 // GetLinks returns the Links field value if set, zero value otherwise.
 func (o *CredentialTypeJsonhalProjectGet) GetLinks() AbstractEnvironmentJsonhalLinks {
-	if o == nil || IsNil(o.Links) {
+	if o == nil || isNil(o.Links) {
 		var ret AbstractEnvironmentJsonhalLinks
 		return ret
 	}
@@ -53,7 +50,7 @@ func (o *CredentialTypeJsonhalProjectGet) GetLinks() AbstractEnvironmentJsonhalL
 // GetLinksOk returns a tuple with the Links field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CredentialTypeJsonhalProjectGet) GetLinksOk() (*AbstractEnvironmentJsonhalLinks, bool) {
-	if o == nil || IsNil(o.Links) {
+	if o == nil || isNil(o.Links) {
 		return nil, false
 	}
 	return o.Links, true
@@ -61,7 +58,7 @@ func (o *CredentialTypeJsonhalProjectGet) GetLinksOk() (*AbstractEnvironmentJson
 
 // HasLinks returns a boolean if a field has been set.
 func (o *CredentialTypeJsonhalProjectGet) HasLinks() bool {
-	if o != nil && !IsNil(o.Links) {
+	if o != nil && !isNil(o.Links) {
 		return true
 	}
 
@@ -75,7 +72,7 @@ func (o *CredentialTypeJsonhalProjectGet) SetLinks(v AbstractEnvironmentJsonhalL
 
 // GetUuid returns the Uuid field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CredentialTypeJsonhalProjectGet) GetUuid() string {
-	if o == nil || IsNil(o.Uuid.Get()) {
+	if o == nil || isNil(o.Uuid.Get()) {
 		var ret string
 		return ret
 	}
@@ -105,6 +102,7 @@ func (o *CredentialTypeJsonhalProjectGet) HasUuid() bool {
 func (o *CredentialTypeJsonhalProjectGet) SetUuid(v string) {
 	o.Uuid.Set(&v)
 }
+
 // SetUuidNil sets the value for Uuid to be an explicit nil
 func (o *CredentialTypeJsonhalProjectGet) SetUuidNil() {
 	o.Uuid.Set(nil)
@@ -117,7 +115,7 @@ func (o *CredentialTypeJsonhalProjectGet) UnsetUuid() {
 
 // GetName returns the Name field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CredentialTypeJsonhalProjectGet) GetName() string {
-	if o == nil || IsNil(o.Name.Get()) {
+	if o == nil || isNil(o.Name.Get()) {
 		var ret string
 		return ret
 	}
@@ -147,6 +145,7 @@ func (o *CredentialTypeJsonhalProjectGet) HasName() bool {
 func (o *CredentialTypeJsonhalProjectGet) SetName(v string) {
 	o.Name.Set(&v)
 }
+
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *CredentialTypeJsonhalProjectGet) SetNameNil() {
 	o.Name.Set(nil)
@@ -158,16 +157,8 @@ func (o *CredentialTypeJsonhalProjectGet) UnsetName() {
 }
 
 func (o CredentialTypeJsonhalProjectGet) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o CredentialTypeJsonhalProjectGet) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Links) {
+	if !isNil(o.Links) {
 		toSerialize["_links"] = o.Links
 	}
 	if o.Uuid.IsSet() {
@@ -176,7 +167,7 @@ func (o CredentialTypeJsonhalProjectGet) ToMap() (map[string]interface{}, error)
 	if o.Name.IsSet() {
 		toSerialize["name"] = o.Name.Get()
 	}
-	return toSerialize, nil
+	return json.Marshal(toSerialize)
 }
 
 type NullableCredentialTypeJsonhalProjectGet struct {
@@ -214,5 +205,3 @@ func (v *NullableCredentialTypeJsonhalProjectGet) UnmarshalJSON(src []byte) erro
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

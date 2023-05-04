@@ -15,7 +15,7 @@ Method | HTTP request | Description
 
 ## ApiEnvironmentAccessBackendsGetCollection
 
-> []EnvironmentAccessBackend ApiEnvironmentAccessBackendsGetCollection(ctx).Page(page).ItemsPerPage(itemsPerPage).Execute()
+> ApiEnvironmentAccessBackendsGetCollection200Response ApiEnvironmentAccessBackendsGetCollection(ctx).Page(page).ItemsPerPage(itemsPerPage).Execute()
 
 Retrieves the collection of EnvironmentAccessBackend resources.
 
@@ -44,7 +44,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `EnvironmentAccessBackendApi.ApiEnvironmentAccessBackendsGetCollection``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiEnvironmentAccessBackendsGetCollection`: []EnvironmentAccessBackend
+    // response from `ApiEnvironmentAccessBackendsGetCollection`: ApiEnvironmentAccessBackendsGetCollection200Response
     fmt.Fprintf(os.Stdout, "Response from `EnvironmentAccessBackendApi.ApiEnvironmentAccessBackendsGetCollection`: %v\n", resp)
 }
 ```
@@ -65,7 +65,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]EnvironmentAccessBackend**](EnvironmentAccessBackend.md)
+[**ApiEnvironmentAccessBackendsGetCollection200Response**](ApiEnvironmentAccessBackendsGetCollection200Response.md)
 
 ### Authorization
 
@@ -74,7 +74,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json, application/hal+json, text/html
+- **Accept**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -151,7 +151,7 @@ Name | Type | Description  | Notes
 
 ## ApiEnvironmentAccessBackendsIdGet
 
-> EnvironmentAccessBackend ApiEnvironmentAccessBackendsIdGet(ctx, id).Execute()
+> EnvironmentAccessBackendJsonhal ApiEnvironmentAccessBackendsIdGet(ctx, id).Execute()
 
 Retrieves a EnvironmentAccessBackend resource.
 
@@ -179,7 +179,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `EnvironmentAccessBackendApi.ApiEnvironmentAccessBackendsIdGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiEnvironmentAccessBackendsIdGet`: EnvironmentAccessBackend
+    // response from `ApiEnvironmentAccessBackendsIdGet`: EnvironmentAccessBackendJsonhal
     fmt.Fprintf(os.Stdout, "Response from `EnvironmentAccessBackendApi.ApiEnvironmentAccessBackendsIdGet`: %v\n", resp)
 }
 ```
@@ -203,7 +203,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**EnvironmentAccessBackend**](EnvironmentAccessBackend.md)
+[**EnvironmentAccessBackendJsonhal**](EnvironmentAccessBackendJsonhal.md)
 
 ### Authorization
 
@@ -212,7 +212,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json, application/hal+json, text/html
+- **Accept**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -221,7 +221,7 @@ Name | Type | Description  | Notes
 
 ## ApiEnvironmentAccessBackendsIdPatch
 
-> EnvironmentAccessBackend ApiEnvironmentAccessBackendsIdPatch(ctx, id).EnvironmentAccessBackend(environmentAccessBackend).Execute()
+> EnvironmentAccessBackendJsonhal ApiEnvironmentAccessBackendsIdPatch(ctx, id).EnvironmentAccessBackend(environmentAccessBackend).Execute()
 
 Updates the EnvironmentAccessBackend resource.
 
@@ -250,7 +250,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `EnvironmentAccessBackendApi.ApiEnvironmentAccessBackendsIdPatch``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiEnvironmentAccessBackendsIdPatch`: EnvironmentAccessBackend
+    // response from `ApiEnvironmentAccessBackendsIdPatch`: EnvironmentAccessBackendJsonhal
     fmt.Fprintf(os.Stdout, "Response from `EnvironmentAccessBackendApi.ApiEnvironmentAccessBackendsIdPatch`: %v\n", resp)
 }
 ```
@@ -275,7 +275,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**EnvironmentAccessBackend**](EnvironmentAccessBackend.md)
+[**EnvironmentAccessBackendJsonhal**](EnvironmentAccessBackendJsonhal.md)
 
 ### Authorization
 
@@ -283,8 +283,8 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: application/json, application/hal+json, text/html
-- **Accept**: application/json, application/hal+json, text/html
+- **Content-Type**: application/vnd.api+json
+- **Accept**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -293,7 +293,7 @@ Name | Type | Description  | Notes
 
 ## ApiEnvironmentAccessBackendsIdPut
 
-> EnvironmentAccessBackend ApiEnvironmentAccessBackendsIdPut(ctx, id).EnvironmentAccessBackend(environmentAccessBackend).Execute()
+> EnvironmentAccessBackendJsonhal ApiEnvironmentAccessBackendsIdPut(ctx, id).EnvironmentAccessBackendJsonhal(environmentAccessBackendJsonhal).Execute()
 
 Replaces the EnvironmentAccessBackend resource.
 
@@ -313,16 +313,16 @@ import (
 
 func main() {
     id := "id_example" // string | EnvironmentAccessBackend identifier
-    environmentAccessBackend := *openapiclient.NewEnvironmentAccessBackend() // EnvironmentAccessBackend | The updated EnvironmentAccessBackend resource
+    environmentAccessBackendJsonhal := *openapiclient.NewEnvironmentAccessBackendJsonhal() // EnvironmentAccessBackendJsonhal | The updated EnvironmentAccessBackend resource
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.EnvironmentAccessBackendApi.ApiEnvironmentAccessBackendsIdPut(context.Background(), id).EnvironmentAccessBackend(environmentAccessBackend).Execute()
+    resp, r, err := apiClient.EnvironmentAccessBackendApi.ApiEnvironmentAccessBackendsIdPut(context.Background(), id).EnvironmentAccessBackendJsonhal(environmentAccessBackendJsonhal).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `EnvironmentAccessBackendApi.ApiEnvironmentAccessBackendsIdPut``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiEnvironmentAccessBackendsIdPut`: EnvironmentAccessBackend
+    // response from `ApiEnvironmentAccessBackendsIdPut`: EnvironmentAccessBackendJsonhal
     fmt.Fprintf(os.Stdout, "Response from `EnvironmentAccessBackendApi.ApiEnvironmentAccessBackendsIdPut`: %v\n", resp)
 }
 ```
@@ -343,11 +343,11 @@ Other parameters are passed through a pointer to a apiApiEnvironmentAccessBacken
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **environmentAccessBackend** | [**EnvironmentAccessBackend**](EnvironmentAccessBackend.md) | The updated EnvironmentAccessBackend resource | 
+ **environmentAccessBackendJsonhal** | [**EnvironmentAccessBackendJsonhal**](EnvironmentAccessBackendJsonhal.md) | The updated EnvironmentAccessBackend resource | 
 
 ### Return type
 
-[**EnvironmentAccessBackend**](EnvironmentAccessBackend.md)
+[**EnvironmentAccessBackendJsonhal**](EnvironmentAccessBackendJsonhal.md)
 
 ### Authorization
 
@@ -355,8 +355,8 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: application/json, application/hal+json, text/html
-- **Accept**: application/json, application/hal+json, text/html
+- **Content-Type**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
+- **Accept**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -365,7 +365,7 @@ Name | Type | Description  | Notes
 
 ## ApiEnvironmentAccessBackendsPost
 
-> EnvironmentAccessBackend ApiEnvironmentAccessBackendsPost(ctx).EnvironmentAccessBackend(environmentAccessBackend).Execute()
+> EnvironmentAccessBackendJsonhal ApiEnvironmentAccessBackendsPost(ctx).EnvironmentAccessBackendJsonhal(environmentAccessBackendJsonhal).Execute()
 
 Creates a EnvironmentAccessBackend resource.
 
@@ -384,16 +384,16 @@ import (
 )
 
 func main() {
-    environmentAccessBackend := *openapiclient.NewEnvironmentAccessBackend() // EnvironmentAccessBackend | The new EnvironmentAccessBackend resource
+    environmentAccessBackendJsonhal := *openapiclient.NewEnvironmentAccessBackendJsonhal() // EnvironmentAccessBackendJsonhal | The new EnvironmentAccessBackend resource
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.EnvironmentAccessBackendApi.ApiEnvironmentAccessBackendsPost(context.Background()).EnvironmentAccessBackend(environmentAccessBackend).Execute()
+    resp, r, err := apiClient.EnvironmentAccessBackendApi.ApiEnvironmentAccessBackendsPost(context.Background()).EnvironmentAccessBackendJsonhal(environmentAccessBackendJsonhal).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `EnvironmentAccessBackendApi.ApiEnvironmentAccessBackendsPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiEnvironmentAccessBackendsPost`: EnvironmentAccessBackend
+    // response from `ApiEnvironmentAccessBackendsPost`: EnvironmentAccessBackendJsonhal
     fmt.Fprintf(os.Stdout, "Response from `EnvironmentAccessBackendApi.ApiEnvironmentAccessBackendsPost`: %v\n", resp)
 }
 ```
@@ -409,11 +409,11 @@ Other parameters are passed through a pointer to a apiApiEnvironmentAccessBacken
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **environmentAccessBackend** | [**EnvironmentAccessBackend**](EnvironmentAccessBackend.md) | The new EnvironmentAccessBackend resource | 
+ **environmentAccessBackendJsonhal** | [**EnvironmentAccessBackendJsonhal**](EnvironmentAccessBackendJsonhal.md) | The new EnvironmentAccessBackend resource | 
 
 ### Return type
 
-[**EnvironmentAccessBackend**](EnvironmentAccessBackend.md)
+[**EnvironmentAccessBackendJsonhal**](EnvironmentAccessBackendJsonhal.md)
 
 ### Authorization
 
@@ -421,8 +421,8 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: application/json, application/hal+json, text/html
-- **Accept**: application/json, application/hal+json, text/html
+- **Content-Type**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
+- **Accept**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)

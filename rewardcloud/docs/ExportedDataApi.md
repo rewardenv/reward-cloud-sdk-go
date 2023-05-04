@@ -15,7 +15,7 @@ Method | HTTP request | Description
 
 ## ApiExportedDatasGetCollection
 
-> []ExportedData ApiExportedDatasGetCollection(ctx).Page(page).ItemsPerPage(itemsPerPage).DataTransferDataType(dataTransferDataType).DataTransferDataType2(dataTransferDataType2).Environment(environment).Environment2(environment2).OrderCreatedAt(orderCreatedAt).OrderUpdatedAt(orderUpdatedAt).Execute()
+> ApiExportedDatasGetCollection200Response ApiExportedDatasGetCollection(ctx).Page(page).ItemsPerPage(itemsPerPage).DataTransferDataType(dataTransferDataType).DataTransferDataType2(dataTransferDataType2).Environment(environment).Environment2(environment2).OrderCreatedAt(orderCreatedAt).OrderUpdatedAt(orderUpdatedAt).Execute()
 
 Retrieves the collection of ExportedData resources.
 
@@ -50,7 +50,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `ExportedDataApi.ApiExportedDatasGetCollection``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiExportedDatasGetCollection`: []ExportedData
+    // response from `ApiExportedDatasGetCollection`: ApiExportedDatasGetCollection200Response
     fmt.Fprintf(os.Stdout, "Response from `ExportedDataApi.ApiExportedDatasGetCollection`: %v\n", resp)
 }
 ```
@@ -77,7 +77,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]ExportedData**](ExportedData.md)
+[**ApiExportedDatasGetCollection200Response**](ApiExportedDatasGetCollection200Response.md)
 
 ### Authorization
 
@@ -86,7 +86,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json, application/hal+json, text/html
+- **Accept**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -163,7 +163,7 @@ Name | Type | Description  | Notes
 
 ## ApiExportedDatasIdGet
 
-> ExportedData ApiExportedDatasIdGet(ctx, id).Execute()
+> ExportedDataJsonhal ApiExportedDatasIdGet(ctx, id).Execute()
 
 Retrieves a ExportedData resource.
 
@@ -191,7 +191,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `ExportedDataApi.ApiExportedDatasIdGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiExportedDatasIdGet`: ExportedData
+    // response from `ApiExportedDatasIdGet`: ExportedDataJsonhal
     fmt.Fprintf(os.Stdout, "Response from `ExportedDataApi.ApiExportedDatasIdGet`: %v\n", resp)
 }
 ```
@@ -215,7 +215,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ExportedData**](ExportedData.md)
+[**ExportedDataJsonhal**](ExportedDataJsonhal.md)
 
 ### Authorization
 
@@ -224,7 +224,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json, application/hal+json, text/html
+- **Accept**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -233,7 +233,7 @@ Name | Type | Description  | Notes
 
 ## ApiExportedDatasIdPatch
 
-> ExportedData ApiExportedDatasIdPatch(ctx, id).ExportedData(exportedData).Execute()
+> ExportedDataJsonhal ApiExportedDatasIdPatch(ctx, id).ExportedData(exportedData).Execute()
 
 Updates the ExportedData resource.
 
@@ -262,7 +262,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `ExportedDataApi.ApiExportedDatasIdPatch``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiExportedDatasIdPatch`: ExportedData
+    // response from `ApiExportedDatasIdPatch`: ExportedDataJsonhal
     fmt.Fprintf(os.Stdout, "Response from `ExportedDataApi.ApiExportedDatasIdPatch`: %v\n", resp)
 }
 ```
@@ -287,7 +287,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ExportedData**](ExportedData.md)
+[**ExportedDataJsonhal**](ExportedDataJsonhal.md)
 
 ### Authorization
 
@@ -295,8 +295,8 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: application/json, application/hal+json, text/html
-- **Accept**: application/json, application/hal+json, text/html
+- **Content-Type**: application/vnd.api+json
+- **Accept**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -305,7 +305,7 @@ Name | Type | Description  | Notes
 
 ## ApiExportedDatasIdPut
 
-> ExportedData ApiExportedDatasIdPut(ctx, id).ExportedData(exportedData).Execute()
+> ExportedDataJsonhal ApiExportedDatasIdPut(ctx, id).ExportedDataJsonhal(exportedDataJsonhal).Execute()
 
 Replaces the ExportedData resource.
 
@@ -325,16 +325,16 @@ import (
 
 func main() {
     id := "id_example" // string | ExportedData identifier
-    exportedData := *openapiclient.NewExportedData() // ExportedData | The updated ExportedData resource
+    exportedDataJsonhal := *openapiclient.NewExportedDataJsonhal() // ExportedDataJsonhal | The updated ExportedData resource
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ExportedDataApi.ApiExportedDatasIdPut(context.Background(), id).ExportedData(exportedData).Execute()
+    resp, r, err := apiClient.ExportedDataApi.ApiExportedDatasIdPut(context.Background(), id).ExportedDataJsonhal(exportedDataJsonhal).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ExportedDataApi.ApiExportedDatasIdPut``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiExportedDatasIdPut`: ExportedData
+    // response from `ApiExportedDatasIdPut`: ExportedDataJsonhal
     fmt.Fprintf(os.Stdout, "Response from `ExportedDataApi.ApiExportedDatasIdPut`: %v\n", resp)
 }
 ```
@@ -355,11 +355,11 @@ Other parameters are passed through a pointer to a apiApiExportedDatasIdPutReque
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **exportedData** | [**ExportedData**](ExportedData.md) | The updated ExportedData resource | 
+ **exportedDataJsonhal** | [**ExportedDataJsonhal**](ExportedDataJsonhal.md) | The updated ExportedData resource | 
 
 ### Return type
 
-[**ExportedData**](ExportedData.md)
+[**ExportedDataJsonhal**](ExportedDataJsonhal.md)
 
 ### Authorization
 
@@ -367,8 +367,8 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: application/json, application/hal+json, text/html
-- **Accept**: application/json, application/hal+json, text/html
+- **Content-Type**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
+- **Accept**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -377,7 +377,7 @@ Name | Type | Description  | Notes
 
 ## ApiExportedDatasPost
 
-> ExportedData ApiExportedDatasPost(ctx).ExportedData(exportedData).Execute()
+> ExportedDataJsonhal ApiExportedDatasPost(ctx).ExportedDataJsonhal(exportedDataJsonhal).Execute()
 
 Creates a ExportedData resource.
 
@@ -396,16 +396,16 @@ import (
 )
 
 func main() {
-    exportedData := *openapiclient.NewExportedData() // ExportedData | The new ExportedData resource
+    exportedDataJsonhal := *openapiclient.NewExportedDataJsonhal() // ExportedDataJsonhal | The new ExportedData resource
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ExportedDataApi.ApiExportedDatasPost(context.Background()).ExportedData(exportedData).Execute()
+    resp, r, err := apiClient.ExportedDataApi.ApiExportedDatasPost(context.Background()).ExportedDataJsonhal(exportedDataJsonhal).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ExportedDataApi.ApiExportedDatasPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiExportedDatasPost`: ExportedData
+    // response from `ApiExportedDatasPost`: ExportedDataJsonhal
     fmt.Fprintf(os.Stdout, "Response from `ExportedDataApi.ApiExportedDatasPost`: %v\n", resp)
 }
 ```
@@ -421,11 +421,11 @@ Other parameters are passed through a pointer to a apiApiExportedDatasPostReques
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **exportedData** | [**ExportedData**](ExportedData.md) | The new ExportedData resource | 
+ **exportedDataJsonhal** | [**ExportedDataJsonhal**](ExportedDataJsonhal.md) | The new ExportedData resource | 
 
 ### Return type
 
-[**ExportedData**](ExportedData.md)
+[**ExportedDataJsonhal**](ExportedDataJsonhal.md)
 
 ### Authorization
 
@@ -433,8 +433,8 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: application/json, application/hal+json, text/html
-- **Accept**: application/json, application/hal+json, text/html
+- **Content-Type**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
+- **Accept**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)

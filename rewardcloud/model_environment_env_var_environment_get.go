@@ -14,15 +14,12 @@ import (
 	"encoding/json"
 )
 
-// checks if the EnvironmentEnvVarEnvironmentGet type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &EnvironmentEnvVarEnvironmentGet{}
-
-// EnvironmentEnvVarEnvironmentGet 
+// EnvironmentEnvVarEnvironmentGet
 type EnvironmentEnvVarEnvironmentGet struct {
-	Key NullableString `json:"key,omitempty"`
-	Value NullableString `json:"value,omitempty"`
-	IsEncrypted NullableBool `json:"isEncrypted,omitempty"`
-	EnvVarType NullableString `json:"envVarType,omitempty"`
+	Key         NullableString `json:"key,omitempty"`
+	Value       NullableString `json:"value,omitempty"`
+	IsEncrypted NullableBool   `json:"isEncrypted,omitempty"`
+	EnvVarType  NullableString `json:"envVarType,omitempty"`
 }
 
 // NewEnvironmentEnvVarEnvironmentGet instantiates a new EnvironmentEnvVarEnvironmentGet object
@@ -44,7 +41,7 @@ func NewEnvironmentEnvVarEnvironmentGetWithDefaults() *EnvironmentEnvVarEnvironm
 
 // GetKey returns the Key field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *EnvironmentEnvVarEnvironmentGet) GetKey() string {
-	if o == nil || IsNil(o.Key.Get()) {
+	if o == nil || isNil(o.Key.Get()) {
 		var ret string
 		return ret
 	}
@@ -74,6 +71,7 @@ func (o *EnvironmentEnvVarEnvironmentGet) HasKey() bool {
 func (o *EnvironmentEnvVarEnvironmentGet) SetKey(v string) {
 	o.Key.Set(&v)
 }
+
 // SetKeyNil sets the value for Key to be an explicit nil
 func (o *EnvironmentEnvVarEnvironmentGet) SetKeyNil() {
 	o.Key.Set(nil)
@@ -86,7 +84,7 @@ func (o *EnvironmentEnvVarEnvironmentGet) UnsetKey() {
 
 // GetValue returns the Value field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *EnvironmentEnvVarEnvironmentGet) GetValue() string {
-	if o == nil || IsNil(o.Value.Get()) {
+	if o == nil || isNil(o.Value.Get()) {
 		var ret string
 		return ret
 	}
@@ -116,6 +114,7 @@ func (o *EnvironmentEnvVarEnvironmentGet) HasValue() bool {
 func (o *EnvironmentEnvVarEnvironmentGet) SetValue(v string) {
 	o.Value.Set(&v)
 }
+
 // SetValueNil sets the value for Value to be an explicit nil
 func (o *EnvironmentEnvVarEnvironmentGet) SetValueNil() {
 	o.Value.Set(nil)
@@ -128,7 +127,7 @@ func (o *EnvironmentEnvVarEnvironmentGet) UnsetValue() {
 
 // GetIsEncrypted returns the IsEncrypted field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *EnvironmentEnvVarEnvironmentGet) GetIsEncrypted() bool {
-	if o == nil || IsNil(o.IsEncrypted.Get()) {
+	if o == nil || isNil(o.IsEncrypted.Get()) {
 		var ret bool
 		return ret
 	}
@@ -158,6 +157,7 @@ func (o *EnvironmentEnvVarEnvironmentGet) HasIsEncrypted() bool {
 func (o *EnvironmentEnvVarEnvironmentGet) SetIsEncrypted(v bool) {
 	o.IsEncrypted.Set(&v)
 }
+
 // SetIsEncryptedNil sets the value for IsEncrypted to be an explicit nil
 func (o *EnvironmentEnvVarEnvironmentGet) SetIsEncryptedNil() {
 	o.IsEncrypted.Set(nil)
@@ -170,7 +170,7 @@ func (o *EnvironmentEnvVarEnvironmentGet) UnsetIsEncrypted() {
 
 // GetEnvVarType returns the EnvVarType field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *EnvironmentEnvVarEnvironmentGet) GetEnvVarType() string {
-	if o == nil || IsNil(o.EnvVarType.Get()) {
+	if o == nil || isNil(o.EnvVarType.Get()) {
 		var ret string
 		return ret
 	}
@@ -200,6 +200,7 @@ func (o *EnvironmentEnvVarEnvironmentGet) HasEnvVarType() bool {
 func (o *EnvironmentEnvVarEnvironmentGet) SetEnvVarType(v string) {
 	o.EnvVarType.Set(&v)
 }
+
 // SetEnvVarTypeNil sets the value for EnvVarType to be an explicit nil
 func (o *EnvironmentEnvVarEnvironmentGet) SetEnvVarTypeNil() {
 	o.EnvVarType.Set(nil)
@@ -211,14 +212,6 @@ func (o *EnvironmentEnvVarEnvironmentGet) UnsetEnvVarType() {
 }
 
 func (o EnvironmentEnvVarEnvironmentGet) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o EnvironmentEnvVarEnvironmentGet) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Key.IsSet() {
 		toSerialize["key"] = o.Key.Get()
@@ -232,7 +225,7 @@ func (o EnvironmentEnvVarEnvironmentGet) ToMap() (map[string]interface{}, error)
 	if o.EnvVarType.IsSet() {
 		toSerialize["envVarType"] = o.EnvVarType.Get()
 	}
-	return toSerialize, nil
+	return json.Marshal(toSerialize)
 }
 
 type NullableEnvironmentEnvVarEnvironmentGet struct {
@@ -270,5 +263,3 @@ func (v *NullableEnvironmentEnvVarEnvironmentGet) UnmarshalJSON(src []byte) erro
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

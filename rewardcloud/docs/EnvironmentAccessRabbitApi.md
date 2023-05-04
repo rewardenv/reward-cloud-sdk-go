@@ -15,7 +15,7 @@ Method | HTTP request | Description
 
 ## ApiEnvironmentAccessRabbitsGetCollection
 
-> []EnvironmentAccessRabbit ApiEnvironmentAccessRabbitsGetCollection(ctx).Page(page).ItemsPerPage(itemsPerPage).Execute()
+> ApiEnvironmentAccessRabbitsGetCollection200Response ApiEnvironmentAccessRabbitsGetCollection(ctx).Page(page).ItemsPerPage(itemsPerPage).Execute()
 
 Retrieves the collection of EnvironmentAccessRabbit resources.
 
@@ -44,7 +44,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `EnvironmentAccessRabbitApi.ApiEnvironmentAccessRabbitsGetCollection``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiEnvironmentAccessRabbitsGetCollection`: []EnvironmentAccessRabbit
+    // response from `ApiEnvironmentAccessRabbitsGetCollection`: ApiEnvironmentAccessRabbitsGetCollection200Response
     fmt.Fprintf(os.Stdout, "Response from `EnvironmentAccessRabbitApi.ApiEnvironmentAccessRabbitsGetCollection`: %v\n", resp)
 }
 ```
@@ -65,7 +65,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]EnvironmentAccessRabbit**](EnvironmentAccessRabbit.md)
+[**ApiEnvironmentAccessRabbitsGetCollection200Response**](ApiEnvironmentAccessRabbitsGetCollection200Response.md)
 
 ### Authorization
 
@@ -74,7 +74,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json, application/hal+json, text/html
+- **Accept**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -151,7 +151,7 @@ Name | Type | Description  | Notes
 
 ## ApiEnvironmentAccessRabbitsIdGet
 
-> EnvironmentAccessRabbit ApiEnvironmentAccessRabbitsIdGet(ctx, id).Execute()
+> EnvironmentAccessRabbitJsonhal ApiEnvironmentAccessRabbitsIdGet(ctx, id).Execute()
 
 Retrieves a EnvironmentAccessRabbit resource.
 
@@ -179,7 +179,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `EnvironmentAccessRabbitApi.ApiEnvironmentAccessRabbitsIdGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiEnvironmentAccessRabbitsIdGet`: EnvironmentAccessRabbit
+    // response from `ApiEnvironmentAccessRabbitsIdGet`: EnvironmentAccessRabbitJsonhal
     fmt.Fprintf(os.Stdout, "Response from `EnvironmentAccessRabbitApi.ApiEnvironmentAccessRabbitsIdGet`: %v\n", resp)
 }
 ```
@@ -203,7 +203,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**EnvironmentAccessRabbit**](EnvironmentAccessRabbit.md)
+[**EnvironmentAccessRabbitJsonhal**](EnvironmentAccessRabbitJsonhal.md)
 
 ### Authorization
 
@@ -212,7 +212,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json, application/hal+json, text/html
+- **Accept**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -221,7 +221,7 @@ Name | Type | Description  | Notes
 
 ## ApiEnvironmentAccessRabbitsIdPatch
 
-> EnvironmentAccessRabbit ApiEnvironmentAccessRabbitsIdPatch(ctx, id).EnvironmentAccessRabbit(environmentAccessRabbit).Execute()
+> EnvironmentAccessRabbitJsonhal ApiEnvironmentAccessRabbitsIdPatch(ctx, id).EnvironmentAccessRabbit(environmentAccessRabbit).Execute()
 
 Updates the EnvironmentAccessRabbit resource.
 
@@ -250,7 +250,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `EnvironmentAccessRabbitApi.ApiEnvironmentAccessRabbitsIdPatch``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiEnvironmentAccessRabbitsIdPatch`: EnvironmentAccessRabbit
+    // response from `ApiEnvironmentAccessRabbitsIdPatch`: EnvironmentAccessRabbitJsonhal
     fmt.Fprintf(os.Stdout, "Response from `EnvironmentAccessRabbitApi.ApiEnvironmentAccessRabbitsIdPatch`: %v\n", resp)
 }
 ```
@@ -275,7 +275,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**EnvironmentAccessRabbit**](EnvironmentAccessRabbit.md)
+[**EnvironmentAccessRabbitJsonhal**](EnvironmentAccessRabbitJsonhal.md)
 
 ### Authorization
 
@@ -283,8 +283,8 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: application/json, application/hal+json, text/html
-- **Accept**: application/json, application/hal+json, text/html
+- **Content-Type**: application/vnd.api+json
+- **Accept**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -293,7 +293,7 @@ Name | Type | Description  | Notes
 
 ## ApiEnvironmentAccessRabbitsIdPut
 
-> EnvironmentAccessRabbit ApiEnvironmentAccessRabbitsIdPut(ctx, id).EnvironmentAccessRabbit(environmentAccessRabbit).Execute()
+> EnvironmentAccessRabbitJsonhal ApiEnvironmentAccessRabbitsIdPut(ctx, id).EnvironmentAccessRabbitJsonhal(environmentAccessRabbitJsonhal).Execute()
 
 Replaces the EnvironmentAccessRabbit resource.
 
@@ -313,16 +313,16 @@ import (
 
 func main() {
     id := "id_example" // string | EnvironmentAccessRabbit identifier
-    environmentAccessRabbit := *openapiclient.NewEnvironmentAccessRabbit() // EnvironmentAccessRabbit | The updated EnvironmentAccessRabbit resource
+    environmentAccessRabbitJsonhal := *openapiclient.NewEnvironmentAccessRabbitJsonhal() // EnvironmentAccessRabbitJsonhal | The updated EnvironmentAccessRabbit resource
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.EnvironmentAccessRabbitApi.ApiEnvironmentAccessRabbitsIdPut(context.Background(), id).EnvironmentAccessRabbit(environmentAccessRabbit).Execute()
+    resp, r, err := apiClient.EnvironmentAccessRabbitApi.ApiEnvironmentAccessRabbitsIdPut(context.Background(), id).EnvironmentAccessRabbitJsonhal(environmentAccessRabbitJsonhal).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `EnvironmentAccessRabbitApi.ApiEnvironmentAccessRabbitsIdPut``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiEnvironmentAccessRabbitsIdPut`: EnvironmentAccessRabbit
+    // response from `ApiEnvironmentAccessRabbitsIdPut`: EnvironmentAccessRabbitJsonhal
     fmt.Fprintf(os.Stdout, "Response from `EnvironmentAccessRabbitApi.ApiEnvironmentAccessRabbitsIdPut`: %v\n", resp)
 }
 ```
@@ -343,11 +343,11 @@ Other parameters are passed through a pointer to a apiApiEnvironmentAccessRabbit
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **environmentAccessRabbit** | [**EnvironmentAccessRabbit**](EnvironmentAccessRabbit.md) | The updated EnvironmentAccessRabbit resource | 
+ **environmentAccessRabbitJsonhal** | [**EnvironmentAccessRabbitJsonhal**](EnvironmentAccessRabbitJsonhal.md) | The updated EnvironmentAccessRabbit resource | 
 
 ### Return type
 
-[**EnvironmentAccessRabbit**](EnvironmentAccessRabbit.md)
+[**EnvironmentAccessRabbitJsonhal**](EnvironmentAccessRabbitJsonhal.md)
 
 ### Authorization
 
@@ -355,8 +355,8 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: application/json, application/hal+json, text/html
-- **Accept**: application/json, application/hal+json, text/html
+- **Content-Type**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
+- **Accept**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -365,7 +365,7 @@ Name | Type | Description  | Notes
 
 ## ApiEnvironmentAccessRabbitsPost
 
-> EnvironmentAccessRabbit ApiEnvironmentAccessRabbitsPost(ctx).EnvironmentAccessRabbit(environmentAccessRabbit).Execute()
+> EnvironmentAccessRabbitJsonhal ApiEnvironmentAccessRabbitsPost(ctx).EnvironmentAccessRabbitJsonhal(environmentAccessRabbitJsonhal).Execute()
 
 Creates a EnvironmentAccessRabbit resource.
 
@@ -384,16 +384,16 @@ import (
 )
 
 func main() {
-    environmentAccessRabbit := *openapiclient.NewEnvironmentAccessRabbit() // EnvironmentAccessRabbit | The new EnvironmentAccessRabbit resource
+    environmentAccessRabbitJsonhal := *openapiclient.NewEnvironmentAccessRabbitJsonhal() // EnvironmentAccessRabbitJsonhal | The new EnvironmentAccessRabbit resource
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.EnvironmentAccessRabbitApi.ApiEnvironmentAccessRabbitsPost(context.Background()).EnvironmentAccessRabbit(environmentAccessRabbit).Execute()
+    resp, r, err := apiClient.EnvironmentAccessRabbitApi.ApiEnvironmentAccessRabbitsPost(context.Background()).EnvironmentAccessRabbitJsonhal(environmentAccessRabbitJsonhal).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `EnvironmentAccessRabbitApi.ApiEnvironmentAccessRabbitsPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiEnvironmentAccessRabbitsPost`: EnvironmentAccessRabbit
+    // response from `ApiEnvironmentAccessRabbitsPost`: EnvironmentAccessRabbitJsonhal
     fmt.Fprintf(os.Stdout, "Response from `EnvironmentAccessRabbitApi.ApiEnvironmentAccessRabbitsPost`: %v\n", resp)
 }
 ```
@@ -409,11 +409,11 @@ Other parameters are passed through a pointer to a apiApiEnvironmentAccessRabbit
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **environmentAccessRabbit** | [**EnvironmentAccessRabbit**](EnvironmentAccessRabbit.md) | The new EnvironmentAccessRabbit resource | 
+ **environmentAccessRabbitJsonhal** | [**EnvironmentAccessRabbitJsonhal**](EnvironmentAccessRabbitJsonhal.md) | The new EnvironmentAccessRabbit resource | 
 
 ### Return type
 
-[**EnvironmentAccessRabbit**](EnvironmentAccessRabbit.md)
+[**EnvironmentAccessRabbitJsonhal**](EnvironmentAccessRabbitJsonhal.md)
 
 ### Authorization
 
@@ -421,8 +421,8 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: application/json, application/hal+json, text/html
-- **Accept**: application/json, application/hal+json, text/html
+- **Content-Type**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
+- **Accept**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)

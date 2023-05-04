@@ -351,7 +351,19 @@ Class | Method | HTTP request | Description
 *TeamEnvVarApi* | [**ApiTeamEnvVarsIdPatch**](docs/TeamEnvVarApi.md#apiteamenvvarsidpatch) | **Patch** /api/team_env_vars/{id} | Updates the TeamEnvVar resource.
 *TeamEnvVarApi* | [**ApiTeamEnvVarsIdPut**](docs/TeamEnvVarApi.md#apiteamenvvarsidput) | **Put** /api/team_env_vars/{id} | Replaces the TeamEnvVar resource.
 *TeamEnvVarApi* | [**ApiTeamEnvVarsPost**](docs/TeamEnvVarApi.md#apiteamenvvarspost) | **Post** /api/team_env_vars | Creates a TeamEnvVar resource.
-*TokenApi* | [**PostCredentialsItem**](docs/TokenApi.md#postcredentialsitem) | **Post** /authentication_token | Get JWT token to login.
+*TemplateEnvironmentApi* | [**ApiTemplateEnvironmentsGetCollection**](docs/TemplateEnvironmentApi.md#apitemplateenvironmentsgetcollection) | **Get** /api/template_environments | Retrieves the collection of TemplateEnvironment resources.
+*TemplateEnvironmentApi* | [**ApiTemplateEnvironmentsIdDelete**](docs/TemplateEnvironmentApi.md#apitemplateenvironmentsiddelete) | **Delete** /api/template_environments/{id} | Removes the TemplateEnvironment resource.
+*TemplateEnvironmentApi* | [**ApiTemplateEnvironmentsIdGet**](docs/TemplateEnvironmentApi.md#apitemplateenvironmentsidget) | **Get** /api/template_environments/{id} | Retrieves a TemplateEnvironment resource.
+*TemplateEnvironmentApi* | [**ApiTemplateEnvironmentsIdPatch**](docs/TemplateEnvironmentApi.md#apitemplateenvironmentsidpatch) | **Patch** /api/template_environments/{id} | Updates the TemplateEnvironment resource.
+*TemplateEnvironmentApi* | [**ApiTemplateEnvironmentsIdPut**](docs/TemplateEnvironmentApi.md#apitemplateenvironmentsidput) | **Put** /api/template_environments/{id} | Replaces the TemplateEnvironment resource.
+*TemplateEnvironmentApi* | [**ApiTemplateEnvironmentsPost**](docs/TemplateEnvironmentApi.md#apitemplateenvironmentspost) | **Post** /api/template_environments | Creates a TemplateEnvironment resource.
+*TemplateProjectApi* | [**ApiTemplateProjectsGetCollection**](docs/TemplateProjectApi.md#apitemplateprojectsgetcollection) | **Get** /api/template_projects | Retrieves the collection of TemplateProject resources.
+*TemplateProjectApi* | [**ApiTemplateProjectsIdDelete**](docs/TemplateProjectApi.md#apitemplateprojectsiddelete) | **Delete** /api/template_projects/{id} | Removes the TemplateProject resource.
+*TemplateProjectApi* | [**ApiTemplateProjectsIdGet**](docs/TemplateProjectApi.md#apitemplateprojectsidget) | **Get** /api/template_projects/{id} | Retrieves a TemplateProject resource.
+*TemplateProjectApi* | [**ApiTemplateProjectsIdPatch**](docs/TemplateProjectApi.md#apitemplateprojectsidpatch) | **Patch** /api/template_projects/{id} | Updates the TemplateProject resource.
+*TemplateProjectApi* | [**ApiTemplateProjectsIdPut**](docs/TemplateProjectApi.md#apitemplateprojectsidput) | **Put** /api/template_projects/{id} | Replaces the TemplateProject resource.
+*TemplateProjectApi* | [**ApiTemplateProjectsPost**](docs/TemplateProjectApi.md#apitemplateprojectspost) | **Post** /api/template_projects | Creates a TemplateProject resource.
+*TokenApi* | [**PostCredentialsItem**](docs/TokenApi.md#postcredentialsitem) | **Post** /api/authentication_token | Get JWT token to login.
 *UserApi* | [**ApiUsersGetCollection**](docs/UserApi.md#apiusersgetcollection) | **Get** /api/users | Retrieves the collection of User resources.
 *UserApi* | [**ApiUsersIdDelete**](docs/UserApi.md#apiusersiddelete) | **Delete** /api/users/{id} | Removes the User resource.
 *UserApi* | [**ApiUsersIdGet**](docs/UserApi.md#apiusersidget) | **Get** /api/users/{id} | Retrieves a User resource.
@@ -372,6 +384,11 @@ Class | Method | HTTP request | Description
 
 ## Documentation For Models
 
+ - [AbstractEnvironment](docs/AbstractEnvironment.md)
+ - [AbstractEnvironmentJsonhal](docs/AbstractEnvironmentJsonhal.md)
+ - [AbstractEnvironmentJsonhalLinks](docs/AbstractEnvironmentJsonhalLinks.md)
+ - [AbstractProject](docs/AbstractProject.md)
+ - [AbstractProjectJsonhal](docs/AbstractProjectJsonhal.md)
  - [ApiComponentResourceLimitsGetCollection200Response](docs/ApiComponentResourceLimitsGetCollection200Response.md)
  - [ApiComponentResourceLimitsGetCollection200ResponseLinks](docs/ApiComponentResourceLimitsGetCollection200ResponseLinks.md)
  - [ApiComponentResourceLimitsGetCollection200ResponseLinksSelf](docs/ApiComponentResourceLimitsGetCollection200ResponseLinksSelf.md)
@@ -418,10 +435,11 @@ Class | Method | HTTP request | Description
  - [ApiStatesGetCollection200Response](docs/ApiStatesGetCollection200Response.md)
  - [ApiTeamEnvVarsGetCollection200Response](docs/ApiTeamEnvVarsGetCollection200Response.md)
  - [ApiTeamsGetCollection200Response](docs/ApiTeamsGetCollection200Response.md)
+ - [ApiTemplateEnvironmentsGetCollection200Response](docs/ApiTemplateEnvironmentsGetCollection200Response.md)
+ - [ApiTemplateProjectsGetCollection200Response](docs/ApiTemplateProjectsGetCollection200Response.md)
  - [ApiUsersGetCollection200Response](docs/ApiUsersGetCollection200Response.md)
  - [Component](docs/Component.md)
  - [ComponentJsonhal](docs/ComponentJsonhal.md)
- - [ComponentJsonhalLinks](docs/ComponentJsonhalLinks.md)
  - [ComponentResourceLimit](docs/ComponentResourceLimit.md)
  - [ComponentResourceLimitJsonhal](docs/ComponentResourceLimitJsonhal.md)
  - [ComponentVersion](docs/ComponentVersion.md)
@@ -458,17 +476,27 @@ Class | Method | HTTP request | Description
  - [EnvironmentAccessRedis](docs/EnvironmentAccessRedis.md)
  - [EnvironmentAccessRedisJsonhal](docs/EnvironmentAccessRedisJsonhal.md)
  - [EnvironmentComponent](docs/EnvironmentComponent.md)
+ - [EnvironmentComponentEnvironment](docs/EnvironmentComponentEnvironment.md)
  - [EnvironmentComponentEnvironmentGet](docs/EnvironmentComponentEnvironmentGet.md)
  - [EnvironmentComponentEnvironmentPost](docs/EnvironmentComponentEnvironmentPost.md)
  - [EnvironmentComponentJsonhal](docs/EnvironmentComponentJsonhal.md)
+ - [EnvironmentComponentJsonhalEnvironment](docs/EnvironmentComponentJsonhalEnvironment.md)
  - [EnvironmentComponentJsonhalEnvironmentGet](docs/EnvironmentComponentJsonhalEnvironmentGet.md)
  - [EnvironmentComponentJsonhalEnvironmentPost](docs/EnvironmentComponentJsonhalEnvironmentPost.md)
+ - [EnvironmentComponentJsonhalTemplateEnvironmentInput](docs/EnvironmentComponentJsonhalTemplateEnvironmentInput.md)
+ - [EnvironmentComponentJsonhalTemplateEnvironmentOutput](docs/EnvironmentComponentJsonhalTemplateEnvironmentOutput.md)
+ - [EnvironmentComponentTemplateEnvironmentInput](docs/EnvironmentComponentTemplateEnvironmentInput.md)
+ - [EnvironmentComponentTemplateEnvironmentOutput](docs/EnvironmentComponentTemplateEnvironmentOutput.md)
  - [EnvironmentEnvVar](docs/EnvironmentEnvVar.md)
  - [EnvironmentEnvVarEnvironmentGet](docs/EnvironmentEnvVarEnvironmentGet.md)
  - [EnvironmentEnvVarEnvironmentPost](docs/EnvironmentEnvVarEnvironmentPost.md)
  - [EnvironmentEnvVarJsonhal](docs/EnvironmentEnvVarJsonhal.md)
  - [EnvironmentEnvVarJsonhalEnvironmentGet](docs/EnvironmentEnvVarJsonhalEnvironmentGet.md)
  - [EnvironmentEnvVarJsonhalEnvironmentPost](docs/EnvironmentEnvVarJsonhalEnvironmentPost.md)
+ - [EnvironmentEnvVarJsonhalTemplateEnvironmentInput](docs/EnvironmentEnvVarJsonhalTemplateEnvironmentInput.md)
+ - [EnvironmentEnvVarJsonhalTemplateEnvironmentOutput](docs/EnvironmentEnvVarJsonhalTemplateEnvironmentOutput.md)
+ - [EnvironmentEnvVarTemplateEnvironmentInput](docs/EnvironmentEnvVarTemplateEnvironmentInput.md)
+ - [EnvironmentEnvVarTemplateEnvironmentOutput](docs/EnvironmentEnvVarTemplateEnvironmentOutput.md)
  - [EnvironmentEnvironmentGet](docs/EnvironmentEnvironmentGet.md)
  - [EnvironmentEnvironmentPost](docs/EnvironmentEnvironmentPost.md)
  - [EnvironmentJsonhalEnvironmentGet](docs/EnvironmentJsonhalEnvironmentGet.md)
@@ -527,10 +555,16 @@ Class | Method | HTTP request | Description
  - [ProductProductOutputDefaultPrice](docs/ProductProductOutputDefaultPrice.md)
  - [ProjectEnvVar](docs/ProjectEnvVar.md)
  - [ProjectEnvVarJsonhal](docs/ProjectEnvVarJsonhal.md)
+ - [ProjectEnvVarJsonhalProject](docs/ProjectEnvVarJsonhalProject.md)
  - [ProjectEnvVarJsonhalProjectGet](docs/ProjectEnvVarJsonhalProjectGet.md)
  - [ProjectEnvVarJsonhalProjectPost](docs/ProjectEnvVarJsonhalProjectPost.md)
+ - [ProjectEnvVarJsonhalTemplateProjectInput](docs/ProjectEnvVarJsonhalTemplateProjectInput.md)
+ - [ProjectEnvVarJsonhalTemplateProjectOutput](docs/ProjectEnvVarJsonhalTemplateProjectOutput.md)
+ - [ProjectEnvVarProject](docs/ProjectEnvVarProject.md)
  - [ProjectEnvVarProjectGet](docs/ProjectEnvVarProjectGet.md)
  - [ProjectEnvVarProjectPost](docs/ProjectEnvVarProjectPost.md)
+ - [ProjectEnvVarTemplateProjectInput](docs/ProjectEnvVarTemplateProjectInput.md)
+ - [ProjectEnvVarTemplateProjectOutput](docs/ProjectEnvVarTemplateProjectOutput.md)
  - [ProjectJsonhalProjectGet](docs/ProjectJsonhalProjectGet.md)
  - [ProjectJsonhalProjectGetGit](docs/ProjectJsonhalProjectGetGit.md)
  - [ProjectJsonhalProjectGetServiceAccount](docs/ProjectJsonhalProjectGetServiceAccount.md)
@@ -597,6 +631,14 @@ Class | Method | HTTP request | Description
  - [TeamJsonhalTeamPost](docs/TeamJsonhalTeamPost.md)
  - [TeamTeamGet](docs/TeamTeamGet.md)
  - [TeamTeamPost](docs/TeamTeamPost.md)
+ - [TemplateEnvironmentJsonhalTemplateEnvironmentInput](docs/TemplateEnvironmentJsonhalTemplateEnvironmentInput.md)
+ - [TemplateEnvironmentJsonhalTemplateEnvironmentOutput](docs/TemplateEnvironmentJsonhalTemplateEnvironmentOutput.md)
+ - [TemplateEnvironmentTemplateEnvironmentInput](docs/TemplateEnvironmentTemplateEnvironmentInput.md)
+ - [TemplateEnvironmentTemplateEnvironmentOutput](docs/TemplateEnvironmentTemplateEnvironmentOutput.md)
+ - [TemplateProjectJsonhalTemplateProjectInput](docs/TemplateProjectJsonhalTemplateProjectInput.md)
+ - [TemplateProjectJsonhalTemplateProjectOutput](docs/TemplateProjectJsonhalTemplateProjectOutput.md)
+ - [TemplateProjectTemplateProjectInput](docs/TemplateProjectTemplateProjectInput.md)
+ - [TemplateProjectTemplateProjectOutput](docs/TemplateProjectTemplateProjectOutput.md)
  - [Token](docs/Token.md)
  - [TokenData](docs/TokenData.md)
  - [TokenDataTeamsInner](docs/TokenDataTeamsInner.md)

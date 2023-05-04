@@ -18,13 +18,12 @@ import (
 	"net/url"
 )
 
-
 // TokenApiService TokenApi service
 type TokenApiService service
 
 type ApiPostCredentialsItemRequest struct {
-	ctx context.Context
-	ApiService *TokenApiService
+	ctx         context.Context
+	ApiService  *TokenApiService
 	credentials *Credentials
 }
 
@@ -41,26 +40,25 @@ func (r ApiPostCredentialsItemRequest) Execute() (*Token, *http.Response, error)
 /*
 PostCredentialsItem Get JWT token to login.
 
-
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiPostCredentialsItemRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiPostCredentialsItemRequest
 */
 func (a *TokenApiService) PostCredentialsItem(ctx context.Context) ApiPostCredentialsItemRequest {
 	return ApiPostCredentialsItemRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return Token
+//
+//	@return Token
 func (a *TokenApiService) PostCredentialsItemExecute(r ApiPostCredentialsItemRequest) (*Token, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *Token
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *Token
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TokenApiService.PostCredentialsItem")
@@ -68,7 +66,7 @@ func (a *TokenApiService) PostCredentialsItemExecute(r ApiPostCredentialsItemReq
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/authentication_token"
+	localVarPath := localBasePath + "/api/authentication_token"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}

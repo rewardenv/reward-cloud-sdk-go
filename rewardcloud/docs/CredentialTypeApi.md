@@ -15,7 +15,7 @@ Method | HTTP request | Description
 
 ## ApiCredentialTypesGetCollection
 
-> []CredentialType ApiCredentialTypesGetCollection(ctx).Page(page).ItemsPerPage(itemsPerPage).Execute()
+> ApiCredentialTypesGetCollection200Response ApiCredentialTypesGetCollection(ctx).Page(page).ItemsPerPage(itemsPerPage).Execute()
 
 Retrieves the collection of CredentialType resources.
 
@@ -44,7 +44,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `CredentialTypeApi.ApiCredentialTypesGetCollection``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiCredentialTypesGetCollection`: []CredentialType
+    // response from `ApiCredentialTypesGetCollection`: ApiCredentialTypesGetCollection200Response
     fmt.Fprintf(os.Stdout, "Response from `CredentialTypeApi.ApiCredentialTypesGetCollection`: %v\n", resp)
 }
 ```
@@ -65,7 +65,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]CredentialType**](CredentialType.md)
+[**ApiCredentialTypesGetCollection200Response**](ApiCredentialTypesGetCollection200Response.md)
 
 ### Authorization
 
@@ -74,7 +74,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json, application/hal+json, text/html
+- **Accept**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -151,7 +151,7 @@ Name | Type | Description  | Notes
 
 ## ApiCredentialTypesIdGet
 
-> CredentialType ApiCredentialTypesIdGet(ctx, id).Execute()
+> CredentialTypeJsonhal ApiCredentialTypesIdGet(ctx, id).Execute()
 
 Retrieves a CredentialType resource.
 
@@ -179,7 +179,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `CredentialTypeApi.ApiCredentialTypesIdGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiCredentialTypesIdGet`: CredentialType
+    // response from `ApiCredentialTypesIdGet`: CredentialTypeJsonhal
     fmt.Fprintf(os.Stdout, "Response from `CredentialTypeApi.ApiCredentialTypesIdGet`: %v\n", resp)
 }
 ```
@@ -203,7 +203,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**CredentialType**](CredentialType.md)
+[**CredentialTypeJsonhal**](CredentialTypeJsonhal.md)
 
 ### Authorization
 
@@ -212,7 +212,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json, application/hal+json, text/html
+- **Accept**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -221,7 +221,7 @@ Name | Type | Description  | Notes
 
 ## ApiCredentialTypesIdPatch
 
-> CredentialType ApiCredentialTypesIdPatch(ctx, id).CredentialType(credentialType).Execute()
+> CredentialTypeJsonhal ApiCredentialTypesIdPatch(ctx, id).CredentialType(credentialType).Execute()
 
 Updates the CredentialType resource.
 
@@ -250,7 +250,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `CredentialTypeApi.ApiCredentialTypesIdPatch``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiCredentialTypesIdPatch`: CredentialType
+    // response from `ApiCredentialTypesIdPatch`: CredentialTypeJsonhal
     fmt.Fprintf(os.Stdout, "Response from `CredentialTypeApi.ApiCredentialTypesIdPatch`: %v\n", resp)
 }
 ```
@@ -275,7 +275,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**CredentialType**](CredentialType.md)
+[**CredentialTypeJsonhal**](CredentialTypeJsonhal.md)
 
 ### Authorization
 
@@ -283,8 +283,8 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: application/json, application/hal+json, text/html
-- **Accept**: application/json, application/hal+json, text/html
+- **Content-Type**: application/vnd.api+json
+- **Accept**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -293,7 +293,7 @@ Name | Type | Description  | Notes
 
 ## ApiCredentialTypesIdPut
 
-> CredentialType ApiCredentialTypesIdPut(ctx, id).CredentialType(credentialType).Execute()
+> CredentialTypeJsonhal ApiCredentialTypesIdPut(ctx, id).CredentialTypeJsonhal(credentialTypeJsonhal).Execute()
 
 Replaces the CredentialType resource.
 
@@ -313,16 +313,16 @@ import (
 
 func main() {
     id := "id_example" // string | CredentialType identifier
-    credentialType := *openapiclient.NewCredentialType() // CredentialType | The updated CredentialType resource
+    credentialTypeJsonhal := *openapiclient.NewCredentialTypeJsonhal() // CredentialTypeJsonhal | The updated CredentialType resource
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.CredentialTypeApi.ApiCredentialTypesIdPut(context.Background(), id).CredentialType(credentialType).Execute()
+    resp, r, err := apiClient.CredentialTypeApi.ApiCredentialTypesIdPut(context.Background(), id).CredentialTypeJsonhal(credentialTypeJsonhal).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `CredentialTypeApi.ApiCredentialTypesIdPut``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiCredentialTypesIdPut`: CredentialType
+    // response from `ApiCredentialTypesIdPut`: CredentialTypeJsonhal
     fmt.Fprintf(os.Stdout, "Response from `CredentialTypeApi.ApiCredentialTypesIdPut`: %v\n", resp)
 }
 ```
@@ -343,11 +343,11 @@ Other parameters are passed through a pointer to a apiApiCredentialTypesIdPutReq
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **credentialType** | [**CredentialType**](CredentialType.md) | The updated CredentialType resource | 
+ **credentialTypeJsonhal** | [**CredentialTypeJsonhal**](CredentialTypeJsonhal.md) | The updated CredentialType resource | 
 
 ### Return type
 
-[**CredentialType**](CredentialType.md)
+[**CredentialTypeJsonhal**](CredentialTypeJsonhal.md)
 
 ### Authorization
 
@@ -355,8 +355,8 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: application/json, application/hal+json, text/html
-- **Accept**: application/json, application/hal+json, text/html
+- **Content-Type**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
+- **Accept**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -365,7 +365,7 @@ Name | Type | Description  | Notes
 
 ## ApiCredentialTypesPost
 
-> CredentialType ApiCredentialTypesPost(ctx).CredentialType(credentialType).Execute()
+> CredentialTypeJsonhal ApiCredentialTypesPost(ctx).CredentialTypeJsonhal(credentialTypeJsonhal).Execute()
 
 Creates a CredentialType resource.
 
@@ -384,16 +384,16 @@ import (
 )
 
 func main() {
-    credentialType := *openapiclient.NewCredentialType() // CredentialType | The new CredentialType resource
+    credentialTypeJsonhal := *openapiclient.NewCredentialTypeJsonhal() // CredentialTypeJsonhal | The new CredentialType resource
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.CredentialTypeApi.ApiCredentialTypesPost(context.Background()).CredentialType(credentialType).Execute()
+    resp, r, err := apiClient.CredentialTypeApi.ApiCredentialTypesPost(context.Background()).CredentialTypeJsonhal(credentialTypeJsonhal).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `CredentialTypeApi.ApiCredentialTypesPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiCredentialTypesPost`: CredentialType
+    // response from `ApiCredentialTypesPost`: CredentialTypeJsonhal
     fmt.Fprintf(os.Stdout, "Response from `CredentialTypeApi.ApiCredentialTypesPost`: %v\n", resp)
 }
 ```
@@ -409,11 +409,11 @@ Other parameters are passed through a pointer to a apiApiCredentialTypesPostRequ
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **credentialType** | [**CredentialType**](CredentialType.md) | The new CredentialType resource | 
+ **credentialTypeJsonhal** | [**CredentialTypeJsonhal**](CredentialTypeJsonhal.md) | The new CredentialType resource | 
 
 ### Return type
 
-[**CredentialType**](CredentialType.md)
+[**CredentialTypeJsonhal**](CredentialTypeJsonhal.md)
 
 ### Authorization
 
@@ -421,8 +421,8 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: application/json, application/hal+json, text/html
-- **Accept**: application/json, application/hal+json, text/html
+- **Content-Type**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
+- **Accept**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)

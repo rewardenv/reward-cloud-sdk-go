@@ -15,22 +15,19 @@ import (
 	"time"
 )
 
-// checks if the ProjectTypeVersion type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &ProjectTypeVersion{}
-
 // ProjectTypeVersion Class ProjectTypeVersion
 type ProjectTypeVersion struct {
-	Id *int32 `json:"id,omitempty"`
-	Uuid NullableString `json:"uuid,omitempty"`
-	Version NullableString `json:"version,omitempty"`
-	Project []AbstractProject `json:"project,omitempty"`
-	ProjectType NullableString `json:"projectType,omitempty"`
-	ProjectTypeVersionEnvVar []string `json:"projectTypeVersionEnvVar,omitempty"`
-	ComponentResourceLimit []string `json:"componentResourceLimit,omitempty"`
-	CreatedBy NullableString `json:"createdBy,omitempty"`
-	UpdatedBy NullableString `json:"updatedBy,omitempty"`
-	CreatedAt *time.Time `json:"createdAt,omitempty"`
-	UpdatedAt *time.Time `json:"updatedAt,omitempty"`
+	Id                       *int32            `json:"id,omitempty"`
+	Uuid                     NullableString    `json:"uuid,omitempty"`
+	Version                  NullableString    `json:"version,omitempty"`
+	Project                  []AbstractProject `json:"project,omitempty"`
+	ProjectType              NullableString    `json:"projectType,omitempty"`
+	ProjectTypeVersionEnvVar []string          `json:"projectTypeVersionEnvVar,omitempty"`
+	ComponentResourceLimit   []string          `json:"componentResourceLimit,omitempty"`
+	CreatedBy                NullableString    `json:"createdBy,omitempty"`
+	UpdatedBy                NullableString    `json:"updatedBy,omitempty"`
+	CreatedAt                *time.Time        `json:"createdAt,omitempty"`
+	UpdatedAt                *time.Time        `json:"updatedAt,omitempty"`
 }
 
 // NewProjectTypeVersion instantiates a new ProjectTypeVersion object
@@ -52,7 +49,7 @@ func NewProjectTypeVersionWithDefaults() *ProjectTypeVersion {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *ProjectTypeVersion) GetId() int32 {
-	if o == nil || IsNil(o.Id) {
+	if o == nil || isNil(o.Id) {
 		var ret int32
 		return ret
 	}
@@ -62,7 +59,7 @@ func (o *ProjectTypeVersion) GetId() int32 {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ProjectTypeVersion) GetIdOk() (*int32, bool) {
-	if o == nil || IsNil(o.Id) {
+	if o == nil || isNil(o.Id) {
 		return nil, false
 	}
 	return o.Id, true
@@ -70,7 +67,7 @@ func (o *ProjectTypeVersion) GetIdOk() (*int32, bool) {
 
 // HasId returns a boolean if a field has been set.
 func (o *ProjectTypeVersion) HasId() bool {
-	if o != nil && !IsNil(o.Id) {
+	if o != nil && !isNil(o.Id) {
 		return true
 	}
 
@@ -84,7 +81,7 @@ func (o *ProjectTypeVersion) SetId(v int32) {
 
 // GetUuid returns the Uuid field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ProjectTypeVersion) GetUuid() string {
-	if o == nil || IsNil(o.Uuid.Get()) {
+	if o == nil || isNil(o.Uuid.Get()) {
 		var ret string
 		return ret
 	}
@@ -114,6 +111,7 @@ func (o *ProjectTypeVersion) HasUuid() bool {
 func (o *ProjectTypeVersion) SetUuid(v string) {
 	o.Uuid.Set(&v)
 }
+
 // SetUuidNil sets the value for Uuid to be an explicit nil
 func (o *ProjectTypeVersion) SetUuidNil() {
 	o.Uuid.Set(nil)
@@ -126,7 +124,7 @@ func (o *ProjectTypeVersion) UnsetUuid() {
 
 // GetVersion returns the Version field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ProjectTypeVersion) GetVersion() string {
-	if o == nil || IsNil(o.Version.Get()) {
+	if o == nil || isNil(o.Version.Get()) {
 		var ret string
 		return ret
 	}
@@ -156,6 +154,7 @@ func (o *ProjectTypeVersion) HasVersion() bool {
 func (o *ProjectTypeVersion) SetVersion(v string) {
 	o.Version.Set(&v)
 }
+
 // SetVersionNil sets the value for Version to be an explicit nil
 func (o *ProjectTypeVersion) SetVersionNil() {
 	o.Version.Set(nil)
@@ -168,7 +167,7 @@ func (o *ProjectTypeVersion) UnsetVersion() {
 
 // GetProject returns the Project field value if set, zero value otherwise.
 func (o *ProjectTypeVersion) GetProject() []AbstractProject {
-	if o == nil || IsNil(o.Project) {
+	if o == nil || isNil(o.Project) {
 		var ret []AbstractProject
 		return ret
 	}
@@ -178,7 +177,7 @@ func (o *ProjectTypeVersion) GetProject() []AbstractProject {
 // GetProjectOk returns a tuple with the Project field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ProjectTypeVersion) GetProjectOk() ([]AbstractProject, bool) {
-	if o == nil || IsNil(o.Project) {
+	if o == nil || isNil(o.Project) {
 		return nil, false
 	}
 	return o.Project, true
@@ -186,7 +185,7 @@ func (o *ProjectTypeVersion) GetProjectOk() ([]AbstractProject, bool) {
 
 // HasProject returns a boolean if a field has been set.
 func (o *ProjectTypeVersion) HasProject() bool {
-	if o != nil && !IsNil(o.Project) {
+	if o != nil && !isNil(o.Project) {
 		return true
 	}
 
@@ -200,7 +199,7 @@ func (o *ProjectTypeVersion) SetProject(v []AbstractProject) {
 
 // GetProjectType returns the ProjectType field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ProjectTypeVersion) GetProjectType() string {
-	if o == nil || IsNil(o.ProjectType.Get()) {
+	if o == nil || isNil(o.ProjectType.Get()) {
 		var ret string
 		return ret
 	}
@@ -230,6 +229,7 @@ func (o *ProjectTypeVersion) HasProjectType() bool {
 func (o *ProjectTypeVersion) SetProjectType(v string) {
 	o.ProjectType.Set(&v)
 }
+
 // SetProjectTypeNil sets the value for ProjectType to be an explicit nil
 func (o *ProjectTypeVersion) SetProjectTypeNil() {
 	o.ProjectType.Set(nil)
@@ -242,7 +242,7 @@ func (o *ProjectTypeVersion) UnsetProjectType() {
 
 // GetProjectTypeVersionEnvVar returns the ProjectTypeVersionEnvVar field value if set, zero value otherwise.
 func (o *ProjectTypeVersion) GetProjectTypeVersionEnvVar() []string {
-	if o == nil || IsNil(o.ProjectTypeVersionEnvVar) {
+	if o == nil || isNil(o.ProjectTypeVersionEnvVar) {
 		var ret []string
 		return ret
 	}
@@ -252,7 +252,7 @@ func (o *ProjectTypeVersion) GetProjectTypeVersionEnvVar() []string {
 // GetProjectTypeVersionEnvVarOk returns a tuple with the ProjectTypeVersionEnvVar field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ProjectTypeVersion) GetProjectTypeVersionEnvVarOk() ([]string, bool) {
-	if o == nil || IsNil(o.ProjectTypeVersionEnvVar) {
+	if o == nil || isNil(o.ProjectTypeVersionEnvVar) {
 		return nil, false
 	}
 	return o.ProjectTypeVersionEnvVar, true
@@ -260,7 +260,7 @@ func (o *ProjectTypeVersion) GetProjectTypeVersionEnvVarOk() ([]string, bool) {
 
 // HasProjectTypeVersionEnvVar returns a boolean if a field has been set.
 func (o *ProjectTypeVersion) HasProjectTypeVersionEnvVar() bool {
-	if o != nil && !IsNil(o.ProjectTypeVersionEnvVar) {
+	if o != nil && !isNil(o.ProjectTypeVersionEnvVar) {
 		return true
 	}
 
@@ -274,7 +274,7 @@ func (o *ProjectTypeVersion) SetProjectTypeVersionEnvVar(v []string) {
 
 // GetComponentResourceLimit returns the ComponentResourceLimit field value if set, zero value otherwise.
 func (o *ProjectTypeVersion) GetComponentResourceLimit() []string {
-	if o == nil || IsNil(o.ComponentResourceLimit) {
+	if o == nil || isNil(o.ComponentResourceLimit) {
 		var ret []string
 		return ret
 	}
@@ -284,7 +284,7 @@ func (o *ProjectTypeVersion) GetComponentResourceLimit() []string {
 // GetComponentResourceLimitOk returns a tuple with the ComponentResourceLimit field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ProjectTypeVersion) GetComponentResourceLimitOk() ([]string, bool) {
-	if o == nil || IsNil(o.ComponentResourceLimit) {
+	if o == nil || isNil(o.ComponentResourceLimit) {
 		return nil, false
 	}
 	return o.ComponentResourceLimit, true
@@ -292,7 +292,7 @@ func (o *ProjectTypeVersion) GetComponentResourceLimitOk() ([]string, bool) {
 
 // HasComponentResourceLimit returns a boolean if a field has been set.
 func (o *ProjectTypeVersion) HasComponentResourceLimit() bool {
-	if o != nil && !IsNil(o.ComponentResourceLimit) {
+	if o != nil && !isNil(o.ComponentResourceLimit) {
 		return true
 	}
 
@@ -306,7 +306,7 @@ func (o *ProjectTypeVersion) SetComponentResourceLimit(v []string) {
 
 // GetCreatedBy returns the CreatedBy field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ProjectTypeVersion) GetCreatedBy() string {
-	if o == nil || IsNil(o.CreatedBy.Get()) {
+	if o == nil || isNil(o.CreatedBy.Get()) {
 		var ret string
 		return ret
 	}
@@ -336,6 +336,7 @@ func (o *ProjectTypeVersion) HasCreatedBy() bool {
 func (o *ProjectTypeVersion) SetCreatedBy(v string) {
 	o.CreatedBy.Set(&v)
 }
+
 // SetCreatedByNil sets the value for CreatedBy to be an explicit nil
 func (o *ProjectTypeVersion) SetCreatedByNil() {
 	o.CreatedBy.Set(nil)
@@ -348,7 +349,7 @@ func (o *ProjectTypeVersion) UnsetCreatedBy() {
 
 // GetUpdatedBy returns the UpdatedBy field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ProjectTypeVersion) GetUpdatedBy() string {
-	if o == nil || IsNil(o.UpdatedBy.Get()) {
+	if o == nil || isNil(o.UpdatedBy.Get()) {
 		var ret string
 		return ret
 	}
@@ -378,6 +379,7 @@ func (o *ProjectTypeVersion) HasUpdatedBy() bool {
 func (o *ProjectTypeVersion) SetUpdatedBy(v string) {
 	o.UpdatedBy.Set(&v)
 }
+
 // SetUpdatedByNil sets the value for UpdatedBy to be an explicit nil
 func (o *ProjectTypeVersion) SetUpdatedByNil() {
 	o.UpdatedBy.Set(nil)
@@ -390,7 +392,7 @@ func (o *ProjectTypeVersion) UnsetUpdatedBy() {
 
 // GetCreatedAt returns the CreatedAt field value if set, zero value otherwise.
 func (o *ProjectTypeVersion) GetCreatedAt() time.Time {
-	if o == nil || IsNil(o.CreatedAt) {
+	if o == nil || isNil(o.CreatedAt) {
 		var ret time.Time
 		return ret
 	}
@@ -400,7 +402,7 @@ func (o *ProjectTypeVersion) GetCreatedAt() time.Time {
 // GetCreatedAtOk returns a tuple with the CreatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ProjectTypeVersion) GetCreatedAtOk() (*time.Time, bool) {
-	if o == nil || IsNil(o.CreatedAt) {
+	if o == nil || isNil(o.CreatedAt) {
 		return nil, false
 	}
 	return o.CreatedAt, true
@@ -408,7 +410,7 @@ func (o *ProjectTypeVersion) GetCreatedAtOk() (*time.Time, bool) {
 
 // HasCreatedAt returns a boolean if a field has been set.
 func (o *ProjectTypeVersion) HasCreatedAt() bool {
-	if o != nil && !IsNil(o.CreatedAt) {
+	if o != nil && !isNil(o.CreatedAt) {
 		return true
 	}
 
@@ -422,7 +424,7 @@ func (o *ProjectTypeVersion) SetCreatedAt(v time.Time) {
 
 // GetUpdatedAt returns the UpdatedAt field value if set, zero value otherwise.
 func (o *ProjectTypeVersion) GetUpdatedAt() time.Time {
-	if o == nil || IsNil(o.UpdatedAt) {
+	if o == nil || isNil(o.UpdatedAt) {
 		var ret time.Time
 		return ret
 	}
@@ -432,7 +434,7 @@ func (o *ProjectTypeVersion) GetUpdatedAt() time.Time {
 // GetUpdatedAtOk returns a tuple with the UpdatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ProjectTypeVersion) GetUpdatedAtOk() (*time.Time, bool) {
-	if o == nil || IsNil(o.UpdatedAt) {
+	if o == nil || isNil(o.UpdatedAt) {
 		return nil, false
 	}
 	return o.UpdatedAt, true
@@ -440,7 +442,7 @@ func (o *ProjectTypeVersion) GetUpdatedAtOk() (*time.Time, bool) {
 
 // HasUpdatedAt returns a boolean if a field has been set.
 func (o *ProjectTypeVersion) HasUpdatedAt() bool {
-	if o != nil && !IsNil(o.UpdatedAt) {
+	if o != nil && !isNil(o.UpdatedAt) {
 		return true
 	}
 
@@ -453,32 +455,26 @@ func (o *ProjectTypeVersion) SetUpdatedAt(v time.Time) {
 }
 
 func (o ProjectTypeVersion) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o ProjectTypeVersion) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	// skip: id is readOnly
+	if !isNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
 	if o.Uuid.IsSet() {
 		toSerialize["uuid"] = o.Uuid.Get()
 	}
 	if o.Version.IsSet() {
 		toSerialize["version"] = o.Version.Get()
 	}
-	if !IsNil(o.Project) {
+	if !isNil(o.Project) {
 		toSerialize["project"] = o.Project
 	}
 	if o.ProjectType.IsSet() {
 		toSerialize["projectType"] = o.ProjectType.Get()
 	}
-	if !IsNil(o.ProjectTypeVersionEnvVar) {
+	if !isNil(o.ProjectTypeVersionEnvVar) {
 		toSerialize["projectTypeVersionEnvVar"] = o.ProjectTypeVersionEnvVar
 	}
-	if !IsNil(o.ComponentResourceLimit) {
+	if !isNil(o.ComponentResourceLimit) {
 		toSerialize["componentResourceLimit"] = o.ComponentResourceLimit
 	}
 	if o.CreatedBy.IsSet() {
@@ -487,13 +483,13 @@ func (o ProjectTypeVersion) ToMap() (map[string]interface{}, error) {
 	if o.UpdatedBy.IsSet() {
 		toSerialize["updatedBy"] = o.UpdatedBy.Get()
 	}
-	if !IsNil(o.CreatedAt) {
+	if !isNil(o.CreatedAt) {
 		toSerialize["createdAt"] = o.CreatedAt
 	}
-	if !IsNil(o.UpdatedAt) {
+	if !isNil(o.UpdatedAt) {
 		toSerialize["updatedAt"] = o.UpdatedAt
 	}
-	return toSerialize, nil
+	return json.Marshal(toSerialize)
 }
 
 type NullableProjectTypeVersion struct {
@@ -531,5 +527,3 @@ func (v *NullableProjectTypeVersion) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

@@ -15,20 +15,17 @@ import (
 	"time"
 )
 
-// checks if the ImportedData type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &ImportedData{}
-
 // ImportedData Class ImportedData
 type ImportedData struct {
-	Id *int32 `json:"id,omitempty"`
-	Uuid NullableString `json:"uuid,omitempty"`
-	Environment NullableString `json:"environment,omitempty"`
+	Id                   *int32         `json:"id,omitempty"`
+	Uuid                 NullableString `json:"uuid,omitempty"`
+	Environment          NullableString `json:"environment,omitempty"`
 	DataTransferDataType NullableString `json:"dataTransferDataType,omitempty"`
-	State NullableString `json:"state,omitempty"`
-	CreatedAt *time.Time `json:"createdAt,omitempty"`
-	UpdatedAt *time.Time `json:"updatedAt,omitempty"`
-	CreatedBy NullableString `json:"createdBy,omitempty"`
-	UpdatedBy NullableString `json:"updatedBy,omitempty"`
+	State                NullableString `json:"state,omitempty"`
+	CreatedAt            *time.Time     `json:"createdAt,omitempty"`
+	UpdatedAt            *time.Time     `json:"updatedAt,omitempty"`
+	CreatedBy            NullableString `json:"createdBy,omitempty"`
+	UpdatedBy            NullableString `json:"updatedBy,omitempty"`
 }
 
 // NewImportedData instantiates a new ImportedData object
@@ -50,7 +47,7 @@ func NewImportedDataWithDefaults() *ImportedData {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *ImportedData) GetId() int32 {
-	if o == nil || IsNil(o.Id) {
+	if o == nil || isNil(o.Id) {
 		var ret int32
 		return ret
 	}
@@ -60,7 +57,7 @@ func (o *ImportedData) GetId() int32 {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ImportedData) GetIdOk() (*int32, bool) {
-	if o == nil || IsNil(o.Id) {
+	if o == nil || isNil(o.Id) {
 		return nil, false
 	}
 	return o.Id, true
@@ -68,7 +65,7 @@ func (o *ImportedData) GetIdOk() (*int32, bool) {
 
 // HasId returns a boolean if a field has been set.
 func (o *ImportedData) HasId() bool {
-	if o != nil && !IsNil(o.Id) {
+	if o != nil && !isNil(o.Id) {
 		return true
 	}
 
@@ -82,7 +79,7 @@ func (o *ImportedData) SetId(v int32) {
 
 // GetUuid returns the Uuid field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ImportedData) GetUuid() string {
-	if o == nil || IsNil(o.Uuid.Get()) {
+	if o == nil || isNil(o.Uuid.Get()) {
 		var ret string
 		return ret
 	}
@@ -112,6 +109,7 @@ func (o *ImportedData) HasUuid() bool {
 func (o *ImportedData) SetUuid(v string) {
 	o.Uuid.Set(&v)
 }
+
 // SetUuidNil sets the value for Uuid to be an explicit nil
 func (o *ImportedData) SetUuidNil() {
 	o.Uuid.Set(nil)
@@ -124,7 +122,7 @@ func (o *ImportedData) UnsetUuid() {
 
 // GetEnvironment returns the Environment field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ImportedData) GetEnvironment() string {
-	if o == nil || IsNil(o.Environment.Get()) {
+	if o == nil || isNil(o.Environment.Get()) {
 		var ret string
 		return ret
 	}
@@ -154,6 +152,7 @@ func (o *ImportedData) HasEnvironment() bool {
 func (o *ImportedData) SetEnvironment(v string) {
 	o.Environment.Set(&v)
 }
+
 // SetEnvironmentNil sets the value for Environment to be an explicit nil
 func (o *ImportedData) SetEnvironmentNil() {
 	o.Environment.Set(nil)
@@ -166,7 +165,7 @@ func (o *ImportedData) UnsetEnvironment() {
 
 // GetDataTransferDataType returns the DataTransferDataType field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ImportedData) GetDataTransferDataType() string {
-	if o == nil || IsNil(o.DataTransferDataType.Get()) {
+	if o == nil || isNil(o.DataTransferDataType.Get()) {
 		var ret string
 		return ret
 	}
@@ -196,6 +195,7 @@ func (o *ImportedData) HasDataTransferDataType() bool {
 func (o *ImportedData) SetDataTransferDataType(v string) {
 	o.DataTransferDataType.Set(&v)
 }
+
 // SetDataTransferDataTypeNil sets the value for DataTransferDataType to be an explicit nil
 func (o *ImportedData) SetDataTransferDataTypeNil() {
 	o.DataTransferDataType.Set(nil)
@@ -208,7 +208,7 @@ func (o *ImportedData) UnsetDataTransferDataType() {
 
 // GetState returns the State field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ImportedData) GetState() string {
-	if o == nil || IsNil(o.State.Get()) {
+	if o == nil || isNil(o.State.Get()) {
 		var ret string
 		return ret
 	}
@@ -238,6 +238,7 @@ func (o *ImportedData) HasState() bool {
 func (o *ImportedData) SetState(v string) {
 	o.State.Set(&v)
 }
+
 // SetStateNil sets the value for State to be an explicit nil
 func (o *ImportedData) SetStateNil() {
 	o.State.Set(nil)
@@ -250,7 +251,7 @@ func (o *ImportedData) UnsetState() {
 
 // GetCreatedAt returns the CreatedAt field value if set, zero value otherwise.
 func (o *ImportedData) GetCreatedAt() time.Time {
-	if o == nil || IsNil(o.CreatedAt) {
+	if o == nil || isNil(o.CreatedAt) {
 		var ret time.Time
 		return ret
 	}
@@ -260,7 +261,7 @@ func (o *ImportedData) GetCreatedAt() time.Time {
 // GetCreatedAtOk returns a tuple with the CreatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ImportedData) GetCreatedAtOk() (*time.Time, bool) {
-	if o == nil || IsNil(o.CreatedAt) {
+	if o == nil || isNil(o.CreatedAt) {
 		return nil, false
 	}
 	return o.CreatedAt, true
@@ -268,7 +269,7 @@ func (o *ImportedData) GetCreatedAtOk() (*time.Time, bool) {
 
 // HasCreatedAt returns a boolean if a field has been set.
 func (o *ImportedData) HasCreatedAt() bool {
-	if o != nil && !IsNil(o.CreatedAt) {
+	if o != nil && !isNil(o.CreatedAt) {
 		return true
 	}
 
@@ -282,7 +283,7 @@ func (o *ImportedData) SetCreatedAt(v time.Time) {
 
 // GetUpdatedAt returns the UpdatedAt field value if set, zero value otherwise.
 func (o *ImportedData) GetUpdatedAt() time.Time {
-	if o == nil || IsNil(o.UpdatedAt) {
+	if o == nil || isNil(o.UpdatedAt) {
 		var ret time.Time
 		return ret
 	}
@@ -292,7 +293,7 @@ func (o *ImportedData) GetUpdatedAt() time.Time {
 // GetUpdatedAtOk returns a tuple with the UpdatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ImportedData) GetUpdatedAtOk() (*time.Time, bool) {
-	if o == nil || IsNil(o.UpdatedAt) {
+	if o == nil || isNil(o.UpdatedAt) {
 		return nil, false
 	}
 	return o.UpdatedAt, true
@@ -300,7 +301,7 @@ func (o *ImportedData) GetUpdatedAtOk() (*time.Time, bool) {
 
 // HasUpdatedAt returns a boolean if a field has been set.
 func (o *ImportedData) HasUpdatedAt() bool {
-	if o != nil && !IsNil(o.UpdatedAt) {
+	if o != nil && !isNil(o.UpdatedAt) {
 		return true
 	}
 
@@ -314,7 +315,7 @@ func (o *ImportedData) SetUpdatedAt(v time.Time) {
 
 // GetCreatedBy returns the CreatedBy field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ImportedData) GetCreatedBy() string {
-	if o == nil || IsNil(o.CreatedBy.Get()) {
+	if o == nil || isNil(o.CreatedBy.Get()) {
 		var ret string
 		return ret
 	}
@@ -344,6 +345,7 @@ func (o *ImportedData) HasCreatedBy() bool {
 func (o *ImportedData) SetCreatedBy(v string) {
 	o.CreatedBy.Set(&v)
 }
+
 // SetCreatedByNil sets the value for CreatedBy to be an explicit nil
 func (o *ImportedData) SetCreatedByNil() {
 	o.CreatedBy.Set(nil)
@@ -356,7 +358,7 @@ func (o *ImportedData) UnsetCreatedBy() {
 
 // GetUpdatedBy returns the UpdatedBy field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ImportedData) GetUpdatedBy() string {
-	if o == nil || IsNil(o.UpdatedBy.Get()) {
+	if o == nil || isNil(o.UpdatedBy.Get()) {
 		var ret string
 		return ret
 	}
@@ -386,6 +388,7 @@ func (o *ImportedData) HasUpdatedBy() bool {
 func (o *ImportedData) SetUpdatedBy(v string) {
 	o.UpdatedBy.Set(&v)
 }
+
 // SetUpdatedByNil sets the value for UpdatedBy to be an explicit nil
 func (o *ImportedData) SetUpdatedByNil() {
 	o.UpdatedBy.Set(nil)
@@ -397,16 +400,10 @@ func (o *ImportedData) UnsetUpdatedBy() {
 }
 
 func (o ImportedData) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o ImportedData) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	// skip: id is readOnly
+	if !isNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
 	if o.Uuid.IsSet() {
 		toSerialize["uuid"] = o.Uuid.Get()
 	}
@@ -419,10 +416,10 @@ func (o ImportedData) ToMap() (map[string]interface{}, error) {
 	if o.State.IsSet() {
 		toSerialize["state"] = o.State.Get()
 	}
-	if !IsNil(o.CreatedAt) {
+	if !isNil(o.CreatedAt) {
 		toSerialize["createdAt"] = o.CreatedAt
 	}
-	if !IsNil(o.UpdatedAt) {
+	if !isNil(o.UpdatedAt) {
 		toSerialize["updatedAt"] = o.UpdatedAt
 	}
 	if o.CreatedBy.IsSet() {
@@ -431,7 +428,7 @@ func (o ImportedData) ToMap() (map[string]interface{}, error) {
 	if o.UpdatedBy.IsSet() {
 		toSerialize["updatedBy"] = o.UpdatedBy.Get()
 	}
-	return toSerialize, nil
+	return json.Marshal(toSerialize)
 }
 
 type NullableImportedData struct {
@@ -469,5 +466,3 @@ func (v *NullableImportedData) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

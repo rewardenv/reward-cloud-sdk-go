@@ -15,7 +15,7 @@ Method | HTTP request | Description
 
 ## ApiTeamEnvVarsGetCollection
 
-> []TeamEnvVar ApiTeamEnvVarsGetCollection(ctx).Page(page).ItemsPerPage(itemsPerPage).Team(team).Team2(team2).EnvVarType(envVarType).EnvVarType2(envVarType2).Execute()
+> ApiTeamEnvVarsGetCollection200Response ApiTeamEnvVarsGetCollection(ctx).Page(page).ItemsPerPage(itemsPerPage).Team(team).Team2(team2).EnvVarType(envVarType).EnvVarType2(envVarType2).Execute()
 
 Retrieves the collection of TeamEnvVar resources.
 
@@ -48,7 +48,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `TeamEnvVarApi.ApiTeamEnvVarsGetCollection``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiTeamEnvVarsGetCollection`: []TeamEnvVar
+    // response from `ApiTeamEnvVarsGetCollection`: ApiTeamEnvVarsGetCollection200Response
     fmt.Fprintf(os.Stdout, "Response from `TeamEnvVarApi.ApiTeamEnvVarsGetCollection`: %v\n", resp)
 }
 ```
@@ -73,7 +73,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]TeamEnvVar**](TeamEnvVar.md)
+[**ApiTeamEnvVarsGetCollection200Response**](ApiTeamEnvVarsGetCollection200Response.md)
 
 ### Authorization
 
@@ -82,7 +82,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json, application/hal+json, text/html
+- **Accept**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -159,7 +159,7 @@ Name | Type | Description  | Notes
 
 ## ApiTeamEnvVarsIdGet
 
-> TeamEnvVar ApiTeamEnvVarsIdGet(ctx, id).Execute()
+> TeamEnvVarJsonhal ApiTeamEnvVarsIdGet(ctx, id).Execute()
 
 Retrieves a TeamEnvVar resource.
 
@@ -187,7 +187,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `TeamEnvVarApi.ApiTeamEnvVarsIdGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiTeamEnvVarsIdGet`: TeamEnvVar
+    // response from `ApiTeamEnvVarsIdGet`: TeamEnvVarJsonhal
     fmt.Fprintf(os.Stdout, "Response from `TeamEnvVarApi.ApiTeamEnvVarsIdGet`: %v\n", resp)
 }
 ```
@@ -211,7 +211,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**TeamEnvVar**](TeamEnvVar.md)
+[**TeamEnvVarJsonhal**](TeamEnvVarJsonhal.md)
 
 ### Authorization
 
@@ -220,7 +220,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json, application/hal+json, text/html
+- **Accept**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -229,7 +229,7 @@ Name | Type | Description  | Notes
 
 ## ApiTeamEnvVarsIdPatch
 
-> TeamEnvVar ApiTeamEnvVarsIdPatch(ctx, id).TeamEnvVar(teamEnvVar).Execute()
+> TeamEnvVarJsonhal ApiTeamEnvVarsIdPatch(ctx, id).TeamEnvVar(teamEnvVar).Execute()
 
 Updates the TeamEnvVar resource.
 
@@ -258,7 +258,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `TeamEnvVarApi.ApiTeamEnvVarsIdPatch``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiTeamEnvVarsIdPatch`: TeamEnvVar
+    // response from `ApiTeamEnvVarsIdPatch`: TeamEnvVarJsonhal
     fmt.Fprintf(os.Stdout, "Response from `TeamEnvVarApi.ApiTeamEnvVarsIdPatch`: %v\n", resp)
 }
 ```
@@ -283,7 +283,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**TeamEnvVar**](TeamEnvVar.md)
+[**TeamEnvVarJsonhal**](TeamEnvVarJsonhal.md)
 
 ### Authorization
 
@@ -291,8 +291,8 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: application/json, application/hal+json, text/html
-- **Accept**: application/json, application/hal+json, text/html
+- **Content-Type**: application/vnd.api+json
+- **Accept**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -301,7 +301,7 @@ Name | Type | Description  | Notes
 
 ## ApiTeamEnvVarsIdPut
 
-> TeamEnvVar ApiTeamEnvVarsIdPut(ctx, id).TeamEnvVar(teamEnvVar).Execute()
+> TeamEnvVarJsonhal ApiTeamEnvVarsIdPut(ctx, id).TeamEnvVarJsonhal(teamEnvVarJsonhal).Execute()
 
 Replaces the TeamEnvVar resource.
 
@@ -321,16 +321,16 @@ import (
 
 func main() {
     id := "id_example" // string | TeamEnvVar identifier
-    teamEnvVar := *openapiclient.NewTeamEnvVar() // TeamEnvVar | The updated TeamEnvVar resource
+    teamEnvVarJsonhal := *openapiclient.NewTeamEnvVarJsonhal() // TeamEnvVarJsonhal | The updated TeamEnvVar resource
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.TeamEnvVarApi.ApiTeamEnvVarsIdPut(context.Background(), id).TeamEnvVar(teamEnvVar).Execute()
+    resp, r, err := apiClient.TeamEnvVarApi.ApiTeamEnvVarsIdPut(context.Background(), id).TeamEnvVarJsonhal(teamEnvVarJsonhal).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `TeamEnvVarApi.ApiTeamEnvVarsIdPut``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiTeamEnvVarsIdPut`: TeamEnvVar
+    // response from `ApiTeamEnvVarsIdPut`: TeamEnvVarJsonhal
     fmt.Fprintf(os.Stdout, "Response from `TeamEnvVarApi.ApiTeamEnvVarsIdPut`: %v\n", resp)
 }
 ```
@@ -351,11 +351,11 @@ Other parameters are passed through a pointer to a apiApiTeamEnvVarsIdPutRequest
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **teamEnvVar** | [**TeamEnvVar**](TeamEnvVar.md) | The updated TeamEnvVar resource | 
+ **teamEnvVarJsonhal** | [**TeamEnvVarJsonhal**](TeamEnvVarJsonhal.md) | The updated TeamEnvVar resource | 
 
 ### Return type
 
-[**TeamEnvVar**](TeamEnvVar.md)
+[**TeamEnvVarJsonhal**](TeamEnvVarJsonhal.md)
 
 ### Authorization
 
@@ -363,8 +363,8 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: application/json, application/hal+json, text/html
-- **Accept**: application/json, application/hal+json, text/html
+- **Content-Type**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
+- **Accept**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -373,7 +373,7 @@ Name | Type | Description  | Notes
 
 ## ApiTeamEnvVarsPost
 
-> TeamEnvVar ApiTeamEnvVarsPost(ctx).TeamEnvVar(teamEnvVar).Execute()
+> TeamEnvVarJsonhal ApiTeamEnvVarsPost(ctx).TeamEnvVarJsonhal(teamEnvVarJsonhal).Execute()
 
 Creates a TeamEnvVar resource.
 
@@ -392,16 +392,16 @@ import (
 )
 
 func main() {
-    teamEnvVar := *openapiclient.NewTeamEnvVar() // TeamEnvVar | The new TeamEnvVar resource
+    teamEnvVarJsonhal := *openapiclient.NewTeamEnvVarJsonhal() // TeamEnvVarJsonhal | The new TeamEnvVar resource
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.TeamEnvVarApi.ApiTeamEnvVarsPost(context.Background()).TeamEnvVar(teamEnvVar).Execute()
+    resp, r, err := apiClient.TeamEnvVarApi.ApiTeamEnvVarsPost(context.Background()).TeamEnvVarJsonhal(teamEnvVarJsonhal).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `TeamEnvVarApi.ApiTeamEnvVarsPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiTeamEnvVarsPost`: TeamEnvVar
+    // response from `ApiTeamEnvVarsPost`: TeamEnvVarJsonhal
     fmt.Fprintf(os.Stdout, "Response from `TeamEnvVarApi.ApiTeamEnvVarsPost`: %v\n", resp)
 }
 ```
@@ -417,11 +417,11 @@ Other parameters are passed through a pointer to a apiApiTeamEnvVarsPostRequest 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **teamEnvVar** | [**TeamEnvVar**](TeamEnvVar.md) | The new TeamEnvVar resource | 
+ **teamEnvVarJsonhal** | [**TeamEnvVarJsonhal**](TeamEnvVarJsonhal.md) | The new TeamEnvVar resource | 
 
 ### Return type
 
-[**TeamEnvVar**](TeamEnvVar.md)
+[**TeamEnvVarJsonhal**](TeamEnvVarJsonhal.md)
 
 ### Authorization
 
@@ -429,8 +429,8 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: application/json, application/hal+json, text/html
-- **Accept**: application/json, application/hal+json, text/html
+- **Content-Type**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
+- **Accept**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)

@@ -14,26 +14,23 @@ import (
 	"encoding/json"
 )
 
-// checks if the ProjectProjectPost type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &ProjectProjectPost{}
-
 // ProjectProjectPost Class Project
 type ProjectProjectPost struct {
-	TemplateIri NullableString `json:"templateIri,omitempty"`
-	Git NullableProjectProjectPostGit `json:"git,omitempty"`
-	Team NullableString `json:"team,omitempty"`
-	Environment []string `json:"environment,omitempty"`
-	Name NullableString `json:"name,omitempty"`
-	IsActive NullableBool `json:"isActive,omitempty"`
-	Cpu NullableInt32 `json:"cpu,omitempty"`
-	Memory NullableInt32 `json:"memory,omitempty"`
-	Storage NullableInt32 `json:"storage,omitempty"`
-	Code NullableString `json:"code,omitempty"`
-	Color NullableString `json:"color,omitempty"`
-	IsInitProjectSkeleton NullableBool `json:"isInitProjectSkeleton,omitempty"`
-	ComponentVersion []string `json:"componentVersion,omitempty"`
-	ProjectTypeVersion NullableString `json:"projectTypeVersion,omitempty"`
-	ProjectEnvVar []ProjectEnvVarProjectPost `json:"projectEnvVar,omitempty"`
+	TemplateIri           NullableString                `json:"templateIri,omitempty"`
+	Git                   NullableProjectProjectPostGit `json:"git,omitempty"`
+	Team                  NullableString                `json:"team,omitempty"`
+	Environment           []string                      `json:"environment,omitempty"`
+	Name                  NullableString                `json:"name,omitempty"`
+	IsActive              NullableBool                  `json:"isActive,omitempty"`
+	Cpu                   NullableInt32                 `json:"cpu,omitempty"`
+	Memory                NullableInt32                 `json:"memory,omitempty"`
+	Storage               NullableInt32                 `json:"storage,omitempty"`
+	Code                  NullableString                `json:"code,omitempty"`
+	Color                 NullableString                `json:"color,omitempty"`
+	IsInitProjectSkeleton NullableBool                  `json:"isInitProjectSkeleton,omitempty"`
+	ComponentVersion      []string                      `json:"componentVersion,omitempty"`
+	ProjectTypeVersion    NullableString                `json:"projectTypeVersion,omitempty"`
+	ProjectEnvVar         []ProjectEnvVarProjectPost    `json:"projectEnvVar,omitempty"`
 }
 
 // NewProjectProjectPost instantiates a new ProjectProjectPost object
@@ -55,7 +52,7 @@ func NewProjectProjectPostWithDefaults() *ProjectProjectPost {
 
 // GetTemplateIri returns the TemplateIri field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ProjectProjectPost) GetTemplateIri() string {
-	if o == nil || IsNil(o.TemplateIri.Get()) {
+	if o == nil || isNil(o.TemplateIri.Get()) {
 		var ret string
 		return ret
 	}
@@ -85,6 +82,7 @@ func (o *ProjectProjectPost) HasTemplateIri() bool {
 func (o *ProjectProjectPost) SetTemplateIri(v string) {
 	o.TemplateIri.Set(&v)
 }
+
 // SetTemplateIriNil sets the value for TemplateIri to be an explicit nil
 func (o *ProjectProjectPost) SetTemplateIriNil() {
 	o.TemplateIri.Set(nil)
@@ -97,7 +95,7 @@ func (o *ProjectProjectPost) UnsetTemplateIri() {
 
 // GetGit returns the Git field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ProjectProjectPost) GetGit() ProjectProjectPostGit {
-	if o == nil || IsNil(o.Git.Get()) {
+	if o == nil || isNil(o.Git.Get()) {
 		var ret ProjectProjectPostGit
 		return ret
 	}
@@ -127,6 +125,7 @@ func (o *ProjectProjectPost) HasGit() bool {
 func (o *ProjectProjectPost) SetGit(v ProjectProjectPostGit) {
 	o.Git.Set(&v)
 }
+
 // SetGitNil sets the value for Git to be an explicit nil
 func (o *ProjectProjectPost) SetGitNil() {
 	o.Git.Set(nil)
@@ -139,7 +138,7 @@ func (o *ProjectProjectPost) UnsetGit() {
 
 // GetTeam returns the Team field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ProjectProjectPost) GetTeam() string {
-	if o == nil || IsNil(o.Team.Get()) {
+	if o == nil || isNil(o.Team.Get()) {
 		var ret string
 		return ret
 	}
@@ -169,6 +168,7 @@ func (o *ProjectProjectPost) HasTeam() bool {
 func (o *ProjectProjectPost) SetTeam(v string) {
 	o.Team.Set(&v)
 }
+
 // SetTeamNil sets the value for Team to be an explicit nil
 func (o *ProjectProjectPost) SetTeamNil() {
 	o.Team.Set(nil)
@@ -181,7 +181,7 @@ func (o *ProjectProjectPost) UnsetTeam() {
 
 // GetEnvironment returns the Environment field value if set, zero value otherwise.
 func (o *ProjectProjectPost) GetEnvironment() []string {
-	if o == nil || IsNil(o.Environment) {
+	if o == nil || isNil(o.Environment) {
 		var ret []string
 		return ret
 	}
@@ -191,7 +191,7 @@ func (o *ProjectProjectPost) GetEnvironment() []string {
 // GetEnvironmentOk returns a tuple with the Environment field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ProjectProjectPost) GetEnvironmentOk() ([]string, bool) {
-	if o == nil || IsNil(o.Environment) {
+	if o == nil || isNil(o.Environment) {
 		return nil, false
 	}
 	return o.Environment, true
@@ -199,7 +199,7 @@ func (o *ProjectProjectPost) GetEnvironmentOk() ([]string, bool) {
 
 // HasEnvironment returns a boolean if a field has been set.
 func (o *ProjectProjectPost) HasEnvironment() bool {
-	if o != nil && !IsNil(o.Environment) {
+	if o != nil && !isNil(o.Environment) {
 		return true
 	}
 
@@ -213,7 +213,7 @@ func (o *ProjectProjectPost) SetEnvironment(v []string) {
 
 // GetName returns the Name field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ProjectProjectPost) GetName() string {
-	if o == nil || IsNil(o.Name.Get()) {
+	if o == nil || isNil(o.Name.Get()) {
 		var ret string
 		return ret
 	}
@@ -243,6 +243,7 @@ func (o *ProjectProjectPost) HasName() bool {
 func (o *ProjectProjectPost) SetName(v string) {
 	o.Name.Set(&v)
 }
+
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *ProjectProjectPost) SetNameNil() {
 	o.Name.Set(nil)
@@ -255,7 +256,7 @@ func (o *ProjectProjectPost) UnsetName() {
 
 // GetIsActive returns the IsActive field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ProjectProjectPost) GetIsActive() bool {
-	if o == nil || IsNil(o.IsActive.Get()) {
+	if o == nil || isNil(o.IsActive.Get()) {
 		var ret bool
 		return ret
 	}
@@ -285,6 +286,7 @@ func (o *ProjectProjectPost) HasIsActive() bool {
 func (o *ProjectProjectPost) SetIsActive(v bool) {
 	o.IsActive.Set(&v)
 }
+
 // SetIsActiveNil sets the value for IsActive to be an explicit nil
 func (o *ProjectProjectPost) SetIsActiveNil() {
 	o.IsActive.Set(nil)
@@ -297,7 +299,7 @@ func (o *ProjectProjectPost) UnsetIsActive() {
 
 // GetCpu returns the Cpu field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ProjectProjectPost) GetCpu() int32 {
-	if o == nil || IsNil(o.Cpu.Get()) {
+	if o == nil || isNil(o.Cpu.Get()) {
 		var ret int32
 		return ret
 	}
@@ -327,6 +329,7 @@ func (o *ProjectProjectPost) HasCpu() bool {
 func (o *ProjectProjectPost) SetCpu(v int32) {
 	o.Cpu.Set(&v)
 }
+
 // SetCpuNil sets the value for Cpu to be an explicit nil
 func (o *ProjectProjectPost) SetCpuNil() {
 	o.Cpu.Set(nil)
@@ -339,7 +342,7 @@ func (o *ProjectProjectPost) UnsetCpu() {
 
 // GetMemory returns the Memory field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ProjectProjectPost) GetMemory() int32 {
-	if o == nil || IsNil(o.Memory.Get()) {
+	if o == nil || isNil(o.Memory.Get()) {
 		var ret int32
 		return ret
 	}
@@ -369,6 +372,7 @@ func (o *ProjectProjectPost) HasMemory() bool {
 func (o *ProjectProjectPost) SetMemory(v int32) {
 	o.Memory.Set(&v)
 }
+
 // SetMemoryNil sets the value for Memory to be an explicit nil
 func (o *ProjectProjectPost) SetMemoryNil() {
 	o.Memory.Set(nil)
@@ -381,7 +385,7 @@ func (o *ProjectProjectPost) UnsetMemory() {
 
 // GetStorage returns the Storage field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ProjectProjectPost) GetStorage() int32 {
-	if o == nil || IsNil(o.Storage.Get()) {
+	if o == nil || isNil(o.Storage.Get()) {
 		var ret int32
 		return ret
 	}
@@ -411,6 +415,7 @@ func (o *ProjectProjectPost) HasStorage() bool {
 func (o *ProjectProjectPost) SetStorage(v int32) {
 	o.Storage.Set(&v)
 }
+
 // SetStorageNil sets the value for Storage to be an explicit nil
 func (o *ProjectProjectPost) SetStorageNil() {
 	o.Storage.Set(nil)
@@ -423,7 +428,7 @@ func (o *ProjectProjectPost) UnsetStorage() {
 
 // GetCode returns the Code field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ProjectProjectPost) GetCode() string {
-	if o == nil || IsNil(o.Code.Get()) {
+	if o == nil || isNil(o.Code.Get()) {
 		var ret string
 		return ret
 	}
@@ -453,6 +458,7 @@ func (o *ProjectProjectPost) HasCode() bool {
 func (o *ProjectProjectPost) SetCode(v string) {
 	o.Code.Set(&v)
 }
+
 // SetCodeNil sets the value for Code to be an explicit nil
 func (o *ProjectProjectPost) SetCodeNil() {
 	o.Code.Set(nil)
@@ -465,7 +471,7 @@ func (o *ProjectProjectPost) UnsetCode() {
 
 // GetColor returns the Color field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ProjectProjectPost) GetColor() string {
-	if o == nil || IsNil(o.Color.Get()) {
+	if o == nil || isNil(o.Color.Get()) {
 		var ret string
 		return ret
 	}
@@ -495,6 +501,7 @@ func (o *ProjectProjectPost) HasColor() bool {
 func (o *ProjectProjectPost) SetColor(v string) {
 	o.Color.Set(&v)
 }
+
 // SetColorNil sets the value for Color to be an explicit nil
 func (o *ProjectProjectPost) SetColorNil() {
 	o.Color.Set(nil)
@@ -507,7 +514,7 @@ func (o *ProjectProjectPost) UnsetColor() {
 
 // GetIsInitProjectSkeleton returns the IsInitProjectSkeleton field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ProjectProjectPost) GetIsInitProjectSkeleton() bool {
-	if o == nil || IsNil(o.IsInitProjectSkeleton.Get()) {
+	if o == nil || isNil(o.IsInitProjectSkeleton.Get()) {
 		var ret bool
 		return ret
 	}
@@ -537,6 +544,7 @@ func (o *ProjectProjectPost) HasIsInitProjectSkeleton() bool {
 func (o *ProjectProjectPost) SetIsInitProjectSkeleton(v bool) {
 	o.IsInitProjectSkeleton.Set(&v)
 }
+
 // SetIsInitProjectSkeletonNil sets the value for IsInitProjectSkeleton to be an explicit nil
 func (o *ProjectProjectPost) SetIsInitProjectSkeletonNil() {
 	o.IsInitProjectSkeleton.Set(nil)
@@ -549,7 +557,7 @@ func (o *ProjectProjectPost) UnsetIsInitProjectSkeleton() {
 
 // GetComponentVersion returns the ComponentVersion field value if set, zero value otherwise.
 func (o *ProjectProjectPost) GetComponentVersion() []string {
-	if o == nil || IsNil(o.ComponentVersion) {
+	if o == nil || isNil(o.ComponentVersion) {
 		var ret []string
 		return ret
 	}
@@ -559,7 +567,7 @@ func (o *ProjectProjectPost) GetComponentVersion() []string {
 // GetComponentVersionOk returns a tuple with the ComponentVersion field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ProjectProjectPost) GetComponentVersionOk() ([]string, bool) {
-	if o == nil || IsNil(o.ComponentVersion) {
+	if o == nil || isNil(o.ComponentVersion) {
 		return nil, false
 	}
 	return o.ComponentVersion, true
@@ -567,7 +575,7 @@ func (o *ProjectProjectPost) GetComponentVersionOk() ([]string, bool) {
 
 // HasComponentVersion returns a boolean if a field has been set.
 func (o *ProjectProjectPost) HasComponentVersion() bool {
-	if o != nil && !IsNil(o.ComponentVersion) {
+	if o != nil && !isNil(o.ComponentVersion) {
 		return true
 	}
 
@@ -581,7 +589,7 @@ func (o *ProjectProjectPost) SetComponentVersion(v []string) {
 
 // GetProjectTypeVersion returns the ProjectTypeVersion field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ProjectProjectPost) GetProjectTypeVersion() string {
-	if o == nil || IsNil(o.ProjectTypeVersion.Get()) {
+	if o == nil || isNil(o.ProjectTypeVersion.Get()) {
 		var ret string
 		return ret
 	}
@@ -611,6 +619,7 @@ func (o *ProjectProjectPost) HasProjectTypeVersion() bool {
 func (o *ProjectProjectPost) SetProjectTypeVersion(v string) {
 	o.ProjectTypeVersion.Set(&v)
 }
+
 // SetProjectTypeVersionNil sets the value for ProjectTypeVersion to be an explicit nil
 func (o *ProjectProjectPost) SetProjectTypeVersionNil() {
 	o.ProjectTypeVersion.Set(nil)
@@ -623,7 +632,7 @@ func (o *ProjectProjectPost) UnsetProjectTypeVersion() {
 
 // GetProjectEnvVar returns the ProjectEnvVar field value if set, zero value otherwise.
 func (o *ProjectProjectPost) GetProjectEnvVar() []ProjectEnvVarProjectPost {
-	if o == nil || IsNil(o.ProjectEnvVar) {
+	if o == nil || isNil(o.ProjectEnvVar) {
 		var ret []ProjectEnvVarProjectPost
 		return ret
 	}
@@ -633,7 +642,7 @@ func (o *ProjectProjectPost) GetProjectEnvVar() []ProjectEnvVarProjectPost {
 // GetProjectEnvVarOk returns a tuple with the ProjectEnvVar field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ProjectProjectPost) GetProjectEnvVarOk() ([]ProjectEnvVarProjectPost, bool) {
-	if o == nil || IsNil(o.ProjectEnvVar) {
+	if o == nil || isNil(o.ProjectEnvVar) {
 		return nil, false
 	}
 	return o.ProjectEnvVar, true
@@ -641,7 +650,7 @@ func (o *ProjectProjectPost) GetProjectEnvVarOk() ([]ProjectEnvVarProjectPost, b
 
 // HasProjectEnvVar returns a boolean if a field has been set.
 func (o *ProjectProjectPost) HasProjectEnvVar() bool {
-	if o != nil && !IsNil(o.ProjectEnvVar) {
+	if o != nil && !isNil(o.ProjectEnvVar) {
 		return true
 	}
 
@@ -654,14 +663,6 @@ func (o *ProjectProjectPost) SetProjectEnvVar(v []ProjectEnvVarProjectPost) {
 }
 
 func (o ProjectProjectPost) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o ProjectProjectPost) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if o.TemplateIri.IsSet() {
 		toSerialize["templateIri"] = o.TemplateIri.Get()
@@ -672,7 +673,7 @@ func (o ProjectProjectPost) ToMap() (map[string]interface{}, error) {
 	if o.Team.IsSet() {
 		toSerialize["team"] = o.Team.Get()
 	}
-	if !IsNil(o.Environment) {
+	if !isNil(o.Environment) {
 		toSerialize["environment"] = o.Environment
 	}
 	if o.Name.IsSet() {
@@ -699,16 +700,16 @@ func (o ProjectProjectPost) ToMap() (map[string]interface{}, error) {
 	if o.IsInitProjectSkeleton.IsSet() {
 		toSerialize["isInitProjectSkeleton"] = o.IsInitProjectSkeleton.Get()
 	}
-	if !IsNil(o.ComponentVersion) {
+	if !isNil(o.ComponentVersion) {
 		toSerialize["componentVersion"] = o.ComponentVersion
 	}
 	if o.ProjectTypeVersion.IsSet() {
 		toSerialize["projectTypeVersion"] = o.ProjectTypeVersion.Get()
 	}
-	if !IsNil(o.ProjectEnvVar) {
+	if !isNil(o.ProjectEnvVar) {
 		toSerialize["projectEnvVar"] = o.ProjectEnvVar
 	}
-	return toSerialize, nil
+	return json.Marshal(toSerialize)
 }
 
 type NullableProjectProjectPost struct {
@@ -746,5 +747,3 @@ func (v *NullableProjectProjectPost) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

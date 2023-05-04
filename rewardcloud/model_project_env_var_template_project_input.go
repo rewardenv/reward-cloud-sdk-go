@@ -14,15 +14,12 @@ import (
 	"encoding/json"
 )
 
-// checks if the ProjectEnvVarTemplateProjectInput type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &ProjectEnvVarTemplateProjectInput{}
-
-// ProjectEnvVarTemplateProjectInput 
+// ProjectEnvVarTemplateProjectInput
 type ProjectEnvVarTemplateProjectInput struct {
-	Key NullableString `json:"key,omitempty"`
-	Value NullableString `json:"value,omitempty"`
-	IsEncrypted NullableBool `json:"isEncrypted,omitempty"`
-	EnvVarType NullableString `json:"envVarType,omitempty"`
+	Key         NullableString `json:"key,omitempty"`
+	Value       NullableString `json:"value,omitempty"`
+	IsEncrypted NullableBool   `json:"isEncrypted,omitempty"`
+	EnvVarType  NullableString `json:"envVarType,omitempty"`
 }
 
 // NewProjectEnvVarTemplateProjectInput instantiates a new ProjectEnvVarTemplateProjectInput object
@@ -44,7 +41,7 @@ func NewProjectEnvVarTemplateProjectInputWithDefaults() *ProjectEnvVarTemplatePr
 
 // GetKey returns the Key field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ProjectEnvVarTemplateProjectInput) GetKey() string {
-	if o == nil || IsNil(o.Key.Get()) {
+	if o == nil || isNil(o.Key.Get()) {
 		var ret string
 		return ret
 	}
@@ -74,6 +71,7 @@ func (o *ProjectEnvVarTemplateProjectInput) HasKey() bool {
 func (o *ProjectEnvVarTemplateProjectInput) SetKey(v string) {
 	o.Key.Set(&v)
 }
+
 // SetKeyNil sets the value for Key to be an explicit nil
 func (o *ProjectEnvVarTemplateProjectInput) SetKeyNil() {
 	o.Key.Set(nil)
@@ -86,7 +84,7 @@ func (o *ProjectEnvVarTemplateProjectInput) UnsetKey() {
 
 // GetValue returns the Value field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ProjectEnvVarTemplateProjectInput) GetValue() string {
-	if o == nil || IsNil(o.Value.Get()) {
+	if o == nil || isNil(o.Value.Get()) {
 		var ret string
 		return ret
 	}
@@ -116,6 +114,7 @@ func (o *ProjectEnvVarTemplateProjectInput) HasValue() bool {
 func (o *ProjectEnvVarTemplateProjectInput) SetValue(v string) {
 	o.Value.Set(&v)
 }
+
 // SetValueNil sets the value for Value to be an explicit nil
 func (o *ProjectEnvVarTemplateProjectInput) SetValueNil() {
 	o.Value.Set(nil)
@@ -128,7 +127,7 @@ func (o *ProjectEnvVarTemplateProjectInput) UnsetValue() {
 
 // GetIsEncrypted returns the IsEncrypted field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ProjectEnvVarTemplateProjectInput) GetIsEncrypted() bool {
-	if o == nil || IsNil(o.IsEncrypted.Get()) {
+	if o == nil || isNil(o.IsEncrypted.Get()) {
 		var ret bool
 		return ret
 	}
@@ -158,6 +157,7 @@ func (o *ProjectEnvVarTemplateProjectInput) HasIsEncrypted() bool {
 func (o *ProjectEnvVarTemplateProjectInput) SetIsEncrypted(v bool) {
 	o.IsEncrypted.Set(&v)
 }
+
 // SetIsEncryptedNil sets the value for IsEncrypted to be an explicit nil
 func (o *ProjectEnvVarTemplateProjectInput) SetIsEncryptedNil() {
 	o.IsEncrypted.Set(nil)
@@ -170,7 +170,7 @@ func (o *ProjectEnvVarTemplateProjectInput) UnsetIsEncrypted() {
 
 // GetEnvVarType returns the EnvVarType field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ProjectEnvVarTemplateProjectInput) GetEnvVarType() string {
-	if o == nil || IsNil(o.EnvVarType.Get()) {
+	if o == nil || isNil(o.EnvVarType.Get()) {
 		var ret string
 		return ret
 	}
@@ -200,6 +200,7 @@ func (o *ProjectEnvVarTemplateProjectInput) HasEnvVarType() bool {
 func (o *ProjectEnvVarTemplateProjectInput) SetEnvVarType(v string) {
 	o.EnvVarType.Set(&v)
 }
+
 // SetEnvVarTypeNil sets the value for EnvVarType to be an explicit nil
 func (o *ProjectEnvVarTemplateProjectInput) SetEnvVarTypeNil() {
 	o.EnvVarType.Set(nil)
@@ -211,14 +212,6 @@ func (o *ProjectEnvVarTemplateProjectInput) UnsetEnvVarType() {
 }
 
 func (o ProjectEnvVarTemplateProjectInput) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o ProjectEnvVarTemplateProjectInput) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Key.IsSet() {
 		toSerialize["key"] = o.Key.Get()
@@ -232,7 +225,7 @@ func (o ProjectEnvVarTemplateProjectInput) ToMap() (map[string]interface{}, erro
 	if o.EnvVarType.IsSet() {
 		toSerialize["envVarType"] = o.EnvVarType.Get()
 	}
-	return toSerialize, nil
+	return json.Marshal(toSerialize)
 }
 
 type NullableProjectEnvVarTemplateProjectInput struct {
@@ -270,5 +263,3 @@ func (v *NullableProjectEnvVarTemplateProjectInput) UnmarshalJSON(src []byte) er
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

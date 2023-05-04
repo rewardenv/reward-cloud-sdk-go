@@ -16,23 +16,22 @@ import (
 	"io/ioutil"
 	"net/http"
 	"net/url"
-	"strings"
 	"reflect"
+	"strings"
 )
-
 
 // EnvironmentComponentApiService EnvironmentComponentApi service
 type EnvironmentComponentApiService service
 
 type ApiApiEnvironmentComponentsGetCollectionRequest struct {
-	ctx context.Context
-	ApiService *EnvironmentComponentApiService
-	page *int32
-	itemsPerPage *int32
-	componentVersion *string
+	ctx               context.Context
+	ApiService        *EnvironmentComponentApiService
+	page              *int32
+	itemsPerPage      *int32
+	componentVersion  *string
 	componentVersion2 *[]string
-	environment *string
-	environment2 *[]string
+	environment       *string
+	environment2      *[]string
 }
 
 // The collection page number
@@ -47,31 +46,27 @@ func (r ApiApiEnvironmentComponentsGetCollectionRequest) ItemsPerPage(itemsPerPa
 	return r
 }
 
-// 
 func (r ApiApiEnvironmentComponentsGetCollectionRequest) ComponentVersion(componentVersion string) ApiApiEnvironmentComponentsGetCollectionRequest {
 	r.componentVersion = &componentVersion
 	return r
 }
 
-// 
 func (r ApiApiEnvironmentComponentsGetCollectionRequest) ComponentVersion2(componentVersion2 []string) ApiApiEnvironmentComponentsGetCollectionRequest {
 	r.componentVersion2 = &componentVersion2
 	return r
 }
 
-// 
 func (r ApiApiEnvironmentComponentsGetCollectionRequest) Environment(environment string) ApiApiEnvironmentComponentsGetCollectionRequest {
 	r.environment = &environment
 	return r
 }
 
-// 
 func (r ApiApiEnvironmentComponentsGetCollectionRequest) Environment2(environment2 []string) ApiApiEnvironmentComponentsGetCollectionRequest {
 	r.environment2 = &environment2
 	return r
 }
 
-func (r ApiApiEnvironmentComponentsGetCollectionRequest) Execute() ([]EnvironmentComponent, *http.Response, error) {
+func (r ApiApiEnvironmentComponentsGetCollectionRequest) Execute() (*ApiEnvironmentComponentsGetCollection200Response, *http.Response, error) {
 	return r.ApiService.ApiEnvironmentComponentsGetCollectionExecute(r)
 }
 
@@ -80,24 +75,25 @@ ApiEnvironmentComponentsGetCollection Retrieves the collection of EnvironmentCom
 
 Retrieves the collection of EnvironmentComponent resources.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiApiEnvironmentComponentsGetCollectionRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiApiEnvironmentComponentsGetCollectionRequest
 */
 func (a *EnvironmentComponentApiService) ApiEnvironmentComponentsGetCollection(ctx context.Context) ApiApiEnvironmentComponentsGetCollectionRequest {
 	return ApiApiEnvironmentComponentsGetCollectionRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return []EnvironmentComponent
-func (a *EnvironmentComponentApiService) ApiEnvironmentComponentsGetCollectionExecute(r ApiApiEnvironmentComponentsGetCollectionRequest) ([]EnvironmentComponent, *http.Response, error) {
+//
+//	@return ApiEnvironmentComponentsGetCollection200Response
+func (a *EnvironmentComponentApiService) ApiEnvironmentComponentsGetCollectionExecute(r ApiApiEnvironmentComponentsGetCollectionRequest) (*ApiEnvironmentComponentsGetCollection200Response, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  []EnvironmentComponent
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *ApiEnvironmentComponentsGetCollection200Response
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnvironmentComponentApiService.ApiEnvironmentComponentsGetCollection")
@@ -155,7 +151,7 @@ func (a *EnvironmentComponentApiService) ApiEnvironmentComponentsGetCollectionEx
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json", "application/hal+json", "text/html"}
+	localVarHTTPHeaderAccepts := []string{"application/hal+json", "application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -214,9 +210,9 @@ func (a *EnvironmentComponentApiService) ApiEnvironmentComponentsGetCollectionEx
 }
 
 type ApiApiEnvironmentComponentsIdDeleteRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *EnvironmentComponentApiService
-	id string
+	id         string
 }
 
 func (r ApiApiEnvironmentComponentsIdDeleteRequest) Execute() (*http.Response, error) {
@@ -228,24 +224,24 @@ ApiEnvironmentComponentsIdDelete Removes the EnvironmentComponent resource.
 
 Removes the EnvironmentComponent resource.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id EnvironmentComponent identifier
- @return ApiApiEnvironmentComponentsIdDeleteRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id EnvironmentComponent identifier
+	@return ApiApiEnvironmentComponentsIdDeleteRequest
 */
 func (a *EnvironmentComponentApiService) ApiEnvironmentComponentsIdDelete(ctx context.Context, id string) ApiApiEnvironmentComponentsIdDeleteRequest {
 	return ApiApiEnvironmentComponentsIdDeleteRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
 // Execute executes the request
 func (a *EnvironmentComponentApiService) ApiEnvironmentComponentsIdDeleteExecute(r ApiApiEnvironmentComponentsIdDeleteRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodDelete
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnvironmentComponentApiService.ApiEnvironmentComponentsIdDelete")
@@ -320,12 +316,12 @@ func (a *EnvironmentComponentApiService) ApiEnvironmentComponentsIdDeleteExecute
 }
 
 type ApiApiEnvironmentComponentsIdGetRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *EnvironmentComponentApiService
-	id string
+	id         string
 }
 
-func (r ApiApiEnvironmentComponentsIdGetRequest) Execute() (*EnvironmentComponent, *http.Response, error) {
+func (r ApiApiEnvironmentComponentsIdGetRequest) Execute() (*EnvironmentComponentJsonhal, *http.Response, error) {
 	return r.ApiService.ApiEnvironmentComponentsIdGetExecute(r)
 }
 
@@ -334,26 +330,27 @@ ApiEnvironmentComponentsIdGet Retrieves a EnvironmentComponent resource.
 
 Retrieves a EnvironmentComponent resource.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id EnvironmentComponent identifier
- @return ApiApiEnvironmentComponentsIdGetRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id EnvironmentComponent identifier
+	@return ApiApiEnvironmentComponentsIdGetRequest
 */
 func (a *EnvironmentComponentApiService) ApiEnvironmentComponentsIdGet(ctx context.Context, id string) ApiApiEnvironmentComponentsIdGetRequest {
 	return ApiApiEnvironmentComponentsIdGetRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
 // Execute executes the request
-//  @return EnvironmentComponent
-func (a *EnvironmentComponentApiService) ApiEnvironmentComponentsIdGetExecute(r ApiApiEnvironmentComponentsIdGetRequest) (*EnvironmentComponent, *http.Response, error) {
+//
+//	@return EnvironmentComponentJsonhal
+func (a *EnvironmentComponentApiService) ApiEnvironmentComponentsIdGetExecute(r ApiApiEnvironmentComponentsIdGetRequest) (*EnvironmentComponentJsonhal, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *EnvironmentComponent
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *EnvironmentComponentJsonhal
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnvironmentComponentApiService.ApiEnvironmentComponentsIdGet")
@@ -378,7 +375,7 @@ func (a *EnvironmentComponentApiService) ApiEnvironmentComponentsIdGetExecute(r 
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json", "application/hal+json", "text/html"}
+	localVarHTTPHeaderAccepts := []string{"application/hal+json", "application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -437,9 +434,9 @@ func (a *EnvironmentComponentApiService) ApiEnvironmentComponentsIdGetExecute(r 
 }
 
 type ApiApiEnvironmentComponentsIdPatchRequest struct {
-	ctx context.Context
-	ApiService *EnvironmentComponentApiService
-	id string
+	ctx                  context.Context
+	ApiService           *EnvironmentComponentApiService
+	id                   string
 	environmentComponent *EnvironmentComponent
 }
 
@@ -449,7 +446,7 @@ func (r ApiApiEnvironmentComponentsIdPatchRequest) EnvironmentComponent(environm
 	return r
 }
 
-func (r ApiApiEnvironmentComponentsIdPatchRequest) Execute() (*EnvironmentComponent, *http.Response, error) {
+func (r ApiApiEnvironmentComponentsIdPatchRequest) Execute() (*EnvironmentComponentJsonhal, *http.Response, error) {
 	return r.ApiService.ApiEnvironmentComponentsIdPatchExecute(r)
 }
 
@@ -458,26 +455,27 @@ ApiEnvironmentComponentsIdPatch Updates the EnvironmentComponent resource.
 
 Updates the EnvironmentComponent resource.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id EnvironmentComponent identifier
- @return ApiApiEnvironmentComponentsIdPatchRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id EnvironmentComponent identifier
+	@return ApiApiEnvironmentComponentsIdPatchRequest
 */
 func (a *EnvironmentComponentApiService) ApiEnvironmentComponentsIdPatch(ctx context.Context, id string) ApiApiEnvironmentComponentsIdPatchRequest {
 	return ApiApiEnvironmentComponentsIdPatchRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
 // Execute executes the request
-//  @return EnvironmentComponent
-func (a *EnvironmentComponentApiService) ApiEnvironmentComponentsIdPatchExecute(r ApiApiEnvironmentComponentsIdPatchRequest) (*EnvironmentComponent, *http.Response, error) {
+//
+//	@return EnvironmentComponentJsonhal
+func (a *EnvironmentComponentApiService) ApiEnvironmentComponentsIdPatchExecute(r ApiApiEnvironmentComponentsIdPatchRequest) (*EnvironmentComponentJsonhal, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPatch
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *EnvironmentComponent
+		localVarHTTPMethod  = http.MethodPatch
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *EnvironmentComponentJsonhal
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnvironmentComponentApiService.ApiEnvironmentComponentsIdPatch")
@@ -496,7 +494,7 @@ func (a *EnvironmentComponentApiService) ApiEnvironmentComponentsIdPatchExecute(
 	}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json", "application/hal+json", "text/html"}
+	localVarHTTPContentTypes := []string{"application/vnd.api+json"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -505,7 +503,7 @@ func (a *EnvironmentComponentApiService) ApiEnvironmentComponentsIdPatchExecute(
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json", "application/hal+json", "text/html"}
+	localVarHTTPHeaderAccepts := []string{"application/hal+json", "application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -566,19 +564,19 @@ func (a *EnvironmentComponentApiService) ApiEnvironmentComponentsIdPatchExecute(
 }
 
 type ApiApiEnvironmentComponentsIdPutRequest struct {
-	ctx context.Context
-	ApiService *EnvironmentComponentApiService
-	id string
-	environmentComponent *EnvironmentComponent
+	ctx                         context.Context
+	ApiService                  *EnvironmentComponentApiService
+	id                          string
+	environmentComponentJsonhal *EnvironmentComponentJsonhal
 }
 
 // The updated EnvironmentComponent resource
-func (r ApiApiEnvironmentComponentsIdPutRequest) EnvironmentComponent(environmentComponent EnvironmentComponent) ApiApiEnvironmentComponentsIdPutRequest {
-	r.environmentComponent = &environmentComponent
+func (r ApiApiEnvironmentComponentsIdPutRequest) EnvironmentComponentJsonhal(environmentComponentJsonhal EnvironmentComponentJsonhal) ApiApiEnvironmentComponentsIdPutRequest {
+	r.environmentComponentJsonhal = &environmentComponentJsonhal
 	return r
 }
 
-func (r ApiApiEnvironmentComponentsIdPutRequest) Execute() (*EnvironmentComponent, *http.Response, error) {
+func (r ApiApiEnvironmentComponentsIdPutRequest) Execute() (*EnvironmentComponentJsonhal, *http.Response, error) {
 	return r.ApiService.ApiEnvironmentComponentsIdPutExecute(r)
 }
 
@@ -587,26 +585,27 @@ ApiEnvironmentComponentsIdPut Replaces the EnvironmentComponent resource.
 
 Replaces the EnvironmentComponent resource.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id EnvironmentComponent identifier
- @return ApiApiEnvironmentComponentsIdPutRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id EnvironmentComponent identifier
+	@return ApiApiEnvironmentComponentsIdPutRequest
 */
 func (a *EnvironmentComponentApiService) ApiEnvironmentComponentsIdPut(ctx context.Context, id string) ApiApiEnvironmentComponentsIdPutRequest {
 	return ApiApiEnvironmentComponentsIdPutRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
 // Execute executes the request
-//  @return EnvironmentComponent
-func (a *EnvironmentComponentApiService) ApiEnvironmentComponentsIdPutExecute(r ApiApiEnvironmentComponentsIdPutRequest) (*EnvironmentComponent, *http.Response, error) {
+//
+//	@return EnvironmentComponentJsonhal
+func (a *EnvironmentComponentApiService) ApiEnvironmentComponentsIdPutExecute(r ApiApiEnvironmentComponentsIdPutRequest) (*EnvironmentComponentJsonhal, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPut
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *EnvironmentComponent
+		localVarHTTPMethod  = http.MethodPut
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *EnvironmentComponentJsonhal
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnvironmentComponentApiService.ApiEnvironmentComponentsIdPut")
@@ -620,12 +619,12 @@ func (a *EnvironmentComponentApiService) ApiEnvironmentComponentsIdPutExecute(r 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.environmentComponent == nil {
-		return localVarReturnValue, nil, reportError("environmentComponent is required and must be specified")
+	if r.environmentComponentJsonhal == nil {
+		return localVarReturnValue, nil, reportError("environmentComponentJsonhal is required and must be specified")
 	}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json", "application/hal+json", "text/html"}
+	localVarHTTPContentTypes := []string{"application/hal+json", "application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -634,7 +633,7 @@ func (a *EnvironmentComponentApiService) ApiEnvironmentComponentsIdPutExecute(r 
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json", "application/hal+json", "text/html"}
+	localVarHTTPHeaderAccepts := []string{"application/hal+json", "application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -642,7 +641,7 @@ func (a *EnvironmentComponentApiService) ApiEnvironmentComponentsIdPutExecute(r 
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.environmentComponent
+	localVarPostBody = r.environmentComponentJsonhal
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
@@ -695,18 +694,18 @@ func (a *EnvironmentComponentApiService) ApiEnvironmentComponentsIdPutExecute(r 
 }
 
 type ApiApiEnvironmentComponentsPostRequest struct {
-	ctx context.Context
-	ApiService *EnvironmentComponentApiService
-	environmentComponent *EnvironmentComponent
+	ctx                         context.Context
+	ApiService                  *EnvironmentComponentApiService
+	environmentComponentJsonhal *EnvironmentComponentJsonhal
 }
 
 // The new EnvironmentComponent resource
-func (r ApiApiEnvironmentComponentsPostRequest) EnvironmentComponent(environmentComponent EnvironmentComponent) ApiApiEnvironmentComponentsPostRequest {
-	r.environmentComponent = &environmentComponent
+func (r ApiApiEnvironmentComponentsPostRequest) EnvironmentComponentJsonhal(environmentComponentJsonhal EnvironmentComponentJsonhal) ApiApiEnvironmentComponentsPostRequest {
+	r.environmentComponentJsonhal = &environmentComponentJsonhal
 	return r
 }
 
-func (r ApiApiEnvironmentComponentsPostRequest) Execute() (*EnvironmentComponent, *http.Response, error) {
+func (r ApiApiEnvironmentComponentsPostRequest) Execute() (*EnvironmentComponentJsonhal, *http.Response, error) {
 	return r.ApiService.ApiEnvironmentComponentsPostExecute(r)
 }
 
@@ -715,24 +714,25 @@ ApiEnvironmentComponentsPost Creates a EnvironmentComponent resource.
 
 Creates a EnvironmentComponent resource.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiApiEnvironmentComponentsPostRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiApiEnvironmentComponentsPostRequest
 */
 func (a *EnvironmentComponentApiService) ApiEnvironmentComponentsPost(ctx context.Context) ApiApiEnvironmentComponentsPostRequest {
 	return ApiApiEnvironmentComponentsPostRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return EnvironmentComponent
-func (a *EnvironmentComponentApiService) ApiEnvironmentComponentsPostExecute(r ApiApiEnvironmentComponentsPostRequest) (*EnvironmentComponent, *http.Response, error) {
+//
+//	@return EnvironmentComponentJsonhal
+func (a *EnvironmentComponentApiService) ApiEnvironmentComponentsPostExecute(r ApiApiEnvironmentComponentsPostRequest) (*EnvironmentComponentJsonhal, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *EnvironmentComponent
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *EnvironmentComponentJsonhal
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnvironmentComponentApiService.ApiEnvironmentComponentsPost")
@@ -745,12 +745,12 @@ func (a *EnvironmentComponentApiService) ApiEnvironmentComponentsPostExecute(r A
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.environmentComponent == nil {
-		return localVarReturnValue, nil, reportError("environmentComponent is required and must be specified")
+	if r.environmentComponentJsonhal == nil {
+		return localVarReturnValue, nil, reportError("environmentComponentJsonhal is required and must be specified")
 	}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json", "application/hal+json", "text/html"}
+	localVarHTTPContentTypes := []string{"application/hal+json", "application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -759,7 +759,7 @@ func (a *EnvironmentComponentApiService) ApiEnvironmentComponentsPostExecute(r A
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json", "application/hal+json", "text/html"}
+	localVarHTTPHeaderAccepts := []string{"application/hal+json", "application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -767,7 +767,7 @@ func (a *EnvironmentComponentApiService) ApiEnvironmentComponentsPostExecute(r A
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.environmentComponent
+	localVarPostBody = r.environmentComponentJsonhal
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {

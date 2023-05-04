@@ -14,21 +14,18 @@ import (
 	"encoding/json"
 )
 
-// checks if the ProductProductInput type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &ProductProductInput{}
-
 // ProductProductInput Class Product
 type ProductProductInput struct {
-	Id *int32 `json:"id,omitempty"`
-	Uuid NullableString `json:"uuid,omitempty"`
-	PaymentId NullableString `json:"paymentId,omitempty"`
-	Name NullableString `json:"name,omitempty"`
-	Description NullableString `json:"description,omitempty"`
-	Metadata []string `json:"metadata,omitempty"`
-	IsActive NullableBool `json:"isActive,omitempty"`
-	Prices []PriceProductInput `json:"prices,omitempty"`
+	Id           *int32                                  `json:"id,omitempty"`
+	Uuid         NullableString                          `json:"uuid,omitempty"`
+	PaymentId    NullableString                          `json:"paymentId,omitempty"`
+	Name         NullableString                          `json:"name,omitempty"`
+	Description  NullableString                          `json:"description,omitempty"`
+	Metadata     []string                                `json:"metadata,omitempty"`
+	IsActive     NullableBool                            `json:"isActive,omitempty"`
+	Prices       []PriceProductInput                     `json:"prices,omitempty"`
 	DefaultPrice NullableProductProductInputDefaultPrice `json:"defaultPrice,omitempty"`
-	Region NullableString `json:"region,omitempty"`
+	Region       NullableString                          `json:"region,omitempty"`
 }
 
 // NewProductProductInput instantiates a new ProductProductInput object
@@ -50,7 +47,7 @@ func NewProductProductInputWithDefaults() *ProductProductInput {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *ProductProductInput) GetId() int32 {
-	if o == nil || IsNil(o.Id) {
+	if o == nil || isNil(o.Id) {
 		var ret int32
 		return ret
 	}
@@ -60,7 +57,7 @@ func (o *ProductProductInput) GetId() int32 {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ProductProductInput) GetIdOk() (*int32, bool) {
-	if o == nil || IsNil(o.Id) {
+	if o == nil || isNil(o.Id) {
 		return nil, false
 	}
 	return o.Id, true
@@ -68,7 +65,7 @@ func (o *ProductProductInput) GetIdOk() (*int32, bool) {
 
 // HasId returns a boolean if a field has been set.
 func (o *ProductProductInput) HasId() bool {
-	if o != nil && !IsNil(o.Id) {
+	if o != nil && !isNil(o.Id) {
 		return true
 	}
 
@@ -82,7 +79,7 @@ func (o *ProductProductInput) SetId(v int32) {
 
 // GetUuid returns the Uuid field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ProductProductInput) GetUuid() string {
-	if o == nil || IsNil(o.Uuid.Get()) {
+	if o == nil || isNil(o.Uuid.Get()) {
 		var ret string
 		return ret
 	}
@@ -112,6 +109,7 @@ func (o *ProductProductInput) HasUuid() bool {
 func (o *ProductProductInput) SetUuid(v string) {
 	o.Uuid.Set(&v)
 }
+
 // SetUuidNil sets the value for Uuid to be an explicit nil
 func (o *ProductProductInput) SetUuidNil() {
 	o.Uuid.Set(nil)
@@ -124,7 +122,7 @@ func (o *ProductProductInput) UnsetUuid() {
 
 // GetPaymentId returns the PaymentId field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ProductProductInput) GetPaymentId() string {
-	if o == nil || IsNil(o.PaymentId.Get()) {
+	if o == nil || isNil(o.PaymentId.Get()) {
 		var ret string
 		return ret
 	}
@@ -154,6 +152,7 @@ func (o *ProductProductInput) HasPaymentId() bool {
 func (o *ProductProductInput) SetPaymentId(v string) {
 	o.PaymentId.Set(&v)
 }
+
 // SetPaymentIdNil sets the value for PaymentId to be an explicit nil
 func (o *ProductProductInput) SetPaymentIdNil() {
 	o.PaymentId.Set(nil)
@@ -166,7 +165,7 @@ func (o *ProductProductInput) UnsetPaymentId() {
 
 // GetName returns the Name field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ProductProductInput) GetName() string {
-	if o == nil || IsNil(o.Name.Get()) {
+	if o == nil || isNil(o.Name.Get()) {
 		var ret string
 		return ret
 	}
@@ -196,6 +195,7 @@ func (o *ProductProductInput) HasName() bool {
 func (o *ProductProductInput) SetName(v string) {
 	o.Name.Set(&v)
 }
+
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *ProductProductInput) SetNameNil() {
 	o.Name.Set(nil)
@@ -208,7 +208,7 @@ func (o *ProductProductInput) UnsetName() {
 
 // GetDescription returns the Description field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ProductProductInput) GetDescription() string {
-	if o == nil || IsNil(o.Description.Get()) {
+	if o == nil || isNil(o.Description.Get()) {
 		var ret string
 		return ret
 	}
@@ -238,6 +238,7 @@ func (o *ProductProductInput) HasDescription() bool {
 func (o *ProductProductInput) SetDescription(v string) {
 	o.Description.Set(&v)
 }
+
 // SetDescriptionNil sets the value for Description to be an explicit nil
 func (o *ProductProductInput) SetDescriptionNil() {
 	o.Description.Set(nil)
@@ -261,7 +262,7 @@ func (o *ProductProductInput) GetMetadata() []string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ProductProductInput) GetMetadataOk() ([]string, bool) {
-	if o == nil || IsNil(o.Metadata) {
+	if o == nil || isNil(o.Metadata) {
 		return nil, false
 	}
 	return o.Metadata, true
@@ -269,7 +270,7 @@ func (o *ProductProductInput) GetMetadataOk() ([]string, bool) {
 
 // HasMetadata returns a boolean if a field has been set.
 func (o *ProductProductInput) HasMetadata() bool {
-	if o != nil && IsNil(o.Metadata) {
+	if o != nil && isNil(o.Metadata) {
 		return true
 	}
 
@@ -283,7 +284,7 @@ func (o *ProductProductInput) SetMetadata(v []string) {
 
 // GetIsActive returns the IsActive field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ProductProductInput) GetIsActive() bool {
-	if o == nil || IsNil(o.IsActive.Get()) {
+	if o == nil || isNil(o.IsActive.Get()) {
 		var ret bool
 		return ret
 	}
@@ -313,6 +314,7 @@ func (o *ProductProductInput) HasIsActive() bool {
 func (o *ProductProductInput) SetIsActive(v bool) {
 	o.IsActive.Set(&v)
 }
+
 // SetIsActiveNil sets the value for IsActive to be an explicit nil
 func (o *ProductProductInput) SetIsActiveNil() {
 	o.IsActive.Set(nil)
@@ -325,7 +327,7 @@ func (o *ProductProductInput) UnsetIsActive() {
 
 // GetPrices returns the Prices field value if set, zero value otherwise.
 func (o *ProductProductInput) GetPrices() []PriceProductInput {
-	if o == nil || IsNil(o.Prices) {
+	if o == nil || isNil(o.Prices) {
 		var ret []PriceProductInput
 		return ret
 	}
@@ -335,7 +337,7 @@ func (o *ProductProductInput) GetPrices() []PriceProductInput {
 // GetPricesOk returns a tuple with the Prices field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ProductProductInput) GetPricesOk() ([]PriceProductInput, bool) {
-	if o == nil || IsNil(o.Prices) {
+	if o == nil || isNil(o.Prices) {
 		return nil, false
 	}
 	return o.Prices, true
@@ -343,7 +345,7 @@ func (o *ProductProductInput) GetPricesOk() ([]PriceProductInput, bool) {
 
 // HasPrices returns a boolean if a field has been set.
 func (o *ProductProductInput) HasPrices() bool {
-	if o != nil && !IsNil(o.Prices) {
+	if o != nil && !isNil(o.Prices) {
 		return true
 	}
 
@@ -357,7 +359,7 @@ func (o *ProductProductInput) SetPrices(v []PriceProductInput) {
 
 // GetDefaultPrice returns the DefaultPrice field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ProductProductInput) GetDefaultPrice() ProductProductInputDefaultPrice {
-	if o == nil || IsNil(o.DefaultPrice.Get()) {
+	if o == nil || isNil(o.DefaultPrice.Get()) {
 		var ret ProductProductInputDefaultPrice
 		return ret
 	}
@@ -387,6 +389,7 @@ func (o *ProductProductInput) HasDefaultPrice() bool {
 func (o *ProductProductInput) SetDefaultPrice(v ProductProductInputDefaultPrice) {
 	o.DefaultPrice.Set(&v)
 }
+
 // SetDefaultPriceNil sets the value for DefaultPrice to be an explicit nil
 func (o *ProductProductInput) SetDefaultPriceNil() {
 	o.DefaultPrice.Set(nil)
@@ -399,7 +402,7 @@ func (o *ProductProductInput) UnsetDefaultPrice() {
 
 // GetRegion returns the Region field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ProductProductInput) GetRegion() string {
-	if o == nil || IsNil(o.Region.Get()) {
+	if o == nil || isNil(o.Region.Get()) {
 		var ret string
 		return ret
 	}
@@ -429,6 +432,7 @@ func (o *ProductProductInput) HasRegion() bool {
 func (o *ProductProductInput) SetRegion(v string) {
 	o.Region.Set(&v)
 }
+
 // SetRegionNil sets the value for Region to be an explicit nil
 func (o *ProductProductInput) SetRegionNil() {
 	o.Region.Set(nil)
@@ -440,16 +444,10 @@ func (o *ProductProductInput) UnsetRegion() {
 }
 
 func (o ProductProductInput) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o ProductProductInput) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	// skip: id is readOnly
+	if !isNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
 	if o.Uuid.IsSet() {
 		toSerialize["uuid"] = o.Uuid.Get()
 	}
@@ -468,7 +466,7 @@ func (o ProductProductInput) ToMap() (map[string]interface{}, error) {
 	if o.IsActive.IsSet() {
 		toSerialize["isActive"] = o.IsActive.Get()
 	}
-	if !IsNil(o.Prices) {
+	if !isNil(o.Prices) {
 		toSerialize["prices"] = o.Prices
 	}
 	if o.DefaultPrice.IsSet() {
@@ -477,7 +475,7 @@ func (o ProductProductInput) ToMap() (map[string]interface{}, error) {
 	if o.Region.IsSet() {
 		toSerialize["region"] = o.Region.Get()
 	}
-	return toSerialize, nil
+	return json.Marshal(toSerialize)
 }
 
 type NullableProductProductInput struct {
@@ -515,5 +513,3 @@ func (v *NullableProductProductInput) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

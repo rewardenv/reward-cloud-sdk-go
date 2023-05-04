@@ -16,20 +16,19 @@ import (
 	"io/ioutil"
 	"net/http"
 	"net/url"
-	"strings"
 	"reflect"
+	"strings"
 )
-
 
 // ServiceAccountRegistryApiService ServiceAccountRegistryApi service
 type ServiceAccountRegistryApiService service
 
 type ApiApiServiceAccountRegistriesGetCollectionRequest struct {
-	ctx context.Context
-	ApiService *ServiceAccountRegistryApiService
-	page *int32
-	itemsPerPage *int32
-	serviceAccount *string
+	ctx             context.Context
+	ApiService      *ServiceAccountRegistryApiService
+	page            *int32
+	itemsPerPage    *int32
+	serviceAccount  *string
 	serviceAccount2 *[]string
 }
 
@@ -45,19 +44,17 @@ func (r ApiApiServiceAccountRegistriesGetCollectionRequest) ItemsPerPage(itemsPe
 	return r
 }
 
-// 
 func (r ApiApiServiceAccountRegistriesGetCollectionRequest) ServiceAccount(serviceAccount string) ApiApiServiceAccountRegistriesGetCollectionRequest {
 	r.serviceAccount = &serviceAccount
 	return r
 }
 
-// 
 func (r ApiApiServiceAccountRegistriesGetCollectionRequest) ServiceAccount2(serviceAccount2 []string) ApiApiServiceAccountRegistriesGetCollectionRequest {
 	r.serviceAccount2 = &serviceAccount2
 	return r
 }
 
-func (r ApiApiServiceAccountRegistriesGetCollectionRequest) Execute() ([]ServiceAccountRegistry, *http.Response, error) {
+func (r ApiApiServiceAccountRegistriesGetCollectionRequest) Execute() (*ApiServiceAccountRegistriesGetCollection200Response, *http.Response, error) {
 	return r.ApiService.ApiServiceAccountRegistriesGetCollectionExecute(r)
 }
 
@@ -66,24 +63,25 @@ ApiServiceAccountRegistriesGetCollection Retrieves the collection of ServiceAcco
 
 Retrieves the collection of ServiceAccountRegistry resources.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiApiServiceAccountRegistriesGetCollectionRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiApiServiceAccountRegistriesGetCollectionRequest
 */
 func (a *ServiceAccountRegistryApiService) ApiServiceAccountRegistriesGetCollection(ctx context.Context) ApiApiServiceAccountRegistriesGetCollectionRequest {
 	return ApiApiServiceAccountRegistriesGetCollectionRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return []ServiceAccountRegistry
-func (a *ServiceAccountRegistryApiService) ApiServiceAccountRegistriesGetCollectionExecute(r ApiApiServiceAccountRegistriesGetCollectionRequest) ([]ServiceAccountRegistry, *http.Response, error) {
+//
+//	@return ApiServiceAccountRegistriesGetCollection200Response
+func (a *ServiceAccountRegistryApiService) ApiServiceAccountRegistriesGetCollectionExecute(r ApiApiServiceAccountRegistriesGetCollectionRequest) (*ApiServiceAccountRegistriesGetCollection200Response, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  []ServiceAccountRegistry
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *ApiServiceAccountRegistriesGetCollection200Response
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ServiceAccountRegistryApiService.ApiServiceAccountRegistriesGetCollection")
@@ -127,7 +125,7 @@ func (a *ServiceAccountRegistryApiService) ApiServiceAccountRegistriesGetCollect
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json", "application/hal+json", "text/html"}
+	localVarHTTPHeaderAccepts := []string{"application/hal+json", "application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -186,9 +184,9 @@ func (a *ServiceAccountRegistryApiService) ApiServiceAccountRegistriesGetCollect
 }
 
 type ApiApiServiceAccountRegistriesIdDeleteRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *ServiceAccountRegistryApiService
-	id string
+	id         string
 }
 
 func (r ApiApiServiceAccountRegistriesIdDeleteRequest) Execute() (*http.Response, error) {
@@ -200,24 +198,24 @@ ApiServiceAccountRegistriesIdDelete Removes the ServiceAccountRegistry resource.
 
 Removes the ServiceAccountRegistry resource.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id ServiceAccountRegistry identifier
- @return ApiApiServiceAccountRegistriesIdDeleteRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id ServiceAccountRegistry identifier
+	@return ApiApiServiceAccountRegistriesIdDeleteRequest
 */
 func (a *ServiceAccountRegistryApiService) ApiServiceAccountRegistriesIdDelete(ctx context.Context, id string) ApiApiServiceAccountRegistriesIdDeleteRequest {
 	return ApiApiServiceAccountRegistriesIdDeleteRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
 // Execute executes the request
 func (a *ServiceAccountRegistryApiService) ApiServiceAccountRegistriesIdDeleteExecute(r ApiApiServiceAccountRegistriesIdDeleteRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodDelete
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ServiceAccountRegistryApiService.ApiServiceAccountRegistriesIdDelete")
@@ -292,12 +290,12 @@ func (a *ServiceAccountRegistryApiService) ApiServiceAccountRegistriesIdDeleteEx
 }
 
 type ApiApiServiceAccountRegistriesIdGetRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *ServiceAccountRegistryApiService
-	id string
+	id         string
 }
 
-func (r ApiApiServiceAccountRegistriesIdGetRequest) Execute() (*ServiceAccountRegistry, *http.Response, error) {
+func (r ApiApiServiceAccountRegistriesIdGetRequest) Execute() (*ServiceAccountRegistryJsonhal, *http.Response, error) {
 	return r.ApiService.ApiServiceAccountRegistriesIdGetExecute(r)
 }
 
@@ -306,26 +304,27 @@ ApiServiceAccountRegistriesIdGet Retrieves a ServiceAccountRegistry resource.
 
 Retrieves a ServiceAccountRegistry resource.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id ServiceAccountRegistry identifier
- @return ApiApiServiceAccountRegistriesIdGetRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id ServiceAccountRegistry identifier
+	@return ApiApiServiceAccountRegistriesIdGetRequest
 */
 func (a *ServiceAccountRegistryApiService) ApiServiceAccountRegistriesIdGet(ctx context.Context, id string) ApiApiServiceAccountRegistriesIdGetRequest {
 	return ApiApiServiceAccountRegistriesIdGetRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
 // Execute executes the request
-//  @return ServiceAccountRegistry
-func (a *ServiceAccountRegistryApiService) ApiServiceAccountRegistriesIdGetExecute(r ApiApiServiceAccountRegistriesIdGetRequest) (*ServiceAccountRegistry, *http.Response, error) {
+//
+//	@return ServiceAccountRegistryJsonhal
+func (a *ServiceAccountRegistryApiService) ApiServiceAccountRegistriesIdGetExecute(r ApiApiServiceAccountRegistriesIdGetRequest) (*ServiceAccountRegistryJsonhal, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *ServiceAccountRegistry
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *ServiceAccountRegistryJsonhal
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ServiceAccountRegistryApiService.ApiServiceAccountRegistriesIdGet")
@@ -350,7 +349,7 @@ func (a *ServiceAccountRegistryApiService) ApiServiceAccountRegistriesIdGetExecu
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json", "application/hal+json", "text/html"}
+	localVarHTTPHeaderAccepts := []string{"application/hal+json", "application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -409,9 +408,9 @@ func (a *ServiceAccountRegistryApiService) ApiServiceAccountRegistriesIdGetExecu
 }
 
 type ApiApiServiceAccountRegistriesIdPatchRequest struct {
-	ctx context.Context
-	ApiService *ServiceAccountRegistryApiService
-	id string
+	ctx                    context.Context
+	ApiService             *ServiceAccountRegistryApiService
+	id                     string
 	serviceAccountRegistry *ServiceAccountRegistry
 }
 
@@ -421,7 +420,7 @@ func (r ApiApiServiceAccountRegistriesIdPatchRequest) ServiceAccountRegistry(ser
 	return r
 }
 
-func (r ApiApiServiceAccountRegistriesIdPatchRequest) Execute() (*ServiceAccountRegistry, *http.Response, error) {
+func (r ApiApiServiceAccountRegistriesIdPatchRequest) Execute() (*ServiceAccountRegistryJsonhal, *http.Response, error) {
 	return r.ApiService.ApiServiceAccountRegistriesIdPatchExecute(r)
 }
 
@@ -430,26 +429,27 @@ ApiServiceAccountRegistriesIdPatch Updates the ServiceAccountRegistry resource.
 
 Updates the ServiceAccountRegistry resource.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id ServiceAccountRegistry identifier
- @return ApiApiServiceAccountRegistriesIdPatchRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id ServiceAccountRegistry identifier
+	@return ApiApiServiceAccountRegistriesIdPatchRequest
 */
 func (a *ServiceAccountRegistryApiService) ApiServiceAccountRegistriesIdPatch(ctx context.Context, id string) ApiApiServiceAccountRegistriesIdPatchRequest {
 	return ApiApiServiceAccountRegistriesIdPatchRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
 // Execute executes the request
-//  @return ServiceAccountRegistry
-func (a *ServiceAccountRegistryApiService) ApiServiceAccountRegistriesIdPatchExecute(r ApiApiServiceAccountRegistriesIdPatchRequest) (*ServiceAccountRegistry, *http.Response, error) {
+//
+//	@return ServiceAccountRegistryJsonhal
+func (a *ServiceAccountRegistryApiService) ApiServiceAccountRegistriesIdPatchExecute(r ApiApiServiceAccountRegistriesIdPatchRequest) (*ServiceAccountRegistryJsonhal, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPatch
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *ServiceAccountRegistry
+		localVarHTTPMethod  = http.MethodPatch
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *ServiceAccountRegistryJsonhal
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ServiceAccountRegistryApiService.ApiServiceAccountRegistriesIdPatch")
@@ -468,7 +468,7 @@ func (a *ServiceAccountRegistryApiService) ApiServiceAccountRegistriesIdPatchExe
 	}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json", "application/hal+json", "text/html"}
+	localVarHTTPContentTypes := []string{"application/vnd.api+json"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -477,7 +477,7 @@ func (a *ServiceAccountRegistryApiService) ApiServiceAccountRegistriesIdPatchExe
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json", "application/hal+json", "text/html"}
+	localVarHTTPHeaderAccepts := []string{"application/hal+json", "application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -538,19 +538,19 @@ func (a *ServiceAccountRegistryApiService) ApiServiceAccountRegistriesIdPatchExe
 }
 
 type ApiApiServiceAccountRegistriesIdPutRequest struct {
-	ctx context.Context
-	ApiService *ServiceAccountRegistryApiService
-	id string
-	serviceAccountRegistry *ServiceAccountRegistry
+	ctx                           context.Context
+	ApiService                    *ServiceAccountRegistryApiService
+	id                            string
+	serviceAccountRegistryJsonhal *ServiceAccountRegistryJsonhal
 }
 
 // The updated ServiceAccountRegistry resource
-func (r ApiApiServiceAccountRegistriesIdPutRequest) ServiceAccountRegistry(serviceAccountRegistry ServiceAccountRegistry) ApiApiServiceAccountRegistriesIdPutRequest {
-	r.serviceAccountRegistry = &serviceAccountRegistry
+func (r ApiApiServiceAccountRegistriesIdPutRequest) ServiceAccountRegistryJsonhal(serviceAccountRegistryJsonhal ServiceAccountRegistryJsonhal) ApiApiServiceAccountRegistriesIdPutRequest {
+	r.serviceAccountRegistryJsonhal = &serviceAccountRegistryJsonhal
 	return r
 }
 
-func (r ApiApiServiceAccountRegistriesIdPutRequest) Execute() (*ServiceAccountRegistry, *http.Response, error) {
+func (r ApiApiServiceAccountRegistriesIdPutRequest) Execute() (*ServiceAccountRegistryJsonhal, *http.Response, error) {
 	return r.ApiService.ApiServiceAccountRegistriesIdPutExecute(r)
 }
 
@@ -559,26 +559,27 @@ ApiServiceAccountRegistriesIdPut Replaces the ServiceAccountRegistry resource.
 
 Replaces the ServiceAccountRegistry resource.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id ServiceAccountRegistry identifier
- @return ApiApiServiceAccountRegistriesIdPutRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id ServiceAccountRegistry identifier
+	@return ApiApiServiceAccountRegistriesIdPutRequest
 */
 func (a *ServiceAccountRegistryApiService) ApiServiceAccountRegistriesIdPut(ctx context.Context, id string) ApiApiServiceAccountRegistriesIdPutRequest {
 	return ApiApiServiceAccountRegistriesIdPutRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
 // Execute executes the request
-//  @return ServiceAccountRegistry
-func (a *ServiceAccountRegistryApiService) ApiServiceAccountRegistriesIdPutExecute(r ApiApiServiceAccountRegistriesIdPutRequest) (*ServiceAccountRegistry, *http.Response, error) {
+//
+//	@return ServiceAccountRegistryJsonhal
+func (a *ServiceAccountRegistryApiService) ApiServiceAccountRegistriesIdPutExecute(r ApiApiServiceAccountRegistriesIdPutRequest) (*ServiceAccountRegistryJsonhal, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPut
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *ServiceAccountRegistry
+		localVarHTTPMethod  = http.MethodPut
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *ServiceAccountRegistryJsonhal
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ServiceAccountRegistryApiService.ApiServiceAccountRegistriesIdPut")
@@ -592,12 +593,12 @@ func (a *ServiceAccountRegistryApiService) ApiServiceAccountRegistriesIdPutExecu
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.serviceAccountRegistry == nil {
-		return localVarReturnValue, nil, reportError("serviceAccountRegistry is required and must be specified")
+	if r.serviceAccountRegistryJsonhal == nil {
+		return localVarReturnValue, nil, reportError("serviceAccountRegistryJsonhal is required and must be specified")
 	}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json", "application/hal+json", "text/html"}
+	localVarHTTPContentTypes := []string{"application/hal+json", "application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -606,7 +607,7 @@ func (a *ServiceAccountRegistryApiService) ApiServiceAccountRegistriesIdPutExecu
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json", "application/hal+json", "text/html"}
+	localVarHTTPHeaderAccepts := []string{"application/hal+json", "application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -614,7 +615,7 @@ func (a *ServiceAccountRegistryApiService) ApiServiceAccountRegistriesIdPutExecu
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.serviceAccountRegistry
+	localVarPostBody = r.serviceAccountRegistryJsonhal
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
@@ -667,18 +668,18 @@ func (a *ServiceAccountRegistryApiService) ApiServiceAccountRegistriesIdPutExecu
 }
 
 type ApiApiServiceAccountRegistriesPostRequest struct {
-	ctx context.Context
-	ApiService *ServiceAccountRegistryApiService
-	serviceAccountRegistry *ServiceAccountRegistry
+	ctx                           context.Context
+	ApiService                    *ServiceAccountRegistryApiService
+	serviceAccountRegistryJsonhal *ServiceAccountRegistryJsonhal
 }
 
 // The new ServiceAccountRegistry resource
-func (r ApiApiServiceAccountRegistriesPostRequest) ServiceAccountRegistry(serviceAccountRegistry ServiceAccountRegistry) ApiApiServiceAccountRegistriesPostRequest {
-	r.serviceAccountRegistry = &serviceAccountRegistry
+func (r ApiApiServiceAccountRegistriesPostRequest) ServiceAccountRegistryJsonhal(serviceAccountRegistryJsonhal ServiceAccountRegistryJsonhal) ApiApiServiceAccountRegistriesPostRequest {
+	r.serviceAccountRegistryJsonhal = &serviceAccountRegistryJsonhal
 	return r
 }
 
-func (r ApiApiServiceAccountRegistriesPostRequest) Execute() (*ServiceAccountRegistry, *http.Response, error) {
+func (r ApiApiServiceAccountRegistriesPostRequest) Execute() (*ServiceAccountRegistryJsonhal, *http.Response, error) {
 	return r.ApiService.ApiServiceAccountRegistriesPostExecute(r)
 }
 
@@ -687,24 +688,25 @@ ApiServiceAccountRegistriesPost Creates a ServiceAccountRegistry resource.
 
 Creates a ServiceAccountRegistry resource.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiApiServiceAccountRegistriesPostRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiApiServiceAccountRegistriesPostRequest
 */
 func (a *ServiceAccountRegistryApiService) ApiServiceAccountRegistriesPost(ctx context.Context) ApiApiServiceAccountRegistriesPostRequest {
 	return ApiApiServiceAccountRegistriesPostRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return ServiceAccountRegistry
-func (a *ServiceAccountRegistryApiService) ApiServiceAccountRegistriesPostExecute(r ApiApiServiceAccountRegistriesPostRequest) (*ServiceAccountRegistry, *http.Response, error) {
+//
+//	@return ServiceAccountRegistryJsonhal
+func (a *ServiceAccountRegistryApiService) ApiServiceAccountRegistriesPostExecute(r ApiApiServiceAccountRegistriesPostRequest) (*ServiceAccountRegistryJsonhal, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *ServiceAccountRegistry
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *ServiceAccountRegistryJsonhal
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ServiceAccountRegistryApiService.ApiServiceAccountRegistriesPost")
@@ -717,12 +719,12 @@ func (a *ServiceAccountRegistryApiService) ApiServiceAccountRegistriesPostExecut
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.serviceAccountRegistry == nil {
-		return localVarReturnValue, nil, reportError("serviceAccountRegistry is required and must be specified")
+	if r.serviceAccountRegistryJsonhal == nil {
+		return localVarReturnValue, nil, reportError("serviceAccountRegistryJsonhal is required and must be specified")
 	}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json", "application/hal+json", "text/html"}
+	localVarHTTPContentTypes := []string{"application/hal+json", "application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -731,7 +733,7 @@ func (a *ServiceAccountRegistryApiService) ApiServiceAccountRegistriesPostExecut
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json", "application/hal+json", "text/html"}
+	localVarHTTPHeaderAccepts := []string{"application/hal+json", "application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -739,7 +741,7 @@ func (a *ServiceAccountRegistryApiService) ApiServiceAccountRegistriesPostExecut
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.serviceAccountRegistry
+	localVarPostBody = r.serviceAccountRegistryJsonhal
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {

@@ -14,22 +14,19 @@ import (
 	"encoding/json"
 )
 
-// checks if the ServiceAccountRegistry type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &ServiceAccountRegistry{}
-
 // ServiceAccountRegistry Class Registry
 type ServiceAccountRegistry struct {
-	Id *int32 `json:"id,omitempty"`
-	Uuid *string `json:"uuid,omitempty"`
-	Quota NullableInt32 `json:"quota,omitempty"`
-	Instance NullableString `json:"instance,omitempty"`
-	Url NullableString `json:"url,omitempty"`
-	Email NullableString `json:"email,omitempty"`
-	Username NullableString `json:"username,omitempty"`
-	Password NullableString `json:"password,omitempty"`
+	Id             *int32         `json:"id,omitempty"`
+	Uuid           *string        `json:"uuid,omitempty"`
+	Quota          NullableInt32  `json:"quota,omitempty"`
+	Instance       NullableString `json:"instance,omitempty"`
+	Url            NullableString `json:"url,omitempty"`
+	Email          NullableString `json:"email,omitempty"`
+	Username       NullableString `json:"username,omitempty"`
+	Password       NullableString `json:"password,omitempty"`
 	ServiceAccount NullableString `json:"serviceAccount,omitempty"`
-	CreatedBy NullableString `json:"createdBy,omitempty"`
-	UpdatedBy NullableString `json:"updatedBy,omitempty"`
+	CreatedBy      NullableString `json:"createdBy,omitempty"`
+	UpdatedBy      NullableString `json:"updatedBy,omitempty"`
 }
 
 // NewServiceAccountRegistry instantiates a new ServiceAccountRegistry object
@@ -51,7 +48,7 @@ func NewServiceAccountRegistryWithDefaults() *ServiceAccountRegistry {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *ServiceAccountRegistry) GetId() int32 {
-	if o == nil || IsNil(o.Id) {
+	if o == nil || isNil(o.Id) {
 		var ret int32
 		return ret
 	}
@@ -61,7 +58,7 @@ func (o *ServiceAccountRegistry) GetId() int32 {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ServiceAccountRegistry) GetIdOk() (*int32, bool) {
-	if o == nil || IsNil(o.Id) {
+	if o == nil || isNil(o.Id) {
 		return nil, false
 	}
 	return o.Id, true
@@ -69,7 +66,7 @@ func (o *ServiceAccountRegistry) GetIdOk() (*int32, bool) {
 
 // HasId returns a boolean if a field has been set.
 func (o *ServiceAccountRegistry) HasId() bool {
-	if o != nil && !IsNil(o.Id) {
+	if o != nil && !isNil(o.Id) {
 		return true
 	}
 
@@ -83,7 +80,7 @@ func (o *ServiceAccountRegistry) SetId(v int32) {
 
 // GetUuid returns the Uuid field value if set, zero value otherwise.
 func (o *ServiceAccountRegistry) GetUuid() string {
-	if o == nil || IsNil(o.Uuid) {
+	if o == nil || isNil(o.Uuid) {
 		var ret string
 		return ret
 	}
@@ -93,7 +90,7 @@ func (o *ServiceAccountRegistry) GetUuid() string {
 // GetUuidOk returns a tuple with the Uuid field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ServiceAccountRegistry) GetUuidOk() (*string, bool) {
-	if o == nil || IsNil(o.Uuid) {
+	if o == nil || isNil(o.Uuid) {
 		return nil, false
 	}
 	return o.Uuid, true
@@ -101,7 +98,7 @@ func (o *ServiceAccountRegistry) GetUuidOk() (*string, bool) {
 
 // HasUuid returns a boolean if a field has been set.
 func (o *ServiceAccountRegistry) HasUuid() bool {
-	if o != nil && !IsNil(o.Uuid) {
+	if o != nil && !isNil(o.Uuid) {
 		return true
 	}
 
@@ -115,7 +112,7 @@ func (o *ServiceAccountRegistry) SetUuid(v string) {
 
 // GetQuota returns the Quota field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ServiceAccountRegistry) GetQuota() int32 {
-	if o == nil || IsNil(o.Quota.Get()) {
+	if o == nil || isNil(o.Quota.Get()) {
 		var ret int32
 		return ret
 	}
@@ -145,6 +142,7 @@ func (o *ServiceAccountRegistry) HasQuota() bool {
 func (o *ServiceAccountRegistry) SetQuota(v int32) {
 	o.Quota.Set(&v)
 }
+
 // SetQuotaNil sets the value for Quota to be an explicit nil
 func (o *ServiceAccountRegistry) SetQuotaNil() {
 	o.Quota.Set(nil)
@@ -157,7 +155,7 @@ func (o *ServiceAccountRegistry) UnsetQuota() {
 
 // GetInstance returns the Instance field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ServiceAccountRegistry) GetInstance() string {
-	if o == nil || IsNil(o.Instance.Get()) {
+	if o == nil || isNil(o.Instance.Get()) {
 		var ret string
 		return ret
 	}
@@ -187,6 +185,7 @@ func (o *ServiceAccountRegistry) HasInstance() bool {
 func (o *ServiceAccountRegistry) SetInstance(v string) {
 	o.Instance.Set(&v)
 }
+
 // SetInstanceNil sets the value for Instance to be an explicit nil
 func (o *ServiceAccountRegistry) SetInstanceNil() {
 	o.Instance.Set(nil)
@@ -199,7 +198,7 @@ func (o *ServiceAccountRegistry) UnsetInstance() {
 
 // GetUrl returns the Url field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ServiceAccountRegistry) GetUrl() string {
-	if o == nil || IsNil(o.Url.Get()) {
+	if o == nil || isNil(o.Url.Get()) {
 		var ret string
 		return ret
 	}
@@ -229,6 +228,7 @@ func (o *ServiceAccountRegistry) HasUrl() bool {
 func (o *ServiceAccountRegistry) SetUrl(v string) {
 	o.Url.Set(&v)
 }
+
 // SetUrlNil sets the value for Url to be an explicit nil
 func (o *ServiceAccountRegistry) SetUrlNil() {
 	o.Url.Set(nil)
@@ -241,7 +241,7 @@ func (o *ServiceAccountRegistry) UnsetUrl() {
 
 // GetEmail returns the Email field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ServiceAccountRegistry) GetEmail() string {
-	if o == nil || IsNil(o.Email.Get()) {
+	if o == nil || isNil(o.Email.Get()) {
 		var ret string
 		return ret
 	}
@@ -271,6 +271,7 @@ func (o *ServiceAccountRegistry) HasEmail() bool {
 func (o *ServiceAccountRegistry) SetEmail(v string) {
 	o.Email.Set(&v)
 }
+
 // SetEmailNil sets the value for Email to be an explicit nil
 func (o *ServiceAccountRegistry) SetEmailNil() {
 	o.Email.Set(nil)
@@ -283,7 +284,7 @@ func (o *ServiceAccountRegistry) UnsetEmail() {
 
 // GetUsername returns the Username field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ServiceAccountRegistry) GetUsername() string {
-	if o == nil || IsNil(o.Username.Get()) {
+	if o == nil || isNil(o.Username.Get()) {
 		var ret string
 		return ret
 	}
@@ -313,6 +314,7 @@ func (o *ServiceAccountRegistry) HasUsername() bool {
 func (o *ServiceAccountRegistry) SetUsername(v string) {
 	o.Username.Set(&v)
 }
+
 // SetUsernameNil sets the value for Username to be an explicit nil
 func (o *ServiceAccountRegistry) SetUsernameNil() {
 	o.Username.Set(nil)
@@ -325,7 +327,7 @@ func (o *ServiceAccountRegistry) UnsetUsername() {
 
 // GetPassword returns the Password field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ServiceAccountRegistry) GetPassword() string {
-	if o == nil || IsNil(o.Password.Get()) {
+	if o == nil || isNil(o.Password.Get()) {
 		var ret string
 		return ret
 	}
@@ -355,6 +357,7 @@ func (o *ServiceAccountRegistry) HasPassword() bool {
 func (o *ServiceAccountRegistry) SetPassword(v string) {
 	o.Password.Set(&v)
 }
+
 // SetPasswordNil sets the value for Password to be an explicit nil
 func (o *ServiceAccountRegistry) SetPasswordNil() {
 	o.Password.Set(nil)
@@ -367,7 +370,7 @@ func (o *ServiceAccountRegistry) UnsetPassword() {
 
 // GetServiceAccount returns the ServiceAccount field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ServiceAccountRegistry) GetServiceAccount() string {
-	if o == nil || IsNil(o.ServiceAccount.Get()) {
+	if o == nil || isNil(o.ServiceAccount.Get()) {
 		var ret string
 		return ret
 	}
@@ -397,6 +400,7 @@ func (o *ServiceAccountRegistry) HasServiceAccount() bool {
 func (o *ServiceAccountRegistry) SetServiceAccount(v string) {
 	o.ServiceAccount.Set(&v)
 }
+
 // SetServiceAccountNil sets the value for ServiceAccount to be an explicit nil
 func (o *ServiceAccountRegistry) SetServiceAccountNil() {
 	o.ServiceAccount.Set(nil)
@@ -409,7 +413,7 @@ func (o *ServiceAccountRegistry) UnsetServiceAccount() {
 
 // GetCreatedBy returns the CreatedBy field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ServiceAccountRegistry) GetCreatedBy() string {
-	if o == nil || IsNil(o.CreatedBy.Get()) {
+	if o == nil || isNil(o.CreatedBy.Get()) {
 		var ret string
 		return ret
 	}
@@ -439,6 +443,7 @@ func (o *ServiceAccountRegistry) HasCreatedBy() bool {
 func (o *ServiceAccountRegistry) SetCreatedBy(v string) {
 	o.CreatedBy.Set(&v)
 }
+
 // SetCreatedByNil sets the value for CreatedBy to be an explicit nil
 func (o *ServiceAccountRegistry) SetCreatedByNil() {
 	o.CreatedBy.Set(nil)
@@ -451,7 +456,7 @@ func (o *ServiceAccountRegistry) UnsetCreatedBy() {
 
 // GetUpdatedBy returns the UpdatedBy field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ServiceAccountRegistry) GetUpdatedBy() string {
-	if o == nil || IsNil(o.UpdatedBy.Get()) {
+	if o == nil || isNil(o.UpdatedBy.Get()) {
 		var ret string
 		return ret
 	}
@@ -481,6 +486,7 @@ func (o *ServiceAccountRegistry) HasUpdatedBy() bool {
 func (o *ServiceAccountRegistry) SetUpdatedBy(v string) {
 	o.UpdatedBy.Set(&v)
 }
+
 // SetUpdatedByNil sets the value for UpdatedBy to be an explicit nil
 func (o *ServiceAccountRegistry) SetUpdatedByNil() {
 	o.UpdatedBy.Set(nil)
@@ -492,17 +498,13 @@ func (o *ServiceAccountRegistry) UnsetUpdatedBy() {
 }
 
 func (o ServiceAccountRegistry) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o ServiceAccountRegistry) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	// skip: id is readOnly
-	// skip: uuid is readOnly
+	if !isNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
+	if !isNil(o.Uuid) {
+		toSerialize["uuid"] = o.Uuid
+	}
 	if o.Quota.IsSet() {
 		toSerialize["quota"] = o.Quota.Get()
 	}
@@ -530,7 +532,7 @@ func (o ServiceAccountRegistry) ToMap() (map[string]interface{}, error) {
 	if o.UpdatedBy.IsSet() {
 		toSerialize["updatedBy"] = o.UpdatedBy.Get()
 	}
-	return toSerialize, nil
+	return json.Marshal(toSerialize)
 }
 
 type NullableServiceAccountRegistry struct {
@@ -568,5 +570,3 @@ func (v *NullableServiceAccountRegistry) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

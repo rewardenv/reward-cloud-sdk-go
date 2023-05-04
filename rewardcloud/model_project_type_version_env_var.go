@@ -15,23 +15,20 @@ import (
 	"time"
 )
 
-// checks if the ProjectTypeVersionEnvVar type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &ProjectTypeVersionEnvVar{}
-
 // ProjectTypeVersionEnvVar Class ProjectTypeEnvVar
 type ProjectTypeVersionEnvVar struct {
-	Id *int32 `json:"id,omitempty"`
-	Uuid NullableString `json:"uuid,omitempty"`
-	Key NullableString `json:"key,omitempty"`
-	Note NullableString `json:"note,omitempty"`
-	IsRequired NullableBool `json:"isRequired,omitempty"`
-	IsEncrypted NullableBool `json:"isEncrypted,omitempty"`
-	ProjectTypeVersion NullableString `json:"projectTypeVersion,omitempty"`
-	ProjectTypeVersionEnvVarExample []string `json:"projectTypeVersionEnvVarExample,omitempty"`
-	CreatedBy NullableString `json:"createdBy,omitempty"`
-	UpdatedBy NullableString `json:"updatedBy,omitempty"`
-	CreatedAt *time.Time `json:"createdAt,omitempty"`
-	UpdatedAt *time.Time `json:"updatedAt,omitempty"`
+	Id                              *int32         `json:"id,omitempty"`
+	Uuid                            NullableString `json:"uuid,omitempty"`
+	Key                             NullableString `json:"key,omitempty"`
+	Note                            NullableString `json:"note,omitempty"`
+	IsRequired                      NullableBool   `json:"isRequired,omitempty"`
+	IsEncrypted                     NullableBool   `json:"isEncrypted,omitempty"`
+	ProjectTypeVersion              NullableString `json:"projectTypeVersion,omitempty"`
+	ProjectTypeVersionEnvVarExample []string       `json:"projectTypeVersionEnvVarExample,omitempty"`
+	CreatedBy                       NullableString `json:"createdBy,omitempty"`
+	UpdatedBy                       NullableString `json:"updatedBy,omitempty"`
+	CreatedAt                       *time.Time     `json:"createdAt,omitempty"`
+	UpdatedAt                       *time.Time     `json:"updatedAt,omitempty"`
 }
 
 // NewProjectTypeVersionEnvVar instantiates a new ProjectTypeVersionEnvVar object
@@ -53,7 +50,7 @@ func NewProjectTypeVersionEnvVarWithDefaults() *ProjectTypeVersionEnvVar {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *ProjectTypeVersionEnvVar) GetId() int32 {
-	if o == nil || IsNil(o.Id) {
+	if o == nil || isNil(o.Id) {
 		var ret int32
 		return ret
 	}
@@ -63,7 +60,7 @@ func (o *ProjectTypeVersionEnvVar) GetId() int32 {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ProjectTypeVersionEnvVar) GetIdOk() (*int32, bool) {
-	if o == nil || IsNil(o.Id) {
+	if o == nil || isNil(o.Id) {
 		return nil, false
 	}
 	return o.Id, true
@@ -71,7 +68,7 @@ func (o *ProjectTypeVersionEnvVar) GetIdOk() (*int32, bool) {
 
 // HasId returns a boolean if a field has been set.
 func (o *ProjectTypeVersionEnvVar) HasId() bool {
-	if o != nil && !IsNil(o.Id) {
+	if o != nil && !isNil(o.Id) {
 		return true
 	}
 
@@ -85,7 +82,7 @@ func (o *ProjectTypeVersionEnvVar) SetId(v int32) {
 
 // GetUuid returns the Uuid field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ProjectTypeVersionEnvVar) GetUuid() string {
-	if o == nil || IsNil(o.Uuid.Get()) {
+	if o == nil || isNil(o.Uuid.Get()) {
 		var ret string
 		return ret
 	}
@@ -115,6 +112,7 @@ func (o *ProjectTypeVersionEnvVar) HasUuid() bool {
 func (o *ProjectTypeVersionEnvVar) SetUuid(v string) {
 	o.Uuid.Set(&v)
 }
+
 // SetUuidNil sets the value for Uuid to be an explicit nil
 func (o *ProjectTypeVersionEnvVar) SetUuidNil() {
 	o.Uuid.Set(nil)
@@ -127,7 +125,7 @@ func (o *ProjectTypeVersionEnvVar) UnsetUuid() {
 
 // GetKey returns the Key field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ProjectTypeVersionEnvVar) GetKey() string {
-	if o == nil || IsNil(o.Key.Get()) {
+	if o == nil || isNil(o.Key.Get()) {
 		var ret string
 		return ret
 	}
@@ -157,6 +155,7 @@ func (o *ProjectTypeVersionEnvVar) HasKey() bool {
 func (o *ProjectTypeVersionEnvVar) SetKey(v string) {
 	o.Key.Set(&v)
 }
+
 // SetKeyNil sets the value for Key to be an explicit nil
 func (o *ProjectTypeVersionEnvVar) SetKeyNil() {
 	o.Key.Set(nil)
@@ -169,7 +168,7 @@ func (o *ProjectTypeVersionEnvVar) UnsetKey() {
 
 // GetNote returns the Note field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ProjectTypeVersionEnvVar) GetNote() string {
-	if o == nil || IsNil(o.Note.Get()) {
+	if o == nil || isNil(o.Note.Get()) {
 		var ret string
 		return ret
 	}
@@ -199,6 +198,7 @@ func (o *ProjectTypeVersionEnvVar) HasNote() bool {
 func (o *ProjectTypeVersionEnvVar) SetNote(v string) {
 	o.Note.Set(&v)
 }
+
 // SetNoteNil sets the value for Note to be an explicit nil
 func (o *ProjectTypeVersionEnvVar) SetNoteNil() {
 	o.Note.Set(nil)
@@ -211,7 +211,7 @@ func (o *ProjectTypeVersionEnvVar) UnsetNote() {
 
 // GetIsRequired returns the IsRequired field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ProjectTypeVersionEnvVar) GetIsRequired() bool {
-	if o == nil || IsNil(o.IsRequired.Get()) {
+	if o == nil || isNil(o.IsRequired.Get()) {
 		var ret bool
 		return ret
 	}
@@ -241,6 +241,7 @@ func (o *ProjectTypeVersionEnvVar) HasIsRequired() bool {
 func (o *ProjectTypeVersionEnvVar) SetIsRequired(v bool) {
 	o.IsRequired.Set(&v)
 }
+
 // SetIsRequiredNil sets the value for IsRequired to be an explicit nil
 func (o *ProjectTypeVersionEnvVar) SetIsRequiredNil() {
 	o.IsRequired.Set(nil)
@@ -253,7 +254,7 @@ func (o *ProjectTypeVersionEnvVar) UnsetIsRequired() {
 
 // GetIsEncrypted returns the IsEncrypted field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ProjectTypeVersionEnvVar) GetIsEncrypted() bool {
-	if o == nil || IsNil(o.IsEncrypted.Get()) {
+	if o == nil || isNil(o.IsEncrypted.Get()) {
 		var ret bool
 		return ret
 	}
@@ -283,6 +284,7 @@ func (o *ProjectTypeVersionEnvVar) HasIsEncrypted() bool {
 func (o *ProjectTypeVersionEnvVar) SetIsEncrypted(v bool) {
 	o.IsEncrypted.Set(&v)
 }
+
 // SetIsEncryptedNil sets the value for IsEncrypted to be an explicit nil
 func (o *ProjectTypeVersionEnvVar) SetIsEncryptedNil() {
 	o.IsEncrypted.Set(nil)
@@ -295,7 +297,7 @@ func (o *ProjectTypeVersionEnvVar) UnsetIsEncrypted() {
 
 // GetProjectTypeVersion returns the ProjectTypeVersion field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ProjectTypeVersionEnvVar) GetProjectTypeVersion() string {
-	if o == nil || IsNil(o.ProjectTypeVersion.Get()) {
+	if o == nil || isNil(o.ProjectTypeVersion.Get()) {
 		var ret string
 		return ret
 	}
@@ -325,6 +327,7 @@ func (o *ProjectTypeVersionEnvVar) HasProjectTypeVersion() bool {
 func (o *ProjectTypeVersionEnvVar) SetProjectTypeVersion(v string) {
 	o.ProjectTypeVersion.Set(&v)
 }
+
 // SetProjectTypeVersionNil sets the value for ProjectTypeVersion to be an explicit nil
 func (o *ProjectTypeVersionEnvVar) SetProjectTypeVersionNil() {
 	o.ProjectTypeVersion.Set(nil)
@@ -337,7 +340,7 @@ func (o *ProjectTypeVersionEnvVar) UnsetProjectTypeVersion() {
 
 // GetProjectTypeVersionEnvVarExample returns the ProjectTypeVersionEnvVarExample field value if set, zero value otherwise.
 func (o *ProjectTypeVersionEnvVar) GetProjectTypeVersionEnvVarExample() []string {
-	if o == nil || IsNil(o.ProjectTypeVersionEnvVarExample) {
+	if o == nil || isNil(o.ProjectTypeVersionEnvVarExample) {
 		var ret []string
 		return ret
 	}
@@ -347,7 +350,7 @@ func (o *ProjectTypeVersionEnvVar) GetProjectTypeVersionEnvVarExample() []string
 // GetProjectTypeVersionEnvVarExampleOk returns a tuple with the ProjectTypeVersionEnvVarExample field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ProjectTypeVersionEnvVar) GetProjectTypeVersionEnvVarExampleOk() ([]string, bool) {
-	if o == nil || IsNil(o.ProjectTypeVersionEnvVarExample) {
+	if o == nil || isNil(o.ProjectTypeVersionEnvVarExample) {
 		return nil, false
 	}
 	return o.ProjectTypeVersionEnvVarExample, true
@@ -355,7 +358,7 @@ func (o *ProjectTypeVersionEnvVar) GetProjectTypeVersionEnvVarExampleOk() ([]str
 
 // HasProjectTypeVersionEnvVarExample returns a boolean if a field has been set.
 func (o *ProjectTypeVersionEnvVar) HasProjectTypeVersionEnvVarExample() bool {
-	if o != nil && !IsNil(o.ProjectTypeVersionEnvVarExample) {
+	if o != nil && !isNil(o.ProjectTypeVersionEnvVarExample) {
 		return true
 	}
 
@@ -369,7 +372,7 @@ func (o *ProjectTypeVersionEnvVar) SetProjectTypeVersionEnvVarExample(v []string
 
 // GetCreatedBy returns the CreatedBy field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ProjectTypeVersionEnvVar) GetCreatedBy() string {
-	if o == nil || IsNil(o.CreatedBy.Get()) {
+	if o == nil || isNil(o.CreatedBy.Get()) {
 		var ret string
 		return ret
 	}
@@ -399,6 +402,7 @@ func (o *ProjectTypeVersionEnvVar) HasCreatedBy() bool {
 func (o *ProjectTypeVersionEnvVar) SetCreatedBy(v string) {
 	o.CreatedBy.Set(&v)
 }
+
 // SetCreatedByNil sets the value for CreatedBy to be an explicit nil
 func (o *ProjectTypeVersionEnvVar) SetCreatedByNil() {
 	o.CreatedBy.Set(nil)
@@ -411,7 +415,7 @@ func (o *ProjectTypeVersionEnvVar) UnsetCreatedBy() {
 
 // GetUpdatedBy returns the UpdatedBy field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ProjectTypeVersionEnvVar) GetUpdatedBy() string {
-	if o == nil || IsNil(o.UpdatedBy.Get()) {
+	if o == nil || isNil(o.UpdatedBy.Get()) {
 		var ret string
 		return ret
 	}
@@ -441,6 +445,7 @@ func (o *ProjectTypeVersionEnvVar) HasUpdatedBy() bool {
 func (o *ProjectTypeVersionEnvVar) SetUpdatedBy(v string) {
 	o.UpdatedBy.Set(&v)
 }
+
 // SetUpdatedByNil sets the value for UpdatedBy to be an explicit nil
 func (o *ProjectTypeVersionEnvVar) SetUpdatedByNil() {
 	o.UpdatedBy.Set(nil)
@@ -453,7 +458,7 @@ func (o *ProjectTypeVersionEnvVar) UnsetUpdatedBy() {
 
 // GetCreatedAt returns the CreatedAt field value if set, zero value otherwise.
 func (o *ProjectTypeVersionEnvVar) GetCreatedAt() time.Time {
-	if o == nil || IsNil(o.CreatedAt) {
+	if o == nil || isNil(o.CreatedAt) {
 		var ret time.Time
 		return ret
 	}
@@ -463,7 +468,7 @@ func (o *ProjectTypeVersionEnvVar) GetCreatedAt() time.Time {
 // GetCreatedAtOk returns a tuple with the CreatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ProjectTypeVersionEnvVar) GetCreatedAtOk() (*time.Time, bool) {
-	if o == nil || IsNil(o.CreatedAt) {
+	if o == nil || isNil(o.CreatedAt) {
 		return nil, false
 	}
 	return o.CreatedAt, true
@@ -471,7 +476,7 @@ func (o *ProjectTypeVersionEnvVar) GetCreatedAtOk() (*time.Time, bool) {
 
 // HasCreatedAt returns a boolean if a field has been set.
 func (o *ProjectTypeVersionEnvVar) HasCreatedAt() bool {
-	if o != nil && !IsNil(o.CreatedAt) {
+	if o != nil && !isNil(o.CreatedAt) {
 		return true
 	}
 
@@ -485,7 +490,7 @@ func (o *ProjectTypeVersionEnvVar) SetCreatedAt(v time.Time) {
 
 // GetUpdatedAt returns the UpdatedAt field value if set, zero value otherwise.
 func (o *ProjectTypeVersionEnvVar) GetUpdatedAt() time.Time {
-	if o == nil || IsNil(o.UpdatedAt) {
+	if o == nil || isNil(o.UpdatedAt) {
 		var ret time.Time
 		return ret
 	}
@@ -495,7 +500,7 @@ func (o *ProjectTypeVersionEnvVar) GetUpdatedAt() time.Time {
 // GetUpdatedAtOk returns a tuple with the UpdatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ProjectTypeVersionEnvVar) GetUpdatedAtOk() (*time.Time, bool) {
-	if o == nil || IsNil(o.UpdatedAt) {
+	if o == nil || isNil(o.UpdatedAt) {
 		return nil, false
 	}
 	return o.UpdatedAt, true
@@ -503,7 +508,7 @@ func (o *ProjectTypeVersionEnvVar) GetUpdatedAtOk() (*time.Time, bool) {
 
 // HasUpdatedAt returns a boolean if a field has been set.
 func (o *ProjectTypeVersionEnvVar) HasUpdatedAt() bool {
-	if o != nil && !IsNil(o.UpdatedAt) {
+	if o != nil && !isNil(o.UpdatedAt) {
 		return true
 	}
 
@@ -516,16 +521,10 @@ func (o *ProjectTypeVersionEnvVar) SetUpdatedAt(v time.Time) {
 }
 
 func (o ProjectTypeVersionEnvVar) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o ProjectTypeVersionEnvVar) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	// skip: id is readOnly
+	if !isNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
 	if o.Uuid.IsSet() {
 		toSerialize["uuid"] = o.Uuid.Get()
 	}
@@ -544,7 +543,7 @@ func (o ProjectTypeVersionEnvVar) ToMap() (map[string]interface{}, error) {
 	if o.ProjectTypeVersion.IsSet() {
 		toSerialize["projectTypeVersion"] = o.ProjectTypeVersion.Get()
 	}
-	if !IsNil(o.ProjectTypeVersionEnvVarExample) {
+	if !isNil(o.ProjectTypeVersionEnvVarExample) {
 		toSerialize["projectTypeVersionEnvVarExample"] = o.ProjectTypeVersionEnvVarExample
 	}
 	if o.CreatedBy.IsSet() {
@@ -553,13 +552,13 @@ func (o ProjectTypeVersionEnvVar) ToMap() (map[string]interface{}, error) {
 	if o.UpdatedBy.IsSet() {
 		toSerialize["updatedBy"] = o.UpdatedBy.Get()
 	}
-	if !IsNil(o.CreatedAt) {
+	if !isNil(o.CreatedAt) {
 		toSerialize["createdAt"] = o.CreatedAt
 	}
-	if !IsNil(o.UpdatedAt) {
+	if !isNil(o.UpdatedAt) {
 		toSerialize["updatedAt"] = o.UpdatedAt
 	}
-	return toSerialize, nil
+	return json.Marshal(toSerialize)
 }
 
 type NullableProjectTypeVersionEnvVar struct {
@@ -597,5 +596,3 @@ func (v *NullableProjectTypeVersionEnvVar) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

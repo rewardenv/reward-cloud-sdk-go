@@ -19,14 +19,13 @@ import (
 	"strings"
 )
 
-
 // EnvironmentAccessDevToolsApiService EnvironmentAccessDevToolsApi service
 type EnvironmentAccessDevToolsApiService service
 
 type ApiApiEnvironmentAccessDevToolsGetCollectionRequest struct {
-	ctx context.Context
-	ApiService *EnvironmentAccessDevToolsApiService
-	page *int32
+	ctx          context.Context
+	ApiService   *EnvironmentAccessDevToolsApiService
+	page         *int32
 	itemsPerPage *int32
 }
 
@@ -42,7 +41,7 @@ func (r ApiApiEnvironmentAccessDevToolsGetCollectionRequest) ItemsPerPage(itemsP
 	return r
 }
 
-func (r ApiApiEnvironmentAccessDevToolsGetCollectionRequest) Execute() ([]EnvironmentAccessDevTools, *http.Response, error) {
+func (r ApiApiEnvironmentAccessDevToolsGetCollectionRequest) Execute() (*ApiEnvironmentAccessDevToolsGetCollection200Response, *http.Response, error) {
 	return r.ApiService.ApiEnvironmentAccessDevToolsGetCollectionExecute(r)
 }
 
@@ -51,24 +50,25 @@ ApiEnvironmentAccessDevToolsGetCollection Retrieves the collection of Environmen
 
 Retrieves the collection of EnvironmentAccessDevTools resources.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiApiEnvironmentAccessDevToolsGetCollectionRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiApiEnvironmentAccessDevToolsGetCollectionRequest
 */
 func (a *EnvironmentAccessDevToolsApiService) ApiEnvironmentAccessDevToolsGetCollection(ctx context.Context) ApiApiEnvironmentAccessDevToolsGetCollectionRequest {
 	return ApiApiEnvironmentAccessDevToolsGetCollectionRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return []EnvironmentAccessDevTools
-func (a *EnvironmentAccessDevToolsApiService) ApiEnvironmentAccessDevToolsGetCollectionExecute(r ApiApiEnvironmentAccessDevToolsGetCollectionRequest) ([]EnvironmentAccessDevTools, *http.Response, error) {
+//
+//	@return ApiEnvironmentAccessDevToolsGetCollection200Response
+func (a *EnvironmentAccessDevToolsApiService) ApiEnvironmentAccessDevToolsGetCollectionExecute(r ApiApiEnvironmentAccessDevToolsGetCollectionRequest) (*ApiEnvironmentAccessDevToolsGetCollection200Response, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  []EnvironmentAccessDevTools
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *ApiEnvironmentAccessDevToolsGetCollection200Response
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnvironmentAccessDevToolsApiService.ApiEnvironmentAccessDevToolsGetCollection")
@@ -98,7 +98,7 @@ func (a *EnvironmentAccessDevToolsApiService) ApiEnvironmentAccessDevToolsGetCol
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json", "application/hal+json", "text/html"}
+	localVarHTTPHeaderAccepts := []string{"application/hal+json", "application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -157,9 +157,9 @@ func (a *EnvironmentAccessDevToolsApiService) ApiEnvironmentAccessDevToolsGetCol
 }
 
 type ApiApiEnvironmentAccessDevToolsIdDeleteRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *EnvironmentAccessDevToolsApiService
-	id string
+	id         string
 }
 
 func (r ApiApiEnvironmentAccessDevToolsIdDeleteRequest) Execute() (*http.Response, error) {
@@ -171,24 +171,24 @@ ApiEnvironmentAccessDevToolsIdDelete Removes the EnvironmentAccessDevTools resou
 
 Removes the EnvironmentAccessDevTools resource.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id EnvironmentAccessDevTools identifier
- @return ApiApiEnvironmentAccessDevToolsIdDeleteRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id EnvironmentAccessDevTools identifier
+	@return ApiApiEnvironmentAccessDevToolsIdDeleteRequest
 */
 func (a *EnvironmentAccessDevToolsApiService) ApiEnvironmentAccessDevToolsIdDelete(ctx context.Context, id string) ApiApiEnvironmentAccessDevToolsIdDeleteRequest {
 	return ApiApiEnvironmentAccessDevToolsIdDeleteRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
 // Execute executes the request
 func (a *EnvironmentAccessDevToolsApiService) ApiEnvironmentAccessDevToolsIdDeleteExecute(r ApiApiEnvironmentAccessDevToolsIdDeleteRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodDelete
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnvironmentAccessDevToolsApiService.ApiEnvironmentAccessDevToolsIdDelete")
@@ -263,12 +263,12 @@ func (a *EnvironmentAccessDevToolsApiService) ApiEnvironmentAccessDevToolsIdDele
 }
 
 type ApiApiEnvironmentAccessDevToolsIdGetRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *EnvironmentAccessDevToolsApiService
-	id string
+	id         string
 }
 
-func (r ApiApiEnvironmentAccessDevToolsIdGetRequest) Execute() (*EnvironmentAccessDevTools, *http.Response, error) {
+func (r ApiApiEnvironmentAccessDevToolsIdGetRequest) Execute() (*EnvironmentAccessDevToolsJsonhal, *http.Response, error) {
 	return r.ApiService.ApiEnvironmentAccessDevToolsIdGetExecute(r)
 }
 
@@ -277,26 +277,27 @@ ApiEnvironmentAccessDevToolsIdGet Retrieves a EnvironmentAccessDevTools resource
 
 Retrieves a EnvironmentAccessDevTools resource.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id EnvironmentAccessDevTools identifier
- @return ApiApiEnvironmentAccessDevToolsIdGetRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id EnvironmentAccessDevTools identifier
+	@return ApiApiEnvironmentAccessDevToolsIdGetRequest
 */
 func (a *EnvironmentAccessDevToolsApiService) ApiEnvironmentAccessDevToolsIdGet(ctx context.Context, id string) ApiApiEnvironmentAccessDevToolsIdGetRequest {
 	return ApiApiEnvironmentAccessDevToolsIdGetRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
 // Execute executes the request
-//  @return EnvironmentAccessDevTools
-func (a *EnvironmentAccessDevToolsApiService) ApiEnvironmentAccessDevToolsIdGetExecute(r ApiApiEnvironmentAccessDevToolsIdGetRequest) (*EnvironmentAccessDevTools, *http.Response, error) {
+//
+//	@return EnvironmentAccessDevToolsJsonhal
+func (a *EnvironmentAccessDevToolsApiService) ApiEnvironmentAccessDevToolsIdGetExecute(r ApiApiEnvironmentAccessDevToolsIdGetRequest) (*EnvironmentAccessDevToolsJsonhal, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *EnvironmentAccessDevTools
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *EnvironmentAccessDevToolsJsonhal
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnvironmentAccessDevToolsApiService.ApiEnvironmentAccessDevToolsIdGet")
@@ -321,7 +322,7 @@ func (a *EnvironmentAccessDevToolsApiService) ApiEnvironmentAccessDevToolsIdGetE
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json", "application/hal+json", "text/html"}
+	localVarHTTPHeaderAccepts := []string{"application/hal+json", "application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -380,9 +381,9 @@ func (a *EnvironmentAccessDevToolsApiService) ApiEnvironmentAccessDevToolsIdGetE
 }
 
 type ApiApiEnvironmentAccessDevToolsIdPatchRequest struct {
-	ctx context.Context
-	ApiService *EnvironmentAccessDevToolsApiService
-	id string
+	ctx                       context.Context
+	ApiService                *EnvironmentAccessDevToolsApiService
+	id                        string
 	environmentAccessDevTools *EnvironmentAccessDevTools
 }
 
@@ -392,7 +393,7 @@ func (r ApiApiEnvironmentAccessDevToolsIdPatchRequest) EnvironmentAccessDevTools
 	return r
 }
 
-func (r ApiApiEnvironmentAccessDevToolsIdPatchRequest) Execute() (*EnvironmentAccessDevTools, *http.Response, error) {
+func (r ApiApiEnvironmentAccessDevToolsIdPatchRequest) Execute() (*EnvironmentAccessDevToolsJsonhal, *http.Response, error) {
 	return r.ApiService.ApiEnvironmentAccessDevToolsIdPatchExecute(r)
 }
 
@@ -401,26 +402,27 @@ ApiEnvironmentAccessDevToolsIdPatch Updates the EnvironmentAccessDevTools resour
 
 Updates the EnvironmentAccessDevTools resource.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id EnvironmentAccessDevTools identifier
- @return ApiApiEnvironmentAccessDevToolsIdPatchRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id EnvironmentAccessDevTools identifier
+	@return ApiApiEnvironmentAccessDevToolsIdPatchRequest
 */
 func (a *EnvironmentAccessDevToolsApiService) ApiEnvironmentAccessDevToolsIdPatch(ctx context.Context, id string) ApiApiEnvironmentAccessDevToolsIdPatchRequest {
 	return ApiApiEnvironmentAccessDevToolsIdPatchRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
 // Execute executes the request
-//  @return EnvironmentAccessDevTools
-func (a *EnvironmentAccessDevToolsApiService) ApiEnvironmentAccessDevToolsIdPatchExecute(r ApiApiEnvironmentAccessDevToolsIdPatchRequest) (*EnvironmentAccessDevTools, *http.Response, error) {
+//
+//	@return EnvironmentAccessDevToolsJsonhal
+func (a *EnvironmentAccessDevToolsApiService) ApiEnvironmentAccessDevToolsIdPatchExecute(r ApiApiEnvironmentAccessDevToolsIdPatchRequest) (*EnvironmentAccessDevToolsJsonhal, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPatch
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *EnvironmentAccessDevTools
+		localVarHTTPMethod  = http.MethodPatch
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *EnvironmentAccessDevToolsJsonhal
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnvironmentAccessDevToolsApiService.ApiEnvironmentAccessDevToolsIdPatch")
@@ -439,7 +441,7 @@ func (a *EnvironmentAccessDevToolsApiService) ApiEnvironmentAccessDevToolsIdPatc
 	}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json", "application/hal+json", "text/html"}
+	localVarHTTPContentTypes := []string{"application/vnd.api+json"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -448,7 +450,7 @@ func (a *EnvironmentAccessDevToolsApiService) ApiEnvironmentAccessDevToolsIdPatc
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json", "application/hal+json", "text/html"}
+	localVarHTTPHeaderAccepts := []string{"application/hal+json", "application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -509,19 +511,19 @@ func (a *EnvironmentAccessDevToolsApiService) ApiEnvironmentAccessDevToolsIdPatc
 }
 
 type ApiApiEnvironmentAccessDevToolsIdPutRequest struct {
-	ctx context.Context
-	ApiService *EnvironmentAccessDevToolsApiService
-	id string
-	environmentAccessDevTools *EnvironmentAccessDevTools
+	ctx                              context.Context
+	ApiService                       *EnvironmentAccessDevToolsApiService
+	id                               string
+	environmentAccessDevToolsJsonhal *EnvironmentAccessDevToolsJsonhal
 }
 
 // The updated EnvironmentAccessDevTools resource
-func (r ApiApiEnvironmentAccessDevToolsIdPutRequest) EnvironmentAccessDevTools(environmentAccessDevTools EnvironmentAccessDevTools) ApiApiEnvironmentAccessDevToolsIdPutRequest {
-	r.environmentAccessDevTools = &environmentAccessDevTools
+func (r ApiApiEnvironmentAccessDevToolsIdPutRequest) EnvironmentAccessDevToolsJsonhal(environmentAccessDevToolsJsonhal EnvironmentAccessDevToolsJsonhal) ApiApiEnvironmentAccessDevToolsIdPutRequest {
+	r.environmentAccessDevToolsJsonhal = &environmentAccessDevToolsJsonhal
 	return r
 }
 
-func (r ApiApiEnvironmentAccessDevToolsIdPutRequest) Execute() (*EnvironmentAccessDevTools, *http.Response, error) {
+func (r ApiApiEnvironmentAccessDevToolsIdPutRequest) Execute() (*EnvironmentAccessDevToolsJsonhal, *http.Response, error) {
 	return r.ApiService.ApiEnvironmentAccessDevToolsIdPutExecute(r)
 }
 
@@ -530,26 +532,27 @@ ApiEnvironmentAccessDevToolsIdPut Replaces the EnvironmentAccessDevTools resourc
 
 Replaces the EnvironmentAccessDevTools resource.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id EnvironmentAccessDevTools identifier
- @return ApiApiEnvironmentAccessDevToolsIdPutRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id EnvironmentAccessDevTools identifier
+	@return ApiApiEnvironmentAccessDevToolsIdPutRequest
 */
 func (a *EnvironmentAccessDevToolsApiService) ApiEnvironmentAccessDevToolsIdPut(ctx context.Context, id string) ApiApiEnvironmentAccessDevToolsIdPutRequest {
 	return ApiApiEnvironmentAccessDevToolsIdPutRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
 // Execute executes the request
-//  @return EnvironmentAccessDevTools
-func (a *EnvironmentAccessDevToolsApiService) ApiEnvironmentAccessDevToolsIdPutExecute(r ApiApiEnvironmentAccessDevToolsIdPutRequest) (*EnvironmentAccessDevTools, *http.Response, error) {
+//
+//	@return EnvironmentAccessDevToolsJsonhal
+func (a *EnvironmentAccessDevToolsApiService) ApiEnvironmentAccessDevToolsIdPutExecute(r ApiApiEnvironmentAccessDevToolsIdPutRequest) (*EnvironmentAccessDevToolsJsonhal, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPut
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *EnvironmentAccessDevTools
+		localVarHTTPMethod  = http.MethodPut
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *EnvironmentAccessDevToolsJsonhal
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnvironmentAccessDevToolsApiService.ApiEnvironmentAccessDevToolsIdPut")
@@ -563,12 +566,12 @@ func (a *EnvironmentAccessDevToolsApiService) ApiEnvironmentAccessDevToolsIdPutE
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.environmentAccessDevTools == nil {
-		return localVarReturnValue, nil, reportError("environmentAccessDevTools is required and must be specified")
+	if r.environmentAccessDevToolsJsonhal == nil {
+		return localVarReturnValue, nil, reportError("environmentAccessDevToolsJsonhal is required and must be specified")
 	}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json", "application/hal+json", "text/html"}
+	localVarHTTPContentTypes := []string{"application/hal+json", "application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -577,7 +580,7 @@ func (a *EnvironmentAccessDevToolsApiService) ApiEnvironmentAccessDevToolsIdPutE
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json", "application/hal+json", "text/html"}
+	localVarHTTPHeaderAccepts := []string{"application/hal+json", "application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -585,7 +588,7 @@ func (a *EnvironmentAccessDevToolsApiService) ApiEnvironmentAccessDevToolsIdPutE
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.environmentAccessDevTools
+	localVarPostBody = r.environmentAccessDevToolsJsonhal
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
@@ -638,18 +641,18 @@ func (a *EnvironmentAccessDevToolsApiService) ApiEnvironmentAccessDevToolsIdPutE
 }
 
 type ApiApiEnvironmentAccessDevToolsPostRequest struct {
-	ctx context.Context
-	ApiService *EnvironmentAccessDevToolsApiService
-	environmentAccessDevTools *EnvironmentAccessDevTools
+	ctx                              context.Context
+	ApiService                       *EnvironmentAccessDevToolsApiService
+	environmentAccessDevToolsJsonhal *EnvironmentAccessDevToolsJsonhal
 }
 
 // The new EnvironmentAccessDevTools resource
-func (r ApiApiEnvironmentAccessDevToolsPostRequest) EnvironmentAccessDevTools(environmentAccessDevTools EnvironmentAccessDevTools) ApiApiEnvironmentAccessDevToolsPostRequest {
-	r.environmentAccessDevTools = &environmentAccessDevTools
+func (r ApiApiEnvironmentAccessDevToolsPostRequest) EnvironmentAccessDevToolsJsonhal(environmentAccessDevToolsJsonhal EnvironmentAccessDevToolsJsonhal) ApiApiEnvironmentAccessDevToolsPostRequest {
+	r.environmentAccessDevToolsJsonhal = &environmentAccessDevToolsJsonhal
 	return r
 }
 
-func (r ApiApiEnvironmentAccessDevToolsPostRequest) Execute() (*EnvironmentAccessDevTools, *http.Response, error) {
+func (r ApiApiEnvironmentAccessDevToolsPostRequest) Execute() (*EnvironmentAccessDevToolsJsonhal, *http.Response, error) {
 	return r.ApiService.ApiEnvironmentAccessDevToolsPostExecute(r)
 }
 
@@ -658,24 +661,25 @@ ApiEnvironmentAccessDevToolsPost Creates a EnvironmentAccessDevTools resource.
 
 Creates a EnvironmentAccessDevTools resource.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiApiEnvironmentAccessDevToolsPostRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiApiEnvironmentAccessDevToolsPostRequest
 */
 func (a *EnvironmentAccessDevToolsApiService) ApiEnvironmentAccessDevToolsPost(ctx context.Context) ApiApiEnvironmentAccessDevToolsPostRequest {
 	return ApiApiEnvironmentAccessDevToolsPostRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return EnvironmentAccessDevTools
-func (a *EnvironmentAccessDevToolsApiService) ApiEnvironmentAccessDevToolsPostExecute(r ApiApiEnvironmentAccessDevToolsPostRequest) (*EnvironmentAccessDevTools, *http.Response, error) {
+//
+//	@return EnvironmentAccessDevToolsJsonhal
+func (a *EnvironmentAccessDevToolsApiService) ApiEnvironmentAccessDevToolsPostExecute(r ApiApiEnvironmentAccessDevToolsPostRequest) (*EnvironmentAccessDevToolsJsonhal, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *EnvironmentAccessDevTools
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *EnvironmentAccessDevToolsJsonhal
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnvironmentAccessDevToolsApiService.ApiEnvironmentAccessDevToolsPost")
@@ -688,12 +692,12 @@ func (a *EnvironmentAccessDevToolsApiService) ApiEnvironmentAccessDevToolsPostEx
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.environmentAccessDevTools == nil {
-		return localVarReturnValue, nil, reportError("environmentAccessDevTools is required and must be specified")
+	if r.environmentAccessDevToolsJsonhal == nil {
+		return localVarReturnValue, nil, reportError("environmentAccessDevToolsJsonhal is required and must be specified")
 	}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json", "application/hal+json", "text/html"}
+	localVarHTTPContentTypes := []string{"application/hal+json", "application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -702,7 +706,7 @@ func (a *EnvironmentAccessDevToolsApiService) ApiEnvironmentAccessDevToolsPostEx
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json", "application/hal+json", "text/html"}
+	localVarHTTPHeaderAccepts := []string{"application/hal+json", "application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -710,7 +714,7 @@ func (a *EnvironmentAccessDevToolsApiService) ApiEnvironmentAccessDevToolsPostEx
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.environmentAccessDevTools
+	localVarPostBody = r.environmentAccessDevToolsJsonhal
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {

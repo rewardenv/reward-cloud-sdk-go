@@ -14,12 +14,9 @@ import (
 	"encoding/json"
 )
 
-// checks if the ServiceAccountProjectGet type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &ServiceAccountProjectGet{}
-
-// ServiceAccountProjectGet 
+// ServiceAccountProjectGet
 type ServiceAccountProjectGet struct {
-	ServiceAccountGit NullableServiceAccountProjectGetServiceAccountGit `json:"serviceAccountGit,omitempty"`
+	ServiceAccountGit      NullableServiceAccountProjectGetServiceAccountGit      `json:"serviceAccountGit,omitempty"`
 	ServiceAccountRegistry NullableServiceAccountProjectGetServiceAccountRegistry `json:"serviceAccountRegistry,omitempty"`
 }
 
@@ -42,7 +39,7 @@ func NewServiceAccountProjectGetWithDefaults() *ServiceAccountProjectGet {
 
 // GetServiceAccountGit returns the ServiceAccountGit field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ServiceAccountProjectGet) GetServiceAccountGit() ServiceAccountProjectGetServiceAccountGit {
-	if o == nil || IsNil(o.ServiceAccountGit.Get()) {
+	if o == nil || isNil(o.ServiceAccountGit.Get()) {
 		var ret ServiceAccountProjectGetServiceAccountGit
 		return ret
 	}
@@ -72,6 +69,7 @@ func (o *ServiceAccountProjectGet) HasServiceAccountGit() bool {
 func (o *ServiceAccountProjectGet) SetServiceAccountGit(v ServiceAccountProjectGetServiceAccountGit) {
 	o.ServiceAccountGit.Set(&v)
 }
+
 // SetServiceAccountGitNil sets the value for ServiceAccountGit to be an explicit nil
 func (o *ServiceAccountProjectGet) SetServiceAccountGitNil() {
 	o.ServiceAccountGit.Set(nil)
@@ -84,7 +82,7 @@ func (o *ServiceAccountProjectGet) UnsetServiceAccountGit() {
 
 // GetServiceAccountRegistry returns the ServiceAccountRegistry field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ServiceAccountProjectGet) GetServiceAccountRegistry() ServiceAccountProjectGetServiceAccountRegistry {
-	if o == nil || IsNil(o.ServiceAccountRegistry.Get()) {
+	if o == nil || isNil(o.ServiceAccountRegistry.Get()) {
 		var ret ServiceAccountProjectGetServiceAccountRegistry
 		return ret
 	}
@@ -114,6 +112,7 @@ func (o *ServiceAccountProjectGet) HasServiceAccountRegistry() bool {
 func (o *ServiceAccountProjectGet) SetServiceAccountRegistry(v ServiceAccountProjectGetServiceAccountRegistry) {
 	o.ServiceAccountRegistry.Set(&v)
 }
+
 // SetServiceAccountRegistryNil sets the value for ServiceAccountRegistry to be an explicit nil
 func (o *ServiceAccountProjectGet) SetServiceAccountRegistryNil() {
 	o.ServiceAccountRegistry.Set(nil)
@@ -125,14 +124,6 @@ func (o *ServiceAccountProjectGet) UnsetServiceAccountRegistry() {
 }
 
 func (o ServiceAccountProjectGet) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o ServiceAccountProjectGet) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if o.ServiceAccountGit.IsSet() {
 		toSerialize["serviceAccountGit"] = o.ServiceAccountGit.Get()
@@ -140,7 +131,7 @@ func (o ServiceAccountProjectGet) ToMap() (map[string]interface{}, error) {
 	if o.ServiceAccountRegistry.IsSet() {
 		toSerialize["serviceAccountRegistry"] = o.ServiceAccountRegistry.Get()
 	}
-	return toSerialize, nil
+	return json.Marshal(toSerialize)
 }
 
 type NullableServiceAccountProjectGet struct {
@@ -178,5 +169,3 @@ func (v *NullableServiceAccountProjectGet) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

@@ -19,14 +19,13 @@ import (
 	"strings"
 )
 
-
 // RoleGroupApiService RoleGroupApi service
 type RoleGroupApiService service
 
 type ApiApiRoleGroupsGetCollectionRequest struct {
-	ctx context.Context
-	ApiService *RoleGroupApiService
-	page *int32
+	ctx          context.Context
+	ApiService   *RoleGroupApiService
+	page         *int32
 	itemsPerPage *int32
 }
 
@@ -42,7 +41,7 @@ func (r ApiApiRoleGroupsGetCollectionRequest) ItemsPerPage(itemsPerPage int32) A
 	return r
 }
 
-func (r ApiApiRoleGroupsGetCollectionRequest) Execute() ([]RoleGroup, *http.Response, error) {
+func (r ApiApiRoleGroupsGetCollectionRequest) Execute() (*ApiRoleGroupsGetCollection200Response, *http.Response, error) {
 	return r.ApiService.ApiRoleGroupsGetCollectionExecute(r)
 }
 
@@ -51,24 +50,25 @@ ApiRoleGroupsGetCollection Retrieves the collection of RoleGroup resources.
 
 Retrieves the collection of RoleGroup resources.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiApiRoleGroupsGetCollectionRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiApiRoleGroupsGetCollectionRequest
 */
 func (a *RoleGroupApiService) ApiRoleGroupsGetCollection(ctx context.Context) ApiApiRoleGroupsGetCollectionRequest {
 	return ApiApiRoleGroupsGetCollectionRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return []RoleGroup
-func (a *RoleGroupApiService) ApiRoleGroupsGetCollectionExecute(r ApiApiRoleGroupsGetCollectionRequest) ([]RoleGroup, *http.Response, error) {
+//
+//	@return ApiRoleGroupsGetCollection200Response
+func (a *RoleGroupApiService) ApiRoleGroupsGetCollectionExecute(r ApiApiRoleGroupsGetCollectionRequest) (*ApiRoleGroupsGetCollection200Response, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  []RoleGroup
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *ApiRoleGroupsGetCollection200Response
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RoleGroupApiService.ApiRoleGroupsGetCollection")
@@ -98,7 +98,7 @@ func (a *RoleGroupApiService) ApiRoleGroupsGetCollectionExecute(r ApiApiRoleGrou
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json", "application/hal+json", "text/html"}
+	localVarHTTPHeaderAccepts := []string{"application/hal+json", "application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -157,9 +157,9 @@ func (a *RoleGroupApiService) ApiRoleGroupsGetCollectionExecute(r ApiApiRoleGrou
 }
 
 type ApiApiRoleGroupsIdDeleteRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *RoleGroupApiService
-	id string
+	id         string
 }
 
 func (r ApiApiRoleGroupsIdDeleteRequest) Execute() (*http.Response, error) {
@@ -171,24 +171,24 @@ ApiRoleGroupsIdDelete Removes the RoleGroup resource.
 
 Removes the RoleGroup resource.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id RoleGroup identifier
- @return ApiApiRoleGroupsIdDeleteRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id RoleGroup identifier
+	@return ApiApiRoleGroupsIdDeleteRequest
 */
 func (a *RoleGroupApiService) ApiRoleGroupsIdDelete(ctx context.Context, id string) ApiApiRoleGroupsIdDeleteRequest {
 	return ApiApiRoleGroupsIdDeleteRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
 // Execute executes the request
 func (a *RoleGroupApiService) ApiRoleGroupsIdDeleteExecute(r ApiApiRoleGroupsIdDeleteRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodDelete
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RoleGroupApiService.ApiRoleGroupsIdDelete")
@@ -263,12 +263,12 @@ func (a *RoleGroupApiService) ApiRoleGroupsIdDeleteExecute(r ApiApiRoleGroupsIdD
 }
 
 type ApiApiRoleGroupsIdGetRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *RoleGroupApiService
-	id string
+	id         string
 }
 
-func (r ApiApiRoleGroupsIdGetRequest) Execute() (*RoleGroup, *http.Response, error) {
+func (r ApiApiRoleGroupsIdGetRequest) Execute() (*RoleGroupJsonhal, *http.Response, error) {
 	return r.ApiService.ApiRoleGroupsIdGetExecute(r)
 }
 
@@ -277,26 +277,27 @@ ApiRoleGroupsIdGet Retrieves a RoleGroup resource.
 
 Retrieves a RoleGroup resource.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id RoleGroup identifier
- @return ApiApiRoleGroupsIdGetRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id RoleGroup identifier
+	@return ApiApiRoleGroupsIdGetRequest
 */
 func (a *RoleGroupApiService) ApiRoleGroupsIdGet(ctx context.Context, id string) ApiApiRoleGroupsIdGetRequest {
 	return ApiApiRoleGroupsIdGetRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
 // Execute executes the request
-//  @return RoleGroup
-func (a *RoleGroupApiService) ApiRoleGroupsIdGetExecute(r ApiApiRoleGroupsIdGetRequest) (*RoleGroup, *http.Response, error) {
+//
+//	@return RoleGroupJsonhal
+func (a *RoleGroupApiService) ApiRoleGroupsIdGetExecute(r ApiApiRoleGroupsIdGetRequest) (*RoleGroupJsonhal, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *RoleGroup
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *RoleGroupJsonhal
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RoleGroupApiService.ApiRoleGroupsIdGet")
@@ -321,7 +322,7 @@ func (a *RoleGroupApiService) ApiRoleGroupsIdGetExecute(r ApiApiRoleGroupsIdGetR
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json", "application/hal+json", "text/html"}
+	localVarHTTPHeaderAccepts := []string{"application/hal+json", "application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -380,10 +381,10 @@ func (a *RoleGroupApiService) ApiRoleGroupsIdGetExecute(r ApiApiRoleGroupsIdGetR
 }
 
 type ApiApiRoleGroupsIdPatchRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *RoleGroupApiService
-	id string
-	roleGroup *RoleGroup
+	id         string
+	roleGroup  *RoleGroup
 }
 
 // The updated RoleGroup resource
@@ -392,7 +393,7 @@ func (r ApiApiRoleGroupsIdPatchRequest) RoleGroup(roleGroup RoleGroup) ApiApiRol
 	return r
 }
 
-func (r ApiApiRoleGroupsIdPatchRequest) Execute() (*RoleGroup, *http.Response, error) {
+func (r ApiApiRoleGroupsIdPatchRequest) Execute() (*RoleGroupJsonhal, *http.Response, error) {
 	return r.ApiService.ApiRoleGroupsIdPatchExecute(r)
 }
 
@@ -401,26 +402,27 @@ ApiRoleGroupsIdPatch Updates the RoleGroup resource.
 
 Updates the RoleGroup resource.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id RoleGroup identifier
- @return ApiApiRoleGroupsIdPatchRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id RoleGroup identifier
+	@return ApiApiRoleGroupsIdPatchRequest
 */
 func (a *RoleGroupApiService) ApiRoleGroupsIdPatch(ctx context.Context, id string) ApiApiRoleGroupsIdPatchRequest {
 	return ApiApiRoleGroupsIdPatchRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
 // Execute executes the request
-//  @return RoleGroup
-func (a *RoleGroupApiService) ApiRoleGroupsIdPatchExecute(r ApiApiRoleGroupsIdPatchRequest) (*RoleGroup, *http.Response, error) {
+//
+//	@return RoleGroupJsonhal
+func (a *RoleGroupApiService) ApiRoleGroupsIdPatchExecute(r ApiApiRoleGroupsIdPatchRequest) (*RoleGroupJsonhal, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPatch
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *RoleGroup
+		localVarHTTPMethod  = http.MethodPatch
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *RoleGroupJsonhal
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RoleGroupApiService.ApiRoleGroupsIdPatch")
@@ -439,7 +441,7 @@ func (a *RoleGroupApiService) ApiRoleGroupsIdPatchExecute(r ApiApiRoleGroupsIdPa
 	}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json", "application/hal+json", "text/html"}
+	localVarHTTPContentTypes := []string{"application/vnd.api+json"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -448,7 +450,7 @@ func (a *RoleGroupApiService) ApiRoleGroupsIdPatchExecute(r ApiApiRoleGroupsIdPa
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json", "application/hal+json", "text/html"}
+	localVarHTTPHeaderAccepts := []string{"application/hal+json", "application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -509,19 +511,19 @@ func (a *RoleGroupApiService) ApiRoleGroupsIdPatchExecute(r ApiApiRoleGroupsIdPa
 }
 
 type ApiApiRoleGroupsIdPutRequest struct {
-	ctx context.Context
-	ApiService *RoleGroupApiService
-	id string
-	roleGroup *RoleGroup
+	ctx              context.Context
+	ApiService       *RoleGroupApiService
+	id               string
+	roleGroupJsonhal *RoleGroupJsonhal
 }
 
 // The updated RoleGroup resource
-func (r ApiApiRoleGroupsIdPutRequest) RoleGroup(roleGroup RoleGroup) ApiApiRoleGroupsIdPutRequest {
-	r.roleGroup = &roleGroup
+func (r ApiApiRoleGroupsIdPutRequest) RoleGroupJsonhal(roleGroupJsonhal RoleGroupJsonhal) ApiApiRoleGroupsIdPutRequest {
+	r.roleGroupJsonhal = &roleGroupJsonhal
 	return r
 }
 
-func (r ApiApiRoleGroupsIdPutRequest) Execute() (*RoleGroup, *http.Response, error) {
+func (r ApiApiRoleGroupsIdPutRequest) Execute() (*RoleGroupJsonhal, *http.Response, error) {
 	return r.ApiService.ApiRoleGroupsIdPutExecute(r)
 }
 
@@ -530,26 +532,27 @@ ApiRoleGroupsIdPut Replaces the RoleGroup resource.
 
 Replaces the RoleGroup resource.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id RoleGroup identifier
- @return ApiApiRoleGroupsIdPutRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id RoleGroup identifier
+	@return ApiApiRoleGroupsIdPutRequest
 */
 func (a *RoleGroupApiService) ApiRoleGroupsIdPut(ctx context.Context, id string) ApiApiRoleGroupsIdPutRequest {
 	return ApiApiRoleGroupsIdPutRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
 // Execute executes the request
-//  @return RoleGroup
-func (a *RoleGroupApiService) ApiRoleGroupsIdPutExecute(r ApiApiRoleGroupsIdPutRequest) (*RoleGroup, *http.Response, error) {
+//
+//	@return RoleGroupJsonhal
+func (a *RoleGroupApiService) ApiRoleGroupsIdPutExecute(r ApiApiRoleGroupsIdPutRequest) (*RoleGroupJsonhal, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPut
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *RoleGroup
+		localVarHTTPMethod  = http.MethodPut
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *RoleGroupJsonhal
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RoleGroupApiService.ApiRoleGroupsIdPut")
@@ -563,12 +566,12 @@ func (a *RoleGroupApiService) ApiRoleGroupsIdPutExecute(r ApiApiRoleGroupsIdPutR
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.roleGroup == nil {
-		return localVarReturnValue, nil, reportError("roleGroup is required and must be specified")
+	if r.roleGroupJsonhal == nil {
+		return localVarReturnValue, nil, reportError("roleGroupJsonhal is required and must be specified")
 	}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json", "application/hal+json", "text/html"}
+	localVarHTTPContentTypes := []string{"application/hal+json", "application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -577,7 +580,7 @@ func (a *RoleGroupApiService) ApiRoleGroupsIdPutExecute(r ApiApiRoleGroupsIdPutR
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json", "application/hal+json", "text/html"}
+	localVarHTTPHeaderAccepts := []string{"application/hal+json", "application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -585,7 +588,7 @@ func (a *RoleGroupApiService) ApiRoleGroupsIdPutExecute(r ApiApiRoleGroupsIdPutR
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.roleGroup
+	localVarPostBody = r.roleGroupJsonhal
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
@@ -638,18 +641,18 @@ func (a *RoleGroupApiService) ApiRoleGroupsIdPutExecute(r ApiApiRoleGroupsIdPutR
 }
 
 type ApiApiRoleGroupsPostRequest struct {
-	ctx context.Context
-	ApiService *RoleGroupApiService
-	roleGroup *RoleGroup
+	ctx              context.Context
+	ApiService       *RoleGroupApiService
+	roleGroupJsonhal *RoleGroupJsonhal
 }
 
 // The new RoleGroup resource
-func (r ApiApiRoleGroupsPostRequest) RoleGroup(roleGroup RoleGroup) ApiApiRoleGroupsPostRequest {
-	r.roleGroup = &roleGroup
+func (r ApiApiRoleGroupsPostRequest) RoleGroupJsonhal(roleGroupJsonhal RoleGroupJsonhal) ApiApiRoleGroupsPostRequest {
+	r.roleGroupJsonhal = &roleGroupJsonhal
 	return r
 }
 
-func (r ApiApiRoleGroupsPostRequest) Execute() (*RoleGroup, *http.Response, error) {
+func (r ApiApiRoleGroupsPostRequest) Execute() (*RoleGroupJsonhal, *http.Response, error) {
 	return r.ApiService.ApiRoleGroupsPostExecute(r)
 }
 
@@ -658,24 +661,25 @@ ApiRoleGroupsPost Creates a RoleGroup resource.
 
 Creates a RoleGroup resource.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiApiRoleGroupsPostRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiApiRoleGroupsPostRequest
 */
 func (a *RoleGroupApiService) ApiRoleGroupsPost(ctx context.Context) ApiApiRoleGroupsPostRequest {
 	return ApiApiRoleGroupsPostRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return RoleGroup
-func (a *RoleGroupApiService) ApiRoleGroupsPostExecute(r ApiApiRoleGroupsPostRequest) (*RoleGroup, *http.Response, error) {
+//
+//	@return RoleGroupJsonhal
+func (a *RoleGroupApiService) ApiRoleGroupsPostExecute(r ApiApiRoleGroupsPostRequest) (*RoleGroupJsonhal, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *RoleGroup
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *RoleGroupJsonhal
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RoleGroupApiService.ApiRoleGroupsPost")
@@ -688,12 +692,12 @@ func (a *RoleGroupApiService) ApiRoleGroupsPostExecute(r ApiApiRoleGroupsPostReq
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.roleGroup == nil {
-		return localVarReturnValue, nil, reportError("roleGroup is required and must be specified")
+	if r.roleGroupJsonhal == nil {
+		return localVarReturnValue, nil, reportError("roleGroupJsonhal is required and must be specified")
 	}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json", "application/hal+json", "text/html"}
+	localVarHTTPContentTypes := []string{"application/hal+json", "application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -702,7 +706,7 @@ func (a *RoleGroupApiService) ApiRoleGroupsPostExecute(r ApiApiRoleGroupsPostReq
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json", "application/hal+json", "text/html"}
+	localVarHTTPHeaderAccepts := []string{"application/hal+json", "application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -710,7 +714,7 @@ func (a *RoleGroupApiService) ApiRoleGroupsPostExecute(r ApiApiRoleGroupsPostReq
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.roleGroup
+	localVarPostBody = r.roleGroupJsonhal
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {

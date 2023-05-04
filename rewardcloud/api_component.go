@@ -19,16 +19,15 @@ import (
 	"strings"
 )
 
-
 // ComponentApiService ComponentApi service
 type ComponentApiService service
 
 type ApiApiComponentsGetCollectionRequest struct {
-	ctx context.Context
-	ApiService *ComponentApiService
-	page *int32
+	ctx          context.Context
+	ApiService   *ComponentApiService
+	page         *int32
 	itemsPerPage *int32
-	orderName *string
+	orderName    *string
 }
 
 // The collection page number
@@ -43,13 +42,12 @@ func (r ApiApiComponentsGetCollectionRequest) ItemsPerPage(itemsPerPage int32) A
 	return r
 }
 
-// 
 func (r ApiApiComponentsGetCollectionRequest) OrderName(orderName string) ApiApiComponentsGetCollectionRequest {
 	r.orderName = &orderName
 	return r
 }
 
-func (r ApiApiComponentsGetCollectionRequest) Execute() ([]Component, *http.Response, error) {
+func (r ApiApiComponentsGetCollectionRequest) Execute() (*ApiComponentsGetCollection200Response, *http.Response, error) {
 	return r.ApiService.ApiComponentsGetCollectionExecute(r)
 }
 
@@ -58,24 +56,25 @@ ApiComponentsGetCollection Retrieves the collection of Component resources.
 
 Retrieves the collection of Component resources.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiApiComponentsGetCollectionRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiApiComponentsGetCollectionRequest
 */
 func (a *ComponentApiService) ApiComponentsGetCollection(ctx context.Context) ApiApiComponentsGetCollectionRequest {
 	return ApiApiComponentsGetCollectionRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return []Component
-func (a *ComponentApiService) ApiComponentsGetCollectionExecute(r ApiApiComponentsGetCollectionRequest) ([]Component, *http.Response, error) {
+//
+//	@return ApiComponentsGetCollection200Response
+func (a *ComponentApiService) ApiComponentsGetCollectionExecute(r ApiApiComponentsGetCollectionRequest) (*ApiComponentsGetCollection200Response, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  []Component
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *ApiComponentsGetCollection200Response
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ComponentApiService.ApiComponentsGetCollection")
@@ -108,7 +107,7 @@ func (a *ComponentApiService) ApiComponentsGetCollectionExecute(r ApiApiComponen
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json", "application/hal+json", "text/html"}
+	localVarHTTPHeaderAccepts := []string{"application/hal+json", "application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -167,9 +166,9 @@ func (a *ComponentApiService) ApiComponentsGetCollectionExecute(r ApiApiComponen
 }
 
 type ApiApiComponentsIdDeleteRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *ComponentApiService
-	id string
+	id         string
 }
 
 func (r ApiApiComponentsIdDeleteRequest) Execute() (*http.Response, error) {
@@ -181,24 +180,24 @@ ApiComponentsIdDelete Removes the Component resource.
 
 Removes the Component resource.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id Component identifier
- @return ApiApiComponentsIdDeleteRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id Component identifier
+	@return ApiApiComponentsIdDeleteRequest
 */
 func (a *ComponentApiService) ApiComponentsIdDelete(ctx context.Context, id string) ApiApiComponentsIdDeleteRequest {
 	return ApiApiComponentsIdDeleteRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
 // Execute executes the request
 func (a *ComponentApiService) ApiComponentsIdDeleteExecute(r ApiApiComponentsIdDeleteRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodDelete
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ComponentApiService.ApiComponentsIdDelete")
@@ -273,12 +272,12 @@ func (a *ComponentApiService) ApiComponentsIdDeleteExecute(r ApiApiComponentsIdD
 }
 
 type ApiApiComponentsIdGetRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *ComponentApiService
-	id string
+	id         string
 }
 
-func (r ApiApiComponentsIdGetRequest) Execute() (*Component, *http.Response, error) {
+func (r ApiApiComponentsIdGetRequest) Execute() (*ComponentJsonhal, *http.Response, error) {
 	return r.ApiService.ApiComponentsIdGetExecute(r)
 }
 
@@ -287,26 +286,27 @@ ApiComponentsIdGet Retrieves a Component resource.
 
 Retrieves a Component resource.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id Component identifier
- @return ApiApiComponentsIdGetRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id Component identifier
+	@return ApiApiComponentsIdGetRequest
 */
 func (a *ComponentApiService) ApiComponentsIdGet(ctx context.Context, id string) ApiApiComponentsIdGetRequest {
 	return ApiApiComponentsIdGetRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
 // Execute executes the request
-//  @return Component
-func (a *ComponentApiService) ApiComponentsIdGetExecute(r ApiApiComponentsIdGetRequest) (*Component, *http.Response, error) {
+//
+//	@return ComponentJsonhal
+func (a *ComponentApiService) ApiComponentsIdGetExecute(r ApiApiComponentsIdGetRequest) (*ComponentJsonhal, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *Component
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *ComponentJsonhal
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ComponentApiService.ApiComponentsIdGet")
@@ -331,7 +331,7 @@ func (a *ComponentApiService) ApiComponentsIdGetExecute(r ApiApiComponentsIdGetR
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json", "application/hal+json", "text/html"}
+	localVarHTTPHeaderAccepts := []string{"application/hal+json", "application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -390,10 +390,10 @@ func (a *ComponentApiService) ApiComponentsIdGetExecute(r ApiApiComponentsIdGetR
 }
 
 type ApiApiComponentsIdPatchRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *ComponentApiService
-	id string
-	component *Component
+	id         string
+	component  *Component
 }
 
 // The updated Component resource
@@ -402,7 +402,7 @@ func (r ApiApiComponentsIdPatchRequest) Component(component Component) ApiApiCom
 	return r
 }
 
-func (r ApiApiComponentsIdPatchRequest) Execute() (*Component, *http.Response, error) {
+func (r ApiApiComponentsIdPatchRequest) Execute() (*ComponentJsonhal, *http.Response, error) {
 	return r.ApiService.ApiComponentsIdPatchExecute(r)
 }
 
@@ -411,26 +411,27 @@ ApiComponentsIdPatch Updates the Component resource.
 
 Updates the Component resource.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id Component identifier
- @return ApiApiComponentsIdPatchRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id Component identifier
+	@return ApiApiComponentsIdPatchRequest
 */
 func (a *ComponentApiService) ApiComponentsIdPatch(ctx context.Context, id string) ApiApiComponentsIdPatchRequest {
 	return ApiApiComponentsIdPatchRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
 // Execute executes the request
-//  @return Component
-func (a *ComponentApiService) ApiComponentsIdPatchExecute(r ApiApiComponentsIdPatchRequest) (*Component, *http.Response, error) {
+//
+//	@return ComponentJsonhal
+func (a *ComponentApiService) ApiComponentsIdPatchExecute(r ApiApiComponentsIdPatchRequest) (*ComponentJsonhal, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPatch
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *Component
+		localVarHTTPMethod  = http.MethodPatch
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *ComponentJsonhal
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ComponentApiService.ApiComponentsIdPatch")
@@ -449,7 +450,7 @@ func (a *ComponentApiService) ApiComponentsIdPatchExecute(r ApiApiComponentsIdPa
 	}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json", "application/hal+json", "text/html"}
+	localVarHTTPContentTypes := []string{"application/vnd.api+json"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -458,7 +459,7 @@ func (a *ComponentApiService) ApiComponentsIdPatchExecute(r ApiApiComponentsIdPa
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json", "application/hal+json", "text/html"}
+	localVarHTTPHeaderAccepts := []string{"application/hal+json", "application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -519,19 +520,19 @@ func (a *ComponentApiService) ApiComponentsIdPatchExecute(r ApiApiComponentsIdPa
 }
 
 type ApiApiComponentsIdPutRequest struct {
-	ctx context.Context
-	ApiService *ComponentApiService
-	id string
-	component *Component
+	ctx              context.Context
+	ApiService       *ComponentApiService
+	id               string
+	componentJsonhal *ComponentJsonhal
 }
 
 // The updated Component resource
-func (r ApiApiComponentsIdPutRequest) Component(component Component) ApiApiComponentsIdPutRequest {
-	r.component = &component
+func (r ApiApiComponentsIdPutRequest) ComponentJsonhal(componentJsonhal ComponentJsonhal) ApiApiComponentsIdPutRequest {
+	r.componentJsonhal = &componentJsonhal
 	return r
 }
 
-func (r ApiApiComponentsIdPutRequest) Execute() (*Component, *http.Response, error) {
+func (r ApiApiComponentsIdPutRequest) Execute() (*ComponentJsonhal, *http.Response, error) {
 	return r.ApiService.ApiComponentsIdPutExecute(r)
 }
 
@@ -540,26 +541,27 @@ ApiComponentsIdPut Replaces the Component resource.
 
 Replaces the Component resource.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id Component identifier
- @return ApiApiComponentsIdPutRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id Component identifier
+	@return ApiApiComponentsIdPutRequest
 */
 func (a *ComponentApiService) ApiComponentsIdPut(ctx context.Context, id string) ApiApiComponentsIdPutRequest {
 	return ApiApiComponentsIdPutRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
 // Execute executes the request
-//  @return Component
-func (a *ComponentApiService) ApiComponentsIdPutExecute(r ApiApiComponentsIdPutRequest) (*Component, *http.Response, error) {
+//
+//	@return ComponentJsonhal
+func (a *ComponentApiService) ApiComponentsIdPutExecute(r ApiApiComponentsIdPutRequest) (*ComponentJsonhal, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPut
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *Component
+		localVarHTTPMethod  = http.MethodPut
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *ComponentJsonhal
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ComponentApiService.ApiComponentsIdPut")
@@ -573,12 +575,12 @@ func (a *ComponentApiService) ApiComponentsIdPutExecute(r ApiApiComponentsIdPutR
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.component == nil {
-		return localVarReturnValue, nil, reportError("component is required and must be specified")
+	if r.componentJsonhal == nil {
+		return localVarReturnValue, nil, reportError("componentJsonhal is required and must be specified")
 	}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json", "application/hal+json", "text/html"}
+	localVarHTTPContentTypes := []string{"application/hal+json", "application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -587,7 +589,7 @@ func (a *ComponentApiService) ApiComponentsIdPutExecute(r ApiApiComponentsIdPutR
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json", "application/hal+json", "text/html"}
+	localVarHTTPHeaderAccepts := []string{"application/hal+json", "application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -595,7 +597,7 @@ func (a *ComponentApiService) ApiComponentsIdPutExecute(r ApiApiComponentsIdPutR
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.component
+	localVarPostBody = r.componentJsonhal
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
@@ -648,18 +650,18 @@ func (a *ComponentApiService) ApiComponentsIdPutExecute(r ApiApiComponentsIdPutR
 }
 
 type ApiApiComponentsPostRequest struct {
-	ctx context.Context
-	ApiService *ComponentApiService
-	component *Component
+	ctx              context.Context
+	ApiService       *ComponentApiService
+	componentJsonhal *ComponentJsonhal
 }
 
 // The new Component resource
-func (r ApiApiComponentsPostRequest) Component(component Component) ApiApiComponentsPostRequest {
-	r.component = &component
+func (r ApiApiComponentsPostRequest) ComponentJsonhal(componentJsonhal ComponentJsonhal) ApiApiComponentsPostRequest {
+	r.componentJsonhal = &componentJsonhal
 	return r
 }
 
-func (r ApiApiComponentsPostRequest) Execute() (*Component, *http.Response, error) {
+func (r ApiApiComponentsPostRequest) Execute() (*ComponentJsonhal, *http.Response, error) {
 	return r.ApiService.ApiComponentsPostExecute(r)
 }
 
@@ -668,24 +670,25 @@ ApiComponentsPost Creates a Component resource.
 
 Creates a Component resource.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiApiComponentsPostRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiApiComponentsPostRequest
 */
 func (a *ComponentApiService) ApiComponentsPost(ctx context.Context) ApiApiComponentsPostRequest {
 	return ApiApiComponentsPostRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return Component
-func (a *ComponentApiService) ApiComponentsPostExecute(r ApiApiComponentsPostRequest) (*Component, *http.Response, error) {
+//
+//	@return ComponentJsonhal
+func (a *ComponentApiService) ApiComponentsPostExecute(r ApiApiComponentsPostRequest) (*ComponentJsonhal, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *Component
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *ComponentJsonhal
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ComponentApiService.ApiComponentsPost")
@@ -698,12 +701,12 @@ func (a *ComponentApiService) ApiComponentsPostExecute(r ApiApiComponentsPostReq
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.component == nil {
-		return localVarReturnValue, nil, reportError("component is required and must be specified")
+	if r.componentJsonhal == nil {
+		return localVarReturnValue, nil, reportError("componentJsonhal is required and must be specified")
 	}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json", "application/hal+json", "text/html"}
+	localVarHTTPContentTypes := []string{"application/hal+json", "application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -712,7 +715,7 @@ func (a *ComponentApiService) ApiComponentsPostExecute(r ApiApiComponentsPostReq
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json", "application/hal+json", "text/html"}
+	localVarHTTPHeaderAccepts := []string{"application/hal+json", "application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -720,7 +723,7 @@ func (a *ComponentApiService) ApiComponentsPostExecute(r ApiApiComponentsPostReq
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.component
+	localVarPostBody = r.componentJsonhal
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {

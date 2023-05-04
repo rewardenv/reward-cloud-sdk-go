@@ -14,9 +14,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the ApiComponentResourceLimitsGetCollection200ResponseLinksSelf type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &ApiComponentResourceLimitsGetCollection200ResponseLinksSelf{}
-
 // ApiComponentResourceLimitsGetCollection200ResponseLinksSelf struct for ApiComponentResourceLimitsGetCollection200ResponseLinksSelf
 type ApiComponentResourceLimitsGetCollection200ResponseLinksSelf struct {
 	Href *string `json:"href,omitempty"`
@@ -41,7 +38,7 @@ func NewApiComponentResourceLimitsGetCollection200ResponseLinksSelfWithDefaults(
 
 // GetHref returns the Href field value if set, zero value otherwise.
 func (o *ApiComponentResourceLimitsGetCollection200ResponseLinksSelf) GetHref() string {
-	if o == nil || IsNil(o.Href) {
+	if o == nil || isNil(o.Href) {
 		var ret string
 		return ret
 	}
@@ -51,7 +48,7 @@ func (o *ApiComponentResourceLimitsGetCollection200ResponseLinksSelf) GetHref() 
 // GetHrefOk returns a tuple with the Href field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ApiComponentResourceLimitsGetCollection200ResponseLinksSelf) GetHrefOk() (*string, bool) {
-	if o == nil || IsNil(o.Href) {
+	if o == nil || isNil(o.Href) {
 		return nil, false
 	}
 	return o.Href, true
@@ -59,7 +56,7 @@ func (o *ApiComponentResourceLimitsGetCollection200ResponseLinksSelf) GetHrefOk(
 
 // HasHref returns a boolean if a field has been set.
 func (o *ApiComponentResourceLimitsGetCollection200ResponseLinksSelf) HasHref() bool {
-	if o != nil && !IsNil(o.Href) {
+	if o != nil && !isNil(o.Href) {
 		return true
 	}
 
@@ -72,19 +69,11 @@ func (o *ApiComponentResourceLimitsGetCollection200ResponseLinksSelf) SetHref(v 
 }
 
 func (o ApiComponentResourceLimitsGetCollection200ResponseLinksSelf) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o ApiComponentResourceLimitsGetCollection200ResponseLinksSelf) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Href) {
+	if !isNil(o.Href) {
 		toSerialize["href"] = o.Href
 	}
-	return toSerialize, nil
+	return json.Marshal(toSerialize)
 }
 
 type NullableApiComponentResourceLimitsGetCollection200ResponseLinksSelf struct {
@@ -122,5 +111,3 @@ func (v *NullableApiComponentResourceLimitsGetCollection200ResponseLinksSelf) Un
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

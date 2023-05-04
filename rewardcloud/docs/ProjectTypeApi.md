@@ -15,7 +15,7 @@ Method | HTTP request | Description
 
 ## ApiProjectTypesGetCollection
 
-> []ProjectType ApiProjectTypesGetCollection(ctx).Page(page).ItemsPerPage(itemsPerPage).OrderName(orderName).Execute()
+> ApiProjectTypesGetCollection200Response ApiProjectTypesGetCollection(ctx).Page(page).ItemsPerPage(itemsPerPage).OrderName(orderName).Execute()
 
 Retrieves the collection of ProjectType resources.
 
@@ -45,7 +45,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `ProjectTypeApi.ApiProjectTypesGetCollection``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiProjectTypesGetCollection`: []ProjectType
+    // response from `ApiProjectTypesGetCollection`: ApiProjectTypesGetCollection200Response
     fmt.Fprintf(os.Stdout, "Response from `ProjectTypeApi.ApiProjectTypesGetCollection`: %v\n", resp)
 }
 ```
@@ -67,7 +67,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]ProjectType**](ProjectType.md)
+[**ApiProjectTypesGetCollection200Response**](ApiProjectTypesGetCollection200Response.md)
 
 ### Authorization
 
@@ -76,7 +76,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json, application/hal+json, text/html
+- **Accept**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -153,7 +153,7 @@ Name | Type | Description  | Notes
 
 ## ApiProjectTypesIdGet
 
-> ProjectType ApiProjectTypesIdGet(ctx, id).Execute()
+> ProjectTypeJsonhal ApiProjectTypesIdGet(ctx, id).Execute()
 
 Retrieves a ProjectType resource.
 
@@ -181,7 +181,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `ProjectTypeApi.ApiProjectTypesIdGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiProjectTypesIdGet`: ProjectType
+    // response from `ApiProjectTypesIdGet`: ProjectTypeJsonhal
     fmt.Fprintf(os.Stdout, "Response from `ProjectTypeApi.ApiProjectTypesIdGet`: %v\n", resp)
 }
 ```
@@ -205,7 +205,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ProjectType**](ProjectType.md)
+[**ProjectTypeJsonhal**](ProjectTypeJsonhal.md)
 
 ### Authorization
 
@@ -214,7 +214,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json, application/hal+json, text/html
+- **Accept**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -223,7 +223,7 @@ Name | Type | Description  | Notes
 
 ## ApiProjectTypesIdPatch
 
-> ProjectType ApiProjectTypesIdPatch(ctx, id).ProjectType(projectType).Execute()
+> ProjectTypeJsonhal ApiProjectTypesIdPatch(ctx, id).ProjectType(projectType).Execute()
 
 Updates the ProjectType resource.
 
@@ -252,7 +252,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `ProjectTypeApi.ApiProjectTypesIdPatch``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiProjectTypesIdPatch`: ProjectType
+    // response from `ApiProjectTypesIdPatch`: ProjectTypeJsonhal
     fmt.Fprintf(os.Stdout, "Response from `ProjectTypeApi.ApiProjectTypesIdPatch`: %v\n", resp)
 }
 ```
@@ -277,7 +277,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ProjectType**](ProjectType.md)
+[**ProjectTypeJsonhal**](ProjectTypeJsonhal.md)
 
 ### Authorization
 
@@ -285,8 +285,8 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: application/json, application/hal+json, text/html
-- **Accept**: application/json, application/hal+json, text/html
+- **Content-Type**: application/vnd.api+json
+- **Accept**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -295,7 +295,7 @@ Name | Type | Description  | Notes
 
 ## ApiProjectTypesIdPut
 
-> ProjectType ApiProjectTypesIdPut(ctx, id).ProjectType(projectType).Execute()
+> ProjectTypeJsonhal ApiProjectTypesIdPut(ctx, id).ProjectTypeJsonhal(projectTypeJsonhal).Execute()
 
 Replaces the ProjectType resource.
 
@@ -315,16 +315,16 @@ import (
 
 func main() {
     id := "id_example" // string | ProjectType identifier
-    projectType := *openapiclient.NewProjectType() // ProjectType | The updated ProjectType resource
+    projectTypeJsonhal := *openapiclient.NewProjectTypeJsonhal() // ProjectTypeJsonhal | The updated ProjectType resource
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ProjectTypeApi.ApiProjectTypesIdPut(context.Background(), id).ProjectType(projectType).Execute()
+    resp, r, err := apiClient.ProjectTypeApi.ApiProjectTypesIdPut(context.Background(), id).ProjectTypeJsonhal(projectTypeJsonhal).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ProjectTypeApi.ApiProjectTypesIdPut``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiProjectTypesIdPut`: ProjectType
+    // response from `ApiProjectTypesIdPut`: ProjectTypeJsonhal
     fmt.Fprintf(os.Stdout, "Response from `ProjectTypeApi.ApiProjectTypesIdPut`: %v\n", resp)
 }
 ```
@@ -345,11 +345,11 @@ Other parameters are passed through a pointer to a apiApiProjectTypesIdPutReques
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **projectType** | [**ProjectType**](ProjectType.md) | The updated ProjectType resource | 
+ **projectTypeJsonhal** | [**ProjectTypeJsonhal**](ProjectTypeJsonhal.md) | The updated ProjectType resource | 
 
 ### Return type
 
-[**ProjectType**](ProjectType.md)
+[**ProjectTypeJsonhal**](ProjectTypeJsonhal.md)
 
 ### Authorization
 
@@ -357,8 +357,8 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: application/json, application/hal+json, text/html
-- **Accept**: application/json, application/hal+json, text/html
+- **Content-Type**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
+- **Accept**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -367,7 +367,7 @@ Name | Type | Description  | Notes
 
 ## ApiProjectTypesPost
 
-> ProjectType ApiProjectTypesPost(ctx).ProjectType(projectType).Execute()
+> ProjectTypeJsonhal ApiProjectTypesPost(ctx).ProjectTypeJsonhal(projectTypeJsonhal).Execute()
 
 Creates a ProjectType resource.
 
@@ -386,16 +386,16 @@ import (
 )
 
 func main() {
-    projectType := *openapiclient.NewProjectType() // ProjectType | The new ProjectType resource
+    projectTypeJsonhal := *openapiclient.NewProjectTypeJsonhal() // ProjectTypeJsonhal | The new ProjectType resource
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ProjectTypeApi.ApiProjectTypesPost(context.Background()).ProjectType(projectType).Execute()
+    resp, r, err := apiClient.ProjectTypeApi.ApiProjectTypesPost(context.Background()).ProjectTypeJsonhal(projectTypeJsonhal).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ProjectTypeApi.ApiProjectTypesPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiProjectTypesPost`: ProjectType
+    // response from `ApiProjectTypesPost`: ProjectTypeJsonhal
     fmt.Fprintf(os.Stdout, "Response from `ProjectTypeApi.ApiProjectTypesPost`: %v\n", resp)
 }
 ```
@@ -411,11 +411,11 @@ Other parameters are passed through a pointer to a apiApiProjectTypesPostRequest
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **projectType** | [**ProjectType**](ProjectType.md) | The new ProjectType resource | 
+ **projectTypeJsonhal** | [**ProjectTypeJsonhal**](ProjectTypeJsonhal.md) | The new ProjectType resource | 
 
 ### Return type
 
-[**ProjectType**](ProjectType.md)
+[**ProjectTypeJsonhal**](ProjectTypeJsonhal.md)
 
 ### Authorization
 
@@ -423,8 +423,8 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: application/json, application/hal+json, text/html
-- **Accept**: application/json, application/hal+json, text/html
+- **Content-Type**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
+- **Accept**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)

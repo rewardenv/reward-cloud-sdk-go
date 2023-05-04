@@ -14,15 +14,12 @@ import (
 	"encoding/json"
 )
 
-// checks if the ApiDataTransferDataTypesGetCollection200Response type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &ApiDataTransferDataTypesGetCollection200Response{}
-
 // ApiDataTransferDataTypesGetCollection200Response struct for ApiDataTransferDataTypesGetCollection200Response
 type ApiDataTransferDataTypesGetCollection200Response struct {
-	Embedded []DataTransferDataTypeJsonhal `json:"_embedded"`
-	TotalItems *int32 `json:"totalItems,omitempty"`
-	ItemsPerPage *int32 `json:"itemsPerPage,omitempty"`
-	Links ApiComponentResourceLimitsGetCollection200ResponseLinks `json:"_links"`
+	Embedded     []DataTransferDataTypeJsonhal                           `json:"_embedded"`
+	TotalItems   *int32                                                  `json:"totalItems,omitempty"`
+	ItemsPerPage *int32                                                  `json:"itemsPerPage,omitempty"`
+	Links        ApiComponentResourceLimitsGetCollection200ResponseLinks `json:"_links"`
 }
 
 // NewApiDataTransferDataTypesGetCollection200Response instantiates a new ApiDataTransferDataTypesGetCollection200Response object
@@ -70,7 +67,7 @@ func (o *ApiDataTransferDataTypesGetCollection200Response) SetEmbedded(v []DataT
 
 // GetTotalItems returns the TotalItems field value if set, zero value otherwise.
 func (o *ApiDataTransferDataTypesGetCollection200Response) GetTotalItems() int32 {
-	if o == nil || IsNil(o.TotalItems) {
+	if o == nil || isNil(o.TotalItems) {
 		var ret int32
 		return ret
 	}
@@ -80,7 +77,7 @@ func (o *ApiDataTransferDataTypesGetCollection200Response) GetTotalItems() int32
 // GetTotalItemsOk returns a tuple with the TotalItems field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ApiDataTransferDataTypesGetCollection200Response) GetTotalItemsOk() (*int32, bool) {
-	if o == nil || IsNil(o.TotalItems) {
+	if o == nil || isNil(o.TotalItems) {
 		return nil, false
 	}
 	return o.TotalItems, true
@@ -88,7 +85,7 @@ func (o *ApiDataTransferDataTypesGetCollection200Response) GetTotalItemsOk() (*i
 
 // HasTotalItems returns a boolean if a field has been set.
 func (o *ApiDataTransferDataTypesGetCollection200Response) HasTotalItems() bool {
-	if o != nil && !IsNil(o.TotalItems) {
+	if o != nil && !isNil(o.TotalItems) {
 		return true
 	}
 
@@ -102,7 +99,7 @@ func (o *ApiDataTransferDataTypesGetCollection200Response) SetTotalItems(v int32
 
 // GetItemsPerPage returns the ItemsPerPage field value if set, zero value otherwise.
 func (o *ApiDataTransferDataTypesGetCollection200Response) GetItemsPerPage() int32 {
-	if o == nil || IsNil(o.ItemsPerPage) {
+	if o == nil || isNil(o.ItemsPerPage) {
 		var ret int32
 		return ret
 	}
@@ -112,7 +109,7 @@ func (o *ApiDataTransferDataTypesGetCollection200Response) GetItemsPerPage() int
 // GetItemsPerPageOk returns a tuple with the ItemsPerPage field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ApiDataTransferDataTypesGetCollection200Response) GetItemsPerPageOk() (*int32, bool) {
-	if o == nil || IsNil(o.ItemsPerPage) {
+	if o == nil || isNil(o.ItemsPerPage) {
 		return nil, false
 	}
 	return o.ItemsPerPage, true
@@ -120,7 +117,7 @@ func (o *ApiDataTransferDataTypesGetCollection200Response) GetItemsPerPageOk() (
 
 // HasItemsPerPage returns a boolean if a field has been set.
 func (o *ApiDataTransferDataTypesGetCollection200Response) HasItemsPerPage() bool {
-	if o != nil && !IsNil(o.ItemsPerPage) {
+	if o != nil && !isNil(o.ItemsPerPage) {
 		return true
 	}
 
@@ -157,24 +154,20 @@ func (o *ApiDataTransferDataTypesGetCollection200Response) SetLinks(v ApiCompone
 }
 
 func (o ApiDataTransferDataTypesGetCollection200Response) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o ApiDataTransferDataTypesGetCollection200Response) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["_embedded"] = o.Embedded
-	if !IsNil(o.TotalItems) {
+	if true {
+		toSerialize["_embedded"] = o.Embedded
+	}
+	if !isNil(o.TotalItems) {
 		toSerialize["totalItems"] = o.TotalItems
 	}
-	if !IsNil(o.ItemsPerPage) {
+	if !isNil(o.ItemsPerPage) {
 		toSerialize["itemsPerPage"] = o.ItemsPerPage
 	}
-	toSerialize["_links"] = o.Links
-	return toSerialize, nil
+	if true {
+		toSerialize["_links"] = o.Links
+	}
+	return json.Marshal(toSerialize)
 }
 
 type NullableApiDataTransferDataTypesGetCollection200Response struct {
@@ -212,5 +205,3 @@ func (v *NullableApiDataTransferDataTypesGetCollection200Response) UnmarshalJSON
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

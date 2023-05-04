@@ -88,7 +88,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/hal+json, text/html
+- **Accept**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -165,7 +165,7 @@ Name | Type | Description  | Notes
 
 ## ApiUsersIdGet
 
-> User ApiUsersIdGet(ctx, id).Execute()
+> UserJsonhal ApiUsersIdGet(ctx, id).Execute()
 
 Retrieves a User resource.
 
@@ -193,7 +193,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `UserApi.ApiUsersIdGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiUsersIdGet`: User
+    // response from `ApiUsersIdGet`: UserJsonhal
     fmt.Fprintf(os.Stdout, "Response from `UserApi.ApiUsersIdGet`: %v\n", resp)
 }
 ```
@@ -217,7 +217,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**User**](User.md)
+[**UserJsonhal**](UserJsonhal.md)
 
 ### Authorization
 
@@ -226,7 +226,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json, application/hal+json, text/html
+- **Accept**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -235,7 +235,7 @@ Name | Type | Description  | Notes
 
 ## ApiUsersIdPatch
 
-> User ApiUsersIdPatch(ctx, id).User(user).Execute()
+> UserJsonhal ApiUsersIdPatch(ctx, id).User(user).Execute()
 
 Updates the User resource.
 
@@ -264,7 +264,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `UserApi.ApiUsersIdPatch``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiUsersIdPatch`: User
+    // response from `ApiUsersIdPatch`: UserJsonhal
     fmt.Fprintf(os.Stdout, "Response from `UserApi.ApiUsersIdPatch`: %v\n", resp)
 }
 ```
@@ -289,7 +289,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**User**](User.md)
+[**UserJsonhal**](UserJsonhal.md)
 
 ### Authorization
 
@@ -297,8 +297,8 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: application/json, application/hal+json, text/html
-- **Accept**: application/json, application/hal+json, text/html
+- **Content-Type**: application/vnd.api+json
+- **Accept**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -307,7 +307,7 @@ Name | Type | Description  | Notes
 
 ## ApiUsersIdPut
 
-> User ApiUsersIdPut(ctx, id).User(user).Execute()
+> UserJsonhal ApiUsersIdPut(ctx, id).UserJsonhal(userJsonhal).Execute()
 
 Replaces the User resource.
 
@@ -327,16 +327,16 @@ import (
 
 func main() {
     id := "id_example" // string | User identifier
-    user := *openapiclient.NewUser() // User | The updated User resource
+    userJsonhal := *openapiclient.NewUserJsonhal() // UserJsonhal | The updated User resource
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.UserApi.ApiUsersIdPut(context.Background(), id).User(user).Execute()
+    resp, r, err := apiClient.UserApi.ApiUsersIdPut(context.Background(), id).UserJsonhal(userJsonhal).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `UserApi.ApiUsersIdPut``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiUsersIdPut`: User
+    // response from `ApiUsersIdPut`: UserJsonhal
     fmt.Fprintf(os.Stdout, "Response from `UserApi.ApiUsersIdPut`: %v\n", resp)
 }
 ```
@@ -357,11 +357,11 @@ Other parameters are passed through a pointer to a apiApiUsersIdPutRequest struc
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **user** | [**User**](User.md) | The updated User resource | 
+ **userJsonhal** | [**UserJsonhal**](UserJsonhal.md) | The updated User resource | 
 
 ### Return type
 
-[**User**](User.md)
+[**UserJsonhal**](UserJsonhal.md)
 
 ### Authorization
 
@@ -369,8 +369,8 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: application/json, application/hal+json, text/html
-- **Accept**: application/json, application/hal+json, text/html
+- **Content-Type**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
+- **Accept**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -379,7 +379,7 @@ Name | Type | Description  | Notes
 
 ## ApiUsersIdadministrateGet
 
-> User ApiUsersIdadministrateGet(ctx, id).Execute()
+> UserJsonhal ApiUsersIdadministrateGet(ctx, id).Execute()
 
 Retrieves a User resource.
 
@@ -407,7 +407,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `UserApi.ApiUsersIdadministrateGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiUsersIdadministrateGet`: User
+    // response from `ApiUsersIdadministrateGet`: UserJsonhal
     fmt.Fprintf(os.Stdout, "Response from `UserApi.ApiUsersIdadministrateGet`: %v\n", resp)
 }
 ```
@@ -431,7 +431,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**User**](User.md)
+[**UserJsonhal**](UserJsonhal.md)
 
 ### Authorization
 
@@ -440,7 +440,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json, application/hal+json, text/html
+- **Accept**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -449,7 +449,7 @@ Name | Type | Description  | Notes
 
 ## ApiUsersIdfinancecostsGet
 
-> User ApiUsersIdfinancecostsGet(ctx, id).Execute()
+> UserJsonhal ApiUsersIdfinancecostsGet(ctx, id).Execute()
 
 Retrieves a User resource.
 
@@ -477,7 +477,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `UserApi.ApiUsersIdfinancecostsGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiUsersIdfinancecostsGet`: User
+    // response from `ApiUsersIdfinancecostsGet`: UserJsonhal
     fmt.Fprintf(os.Stdout, "Response from `UserApi.ApiUsersIdfinancecostsGet`: %v\n", resp)
 }
 ```
@@ -501,7 +501,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**User**](User.md)
+[**UserJsonhal**](UserJsonhal.md)
 
 ### Authorization
 
@@ -510,7 +510,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json, application/hal+json, text/html
+- **Accept**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -519,7 +519,7 @@ Name | Type | Description  | Notes
 
 ## ApiUsersIdfinanceinvoicesGet
 
-> User ApiUsersIdfinanceinvoicesGet(ctx, id).Execute()
+> UserJsonhal ApiUsersIdfinanceinvoicesGet(ctx, id).Execute()
 
 Retrieves a User resource.
 
@@ -547,7 +547,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `UserApi.ApiUsersIdfinanceinvoicesGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiUsersIdfinanceinvoicesGet`: User
+    // response from `ApiUsersIdfinanceinvoicesGet`: UserJsonhal
     fmt.Fprintf(os.Stdout, "Response from `UserApi.ApiUsersIdfinanceinvoicesGet`: %v\n", resp)
 }
 ```
@@ -571,7 +571,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**User**](User.md)
+[**UserJsonhal**](UserJsonhal.md)
 
 ### Authorization
 
@@ -580,7 +580,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json, application/hal+json, text/html
+- **Accept**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -589,7 +589,7 @@ Name | Type | Description  | Notes
 
 ## ApiUsersIdfinancepayGet
 
-> User ApiUsersIdfinancepayGet(ctx, id).Execute()
+> UserJsonhal ApiUsersIdfinancepayGet(ctx, id).Execute()
 
 Retrieves a User resource.
 
@@ -617,7 +617,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `UserApi.ApiUsersIdfinancepayGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiUsersIdfinancepayGet`: User
+    // response from `ApiUsersIdfinancepayGet`: UserJsonhal
     fmt.Fprintf(os.Stdout, "Response from `UserApi.ApiUsersIdfinancepayGet`: %v\n", resp)
 }
 ```
@@ -641,7 +641,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**User**](User.md)
+[**UserJsonhal**](UserJsonhal.md)
 
 ### Authorization
 
@@ -650,7 +650,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json, application/hal+json, text/html
+- **Accept**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -659,7 +659,7 @@ Name | Type | Description  | Notes
 
 ## ApiUsersIdfinancesubscribeInfoGet
 
-> User ApiUsersIdfinancesubscribeInfoGet(ctx, id).Execute()
+> UserJsonhal ApiUsersIdfinancesubscribeInfoGet(ctx, id).Execute()
 
 Retrieves a User resource.
 
@@ -687,7 +687,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `UserApi.ApiUsersIdfinancesubscribeInfoGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiUsersIdfinancesubscribeInfoGet`: User
+    // response from `ApiUsersIdfinancesubscribeInfoGet`: UserJsonhal
     fmt.Fprintf(os.Stdout, "Response from `UserApi.ApiUsersIdfinancesubscribeInfoGet`: %v\n", resp)
 }
 ```
@@ -711,7 +711,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**User**](User.md)
+[**UserJsonhal**](UserJsonhal.md)
 
 ### Authorization
 
@@ -720,7 +720,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json, application/hal+json, text/html
+- **Accept**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -797,7 +797,7 @@ Name | Type | Description  | Notes
 
 ## ApiUsersPost
 
-> User ApiUsersPost(ctx).User(user).Execute()
+> UserJsonhal ApiUsersPost(ctx).UserJsonhal(userJsonhal).Execute()
 
 Creates a User resource.
 
@@ -816,16 +816,16 @@ import (
 )
 
 func main() {
-    user := *openapiclient.NewUser() // User | The new User resource
+    userJsonhal := *openapiclient.NewUserJsonhal() // UserJsonhal | The new User resource
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.UserApi.ApiUsersPost(context.Background()).User(user).Execute()
+    resp, r, err := apiClient.UserApi.ApiUsersPost(context.Background()).UserJsonhal(userJsonhal).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `UserApi.ApiUsersPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiUsersPost`: User
+    // response from `ApiUsersPost`: UserJsonhal
     fmt.Fprintf(os.Stdout, "Response from `UserApi.ApiUsersPost`: %v\n", resp)
 }
 ```
@@ -841,11 +841,11 @@ Other parameters are passed through a pointer to a apiApiUsersPostRequest struct
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **user** | [**User**](User.md) | The new User resource | 
+ **userJsonhal** | [**UserJsonhal**](UserJsonhal.md) | The new User resource | 
 
 ### Return type
 
-[**User**](User.md)
+[**UserJsonhal**](UserJsonhal.md)
 
 ### Authorization
 
@@ -853,8 +853,8 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: application/json, application/hal+json, text/html
-- **Accept**: application/json, application/hal+json, text/html
+- **Content-Type**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
+- **Accept**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -863,7 +863,7 @@ Name | Type | Description  | Notes
 
 ## ApiUserscheckEmailGet
 
-> User ApiUserscheckEmailGet(ctx).Execute()
+> UserJsonhal ApiUserscheckEmailGet(ctx).Execute()
 
 It will check the email is exist in database or not
 
@@ -890,7 +890,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `UserApi.ApiUserscheckEmailGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiUserscheckEmailGet`: User
+    // response from `ApiUserscheckEmailGet`: UserJsonhal
     fmt.Fprintf(os.Stdout, "Response from `UserApi.ApiUserscheckEmailGet`: %v\n", resp)
 }
 ```
@@ -906,7 +906,7 @@ Other parameters are passed through a pointer to a apiApiUserscheckEmailGetReque
 
 ### Return type
 
-[**User**](User.md)
+[**UserJsonhal**](UserJsonhal.md)
 
 ### Authorization
 
@@ -915,7 +915,7 @@ Other parameters are passed through a pointer to a apiApiUserscheckEmailGetReque
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json, application/hal+json, text/html
+- **Accept**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -924,7 +924,7 @@ Other parameters are passed through a pointer to a apiApiUserscheckEmailGetReque
 
 ## ApiUserscheckUsernameGet
 
-> User ApiUserscheckUsernameGet(ctx).Execute()
+> UserJsonhal ApiUserscheckUsernameGet(ctx).Execute()
 
 It will check the username is exist in database or not
 
@@ -951,7 +951,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `UserApi.ApiUserscheckUsernameGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiUserscheckUsernameGet`: User
+    // response from `ApiUserscheckUsernameGet`: UserJsonhal
     fmt.Fprintf(os.Stdout, "Response from `UserApi.ApiUserscheckUsernameGet`: %v\n", resp)
 }
 ```
@@ -967,7 +967,7 @@ Other parameters are passed through a pointer to a apiApiUserscheckUsernameGetRe
 
 ### Return type
 
-[**User**](User.md)
+[**UserJsonhal**](UserJsonhal.md)
 
 ### Authorization
 
@@ -976,7 +976,7 @@ Other parameters are passed through a pointer to a apiApiUserscheckUsernameGetRe
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json, application/hal+json, text/html
+- **Accept**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -985,7 +985,7 @@ Other parameters are passed through a pointer to a apiApiUserscheckUsernameGetRe
 
 ## ApiUsersdiscoverMercureGet
 
-> User ApiUsersdiscoverMercureGet(ctx).Execute()
+> UserJsonhal ApiUsersdiscoverMercureGet(ctx).Execute()
 
 It will discovers for mercure JWT token for you - w/ take consideration your permissions
 
@@ -1012,7 +1012,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `UserApi.ApiUsersdiscoverMercureGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiUsersdiscoverMercureGet`: User
+    // response from `ApiUsersdiscoverMercureGet`: UserJsonhal
     fmt.Fprintf(os.Stdout, "Response from `UserApi.ApiUsersdiscoverMercureGet`: %v\n", resp)
 }
 ```
@@ -1028,7 +1028,7 @@ Other parameters are passed through a pointer to a apiApiUsersdiscoverMercureGet
 
 ### Return type
 
-[**User**](User.md)
+[**UserJsonhal**](UserJsonhal.md)
 
 ### Authorization
 
@@ -1037,7 +1037,7 @@ Other parameters are passed through a pointer to a apiApiUsersdiscoverMercureGet
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json, application/hal+json, text/html
+- **Accept**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -1046,7 +1046,7 @@ Other parameters are passed through a pointer to a apiApiUsersdiscoverMercureGet
 
 ## ApiUsersregisterPost
 
-> User ApiUsersregisterPost(ctx).User(user).Execute()
+> UserJsonhal ApiUsersregisterPost(ctx).UserJsonhal(userJsonhal).Execute()
 
 Creates a User resource.
 
@@ -1065,16 +1065,16 @@ import (
 )
 
 func main() {
-    user := *openapiclient.NewUser() // User | The new User resource
+    userJsonhal := *openapiclient.NewUserJsonhal() // UserJsonhal | The new User resource
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.UserApi.ApiUsersregisterPost(context.Background()).User(user).Execute()
+    resp, r, err := apiClient.UserApi.ApiUsersregisterPost(context.Background()).UserJsonhal(userJsonhal).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `UserApi.ApiUsersregisterPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiUsersregisterPost`: User
+    // response from `ApiUsersregisterPost`: UserJsonhal
     fmt.Fprintf(os.Stdout, "Response from `UserApi.ApiUsersregisterPost`: %v\n", resp)
 }
 ```
@@ -1090,11 +1090,11 @@ Other parameters are passed through a pointer to a apiApiUsersregisterPostReques
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **user** | [**User**](User.md) | The new User resource | 
+ **userJsonhal** | [**UserJsonhal**](UserJsonhal.md) | The new User resource | 
 
 ### Return type
 
-[**User**](User.md)
+[**UserJsonhal**](UserJsonhal.md)
 
 ### Authorization
 
@@ -1102,8 +1102,8 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: application/json, application/hal+json, text/html
-- **Accept**: application/json, application/hal+json, text/html
+- **Content-Type**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
+- **Accept**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)

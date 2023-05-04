@@ -15,7 +15,7 @@ Method | HTTP request | Description
 
 ## ApiEnvVarTypesGetCollection
 
-> []EnvVarType ApiEnvVarTypesGetCollection(ctx).Page(page).ItemsPerPage(itemsPerPage).Execute()
+> ApiEnvVarTypesGetCollection200Response ApiEnvVarTypesGetCollection(ctx).Page(page).ItemsPerPage(itemsPerPage).Execute()
 
 Retrieves the collection of EnvVarType resources.
 
@@ -44,7 +44,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `EnvVarTypeApi.ApiEnvVarTypesGetCollection``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiEnvVarTypesGetCollection`: []EnvVarType
+    // response from `ApiEnvVarTypesGetCollection`: ApiEnvVarTypesGetCollection200Response
     fmt.Fprintf(os.Stdout, "Response from `EnvVarTypeApi.ApiEnvVarTypesGetCollection`: %v\n", resp)
 }
 ```
@@ -65,7 +65,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]EnvVarType**](EnvVarType.md)
+[**ApiEnvVarTypesGetCollection200Response**](ApiEnvVarTypesGetCollection200Response.md)
 
 ### Authorization
 
@@ -74,7 +74,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json, application/hal+json, text/html
+- **Accept**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -151,7 +151,7 @@ Name | Type | Description  | Notes
 
 ## ApiEnvVarTypesIdGet
 
-> EnvVarType ApiEnvVarTypesIdGet(ctx, id).Execute()
+> EnvVarTypeJsonhal ApiEnvVarTypesIdGet(ctx, id).Execute()
 
 Retrieves a EnvVarType resource.
 
@@ -179,7 +179,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `EnvVarTypeApi.ApiEnvVarTypesIdGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiEnvVarTypesIdGet`: EnvVarType
+    // response from `ApiEnvVarTypesIdGet`: EnvVarTypeJsonhal
     fmt.Fprintf(os.Stdout, "Response from `EnvVarTypeApi.ApiEnvVarTypesIdGet`: %v\n", resp)
 }
 ```
@@ -203,7 +203,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**EnvVarType**](EnvVarType.md)
+[**EnvVarTypeJsonhal**](EnvVarTypeJsonhal.md)
 
 ### Authorization
 
@@ -212,7 +212,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json, application/hal+json, text/html
+- **Accept**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -221,7 +221,7 @@ Name | Type | Description  | Notes
 
 ## ApiEnvVarTypesIdPatch
 
-> EnvVarType ApiEnvVarTypesIdPatch(ctx, id).EnvVarType(envVarType).Execute()
+> EnvVarTypeJsonhal ApiEnvVarTypesIdPatch(ctx, id).EnvVarType(envVarType).Execute()
 
 Updates the EnvVarType resource.
 
@@ -250,7 +250,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `EnvVarTypeApi.ApiEnvVarTypesIdPatch``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiEnvVarTypesIdPatch`: EnvVarType
+    // response from `ApiEnvVarTypesIdPatch`: EnvVarTypeJsonhal
     fmt.Fprintf(os.Stdout, "Response from `EnvVarTypeApi.ApiEnvVarTypesIdPatch`: %v\n", resp)
 }
 ```
@@ -275,7 +275,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**EnvVarType**](EnvVarType.md)
+[**EnvVarTypeJsonhal**](EnvVarTypeJsonhal.md)
 
 ### Authorization
 
@@ -283,8 +283,8 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: application/json, application/hal+json, text/html
-- **Accept**: application/json, application/hal+json, text/html
+- **Content-Type**: application/vnd.api+json
+- **Accept**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -293,7 +293,7 @@ Name | Type | Description  | Notes
 
 ## ApiEnvVarTypesIdPut
 
-> EnvVarType ApiEnvVarTypesIdPut(ctx, id).EnvVarType(envVarType).Execute()
+> EnvVarTypeJsonhal ApiEnvVarTypesIdPut(ctx, id).EnvVarTypeJsonhal(envVarTypeJsonhal).Execute()
 
 Replaces the EnvVarType resource.
 
@@ -313,16 +313,16 @@ import (
 
 func main() {
     id := "id_example" // string | EnvVarType identifier
-    envVarType := *openapiclient.NewEnvVarType() // EnvVarType | The updated EnvVarType resource
+    envVarTypeJsonhal := *openapiclient.NewEnvVarTypeJsonhal() // EnvVarTypeJsonhal | The updated EnvVarType resource
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.EnvVarTypeApi.ApiEnvVarTypesIdPut(context.Background(), id).EnvVarType(envVarType).Execute()
+    resp, r, err := apiClient.EnvVarTypeApi.ApiEnvVarTypesIdPut(context.Background(), id).EnvVarTypeJsonhal(envVarTypeJsonhal).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `EnvVarTypeApi.ApiEnvVarTypesIdPut``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiEnvVarTypesIdPut`: EnvVarType
+    // response from `ApiEnvVarTypesIdPut`: EnvVarTypeJsonhal
     fmt.Fprintf(os.Stdout, "Response from `EnvVarTypeApi.ApiEnvVarTypesIdPut`: %v\n", resp)
 }
 ```
@@ -343,11 +343,11 @@ Other parameters are passed through a pointer to a apiApiEnvVarTypesIdPutRequest
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **envVarType** | [**EnvVarType**](EnvVarType.md) | The updated EnvVarType resource | 
+ **envVarTypeJsonhal** | [**EnvVarTypeJsonhal**](EnvVarTypeJsonhal.md) | The updated EnvVarType resource | 
 
 ### Return type
 
-[**EnvVarType**](EnvVarType.md)
+[**EnvVarTypeJsonhal**](EnvVarTypeJsonhal.md)
 
 ### Authorization
 
@@ -355,8 +355,8 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: application/json, application/hal+json, text/html
-- **Accept**: application/json, application/hal+json, text/html
+- **Content-Type**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
+- **Accept**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -365,7 +365,7 @@ Name | Type | Description  | Notes
 
 ## ApiEnvVarTypesPost
 
-> EnvVarType ApiEnvVarTypesPost(ctx).EnvVarType(envVarType).Execute()
+> EnvVarTypeJsonhal ApiEnvVarTypesPost(ctx).EnvVarTypeJsonhal(envVarTypeJsonhal).Execute()
 
 Creates a EnvVarType resource.
 
@@ -384,16 +384,16 @@ import (
 )
 
 func main() {
-    envVarType := *openapiclient.NewEnvVarType() // EnvVarType | The new EnvVarType resource
+    envVarTypeJsonhal := *openapiclient.NewEnvVarTypeJsonhal() // EnvVarTypeJsonhal | The new EnvVarType resource
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.EnvVarTypeApi.ApiEnvVarTypesPost(context.Background()).EnvVarType(envVarType).Execute()
+    resp, r, err := apiClient.EnvVarTypeApi.ApiEnvVarTypesPost(context.Background()).EnvVarTypeJsonhal(envVarTypeJsonhal).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `EnvVarTypeApi.ApiEnvVarTypesPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiEnvVarTypesPost`: EnvVarType
+    // response from `ApiEnvVarTypesPost`: EnvVarTypeJsonhal
     fmt.Fprintf(os.Stdout, "Response from `EnvVarTypeApi.ApiEnvVarTypesPost`: %v\n", resp)
 }
 ```
@@ -409,11 +409,11 @@ Other parameters are passed through a pointer to a apiApiEnvVarTypesPostRequest 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **envVarType** | [**EnvVarType**](EnvVarType.md) | The new EnvVarType resource | 
+ **envVarTypeJsonhal** | [**EnvVarTypeJsonhal**](EnvVarTypeJsonhal.md) | The new EnvVarType resource | 
 
 ### Return type
 
-[**EnvVarType**](EnvVarType.md)
+[**EnvVarTypeJsonhal**](EnvVarTypeJsonhal.md)
 
 ### Authorization
 
@@ -421,8 +421,8 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: application/json, application/hal+json, text/html
-- **Accept**: application/json, application/hal+json, text/html
+- **Content-Type**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
+- **Accept**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)

@@ -19,14 +19,13 @@ import (
 	"strings"
 )
 
-
 // CredentialTypeApiService CredentialTypeApi service
 type CredentialTypeApiService service
 
 type ApiApiCredentialTypesGetCollectionRequest struct {
-	ctx context.Context
-	ApiService *CredentialTypeApiService
-	page *int32
+	ctx          context.Context
+	ApiService   *CredentialTypeApiService
+	page         *int32
 	itemsPerPage *int32
 }
 
@@ -42,7 +41,7 @@ func (r ApiApiCredentialTypesGetCollectionRequest) ItemsPerPage(itemsPerPage int
 	return r
 }
 
-func (r ApiApiCredentialTypesGetCollectionRequest) Execute() ([]CredentialType, *http.Response, error) {
+func (r ApiApiCredentialTypesGetCollectionRequest) Execute() (*ApiCredentialTypesGetCollection200Response, *http.Response, error) {
 	return r.ApiService.ApiCredentialTypesGetCollectionExecute(r)
 }
 
@@ -51,24 +50,25 @@ ApiCredentialTypesGetCollection Retrieves the collection of CredentialType resou
 
 Retrieves the collection of CredentialType resources.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiApiCredentialTypesGetCollectionRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiApiCredentialTypesGetCollectionRequest
 */
 func (a *CredentialTypeApiService) ApiCredentialTypesGetCollection(ctx context.Context) ApiApiCredentialTypesGetCollectionRequest {
 	return ApiApiCredentialTypesGetCollectionRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return []CredentialType
-func (a *CredentialTypeApiService) ApiCredentialTypesGetCollectionExecute(r ApiApiCredentialTypesGetCollectionRequest) ([]CredentialType, *http.Response, error) {
+//
+//	@return ApiCredentialTypesGetCollection200Response
+func (a *CredentialTypeApiService) ApiCredentialTypesGetCollectionExecute(r ApiApiCredentialTypesGetCollectionRequest) (*ApiCredentialTypesGetCollection200Response, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  []CredentialType
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *ApiCredentialTypesGetCollection200Response
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CredentialTypeApiService.ApiCredentialTypesGetCollection")
@@ -98,7 +98,7 @@ func (a *CredentialTypeApiService) ApiCredentialTypesGetCollectionExecute(r ApiA
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json", "application/hal+json", "text/html"}
+	localVarHTTPHeaderAccepts := []string{"application/hal+json", "application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -157,9 +157,9 @@ func (a *CredentialTypeApiService) ApiCredentialTypesGetCollectionExecute(r ApiA
 }
 
 type ApiApiCredentialTypesIdDeleteRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *CredentialTypeApiService
-	id string
+	id         string
 }
 
 func (r ApiApiCredentialTypesIdDeleteRequest) Execute() (*http.Response, error) {
@@ -171,24 +171,24 @@ ApiCredentialTypesIdDelete Removes the CredentialType resource.
 
 Removes the CredentialType resource.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id CredentialType identifier
- @return ApiApiCredentialTypesIdDeleteRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id CredentialType identifier
+	@return ApiApiCredentialTypesIdDeleteRequest
 */
 func (a *CredentialTypeApiService) ApiCredentialTypesIdDelete(ctx context.Context, id string) ApiApiCredentialTypesIdDeleteRequest {
 	return ApiApiCredentialTypesIdDeleteRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
 // Execute executes the request
 func (a *CredentialTypeApiService) ApiCredentialTypesIdDeleteExecute(r ApiApiCredentialTypesIdDeleteRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodDelete
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CredentialTypeApiService.ApiCredentialTypesIdDelete")
@@ -263,12 +263,12 @@ func (a *CredentialTypeApiService) ApiCredentialTypesIdDeleteExecute(r ApiApiCre
 }
 
 type ApiApiCredentialTypesIdGetRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *CredentialTypeApiService
-	id string
+	id         string
 }
 
-func (r ApiApiCredentialTypesIdGetRequest) Execute() (*CredentialType, *http.Response, error) {
+func (r ApiApiCredentialTypesIdGetRequest) Execute() (*CredentialTypeJsonhal, *http.Response, error) {
 	return r.ApiService.ApiCredentialTypesIdGetExecute(r)
 }
 
@@ -277,26 +277,27 @@ ApiCredentialTypesIdGet Retrieves a CredentialType resource.
 
 Retrieves a CredentialType resource.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id CredentialType identifier
- @return ApiApiCredentialTypesIdGetRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id CredentialType identifier
+	@return ApiApiCredentialTypesIdGetRequest
 */
 func (a *CredentialTypeApiService) ApiCredentialTypesIdGet(ctx context.Context, id string) ApiApiCredentialTypesIdGetRequest {
 	return ApiApiCredentialTypesIdGetRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
 // Execute executes the request
-//  @return CredentialType
-func (a *CredentialTypeApiService) ApiCredentialTypesIdGetExecute(r ApiApiCredentialTypesIdGetRequest) (*CredentialType, *http.Response, error) {
+//
+//	@return CredentialTypeJsonhal
+func (a *CredentialTypeApiService) ApiCredentialTypesIdGetExecute(r ApiApiCredentialTypesIdGetRequest) (*CredentialTypeJsonhal, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *CredentialType
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *CredentialTypeJsonhal
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CredentialTypeApiService.ApiCredentialTypesIdGet")
@@ -321,7 +322,7 @@ func (a *CredentialTypeApiService) ApiCredentialTypesIdGetExecute(r ApiApiCreden
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json", "application/hal+json", "text/html"}
+	localVarHTTPHeaderAccepts := []string{"application/hal+json", "application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -380,9 +381,9 @@ func (a *CredentialTypeApiService) ApiCredentialTypesIdGetExecute(r ApiApiCreden
 }
 
 type ApiApiCredentialTypesIdPatchRequest struct {
-	ctx context.Context
-	ApiService *CredentialTypeApiService
-	id string
+	ctx            context.Context
+	ApiService     *CredentialTypeApiService
+	id             string
 	credentialType *CredentialType
 }
 
@@ -392,7 +393,7 @@ func (r ApiApiCredentialTypesIdPatchRequest) CredentialType(credentialType Crede
 	return r
 }
 
-func (r ApiApiCredentialTypesIdPatchRequest) Execute() (*CredentialType, *http.Response, error) {
+func (r ApiApiCredentialTypesIdPatchRequest) Execute() (*CredentialTypeJsonhal, *http.Response, error) {
 	return r.ApiService.ApiCredentialTypesIdPatchExecute(r)
 }
 
@@ -401,26 +402,27 @@ ApiCredentialTypesIdPatch Updates the CredentialType resource.
 
 Updates the CredentialType resource.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id CredentialType identifier
- @return ApiApiCredentialTypesIdPatchRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id CredentialType identifier
+	@return ApiApiCredentialTypesIdPatchRequest
 */
 func (a *CredentialTypeApiService) ApiCredentialTypesIdPatch(ctx context.Context, id string) ApiApiCredentialTypesIdPatchRequest {
 	return ApiApiCredentialTypesIdPatchRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
 // Execute executes the request
-//  @return CredentialType
-func (a *CredentialTypeApiService) ApiCredentialTypesIdPatchExecute(r ApiApiCredentialTypesIdPatchRequest) (*CredentialType, *http.Response, error) {
+//
+//	@return CredentialTypeJsonhal
+func (a *CredentialTypeApiService) ApiCredentialTypesIdPatchExecute(r ApiApiCredentialTypesIdPatchRequest) (*CredentialTypeJsonhal, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPatch
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *CredentialType
+		localVarHTTPMethod  = http.MethodPatch
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *CredentialTypeJsonhal
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CredentialTypeApiService.ApiCredentialTypesIdPatch")
@@ -439,7 +441,7 @@ func (a *CredentialTypeApiService) ApiCredentialTypesIdPatchExecute(r ApiApiCred
 	}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json", "application/hal+json", "text/html"}
+	localVarHTTPContentTypes := []string{"application/vnd.api+json"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -448,7 +450,7 @@ func (a *CredentialTypeApiService) ApiCredentialTypesIdPatchExecute(r ApiApiCred
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json", "application/hal+json", "text/html"}
+	localVarHTTPHeaderAccepts := []string{"application/hal+json", "application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -509,19 +511,19 @@ func (a *CredentialTypeApiService) ApiCredentialTypesIdPatchExecute(r ApiApiCred
 }
 
 type ApiApiCredentialTypesIdPutRequest struct {
-	ctx context.Context
-	ApiService *CredentialTypeApiService
-	id string
-	credentialType *CredentialType
+	ctx                   context.Context
+	ApiService            *CredentialTypeApiService
+	id                    string
+	credentialTypeJsonhal *CredentialTypeJsonhal
 }
 
 // The updated CredentialType resource
-func (r ApiApiCredentialTypesIdPutRequest) CredentialType(credentialType CredentialType) ApiApiCredentialTypesIdPutRequest {
-	r.credentialType = &credentialType
+func (r ApiApiCredentialTypesIdPutRequest) CredentialTypeJsonhal(credentialTypeJsonhal CredentialTypeJsonhal) ApiApiCredentialTypesIdPutRequest {
+	r.credentialTypeJsonhal = &credentialTypeJsonhal
 	return r
 }
 
-func (r ApiApiCredentialTypesIdPutRequest) Execute() (*CredentialType, *http.Response, error) {
+func (r ApiApiCredentialTypesIdPutRequest) Execute() (*CredentialTypeJsonhal, *http.Response, error) {
 	return r.ApiService.ApiCredentialTypesIdPutExecute(r)
 }
 
@@ -530,26 +532,27 @@ ApiCredentialTypesIdPut Replaces the CredentialType resource.
 
 Replaces the CredentialType resource.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id CredentialType identifier
- @return ApiApiCredentialTypesIdPutRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id CredentialType identifier
+	@return ApiApiCredentialTypesIdPutRequest
 */
 func (a *CredentialTypeApiService) ApiCredentialTypesIdPut(ctx context.Context, id string) ApiApiCredentialTypesIdPutRequest {
 	return ApiApiCredentialTypesIdPutRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
 // Execute executes the request
-//  @return CredentialType
-func (a *CredentialTypeApiService) ApiCredentialTypesIdPutExecute(r ApiApiCredentialTypesIdPutRequest) (*CredentialType, *http.Response, error) {
+//
+//	@return CredentialTypeJsonhal
+func (a *CredentialTypeApiService) ApiCredentialTypesIdPutExecute(r ApiApiCredentialTypesIdPutRequest) (*CredentialTypeJsonhal, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPut
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *CredentialType
+		localVarHTTPMethod  = http.MethodPut
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *CredentialTypeJsonhal
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CredentialTypeApiService.ApiCredentialTypesIdPut")
@@ -563,12 +566,12 @@ func (a *CredentialTypeApiService) ApiCredentialTypesIdPutExecute(r ApiApiCreden
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.credentialType == nil {
-		return localVarReturnValue, nil, reportError("credentialType is required and must be specified")
+	if r.credentialTypeJsonhal == nil {
+		return localVarReturnValue, nil, reportError("credentialTypeJsonhal is required and must be specified")
 	}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json", "application/hal+json", "text/html"}
+	localVarHTTPContentTypes := []string{"application/hal+json", "application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -577,7 +580,7 @@ func (a *CredentialTypeApiService) ApiCredentialTypesIdPutExecute(r ApiApiCreden
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json", "application/hal+json", "text/html"}
+	localVarHTTPHeaderAccepts := []string{"application/hal+json", "application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -585,7 +588,7 @@ func (a *CredentialTypeApiService) ApiCredentialTypesIdPutExecute(r ApiApiCreden
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.credentialType
+	localVarPostBody = r.credentialTypeJsonhal
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
@@ -638,18 +641,18 @@ func (a *CredentialTypeApiService) ApiCredentialTypesIdPutExecute(r ApiApiCreden
 }
 
 type ApiApiCredentialTypesPostRequest struct {
-	ctx context.Context
-	ApiService *CredentialTypeApiService
-	credentialType *CredentialType
+	ctx                   context.Context
+	ApiService            *CredentialTypeApiService
+	credentialTypeJsonhal *CredentialTypeJsonhal
 }
 
 // The new CredentialType resource
-func (r ApiApiCredentialTypesPostRequest) CredentialType(credentialType CredentialType) ApiApiCredentialTypesPostRequest {
-	r.credentialType = &credentialType
+func (r ApiApiCredentialTypesPostRequest) CredentialTypeJsonhal(credentialTypeJsonhal CredentialTypeJsonhal) ApiApiCredentialTypesPostRequest {
+	r.credentialTypeJsonhal = &credentialTypeJsonhal
 	return r
 }
 
-func (r ApiApiCredentialTypesPostRequest) Execute() (*CredentialType, *http.Response, error) {
+func (r ApiApiCredentialTypesPostRequest) Execute() (*CredentialTypeJsonhal, *http.Response, error) {
 	return r.ApiService.ApiCredentialTypesPostExecute(r)
 }
 
@@ -658,24 +661,25 @@ ApiCredentialTypesPost Creates a CredentialType resource.
 
 Creates a CredentialType resource.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiApiCredentialTypesPostRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiApiCredentialTypesPostRequest
 */
 func (a *CredentialTypeApiService) ApiCredentialTypesPost(ctx context.Context) ApiApiCredentialTypesPostRequest {
 	return ApiApiCredentialTypesPostRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return CredentialType
-func (a *CredentialTypeApiService) ApiCredentialTypesPostExecute(r ApiApiCredentialTypesPostRequest) (*CredentialType, *http.Response, error) {
+//
+//	@return CredentialTypeJsonhal
+func (a *CredentialTypeApiService) ApiCredentialTypesPostExecute(r ApiApiCredentialTypesPostRequest) (*CredentialTypeJsonhal, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *CredentialType
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *CredentialTypeJsonhal
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CredentialTypeApiService.ApiCredentialTypesPost")
@@ -688,12 +692,12 @@ func (a *CredentialTypeApiService) ApiCredentialTypesPostExecute(r ApiApiCredent
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.credentialType == nil {
-		return localVarReturnValue, nil, reportError("credentialType is required and must be specified")
+	if r.credentialTypeJsonhal == nil {
+		return localVarReturnValue, nil, reportError("credentialTypeJsonhal is required and must be specified")
 	}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json", "application/hal+json", "text/html"}
+	localVarHTTPContentTypes := []string{"application/hal+json", "application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -702,7 +706,7 @@ func (a *CredentialTypeApiService) ApiCredentialTypesPostExecute(r ApiApiCredent
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json", "application/hal+json", "text/html"}
+	localVarHTTPHeaderAccepts := []string{"application/hal+json", "application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -710,7 +714,7 @@ func (a *CredentialTypeApiService) ApiCredentialTypesPostExecute(r ApiApiCredent
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.credentialType
+	localVarPostBody = r.credentialTypeJsonhal
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {

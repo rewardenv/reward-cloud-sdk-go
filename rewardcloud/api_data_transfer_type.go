@@ -19,14 +19,13 @@ import (
 	"strings"
 )
 
-
 // DataTransferTypeApiService DataTransferTypeApi service
 type DataTransferTypeApiService service
 
 type ApiApiDataTransferTypesGetCollectionRequest struct {
-	ctx context.Context
-	ApiService *DataTransferTypeApiService
-	page *int32
+	ctx          context.Context
+	ApiService   *DataTransferTypeApiService
+	page         *int32
 	itemsPerPage *int32
 }
 
@@ -42,7 +41,7 @@ func (r ApiApiDataTransferTypesGetCollectionRequest) ItemsPerPage(itemsPerPage i
 	return r
 }
 
-func (r ApiApiDataTransferTypesGetCollectionRequest) Execute() ([]DataTransferType, *http.Response, error) {
+func (r ApiApiDataTransferTypesGetCollectionRequest) Execute() (*ApiDataTransferTypesGetCollection200Response, *http.Response, error) {
 	return r.ApiService.ApiDataTransferTypesGetCollectionExecute(r)
 }
 
@@ -51,24 +50,25 @@ ApiDataTransferTypesGetCollection Retrieves the collection of DataTransferType r
 
 Retrieves the collection of DataTransferType resources.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiApiDataTransferTypesGetCollectionRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiApiDataTransferTypesGetCollectionRequest
 */
 func (a *DataTransferTypeApiService) ApiDataTransferTypesGetCollection(ctx context.Context) ApiApiDataTransferTypesGetCollectionRequest {
 	return ApiApiDataTransferTypesGetCollectionRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return []DataTransferType
-func (a *DataTransferTypeApiService) ApiDataTransferTypesGetCollectionExecute(r ApiApiDataTransferTypesGetCollectionRequest) ([]DataTransferType, *http.Response, error) {
+//
+//	@return ApiDataTransferTypesGetCollection200Response
+func (a *DataTransferTypeApiService) ApiDataTransferTypesGetCollectionExecute(r ApiApiDataTransferTypesGetCollectionRequest) (*ApiDataTransferTypesGetCollection200Response, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  []DataTransferType
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *ApiDataTransferTypesGetCollection200Response
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DataTransferTypeApiService.ApiDataTransferTypesGetCollection")
@@ -98,7 +98,7 @@ func (a *DataTransferTypeApiService) ApiDataTransferTypesGetCollectionExecute(r 
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json", "application/hal+json", "text/html"}
+	localVarHTTPHeaderAccepts := []string{"application/hal+json", "application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -157,9 +157,9 @@ func (a *DataTransferTypeApiService) ApiDataTransferTypesGetCollectionExecute(r 
 }
 
 type ApiApiDataTransferTypesIdDeleteRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *DataTransferTypeApiService
-	id string
+	id         string
 }
 
 func (r ApiApiDataTransferTypesIdDeleteRequest) Execute() (*http.Response, error) {
@@ -171,24 +171,24 @@ ApiDataTransferTypesIdDelete Removes the DataTransferType resource.
 
 Removes the DataTransferType resource.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id DataTransferType identifier
- @return ApiApiDataTransferTypesIdDeleteRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id DataTransferType identifier
+	@return ApiApiDataTransferTypesIdDeleteRequest
 */
 func (a *DataTransferTypeApiService) ApiDataTransferTypesIdDelete(ctx context.Context, id string) ApiApiDataTransferTypesIdDeleteRequest {
 	return ApiApiDataTransferTypesIdDeleteRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
 // Execute executes the request
 func (a *DataTransferTypeApiService) ApiDataTransferTypesIdDeleteExecute(r ApiApiDataTransferTypesIdDeleteRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodDelete
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DataTransferTypeApiService.ApiDataTransferTypesIdDelete")
@@ -263,12 +263,12 @@ func (a *DataTransferTypeApiService) ApiDataTransferTypesIdDeleteExecute(r ApiAp
 }
 
 type ApiApiDataTransferTypesIdGetRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *DataTransferTypeApiService
-	id string
+	id         string
 }
 
-func (r ApiApiDataTransferTypesIdGetRequest) Execute() (*DataTransferType, *http.Response, error) {
+func (r ApiApiDataTransferTypesIdGetRequest) Execute() (*DataTransferTypeJsonhal, *http.Response, error) {
 	return r.ApiService.ApiDataTransferTypesIdGetExecute(r)
 }
 
@@ -277,26 +277,27 @@ ApiDataTransferTypesIdGet Retrieves a DataTransferType resource.
 
 Retrieves a DataTransferType resource.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id DataTransferType identifier
- @return ApiApiDataTransferTypesIdGetRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id DataTransferType identifier
+	@return ApiApiDataTransferTypesIdGetRequest
 */
 func (a *DataTransferTypeApiService) ApiDataTransferTypesIdGet(ctx context.Context, id string) ApiApiDataTransferTypesIdGetRequest {
 	return ApiApiDataTransferTypesIdGetRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
 // Execute executes the request
-//  @return DataTransferType
-func (a *DataTransferTypeApiService) ApiDataTransferTypesIdGetExecute(r ApiApiDataTransferTypesIdGetRequest) (*DataTransferType, *http.Response, error) {
+//
+//	@return DataTransferTypeJsonhal
+func (a *DataTransferTypeApiService) ApiDataTransferTypesIdGetExecute(r ApiApiDataTransferTypesIdGetRequest) (*DataTransferTypeJsonhal, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *DataTransferType
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *DataTransferTypeJsonhal
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DataTransferTypeApiService.ApiDataTransferTypesIdGet")
@@ -321,7 +322,7 @@ func (a *DataTransferTypeApiService) ApiDataTransferTypesIdGetExecute(r ApiApiDa
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json", "application/hal+json", "text/html"}
+	localVarHTTPHeaderAccepts := []string{"application/hal+json", "application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -380,9 +381,9 @@ func (a *DataTransferTypeApiService) ApiDataTransferTypesIdGetExecute(r ApiApiDa
 }
 
 type ApiApiDataTransferTypesIdPatchRequest struct {
-	ctx context.Context
-	ApiService *DataTransferTypeApiService
-	id string
+	ctx              context.Context
+	ApiService       *DataTransferTypeApiService
+	id               string
 	dataTransferType *DataTransferType
 }
 
@@ -392,7 +393,7 @@ func (r ApiApiDataTransferTypesIdPatchRequest) DataTransferType(dataTransferType
 	return r
 }
 
-func (r ApiApiDataTransferTypesIdPatchRequest) Execute() (*DataTransferType, *http.Response, error) {
+func (r ApiApiDataTransferTypesIdPatchRequest) Execute() (*DataTransferTypeJsonhal, *http.Response, error) {
 	return r.ApiService.ApiDataTransferTypesIdPatchExecute(r)
 }
 
@@ -401,26 +402,27 @@ ApiDataTransferTypesIdPatch Updates the DataTransferType resource.
 
 Updates the DataTransferType resource.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id DataTransferType identifier
- @return ApiApiDataTransferTypesIdPatchRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id DataTransferType identifier
+	@return ApiApiDataTransferTypesIdPatchRequest
 */
 func (a *DataTransferTypeApiService) ApiDataTransferTypesIdPatch(ctx context.Context, id string) ApiApiDataTransferTypesIdPatchRequest {
 	return ApiApiDataTransferTypesIdPatchRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
 // Execute executes the request
-//  @return DataTransferType
-func (a *DataTransferTypeApiService) ApiDataTransferTypesIdPatchExecute(r ApiApiDataTransferTypesIdPatchRequest) (*DataTransferType, *http.Response, error) {
+//
+//	@return DataTransferTypeJsonhal
+func (a *DataTransferTypeApiService) ApiDataTransferTypesIdPatchExecute(r ApiApiDataTransferTypesIdPatchRequest) (*DataTransferTypeJsonhal, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPatch
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *DataTransferType
+		localVarHTTPMethod  = http.MethodPatch
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *DataTransferTypeJsonhal
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DataTransferTypeApiService.ApiDataTransferTypesIdPatch")
@@ -439,7 +441,7 @@ func (a *DataTransferTypeApiService) ApiDataTransferTypesIdPatchExecute(r ApiApi
 	}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json", "application/hal+json", "text/html"}
+	localVarHTTPContentTypes := []string{"application/vnd.api+json"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -448,7 +450,7 @@ func (a *DataTransferTypeApiService) ApiDataTransferTypesIdPatchExecute(r ApiApi
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json", "application/hal+json", "text/html"}
+	localVarHTTPHeaderAccepts := []string{"application/hal+json", "application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -509,19 +511,19 @@ func (a *DataTransferTypeApiService) ApiDataTransferTypesIdPatchExecute(r ApiApi
 }
 
 type ApiApiDataTransferTypesIdPutRequest struct {
-	ctx context.Context
-	ApiService *DataTransferTypeApiService
-	id string
-	dataTransferType *DataTransferType
+	ctx                     context.Context
+	ApiService              *DataTransferTypeApiService
+	id                      string
+	dataTransferTypeJsonhal *DataTransferTypeJsonhal
 }
 
 // The updated DataTransferType resource
-func (r ApiApiDataTransferTypesIdPutRequest) DataTransferType(dataTransferType DataTransferType) ApiApiDataTransferTypesIdPutRequest {
-	r.dataTransferType = &dataTransferType
+func (r ApiApiDataTransferTypesIdPutRequest) DataTransferTypeJsonhal(dataTransferTypeJsonhal DataTransferTypeJsonhal) ApiApiDataTransferTypesIdPutRequest {
+	r.dataTransferTypeJsonhal = &dataTransferTypeJsonhal
 	return r
 }
 
-func (r ApiApiDataTransferTypesIdPutRequest) Execute() (*DataTransferType, *http.Response, error) {
+func (r ApiApiDataTransferTypesIdPutRequest) Execute() (*DataTransferTypeJsonhal, *http.Response, error) {
 	return r.ApiService.ApiDataTransferTypesIdPutExecute(r)
 }
 
@@ -530,26 +532,27 @@ ApiDataTransferTypesIdPut Replaces the DataTransferType resource.
 
 Replaces the DataTransferType resource.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id DataTransferType identifier
- @return ApiApiDataTransferTypesIdPutRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id DataTransferType identifier
+	@return ApiApiDataTransferTypesIdPutRequest
 */
 func (a *DataTransferTypeApiService) ApiDataTransferTypesIdPut(ctx context.Context, id string) ApiApiDataTransferTypesIdPutRequest {
 	return ApiApiDataTransferTypesIdPutRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
 // Execute executes the request
-//  @return DataTransferType
-func (a *DataTransferTypeApiService) ApiDataTransferTypesIdPutExecute(r ApiApiDataTransferTypesIdPutRequest) (*DataTransferType, *http.Response, error) {
+//
+//	@return DataTransferTypeJsonhal
+func (a *DataTransferTypeApiService) ApiDataTransferTypesIdPutExecute(r ApiApiDataTransferTypesIdPutRequest) (*DataTransferTypeJsonhal, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPut
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *DataTransferType
+		localVarHTTPMethod  = http.MethodPut
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *DataTransferTypeJsonhal
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DataTransferTypeApiService.ApiDataTransferTypesIdPut")
@@ -563,12 +566,12 @@ func (a *DataTransferTypeApiService) ApiDataTransferTypesIdPutExecute(r ApiApiDa
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.dataTransferType == nil {
-		return localVarReturnValue, nil, reportError("dataTransferType is required and must be specified")
+	if r.dataTransferTypeJsonhal == nil {
+		return localVarReturnValue, nil, reportError("dataTransferTypeJsonhal is required and must be specified")
 	}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json", "application/hal+json", "text/html"}
+	localVarHTTPContentTypes := []string{"application/hal+json", "application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -577,7 +580,7 @@ func (a *DataTransferTypeApiService) ApiDataTransferTypesIdPutExecute(r ApiApiDa
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json", "application/hal+json", "text/html"}
+	localVarHTTPHeaderAccepts := []string{"application/hal+json", "application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -585,7 +588,7 @@ func (a *DataTransferTypeApiService) ApiDataTransferTypesIdPutExecute(r ApiApiDa
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.dataTransferType
+	localVarPostBody = r.dataTransferTypeJsonhal
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
@@ -638,18 +641,18 @@ func (a *DataTransferTypeApiService) ApiDataTransferTypesIdPutExecute(r ApiApiDa
 }
 
 type ApiApiDataTransferTypesPostRequest struct {
-	ctx context.Context
-	ApiService *DataTransferTypeApiService
-	dataTransferType *DataTransferType
+	ctx                     context.Context
+	ApiService              *DataTransferTypeApiService
+	dataTransferTypeJsonhal *DataTransferTypeJsonhal
 }
 
 // The new DataTransferType resource
-func (r ApiApiDataTransferTypesPostRequest) DataTransferType(dataTransferType DataTransferType) ApiApiDataTransferTypesPostRequest {
-	r.dataTransferType = &dataTransferType
+func (r ApiApiDataTransferTypesPostRequest) DataTransferTypeJsonhal(dataTransferTypeJsonhal DataTransferTypeJsonhal) ApiApiDataTransferTypesPostRequest {
+	r.dataTransferTypeJsonhal = &dataTransferTypeJsonhal
 	return r
 }
 
-func (r ApiApiDataTransferTypesPostRequest) Execute() (*DataTransferType, *http.Response, error) {
+func (r ApiApiDataTransferTypesPostRequest) Execute() (*DataTransferTypeJsonhal, *http.Response, error) {
 	return r.ApiService.ApiDataTransferTypesPostExecute(r)
 }
 
@@ -658,24 +661,25 @@ ApiDataTransferTypesPost Creates a DataTransferType resource.
 
 Creates a DataTransferType resource.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiApiDataTransferTypesPostRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiApiDataTransferTypesPostRequest
 */
 func (a *DataTransferTypeApiService) ApiDataTransferTypesPost(ctx context.Context) ApiApiDataTransferTypesPostRequest {
 	return ApiApiDataTransferTypesPostRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return DataTransferType
-func (a *DataTransferTypeApiService) ApiDataTransferTypesPostExecute(r ApiApiDataTransferTypesPostRequest) (*DataTransferType, *http.Response, error) {
+//
+//	@return DataTransferTypeJsonhal
+func (a *DataTransferTypeApiService) ApiDataTransferTypesPostExecute(r ApiApiDataTransferTypesPostRequest) (*DataTransferTypeJsonhal, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *DataTransferType
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *DataTransferTypeJsonhal
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DataTransferTypeApiService.ApiDataTransferTypesPost")
@@ -688,12 +692,12 @@ func (a *DataTransferTypeApiService) ApiDataTransferTypesPostExecute(r ApiApiDat
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.dataTransferType == nil {
-		return localVarReturnValue, nil, reportError("dataTransferType is required and must be specified")
+	if r.dataTransferTypeJsonhal == nil {
+		return localVarReturnValue, nil, reportError("dataTransferTypeJsonhal is required and must be specified")
 	}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json", "application/hal+json", "text/html"}
+	localVarHTTPContentTypes := []string{"application/hal+json", "application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -702,7 +706,7 @@ func (a *DataTransferTypeApiService) ApiDataTransferTypesPostExecute(r ApiApiDat
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json", "application/hal+json", "text/html"}
+	localVarHTTPHeaderAccepts := []string{"application/hal+json", "application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -710,7 +714,7 @@ func (a *DataTransferTypeApiService) ApiDataTransferTypesPostExecute(r ApiApiDat
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.dataTransferType
+	localVarPostBody = r.dataTransferTypeJsonhal
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {

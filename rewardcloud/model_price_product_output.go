@@ -14,15 +14,12 @@ import (
 	"encoding/json"
 )
 
-// checks if the PriceProductOutput type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &PriceProductOutput{}
-
-// PriceProductOutput 
+// PriceProductOutput
 type PriceProductOutput struct {
-	PaymentId NullableString `json:"paymentId,omitempty"`
-	Amount NullableFloat32 `json:"amount,omitempty"`
-	Currency NullableString `json:"currency,omitempty"`
-	IsActive NullableBool `json:"isActive,omitempty"`
+	PaymentId NullableString  `json:"paymentId,omitempty"`
+	Amount    NullableFloat32 `json:"amount,omitempty"`
+	Currency  NullableString  `json:"currency,omitempty"`
+	IsActive  NullableBool    `json:"isActive,omitempty"`
 }
 
 // NewPriceProductOutput instantiates a new PriceProductOutput object
@@ -44,7 +41,7 @@ func NewPriceProductOutputWithDefaults() *PriceProductOutput {
 
 // GetPaymentId returns the PaymentId field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *PriceProductOutput) GetPaymentId() string {
-	if o == nil || IsNil(o.PaymentId.Get()) {
+	if o == nil || isNil(o.PaymentId.Get()) {
 		var ret string
 		return ret
 	}
@@ -74,6 +71,7 @@ func (o *PriceProductOutput) HasPaymentId() bool {
 func (o *PriceProductOutput) SetPaymentId(v string) {
 	o.PaymentId.Set(&v)
 }
+
 // SetPaymentIdNil sets the value for PaymentId to be an explicit nil
 func (o *PriceProductOutput) SetPaymentIdNil() {
 	o.PaymentId.Set(nil)
@@ -86,7 +84,7 @@ func (o *PriceProductOutput) UnsetPaymentId() {
 
 // GetAmount returns the Amount field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *PriceProductOutput) GetAmount() float32 {
-	if o == nil || IsNil(o.Amount.Get()) {
+	if o == nil || isNil(o.Amount.Get()) {
 		var ret float32
 		return ret
 	}
@@ -116,6 +114,7 @@ func (o *PriceProductOutput) HasAmount() bool {
 func (o *PriceProductOutput) SetAmount(v float32) {
 	o.Amount.Set(&v)
 }
+
 // SetAmountNil sets the value for Amount to be an explicit nil
 func (o *PriceProductOutput) SetAmountNil() {
 	o.Amount.Set(nil)
@@ -128,7 +127,7 @@ func (o *PriceProductOutput) UnsetAmount() {
 
 // GetCurrency returns the Currency field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *PriceProductOutput) GetCurrency() string {
-	if o == nil || IsNil(o.Currency.Get()) {
+	if o == nil || isNil(o.Currency.Get()) {
 		var ret string
 		return ret
 	}
@@ -158,6 +157,7 @@ func (o *PriceProductOutput) HasCurrency() bool {
 func (o *PriceProductOutput) SetCurrency(v string) {
 	o.Currency.Set(&v)
 }
+
 // SetCurrencyNil sets the value for Currency to be an explicit nil
 func (o *PriceProductOutput) SetCurrencyNil() {
 	o.Currency.Set(nil)
@@ -170,7 +170,7 @@ func (o *PriceProductOutput) UnsetCurrency() {
 
 // GetIsActive returns the IsActive field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *PriceProductOutput) GetIsActive() bool {
-	if o == nil || IsNil(o.IsActive.Get()) {
+	if o == nil || isNil(o.IsActive.Get()) {
 		var ret bool
 		return ret
 	}
@@ -200,6 +200,7 @@ func (o *PriceProductOutput) HasIsActive() bool {
 func (o *PriceProductOutput) SetIsActive(v bool) {
 	o.IsActive.Set(&v)
 }
+
 // SetIsActiveNil sets the value for IsActive to be an explicit nil
 func (o *PriceProductOutput) SetIsActiveNil() {
 	o.IsActive.Set(nil)
@@ -211,14 +212,6 @@ func (o *PriceProductOutput) UnsetIsActive() {
 }
 
 func (o PriceProductOutput) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o PriceProductOutput) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if o.PaymentId.IsSet() {
 		toSerialize["paymentId"] = o.PaymentId.Get()
@@ -232,7 +225,7 @@ func (o PriceProductOutput) ToMap() (map[string]interface{}, error) {
 	if o.IsActive.IsSet() {
 		toSerialize["isActive"] = o.IsActive.Get()
 	}
-	return toSerialize, nil
+	return json.Marshal(toSerialize)
 }
 
 type NullablePriceProductOutput struct {
@@ -270,5 +263,3 @@ func (v *NullablePriceProductOutput) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

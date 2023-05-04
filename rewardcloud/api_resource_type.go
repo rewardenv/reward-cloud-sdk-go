@@ -16,20 +16,19 @@ import (
 	"io/ioutil"
 	"net/http"
 	"net/url"
-	"strings"
 	"reflect"
+	"strings"
 )
-
 
 // ResourceTypeApiService ResourceTypeApi service
 type ResourceTypeApiService service
 
 type ApiApiResourceTypesGetCollectionRequest struct {
-	ctx context.Context
-	ApiService *ResourceTypeApiService
-	page *int32
-	itemsPerPage *int32
-	resourceTypeLimit *string
+	ctx                context.Context
+	ApiService         *ResourceTypeApiService
+	page               *int32
+	itemsPerPage       *int32
+	resourceTypeLimit  *string
 	resourceTypeLimit2 *[]string
 }
 
@@ -45,19 +44,17 @@ func (r ApiApiResourceTypesGetCollectionRequest) ItemsPerPage(itemsPerPage int32
 	return r
 }
 
-// 
 func (r ApiApiResourceTypesGetCollectionRequest) ResourceTypeLimit(resourceTypeLimit string) ApiApiResourceTypesGetCollectionRequest {
 	r.resourceTypeLimit = &resourceTypeLimit
 	return r
 }
 
-// 
 func (r ApiApiResourceTypesGetCollectionRequest) ResourceTypeLimit2(resourceTypeLimit2 []string) ApiApiResourceTypesGetCollectionRequest {
 	r.resourceTypeLimit2 = &resourceTypeLimit2
 	return r
 }
 
-func (r ApiApiResourceTypesGetCollectionRequest) Execute() ([]ResourceTypeResourceTypeOutput, *http.Response, error) {
+func (r ApiApiResourceTypesGetCollectionRequest) Execute() (*ApiResourceTypesGetCollection200Response, *http.Response, error) {
 	return r.ApiService.ApiResourceTypesGetCollectionExecute(r)
 }
 
@@ -66,24 +63,25 @@ ApiResourceTypesGetCollection Retrieves the collection of ResourceType resources
 
 Retrieves the collection of ResourceType resources.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiApiResourceTypesGetCollectionRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiApiResourceTypesGetCollectionRequest
 */
 func (a *ResourceTypeApiService) ApiResourceTypesGetCollection(ctx context.Context) ApiApiResourceTypesGetCollectionRequest {
 	return ApiApiResourceTypesGetCollectionRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return []ResourceTypeResourceTypeOutput
-func (a *ResourceTypeApiService) ApiResourceTypesGetCollectionExecute(r ApiApiResourceTypesGetCollectionRequest) ([]ResourceTypeResourceTypeOutput, *http.Response, error) {
+//
+//	@return ApiResourceTypesGetCollection200Response
+func (a *ResourceTypeApiService) ApiResourceTypesGetCollectionExecute(r ApiApiResourceTypesGetCollectionRequest) (*ApiResourceTypesGetCollection200Response, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  []ResourceTypeResourceTypeOutput
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *ApiResourceTypesGetCollection200Response
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ResourceTypeApiService.ApiResourceTypesGetCollection")
@@ -127,7 +125,7 @@ func (a *ResourceTypeApiService) ApiResourceTypesGetCollectionExecute(r ApiApiRe
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json", "application/hal+json", "text/html"}
+	localVarHTTPHeaderAccepts := []string{"application/hal+json", "application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -186,9 +184,9 @@ func (a *ResourceTypeApiService) ApiResourceTypesGetCollectionExecute(r ApiApiRe
 }
 
 type ApiApiResourceTypesIdDeleteRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *ResourceTypeApiService
-	id string
+	id         string
 }
 
 func (r ApiApiResourceTypesIdDeleteRequest) Execute() (*http.Response, error) {
@@ -200,24 +198,24 @@ ApiResourceTypesIdDelete Removes the ResourceType resource.
 
 Removes the ResourceType resource.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id ResourceType identifier
- @return ApiApiResourceTypesIdDeleteRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id ResourceType identifier
+	@return ApiApiResourceTypesIdDeleteRequest
 */
 func (a *ResourceTypeApiService) ApiResourceTypesIdDelete(ctx context.Context, id string) ApiApiResourceTypesIdDeleteRequest {
 	return ApiApiResourceTypesIdDeleteRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
 // Execute executes the request
 func (a *ResourceTypeApiService) ApiResourceTypesIdDeleteExecute(r ApiApiResourceTypesIdDeleteRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodDelete
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ResourceTypeApiService.ApiResourceTypesIdDelete")
@@ -292,12 +290,12 @@ func (a *ResourceTypeApiService) ApiResourceTypesIdDeleteExecute(r ApiApiResourc
 }
 
 type ApiApiResourceTypesIdGetRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *ResourceTypeApiService
-	id string
+	id         string
 }
 
-func (r ApiApiResourceTypesIdGetRequest) Execute() (*ResourceTypeResourceTypeOutput, *http.Response, error) {
+func (r ApiApiResourceTypesIdGetRequest) Execute() (*ResourceTypeJsonhalResourceTypeOutput, *http.Response, error) {
 	return r.ApiService.ApiResourceTypesIdGetExecute(r)
 }
 
@@ -306,26 +304,27 @@ ApiResourceTypesIdGet Retrieves a ResourceType resource.
 
 Retrieves a ResourceType resource.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id ResourceType identifier
- @return ApiApiResourceTypesIdGetRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id ResourceType identifier
+	@return ApiApiResourceTypesIdGetRequest
 */
 func (a *ResourceTypeApiService) ApiResourceTypesIdGet(ctx context.Context, id string) ApiApiResourceTypesIdGetRequest {
 	return ApiApiResourceTypesIdGetRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
 // Execute executes the request
-//  @return ResourceTypeResourceTypeOutput
-func (a *ResourceTypeApiService) ApiResourceTypesIdGetExecute(r ApiApiResourceTypesIdGetRequest) (*ResourceTypeResourceTypeOutput, *http.Response, error) {
+//
+//	@return ResourceTypeJsonhalResourceTypeOutput
+func (a *ResourceTypeApiService) ApiResourceTypesIdGetExecute(r ApiApiResourceTypesIdGetRequest) (*ResourceTypeJsonhalResourceTypeOutput, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *ResourceTypeResourceTypeOutput
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *ResourceTypeJsonhalResourceTypeOutput
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ResourceTypeApiService.ApiResourceTypesIdGet")
@@ -350,7 +349,7 @@ func (a *ResourceTypeApiService) ApiResourceTypesIdGetExecute(r ApiApiResourceTy
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json", "application/hal+json", "text/html"}
+	localVarHTTPHeaderAccepts := []string{"application/hal+json", "application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -409,9 +408,9 @@ func (a *ResourceTypeApiService) ApiResourceTypesIdGetExecute(r ApiApiResourceTy
 }
 
 type ApiApiResourceTypesIdPatchRequest struct {
-	ctx context.Context
-	ApiService *ResourceTypeApiService
-	id string
+	ctx                           context.Context
+	ApiService                    *ResourceTypeApiService
+	id                            string
 	resourceTypeResourceTypeInput *ResourceTypeResourceTypeInput
 }
 
@@ -421,7 +420,7 @@ func (r ApiApiResourceTypesIdPatchRequest) ResourceTypeResourceTypeInput(resourc
 	return r
 }
 
-func (r ApiApiResourceTypesIdPatchRequest) Execute() (*ResourceTypeResourceTypeOutput, *http.Response, error) {
+func (r ApiApiResourceTypesIdPatchRequest) Execute() (*ResourceTypeJsonhalResourceTypeOutput, *http.Response, error) {
 	return r.ApiService.ApiResourceTypesIdPatchExecute(r)
 }
 
@@ -430,26 +429,27 @@ ApiResourceTypesIdPatch Updates the ResourceType resource.
 
 Updates the ResourceType resource.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id ResourceType identifier
- @return ApiApiResourceTypesIdPatchRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id ResourceType identifier
+	@return ApiApiResourceTypesIdPatchRequest
 */
 func (a *ResourceTypeApiService) ApiResourceTypesIdPatch(ctx context.Context, id string) ApiApiResourceTypesIdPatchRequest {
 	return ApiApiResourceTypesIdPatchRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
 // Execute executes the request
-//  @return ResourceTypeResourceTypeOutput
-func (a *ResourceTypeApiService) ApiResourceTypesIdPatchExecute(r ApiApiResourceTypesIdPatchRequest) (*ResourceTypeResourceTypeOutput, *http.Response, error) {
+//
+//	@return ResourceTypeJsonhalResourceTypeOutput
+func (a *ResourceTypeApiService) ApiResourceTypesIdPatchExecute(r ApiApiResourceTypesIdPatchRequest) (*ResourceTypeJsonhalResourceTypeOutput, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPatch
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *ResourceTypeResourceTypeOutput
+		localVarHTTPMethod  = http.MethodPatch
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *ResourceTypeJsonhalResourceTypeOutput
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ResourceTypeApiService.ApiResourceTypesIdPatch")
@@ -468,7 +468,7 @@ func (a *ResourceTypeApiService) ApiResourceTypesIdPatchExecute(r ApiApiResource
 	}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json", "application/hal+json", "text/html"}
+	localVarHTTPContentTypes := []string{"application/vnd.api+json"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -477,7 +477,7 @@ func (a *ResourceTypeApiService) ApiResourceTypesIdPatchExecute(r ApiApiResource
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json", "application/hal+json", "text/html"}
+	localVarHTTPHeaderAccepts := []string{"application/hal+json", "application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -538,19 +538,19 @@ func (a *ResourceTypeApiService) ApiResourceTypesIdPatchExecute(r ApiApiResource
 }
 
 type ApiApiResourceTypesIdPutRequest struct {
-	ctx context.Context
-	ApiService *ResourceTypeApiService
-	id string
-	resourceTypeResourceTypeInput *ResourceTypeResourceTypeInput
+	ctx                                  context.Context
+	ApiService                           *ResourceTypeApiService
+	id                                   string
+	resourceTypeJsonhalResourceTypeInput *ResourceTypeJsonhalResourceTypeInput
 }
 
 // The updated ResourceType resource
-func (r ApiApiResourceTypesIdPutRequest) ResourceTypeResourceTypeInput(resourceTypeResourceTypeInput ResourceTypeResourceTypeInput) ApiApiResourceTypesIdPutRequest {
-	r.resourceTypeResourceTypeInput = &resourceTypeResourceTypeInput
+func (r ApiApiResourceTypesIdPutRequest) ResourceTypeJsonhalResourceTypeInput(resourceTypeJsonhalResourceTypeInput ResourceTypeJsonhalResourceTypeInput) ApiApiResourceTypesIdPutRequest {
+	r.resourceTypeJsonhalResourceTypeInput = &resourceTypeJsonhalResourceTypeInput
 	return r
 }
 
-func (r ApiApiResourceTypesIdPutRequest) Execute() (*ResourceTypeResourceTypeOutput, *http.Response, error) {
+func (r ApiApiResourceTypesIdPutRequest) Execute() (*ResourceTypeJsonhalResourceTypeOutput, *http.Response, error) {
 	return r.ApiService.ApiResourceTypesIdPutExecute(r)
 }
 
@@ -559,26 +559,27 @@ ApiResourceTypesIdPut Replaces the ResourceType resource.
 
 Replaces the ResourceType resource.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id ResourceType identifier
- @return ApiApiResourceTypesIdPutRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id ResourceType identifier
+	@return ApiApiResourceTypesIdPutRequest
 */
 func (a *ResourceTypeApiService) ApiResourceTypesIdPut(ctx context.Context, id string) ApiApiResourceTypesIdPutRequest {
 	return ApiApiResourceTypesIdPutRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
 // Execute executes the request
-//  @return ResourceTypeResourceTypeOutput
-func (a *ResourceTypeApiService) ApiResourceTypesIdPutExecute(r ApiApiResourceTypesIdPutRequest) (*ResourceTypeResourceTypeOutput, *http.Response, error) {
+//
+//	@return ResourceTypeJsonhalResourceTypeOutput
+func (a *ResourceTypeApiService) ApiResourceTypesIdPutExecute(r ApiApiResourceTypesIdPutRequest) (*ResourceTypeJsonhalResourceTypeOutput, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPut
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *ResourceTypeResourceTypeOutput
+		localVarHTTPMethod  = http.MethodPut
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *ResourceTypeJsonhalResourceTypeOutput
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ResourceTypeApiService.ApiResourceTypesIdPut")
@@ -592,12 +593,12 @@ func (a *ResourceTypeApiService) ApiResourceTypesIdPutExecute(r ApiApiResourceTy
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.resourceTypeResourceTypeInput == nil {
-		return localVarReturnValue, nil, reportError("resourceTypeResourceTypeInput is required and must be specified")
+	if r.resourceTypeJsonhalResourceTypeInput == nil {
+		return localVarReturnValue, nil, reportError("resourceTypeJsonhalResourceTypeInput is required and must be specified")
 	}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json", "application/hal+json", "text/html"}
+	localVarHTTPContentTypes := []string{"application/hal+json", "application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -606,7 +607,7 @@ func (a *ResourceTypeApiService) ApiResourceTypesIdPutExecute(r ApiApiResourceTy
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json", "application/hal+json", "text/html"}
+	localVarHTTPHeaderAccepts := []string{"application/hal+json", "application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -614,7 +615,7 @@ func (a *ResourceTypeApiService) ApiResourceTypesIdPutExecute(r ApiApiResourceTy
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.resourceTypeResourceTypeInput
+	localVarPostBody = r.resourceTypeJsonhalResourceTypeInput
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
@@ -667,18 +668,18 @@ func (a *ResourceTypeApiService) ApiResourceTypesIdPutExecute(r ApiApiResourceTy
 }
 
 type ApiApiResourceTypesPostRequest struct {
-	ctx context.Context
-	ApiService *ResourceTypeApiService
-	resourceTypeResourceTypeInput *ResourceTypeResourceTypeInput
+	ctx                                  context.Context
+	ApiService                           *ResourceTypeApiService
+	resourceTypeJsonhalResourceTypeInput *ResourceTypeJsonhalResourceTypeInput
 }
 
 // The new ResourceType resource
-func (r ApiApiResourceTypesPostRequest) ResourceTypeResourceTypeInput(resourceTypeResourceTypeInput ResourceTypeResourceTypeInput) ApiApiResourceTypesPostRequest {
-	r.resourceTypeResourceTypeInput = &resourceTypeResourceTypeInput
+func (r ApiApiResourceTypesPostRequest) ResourceTypeJsonhalResourceTypeInput(resourceTypeJsonhalResourceTypeInput ResourceTypeJsonhalResourceTypeInput) ApiApiResourceTypesPostRequest {
+	r.resourceTypeJsonhalResourceTypeInput = &resourceTypeJsonhalResourceTypeInput
 	return r
 }
 
-func (r ApiApiResourceTypesPostRequest) Execute() (*ResourceTypeResourceTypeOutput, *http.Response, error) {
+func (r ApiApiResourceTypesPostRequest) Execute() (*ResourceTypeJsonhalResourceTypeOutput, *http.Response, error) {
 	return r.ApiService.ApiResourceTypesPostExecute(r)
 }
 
@@ -687,24 +688,25 @@ ApiResourceTypesPost Creates a ResourceType resource.
 
 Creates a ResourceType resource.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiApiResourceTypesPostRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiApiResourceTypesPostRequest
 */
 func (a *ResourceTypeApiService) ApiResourceTypesPost(ctx context.Context) ApiApiResourceTypesPostRequest {
 	return ApiApiResourceTypesPostRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return ResourceTypeResourceTypeOutput
-func (a *ResourceTypeApiService) ApiResourceTypesPostExecute(r ApiApiResourceTypesPostRequest) (*ResourceTypeResourceTypeOutput, *http.Response, error) {
+//
+//	@return ResourceTypeJsonhalResourceTypeOutput
+func (a *ResourceTypeApiService) ApiResourceTypesPostExecute(r ApiApiResourceTypesPostRequest) (*ResourceTypeJsonhalResourceTypeOutput, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *ResourceTypeResourceTypeOutput
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *ResourceTypeJsonhalResourceTypeOutput
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ResourceTypeApiService.ApiResourceTypesPost")
@@ -717,12 +719,12 @@ func (a *ResourceTypeApiService) ApiResourceTypesPostExecute(r ApiApiResourceTyp
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.resourceTypeResourceTypeInput == nil {
-		return localVarReturnValue, nil, reportError("resourceTypeResourceTypeInput is required and must be specified")
+	if r.resourceTypeJsonhalResourceTypeInput == nil {
+		return localVarReturnValue, nil, reportError("resourceTypeJsonhalResourceTypeInput is required and must be specified")
 	}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json", "application/hal+json", "text/html"}
+	localVarHTTPContentTypes := []string{"application/hal+json", "application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -731,7 +733,7 @@ func (a *ResourceTypeApiService) ApiResourceTypesPostExecute(r ApiApiResourceTyp
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json", "application/hal+json", "text/html"}
+	localVarHTTPHeaderAccepts := []string{"application/hal+json", "application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -739,7 +741,7 @@ func (a *ResourceTypeApiService) ApiResourceTypesPostExecute(r ApiApiResourceTyp
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.resourceTypeResourceTypeInput
+	localVarPostBody = r.resourceTypeJsonhalResourceTypeInput
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {

@@ -14,13 +14,10 @@ import (
 	"encoding/json"
 )
 
-// checks if the ServiceAccountJsonhalProjectGet type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &ServiceAccountJsonhalProjectGet{}
-
-// ServiceAccountJsonhalProjectGet 
+// ServiceAccountJsonhalProjectGet
 type ServiceAccountJsonhalProjectGet struct {
-	Links *AbstractEnvironmentJsonhalLinks `json:"_links,omitempty"`
-	ServiceAccountGit NullableServiceAccountJsonhalProjectGetServiceAccountGit `json:"serviceAccountGit,omitempty"`
+	Links                  *AbstractEnvironmentJsonhalLinks                              `json:"_links,omitempty"`
+	ServiceAccountGit      NullableServiceAccountJsonhalProjectGetServiceAccountGit      `json:"serviceAccountGit,omitempty"`
 	ServiceAccountRegistry NullableServiceAccountJsonhalProjectGetServiceAccountRegistry `json:"serviceAccountRegistry,omitempty"`
 }
 
@@ -43,7 +40,7 @@ func NewServiceAccountJsonhalProjectGetWithDefaults() *ServiceAccountJsonhalProj
 
 // GetLinks returns the Links field value if set, zero value otherwise.
 func (o *ServiceAccountJsonhalProjectGet) GetLinks() AbstractEnvironmentJsonhalLinks {
-	if o == nil || IsNil(o.Links) {
+	if o == nil || isNil(o.Links) {
 		var ret AbstractEnvironmentJsonhalLinks
 		return ret
 	}
@@ -53,7 +50,7 @@ func (o *ServiceAccountJsonhalProjectGet) GetLinks() AbstractEnvironmentJsonhalL
 // GetLinksOk returns a tuple with the Links field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ServiceAccountJsonhalProjectGet) GetLinksOk() (*AbstractEnvironmentJsonhalLinks, bool) {
-	if o == nil || IsNil(o.Links) {
+	if o == nil || isNil(o.Links) {
 		return nil, false
 	}
 	return o.Links, true
@@ -61,7 +58,7 @@ func (o *ServiceAccountJsonhalProjectGet) GetLinksOk() (*AbstractEnvironmentJson
 
 // HasLinks returns a boolean if a field has been set.
 func (o *ServiceAccountJsonhalProjectGet) HasLinks() bool {
-	if o != nil && !IsNil(o.Links) {
+	if o != nil && !isNil(o.Links) {
 		return true
 	}
 
@@ -75,7 +72,7 @@ func (o *ServiceAccountJsonhalProjectGet) SetLinks(v AbstractEnvironmentJsonhalL
 
 // GetServiceAccountGit returns the ServiceAccountGit field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ServiceAccountJsonhalProjectGet) GetServiceAccountGit() ServiceAccountJsonhalProjectGetServiceAccountGit {
-	if o == nil || IsNil(o.ServiceAccountGit.Get()) {
+	if o == nil || isNil(o.ServiceAccountGit.Get()) {
 		var ret ServiceAccountJsonhalProjectGetServiceAccountGit
 		return ret
 	}
@@ -105,6 +102,7 @@ func (o *ServiceAccountJsonhalProjectGet) HasServiceAccountGit() bool {
 func (o *ServiceAccountJsonhalProjectGet) SetServiceAccountGit(v ServiceAccountJsonhalProjectGetServiceAccountGit) {
 	o.ServiceAccountGit.Set(&v)
 }
+
 // SetServiceAccountGitNil sets the value for ServiceAccountGit to be an explicit nil
 func (o *ServiceAccountJsonhalProjectGet) SetServiceAccountGitNil() {
 	o.ServiceAccountGit.Set(nil)
@@ -117,7 +115,7 @@ func (o *ServiceAccountJsonhalProjectGet) UnsetServiceAccountGit() {
 
 // GetServiceAccountRegistry returns the ServiceAccountRegistry field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ServiceAccountJsonhalProjectGet) GetServiceAccountRegistry() ServiceAccountJsonhalProjectGetServiceAccountRegistry {
-	if o == nil || IsNil(o.ServiceAccountRegistry.Get()) {
+	if o == nil || isNil(o.ServiceAccountRegistry.Get()) {
 		var ret ServiceAccountJsonhalProjectGetServiceAccountRegistry
 		return ret
 	}
@@ -147,6 +145,7 @@ func (o *ServiceAccountJsonhalProjectGet) HasServiceAccountRegistry() bool {
 func (o *ServiceAccountJsonhalProjectGet) SetServiceAccountRegistry(v ServiceAccountJsonhalProjectGetServiceAccountRegistry) {
 	o.ServiceAccountRegistry.Set(&v)
 }
+
 // SetServiceAccountRegistryNil sets the value for ServiceAccountRegistry to be an explicit nil
 func (o *ServiceAccountJsonhalProjectGet) SetServiceAccountRegistryNil() {
 	o.ServiceAccountRegistry.Set(nil)
@@ -158,16 +157,8 @@ func (o *ServiceAccountJsonhalProjectGet) UnsetServiceAccountRegistry() {
 }
 
 func (o ServiceAccountJsonhalProjectGet) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o ServiceAccountJsonhalProjectGet) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Links) {
+	if !isNil(o.Links) {
 		toSerialize["_links"] = o.Links
 	}
 	if o.ServiceAccountGit.IsSet() {
@@ -176,7 +167,7 @@ func (o ServiceAccountJsonhalProjectGet) ToMap() (map[string]interface{}, error)
 	if o.ServiceAccountRegistry.IsSet() {
 		toSerialize["serviceAccountRegistry"] = o.ServiceAccountRegistry.Get()
 	}
-	return toSerialize, nil
+	return json.Marshal(toSerialize)
 }
 
 type NullableServiceAccountJsonhalProjectGet struct {
@@ -214,5 +205,3 @@ func (v *NullableServiceAccountJsonhalProjectGet) UnmarshalJSON(src []byte) erro
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

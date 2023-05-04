@@ -15,7 +15,7 @@ Method | HTTP request | Description
 
 ## ApiPricesGetCollection
 
-> []Price ApiPricesGetCollection(ctx).Page(page).ItemsPerPage(itemsPerPage).Product(product).Product2(product2).Execute()
+> ApiPricesGetCollection200Response ApiPricesGetCollection(ctx).Page(page).ItemsPerPage(itemsPerPage).Product(product).Product2(product2).Execute()
 
 Retrieves the collection of Price resources.
 
@@ -46,7 +46,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `PriceApi.ApiPricesGetCollection``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiPricesGetCollection`: []Price
+    // response from `ApiPricesGetCollection`: ApiPricesGetCollection200Response
     fmt.Fprintf(os.Stdout, "Response from `PriceApi.ApiPricesGetCollection`: %v\n", resp)
 }
 ```
@@ -69,7 +69,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]Price**](Price.md)
+[**ApiPricesGetCollection200Response**](ApiPricesGetCollection200Response.md)
 
 ### Authorization
 
@@ -78,7 +78,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json, application/hal+json, text/html
+- **Accept**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -155,7 +155,7 @@ Name | Type | Description  | Notes
 
 ## ApiPricesIdGet
 
-> Price ApiPricesIdGet(ctx, id).Execute()
+> PriceJsonhal ApiPricesIdGet(ctx, id).Execute()
 
 Retrieves a Price resource.
 
@@ -183,7 +183,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `PriceApi.ApiPricesIdGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiPricesIdGet`: Price
+    // response from `ApiPricesIdGet`: PriceJsonhal
     fmt.Fprintf(os.Stdout, "Response from `PriceApi.ApiPricesIdGet`: %v\n", resp)
 }
 ```
@@ -207,7 +207,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Price**](Price.md)
+[**PriceJsonhal**](PriceJsonhal.md)
 
 ### Authorization
 
@@ -216,7 +216,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json, application/hal+json, text/html
+- **Accept**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -225,7 +225,7 @@ Name | Type | Description  | Notes
 
 ## ApiPricesIdPatch
 
-> Price ApiPricesIdPatch(ctx, id).Price(price).Execute()
+> PriceJsonhal ApiPricesIdPatch(ctx, id).Price(price).Execute()
 
 Updates the Price resource.
 
@@ -254,7 +254,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `PriceApi.ApiPricesIdPatch``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiPricesIdPatch`: Price
+    // response from `ApiPricesIdPatch`: PriceJsonhal
     fmt.Fprintf(os.Stdout, "Response from `PriceApi.ApiPricesIdPatch`: %v\n", resp)
 }
 ```
@@ -279,7 +279,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Price**](Price.md)
+[**PriceJsonhal**](PriceJsonhal.md)
 
 ### Authorization
 
@@ -287,8 +287,8 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: application/json, application/hal+json, text/html
-- **Accept**: application/json, application/hal+json, text/html
+- **Content-Type**: application/vnd.api+json
+- **Accept**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -297,7 +297,7 @@ Name | Type | Description  | Notes
 
 ## ApiPricesIdPut
 
-> Price ApiPricesIdPut(ctx, id).Price(price).Execute()
+> PriceJsonhal ApiPricesIdPut(ctx, id).PriceJsonhal(priceJsonhal).Execute()
 
 Replaces the Price resource.
 
@@ -317,16 +317,16 @@ import (
 
 func main() {
     id := "id_example" // string | Price identifier
-    price := *openapiclient.NewPrice() // Price | The updated Price resource
+    priceJsonhal := *openapiclient.NewPriceJsonhal() // PriceJsonhal | The updated Price resource
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PriceApi.ApiPricesIdPut(context.Background(), id).Price(price).Execute()
+    resp, r, err := apiClient.PriceApi.ApiPricesIdPut(context.Background(), id).PriceJsonhal(priceJsonhal).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PriceApi.ApiPricesIdPut``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiPricesIdPut`: Price
+    // response from `ApiPricesIdPut`: PriceJsonhal
     fmt.Fprintf(os.Stdout, "Response from `PriceApi.ApiPricesIdPut`: %v\n", resp)
 }
 ```
@@ -347,11 +347,11 @@ Other parameters are passed through a pointer to a apiApiPricesIdPutRequest stru
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **price** | [**Price**](Price.md) | The updated Price resource | 
+ **priceJsonhal** | [**PriceJsonhal**](PriceJsonhal.md) | The updated Price resource | 
 
 ### Return type
 
-[**Price**](Price.md)
+[**PriceJsonhal**](PriceJsonhal.md)
 
 ### Authorization
 
@@ -359,8 +359,8 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: application/json, application/hal+json, text/html
-- **Accept**: application/json, application/hal+json, text/html
+- **Content-Type**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
+- **Accept**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -369,7 +369,7 @@ Name | Type | Description  | Notes
 
 ## ApiPricesPost
 
-> Price ApiPricesPost(ctx).Price(price).Execute()
+> PriceJsonhal ApiPricesPost(ctx).PriceJsonhal(priceJsonhal).Execute()
 
 Creates a Price resource.
 
@@ -388,16 +388,16 @@ import (
 )
 
 func main() {
-    price := *openapiclient.NewPrice() // Price | The new Price resource
+    priceJsonhal := *openapiclient.NewPriceJsonhal() // PriceJsonhal | The new Price resource
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PriceApi.ApiPricesPost(context.Background()).Price(price).Execute()
+    resp, r, err := apiClient.PriceApi.ApiPricesPost(context.Background()).PriceJsonhal(priceJsonhal).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PriceApi.ApiPricesPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiPricesPost`: Price
+    // response from `ApiPricesPost`: PriceJsonhal
     fmt.Fprintf(os.Stdout, "Response from `PriceApi.ApiPricesPost`: %v\n", resp)
 }
 ```
@@ -413,11 +413,11 @@ Other parameters are passed through a pointer to a apiApiPricesPostRequest struc
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **price** | [**Price**](Price.md) | The new Price resource | 
+ **priceJsonhal** | [**PriceJsonhal**](PriceJsonhal.md) | The new Price resource | 
 
 ### Return type
 
-[**Price**](Price.md)
+[**PriceJsonhal**](PriceJsonhal.md)
 
 ### Authorization
 
@@ -425,8 +425,8 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: application/json, application/hal+json, text/html
-- **Accept**: application/json, application/hal+json, text/html
+- **Content-Type**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
+- **Accept**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)

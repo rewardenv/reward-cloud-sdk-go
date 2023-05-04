@@ -14,24 +14,21 @@ import (
 	"encoding/json"
 )
 
-// checks if the TemplateProjectTemplateProjectInput type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &TemplateProjectTemplateProjectInput{}
-
 // TemplateProjectTemplateProjectInput Class ProjectTemplate
 type TemplateProjectTemplateProjectInput struct {
-	Description NullableString `json:"description,omitempty"`
-	TemplateEnvironment []string `json:"templateEnvironment,omitempty"`
-	Name NullableString `json:"name,omitempty"`
-	IsActive NullableBool `json:"isActive,omitempty"`
-	Cpu NullableInt32 `json:"cpu,omitempty"`
-	Memory NullableInt32 `json:"memory,omitempty"`
-	Storage NullableInt32 `json:"storage,omitempty"`
-	Code NullableString `json:"code,omitempty"`
-	Color NullableString `json:"color,omitempty"`
-	IsInitProjectSkeleton NullableBool `json:"isInitProjectSkeleton,omitempty"`
-	ComponentVersion []string `json:"componentVersion,omitempty"`
-	ProjectTypeVersion NullableString `json:"projectTypeVersion,omitempty"`
-	ProjectEnvVar []ProjectEnvVarTemplateProjectInput `json:"projectEnvVar,omitempty"`
+	Description           NullableString                      `json:"description,omitempty"`
+	TemplateEnvironment   []string                            `json:"templateEnvironment,omitempty"`
+	Name                  NullableString                      `json:"name,omitempty"`
+	IsActive              NullableBool                        `json:"isActive,omitempty"`
+	Cpu                   NullableInt32                       `json:"cpu,omitempty"`
+	Memory                NullableInt32                       `json:"memory,omitempty"`
+	Storage               NullableInt32                       `json:"storage,omitempty"`
+	Code                  NullableString                      `json:"code,omitempty"`
+	Color                 NullableString                      `json:"color,omitempty"`
+	IsInitProjectSkeleton NullableBool                        `json:"isInitProjectSkeleton,omitempty"`
+	ComponentVersion      []string                            `json:"componentVersion,omitempty"`
+	ProjectTypeVersion    NullableString                      `json:"projectTypeVersion,omitempty"`
+	ProjectEnvVar         []ProjectEnvVarTemplateProjectInput `json:"projectEnvVar,omitempty"`
 }
 
 // NewTemplateProjectTemplateProjectInput instantiates a new TemplateProjectTemplateProjectInput object
@@ -53,7 +50,7 @@ func NewTemplateProjectTemplateProjectInputWithDefaults() *TemplateProjectTempla
 
 // GetDescription returns the Description field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *TemplateProjectTemplateProjectInput) GetDescription() string {
-	if o == nil || IsNil(o.Description.Get()) {
+	if o == nil || isNil(o.Description.Get()) {
 		var ret string
 		return ret
 	}
@@ -83,6 +80,7 @@ func (o *TemplateProjectTemplateProjectInput) HasDescription() bool {
 func (o *TemplateProjectTemplateProjectInput) SetDescription(v string) {
 	o.Description.Set(&v)
 }
+
 // SetDescriptionNil sets the value for Description to be an explicit nil
 func (o *TemplateProjectTemplateProjectInput) SetDescriptionNil() {
 	o.Description.Set(nil)
@@ -95,7 +93,7 @@ func (o *TemplateProjectTemplateProjectInput) UnsetDescription() {
 
 // GetTemplateEnvironment returns the TemplateEnvironment field value if set, zero value otherwise.
 func (o *TemplateProjectTemplateProjectInput) GetTemplateEnvironment() []string {
-	if o == nil || IsNil(o.TemplateEnvironment) {
+	if o == nil || isNil(o.TemplateEnvironment) {
 		var ret []string
 		return ret
 	}
@@ -105,7 +103,7 @@ func (o *TemplateProjectTemplateProjectInput) GetTemplateEnvironment() []string 
 // GetTemplateEnvironmentOk returns a tuple with the TemplateEnvironment field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TemplateProjectTemplateProjectInput) GetTemplateEnvironmentOk() ([]string, bool) {
-	if o == nil || IsNil(o.TemplateEnvironment) {
+	if o == nil || isNil(o.TemplateEnvironment) {
 		return nil, false
 	}
 	return o.TemplateEnvironment, true
@@ -113,7 +111,7 @@ func (o *TemplateProjectTemplateProjectInput) GetTemplateEnvironmentOk() ([]stri
 
 // HasTemplateEnvironment returns a boolean if a field has been set.
 func (o *TemplateProjectTemplateProjectInput) HasTemplateEnvironment() bool {
-	if o != nil && !IsNil(o.TemplateEnvironment) {
+	if o != nil && !isNil(o.TemplateEnvironment) {
 		return true
 	}
 
@@ -127,7 +125,7 @@ func (o *TemplateProjectTemplateProjectInput) SetTemplateEnvironment(v []string)
 
 // GetName returns the Name field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *TemplateProjectTemplateProjectInput) GetName() string {
-	if o == nil || IsNil(o.Name.Get()) {
+	if o == nil || isNil(o.Name.Get()) {
 		var ret string
 		return ret
 	}
@@ -157,6 +155,7 @@ func (o *TemplateProjectTemplateProjectInput) HasName() bool {
 func (o *TemplateProjectTemplateProjectInput) SetName(v string) {
 	o.Name.Set(&v)
 }
+
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *TemplateProjectTemplateProjectInput) SetNameNil() {
 	o.Name.Set(nil)
@@ -169,7 +168,7 @@ func (o *TemplateProjectTemplateProjectInput) UnsetName() {
 
 // GetIsActive returns the IsActive field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *TemplateProjectTemplateProjectInput) GetIsActive() bool {
-	if o == nil || IsNil(o.IsActive.Get()) {
+	if o == nil || isNil(o.IsActive.Get()) {
 		var ret bool
 		return ret
 	}
@@ -199,6 +198,7 @@ func (o *TemplateProjectTemplateProjectInput) HasIsActive() bool {
 func (o *TemplateProjectTemplateProjectInput) SetIsActive(v bool) {
 	o.IsActive.Set(&v)
 }
+
 // SetIsActiveNil sets the value for IsActive to be an explicit nil
 func (o *TemplateProjectTemplateProjectInput) SetIsActiveNil() {
 	o.IsActive.Set(nil)
@@ -211,7 +211,7 @@ func (o *TemplateProjectTemplateProjectInput) UnsetIsActive() {
 
 // GetCpu returns the Cpu field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *TemplateProjectTemplateProjectInput) GetCpu() int32 {
-	if o == nil || IsNil(o.Cpu.Get()) {
+	if o == nil || isNil(o.Cpu.Get()) {
 		var ret int32
 		return ret
 	}
@@ -241,6 +241,7 @@ func (o *TemplateProjectTemplateProjectInput) HasCpu() bool {
 func (o *TemplateProjectTemplateProjectInput) SetCpu(v int32) {
 	o.Cpu.Set(&v)
 }
+
 // SetCpuNil sets the value for Cpu to be an explicit nil
 func (o *TemplateProjectTemplateProjectInput) SetCpuNil() {
 	o.Cpu.Set(nil)
@@ -253,7 +254,7 @@ func (o *TemplateProjectTemplateProjectInput) UnsetCpu() {
 
 // GetMemory returns the Memory field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *TemplateProjectTemplateProjectInput) GetMemory() int32 {
-	if o == nil || IsNil(o.Memory.Get()) {
+	if o == nil || isNil(o.Memory.Get()) {
 		var ret int32
 		return ret
 	}
@@ -283,6 +284,7 @@ func (o *TemplateProjectTemplateProjectInput) HasMemory() bool {
 func (o *TemplateProjectTemplateProjectInput) SetMemory(v int32) {
 	o.Memory.Set(&v)
 }
+
 // SetMemoryNil sets the value for Memory to be an explicit nil
 func (o *TemplateProjectTemplateProjectInput) SetMemoryNil() {
 	o.Memory.Set(nil)
@@ -295,7 +297,7 @@ func (o *TemplateProjectTemplateProjectInput) UnsetMemory() {
 
 // GetStorage returns the Storage field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *TemplateProjectTemplateProjectInput) GetStorage() int32 {
-	if o == nil || IsNil(o.Storage.Get()) {
+	if o == nil || isNil(o.Storage.Get()) {
 		var ret int32
 		return ret
 	}
@@ -325,6 +327,7 @@ func (o *TemplateProjectTemplateProjectInput) HasStorage() bool {
 func (o *TemplateProjectTemplateProjectInput) SetStorage(v int32) {
 	o.Storage.Set(&v)
 }
+
 // SetStorageNil sets the value for Storage to be an explicit nil
 func (o *TemplateProjectTemplateProjectInput) SetStorageNil() {
 	o.Storage.Set(nil)
@@ -337,7 +340,7 @@ func (o *TemplateProjectTemplateProjectInput) UnsetStorage() {
 
 // GetCode returns the Code field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *TemplateProjectTemplateProjectInput) GetCode() string {
-	if o == nil || IsNil(o.Code.Get()) {
+	if o == nil || isNil(o.Code.Get()) {
 		var ret string
 		return ret
 	}
@@ -367,6 +370,7 @@ func (o *TemplateProjectTemplateProjectInput) HasCode() bool {
 func (o *TemplateProjectTemplateProjectInput) SetCode(v string) {
 	o.Code.Set(&v)
 }
+
 // SetCodeNil sets the value for Code to be an explicit nil
 func (o *TemplateProjectTemplateProjectInput) SetCodeNil() {
 	o.Code.Set(nil)
@@ -379,7 +383,7 @@ func (o *TemplateProjectTemplateProjectInput) UnsetCode() {
 
 // GetColor returns the Color field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *TemplateProjectTemplateProjectInput) GetColor() string {
-	if o == nil || IsNil(o.Color.Get()) {
+	if o == nil || isNil(o.Color.Get()) {
 		var ret string
 		return ret
 	}
@@ -409,6 +413,7 @@ func (o *TemplateProjectTemplateProjectInput) HasColor() bool {
 func (o *TemplateProjectTemplateProjectInput) SetColor(v string) {
 	o.Color.Set(&v)
 }
+
 // SetColorNil sets the value for Color to be an explicit nil
 func (o *TemplateProjectTemplateProjectInput) SetColorNil() {
 	o.Color.Set(nil)
@@ -421,7 +426,7 @@ func (o *TemplateProjectTemplateProjectInput) UnsetColor() {
 
 // GetIsInitProjectSkeleton returns the IsInitProjectSkeleton field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *TemplateProjectTemplateProjectInput) GetIsInitProjectSkeleton() bool {
-	if o == nil || IsNil(o.IsInitProjectSkeleton.Get()) {
+	if o == nil || isNil(o.IsInitProjectSkeleton.Get()) {
 		var ret bool
 		return ret
 	}
@@ -451,6 +456,7 @@ func (o *TemplateProjectTemplateProjectInput) HasIsInitProjectSkeleton() bool {
 func (o *TemplateProjectTemplateProjectInput) SetIsInitProjectSkeleton(v bool) {
 	o.IsInitProjectSkeleton.Set(&v)
 }
+
 // SetIsInitProjectSkeletonNil sets the value for IsInitProjectSkeleton to be an explicit nil
 func (o *TemplateProjectTemplateProjectInput) SetIsInitProjectSkeletonNil() {
 	o.IsInitProjectSkeleton.Set(nil)
@@ -463,7 +469,7 @@ func (o *TemplateProjectTemplateProjectInput) UnsetIsInitProjectSkeleton() {
 
 // GetComponentVersion returns the ComponentVersion field value if set, zero value otherwise.
 func (o *TemplateProjectTemplateProjectInput) GetComponentVersion() []string {
-	if o == nil || IsNil(o.ComponentVersion) {
+	if o == nil || isNil(o.ComponentVersion) {
 		var ret []string
 		return ret
 	}
@@ -473,7 +479,7 @@ func (o *TemplateProjectTemplateProjectInput) GetComponentVersion() []string {
 // GetComponentVersionOk returns a tuple with the ComponentVersion field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TemplateProjectTemplateProjectInput) GetComponentVersionOk() ([]string, bool) {
-	if o == nil || IsNil(o.ComponentVersion) {
+	if o == nil || isNil(o.ComponentVersion) {
 		return nil, false
 	}
 	return o.ComponentVersion, true
@@ -481,7 +487,7 @@ func (o *TemplateProjectTemplateProjectInput) GetComponentVersionOk() ([]string,
 
 // HasComponentVersion returns a boolean if a field has been set.
 func (o *TemplateProjectTemplateProjectInput) HasComponentVersion() bool {
-	if o != nil && !IsNil(o.ComponentVersion) {
+	if o != nil && !isNil(o.ComponentVersion) {
 		return true
 	}
 
@@ -495,7 +501,7 @@ func (o *TemplateProjectTemplateProjectInput) SetComponentVersion(v []string) {
 
 // GetProjectTypeVersion returns the ProjectTypeVersion field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *TemplateProjectTemplateProjectInput) GetProjectTypeVersion() string {
-	if o == nil || IsNil(o.ProjectTypeVersion.Get()) {
+	if o == nil || isNil(o.ProjectTypeVersion.Get()) {
 		var ret string
 		return ret
 	}
@@ -525,6 +531,7 @@ func (o *TemplateProjectTemplateProjectInput) HasProjectTypeVersion() bool {
 func (o *TemplateProjectTemplateProjectInput) SetProjectTypeVersion(v string) {
 	o.ProjectTypeVersion.Set(&v)
 }
+
 // SetProjectTypeVersionNil sets the value for ProjectTypeVersion to be an explicit nil
 func (o *TemplateProjectTemplateProjectInput) SetProjectTypeVersionNil() {
 	o.ProjectTypeVersion.Set(nil)
@@ -537,7 +544,7 @@ func (o *TemplateProjectTemplateProjectInput) UnsetProjectTypeVersion() {
 
 // GetProjectEnvVar returns the ProjectEnvVar field value if set, zero value otherwise.
 func (o *TemplateProjectTemplateProjectInput) GetProjectEnvVar() []ProjectEnvVarTemplateProjectInput {
-	if o == nil || IsNil(o.ProjectEnvVar) {
+	if o == nil || isNil(o.ProjectEnvVar) {
 		var ret []ProjectEnvVarTemplateProjectInput
 		return ret
 	}
@@ -547,7 +554,7 @@ func (o *TemplateProjectTemplateProjectInput) GetProjectEnvVar() []ProjectEnvVar
 // GetProjectEnvVarOk returns a tuple with the ProjectEnvVar field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TemplateProjectTemplateProjectInput) GetProjectEnvVarOk() ([]ProjectEnvVarTemplateProjectInput, bool) {
-	if o == nil || IsNil(o.ProjectEnvVar) {
+	if o == nil || isNil(o.ProjectEnvVar) {
 		return nil, false
 	}
 	return o.ProjectEnvVar, true
@@ -555,7 +562,7 @@ func (o *TemplateProjectTemplateProjectInput) GetProjectEnvVarOk() ([]ProjectEnv
 
 // HasProjectEnvVar returns a boolean if a field has been set.
 func (o *TemplateProjectTemplateProjectInput) HasProjectEnvVar() bool {
-	if o != nil && !IsNil(o.ProjectEnvVar) {
+	if o != nil && !isNil(o.ProjectEnvVar) {
 		return true
 	}
 
@@ -568,19 +575,11 @@ func (o *TemplateProjectTemplateProjectInput) SetProjectEnvVar(v []ProjectEnvVar
 }
 
 func (o TemplateProjectTemplateProjectInput) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o TemplateProjectTemplateProjectInput) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Description.IsSet() {
 		toSerialize["description"] = o.Description.Get()
 	}
-	if !IsNil(o.TemplateEnvironment) {
+	if !isNil(o.TemplateEnvironment) {
 		toSerialize["templateEnvironment"] = o.TemplateEnvironment
 	}
 	if o.Name.IsSet() {
@@ -607,16 +606,16 @@ func (o TemplateProjectTemplateProjectInput) ToMap() (map[string]interface{}, er
 	if o.IsInitProjectSkeleton.IsSet() {
 		toSerialize["isInitProjectSkeleton"] = o.IsInitProjectSkeleton.Get()
 	}
-	if !IsNil(o.ComponentVersion) {
+	if !isNil(o.ComponentVersion) {
 		toSerialize["componentVersion"] = o.ComponentVersion
 	}
 	if o.ProjectTypeVersion.IsSet() {
 		toSerialize["projectTypeVersion"] = o.ProjectTypeVersion.Get()
 	}
-	if !IsNil(o.ProjectEnvVar) {
+	if !isNil(o.ProjectEnvVar) {
 		toSerialize["projectEnvVar"] = o.ProjectEnvVar
 	}
-	return toSerialize, nil
+	return json.Marshal(toSerialize)
 }
 
 type NullableTemplateProjectTemplateProjectInput struct {
@@ -654,5 +653,3 @@ func (v *NullableTemplateProjectTemplateProjectInput) UnmarshalJSON(src []byte) 
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

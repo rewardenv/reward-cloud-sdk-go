@@ -15,7 +15,7 @@ Method | HTTP request | Description
 
 ## ApiEnvironmentAccessRedisGetCollection
 
-> []EnvironmentAccessRedis ApiEnvironmentAccessRedisGetCollection(ctx).Page(page).ItemsPerPage(itemsPerPage).Execute()
+> ApiEnvironmentAccessRedisGetCollection200Response ApiEnvironmentAccessRedisGetCollection(ctx).Page(page).ItemsPerPage(itemsPerPage).Execute()
 
 Retrieves the collection of EnvironmentAccessRedis resources.
 
@@ -44,7 +44,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `EnvironmentAccessRedisApi.ApiEnvironmentAccessRedisGetCollection``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiEnvironmentAccessRedisGetCollection`: []EnvironmentAccessRedis
+    // response from `ApiEnvironmentAccessRedisGetCollection`: ApiEnvironmentAccessRedisGetCollection200Response
     fmt.Fprintf(os.Stdout, "Response from `EnvironmentAccessRedisApi.ApiEnvironmentAccessRedisGetCollection`: %v\n", resp)
 }
 ```
@@ -65,7 +65,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]EnvironmentAccessRedis**](EnvironmentAccessRedis.md)
+[**ApiEnvironmentAccessRedisGetCollection200Response**](ApiEnvironmentAccessRedisGetCollection200Response.md)
 
 ### Authorization
 
@@ -74,7 +74,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json, application/hal+json, text/html
+- **Accept**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -151,7 +151,7 @@ Name | Type | Description  | Notes
 
 ## ApiEnvironmentAccessRedisIdGet
 
-> EnvironmentAccessRedis ApiEnvironmentAccessRedisIdGet(ctx, id).Execute()
+> EnvironmentAccessRedisJsonhal ApiEnvironmentAccessRedisIdGet(ctx, id).Execute()
 
 Retrieves a EnvironmentAccessRedis resource.
 
@@ -179,7 +179,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `EnvironmentAccessRedisApi.ApiEnvironmentAccessRedisIdGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiEnvironmentAccessRedisIdGet`: EnvironmentAccessRedis
+    // response from `ApiEnvironmentAccessRedisIdGet`: EnvironmentAccessRedisJsonhal
     fmt.Fprintf(os.Stdout, "Response from `EnvironmentAccessRedisApi.ApiEnvironmentAccessRedisIdGet`: %v\n", resp)
 }
 ```
@@ -203,7 +203,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**EnvironmentAccessRedis**](EnvironmentAccessRedis.md)
+[**EnvironmentAccessRedisJsonhal**](EnvironmentAccessRedisJsonhal.md)
 
 ### Authorization
 
@@ -212,7 +212,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json, application/hal+json, text/html
+- **Accept**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -221,7 +221,7 @@ Name | Type | Description  | Notes
 
 ## ApiEnvironmentAccessRedisIdPatch
 
-> EnvironmentAccessRedis ApiEnvironmentAccessRedisIdPatch(ctx, id).EnvironmentAccessRedis(environmentAccessRedis).Execute()
+> EnvironmentAccessRedisJsonhal ApiEnvironmentAccessRedisIdPatch(ctx, id).EnvironmentAccessRedis(environmentAccessRedis).Execute()
 
 Updates the EnvironmentAccessRedis resource.
 
@@ -250,7 +250,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `EnvironmentAccessRedisApi.ApiEnvironmentAccessRedisIdPatch``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiEnvironmentAccessRedisIdPatch`: EnvironmentAccessRedis
+    // response from `ApiEnvironmentAccessRedisIdPatch`: EnvironmentAccessRedisJsonhal
     fmt.Fprintf(os.Stdout, "Response from `EnvironmentAccessRedisApi.ApiEnvironmentAccessRedisIdPatch`: %v\n", resp)
 }
 ```
@@ -275,7 +275,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**EnvironmentAccessRedis**](EnvironmentAccessRedis.md)
+[**EnvironmentAccessRedisJsonhal**](EnvironmentAccessRedisJsonhal.md)
 
 ### Authorization
 
@@ -283,8 +283,8 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: application/json, application/hal+json, text/html
-- **Accept**: application/json, application/hal+json, text/html
+- **Content-Type**: application/vnd.api+json
+- **Accept**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -293,7 +293,7 @@ Name | Type | Description  | Notes
 
 ## ApiEnvironmentAccessRedisIdPut
 
-> EnvironmentAccessRedis ApiEnvironmentAccessRedisIdPut(ctx, id).EnvironmentAccessRedis(environmentAccessRedis).Execute()
+> EnvironmentAccessRedisJsonhal ApiEnvironmentAccessRedisIdPut(ctx, id).EnvironmentAccessRedisJsonhal(environmentAccessRedisJsonhal).Execute()
 
 Replaces the EnvironmentAccessRedis resource.
 
@@ -313,16 +313,16 @@ import (
 
 func main() {
     id := "id_example" // string | EnvironmentAccessRedis identifier
-    environmentAccessRedis := *openapiclient.NewEnvironmentAccessRedis() // EnvironmentAccessRedis | The updated EnvironmentAccessRedis resource
+    environmentAccessRedisJsonhal := *openapiclient.NewEnvironmentAccessRedisJsonhal() // EnvironmentAccessRedisJsonhal | The updated EnvironmentAccessRedis resource
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.EnvironmentAccessRedisApi.ApiEnvironmentAccessRedisIdPut(context.Background(), id).EnvironmentAccessRedis(environmentAccessRedis).Execute()
+    resp, r, err := apiClient.EnvironmentAccessRedisApi.ApiEnvironmentAccessRedisIdPut(context.Background(), id).EnvironmentAccessRedisJsonhal(environmentAccessRedisJsonhal).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `EnvironmentAccessRedisApi.ApiEnvironmentAccessRedisIdPut``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiEnvironmentAccessRedisIdPut`: EnvironmentAccessRedis
+    // response from `ApiEnvironmentAccessRedisIdPut`: EnvironmentAccessRedisJsonhal
     fmt.Fprintf(os.Stdout, "Response from `EnvironmentAccessRedisApi.ApiEnvironmentAccessRedisIdPut`: %v\n", resp)
 }
 ```
@@ -343,11 +343,11 @@ Other parameters are passed through a pointer to a apiApiEnvironmentAccessRedisI
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **environmentAccessRedis** | [**EnvironmentAccessRedis**](EnvironmentAccessRedis.md) | The updated EnvironmentAccessRedis resource | 
+ **environmentAccessRedisJsonhal** | [**EnvironmentAccessRedisJsonhal**](EnvironmentAccessRedisJsonhal.md) | The updated EnvironmentAccessRedis resource | 
 
 ### Return type
 
-[**EnvironmentAccessRedis**](EnvironmentAccessRedis.md)
+[**EnvironmentAccessRedisJsonhal**](EnvironmentAccessRedisJsonhal.md)
 
 ### Authorization
 
@@ -355,8 +355,8 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: application/json, application/hal+json, text/html
-- **Accept**: application/json, application/hal+json, text/html
+- **Content-Type**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
+- **Accept**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -365,7 +365,7 @@ Name | Type | Description  | Notes
 
 ## ApiEnvironmentAccessRedisPost
 
-> EnvironmentAccessRedis ApiEnvironmentAccessRedisPost(ctx).EnvironmentAccessRedis(environmentAccessRedis).Execute()
+> EnvironmentAccessRedisJsonhal ApiEnvironmentAccessRedisPost(ctx).EnvironmentAccessRedisJsonhal(environmentAccessRedisJsonhal).Execute()
 
 Creates a EnvironmentAccessRedis resource.
 
@@ -384,16 +384,16 @@ import (
 )
 
 func main() {
-    environmentAccessRedis := *openapiclient.NewEnvironmentAccessRedis() // EnvironmentAccessRedis | The new EnvironmentAccessRedis resource
+    environmentAccessRedisJsonhal := *openapiclient.NewEnvironmentAccessRedisJsonhal() // EnvironmentAccessRedisJsonhal | The new EnvironmentAccessRedis resource
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.EnvironmentAccessRedisApi.ApiEnvironmentAccessRedisPost(context.Background()).EnvironmentAccessRedis(environmentAccessRedis).Execute()
+    resp, r, err := apiClient.EnvironmentAccessRedisApi.ApiEnvironmentAccessRedisPost(context.Background()).EnvironmentAccessRedisJsonhal(environmentAccessRedisJsonhal).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `EnvironmentAccessRedisApi.ApiEnvironmentAccessRedisPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiEnvironmentAccessRedisPost`: EnvironmentAccessRedis
+    // response from `ApiEnvironmentAccessRedisPost`: EnvironmentAccessRedisJsonhal
     fmt.Fprintf(os.Stdout, "Response from `EnvironmentAccessRedisApi.ApiEnvironmentAccessRedisPost`: %v\n", resp)
 }
 ```
@@ -409,11 +409,11 @@ Other parameters are passed through a pointer to a apiApiEnvironmentAccessRedisP
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **environmentAccessRedis** | [**EnvironmentAccessRedis**](EnvironmentAccessRedis.md) | The new EnvironmentAccessRedis resource | 
+ **environmentAccessRedisJsonhal** | [**EnvironmentAccessRedisJsonhal**](EnvironmentAccessRedisJsonhal.md) | The new EnvironmentAccessRedis resource | 
 
 ### Return type
 
-[**EnvironmentAccessRedis**](EnvironmentAccessRedis.md)
+[**EnvironmentAccessRedisJsonhal**](EnvironmentAccessRedisJsonhal.md)
 
 ### Authorization
 
@@ -421,8 +421,8 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: application/json, application/hal+json, text/html
-- **Accept**: application/json, application/hal+json, text/html
+- **Content-Type**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
+- **Accept**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)

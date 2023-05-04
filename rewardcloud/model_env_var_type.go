@@ -15,25 +15,22 @@ import (
 	"time"
 )
 
-// checks if the EnvVarType type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &EnvVarType{}
-
 // EnvVarType Class EnvVarType
 type EnvVarType struct {
-	Id *int32 `json:"id,omitempty"`
-	Uuid NullableString `json:"uuid,omitempty"`
-	Name NullableString `json:"name,omitempty"`
-	CodeName NullableString `json:"codeName,omitempty"`
-	IsDefault NullableBool `json:"isDefault,omitempty"`
-	ProjectEnvVar []string `json:"projectEnvVar,omitempty"`
-	EnvironmentEnvVar []string `json:"environmentEnvVar,omitempty"`
-	ComponentVersionEnvVar []string `json:"componentVersionEnvVar,omitempty"`
-	OrganisationEnvVar []string `json:"organisationEnvVar,omitempty"`
-	TeamEnvVar []string `json:"teamEnvVar,omitempty"`
-	CreatedBy NullableString `json:"createdBy,omitempty"`
-	UpdatedBy NullableString `json:"updatedBy,omitempty"`
-	CreatedAt *time.Time `json:"createdAt,omitempty"`
-	UpdatedAt *time.Time `json:"updatedAt,omitempty"`
+	Id                     *int32         `json:"id,omitempty"`
+	Uuid                   NullableString `json:"uuid,omitempty"`
+	Name                   NullableString `json:"name,omitempty"`
+	CodeName               NullableString `json:"codeName,omitempty"`
+	IsDefault              NullableBool   `json:"isDefault,omitempty"`
+	ProjectEnvVar          []string       `json:"projectEnvVar,omitempty"`
+	EnvironmentEnvVar      []string       `json:"environmentEnvVar,omitempty"`
+	ComponentVersionEnvVar []string       `json:"componentVersionEnvVar,omitempty"`
+	OrganisationEnvVar     []string       `json:"organisationEnvVar,omitempty"`
+	TeamEnvVar             []string       `json:"teamEnvVar,omitempty"`
+	CreatedBy              NullableString `json:"createdBy,omitempty"`
+	UpdatedBy              NullableString `json:"updatedBy,omitempty"`
+	CreatedAt              *time.Time     `json:"createdAt,omitempty"`
+	UpdatedAt              *time.Time     `json:"updatedAt,omitempty"`
 }
 
 // NewEnvVarType instantiates a new EnvVarType object
@@ -55,7 +52,7 @@ func NewEnvVarTypeWithDefaults() *EnvVarType {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *EnvVarType) GetId() int32 {
-	if o == nil || IsNil(o.Id) {
+	if o == nil || isNil(o.Id) {
 		var ret int32
 		return ret
 	}
@@ -65,7 +62,7 @@ func (o *EnvVarType) GetId() int32 {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EnvVarType) GetIdOk() (*int32, bool) {
-	if o == nil || IsNil(o.Id) {
+	if o == nil || isNil(o.Id) {
 		return nil, false
 	}
 	return o.Id, true
@@ -73,7 +70,7 @@ func (o *EnvVarType) GetIdOk() (*int32, bool) {
 
 // HasId returns a boolean if a field has been set.
 func (o *EnvVarType) HasId() bool {
-	if o != nil && !IsNil(o.Id) {
+	if o != nil && !isNil(o.Id) {
 		return true
 	}
 
@@ -87,7 +84,7 @@ func (o *EnvVarType) SetId(v int32) {
 
 // GetUuid returns the Uuid field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *EnvVarType) GetUuid() string {
-	if o == nil || IsNil(o.Uuid.Get()) {
+	if o == nil || isNil(o.Uuid.Get()) {
 		var ret string
 		return ret
 	}
@@ -117,6 +114,7 @@ func (o *EnvVarType) HasUuid() bool {
 func (o *EnvVarType) SetUuid(v string) {
 	o.Uuid.Set(&v)
 }
+
 // SetUuidNil sets the value for Uuid to be an explicit nil
 func (o *EnvVarType) SetUuidNil() {
 	o.Uuid.Set(nil)
@@ -129,7 +127,7 @@ func (o *EnvVarType) UnsetUuid() {
 
 // GetName returns the Name field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *EnvVarType) GetName() string {
-	if o == nil || IsNil(o.Name.Get()) {
+	if o == nil || isNil(o.Name.Get()) {
 		var ret string
 		return ret
 	}
@@ -159,6 +157,7 @@ func (o *EnvVarType) HasName() bool {
 func (o *EnvVarType) SetName(v string) {
 	o.Name.Set(&v)
 }
+
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *EnvVarType) SetNameNil() {
 	o.Name.Set(nil)
@@ -171,7 +170,7 @@ func (o *EnvVarType) UnsetName() {
 
 // GetCodeName returns the CodeName field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *EnvVarType) GetCodeName() string {
-	if o == nil || IsNil(o.CodeName.Get()) {
+	if o == nil || isNil(o.CodeName.Get()) {
 		var ret string
 		return ret
 	}
@@ -201,6 +200,7 @@ func (o *EnvVarType) HasCodeName() bool {
 func (o *EnvVarType) SetCodeName(v string) {
 	o.CodeName.Set(&v)
 }
+
 // SetCodeNameNil sets the value for CodeName to be an explicit nil
 func (o *EnvVarType) SetCodeNameNil() {
 	o.CodeName.Set(nil)
@@ -213,7 +213,7 @@ func (o *EnvVarType) UnsetCodeName() {
 
 // GetIsDefault returns the IsDefault field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *EnvVarType) GetIsDefault() bool {
-	if o == nil || IsNil(o.IsDefault.Get()) {
+	if o == nil || isNil(o.IsDefault.Get()) {
 		var ret bool
 		return ret
 	}
@@ -243,6 +243,7 @@ func (o *EnvVarType) HasIsDefault() bool {
 func (o *EnvVarType) SetIsDefault(v bool) {
 	o.IsDefault.Set(&v)
 }
+
 // SetIsDefaultNil sets the value for IsDefault to be an explicit nil
 func (o *EnvVarType) SetIsDefaultNil() {
 	o.IsDefault.Set(nil)
@@ -255,7 +256,7 @@ func (o *EnvVarType) UnsetIsDefault() {
 
 // GetProjectEnvVar returns the ProjectEnvVar field value if set, zero value otherwise.
 func (o *EnvVarType) GetProjectEnvVar() []string {
-	if o == nil || IsNil(o.ProjectEnvVar) {
+	if o == nil || isNil(o.ProjectEnvVar) {
 		var ret []string
 		return ret
 	}
@@ -265,7 +266,7 @@ func (o *EnvVarType) GetProjectEnvVar() []string {
 // GetProjectEnvVarOk returns a tuple with the ProjectEnvVar field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EnvVarType) GetProjectEnvVarOk() ([]string, bool) {
-	if o == nil || IsNil(o.ProjectEnvVar) {
+	if o == nil || isNil(o.ProjectEnvVar) {
 		return nil, false
 	}
 	return o.ProjectEnvVar, true
@@ -273,7 +274,7 @@ func (o *EnvVarType) GetProjectEnvVarOk() ([]string, bool) {
 
 // HasProjectEnvVar returns a boolean if a field has been set.
 func (o *EnvVarType) HasProjectEnvVar() bool {
-	if o != nil && !IsNil(o.ProjectEnvVar) {
+	if o != nil && !isNil(o.ProjectEnvVar) {
 		return true
 	}
 
@@ -287,7 +288,7 @@ func (o *EnvVarType) SetProjectEnvVar(v []string) {
 
 // GetEnvironmentEnvVar returns the EnvironmentEnvVar field value if set, zero value otherwise.
 func (o *EnvVarType) GetEnvironmentEnvVar() []string {
-	if o == nil || IsNil(o.EnvironmentEnvVar) {
+	if o == nil || isNil(o.EnvironmentEnvVar) {
 		var ret []string
 		return ret
 	}
@@ -297,7 +298,7 @@ func (o *EnvVarType) GetEnvironmentEnvVar() []string {
 // GetEnvironmentEnvVarOk returns a tuple with the EnvironmentEnvVar field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EnvVarType) GetEnvironmentEnvVarOk() ([]string, bool) {
-	if o == nil || IsNil(o.EnvironmentEnvVar) {
+	if o == nil || isNil(o.EnvironmentEnvVar) {
 		return nil, false
 	}
 	return o.EnvironmentEnvVar, true
@@ -305,7 +306,7 @@ func (o *EnvVarType) GetEnvironmentEnvVarOk() ([]string, bool) {
 
 // HasEnvironmentEnvVar returns a boolean if a field has been set.
 func (o *EnvVarType) HasEnvironmentEnvVar() bool {
-	if o != nil && !IsNil(o.EnvironmentEnvVar) {
+	if o != nil && !isNil(o.EnvironmentEnvVar) {
 		return true
 	}
 
@@ -319,7 +320,7 @@ func (o *EnvVarType) SetEnvironmentEnvVar(v []string) {
 
 // GetComponentVersionEnvVar returns the ComponentVersionEnvVar field value if set, zero value otherwise.
 func (o *EnvVarType) GetComponentVersionEnvVar() []string {
-	if o == nil || IsNil(o.ComponentVersionEnvVar) {
+	if o == nil || isNil(o.ComponentVersionEnvVar) {
 		var ret []string
 		return ret
 	}
@@ -329,7 +330,7 @@ func (o *EnvVarType) GetComponentVersionEnvVar() []string {
 // GetComponentVersionEnvVarOk returns a tuple with the ComponentVersionEnvVar field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EnvVarType) GetComponentVersionEnvVarOk() ([]string, bool) {
-	if o == nil || IsNil(o.ComponentVersionEnvVar) {
+	if o == nil || isNil(o.ComponentVersionEnvVar) {
 		return nil, false
 	}
 	return o.ComponentVersionEnvVar, true
@@ -337,7 +338,7 @@ func (o *EnvVarType) GetComponentVersionEnvVarOk() ([]string, bool) {
 
 // HasComponentVersionEnvVar returns a boolean if a field has been set.
 func (o *EnvVarType) HasComponentVersionEnvVar() bool {
-	if o != nil && !IsNil(o.ComponentVersionEnvVar) {
+	if o != nil && !isNil(o.ComponentVersionEnvVar) {
 		return true
 	}
 
@@ -351,7 +352,7 @@ func (o *EnvVarType) SetComponentVersionEnvVar(v []string) {
 
 // GetOrganisationEnvVar returns the OrganisationEnvVar field value if set, zero value otherwise.
 func (o *EnvVarType) GetOrganisationEnvVar() []string {
-	if o == nil || IsNil(o.OrganisationEnvVar) {
+	if o == nil || isNil(o.OrganisationEnvVar) {
 		var ret []string
 		return ret
 	}
@@ -361,7 +362,7 @@ func (o *EnvVarType) GetOrganisationEnvVar() []string {
 // GetOrganisationEnvVarOk returns a tuple with the OrganisationEnvVar field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EnvVarType) GetOrganisationEnvVarOk() ([]string, bool) {
-	if o == nil || IsNil(o.OrganisationEnvVar) {
+	if o == nil || isNil(o.OrganisationEnvVar) {
 		return nil, false
 	}
 	return o.OrganisationEnvVar, true
@@ -369,7 +370,7 @@ func (o *EnvVarType) GetOrganisationEnvVarOk() ([]string, bool) {
 
 // HasOrganisationEnvVar returns a boolean if a field has been set.
 func (o *EnvVarType) HasOrganisationEnvVar() bool {
-	if o != nil && !IsNil(o.OrganisationEnvVar) {
+	if o != nil && !isNil(o.OrganisationEnvVar) {
 		return true
 	}
 
@@ -383,7 +384,7 @@ func (o *EnvVarType) SetOrganisationEnvVar(v []string) {
 
 // GetTeamEnvVar returns the TeamEnvVar field value if set, zero value otherwise.
 func (o *EnvVarType) GetTeamEnvVar() []string {
-	if o == nil || IsNil(o.TeamEnvVar) {
+	if o == nil || isNil(o.TeamEnvVar) {
 		var ret []string
 		return ret
 	}
@@ -393,7 +394,7 @@ func (o *EnvVarType) GetTeamEnvVar() []string {
 // GetTeamEnvVarOk returns a tuple with the TeamEnvVar field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EnvVarType) GetTeamEnvVarOk() ([]string, bool) {
-	if o == nil || IsNil(o.TeamEnvVar) {
+	if o == nil || isNil(o.TeamEnvVar) {
 		return nil, false
 	}
 	return o.TeamEnvVar, true
@@ -401,7 +402,7 @@ func (o *EnvVarType) GetTeamEnvVarOk() ([]string, bool) {
 
 // HasTeamEnvVar returns a boolean if a field has been set.
 func (o *EnvVarType) HasTeamEnvVar() bool {
-	if o != nil && !IsNil(o.TeamEnvVar) {
+	if o != nil && !isNil(o.TeamEnvVar) {
 		return true
 	}
 
@@ -415,7 +416,7 @@ func (o *EnvVarType) SetTeamEnvVar(v []string) {
 
 // GetCreatedBy returns the CreatedBy field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *EnvVarType) GetCreatedBy() string {
-	if o == nil || IsNil(o.CreatedBy.Get()) {
+	if o == nil || isNil(o.CreatedBy.Get()) {
 		var ret string
 		return ret
 	}
@@ -445,6 +446,7 @@ func (o *EnvVarType) HasCreatedBy() bool {
 func (o *EnvVarType) SetCreatedBy(v string) {
 	o.CreatedBy.Set(&v)
 }
+
 // SetCreatedByNil sets the value for CreatedBy to be an explicit nil
 func (o *EnvVarType) SetCreatedByNil() {
 	o.CreatedBy.Set(nil)
@@ -457,7 +459,7 @@ func (o *EnvVarType) UnsetCreatedBy() {
 
 // GetUpdatedBy returns the UpdatedBy field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *EnvVarType) GetUpdatedBy() string {
-	if o == nil || IsNil(o.UpdatedBy.Get()) {
+	if o == nil || isNil(o.UpdatedBy.Get()) {
 		var ret string
 		return ret
 	}
@@ -487,6 +489,7 @@ func (o *EnvVarType) HasUpdatedBy() bool {
 func (o *EnvVarType) SetUpdatedBy(v string) {
 	o.UpdatedBy.Set(&v)
 }
+
 // SetUpdatedByNil sets the value for UpdatedBy to be an explicit nil
 func (o *EnvVarType) SetUpdatedByNil() {
 	o.UpdatedBy.Set(nil)
@@ -499,7 +502,7 @@ func (o *EnvVarType) UnsetUpdatedBy() {
 
 // GetCreatedAt returns the CreatedAt field value if set, zero value otherwise.
 func (o *EnvVarType) GetCreatedAt() time.Time {
-	if o == nil || IsNil(o.CreatedAt) {
+	if o == nil || isNil(o.CreatedAt) {
 		var ret time.Time
 		return ret
 	}
@@ -509,7 +512,7 @@ func (o *EnvVarType) GetCreatedAt() time.Time {
 // GetCreatedAtOk returns a tuple with the CreatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EnvVarType) GetCreatedAtOk() (*time.Time, bool) {
-	if o == nil || IsNil(o.CreatedAt) {
+	if o == nil || isNil(o.CreatedAt) {
 		return nil, false
 	}
 	return o.CreatedAt, true
@@ -517,7 +520,7 @@ func (o *EnvVarType) GetCreatedAtOk() (*time.Time, bool) {
 
 // HasCreatedAt returns a boolean if a field has been set.
 func (o *EnvVarType) HasCreatedAt() bool {
-	if o != nil && !IsNil(o.CreatedAt) {
+	if o != nil && !isNil(o.CreatedAt) {
 		return true
 	}
 
@@ -531,7 +534,7 @@ func (o *EnvVarType) SetCreatedAt(v time.Time) {
 
 // GetUpdatedAt returns the UpdatedAt field value if set, zero value otherwise.
 func (o *EnvVarType) GetUpdatedAt() time.Time {
-	if o == nil || IsNil(o.UpdatedAt) {
+	if o == nil || isNil(o.UpdatedAt) {
 		var ret time.Time
 		return ret
 	}
@@ -541,7 +544,7 @@ func (o *EnvVarType) GetUpdatedAt() time.Time {
 // GetUpdatedAtOk returns a tuple with the UpdatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EnvVarType) GetUpdatedAtOk() (*time.Time, bool) {
-	if o == nil || IsNil(o.UpdatedAt) {
+	if o == nil || isNil(o.UpdatedAt) {
 		return nil, false
 	}
 	return o.UpdatedAt, true
@@ -549,7 +552,7 @@ func (o *EnvVarType) GetUpdatedAtOk() (*time.Time, bool) {
 
 // HasUpdatedAt returns a boolean if a field has been set.
 func (o *EnvVarType) HasUpdatedAt() bool {
-	if o != nil && !IsNil(o.UpdatedAt) {
+	if o != nil && !isNil(o.UpdatedAt) {
 		return true
 	}
 
@@ -562,16 +565,10 @@ func (o *EnvVarType) SetUpdatedAt(v time.Time) {
 }
 
 func (o EnvVarType) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o EnvVarType) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	// skip: id is readOnly
+	if !isNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
 	if o.Uuid.IsSet() {
 		toSerialize["uuid"] = o.Uuid.Get()
 	}
@@ -584,19 +581,19 @@ func (o EnvVarType) ToMap() (map[string]interface{}, error) {
 	if o.IsDefault.IsSet() {
 		toSerialize["isDefault"] = o.IsDefault.Get()
 	}
-	if !IsNil(o.ProjectEnvVar) {
+	if !isNil(o.ProjectEnvVar) {
 		toSerialize["projectEnvVar"] = o.ProjectEnvVar
 	}
-	if !IsNil(o.EnvironmentEnvVar) {
+	if !isNil(o.EnvironmentEnvVar) {
 		toSerialize["environmentEnvVar"] = o.EnvironmentEnvVar
 	}
-	if !IsNil(o.ComponentVersionEnvVar) {
+	if !isNil(o.ComponentVersionEnvVar) {
 		toSerialize["componentVersionEnvVar"] = o.ComponentVersionEnvVar
 	}
-	if !IsNil(o.OrganisationEnvVar) {
+	if !isNil(o.OrganisationEnvVar) {
 		toSerialize["organisationEnvVar"] = o.OrganisationEnvVar
 	}
-	if !IsNil(o.TeamEnvVar) {
+	if !isNil(o.TeamEnvVar) {
 		toSerialize["teamEnvVar"] = o.TeamEnvVar
 	}
 	if o.CreatedBy.IsSet() {
@@ -605,13 +602,13 @@ func (o EnvVarType) ToMap() (map[string]interface{}, error) {
 	if o.UpdatedBy.IsSet() {
 		toSerialize["updatedBy"] = o.UpdatedBy.Get()
 	}
-	if !IsNil(o.CreatedAt) {
+	if !isNil(o.CreatedAt) {
 		toSerialize["createdAt"] = o.CreatedAt
 	}
-	if !IsNil(o.UpdatedAt) {
+	if !isNil(o.UpdatedAt) {
 		toSerialize["updatedAt"] = o.UpdatedAt
 	}
-	return toSerialize, nil
+	return json.Marshal(toSerialize)
 }
 
 type NullableEnvVarType struct {
@@ -649,5 +646,3 @@ func (v *NullableEnvVarType) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

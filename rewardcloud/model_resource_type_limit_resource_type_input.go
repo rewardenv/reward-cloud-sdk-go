@@ -14,17 +14,14 @@ import (
 	"encoding/json"
 )
 
-// checks if the ResourceTypeLimitResourceTypeInput type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &ResourceTypeLimitResourceTypeInput{}
-
-// ResourceTypeLimitResourceTypeInput 
+// ResourceTypeLimitResourceTypeInput
 type ResourceTypeLimitResourceTypeInput struct {
-	ProjectMinValue NullableInt32 `json:"projectMinValue,omitempty"`
-	ProjectMaxValue NullableInt32 `json:"projectMaxValue,omitempty"`
+	ProjectMinValue     NullableInt32 `json:"projectMinValue,omitempty"`
+	ProjectMaxValue     NullableInt32 `json:"projectMaxValue,omitempty"`
 	EnvironmentMinValue NullableInt32 `json:"environmentMinValue,omitempty"`
 	EnvironmentMaxValue NullableInt32 `json:"environmentMaxValue,omitempty"`
-	ComponentMinValue NullableInt32 `json:"componentMinValue,omitempty"`
-	ComponentMaxValue NullableInt32 `json:"componentMaxValue,omitempty"`
+	ComponentMinValue   NullableInt32 `json:"componentMinValue,omitempty"`
+	ComponentMaxValue   NullableInt32 `json:"componentMaxValue,omitempty"`
 }
 
 // NewResourceTypeLimitResourceTypeInput instantiates a new ResourceTypeLimitResourceTypeInput object
@@ -46,7 +43,7 @@ func NewResourceTypeLimitResourceTypeInputWithDefaults() *ResourceTypeLimitResou
 
 // GetProjectMinValue returns the ProjectMinValue field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ResourceTypeLimitResourceTypeInput) GetProjectMinValue() int32 {
-	if o == nil || IsNil(o.ProjectMinValue.Get()) {
+	if o == nil || isNil(o.ProjectMinValue.Get()) {
 		var ret int32
 		return ret
 	}
@@ -76,6 +73,7 @@ func (o *ResourceTypeLimitResourceTypeInput) HasProjectMinValue() bool {
 func (o *ResourceTypeLimitResourceTypeInput) SetProjectMinValue(v int32) {
 	o.ProjectMinValue.Set(&v)
 }
+
 // SetProjectMinValueNil sets the value for ProjectMinValue to be an explicit nil
 func (o *ResourceTypeLimitResourceTypeInput) SetProjectMinValueNil() {
 	o.ProjectMinValue.Set(nil)
@@ -88,7 +86,7 @@ func (o *ResourceTypeLimitResourceTypeInput) UnsetProjectMinValue() {
 
 // GetProjectMaxValue returns the ProjectMaxValue field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ResourceTypeLimitResourceTypeInput) GetProjectMaxValue() int32 {
-	if o == nil || IsNil(o.ProjectMaxValue.Get()) {
+	if o == nil || isNil(o.ProjectMaxValue.Get()) {
 		var ret int32
 		return ret
 	}
@@ -118,6 +116,7 @@ func (o *ResourceTypeLimitResourceTypeInput) HasProjectMaxValue() bool {
 func (o *ResourceTypeLimitResourceTypeInput) SetProjectMaxValue(v int32) {
 	o.ProjectMaxValue.Set(&v)
 }
+
 // SetProjectMaxValueNil sets the value for ProjectMaxValue to be an explicit nil
 func (o *ResourceTypeLimitResourceTypeInput) SetProjectMaxValueNil() {
 	o.ProjectMaxValue.Set(nil)
@@ -130,7 +129,7 @@ func (o *ResourceTypeLimitResourceTypeInput) UnsetProjectMaxValue() {
 
 // GetEnvironmentMinValue returns the EnvironmentMinValue field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ResourceTypeLimitResourceTypeInput) GetEnvironmentMinValue() int32 {
-	if o == nil || IsNil(o.EnvironmentMinValue.Get()) {
+	if o == nil || isNil(o.EnvironmentMinValue.Get()) {
 		var ret int32
 		return ret
 	}
@@ -160,6 +159,7 @@ func (o *ResourceTypeLimitResourceTypeInput) HasEnvironmentMinValue() bool {
 func (o *ResourceTypeLimitResourceTypeInput) SetEnvironmentMinValue(v int32) {
 	o.EnvironmentMinValue.Set(&v)
 }
+
 // SetEnvironmentMinValueNil sets the value for EnvironmentMinValue to be an explicit nil
 func (o *ResourceTypeLimitResourceTypeInput) SetEnvironmentMinValueNil() {
 	o.EnvironmentMinValue.Set(nil)
@@ -172,7 +172,7 @@ func (o *ResourceTypeLimitResourceTypeInput) UnsetEnvironmentMinValue() {
 
 // GetEnvironmentMaxValue returns the EnvironmentMaxValue field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ResourceTypeLimitResourceTypeInput) GetEnvironmentMaxValue() int32 {
-	if o == nil || IsNil(o.EnvironmentMaxValue.Get()) {
+	if o == nil || isNil(o.EnvironmentMaxValue.Get()) {
 		var ret int32
 		return ret
 	}
@@ -202,6 +202,7 @@ func (o *ResourceTypeLimitResourceTypeInput) HasEnvironmentMaxValue() bool {
 func (o *ResourceTypeLimitResourceTypeInput) SetEnvironmentMaxValue(v int32) {
 	o.EnvironmentMaxValue.Set(&v)
 }
+
 // SetEnvironmentMaxValueNil sets the value for EnvironmentMaxValue to be an explicit nil
 func (o *ResourceTypeLimitResourceTypeInput) SetEnvironmentMaxValueNil() {
 	o.EnvironmentMaxValue.Set(nil)
@@ -214,7 +215,7 @@ func (o *ResourceTypeLimitResourceTypeInput) UnsetEnvironmentMaxValue() {
 
 // GetComponentMinValue returns the ComponentMinValue field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ResourceTypeLimitResourceTypeInput) GetComponentMinValue() int32 {
-	if o == nil || IsNil(o.ComponentMinValue.Get()) {
+	if o == nil || isNil(o.ComponentMinValue.Get()) {
 		var ret int32
 		return ret
 	}
@@ -244,6 +245,7 @@ func (o *ResourceTypeLimitResourceTypeInput) HasComponentMinValue() bool {
 func (o *ResourceTypeLimitResourceTypeInput) SetComponentMinValue(v int32) {
 	o.ComponentMinValue.Set(&v)
 }
+
 // SetComponentMinValueNil sets the value for ComponentMinValue to be an explicit nil
 func (o *ResourceTypeLimitResourceTypeInput) SetComponentMinValueNil() {
 	o.ComponentMinValue.Set(nil)
@@ -256,7 +258,7 @@ func (o *ResourceTypeLimitResourceTypeInput) UnsetComponentMinValue() {
 
 // GetComponentMaxValue returns the ComponentMaxValue field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ResourceTypeLimitResourceTypeInput) GetComponentMaxValue() int32 {
-	if o == nil || IsNil(o.ComponentMaxValue.Get()) {
+	if o == nil || isNil(o.ComponentMaxValue.Get()) {
 		var ret int32
 		return ret
 	}
@@ -286,6 +288,7 @@ func (o *ResourceTypeLimitResourceTypeInput) HasComponentMaxValue() bool {
 func (o *ResourceTypeLimitResourceTypeInput) SetComponentMaxValue(v int32) {
 	o.ComponentMaxValue.Set(&v)
 }
+
 // SetComponentMaxValueNil sets the value for ComponentMaxValue to be an explicit nil
 func (o *ResourceTypeLimitResourceTypeInput) SetComponentMaxValueNil() {
 	o.ComponentMaxValue.Set(nil)
@@ -297,14 +300,6 @@ func (o *ResourceTypeLimitResourceTypeInput) UnsetComponentMaxValue() {
 }
 
 func (o ResourceTypeLimitResourceTypeInput) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o ResourceTypeLimitResourceTypeInput) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if o.ProjectMinValue.IsSet() {
 		toSerialize["projectMinValue"] = o.ProjectMinValue.Get()
@@ -324,7 +319,7 @@ func (o ResourceTypeLimitResourceTypeInput) ToMap() (map[string]interface{}, err
 	if o.ComponentMaxValue.IsSet() {
 		toSerialize["componentMaxValue"] = o.ComponentMaxValue.Get()
 	}
-	return toSerialize, nil
+	return json.Marshal(toSerialize)
 }
 
 type NullableResourceTypeLimitResourceTypeInput struct {
@@ -362,5 +357,3 @@ func (v *NullableResourceTypeLimitResourceTypeInput) UnmarshalJSON(src []byte) e
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

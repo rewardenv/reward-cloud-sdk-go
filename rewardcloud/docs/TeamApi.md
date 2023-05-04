@@ -15,7 +15,7 @@ Method | HTTP request | Description
 
 ## ApiTeamsGetCollection
 
-> []TeamTeamGet ApiTeamsGetCollection(ctx).Page(page).ItemsPerPage(itemsPerPage).ExistsOrganisation(existsOrganisation).User(user).User2(user2).Organisation(organisation).Organisation2(organisation2).Execute()
+> ApiTeamsGetCollection200Response ApiTeamsGetCollection(ctx).Page(page).ItemsPerPage(itemsPerPage).ExistsOrganisation(existsOrganisation).Name(name).User(user).User2(user2).Organisation(organisation).Organisation2(organisation2).Execute()
 
 Retrieves the collection of Team resources.
 
@@ -37,6 +37,7 @@ func main() {
     page := int32(56) // int32 | The collection page number (optional) (default to 1)
     itemsPerPage := int32(56) // int32 | The number of items per page (optional) (default to 30)
     existsOrganisation := true // bool |  (optional)
+    name := "name_example" // string |  (optional)
     user := "user_example" // string |  (optional)
     user2 := []string{"Inner_example"} // []string |  (optional)
     organisation := "organisation_example" // string |  (optional)
@@ -44,12 +45,12 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.TeamApi.ApiTeamsGetCollection(context.Background()).Page(page).ItemsPerPage(itemsPerPage).ExistsOrganisation(existsOrganisation).User(user).User2(user2).Organisation(organisation).Organisation2(organisation2).Execute()
+    resp, r, err := apiClient.TeamApi.ApiTeamsGetCollection(context.Background()).Page(page).ItemsPerPage(itemsPerPage).ExistsOrganisation(existsOrganisation).Name(name).User(user).User2(user2).Organisation(organisation).Organisation2(organisation2).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `TeamApi.ApiTeamsGetCollection``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiTeamsGetCollection`: []TeamTeamGet
+    // response from `ApiTeamsGetCollection`: ApiTeamsGetCollection200Response
     fmt.Fprintf(os.Stdout, "Response from `TeamApi.ApiTeamsGetCollection`: %v\n", resp)
 }
 ```
@@ -68,6 +69,7 @@ Name | Type | Description  | Notes
  **page** | **int32** | The collection page number | [default to 1]
  **itemsPerPage** | **int32** | The number of items per page | [default to 30]
  **existsOrganisation** | **bool** |  | 
+ **name** | **string** |  | 
  **user** | **string** |  | 
  **user2** | **[]string** |  | 
  **organisation** | **string** |  | 
@@ -75,7 +77,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]TeamTeamGet**](TeamTeamGet.md)
+[**ApiTeamsGetCollection200Response**](ApiTeamsGetCollection200Response.md)
 
 ### Authorization
 
@@ -84,7 +86,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json, application/hal+json, text/html
+- **Accept**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -161,7 +163,7 @@ Name | Type | Description  | Notes
 
 ## ApiTeamsIdGet
 
-> TeamTeamGet ApiTeamsIdGet(ctx, id).Execute()
+> TeamJsonhalTeamGet ApiTeamsIdGet(ctx, id).Execute()
 
 Retrieves a Team resource.
 
@@ -189,7 +191,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `TeamApi.ApiTeamsIdGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiTeamsIdGet`: TeamTeamGet
+    // response from `ApiTeamsIdGet`: TeamJsonhalTeamGet
     fmt.Fprintf(os.Stdout, "Response from `TeamApi.ApiTeamsIdGet`: %v\n", resp)
 }
 ```
@@ -213,7 +215,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**TeamTeamGet**](TeamTeamGet.md)
+[**TeamJsonhalTeamGet**](TeamJsonhalTeamGet.md)
 
 ### Authorization
 
@@ -222,7 +224,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json, application/hal+json, text/html
+- **Accept**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -231,7 +233,7 @@ Name | Type | Description  | Notes
 
 ## ApiTeamsIdPatch
 
-> TeamTeamGet ApiTeamsIdPatch(ctx, id).TeamTeamPost(teamTeamPost).Execute()
+> TeamJsonhalTeamGet ApiTeamsIdPatch(ctx, id).TeamTeamPost(teamTeamPost).Execute()
 
 Updates the Team resource.
 
@@ -260,7 +262,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `TeamApi.ApiTeamsIdPatch``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiTeamsIdPatch`: TeamTeamGet
+    // response from `ApiTeamsIdPatch`: TeamJsonhalTeamGet
     fmt.Fprintf(os.Stdout, "Response from `TeamApi.ApiTeamsIdPatch`: %v\n", resp)
 }
 ```
@@ -285,7 +287,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**TeamTeamGet**](TeamTeamGet.md)
+[**TeamJsonhalTeamGet**](TeamJsonhalTeamGet.md)
 
 ### Authorization
 
@@ -293,8 +295,8 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: application/json, application/hal+json, text/html
-- **Accept**: application/json, application/hal+json, text/html
+- **Content-Type**: application/vnd.api+json
+- **Accept**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -303,7 +305,7 @@ Name | Type | Description  | Notes
 
 ## ApiTeamsIdPut
 
-> TeamTeamGet ApiTeamsIdPut(ctx, id).TeamTeamPost(teamTeamPost).Execute()
+> TeamJsonhalTeamGet ApiTeamsIdPut(ctx, id).TeamJsonhalTeamPost(teamJsonhalTeamPost).Execute()
 
 Replaces the Team resource.
 
@@ -323,16 +325,16 @@ import (
 
 func main() {
     id := "id_example" // string | Team identifier
-    teamTeamPost := *openapiclient.NewTeamTeamPost() // TeamTeamPost | The updated Team resource
+    teamJsonhalTeamPost := *openapiclient.NewTeamJsonhalTeamPost() // TeamJsonhalTeamPost | The updated Team resource
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.TeamApi.ApiTeamsIdPut(context.Background(), id).TeamTeamPost(teamTeamPost).Execute()
+    resp, r, err := apiClient.TeamApi.ApiTeamsIdPut(context.Background(), id).TeamJsonhalTeamPost(teamJsonhalTeamPost).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `TeamApi.ApiTeamsIdPut``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiTeamsIdPut`: TeamTeamGet
+    // response from `ApiTeamsIdPut`: TeamJsonhalTeamGet
     fmt.Fprintf(os.Stdout, "Response from `TeamApi.ApiTeamsIdPut`: %v\n", resp)
 }
 ```
@@ -353,11 +355,11 @@ Other parameters are passed through a pointer to a apiApiTeamsIdPutRequest struc
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **teamTeamPost** | [**TeamTeamPost**](TeamTeamPost.md) | The updated Team resource | 
+ **teamJsonhalTeamPost** | [**TeamJsonhalTeamPost**](TeamJsonhalTeamPost.md) | The updated Team resource | 
 
 ### Return type
 
-[**TeamTeamGet**](TeamTeamGet.md)
+[**TeamJsonhalTeamGet**](TeamJsonhalTeamGet.md)
 
 ### Authorization
 
@@ -365,8 +367,8 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: application/json, application/hal+json, text/html
-- **Accept**: application/json, application/hal+json, text/html
+- **Content-Type**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
+- **Accept**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -375,7 +377,7 @@ Name | Type | Description  | Notes
 
 ## ApiTeamsPost
 
-> TeamTeamGet ApiTeamsPost(ctx).TeamTeamPost(teamTeamPost).Execute()
+> TeamJsonhalTeamGet ApiTeamsPost(ctx).TeamJsonhalTeamPost(teamJsonhalTeamPost).Execute()
 
 Creates a Team resource.
 
@@ -394,16 +396,16 @@ import (
 )
 
 func main() {
-    teamTeamPost := *openapiclient.NewTeamTeamPost() // TeamTeamPost | The new Team resource
+    teamJsonhalTeamPost := *openapiclient.NewTeamJsonhalTeamPost() // TeamJsonhalTeamPost | The new Team resource
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.TeamApi.ApiTeamsPost(context.Background()).TeamTeamPost(teamTeamPost).Execute()
+    resp, r, err := apiClient.TeamApi.ApiTeamsPost(context.Background()).TeamJsonhalTeamPost(teamJsonhalTeamPost).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `TeamApi.ApiTeamsPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiTeamsPost`: TeamTeamGet
+    // response from `ApiTeamsPost`: TeamJsonhalTeamGet
     fmt.Fprintf(os.Stdout, "Response from `TeamApi.ApiTeamsPost`: %v\n", resp)
 }
 ```
@@ -419,11 +421,11 @@ Other parameters are passed through a pointer to a apiApiTeamsPostRequest struct
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **teamTeamPost** | [**TeamTeamPost**](TeamTeamPost.md) | The new Team resource | 
+ **teamJsonhalTeamPost** | [**TeamJsonhalTeamPost**](TeamJsonhalTeamPost.md) | The new Team resource | 
 
 ### Return type
 
-[**TeamTeamGet**](TeamTeamGet.md)
+[**TeamJsonhalTeamGet**](TeamJsonhalTeamGet.md)
 
 ### Authorization
 
@@ -431,8 +433,8 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: application/json, application/hal+json, text/html
-- **Accept**: application/json, application/hal+json, text/html
+- **Content-Type**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
+- **Accept**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)

@@ -14,22 +14,19 @@ import (
 	"encoding/json"
 )
 
-// checks if the TemplateEnvironmentTemplateEnvironmentInput type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &TemplateEnvironmentTemplateEnvironmentInput{}
-
 // TemplateEnvironmentTemplateEnvironmentInput Class TemplateEnvironment
 type TemplateEnvironmentTemplateEnvironmentInput struct {
-	TemplateProject NullableString `json:"templateProject,omitempty"`
-	Name NullableString `json:"name,omitempty"`
-	Cpu NullableInt32 `json:"cpu,omitempty"`
-	Memory NullableInt32 `json:"memory,omitempty"`
-	Storage NullableInt32 `json:"storage,omitempty"`
-	DataTransferSettings NullableString `json:"dataTransferSettings,omitempty"`
-	IsStripDatabase NullableBool `json:"isStripDatabase,omitempty"`
-	IsAllowOutgoingEmails NullableBool `json:"isAllowOutgoingEmails,omitempty"`
-	IsInitSampleData NullableBool `json:"isInitSampleData,omitempty"`
-	EnvVar []EnvironmentEnvVarTemplateEnvironmentInput `json:"envVar,omitempty"`
-	EnvironmentComponent []EnvironmentComponentTemplateEnvironmentInput `json:"environmentComponent,omitempty"`
+	TemplateProject       NullableString                                 `json:"templateProject,omitempty"`
+	Name                  NullableString                                 `json:"name,omitempty"`
+	Cpu                   NullableInt32                                  `json:"cpu,omitempty"`
+	Memory                NullableInt32                                  `json:"memory,omitempty"`
+	Storage               NullableInt32                                  `json:"storage,omitempty"`
+	DataTransferSettings  NullableString                                 `json:"dataTransferSettings,omitempty"`
+	IsStripDatabase       NullableBool                                   `json:"isStripDatabase,omitempty"`
+	IsAllowOutgoingEmails NullableBool                                   `json:"isAllowOutgoingEmails,omitempty"`
+	IsInitSampleData      NullableBool                                   `json:"isInitSampleData,omitempty"`
+	EnvVar                []EnvironmentEnvVarTemplateEnvironmentInput    `json:"envVar,omitempty"`
+	EnvironmentComponent  []EnvironmentComponentTemplateEnvironmentInput `json:"environmentComponent,omitempty"`
 }
 
 // NewTemplateEnvironmentTemplateEnvironmentInput instantiates a new TemplateEnvironmentTemplateEnvironmentInput object
@@ -51,7 +48,7 @@ func NewTemplateEnvironmentTemplateEnvironmentInputWithDefaults() *TemplateEnvir
 
 // GetTemplateProject returns the TemplateProject field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *TemplateEnvironmentTemplateEnvironmentInput) GetTemplateProject() string {
-	if o == nil || IsNil(o.TemplateProject.Get()) {
+	if o == nil || isNil(o.TemplateProject.Get()) {
 		var ret string
 		return ret
 	}
@@ -81,6 +78,7 @@ func (o *TemplateEnvironmentTemplateEnvironmentInput) HasTemplateProject() bool 
 func (o *TemplateEnvironmentTemplateEnvironmentInput) SetTemplateProject(v string) {
 	o.TemplateProject.Set(&v)
 }
+
 // SetTemplateProjectNil sets the value for TemplateProject to be an explicit nil
 func (o *TemplateEnvironmentTemplateEnvironmentInput) SetTemplateProjectNil() {
 	o.TemplateProject.Set(nil)
@@ -93,7 +91,7 @@ func (o *TemplateEnvironmentTemplateEnvironmentInput) UnsetTemplateProject() {
 
 // GetName returns the Name field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *TemplateEnvironmentTemplateEnvironmentInput) GetName() string {
-	if o == nil || IsNil(o.Name.Get()) {
+	if o == nil || isNil(o.Name.Get()) {
 		var ret string
 		return ret
 	}
@@ -123,6 +121,7 @@ func (o *TemplateEnvironmentTemplateEnvironmentInput) HasName() bool {
 func (o *TemplateEnvironmentTemplateEnvironmentInput) SetName(v string) {
 	o.Name.Set(&v)
 }
+
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *TemplateEnvironmentTemplateEnvironmentInput) SetNameNil() {
 	o.Name.Set(nil)
@@ -135,7 +134,7 @@ func (o *TemplateEnvironmentTemplateEnvironmentInput) UnsetName() {
 
 // GetCpu returns the Cpu field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *TemplateEnvironmentTemplateEnvironmentInput) GetCpu() int32 {
-	if o == nil || IsNil(o.Cpu.Get()) {
+	if o == nil || isNil(o.Cpu.Get()) {
 		var ret int32
 		return ret
 	}
@@ -165,6 +164,7 @@ func (o *TemplateEnvironmentTemplateEnvironmentInput) HasCpu() bool {
 func (o *TemplateEnvironmentTemplateEnvironmentInput) SetCpu(v int32) {
 	o.Cpu.Set(&v)
 }
+
 // SetCpuNil sets the value for Cpu to be an explicit nil
 func (o *TemplateEnvironmentTemplateEnvironmentInput) SetCpuNil() {
 	o.Cpu.Set(nil)
@@ -177,7 +177,7 @@ func (o *TemplateEnvironmentTemplateEnvironmentInput) UnsetCpu() {
 
 // GetMemory returns the Memory field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *TemplateEnvironmentTemplateEnvironmentInput) GetMemory() int32 {
-	if o == nil || IsNil(o.Memory.Get()) {
+	if o == nil || isNil(o.Memory.Get()) {
 		var ret int32
 		return ret
 	}
@@ -207,6 +207,7 @@ func (o *TemplateEnvironmentTemplateEnvironmentInput) HasMemory() bool {
 func (o *TemplateEnvironmentTemplateEnvironmentInput) SetMemory(v int32) {
 	o.Memory.Set(&v)
 }
+
 // SetMemoryNil sets the value for Memory to be an explicit nil
 func (o *TemplateEnvironmentTemplateEnvironmentInput) SetMemoryNil() {
 	o.Memory.Set(nil)
@@ -219,7 +220,7 @@ func (o *TemplateEnvironmentTemplateEnvironmentInput) UnsetMemory() {
 
 // GetStorage returns the Storage field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *TemplateEnvironmentTemplateEnvironmentInput) GetStorage() int32 {
-	if o == nil || IsNil(o.Storage.Get()) {
+	if o == nil || isNil(o.Storage.Get()) {
 		var ret int32
 		return ret
 	}
@@ -249,6 +250,7 @@ func (o *TemplateEnvironmentTemplateEnvironmentInput) HasStorage() bool {
 func (o *TemplateEnvironmentTemplateEnvironmentInput) SetStorage(v int32) {
 	o.Storage.Set(&v)
 }
+
 // SetStorageNil sets the value for Storage to be an explicit nil
 func (o *TemplateEnvironmentTemplateEnvironmentInput) SetStorageNil() {
 	o.Storage.Set(nil)
@@ -261,7 +263,7 @@ func (o *TemplateEnvironmentTemplateEnvironmentInput) UnsetStorage() {
 
 // GetDataTransferSettings returns the DataTransferSettings field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *TemplateEnvironmentTemplateEnvironmentInput) GetDataTransferSettings() string {
-	if o == nil || IsNil(o.DataTransferSettings.Get()) {
+	if o == nil || isNil(o.DataTransferSettings.Get()) {
 		var ret string
 		return ret
 	}
@@ -291,6 +293,7 @@ func (o *TemplateEnvironmentTemplateEnvironmentInput) HasDataTransferSettings() 
 func (o *TemplateEnvironmentTemplateEnvironmentInput) SetDataTransferSettings(v string) {
 	o.DataTransferSettings.Set(&v)
 }
+
 // SetDataTransferSettingsNil sets the value for DataTransferSettings to be an explicit nil
 func (o *TemplateEnvironmentTemplateEnvironmentInput) SetDataTransferSettingsNil() {
 	o.DataTransferSettings.Set(nil)
@@ -303,7 +306,7 @@ func (o *TemplateEnvironmentTemplateEnvironmentInput) UnsetDataTransferSettings(
 
 // GetIsStripDatabase returns the IsStripDatabase field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *TemplateEnvironmentTemplateEnvironmentInput) GetIsStripDatabase() bool {
-	if o == nil || IsNil(o.IsStripDatabase.Get()) {
+	if o == nil || isNil(o.IsStripDatabase.Get()) {
 		var ret bool
 		return ret
 	}
@@ -333,6 +336,7 @@ func (o *TemplateEnvironmentTemplateEnvironmentInput) HasIsStripDatabase() bool 
 func (o *TemplateEnvironmentTemplateEnvironmentInput) SetIsStripDatabase(v bool) {
 	o.IsStripDatabase.Set(&v)
 }
+
 // SetIsStripDatabaseNil sets the value for IsStripDatabase to be an explicit nil
 func (o *TemplateEnvironmentTemplateEnvironmentInput) SetIsStripDatabaseNil() {
 	o.IsStripDatabase.Set(nil)
@@ -345,7 +349,7 @@ func (o *TemplateEnvironmentTemplateEnvironmentInput) UnsetIsStripDatabase() {
 
 // GetIsAllowOutgoingEmails returns the IsAllowOutgoingEmails field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *TemplateEnvironmentTemplateEnvironmentInput) GetIsAllowOutgoingEmails() bool {
-	if o == nil || IsNil(o.IsAllowOutgoingEmails.Get()) {
+	if o == nil || isNil(o.IsAllowOutgoingEmails.Get()) {
 		var ret bool
 		return ret
 	}
@@ -375,6 +379,7 @@ func (o *TemplateEnvironmentTemplateEnvironmentInput) HasIsAllowOutgoingEmails()
 func (o *TemplateEnvironmentTemplateEnvironmentInput) SetIsAllowOutgoingEmails(v bool) {
 	o.IsAllowOutgoingEmails.Set(&v)
 }
+
 // SetIsAllowOutgoingEmailsNil sets the value for IsAllowOutgoingEmails to be an explicit nil
 func (o *TemplateEnvironmentTemplateEnvironmentInput) SetIsAllowOutgoingEmailsNil() {
 	o.IsAllowOutgoingEmails.Set(nil)
@@ -387,7 +392,7 @@ func (o *TemplateEnvironmentTemplateEnvironmentInput) UnsetIsAllowOutgoingEmails
 
 // GetIsInitSampleData returns the IsInitSampleData field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *TemplateEnvironmentTemplateEnvironmentInput) GetIsInitSampleData() bool {
-	if o == nil || IsNil(o.IsInitSampleData.Get()) {
+	if o == nil || isNil(o.IsInitSampleData.Get()) {
 		var ret bool
 		return ret
 	}
@@ -417,6 +422,7 @@ func (o *TemplateEnvironmentTemplateEnvironmentInput) HasIsInitSampleData() bool
 func (o *TemplateEnvironmentTemplateEnvironmentInput) SetIsInitSampleData(v bool) {
 	o.IsInitSampleData.Set(&v)
 }
+
 // SetIsInitSampleDataNil sets the value for IsInitSampleData to be an explicit nil
 func (o *TemplateEnvironmentTemplateEnvironmentInput) SetIsInitSampleDataNil() {
 	o.IsInitSampleData.Set(nil)
@@ -429,7 +435,7 @@ func (o *TemplateEnvironmentTemplateEnvironmentInput) UnsetIsInitSampleData() {
 
 // GetEnvVar returns the EnvVar field value if set, zero value otherwise.
 func (o *TemplateEnvironmentTemplateEnvironmentInput) GetEnvVar() []EnvironmentEnvVarTemplateEnvironmentInput {
-	if o == nil || IsNil(o.EnvVar) {
+	if o == nil || isNil(o.EnvVar) {
 		var ret []EnvironmentEnvVarTemplateEnvironmentInput
 		return ret
 	}
@@ -439,7 +445,7 @@ func (o *TemplateEnvironmentTemplateEnvironmentInput) GetEnvVar() []EnvironmentE
 // GetEnvVarOk returns a tuple with the EnvVar field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TemplateEnvironmentTemplateEnvironmentInput) GetEnvVarOk() ([]EnvironmentEnvVarTemplateEnvironmentInput, bool) {
-	if o == nil || IsNil(o.EnvVar) {
+	if o == nil || isNil(o.EnvVar) {
 		return nil, false
 	}
 	return o.EnvVar, true
@@ -447,7 +453,7 @@ func (o *TemplateEnvironmentTemplateEnvironmentInput) GetEnvVarOk() ([]Environme
 
 // HasEnvVar returns a boolean if a field has been set.
 func (o *TemplateEnvironmentTemplateEnvironmentInput) HasEnvVar() bool {
-	if o != nil && !IsNil(o.EnvVar) {
+	if o != nil && !isNil(o.EnvVar) {
 		return true
 	}
 
@@ -461,7 +467,7 @@ func (o *TemplateEnvironmentTemplateEnvironmentInput) SetEnvVar(v []EnvironmentE
 
 // GetEnvironmentComponent returns the EnvironmentComponent field value if set, zero value otherwise.
 func (o *TemplateEnvironmentTemplateEnvironmentInput) GetEnvironmentComponent() []EnvironmentComponentTemplateEnvironmentInput {
-	if o == nil || IsNil(o.EnvironmentComponent) {
+	if o == nil || isNil(o.EnvironmentComponent) {
 		var ret []EnvironmentComponentTemplateEnvironmentInput
 		return ret
 	}
@@ -471,7 +477,7 @@ func (o *TemplateEnvironmentTemplateEnvironmentInput) GetEnvironmentComponent() 
 // GetEnvironmentComponentOk returns a tuple with the EnvironmentComponent field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TemplateEnvironmentTemplateEnvironmentInput) GetEnvironmentComponentOk() ([]EnvironmentComponentTemplateEnvironmentInput, bool) {
-	if o == nil || IsNil(o.EnvironmentComponent) {
+	if o == nil || isNil(o.EnvironmentComponent) {
 		return nil, false
 	}
 	return o.EnvironmentComponent, true
@@ -479,7 +485,7 @@ func (o *TemplateEnvironmentTemplateEnvironmentInput) GetEnvironmentComponentOk(
 
 // HasEnvironmentComponent returns a boolean if a field has been set.
 func (o *TemplateEnvironmentTemplateEnvironmentInput) HasEnvironmentComponent() bool {
-	if o != nil && !IsNil(o.EnvironmentComponent) {
+	if o != nil && !isNil(o.EnvironmentComponent) {
 		return true
 	}
 
@@ -492,14 +498,6 @@ func (o *TemplateEnvironmentTemplateEnvironmentInput) SetEnvironmentComponent(v 
 }
 
 func (o TemplateEnvironmentTemplateEnvironmentInput) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o TemplateEnvironmentTemplateEnvironmentInput) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if o.TemplateProject.IsSet() {
 		toSerialize["templateProject"] = o.TemplateProject.Get()
@@ -528,13 +526,13 @@ func (o TemplateEnvironmentTemplateEnvironmentInput) ToMap() (map[string]interfa
 	if o.IsInitSampleData.IsSet() {
 		toSerialize["isInitSampleData"] = o.IsInitSampleData.Get()
 	}
-	if !IsNil(o.EnvVar) {
+	if !isNil(o.EnvVar) {
 		toSerialize["envVar"] = o.EnvVar
 	}
-	if !IsNil(o.EnvironmentComponent) {
+	if !isNil(o.EnvironmentComponent) {
 		toSerialize["environmentComponent"] = o.EnvironmentComponent
 	}
-	return toSerialize, nil
+	return json.Marshal(toSerialize)
 }
 
 type NullableTemplateEnvironmentTemplateEnvironmentInput struct {
@@ -572,5 +570,3 @@ func (v *NullableTemplateEnvironmentTemplateEnvironmentInput) UnmarshalJSON(src 
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

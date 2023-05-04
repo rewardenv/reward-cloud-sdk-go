@@ -16,20 +16,19 @@ import (
 	"io/ioutil"
 	"net/http"
 	"net/url"
-	"strings"
 	"reflect"
+	"strings"
 )
-
 
 // ServiceAccountGitApiService ServiceAccountGitApi service
 type ServiceAccountGitApiService service
 
 type ApiApiServiceAccountGitsGetCollectionRequest struct {
-	ctx context.Context
-	ApiService *ServiceAccountGitApiService
-	page *int32
-	itemsPerPage *int32
-	serviceAccount *string
+	ctx             context.Context
+	ApiService      *ServiceAccountGitApiService
+	page            *int32
+	itemsPerPage    *int32
+	serviceAccount  *string
 	serviceAccount2 *[]string
 }
 
@@ -45,19 +44,17 @@ func (r ApiApiServiceAccountGitsGetCollectionRequest) ItemsPerPage(itemsPerPage 
 	return r
 }
 
-// 
 func (r ApiApiServiceAccountGitsGetCollectionRequest) ServiceAccount(serviceAccount string) ApiApiServiceAccountGitsGetCollectionRequest {
 	r.serviceAccount = &serviceAccount
 	return r
 }
 
-// 
 func (r ApiApiServiceAccountGitsGetCollectionRequest) ServiceAccount2(serviceAccount2 []string) ApiApiServiceAccountGitsGetCollectionRequest {
 	r.serviceAccount2 = &serviceAccount2
 	return r
 }
 
-func (r ApiApiServiceAccountGitsGetCollectionRequest) Execute() ([]ServiceAccountGit, *http.Response, error) {
+func (r ApiApiServiceAccountGitsGetCollectionRequest) Execute() (*ApiServiceAccountGitsGetCollection200Response, *http.Response, error) {
 	return r.ApiService.ApiServiceAccountGitsGetCollectionExecute(r)
 }
 
@@ -66,24 +63,25 @@ ApiServiceAccountGitsGetCollection Retrieves the collection of ServiceAccountGit
 
 Retrieves the collection of ServiceAccountGit resources.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiApiServiceAccountGitsGetCollectionRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiApiServiceAccountGitsGetCollectionRequest
 */
 func (a *ServiceAccountGitApiService) ApiServiceAccountGitsGetCollection(ctx context.Context) ApiApiServiceAccountGitsGetCollectionRequest {
 	return ApiApiServiceAccountGitsGetCollectionRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return []ServiceAccountGit
-func (a *ServiceAccountGitApiService) ApiServiceAccountGitsGetCollectionExecute(r ApiApiServiceAccountGitsGetCollectionRequest) ([]ServiceAccountGit, *http.Response, error) {
+//
+//	@return ApiServiceAccountGitsGetCollection200Response
+func (a *ServiceAccountGitApiService) ApiServiceAccountGitsGetCollectionExecute(r ApiApiServiceAccountGitsGetCollectionRequest) (*ApiServiceAccountGitsGetCollection200Response, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  []ServiceAccountGit
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *ApiServiceAccountGitsGetCollection200Response
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ServiceAccountGitApiService.ApiServiceAccountGitsGetCollection")
@@ -127,7 +125,7 @@ func (a *ServiceAccountGitApiService) ApiServiceAccountGitsGetCollectionExecute(
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json", "application/hal+json", "text/html"}
+	localVarHTTPHeaderAccepts := []string{"application/hal+json", "application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -186,9 +184,9 @@ func (a *ServiceAccountGitApiService) ApiServiceAccountGitsGetCollectionExecute(
 }
 
 type ApiApiServiceAccountGitsIdDeleteRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *ServiceAccountGitApiService
-	id string
+	id         string
 }
 
 func (r ApiApiServiceAccountGitsIdDeleteRequest) Execute() (*http.Response, error) {
@@ -200,24 +198,24 @@ ApiServiceAccountGitsIdDelete Removes the ServiceAccountGit resource.
 
 Removes the ServiceAccountGit resource.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id ServiceAccountGit identifier
- @return ApiApiServiceAccountGitsIdDeleteRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id ServiceAccountGit identifier
+	@return ApiApiServiceAccountGitsIdDeleteRequest
 */
 func (a *ServiceAccountGitApiService) ApiServiceAccountGitsIdDelete(ctx context.Context, id string) ApiApiServiceAccountGitsIdDeleteRequest {
 	return ApiApiServiceAccountGitsIdDeleteRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
 // Execute executes the request
 func (a *ServiceAccountGitApiService) ApiServiceAccountGitsIdDeleteExecute(r ApiApiServiceAccountGitsIdDeleteRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodDelete
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ServiceAccountGitApiService.ApiServiceAccountGitsIdDelete")
@@ -292,12 +290,12 @@ func (a *ServiceAccountGitApiService) ApiServiceAccountGitsIdDeleteExecute(r Api
 }
 
 type ApiApiServiceAccountGitsIdGetRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *ServiceAccountGitApiService
-	id string
+	id         string
 }
 
-func (r ApiApiServiceAccountGitsIdGetRequest) Execute() (*ServiceAccountGit, *http.Response, error) {
+func (r ApiApiServiceAccountGitsIdGetRequest) Execute() (*ServiceAccountGitJsonhal, *http.Response, error) {
 	return r.ApiService.ApiServiceAccountGitsIdGetExecute(r)
 }
 
@@ -306,26 +304,27 @@ ApiServiceAccountGitsIdGet Retrieves a ServiceAccountGit resource.
 
 Retrieves a ServiceAccountGit resource.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id ServiceAccountGit identifier
- @return ApiApiServiceAccountGitsIdGetRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id ServiceAccountGit identifier
+	@return ApiApiServiceAccountGitsIdGetRequest
 */
 func (a *ServiceAccountGitApiService) ApiServiceAccountGitsIdGet(ctx context.Context, id string) ApiApiServiceAccountGitsIdGetRequest {
 	return ApiApiServiceAccountGitsIdGetRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
 // Execute executes the request
-//  @return ServiceAccountGit
-func (a *ServiceAccountGitApiService) ApiServiceAccountGitsIdGetExecute(r ApiApiServiceAccountGitsIdGetRequest) (*ServiceAccountGit, *http.Response, error) {
+//
+//	@return ServiceAccountGitJsonhal
+func (a *ServiceAccountGitApiService) ApiServiceAccountGitsIdGetExecute(r ApiApiServiceAccountGitsIdGetRequest) (*ServiceAccountGitJsonhal, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *ServiceAccountGit
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *ServiceAccountGitJsonhal
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ServiceAccountGitApiService.ApiServiceAccountGitsIdGet")
@@ -350,7 +349,7 @@ func (a *ServiceAccountGitApiService) ApiServiceAccountGitsIdGetExecute(r ApiApi
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json", "application/hal+json", "text/html"}
+	localVarHTTPHeaderAccepts := []string{"application/hal+json", "application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -409,9 +408,9 @@ func (a *ServiceAccountGitApiService) ApiServiceAccountGitsIdGetExecute(r ApiApi
 }
 
 type ApiApiServiceAccountGitsIdPatchRequest struct {
-	ctx context.Context
-	ApiService *ServiceAccountGitApiService
-	id string
+	ctx               context.Context
+	ApiService        *ServiceAccountGitApiService
+	id                string
 	serviceAccountGit *ServiceAccountGit
 }
 
@@ -421,7 +420,7 @@ func (r ApiApiServiceAccountGitsIdPatchRequest) ServiceAccountGit(serviceAccount
 	return r
 }
 
-func (r ApiApiServiceAccountGitsIdPatchRequest) Execute() (*ServiceAccountGit, *http.Response, error) {
+func (r ApiApiServiceAccountGitsIdPatchRequest) Execute() (*ServiceAccountGitJsonhal, *http.Response, error) {
 	return r.ApiService.ApiServiceAccountGitsIdPatchExecute(r)
 }
 
@@ -430,26 +429,27 @@ ApiServiceAccountGitsIdPatch Updates the ServiceAccountGit resource.
 
 Updates the ServiceAccountGit resource.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id ServiceAccountGit identifier
- @return ApiApiServiceAccountGitsIdPatchRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id ServiceAccountGit identifier
+	@return ApiApiServiceAccountGitsIdPatchRequest
 */
 func (a *ServiceAccountGitApiService) ApiServiceAccountGitsIdPatch(ctx context.Context, id string) ApiApiServiceAccountGitsIdPatchRequest {
 	return ApiApiServiceAccountGitsIdPatchRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
 // Execute executes the request
-//  @return ServiceAccountGit
-func (a *ServiceAccountGitApiService) ApiServiceAccountGitsIdPatchExecute(r ApiApiServiceAccountGitsIdPatchRequest) (*ServiceAccountGit, *http.Response, error) {
+//
+//	@return ServiceAccountGitJsonhal
+func (a *ServiceAccountGitApiService) ApiServiceAccountGitsIdPatchExecute(r ApiApiServiceAccountGitsIdPatchRequest) (*ServiceAccountGitJsonhal, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPatch
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *ServiceAccountGit
+		localVarHTTPMethod  = http.MethodPatch
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *ServiceAccountGitJsonhal
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ServiceAccountGitApiService.ApiServiceAccountGitsIdPatch")
@@ -468,7 +468,7 @@ func (a *ServiceAccountGitApiService) ApiServiceAccountGitsIdPatchExecute(r ApiA
 	}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json", "application/hal+json", "text/html"}
+	localVarHTTPContentTypes := []string{"application/vnd.api+json"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -477,7 +477,7 @@ func (a *ServiceAccountGitApiService) ApiServiceAccountGitsIdPatchExecute(r ApiA
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json", "application/hal+json", "text/html"}
+	localVarHTTPHeaderAccepts := []string{"application/hal+json", "application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -538,19 +538,19 @@ func (a *ServiceAccountGitApiService) ApiServiceAccountGitsIdPatchExecute(r ApiA
 }
 
 type ApiApiServiceAccountGitsIdPutRequest struct {
-	ctx context.Context
-	ApiService *ServiceAccountGitApiService
-	id string
-	serviceAccountGit *ServiceAccountGit
+	ctx                      context.Context
+	ApiService               *ServiceAccountGitApiService
+	id                       string
+	serviceAccountGitJsonhal *ServiceAccountGitJsonhal
 }
 
 // The updated ServiceAccountGit resource
-func (r ApiApiServiceAccountGitsIdPutRequest) ServiceAccountGit(serviceAccountGit ServiceAccountGit) ApiApiServiceAccountGitsIdPutRequest {
-	r.serviceAccountGit = &serviceAccountGit
+func (r ApiApiServiceAccountGitsIdPutRequest) ServiceAccountGitJsonhal(serviceAccountGitJsonhal ServiceAccountGitJsonhal) ApiApiServiceAccountGitsIdPutRequest {
+	r.serviceAccountGitJsonhal = &serviceAccountGitJsonhal
 	return r
 }
 
-func (r ApiApiServiceAccountGitsIdPutRequest) Execute() (*ServiceAccountGit, *http.Response, error) {
+func (r ApiApiServiceAccountGitsIdPutRequest) Execute() (*ServiceAccountGitJsonhal, *http.Response, error) {
 	return r.ApiService.ApiServiceAccountGitsIdPutExecute(r)
 }
 
@@ -559,26 +559,27 @@ ApiServiceAccountGitsIdPut Replaces the ServiceAccountGit resource.
 
 Replaces the ServiceAccountGit resource.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id ServiceAccountGit identifier
- @return ApiApiServiceAccountGitsIdPutRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id ServiceAccountGit identifier
+	@return ApiApiServiceAccountGitsIdPutRequest
 */
 func (a *ServiceAccountGitApiService) ApiServiceAccountGitsIdPut(ctx context.Context, id string) ApiApiServiceAccountGitsIdPutRequest {
 	return ApiApiServiceAccountGitsIdPutRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
 // Execute executes the request
-//  @return ServiceAccountGit
-func (a *ServiceAccountGitApiService) ApiServiceAccountGitsIdPutExecute(r ApiApiServiceAccountGitsIdPutRequest) (*ServiceAccountGit, *http.Response, error) {
+//
+//	@return ServiceAccountGitJsonhal
+func (a *ServiceAccountGitApiService) ApiServiceAccountGitsIdPutExecute(r ApiApiServiceAccountGitsIdPutRequest) (*ServiceAccountGitJsonhal, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPut
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *ServiceAccountGit
+		localVarHTTPMethod  = http.MethodPut
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *ServiceAccountGitJsonhal
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ServiceAccountGitApiService.ApiServiceAccountGitsIdPut")
@@ -592,12 +593,12 @@ func (a *ServiceAccountGitApiService) ApiServiceAccountGitsIdPutExecute(r ApiApi
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.serviceAccountGit == nil {
-		return localVarReturnValue, nil, reportError("serviceAccountGit is required and must be specified")
+	if r.serviceAccountGitJsonhal == nil {
+		return localVarReturnValue, nil, reportError("serviceAccountGitJsonhal is required and must be specified")
 	}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json", "application/hal+json", "text/html"}
+	localVarHTTPContentTypes := []string{"application/hal+json", "application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -606,7 +607,7 @@ func (a *ServiceAccountGitApiService) ApiServiceAccountGitsIdPutExecute(r ApiApi
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json", "application/hal+json", "text/html"}
+	localVarHTTPHeaderAccepts := []string{"application/hal+json", "application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -614,7 +615,7 @@ func (a *ServiceAccountGitApiService) ApiServiceAccountGitsIdPutExecute(r ApiApi
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.serviceAccountGit
+	localVarPostBody = r.serviceAccountGitJsonhal
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
@@ -667,18 +668,18 @@ func (a *ServiceAccountGitApiService) ApiServiceAccountGitsIdPutExecute(r ApiApi
 }
 
 type ApiApiServiceAccountGitsPostRequest struct {
-	ctx context.Context
-	ApiService *ServiceAccountGitApiService
-	serviceAccountGit *ServiceAccountGit
+	ctx                      context.Context
+	ApiService               *ServiceAccountGitApiService
+	serviceAccountGitJsonhal *ServiceAccountGitJsonhal
 }
 
 // The new ServiceAccountGit resource
-func (r ApiApiServiceAccountGitsPostRequest) ServiceAccountGit(serviceAccountGit ServiceAccountGit) ApiApiServiceAccountGitsPostRequest {
-	r.serviceAccountGit = &serviceAccountGit
+func (r ApiApiServiceAccountGitsPostRequest) ServiceAccountGitJsonhal(serviceAccountGitJsonhal ServiceAccountGitJsonhal) ApiApiServiceAccountGitsPostRequest {
+	r.serviceAccountGitJsonhal = &serviceAccountGitJsonhal
 	return r
 }
 
-func (r ApiApiServiceAccountGitsPostRequest) Execute() (*ServiceAccountGit, *http.Response, error) {
+func (r ApiApiServiceAccountGitsPostRequest) Execute() (*ServiceAccountGitJsonhal, *http.Response, error) {
 	return r.ApiService.ApiServiceAccountGitsPostExecute(r)
 }
 
@@ -687,24 +688,25 @@ ApiServiceAccountGitsPost Creates a ServiceAccountGit resource.
 
 Creates a ServiceAccountGit resource.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiApiServiceAccountGitsPostRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiApiServiceAccountGitsPostRequest
 */
 func (a *ServiceAccountGitApiService) ApiServiceAccountGitsPost(ctx context.Context) ApiApiServiceAccountGitsPostRequest {
 	return ApiApiServiceAccountGitsPostRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return ServiceAccountGit
-func (a *ServiceAccountGitApiService) ApiServiceAccountGitsPostExecute(r ApiApiServiceAccountGitsPostRequest) (*ServiceAccountGit, *http.Response, error) {
+//
+//	@return ServiceAccountGitJsonhal
+func (a *ServiceAccountGitApiService) ApiServiceAccountGitsPostExecute(r ApiApiServiceAccountGitsPostRequest) (*ServiceAccountGitJsonhal, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *ServiceAccountGit
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *ServiceAccountGitJsonhal
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ServiceAccountGitApiService.ApiServiceAccountGitsPost")
@@ -717,12 +719,12 @@ func (a *ServiceAccountGitApiService) ApiServiceAccountGitsPostExecute(r ApiApiS
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.serviceAccountGit == nil {
-		return localVarReturnValue, nil, reportError("serviceAccountGit is required and must be specified")
+	if r.serviceAccountGitJsonhal == nil {
+		return localVarReturnValue, nil, reportError("serviceAccountGitJsonhal is required and must be specified")
 	}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json", "application/hal+json", "text/html"}
+	localVarHTTPContentTypes := []string{"application/hal+json", "application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -731,7 +733,7 @@ func (a *ServiceAccountGitApiService) ApiServiceAccountGitsPostExecute(r ApiApiS
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json", "application/hal+json", "text/html"}
+	localVarHTTPHeaderAccepts := []string{"application/hal+json", "application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -739,7 +741,7 @@ func (a *ServiceAccountGitApiService) ApiServiceAccountGitsPostExecute(r ApiApiS
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.serviceAccountGit
+	localVarPostBody = r.serviceAccountGitJsonhal
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {

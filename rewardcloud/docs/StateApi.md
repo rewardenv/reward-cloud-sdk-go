@@ -15,7 +15,7 @@ Method | HTTP request | Description
 
 ## ApiStatesGetCollection
 
-> []State ApiStatesGetCollection(ctx).Page(page).ItemsPerPage(itemsPerPage).Execute()
+> ApiStatesGetCollection200Response ApiStatesGetCollection(ctx).Page(page).ItemsPerPage(itemsPerPage).Execute()
 
 Retrieves the collection of State resources.
 
@@ -44,7 +44,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `StateApi.ApiStatesGetCollection``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiStatesGetCollection`: []State
+    // response from `ApiStatesGetCollection`: ApiStatesGetCollection200Response
     fmt.Fprintf(os.Stdout, "Response from `StateApi.ApiStatesGetCollection`: %v\n", resp)
 }
 ```
@@ -65,7 +65,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]State**](State.md)
+[**ApiStatesGetCollection200Response**](ApiStatesGetCollection200Response.md)
 
 ### Authorization
 
@@ -74,7 +74,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json, application/hal+json, text/html
+- **Accept**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -151,7 +151,7 @@ Name | Type | Description  | Notes
 
 ## ApiStatesIdGet
 
-> State ApiStatesIdGet(ctx, id).Execute()
+> StateJsonhal ApiStatesIdGet(ctx, id).Execute()
 
 Retrieves a State resource.
 
@@ -179,7 +179,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `StateApi.ApiStatesIdGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiStatesIdGet`: State
+    // response from `ApiStatesIdGet`: StateJsonhal
     fmt.Fprintf(os.Stdout, "Response from `StateApi.ApiStatesIdGet`: %v\n", resp)
 }
 ```
@@ -203,7 +203,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**State**](State.md)
+[**StateJsonhal**](StateJsonhal.md)
 
 ### Authorization
 
@@ -212,7 +212,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json, application/hal+json, text/html
+- **Accept**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -221,7 +221,7 @@ Name | Type | Description  | Notes
 
 ## ApiStatesIdPatch
 
-> State ApiStatesIdPatch(ctx, id).State(state).Execute()
+> StateJsonhal ApiStatesIdPatch(ctx, id).State(state).Execute()
 
 Updates the State resource.
 
@@ -250,7 +250,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `StateApi.ApiStatesIdPatch``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiStatesIdPatch`: State
+    // response from `ApiStatesIdPatch`: StateJsonhal
     fmt.Fprintf(os.Stdout, "Response from `StateApi.ApiStatesIdPatch`: %v\n", resp)
 }
 ```
@@ -275,7 +275,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**State**](State.md)
+[**StateJsonhal**](StateJsonhal.md)
 
 ### Authorization
 
@@ -283,8 +283,8 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: application/json, application/hal+json, text/html
-- **Accept**: application/json, application/hal+json, text/html
+- **Content-Type**: application/vnd.api+json
+- **Accept**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -293,7 +293,7 @@ Name | Type | Description  | Notes
 
 ## ApiStatesIdPut
 
-> State ApiStatesIdPut(ctx, id).State(state).Execute()
+> StateJsonhal ApiStatesIdPut(ctx, id).StateJsonhal(stateJsonhal).Execute()
 
 Replaces the State resource.
 
@@ -313,16 +313,16 @@ import (
 
 func main() {
     id := "id_example" // string | State identifier
-    state := *openapiclient.NewState() // State | The updated State resource
+    stateJsonhal := *openapiclient.NewStateJsonhal() // StateJsonhal | The updated State resource
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.StateApi.ApiStatesIdPut(context.Background(), id).State(state).Execute()
+    resp, r, err := apiClient.StateApi.ApiStatesIdPut(context.Background(), id).StateJsonhal(stateJsonhal).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `StateApi.ApiStatesIdPut``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiStatesIdPut`: State
+    // response from `ApiStatesIdPut`: StateJsonhal
     fmt.Fprintf(os.Stdout, "Response from `StateApi.ApiStatesIdPut`: %v\n", resp)
 }
 ```
@@ -343,11 +343,11 @@ Other parameters are passed through a pointer to a apiApiStatesIdPutRequest stru
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **state** | [**State**](State.md) | The updated State resource | 
+ **stateJsonhal** | [**StateJsonhal**](StateJsonhal.md) | The updated State resource | 
 
 ### Return type
 
-[**State**](State.md)
+[**StateJsonhal**](StateJsonhal.md)
 
 ### Authorization
 
@@ -355,8 +355,8 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: application/json, application/hal+json, text/html
-- **Accept**: application/json, application/hal+json, text/html
+- **Content-Type**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
+- **Accept**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -365,7 +365,7 @@ Name | Type | Description  | Notes
 
 ## ApiStatesPost
 
-> State ApiStatesPost(ctx).State(state).Execute()
+> StateJsonhal ApiStatesPost(ctx).StateJsonhal(stateJsonhal).Execute()
 
 Creates a State resource.
 
@@ -384,16 +384,16 @@ import (
 )
 
 func main() {
-    state := *openapiclient.NewState() // State | The new State resource
+    stateJsonhal := *openapiclient.NewStateJsonhal() // StateJsonhal | The new State resource
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.StateApi.ApiStatesPost(context.Background()).State(state).Execute()
+    resp, r, err := apiClient.StateApi.ApiStatesPost(context.Background()).StateJsonhal(stateJsonhal).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `StateApi.ApiStatesPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiStatesPost`: State
+    // response from `ApiStatesPost`: StateJsonhal
     fmt.Fprintf(os.Stdout, "Response from `StateApi.ApiStatesPost`: %v\n", resp)
 }
 ```
@@ -409,11 +409,11 @@ Other parameters are passed through a pointer to a apiApiStatesPostRequest struc
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **state** | [**State**](State.md) | The new State resource | 
+ **stateJsonhal** | [**StateJsonhal**](StateJsonhal.md) | The new State resource | 
 
 ### Return type
 
-[**State**](State.md)
+[**StateJsonhal**](StateJsonhal.md)
 
 ### Authorization
 
@@ -421,8 +421,8 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: application/json, application/hal+json, text/html
-- **Accept**: application/json, application/hal+json, text/html
+- **Content-Type**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
+- **Accept**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)

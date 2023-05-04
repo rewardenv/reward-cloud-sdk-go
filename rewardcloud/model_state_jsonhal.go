@@ -15,23 +15,20 @@ import (
 	"time"
 )
 
-// checks if the StateJsonhal type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &StateJsonhal{}
-
 // StateJsonhal Class State
 type StateJsonhal struct {
-	Links *AbstractEnvironmentJsonhalLinks `json:"_links,omitempty"`
-	Id *int32 `json:"id,omitempty"`
-	Uuid NullableString `json:"uuid,omitempty"`
-	Name NullableString `json:"name,omitempty"`
-	SeqNumber NullableInt32 `json:"seqNumber,omitempty"`
-	Project []string `json:"project,omitempty"`
-	Environment []string `json:"environment,omitempty"`
-	ImportedData []string `json:"importedData,omitempty"`
-	CreatedBy NullableString `json:"createdBy,omitempty"`
-	UpdatedBy NullableString `json:"updatedBy,omitempty"`
-	CreatedAt *time.Time `json:"createdAt,omitempty"`
-	UpdatedAt *time.Time `json:"updatedAt,omitempty"`
+	Links        *AbstractEnvironmentJsonhalLinks `json:"_links,omitempty"`
+	Id           *int32                           `json:"id,omitempty"`
+	Uuid         NullableString                   `json:"uuid,omitempty"`
+	Name         NullableString                   `json:"name,omitempty"`
+	SeqNumber    NullableInt32                    `json:"seqNumber,omitempty"`
+	Project      []string                         `json:"project,omitempty"`
+	Environment  []string                         `json:"environment,omitempty"`
+	ImportedData []string                         `json:"importedData,omitempty"`
+	CreatedBy    NullableString                   `json:"createdBy,omitempty"`
+	UpdatedBy    NullableString                   `json:"updatedBy,omitempty"`
+	CreatedAt    *time.Time                       `json:"createdAt,omitempty"`
+	UpdatedAt    *time.Time                       `json:"updatedAt,omitempty"`
 }
 
 // NewStateJsonhal instantiates a new StateJsonhal object
@@ -53,7 +50,7 @@ func NewStateJsonhalWithDefaults() *StateJsonhal {
 
 // GetLinks returns the Links field value if set, zero value otherwise.
 func (o *StateJsonhal) GetLinks() AbstractEnvironmentJsonhalLinks {
-	if o == nil || IsNil(o.Links) {
+	if o == nil || isNil(o.Links) {
 		var ret AbstractEnvironmentJsonhalLinks
 		return ret
 	}
@@ -63,7 +60,7 @@ func (o *StateJsonhal) GetLinks() AbstractEnvironmentJsonhalLinks {
 // GetLinksOk returns a tuple with the Links field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *StateJsonhal) GetLinksOk() (*AbstractEnvironmentJsonhalLinks, bool) {
-	if o == nil || IsNil(o.Links) {
+	if o == nil || isNil(o.Links) {
 		return nil, false
 	}
 	return o.Links, true
@@ -71,7 +68,7 @@ func (o *StateJsonhal) GetLinksOk() (*AbstractEnvironmentJsonhalLinks, bool) {
 
 // HasLinks returns a boolean if a field has been set.
 func (o *StateJsonhal) HasLinks() bool {
-	if o != nil && !IsNil(o.Links) {
+	if o != nil && !isNil(o.Links) {
 		return true
 	}
 
@@ -85,7 +82,7 @@ func (o *StateJsonhal) SetLinks(v AbstractEnvironmentJsonhalLinks) {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *StateJsonhal) GetId() int32 {
-	if o == nil || IsNil(o.Id) {
+	if o == nil || isNil(o.Id) {
 		var ret int32
 		return ret
 	}
@@ -95,7 +92,7 @@ func (o *StateJsonhal) GetId() int32 {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *StateJsonhal) GetIdOk() (*int32, bool) {
-	if o == nil || IsNil(o.Id) {
+	if o == nil || isNil(o.Id) {
 		return nil, false
 	}
 	return o.Id, true
@@ -103,7 +100,7 @@ func (o *StateJsonhal) GetIdOk() (*int32, bool) {
 
 // HasId returns a boolean if a field has been set.
 func (o *StateJsonhal) HasId() bool {
-	if o != nil && !IsNil(o.Id) {
+	if o != nil && !isNil(o.Id) {
 		return true
 	}
 
@@ -117,7 +114,7 @@ func (o *StateJsonhal) SetId(v int32) {
 
 // GetUuid returns the Uuid field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *StateJsonhal) GetUuid() string {
-	if o == nil || IsNil(o.Uuid.Get()) {
+	if o == nil || isNil(o.Uuid.Get()) {
 		var ret string
 		return ret
 	}
@@ -147,6 +144,7 @@ func (o *StateJsonhal) HasUuid() bool {
 func (o *StateJsonhal) SetUuid(v string) {
 	o.Uuid.Set(&v)
 }
+
 // SetUuidNil sets the value for Uuid to be an explicit nil
 func (o *StateJsonhal) SetUuidNil() {
 	o.Uuid.Set(nil)
@@ -159,7 +157,7 @@ func (o *StateJsonhal) UnsetUuid() {
 
 // GetName returns the Name field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *StateJsonhal) GetName() string {
-	if o == nil || IsNil(o.Name.Get()) {
+	if o == nil || isNil(o.Name.Get()) {
 		var ret string
 		return ret
 	}
@@ -189,6 +187,7 @@ func (o *StateJsonhal) HasName() bool {
 func (o *StateJsonhal) SetName(v string) {
 	o.Name.Set(&v)
 }
+
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *StateJsonhal) SetNameNil() {
 	o.Name.Set(nil)
@@ -201,7 +200,7 @@ func (o *StateJsonhal) UnsetName() {
 
 // GetSeqNumber returns the SeqNumber field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *StateJsonhal) GetSeqNumber() int32 {
-	if o == nil || IsNil(o.SeqNumber.Get()) {
+	if o == nil || isNil(o.SeqNumber.Get()) {
 		var ret int32
 		return ret
 	}
@@ -231,6 +230,7 @@ func (o *StateJsonhal) HasSeqNumber() bool {
 func (o *StateJsonhal) SetSeqNumber(v int32) {
 	o.SeqNumber.Set(&v)
 }
+
 // SetSeqNumberNil sets the value for SeqNumber to be an explicit nil
 func (o *StateJsonhal) SetSeqNumberNil() {
 	o.SeqNumber.Set(nil)
@@ -243,7 +243,7 @@ func (o *StateJsonhal) UnsetSeqNumber() {
 
 // GetProject returns the Project field value if set, zero value otherwise.
 func (o *StateJsonhal) GetProject() []string {
-	if o == nil || IsNil(o.Project) {
+	if o == nil || isNil(o.Project) {
 		var ret []string
 		return ret
 	}
@@ -253,7 +253,7 @@ func (o *StateJsonhal) GetProject() []string {
 // GetProjectOk returns a tuple with the Project field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *StateJsonhal) GetProjectOk() ([]string, bool) {
-	if o == nil || IsNil(o.Project) {
+	if o == nil || isNil(o.Project) {
 		return nil, false
 	}
 	return o.Project, true
@@ -261,7 +261,7 @@ func (o *StateJsonhal) GetProjectOk() ([]string, bool) {
 
 // HasProject returns a boolean if a field has been set.
 func (o *StateJsonhal) HasProject() bool {
-	if o != nil && !IsNil(o.Project) {
+	if o != nil && !isNil(o.Project) {
 		return true
 	}
 
@@ -275,7 +275,7 @@ func (o *StateJsonhal) SetProject(v []string) {
 
 // GetEnvironment returns the Environment field value if set, zero value otherwise.
 func (o *StateJsonhal) GetEnvironment() []string {
-	if o == nil || IsNil(o.Environment) {
+	if o == nil || isNil(o.Environment) {
 		var ret []string
 		return ret
 	}
@@ -285,7 +285,7 @@ func (o *StateJsonhal) GetEnvironment() []string {
 // GetEnvironmentOk returns a tuple with the Environment field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *StateJsonhal) GetEnvironmentOk() ([]string, bool) {
-	if o == nil || IsNil(o.Environment) {
+	if o == nil || isNil(o.Environment) {
 		return nil, false
 	}
 	return o.Environment, true
@@ -293,7 +293,7 @@ func (o *StateJsonhal) GetEnvironmentOk() ([]string, bool) {
 
 // HasEnvironment returns a boolean if a field has been set.
 func (o *StateJsonhal) HasEnvironment() bool {
-	if o != nil && !IsNil(o.Environment) {
+	if o != nil && !isNil(o.Environment) {
 		return true
 	}
 
@@ -307,7 +307,7 @@ func (o *StateJsonhal) SetEnvironment(v []string) {
 
 // GetImportedData returns the ImportedData field value if set, zero value otherwise.
 func (o *StateJsonhal) GetImportedData() []string {
-	if o == nil || IsNil(o.ImportedData) {
+	if o == nil || isNil(o.ImportedData) {
 		var ret []string
 		return ret
 	}
@@ -317,7 +317,7 @@ func (o *StateJsonhal) GetImportedData() []string {
 // GetImportedDataOk returns a tuple with the ImportedData field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *StateJsonhal) GetImportedDataOk() ([]string, bool) {
-	if o == nil || IsNil(o.ImportedData) {
+	if o == nil || isNil(o.ImportedData) {
 		return nil, false
 	}
 	return o.ImportedData, true
@@ -325,7 +325,7 @@ func (o *StateJsonhal) GetImportedDataOk() ([]string, bool) {
 
 // HasImportedData returns a boolean if a field has been set.
 func (o *StateJsonhal) HasImportedData() bool {
-	if o != nil && !IsNil(o.ImportedData) {
+	if o != nil && !isNil(o.ImportedData) {
 		return true
 	}
 
@@ -339,7 +339,7 @@ func (o *StateJsonhal) SetImportedData(v []string) {
 
 // GetCreatedBy returns the CreatedBy field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *StateJsonhal) GetCreatedBy() string {
-	if o == nil || IsNil(o.CreatedBy.Get()) {
+	if o == nil || isNil(o.CreatedBy.Get()) {
 		var ret string
 		return ret
 	}
@@ -369,6 +369,7 @@ func (o *StateJsonhal) HasCreatedBy() bool {
 func (o *StateJsonhal) SetCreatedBy(v string) {
 	o.CreatedBy.Set(&v)
 }
+
 // SetCreatedByNil sets the value for CreatedBy to be an explicit nil
 func (o *StateJsonhal) SetCreatedByNil() {
 	o.CreatedBy.Set(nil)
@@ -381,7 +382,7 @@ func (o *StateJsonhal) UnsetCreatedBy() {
 
 // GetUpdatedBy returns the UpdatedBy field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *StateJsonhal) GetUpdatedBy() string {
-	if o == nil || IsNil(o.UpdatedBy.Get()) {
+	if o == nil || isNil(o.UpdatedBy.Get()) {
 		var ret string
 		return ret
 	}
@@ -411,6 +412,7 @@ func (o *StateJsonhal) HasUpdatedBy() bool {
 func (o *StateJsonhal) SetUpdatedBy(v string) {
 	o.UpdatedBy.Set(&v)
 }
+
 // SetUpdatedByNil sets the value for UpdatedBy to be an explicit nil
 func (o *StateJsonhal) SetUpdatedByNil() {
 	o.UpdatedBy.Set(nil)
@@ -423,7 +425,7 @@ func (o *StateJsonhal) UnsetUpdatedBy() {
 
 // GetCreatedAt returns the CreatedAt field value if set, zero value otherwise.
 func (o *StateJsonhal) GetCreatedAt() time.Time {
-	if o == nil || IsNil(o.CreatedAt) {
+	if o == nil || isNil(o.CreatedAt) {
 		var ret time.Time
 		return ret
 	}
@@ -433,7 +435,7 @@ func (o *StateJsonhal) GetCreatedAt() time.Time {
 // GetCreatedAtOk returns a tuple with the CreatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *StateJsonhal) GetCreatedAtOk() (*time.Time, bool) {
-	if o == nil || IsNil(o.CreatedAt) {
+	if o == nil || isNil(o.CreatedAt) {
 		return nil, false
 	}
 	return o.CreatedAt, true
@@ -441,7 +443,7 @@ func (o *StateJsonhal) GetCreatedAtOk() (*time.Time, bool) {
 
 // HasCreatedAt returns a boolean if a field has been set.
 func (o *StateJsonhal) HasCreatedAt() bool {
-	if o != nil && !IsNil(o.CreatedAt) {
+	if o != nil && !isNil(o.CreatedAt) {
 		return true
 	}
 
@@ -455,7 +457,7 @@ func (o *StateJsonhal) SetCreatedAt(v time.Time) {
 
 // GetUpdatedAt returns the UpdatedAt field value if set, zero value otherwise.
 func (o *StateJsonhal) GetUpdatedAt() time.Time {
-	if o == nil || IsNil(o.UpdatedAt) {
+	if o == nil || isNil(o.UpdatedAt) {
 		var ret time.Time
 		return ret
 	}
@@ -465,7 +467,7 @@ func (o *StateJsonhal) GetUpdatedAt() time.Time {
 // GetUpdatedAtOk returns a tuple with the UpdatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *StateJsonhal) GetUpdatedAtOk() (*time.Time, bool) {
-	if o == nil || IsNil(o.UpdatedAt) {
+	if o == nil || isNil(o.UpdatedAt) {
 		return nil, false
 	}
 	return o.UpdatedAt, true
@@ -473,7 +475,7 @@ func (o *StateJsonhal) GetUpdatedAtOk() (*time.Time, bool) {
 
 // HasUpdatedAt returns a boolean if a field has been set.
 func (o *StateJsonhal) HasUpdatedAt() bool {
-	if o != nil && !IsNil(o.UpdatedAt) {
+	if o != nil && !isNil(o.UpdatedAt) {
 		return true
 	}
 
@@ -486,19 +488,13 @@ func (o *StateJsonhal) SetUpdatedAt(v time.Time) {
 }
 
 func (o StateJsonhal) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o StateJsonhal) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Links) {
+	if !isNil(o.Links) {
 		toSerialize["_links"] = o.Links
 	}
-	// skip: id is readOnly
+	if !isNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
 	if o.Uuid.IsSet() {
 		toSerialize["uuid"] = o.Uuid.Get()
 	}
@@ -508,13 +504,13 @@ func (o StateJsonhal) ToMap() (map[string]interface{}, error) {
 	if o.SeqNumber.IsSet() {
 		toSerialize["seqNumber"] = o.SeqNumber.Get()
 	}
-	if !IsNil(o.Project) {
+	if !isNil(o.Project) {
 		toSerialize["project"] = o.Project
 	}
-	if !IsNil(o.Environment) {
+	if !isNil(o.Environment) {
 		toSerialize["environment"] = o.Environment
 	}
-	if !IsNil(o.ImportedData) {
+	if !isNil(o.ImportedData) {
 		toSerialize["importedData"] = o.ImportedData
 	}
 	if o.CreatedBy.IsSet() {
@@ -523,13 +519,13 @@ func (o StateJsonhal) ToMap() (map[string]interface{}, error) {
 	if o.UpdatedBy.IsSet() {
 		toSerialize["updatedBy"] = o.UpdatedBy.Get()
 	}
-	if !IsNil(o.CreatedAt) {
+	if !isNil(o.CreatedAt) {
 		toSerialize["createdAt"] = o.CreatedAt
 	}
-	if !IsNil(o.UpdatedAt) {
+	if !isNil(o.UpdatedAt) {
 		toSerialize["updatedAt"] = o.UpdatedAt
 	}
-	return toSerialize, nil
+	return json.Marshal(toSerialize)
 }
 
 type NullableStateJsonhal struct {
@@ -567,5 +563,3 @@ func (v *NullableStateJsonhal) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

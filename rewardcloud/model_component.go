@@ -15,21 +15,18 @@ import (
 	"time"
 )
 
-// checks if the Component type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &Component{}
-
 // Component Class Component
 type Component struct {
-	Id *int32 `json:"id,omitempty"`
-	Uuid NullableString `json:"uuid,omitempty"`
-	Name NullableString `json:"name,omitempty"`
-	CodeName NullableString `json:"codeName,omitempty"`
-	ComponentVersion []string `json:"componentVersion,omitempty"`
-	ProjectType []string `json:"projectType,omitempty"`
-	CreatedBy NullableString `json:"createdBy,omitempty"`
-	UpdatedBy NullableString `json:"updatedBy,omitempty"`
-	CreatedAt *time.Time `json:"createdAt,omitempty"`
-	UpdatedAt *time.Time `json:"updatedAt,omitempty"`
+	Id               *int32         `json:"id,omitempty"`
+	Uuid             NullableString `json:"uuid,omitempty"`
+	Name             NullableString `json:"name,omitempty"`
+	CodeName         NullableString `json:"codeName,omitempty"`
+	ComponentVersion []string       `json:"componentVersion,omitempty"`
+	ProjectType      []string       `json:"projectType,omitempty"`
+	CreatedBy        NullableString `json:"createdBy,omitempty"`
+	UpdatedBy        NullableString `json:"updatedBy,omitempty"`
+	CreatedAt        *time.Time     `json:"createdAt,omitempty"`
+	UpdatedAt        *time.Time     `json:"updatedAt,omitempty"`
 }
 
 // NewComponent instantiates a new Component object
@@ -51,7 +48,7 @@ func NewComponentWithDefaults() *Component {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *Component) GetId() int32 {
-	if o == nil || IsNil(o.Id) {
+	if o == nil || isNil(o.Id) {
 		var ret int32
 		return ret
 	}
@@ -61,7 +58,7 @@ func (o *Component) GetId() int32 {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Component) GetIdOk() (*int32, bool) {
-	if o == nil || IsNil(o.Id) {
+	if o == nil || isNil(o.Id) {
 		return nil, false
 	}
 	return o.Id, true
@@ -69,7 +66,7 @@ func (o *Component) GetIdOk() (*int32, bool) {
 
 // HasId returns a boolean if a field has been set.
 func (o *Component) HasId() bool {
-	if o != nil && !IsNil(o.Id) {
+	if o != nil && !isNil(o.Id) {
 		return true
 	}
 
@@ -83,7 +80,7 @@ func (o *Component) SetId(v int32) {
 
 // GetUuid returns the Uuid field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Component) GetUuid() string {
-	if o == nil || IsNil(o.Uuid.Get()) {
+	if o == nil || isNil(o.Uuid.Get()) {
 		var ret string
 		return ret
 	}
@@ -113,6 +110,7 @@ func (o *Component) HasUuid() bool {
 func (o *Component) SetUuid(v string) {
 	o.Uuid.Set(&v)
 }
+
 // SetUuidNil sets the value for Uuid to be an explicit nil
 func (o *Component) SetUuidNil() {
 	o.Uuid.Set(nil)
@@ -125,7 +123,7 @@ func (o *Component) UnsetUuid() {
 
 // GetName returns the Name field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Component) GetName() string {
-	if o == nil || IsNil(o.Name.Get()) {
+	if o == nil || isNil(o.Name.Get()) {
 		var ret string
 		return ret
 	}
@@ -155,6 +153,7 @@ func (o *Component) HasName() bool {
 func (o *Component) SetName(v string) {
 	o.Name.Set(&v)
 }
+
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *Component) SetNameNil() {
 	o.Name.Set(nil)
@@ -167,7 +166,7 @@ func (o *Component) UnsetName() {
 
 // GetCodeName returns the CodeName field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Component) GetCodeName() string {
-	if o == nil || IsNil(o.CodeName.Get()) {
+	if o == nil || isNil(o.CodeName.Get()) {
 		var ret string
 		return ret
 	}
@@ -197,6 +196,7 @@ func (o *Component) HasCodeName() bool {
 func (o *Component) SetCodeName(v string) {
 	o.CodeName.Set(&v)
 }
+
 // SetCodeNameNil sets the value for CodeName to be an explicit nil
 func (o *Component) SetCodeNameNil() {
 	o.CodeName.Set(nil)
@@ -209,7 +209,7 @@ func (o *Component) UnsetCodeName() {
 
 // GetComponentVersion returns the ComponentVersion field value if set, zero value otherwise.
 func (o *Component) GetComponentVersion() []string {
-	if o == nil || IsNil(o.ComponentVersion) {
+	if o == nil || isNil(o.ComponentVersion) {
 		var ret []string
 		return ret
 	}
@@ -219,7 +219,7 @@ func (o *Component) GetComponentVersion() []string {
 // GetComponentVersionOk returns a tuple with the ComponentVersion field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Component) GetComponentVersionOk() ([]string, bool) {
-	if o == nil || IsNil(o.ComponentVersion) {
+	if o == nil || isNil(o.ComponentVersion) {
 		return nil, false
 	}
 	return o.ComponentVersion, true
@@ -227,7 +227,7 @@ func (o *Component) GetComponentVersionOk() ([]string, bool) {
 
 // HasComponentVersion returns a boolean if a field has been set.
 func (o *Component) HasComponentVersion() bool {
-	if o != nil && !IsNil(o.ComponentVersion) {
+	if o != nil && !isNil(o.ComponentVersion) {
 		return true
 	}
 
@@ -241,7 +241,7 @@ func (o *Component) SetComponentVersion(v []string) {
 
 // GetProjectType returns the ProjectType field value if set, zero value otherwise.
 func (o *Component) GetProjectType() []string {
-	if o == nil || IsNil(o.ProjectType) {
+	if o == nil || isNil(o.ProjectType) {
 		var ret []string
 		return ret
 	}
@@ -251,7 +251,7 @@ func (o *Component) GetProjectType() []string {
 // GetProjectTypeOk returns a tuple with the ProjectType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Component) GetProjectTypeOk() ([]string, bool) {
-	if o == nil || IsNil(o.ProjectType) {
+	if o == nil || isNil(o.ProjectType) {
 		return nil, false
 	}
 	return o.ProjectType, true
@@ -259,7 +259,7 @@ func (o *Component) GetProjectTypeOk() ([]string, bool) {
 
 // HasProjectType returns a boolean if a field has been set.
 func (o *Component) HasProjectType() bool {
-	if o != nil && !IsNil(o.ProjectType) {
+	if o != nil && !isNil(o.ProjectType) {
 		return true
 	}
 
@@ -273,7 +273,7 @@ func (o *Component) SetProjectType(v []string) {
 
 // GetCreatedBy returns the CreatedBy field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Component) GetCreatedBy() string {
-	if o == nil || IsNil(o.CreatedBy.Get()) {
+	if o == nil || isNil(o.CreatedBy.Get()) {
 		var ret string
 		return ret
 	}
@@ -303,6 +303,7 @@ func (o *Component) HasCreatedBy() bool {
 func (o *Component) SetCreatedBy(v string) {
 	o.CreatedBy.Set(&v)
 }
+
 // SetCreatedByNil sets the value for CreatedBy to be an explicit nil
 func (o *Component) SetCreatedByNil() {
 	o.CreatedBy.Set(nil)
@@ -315,7 +316,7 @@ func (o *Component) UnsetCreatedBy() {
 
 // GetUpdatedBy returns the UpdatedBy field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Component) GetUpdatedBy() string {
-	if o == nil || IsNil(o.UpdatedBy.Get()) {
+	if o == nil || isNil(o.UpdatedBy.Get()) {
 		var ret string
 		return ret
 	}
@@ -345,6 +346,7 @@ func (o *Component) HasUpdatedBy() bool {
 func (o *Component) SetUpdatedBy(v string) {
 	o.UpdatedBy.Set(&v)
 }
+
 // SetUpdatedByNil sets the value for UpdatedBy to be an explicit nil
 func (o *Component) SetUpdatedByNil() {
 	o.UpdatedBy.Set(nil)
@@ -357,7 +359,7 @@ func (o *Component) UnsetUpdatedBy() {
 
 // GetCreatedAt returns the CreatedAt field value if set, zero value otherwise.
 func (o *Component) GetCreatedAt() time.Time {
-	if o == nil || IsNil(o.CreatedAt) {
+	if o == nil || isNil(o.CreatedAt) {
 		var ret time.Time
 		return ret
 	}
@@ -367,7 +369,7 @@ func (o *Component) GetCreatedAt() time.Time {
 // GetCreatedAtOk returns a tuple with the CreatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Component) GetCreatedAtOk() (*time.Time, bool) {
-	if o == nil || IsNil(o.CreatedAt) {
+	if o == nil || isNil(o.CreatedAt) {
 		return nil, false
 	}
 	return o.CreatedAt, true
@@ -375,7 +377,7 @@ func (o *Component) GetCreatedAtOk() (*time.Time, bool) {
 
 // HasCreatedAt returns a boolean if a field has been set.
 func (o *Component) HasCreatedAt() bool {
-	if o != nil && !IsNil(o.CreatedAt) {
+	if o != nil && !isNil(o.CreatedAt) {
 		return true
 	}
 
@@ -389,7 +391,7 @@ func (o *Component) SetCreatedAt(v time.Time) {
 
 // GetUpdatedAt returns the UpdatedAt field value if set, zero value otherwise.
 func (o *Component) GetUpdatedAt() time.Time {
-	if o == nil || IsNil(o.UpdatedAt) {
+	if o == nil || isNil(o.UpdatedAt) {
 		var ret time.Time
 		return ret
 	}
@@ -399,7 +401,7 @@ func (o *Component) GetUpdatedAt() time.Time {
 // GetUpdatedAtOk returns a tuple with the UpdatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Component) GetUpdatedAtOk() (*time.Time, bool) {
-	if o == nil || IsNil(o.UpdatedAt) {
+	if o == nil || isNil(o.UpdatedAt) {
 		return nil, false
 	}
 	return o.UpdatedAt, true
@@ -407,7 +409,7 @@ func (o *Component) GetUpdatedAtOk() (*time.Time, bool) {
 
 // HasUpdatedAt returns a boolean if a field has been set.
 func (o *Component) HasUpdatedAt() bool {
-	if o != nil && !IsNil(o.UpdatedAt) {
+	if o != nil && !isNil(o.UpdatedAt) {
 		return true
 	}
 
@@ -420,16 +422,10 @@ func (o *Component) SetUpdatedAt(v time.Time) {
 }
 
 func (o Component) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o Component) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	// skip: id is readOnly
+	if !isNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
 	if o.Uuid.IsSet() {
 		toSerialize["uuid"] = o.Uuid.Get()
 	}
@@ -439,10 +435,10 @@ func (o Component) ToMap() (map[string]interface{}, error) {
 	if o.CodeName.IsSet() {
 		toSerialize["codeName"] = o.CodeName.Get()
 	}
-	if !IsNil(o.ComponentVersion) {
+	if !isNil(o.ComponentVersion) {
 		toSerialize["componentVersion"] = o.ComponentVersion
 	}
-	if !IsNil(o.ProjectType) {
+	if !isNil(o.ProjectType) {
 		toSerialize["projectType"] = o.ProjectType
 	}
 	if o.CreatedBy.IsSet() {
@@ -451,13 +447,13 @@ func (o Component) ToMap() (map[string]interface{}, error) {
 	if o.UpdatedBy.IsSet() {
 		toSerialize["updatedBy"] = o.UpdatedBy.Get()
 	}
-	if !IsNil(o.CreatedAt) {
+	if !isNil(o.CreatedAt) {
 		toSerialize["createdAt"] = o.CreatedAt
 	}
-	if !IsNil(o.UpdatedAt) {
+	if !isNil(o.UpdatedAt) {
 		toSerialize["updatedAt"] = o.UpdatedAt
 	}
-	return toSerialize, nil
+	return json.Marshal(toSerialize)
 }
 
 type NullableComponent struct {
@@ -495,5 +491,3 @@ func (v *NullableComponent) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

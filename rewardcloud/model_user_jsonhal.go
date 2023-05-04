@@ -15,34 +15,31 @@ import (
 	"time"
 )
 
-// checks if the UserJsonhal type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &UserJsonhal{}
-
 // UserJsonhal TODO User can only delete himself!!
 type UserJsonhal struct {
-	Links *AbstractEnvironmentJsonhalLinks `json:"_links,omitempty"`
-	Id *int32 `json:"id,omitempty"`
-	Uuid NullableString `json:"uuid,omitempty"`
-	PaymentId NullableString `json:"paymentId,omitempty"`
-	AuthenticatorId NullableInt32 `json:"authenticatorId,omitempty"`
-	Fullname NullableString `json:"fullname,omitempty"`
-	Email NullableString `json:"email,omitempty"`
-	Username NullableString `json:"username,omitempty"`
-	Roles []string `json:"roles,omitempty"`
-	Currency NullableString `json:"currency,omitempty"`
-	Password *string `json:"password,omitempty"`
-	ChangePassword NullableString `json:"changePassword,omitempty"`
-	CurrentPassword NullableString `json:"currentPassword,omitempty"`
-	IsEnabled *bool `json:"isEnabled,omitempty"`
-	RoleGroup NullableString `json:"roleGroup,omitempty"`
-	Team []string `json:"team,omitempty"`
-	CreatedBy NullableString `json:"createdBy,omitempty"`
-	UpdatedBy NullableString `json:"updatedBy,omitempty"`
-	CreatedAt *time.Time `json:"createdAt,omitempty"`
-	UpdatedAt *time.Time `json:"updatedAt,omitempty"`
+	Links           *AbstractEnvironmentJsonhalLinks `json:"_links,omitempty"`
+	Id              *int32                           `json:"id,omitempty"`
+	Uuid            NullableString                   `json:"uuid,omitempty"`
+	PaymentId       NullableString                   `json:"paymentId,omitempty"`
+	AuthenticatorId NullableInt32                    `json:"authenticatorId,omitempty"`
+	Fullname        NullableString                   `json:"fullname,omitempty"`
+	Email           NullableString                   `json:"email,omitempty"`
+	Username        NullableString                   `json:"username,omitempty"`
+	Roles           []string                         `json:"roles,omitempty"`
+	Currency        NullableString                   `json:"currency,omitempty"`
+	Password        *string                          `json:"password,omitempty"`
+	ChangePassword  NullableString                   `json:"changePassword,omitempty"`
+	CurrentPassword NullableString                   `json:"currentPassword,omitempty"`
+	IsEnabled       *bool                            `json:"isEnabled,omitempty"`
+	RoleGroup       NullableString                   `json:"roleGroup,omitempty"`
+	Team            []string                         `json:"team,omitempty"`
+	CreatedBy       NullableString                   `json:"createdBy,omitempty"`
+	UpdatedBy       NullableString                   `json:"updatedBy,omitempty"`
+	CreatedAt       *time.Time                       `json:"createdAt,omitempty"`
+	UpdatedAt       *time.Time                       `json:"updatedAt,omitempty"`
 	// not needed when using the \"bcrypt\" algorithm in security.yaml
-	Salt NullableString `json:"salt,omitempty"`
-	UserIdentifier *string `json:"userIdentifier,omitempty"`
+	Salt           NullableString `json:"salt,omitempty"`
+	UserIdentifier *string        `json:"userIdentifier,omitempty"`
 }
 
 // NewUserJsonhal instantiates a new UserJsonhal object
@@ -64,7 +61,7 @@ func NewUserJsonhalWithDefaults() *UserJsonhal {
 
 // GetLinks returns the Links field value if set, zero value otherwise.
 func (o *UserJsonhal) GetLinks() AbstractEnvironmentJsonhalLinks {
-	if o == nil || IsNil(o.Links) {
+	if o == nil || isNil(o.Links) {
 		var ret AbstractEnvironmentJsonhalLinks
 		return ret
 	}
@@ -74,7 +71,7 @@ func (o *UserJsonhal) GetLinks() AbstractEnvironmentJsonhalLinks {
 // GetLinksOk returns a tuple with the Links field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UserJsonhal) GetLinksOk() (*AbstractEnvironmentJsonhalLinks, bool) {
-	if o == nil || IsNil(o.Links) {
+	if o == nil || isNil(o.Links) {
 		return nil, false
 	}
 	return o.Links, true
@@ -82,7 +79,7 @@ func (o *UserJsonhal) GetLinksOk() (*AbstractEnvironmentJsonhalLinks, bool) {
 
 // HasLinks returns a boolean if a field has been set.
 func (o *UserJsonhal) HasLinks() bool {
-	if o != nil && !IsNil(o.Links) {
+	if o != nil && !isNil(o.Links) {
 		return true
 	}
 
@@ -96,7 +93,7 @@ func (o *UserJsonhal) SetLinks(v AbstractEnvironmentJsonhalLinks) {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *UserJsonhal) GetId() int32 {
-	if o == nil || IsNil(o.Id) {
+	if o == nil || isNil(o.Id) {
 		var ret int32
 		return ret
 	}
@@ -106,7 +103,7 @@ func (o *UserJsonhal) GetId() int32 {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UserJsonhal) GetIdOk() (*int32, bool) {
-	if o == nil || IsNil(o.Id) {
+	if o == nil || isNil(o.Id) {
 		return nil, false
 	}
 	return o.Id, true
@@ -114,7 +111,7 @@ func (o *UserJsonhal) GetIdOk() (*int32, bool) {
 
 // HasId returns a boolean if a field has been set.
 func (o *UserJsonhal) HasId() bool {
-	if o != nil && !IsNil(o.Id) {
+	if o != nil && !isNil(o.Id) {
 		return true
 	}
 
@@ -128,7 +125,7 @@ func (o *UserJsonhal) SetId(v int32) {
 
 // GetUuid returns the Uuid field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *UserJsonhal) GetUuid() string {
-	if o == nil || IsNil(o.Uuid.Get()) {
+	if o == nil || isNil(o.Uuid.Get()) {
 		var ret string
 		return ret
 	}
@@ -158,6 +155,7 @@ func (o *UserJsonhal) HasUuid() bool {
 func (o *UserJsonhal) SetUuid(v string) {
 	o.Uuid.Set(&v)
 }
+
 // SetUuidNil sets the value for Uuid to be an explicit nil
 func (o *UserJsonhal) SetUuidNil() {
 	o.Uuid.Set(nil)
@@ -170,7 +168,7 @@ func (o *UserJsonhal) UnsetUuid() {
 
 // GetPaymentId returns the PaymentId field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *UserJsonhal) GetPaymentId() string {
-	if o == nil || IsNil(o.PaymentId.Get()) {
+	if o == nil || isNil(o.PaymentId.Get()) {
 		var ret string
 		return ret
 	}
@@ -200,6 +198,7 @@ func (o *UserJsonhal) HasPaymentId() bool {
 func (o *UserJsonhal) SetPaymentId(v string) {
 	o.PaymentId.Set(&v)
 }
+
 // SetPaymentIdNil sets the value for PaymentId to be an explicit nil
 func (o *UserJsonhal) SetPaymentIdNil() {
 	o.PaymentId.Set(nil)
@@ -212,7 +211,7 @@ func (o *UserJsonhal) UnsetPaymentId() {
 
 // GetAuthenticatorId returns the AuthenticatorId field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *UserJsonhal) GetAuthenticatorId() int32 {
-	if o == nil || IsNil(o.AuthenticatorId.Get()) {
+	if o == nil || isNil(o.AuthenticatorId.Get()) {
 		var ret int32
 		return ret
 	}
@@ -242,6 +241,7 @@ func (o *UserJsonhal) HasAuthenticatorId() bool {
 func (o *UserJsonhal) SetAuthenticatorId(v int32) {
 	o.AuthenticatorId.Set(&v)
 }
+
 // SetAuthenticatorIdNil sets the value for AuthenticatorId to be an explicit nil
 func (o *UserJsonhal) SetAuthenticatorIdNil() {
 	o.AuthenticatorId.Set(nil)
@@ -254,7 +254,7 @@ func (o *UserJsonhal) UnsetAuthenticatorId() {
 
 // GetFullname returns the Fullname field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *UserJsonhal) GetFullname() string {
-	if o == nil || IsNil(o.Fullname.Get()) {
+	if o == nil || isNil(o.Fullname.Get()) {
 		var ret string
 		return ret
 	}
@@ -284,6 +284,7 @@ func (o *UserJsonhal) HasFullname() bool {
 func (o *UserJsonhal) SetFullname(v string) {
 	o.Fullname.Set(&v)
 }
+
 // SetFullnameNil sets the value for Fullname to be an explicit nil
 func (o *UserJsonhal) SetFullnameNil() {
 	o.Fullname.Set(nil)
@@ -296,7 +297,7 @@ func (o *UserJsonhal) UnsetFullname() {
 
 // GetEmail returns the Email field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *UserJsonhal) GetEmail() string {
-	if o == nil || IsNil(o.Email.Get()) {
+	if o == nil || isNil(o.Email.Get()) {
 		var ret string
 		return ret
 	}
@@ -326,6 +327,7 @@ func (o *UserJsonhal) HasEmail() bool {
 func (o *UserJsonhal) SetEmail(v string) {
 	o.Email.Set(&v)
 }
+
 // SetEmailNil sets the value for Email to be an explicit nil
 func (o *UserJsonhal) SetEmailNil() {
 	o.Email.Set(nil)
@@ -338,7 +340,7 @@ func (o *UserJsonhal) UnsetEmail() {
 
 // GetUsername returns the Username field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *UserJsonhal) GetUsername() string {
-	if o == nil || IsNil(o.Username.Get()) {
+	if o == nil || isNil(o.Username.Get()) {
 		var ret string
 		return ret
 	}
@@ -368,6 +370,7 @@ func (o *UserJsonhal) HasUsername() bool {
 func (o *UserJsonhal) SetUsername(v string) {
 	o.Username.Set(&v)
 }
+
 // SetUsernameNil sets the value for Username to be an explicit nil
 func (o *UserJsonhal) SetUsernameNil() {
 	o.Username.Set(nil)
@@ -391,7 +394,7 @@ func (o *UserJsonhal) GetRoles() []string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *UserJsonhal) GetRolesOk() ([]string, bool) {
-	if o == nil || IsNil(o.Roles) {
+	if o == nil || isNil(o.Roles) {
 		return nil, false
 	}
 	return o.Roles, true
@@ -399,7 +402,7 @@ func (o *UserJsonhal) GetRolesOk() ([]string, bool) {
 
 // HasRoles returns a boolean if a field has been set.
 func (o *UserJsonhal) HasRoles() bool {
-	if o != nil && IsNil(o.Roles) {
+	if o != nil && isNil(o.Roles) {
 		return true
 	}
 
@@ -413,7 +416,7 @@ func (o *UserJsonhal) SetRoles(v []string) {
 
 // GetCurrency returns the Currency field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *UserJsonhal) GetCurrency() string {
-	if o == nil || IsNil(o.Currency.Get()) {
+	if o == nil || isNil(o.Currency.Get()) {
 		var ret string
 		return ret
 	}
@@ -443,6 +446,7 @@ func (o *UserJsonhal) HasCurrency() bool {
 func (o *UserJsonhal) SetCurrency(v string) {
 	o.Currency.Set(&v)
 }
+
 // SetCurrencyNil sets the value for Currency to be an explicit nil
 func (o *UserJsonhal) SetCurrencyNil() {
 	o.Currency.Set(nil)
@@ -455,7 +459,7 @@ func (o *UserJsonhal) UnsetCurrency() {
 
 // GetPassword returns the Password field value if set, zero value otherwise.
 func (o *UserJsonhal) GetPassword() string {
-	if o == nil || IsNil(o.Password) {
+	if o == nil || isNil(o.Password) {
 		var ret string
 		return ret
 	}
@@ -465,7 +469,7 @@ func (o *UserJsonhal) GetPassword() string {
 // GetPasswordOk returns a tuple with the Password field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UserJsonhal) GetPasswordOk() (*string, bool) {
-	if o == nil || IsNil(o.Password) {
+	if o == nil || isNil(o.Password) {
 		return nil, false
 	}
 	return o.Password, true
@@ -473,7 +477,7 @@ func (o *UserJsonhal) GetPasswordOk() (*string, bool) {
 
 // HasPassword returns a boolean if a field has been set.
 func (o *UserJsonhal) HasPassword() bool {
-	if o != nil && !IsNil(o.Password) {
+	if o != nil && !isNil(o.Password) {
 		return true
 	}
 
@@ -487,7 +491,7 @@ func (o *UserJsonhal) SetPassword(v string) {
 
 // GetChangePassword returns the ChangePassword field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *UserJsonhal) GetChangePassword() string {
-	if o == nil || IsNil(o.ChangePassword.Get()) {
+	if o == nil || isNil(o.ChangePassword.Get()) {
 		var ret string
 		return ret
 	}
@@ -517,6 +521,7 @@ func (o *UserJsonhal) HasChangePassword() bool {
 func (o *UserJsonhal) SetChangePassword(v string) {
 	o.ChangePassword.Set(&v)
 }
+
 // SetChangePasswordNil sets the value for ChangePassword to be an explicit nil
 func (o *UserJsonhal) SetChangePasswordNil() {
 	o.ChangePassword.Set(nil)
@@ -529,7 +534,7 @@ func (o *UserJsonhal) UnsetChangePassword() {
 
 // GetCurrentPassword returns the CurrentPassword field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *UserJsonhal) GetCurrentPassword() string {
-	if o == nil || IsNil(o.CurrentPassword.Get()) {
+	if o == nil || isNil(o.CurrentPassword.Get()) {
 		var ret string
 		return ret
 	}
@@ -559,6 +564,7 @@ func (o *UserJsonhal) HasCurrentPassword() bool {
 func (o *UserJsonhal) SetCurrentPassword(v string) {
 	o.CurrentPassword.Set(&v)
 }
+
 // SetCurrentPasswordNil sets the value for CurrentPassword to be an explicit nil
 func (o *UserJsonhal) SetCurrentPasswordNil() {
 	o.CurrentPassword.Set(nil)
@@ -571,7 +577,7 @@ func (o *UserJsonhal) UnsetCurrentPassword() {
 
 // GetIsEnabled returns the IsEnabled field value if set, zero value otherwise.
 func (o *UserJsonhal) GetIsEnabled() bool {
-	if o == nil || IsNil(o.IsEnabled) {
+	if o == nil || isNil(o.IsEnabled) {
 		var ret bool
 		return ret
 	}
@@ -581,7 +587,7 @@ func (o *UserJsonhal) GetIsEnabled() bool {
 // GetIsEnabledOk returns a tuple with the IsEnabled field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UserJsonhal) GetIsEnabledOk() (*bool, bool) {
-	if o == nil || IsNil(o.IsEnabled) {
+	if o == nil || isNil(o.IsEnabled) {
 		return nil, false
 	}
 	return o.IsEnabled, true
@@ -589,7 +595,7 @@ func (o *UserJsonhal) GetIsEnabledOk() (*bool, bool) {
 
 // HasIsEnabled returns a boolean if a field has been set.
 func (o *UserJsonhal) HasIsEnabled() bool {
-	if o != nil && !IsNil(o.IsEnabled) {
+	if o != nil && !isNil(o.IsEnabled) {
 		return true
 	}
 
@@ -603,7 +609,7 @@ func (o *UserJsonhal) SetIsEnabled(v bool) {
 
 // GetRoleGroup returns the RoleGroup field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *UserJsonhal) GetRoleGroup() string {
-	if o == nil || IsNil(o.RoleGroup.Get()) {
+	if o == nil || isNil(o.RoleGroup.Get()) {
 		var ret string
 		return ret
 	}
@@ -633,6 +639,7 @@ func (o *UserJsonhal) HasRoleGroup() bool {
 func (o *UserJsonhal) SetRoleGroup(v string) {
 	o.RoleGroup.Set(&v)
 }
+
 // SetRoleGroupNil sets the value for RoleGroup to be an explicit nil
 func (o *UserJsonhal) SetRoleGroupNil() {
 	o.RoleGroup.Set(nil)
@@ -645,7 +652,7 @@ func (o *UserJsonhal) UnsetRoleGroup() {
 
 // GetTeam returns the Team field value if set, zero value otherwise.
 func (o *UserJsonhal) GetTeam() []string {
-	if o == nil || IsNil(o.Team) {
+	if o == nil || isNil(o.Team) {
 		var ret []string
 		return ret
 	}
@@ -655,7 +662,7 @@ func (o *UserJsonhal) GetTeam() []string {
 // GetTeamOk returns a tuple with the Team field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UserJsonhal) GetTeamOk() ([]string, bool) {
-	if o == nil || IsNil(o.Team) {
+	if o == nil || isNil(o.Team) {
 		return nil, false
 	}
 	return o.Team, true
@@ -663,7 +670,7 @@ func (o *UserJsonhal) GetTeamOk() ([]string, bool) {
 
 // HasTeam returns a boolean if a field has been set.
 func (o *UserJsonhal) HasTeam() bool {
-	if o != nil && !IsNil(o.Team) {
+	if o != nil && !isNil(o.Team) {
 		return true
 	}
 
@@ -677,7 +684,7 @@ func (o *UserJsonhal) SetTeam(v []string) {
 
 // GetCreatedBy returns the CreatedBy field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *UserJsonhal) GetCreatedBy() string {
-	if o == nil || IsNil(o.CreatedBy.Get()) {
+	if o == nil || isNil(o.CreatedBy.Get()) {
 		var ret string
 		return ret
 	}
@@ -707,6 +714,7 @@ func (o *UserJsonhal) HasCreatedBy() bool {
 func (o *UserJsonhal) SetCreatedBy(v string) {
 	o.CreatedBy.Set(&v)
 }
+
 // SetCreatedByNil sets the value for CreatedBy to be an explicit nil
 func (o *UserJsonhal) SetCreatedByNil() {
 	o.CreatedBy.Set(nil)
@@ -719,7 +727,7 @@ func (o *UserJsonhal) UnsetCreatedBy() {
 
 // GetUpdatedBy returns the UpdatedBy field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *UserJsonhal) GetUpdatedBy() string {
-	if o == nil || IsNil(o.UpdatedBy.Get()) {
+	if o == nil || isNil(o.UpdatedBy.Get()) {
 		var ret string
 		return ret
 	}
@@ -749,6 +757,7 @@ func (o *UserJsonhal) HasUpdatedBy() bool {
 func (o *UserJsonhal) SetUpdatedBy(v string) {
 	o.UpdatedBy.Set(&v)
 }
+
 // SetUpdatedByNil sets the value for UpdatedBy to be an explicit nil
 func (o *UserJsonhal) SetUpdatedByNil() {
 	o.UpdatedBy.Set(nil)
@@ -761,7 +770,7 @@ func (o *UserJsonhal) UnsetUpdatedBy() {
 
 // GetCreatedAt returns the CreatedAt field value if set, zero value otherwise.
 func (o *UserJsonhal) GetCreatedAt() time.Time {
-	if o == nil || IsNil(o.CreatedAt) {
+	if o == nil || isNil(o.CreatedAt) {
 		var ret time.Time
 		return ret
 	}
@@ -771,7 +780,7 @@ func (o *UserJsonhal) GetCreatedAt() time.Time {
 // GetCreatedAtOk returns a tuple with the CreatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UserJsonhal) GetCreatedAtOk() (*time.Time, bool) {
-	if o == nil || IsNil(o.CreatedAt) {
+	if o == nil || isNil(o.CreatedAt) {
 		return nil, false
 	}
 	return o.CreatedAt, true
@@ -779,7 +788,7 @@ func (o *UserJsonhal) GetCreatedAtOk() (*time.Time, bool) {
 
 // HasCreatedAt returns a boolean if a field has been set.
 func (o *UserJsonhal) HasCreatedAt() bool {
-	if o != nil && !IsNil(o.CreatedAt) {
+	if o != nil && !isNil(o.CreatedAt) {
 		return true
 	}
 
@@ -793,7 +802,7 @@ func (o *UserJsonhal) SetCreatedAt(v time.Time) {
 
 // GetUpdatedAt returns the UpdatedAt field value if set, zero value otherwise.
 func (o *UserJsonhal) GetUpdatedAt() time.Time {
-	if o == nil || IsNil(o.UpdatedAt) {
+	if o == nil || isNil(o.UpdatedAt) {
 		var ret time.Time
 		return ret
 	}
@@ -803,7 +812,7 @@ func (o *UserJsonhal) GetUpdatedAt() time.Time {
 // GetUpdatedAtOk returns a tuple with the UpdatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UserJsonhal) GetUpdatedAtOk() (*time.Time, bool) {
-	if o == nil || IsNil(o.UpdatedAt) {
+	if o == nil || isNil(o.UpdatedAt) {
 		return nil, false
 	}
 	return o.UpdatedAt, true
@@ -811,7 +820,7 @@ func (o *UserJsonhal) GetUpdatedAtOk() (*time.Time, bool) {
 
 // HasUpdatedAt returns a boolean if a field has been set.
 func (o *UserJsonhal) HasUpdatedAt() bool {
-	if o != nil && !IsNil(o.UpdatedAt) {
+	if o != nil && !isNil(o.UpdatedAt) {
 		return true
 	}
 
@@ -825,7 +834,7 @@ func (o *UserJsonhal) SetUpdatedAt(v time.Time) {
 
 // GetSalt returns the Salt field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *UserJsonhal) GetSalt() string {
-	if o == nil || IsNil(o.Salt.Get()) {
+	if o == nil || isNil(o.Salt.Get()) {
 		var ret string
 		return ret
 	}
@@ -855,6 +864,7 @@ func (o *UserJsonhal) HasSalt() bool {
 func (o *UserJsonhal) SetSalt(v string) {
 	o.Salt.Set(&v)
 }
+
 // SetSaltNil sets the value for Salt to be an explicit nil
 func (o *UserJsonhal) SetSaltNil() {
 	o.Salt.Set(nil)
@@ -867,7 +877,7 @@ func (o *UserJsonhal) UnsetSalt() {
 
 // GetUserIdentifier returns the UserIdentifier field value if set, zero value otherwise.
 func (o *UserJsonhal) GetUserIdentifier() string {
-	if o == nil || IsNil(o.UserIdentifier) {
+	if o == nil || isNil(o.UserIdentifier) {
 		var ret string
 		return ret
 	}
@@ -877,7 +887,7 @@ func (o *UserJsonhal) GetUserIdentifier() string {
 // GetUserIdentifierOk returns a tuple with the UserIdentifier field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UserJsonhal) GetUserIdentifierOk() (*string, bool) {
-	if o == nil || IsNil(o.UserIdentifier) {
+	if o == nil || isNil(o.UserIdentifier) {
 		return nil, false
 	}
 	return o.UserIdentifier, true
@@ -885,7 +895,7 @@ func (o *UserJsonhal) GetUserIdentifierOk() (*string, bool) {
 
 // HasUserIdentifier returns a boolean if a field has been set.
 func (o *UserJsonhal) HasUserIdentifier() bool {
-	if o != nil && !IsNil(o.UserIdentifier) {
+	if o != nil && !isNil(o.UserIdentifier) {
 		return true
 	}
 
@@ -898,19 +908,13 @@ func (o *UserJsonhal) SetUserIdentifier(v string) {
 }
 
 func (o UserJsonhal) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o UserJsonhal) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Links) {
+	if !isNil(o.Links) {
 		toSerialize["_links"] = o.Links
 	}
-	// skip: id is readOnly
+	if !isNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
 	if o.Uuid.IsSet() {
 		toSerialize["uuid"] = o.Uuid.Get()
 	}
@@ -935,7 +939,7 @@ func (o UserJsonhal) ToMap() (map[string]interface{}, error) {
 	if o.Currency.IsSet() {
 		toSerialize["currency"] = o.Currency.Get()
 	}
-	if !IsNil(o.Password) {
+	if !isNil(o.Password) {
 		toSerialize["password"] = o.Password
 	}
 	if o.ChangePassword.IsSet() {
@@ -944,13 +948,13 @@ func (o UserJsonhal) ToMap() (map[string]interface{}, error) {
 	if o.CurrentPassword.IsSet() {
 		toSerialize["currentPassword"] = o.CurrentPassword.Get()
 	}
-	if !IsNil(o.IsEnabled) {
+	if !isNil(o.IsEnabled) {
 		toSerialize["isEnabled"] = o.IsEnabled
 	}
 	if o.RoleGroup.IsSet() {
 		toSerialize["roleGroup"] = o.RoleGroup.Get()
 	}
-	if !IsNil(o.Team) {
+	if !isNil(o.Team) {
 		toSerialize["team"] = o.Team
 	}
 	if o.CreatedBy.IsSet() {
@@ -959,17 +963,19 @@ func (o UserJsonhal) ToMap() (map[string]interface{}, error) {
 	if o.UpdatedBy.IsSet() {
 		toSerialize["updatedBy"] = o.UpdatedBy.Get()
 	}
-	if !IsNil(o.CreatedAt) {
+	if !isNil(o.CreatedAt) {
 		toSerialize["createdAt"] = o.CreatedAt
 	}
-	if !IsNil(o.UpdatedAt) {
+	if !isNil(o.UpdatedAt) {
 		toSerialize["updatedAt"] = o.UpdatedAt
 	}
 	if o.Salt.IsSet() {
 		toSerialize["salt"] = o.Salt.Get()
 	}
-	// skip: userIdentifier is readOnly
-	return toSerialize, nil
+	if !isNil(o.UserIdentifier) {
+		toSerialize["userIdentifier"] = o.UserIdentifier
+	}
+	return json.Marshal(toSerialize)
 }
 
 type NullableUserJsonhal struct {
@@ -1007,5 +1013,3 @@ func (v *NullableUserJsonhal) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

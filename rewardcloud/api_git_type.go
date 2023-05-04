@@ -19,14 +19,13 @@ import (
 	"strings"
 )
 
-
 // GitTypeApiService GitTypeApi service
 type GitTypeApiService service
 
 type ApiApiGitTypesGetCollectionRequest struct {
-	ctx context.Context
-	ApiService *GitTypeApiService
-	page *int32
+	ctx          context.Context
+	ApiService   *GitTypeApiService
+	page         *int32
 	itemsPerPage *int32
 }
 
@@ -42,7 +41,7 @@ func (r ApiApiGitTypesGetCollectionRequest) ItemsPerPage(itemsPerPage int32) Api
 	return r
 }
 
-func (r ApiApiGitTypesGetCollectionRequest) Execute() ([]GitType, *http.Response, error) {
+func (r ApiApiGitTypesGetCollectionRequest) Execute() (*ApiGitTypesGetCollection200Response, *http.Response, error) {
 	return r.ApiService.ApiGitTypesGetCollectionExecute(r)
 }
 
@@ -51,24 +50,25 @@ ApiGitTypesGetCollection Retrieves the collection of GitType resources.
 
 Retrieves the collection of GitType resources.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiApiGitTypesGetCollectionRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiApiGitTypesGetCollectionRequest
 */
 func (a *GitTypeApiService) ApiGitTypesGetCollection(ctx context.Context) ApiApiGitTypesGetCollectionRequest {
 	return ApiApiGitTypesGetCollectionRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return []GitType
-func (a *GitTypeApiService) ApiGitTypesGetCollectionExecute(r ApiApiGitTypesGetCollectionRequest) ([]GitType, *http.Response, error) {
+//
+//	@return ApiGitTypesGetCollection200Response
+func (a *GitTypeApiService) ApiGitTypesGetCollectionExecute(r ApiApiGitTypesGetCollectionRequest) (*ApiGitTypesGetCollection200Response, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  []GitType
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *ApiGitTypesGetCollection200Response
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "GitTypeApiService.ApiGitTypesGetCollection")
@@ -98,7 +98,7 @@ func (a *GitTypeApiService) ApiGitTypesGetCollectionExecute(r ApiApiGitTypesGetC
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json", "application/hal+json", "text/html"}
+	localVarHTTPHeaderAccepts := []string{"application/hal+json", "application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -157,9 +157,9 @@ func (a *GitTypeApiService) ApiGitTypesGetCollectionExecute(r ApiApiGitTypesGetC
 }
 
 type ApiApiGitTypesIdDeleteRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *GitTypeApiService
-	id string
+	id         string
 }
 
 func (r ApiApiGitTypesIdDeleteRequest) Execute() (*http.Response, error) {
@@ -171,24 +171,24 @@ ApiGitTypesIdDelete Removes the GitType resource.
 
 Removes the GitType resource.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id GitType identifier
- @return ApiApiGitTypesIdDeleteRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id GitType identifier
+	@return ApiApiGitTypesIdDeleteRequest
 */
 func (a *GitTypeApiService) ApiGitTypesIdDelete(ctx context.Context, id string) ApiApiGitTypesIdDeleteRequest {
 	return ApiApiGitTypesIdDeleteRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
 // Execute executes the request
 func (a *GitTypeApiService) ApiGitTypesIdDeleteExecute(r ApiApiGitTypesIdDeleteRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodDelete
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "GitTypeApiService.ApiGitTypesIdDelete")
@@ -263,12 +263,12 @@ func (a *GitTypeApiService) ApiGitTypesIdDeleteExecute(r ApiApiGitTypesIdDeleteR
 }
 
 type ApiApiGitTypesIdGetRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *GitTypeApiService
-	id string
+	id         string
 }
 
-func (r ApiApiGitTypesIdGetRequest) Execute() (*GitType, *http.Response, error) {
+func (r ApiApiGitTypesIdGetRequest) Execute() (*GitTypeJsonhal, *http.Response, error) {
 	return r.ApiService.ApiGitTypesIdGetExecute(r)
 }
 
@@ -277,26 +277,27 @@ ApiGitTypesIdGet Retrieves a GitType resource.
 
 Retrieves a GitType resource.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id GitType identifier
- @return ApiApiGitTypesIdGetRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id GitType identifier
+	@return ApiApiGitTypesIdGetRequest
 */
 func (a *GitTypeApiService) ApiGitTypesIdGet(ctx context.Context, id string) ApiApiGitTypesIdGetRequest {
 	return ApiApiGitTypesIdGetRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
 // Execute executes the request
-//  @return GitType
-func (a *GitTypeApiService) ApiGitTypesIdGetExecute(r ApiApiGitTypesIdGetRequest) (*GitType, *http.Response, error) {
+//
+//	@return GitTypeJsonhal
+func (a *GitTypeApiService) ApiGitTypesIdGetExecute(r ApiApiGitTypesIdGetRequest) (*GitTypeJsonhal, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *GitType
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *GitTypeJsonhal
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "GitTypeApiService.ApiGitTypesIdGet")
@@ -321,7 +322,7 @@ func (a *GitTypeApiService) ApiGitTypesIdGetExecute(r ApiApiGitTypesIdGetRequest
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json", "application/hal+json", "text/html"}
+	localVarHTTPHeaderAccepts := []string{"application/hal+json", "application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -380,10 +381,10 @@ func (a *GitTypeApiService) ApiGitTypesIdGetExecute(r ApiApiGitTypesIdGetRequest
 }
 
 type ApiApiGitTypesIdPatchRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *GitTypeApiService
-	id string
-	gitType *GitType
+	id         string
+	gitType    *GitType
 }
 
 // The updated GitType resource
@@ -392,7 +393,7 @@ func (r ApiApiGitTypesIdPatchRequest) GitType(gitType GitType) ApiApiGitTypesIdP
 	return r
 }
 
-func (r ApiApiGitTypesIdPatchRequest) Execute() (*GitType, *http.Response, error) {
+func (r ApiApiGitTypesIdPatchRequest) Execute() (*GitTypeJsonhal, *http.Response, error) {
 	return r.ApiService.ApiGitTypesIdPatchExecute(r)
 }
 
@@ -401,26 +402,27 @@ ApiGitTypesIdPatch Updates the GitType resource.
 
 Updates the GitType resource.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id GitType identifier
- @return ApiApiGitTypesIdPatchRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id GitType identifier
+	@return ApiApiGitTypesIdPatchRequest
 */
 func (a *GitTypeApiService) ApiGitTypesIdPatch(ctx context.Context, id string) ApiApiGitTypesIdPatchRequest {
 	return ApiApiGitTypesIdPatchRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
 // Execute executes the request
-//  @return GitType
-func (a *GitTypeApiService) ApiGitTypesIdPatchExecute(r ApiApiGitTypesIdPatchRequest) (*GitType, *http.Response, error) {
+//
+//	@return GitTypeJsonhal
+func (a *GitTypeApiService) ApiGitTypesIdPatchExecute(r ApiApiGitTypesIdPatchRequest) (*GitTypeJsonhal, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPatch
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *GitType
+		localVarHTTPMethod  = http.MethodPatch
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *GitTypeJsonhal
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "GitTypeApiService.ApiGitTypesIdPatch")
@@ -439,7 +441,7 @@ func (a *GitTypeApiService) ApiGitTypesIdPatchExecute(r ApiApiGitTypesIdPatchReq
 	}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json", "application/hal+json", "text/html"}
+	localVarHTTPContentTypes := []string{"application/vnd.api+json"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -448,7 +450,7 @@ func (a *GitTypeApiService) ApiGitTypesIdPatchExecute(r ApiApiGitTypesIdPatchReq
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json", "application/hal+json", "text/html"}
+	localVarHTTPHeaderAccepts := []string{"application/hal+json", "application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -509,19 +511,19 @@ func (a *GitTypeApiService) ApiGitTypesIdPatchExecute(r ApiApiGitTypesIdPatchReq
 }
 
 type ApiApiGitTypesIdPutRequest struct {
-	ctx context.Context
-	ApiService *GitTypeApiService
-	id string
-	gitType *GitType
+	ctx            context.Context
+	ApiService     *GitTypeApiService
+	id             string
+	gitTypeJsonhal *GitTypeJsonhal
 }
 
 // The updated GitType resource
-func (r ApiApiGitTypesIdPutRequest) GitType(gitType GitType) ApiApiGitTypesIdPutRequest {
-	r.gitType = &gitType
+func (r ApiApiGitTypesIdPutRequest) GitTypeJsonhal(gitTypeJsonhal GitTypeJsonhal) ApiApiGitTypesIdPutRequest {
+	r.gitTypeJsonhal = &gitTypeJsonhal
 	return r
 }
 
-func (r ApiApiGitTypesIdPutRequest) Execute() (*GitType, *http.Response, error) {
+func (r ApiApiGitTypesIdPutRequest) Execute() (*GitTypeJsonhal, *http.Response, error) {
 	return r.ApiService.ApiGitTypesIdPutExecute(r)
 }
 
@@ -530,26 +532,27 @@ ApiGitTypesIdPut Replaces the GitType resource.
 
 Replaces the GitType resource.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id GitType identifier
- @return ApiApiGitTypesIdPutRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id GitType identifier
+	@return ApiApiGitTypesIdPutRequest
 */
 func (a *GitTypeApiService) ApiGitTypesIdPut(ctx context.Context, id string) ApiApiGitTypesIdPutRequest {
 	return ApiApiGitTypesIdPutRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
 // Execute executes the request
-//  @return GitType
-func (a *GitTypeApiService) ApiGitTypesIdPutExecute(r ApiApiGitTypesIdPutRequest) (*GitType, *http.Response, error) {
+//
+//	@return GitTypeJsonhal
+func (a *GitTypeApiService) ApiGitTypesIdPutExecute(r ApiApiGitTypesIdPutRequest) (*GitTypeJsonhal, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPut
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *GitType
+		localVarHTTPMethod  = http.MethodPut
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *GitTypeJsonhal
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "GitTypeApiService.ApiGitTypesIdPut")
@@ -563,12 +566,12 @@ func (a *GitTypeApiService) ApiGitTypesIdPutExecute(r ApiApiGitTypesIdPutRequest
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.gitType == nil {
-		return localVarReturnValue, nil, reportError("gitType is required and must be specified")
+	if r.gitTypeJsonhal == nil {
+		return localVarReturnValue, nil, reportError("gitTypeJsonhal is required and must be specified")
 	}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json", "application/hal+json", "text/html"}
+	localVarHTTPContentTypes := []string{"application/hal+json", "application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -577,7 +580,7 @@ func (a *GitTypeApiService) ApiGitTypesIdPutExecute(r ApiApiGitTypesIdPutRequest
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json", "application/hal+json", "text/html"}
+	localVarHTTPHeaderAccepts := []string{"application/hal+json", "application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -585,7 +588,7 @@ func (a *GitTypeApiService) ApiGitTypesIdPutExecute(r ApiApiGitTypesIdPutRequest
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.gitType
+	localVarPostBody = r.gitTypeJsonhal
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
@@ -638,18 +641,18 @@ func (a *GitTypeApiService) ApiGitTypesIdPutExecute(r ApiApiGitTypesIdPutRequest
 }
 
 type ApiApiGitTypesPostRequest struct {
-	ctx context.Context
-	ApiService *GitTypeApiService
-	gitType *GitType
+	ctx            context.Context
+	ApiService     *GitTypeApiService
+	gitTypeJsonhal *GitTypeJsonhal
 }
 
 // The new GitType resource
-func (r ApiApiGitTypesPostRequest) GitType(gitType GitType) ApiApiGitTypesPostRequest {
-	r.gitType = &gitType
+func (r ApiApiGitTypesPostRequest) GitTypeJsonhal(gitTypeJsonhal GitTypeJsonhal) ApiApiGitTypesPostRequest {
+	r.gitTypeJsonhal = &gitTypeJsonhal
 	return r
 }
 
-func (r ApiApiGitTypesPostRequest) Execute() (*GitType, *http.Response, error) {
+func (r ApiApiGitTypesPostRequest) Execute() (*GitTypeJsonhal, *http.Response, error) {
 	return r.ApiService.ApiGitTypesPostExecute(r)
 }
 
@@ -658,24 +661,25 @@ ApiGitTypesPost Creates a GitType resource.
 
 Creates a GitType resource.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiApiGitTypesPostRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiApiGitTypesPostRequest
 */
 func (a *GitTypeApiService) ApiGitTypesPost(ctx context.Context) ApiApiGitTypesPostRequest {
 	return ApiApiGitTypesPostRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return GitType
-func (a *GitTypeApiService) ApiGitTypesPostExecute(r ApiApiGitTypesPostRequest) (*GitType, *http.Response, error) {
+//
+//	@return GitTypeJsonhal
+func (a *GitTypeApiService) ApiGitTypesPostExecute(r ApiApiGitTypesPostRequest) (*GitTypeJsonhal, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *GitType
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *GitTypeJsonhal
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "GitTypeApiService.ApiGitTypesPost")
@@ -688,12 +692,12 @@ func (a *GitTypeApiService) ApiGitTypesPostExecute(r ApiApiGitTypesPostRequest) 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.gitType == nil {
-		return localVarReturnValue, nil, reportError("gitType is required and must be specified")
+	if r.gitTypeJsonhal == nil {
+		return localVarReturnValue, nil, reportError("gitTypeJsonhal is required and must be specified")
 	}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json", "application/hal+json", "text/html"}
+	localVarHTTPContentTypes := []string{"application/hal+json", "application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -702,7 +706,7 @@ func (a *GitTypeApiService) ApiGitTypesPostExecute(r ApiApiGitTypesPostRequest) 
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json", "application/hal+json", "text/html"}
+	localVarHTTPHeaderAccepts := []string{"application/hal+json", "application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -710,7 +714,7 @@ func (a *GitTypeApiService) ApiGitTypesPostExecute(r ApiApiGitTypesPostRequest) 
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.gitType
+	localVarPostBody = r.gitTypeJsonhal
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {

@@ -14,15 +14,12 @@ import (
 	"encoding/json"
 )
 
-// checks if the ApiOrganisationEnvVarsGetCollection200Response type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &ApiOrganisationEnvVarsGetCollection200Response{}
-
 // ApiOrganisationEnvVarsGetCollection200Response struct for ApiOrganisationEnvVarsGetCollection200Response
 type ApiOrganisationEnvVarsGetCollection200Response struct {
-	Embedded []OrganisationEnvVarJsonhal `json:"_embedded"`
-	TotalItems *int32 `json:"totalItems,omitempty"`
-	ItemsPerPage *int32 `json:"itemsPerPage,omitempty"`
-	Links ApiComponentResourceLimitsGetCollection200ResponseLinks `json:"_links"`
+	Embedded     []OrganisationEnvVarJsonhal                             `json:"_embedded"`
+	TotalItems   *int32                                                  `json:"totalItems,omitempty"`
+	ItemsPerPage *int32                                                  `json:"itemsPerPage,omitempty"`
+	Links        ApiComponentResourceLimitsGetCollection200ResponseLinks `json:"_links"`
 }
 
 // NewApiOrganisationEnvVarsGetCollection200Response instantiates a new ApiOrganisationEnvVarsGetCollection200Response object
@@ -70,7 +67,7 @@ func (o *ApiOrganisationEnvVarsGetCollection200Response) SetEmbedded(v []Organis
 
 // GetTotalItems returns the TotalItems field value if set, zero value otherwise.
 func (o *ApiOrganisationEnvVarsGetCollection200Response) GetTotalItems() int32 {
-	if o == nil || IsNil(o.TotalItems) {
+	if o == nil || isNil(o.TotalItems) {
 		var ret int32
 		return ret
 	}
@@ -80,7 +77,7 @@ func (o *ApiOrganisationEnvVarsGetCollection200Response) GetTotalItems() int32 {
 // GetTotalItemsOk returns a tuple with the TotalItems field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ApiOrganisationEnvVarsGetCollection200Response) GetTotalItemsOk() (*int32, bool) {
-	if o == nil || IsNil(o.TotalItems) {
+	if o == nil || isNil(o.TotalItems) {
 		return nil, false
 	}
 	return o.TotalItems, true
@@ -88,7 +85,7 @@ func (o *ApiOrganisationEnvVarsGetCollection200Response) GetTotalItemsOk() (*int
 
 // HasTotalItems returns a boolean if a field has been set.
 func (o *ApiOrganisationEnvVarsGetCollection200Response) HasTotalItems() bool {
-	if o != nil && !IsNil(o.TotalItems) {
+	if o != nil && !isNil(o.TotalItems) {
 		return true
 	}
 
@@ -102,7 +99,7 @@ func (o *ApiOrganisationEnvVarsGetCollection200Response) SetTotalItems(v int32) 
 
 // GetItemsPerPage returns the ItemsPerPage field value if set, zero value otherwise.
 func (o *ApiOrganisationEnvVarsGetCollection200Response) GetItemsPerPage() int32 {
-	if o == nil || IsNil(o.ItemsPerPage) {
+	if o == nil || isNil(o.ItemsPerPage) {
 		var ret int32
 		return ret
 	}
@@ -112,7 +109,7 @@ func (o *ApiOrganisationEnvVarsGetCollection200Response) GetItemsPerPage() int32
 // GetItemsPerPageOk returns a tuple with the ItemsPerPage field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ApiOrganisationEnvVarsGetCollection200Response) GetItemsPerPageOk() (*int32, bool) {
-	if o == nil || IsNil(o.ItemsPerPage) {
+	if o == nil || isNil(o.ItemsPerPage) {
 		return nil, false
 	}
 	return o.ItemsPerPage, true
@@ -120,7 +117,7 @@ func (o *ApiOrganisationEnvVarsGetCollection200Response) GetItemsPerPageOk() (*i
 
 // HasItemsPerPage returns a boolean if a field has been set.
 func (o *ApiOrganisationEnvVarsGetCollection200Response) HasItemsPerPage() bool {
-	if o != nil && !IsNil(o.ItemsPerPage) {
+	if o != nil && !isNil(o.ItemsPerPage) {
 		return true
 	}
 
@@ -157,24 +154,20 @@ func (o *ApiOrganisationEnvVarsGetCollection200Response) SetLinks(v ApiComponent
 }
 
 func (o ApiOrganisationEnvVarsGetCollection200Response) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o ApiOrganisationEnvVarsGetCollection200Response) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["_embedded"] = o.Embedded
-	if !IsNil(o.TotalItems) {
+	if true {
+		toSerialize["_embedded"] = o.Embedded
+	}
+	if !isNil(o.TotalItems) {
 		toSerialize["totalItems"] = o.TotalItems
 	}
-	if !IsNil(o.ItemsPerPage) {
+	if !isNil(o.ItemsPerPage) {
 		toSerialize["itemsPerPage"] = o.ItemsPerPage
 	}
-	toSerialize["_links"] = o.Links
-	return toSerialize, nil
+	if true {
+		toSerialize["_links"] = o.Links
+	}
+	return json.Marshal(toSerialize)
 }
 
 type NullableApiOrganisationEnvVarsGetCollection200Response struct {
@@ -212,5 +205,3 @@ func (v *NullableApiOrganisationEnvVarsGetCollection200Response) UnmarshalJSON(s
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

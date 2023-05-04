@@ -14,15 +14,12 @@ import (
 	"encoding/json"
 )
 
-// checks if the ServiceAccountGitJsonhalProjectGet type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &ServiceAccountGitJsonhalProjectGet{}
-
-// ServiceAccountGitJsonhalProjectGet 
+// ServiceAccountGitJsonhalProjectGet
 type ServiceAccountGitJsonhalProjectGet struct {
-	Links *AbstractEnvironmentJsonhalLinks `json:"_links,omitempty"`
-	IsExternal NullableBool `json:"isExternal,omitempty"`
-	Url NullableString `json:"url,omitempty"`
-	SshPrivateKey NullableString `json:"sshPrivateKey,omitempty"`
+	Links         *AbstractEnvironmentJsonhalLinks `json:"_links,omitempty"`
+	IsExternal    NullableBool                     `json:"isExternal,omitempty"`
+	Url           NullableString                   `json:"url,omitempty"`
+	SshPrivateKey NullableString                   `json:"sshPrivateKey,omitempty"`
 }
 
 // NewServiceAccountGitJsonhalProjectGet instantiates a new ServiceAccountGitJsonhalProjectGet object
@@ -44,7 +41,7 @@ func NewServiceAccountGitJsonhalProjectGetWithDefaults() *ServiceAccountGitJsonh
 
 // GetLinks returns the Links field value if set, zero value otherwise.
 func (o *ServiceAccountGitJsonhalProjectGet) GetLinks() AbstractEnvironmentJsonhalLinks {
-	if o == nil || IsNil(o.Links) {
+	if o == nil || isNil(o.Links) {
 		var ret AbstractEnvironmentJsonhalLinks
 		return ret
 	}
@@ -54,7 +51,7 @@ func (o *ServiceAccountGitJsonhalProjectGet) GetLinks() AbstractEnvironmentJsonh
 // GetLinksOk returns a tuple with the Links field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ServiceAccountGitJsonhalProjectGet) GetLinksOk() (*AbstractEnvironmentJsonhalLinks, bool) {
-	if o == nil || IsNil(o.Links) {
+	if o == nil || isNil(o.Links) {
 		return nil, false
 	}
 	return o.Links, true
@@ -62,7 +59,7 @@ func (o *ServiceAccountGitJsonhalProjectGet) GetLinksOk() (*AbstractEnvironmentJ
 
 // HasLinks returns a boolean if a field has been set.
 func (o *ServiceAccountGitJsonhalProjectGet) HasLinks() bool {
-	if o != nil && !IsNil(o.Links) {
+	if o != nil && !isNil(o.Links) {
 		return true
 	}
 
@@ -76,7 +73,7 @@ func (o *ServiceAccountGitJsonhalProjectGet) SetLinks(v AbstractEnvironmentJsonh
 
 // GetIsExternal returns the IsExternal field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ServiceAccountGitJsonhalProjectGet) GetIsExternal() bool {
-	if o == nil || IsNil(o.IsExternal.Get()) {
+	if o == nil || isNil(o.IsExternal.Get()) {
 		var ret bool
 		return ret
 	}
@@ -106,6 +103,7 @@ func (o *ServiceAccountGitJsonhalProjectGet) HasIsExternal() bool {
 func (o *ServiceAccountGitJsonhalProjectGet) SetIsExternal(v bool) {
 	o.IsExternal.Set(&v)
 }
+
 // SetIsExternalNil sets the value for IsExternal to be an explicit nil
 func (o *ServiceAccountGitJsonhalProjectGet) SetIsExternalNil() {
 	o.IsExternal.Set(nil)
@@ -118,7 +116,7 @@ func (o *ServiceAccountGitJsonhalProjectGet) UnsetIsExternal() {
 
 // GetUrl returns the Url field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ServiceAccountGitJsonhalProjectGet) GetUrl() string {
-	if o == nil || IsNil(o.Url.Get()) {
+	if o == nil || isNil(o.Url.Get()) {
 		var ret string
 		return ret
 	}
@@ -148,6 +146,7 @@ func (o *ServiceAccountGitJsonhalProjectGet) HasUrl() bool {
 func (o *ServiceAccountGitJsonhalProjectGet) SetUrl(v string) {
 	o.Url.Set(&v)
 }
+
 // SetUrlNil sets the value for Url to be an explicit nil
 func (o *ServiceAccountGitJsonhalProjectGet) SetUrlNil() {
 	o.Url.Set(nil)
@@ -160,7 +159,7 @@ func (o *ServiceAccountGitJsonhalProjectGet) UnsetUrl() {
 
 // GetSshPrivateKey returns the SshPrivateKey field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ServiceAccountGitJsonhalProjectGet) GetSshPrivateKey() string {
-	if o == nil || IsNil(o.SshPrivateKey.Get()) {
+	if o == nil || isNil(o.SshPrivateKey.Get()) {
 		var ret string
 		return ret
 	}
@@ -190,6 +189,7 @@ func (o *ServiceAccountGitJsonhalProjectGet) HasSshPrivateKey() bool {
 func (o *ServiceAccountGitJsonhalProjectGet) SetSshPrivateKey(v string) {
 	o.SshPrivateKey.Set(&v)
 }
+
 // SetSshPrivateKeyNil sets the value for SshPrivateKey to be an explicit nil
 func (o *ServiceAccountGitJsonhalProjectGet) SetSshPrivateKeyNil() {
 	o.SshPrivateKey.Set(nil)
@@ -201,16 +201,8 @@ func (o *ServiceAccountGitJsonhalProjectGet) UnsetSshPrivateKey() {
 }
 
 func (o ServiceAccountGitJsonhalProjectGet) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o ServiceAccountGitJsonhalProjectGet) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Links) {
+	if !isNil(o.Links) {
 		toSerialize["_links"] = o.Links
 	}
 	if o.IsExternal.IsSet() {
@@ -222,7 +214,7 @@ func (o ServiceAccountGitJsonhalProjectGet) ToMap() (map[string]interface{}, err
 	if o.SshPrivateKey.IsSet() {
 		toSerialize["sshPrivateKey"] = o.SshPrivateKey.Get()
 	}
-	return toSerialize, nil
+	return json.Marshal(toSerialize)
 }
 
 type NullableServiceAccountGitJsonhalProjectGet struct {
@@ -260,5 +252,3 @@ func (v *NullableServiceAccountGitJsonhalProjectGet) UnmarshalJSON(src []byte) e
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

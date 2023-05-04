@@ -14,10 +14,7 @@ import (
 	"encoding/json"
 )
 
-// checks if the GitTypeProjectPost type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &GitTypeProjectPost{}
-
-// GitTypeProjectPost 
+// GitTypeProjectPost
 type GitTypeProjectPost struct {
 	Uuid NullableString `json:"uuid,omitempty"`
 	Name NullableString `json:"name,omitempty"`
@@ -42,7 +39,7 @@ func NewGitTypeProjectPostWithDefaults() *GitTypeProjectPost {
 
 // GetUuid returns the Uuid field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *GitTypeProjectPost) GetUuid() string {
-	if o == nil || IsNil(o.Uuid.Get()) {
+	if o == nil || isNil(o.Uuid.Get()) {
 		var ret string
 		return ret
 	}
@@ -72,6 +69,7 @@ func (o *GitTypeProjectPost) HasUuid() bool {
 func (o *GitTypeProjectPost) SetUuid(v string) {
 	o.Uuid.Set(&v)
 }
+
 // SetUuidNil sets the value for Uuid to be an explicit nil
 func (o *GitTypeProjectPost) SetUuidNil() {
 	o.Uuid.Set(nil)
@@ -84,7 +82,7 @@ func (o *GitTypeProjectPost) UnsetUuid() {
 
 // GetName returns the Name field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *GitTypeProjectPost) GetName() string {
-	if o == nil || IsNil(o.Name.Get()) {
+	if o == nil || isNil(o.Name.Get()) {
 		var ret string
 		return ret
 	}
@@ -114,6 +112,7 @@ func (o *GitTypeProjectPost) HasName() bool {
 func (o *GitTypeProjectPost) SetName(v string) {
 	o.Name.Set(&v)
 }
+
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *GitTypeProjectPost) SetNameNil() {
 	o.Name.Set(nil)
@@ -125,14 +124,6 @@ func (o *GitTypeProjectPost) UnsetName() {
 }
 
 func (o GitTypeProjectPost) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o GitTypeProjectPost) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Uuid.IsSet() {
 		toSerialize["uuid"] = o.Uuid.Get()
@@ -140,7 +131,7 @@ func (o GitTypeProjectPost) ToMap() (map[string]interface{}, error) {
 	if o.Name.IsSet() {
 		toSerialize["name"] = o.Name.Get()
 	}
-	return toSerialize, nil
+	return json.Marshal(toSerialize)
 }
 
 type NullableGitTypeProjectPost struct {
@@ -178,5 +169,3 @@ func (v *NullableGitTypeProjectPost) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

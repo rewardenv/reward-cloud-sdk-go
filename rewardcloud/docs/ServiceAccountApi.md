@@ -15,7 +15,7 @@ Method | HTTP request | Description
 
 ## ApiServiceAccountsGetCollection
 
-> []ServiceAccount ApiServiceAccountsGetCollection(ctx).Page(page).ItemsPerPage(itemsPerPage).Project(project).Project2(project2).ServiceAccountGit(serviceAccountGit).ServiceAccountGit2(serviceAccountGit2).ServiceAccountRegistry(serviceAccountRegistry).ServiceAccountRegistry2(serviceAccountRegistry2).Execute()
+> ApiServiceAccountsGetCollection200Response ApiServiceAccountsGetCollection(ctx).Page(page).ItemsPerPage(itemsPerPage).Project(project).Project2(project2).ServiceAccountGit(serviceAccountGit).ServiceAccountGit2(serviceAccountGit2).ServiceAccountRegistry(serviceAccountRegistry).ServiceAccountRegistry2(serviceAccountRegistry2).Execute()
 
 Retrieves the collection of ServiceAccount resources.
 
@@ -50,7 +50,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `ServiceAccountApi.ApiServiceAccountsGetCollection``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiServiceAccountsGetCollection`: []ServiceAccount
+    // response from `ApiServiceAccountsGetCollection`: ApiServiceAccountsGetCollection200Response
     fmt.Fprintf(os.Stdout, "Response from `ServiceAccountApi.ApiServiceAccountsGetCollection`: %v\n", resp)
 }
 ```
@@ -77,7 +77,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]ServiceAccount**](ServiceAccount.md)
+[**ApiServiceAccountsGetCollection200Response**](ApiServiceAccountsGetCollection200Response.md)
 
 ### Authorization
 
@@ -86,7 +86,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json, application/hal+json, text/html
+- **Accept**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -163,7 +163,7 @@ Name | Type | Description  | Notes
 
 ## ApiServiceAccountsIdGet
 
-> ServiceAccount ApiServiceAccountsIdGet(ctx, id).Execute()
+> ServiceAccountJsonhal ApiServiceAccountsIdGet(ctx, id).Execute()
 
 Retrieves a ServiceAccount resource.
 
@@ -191,7 +191,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `ServiceAccountApi.ApiServiceAccountsIdGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiServiceAccountsIdGet`: ServiceAccount
+    // response from `ApiServiceAccountsIdGet`: ServiceAccountJsonhal
     fmt.Fprintf(os.Stdout, "Response from `ServiceAccountApi.ApiServiceAccountsIdGet`: %v\n", resp)
 }
 ```
@@ -215,7 +215,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ServiceAccount**](ServiceAccount.md)
+[**ServiceAccountJsonhal**](ServiceAccountJsonhal.md)
 
 ### Authorization
 
@@ -224,7 +224,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json, application/hal+json, text/html
+- **Accept**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -233,7 +233,7 @@ Name | Type | Description  | Notes
 
 ## ApiServiceAccountsIdPatch
 
-> ServiceAccount ApiServiceAccountsIdPatch(ctx, id).ServiceAccount(serviceAccount).Execute()
+> ServiceAccountJsonhal ApiServiceAccountsIdPatch(ctx, id).ServiceAccount(serviceAccount).Execute()
 
 Updates the ServiceAccount resource.
 
@@ -262,7 +262,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `ServiceAccountApi.ApiServiceAccountsIdPatch``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiServiceAccountsIdPatch`: ServiceAccount
+    // response from `ApiServiceAccountsIdPatch`: ServiceAccountJsonhal
     fmt.Fprintf(os.Stdout, "Response from `ServiceAccountApi.ApiServiceAccountsIdPatch`: %v\n", resp)
 }
 ```
@@ -287,7 +287,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ServiceAccount**](ServiceAccount.md)
+[**ServiceAccountJsonhal**](ServiceAccountJsonhal.md)
 
 ### Authorization
 
@@ -295,8 +295,8 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: application/json, application/hal+json, text/html
-- **Accept**: application/json, application/hal+json, text/html
+- **Content-Type**: application/vnd.api+json
+- **Accept**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -305,7 +305,7 @@ Name | Type | Description  | Notes
 
 ## ApiServiceAccountsIdPut
 
-> ServiceAccount ApiServiceAccountsIdPut(ctx, id).ServiceAccount(serviceAccount).Execute()
+> ServiceAccountJsonhal ApiServiceAccountsIdPut(ctx, id).ServiceAccountJsonhal(serviceAccountJsonhal).Execute()
 
 Replaces the ServiceAccount resource.
 
@@ -325,16 +325,16 @@ import (
 
 func main() {
     id := "id_example" // string | ServiceAccount identifier
-    serviceAccount := *openapiclient.NewServiceAccount() // ServiceAccount | The updated ServiceAccount resource
+    serviceAccountJsonhal := *openapiclient.NewServiceAccountJsonhal() // ServiceAccountJsonhal | The updated ServiceAccount resource
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ServiceAccountApi.ApiServiceAccountsIdPut(context.Background(), id).ServiceAccount(serviceAccount).Execute()
+    resp, r, err := apiClient.ServiceAccountApi.ApiServiceAccountsIdPut(context.Background(), id).ServiceAccountJsonhal(serviceAccountJsonhal).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ServiceAccountApi.ApiServiceAccountsIdPut``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiServiceAccountsIdPut`: ServiceAccount
+    // response from `ApiServiceAccountsIdPut`: ServiceAccountJsonhal
     fmt.Fprintf(os.Stdout, "Response from `ServiceAccountApi.ApiServiceAccountsIdPut`: %v\n", resp)
 }
 ```
@@ -355,11 +355,11 @@ Other parameters are passed through a pointer to a apiApiServiceAccountsIdPutReq
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **serviceAccount** | [**ServiceAccount**](ServiceAccount.md) | The updated ServiceAccount resource | 
+ **serviceAccountJsonhal** | [**ServiceAccountJsonhal**](ServiceAccountJsonhal.md) | The updated ServiceAccount resource | 
 
 ### Return type
 
-[**ServiceAccount**](ServiceAccount.md)
+[**ServiceAccountJsonhal**](ServiceAccountJsonhal.md)
 
 ### Authorization
 
@@ -367,8 +367,8 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: application/json, application/hal+json, text/html
-- **Accept**: application/json, application/hal+json, text/html
+- **Content-Type**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
+- **Accept**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -377,7 +377,7 @@ Name | Type | Description  | Notes
 
 ## ApiServiceAccountsPost
 
-> ServiceAccount ApiServiceAccountsPost(ctx).ServiceAccount(serviceAccount).Execute()
+> ServiceAccountJsonhal ApiServiceAccountsPost(ctx).ServiceAccountJsonhal(serviceAccountJsonhal).Execute()
 
 Creates a ServiceAccount resource.
 
@@ -396,16 +396,16 @@ import (
 )
 
 func main() {
-    serviceAccount := *openapiclient.NewServiceAccount() // ServiceAccount | The new ServiceAccount resource
+    serviceAccountJsonhal := *openapiclient.NewServiceAccountJsonhal() // ServiceAccountJsonhal | The new ServiceAccount resource
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ServiceAccountApi.ApiServiceAccountsPost(context.Background()).ServiceAccount(serviceAccount).Execute()
+    resp, r, err := apiClient.ServiceAccountApi.ApiServiceAccountsPost(context.Background()).ServiceAccountJsonhal(serviceAccountJsonhal).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ServiceAccountApi.ApiServiceAccountsPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiServiceAccountsPost`: ServiceAccount
+    // response from `ApiServiceAccountsPost`: ServiceAccountJsonhal
     fmt.Fprintf(os.Stdout, "Response from `ServiceAccountApi.ApiServiceAccountsPost`: %v\n", resp)
 }
 ```
@@ -421,11 +421,11 @@ Other parameters are passed through a pointer to a apiApiServiceAccountsPostRequ
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **serviceAccount** | [**ServiceAccount**](ServiceAccount.md) | The new ServiceAccount resource | 
+ **serviceAccountJsonhal** | [**ServiceAccountJsonhal**](ServiceAccountJsonhal.md) | The new ServiceAccount resource | 
 
 ### Return type
 
-[**ServiceAccount**](ServiceAccount.md)
+[**ServiceAccountJsonhal**](ServiceAccountJsonhal.md)
 
 ### Authorization
 
@@ -433,8 +433,8 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: application/json, application/hal+json, text/html
-- **Accept**: application/json, application/hal+json, text/html
+- **Content-Type**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
+- **Accept**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)

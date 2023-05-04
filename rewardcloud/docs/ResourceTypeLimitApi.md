@@ -15,7 +15,7 @@ Method | HTTP request | Description
 
 ## ApiResourceTypeLimitsGetCollection
 
-> []ResourceTypeLimit ApiResourceTypeLimitsGetCollection(ctx).Page(page).ItemsPerPage(itemsPerPage).Execute()
+> ApiResourceTypeLimitsGetCollection200Response ApiResourceTypeLimitsGetCollection(ctx).Page(page).ItemsPerPage(itemsPerPage).Execute()
 
 Retrieves the collection of ResourceTypeLimit resources.
 
@@ -44,7 +44,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `ResourceTypeLimitApi.ApiResourceTypeLimitsGetCollection``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiResourceTypeLimitsGetCollection`: []ResourceTypeLimit
+    // response from `ApiResourceTypeLimitsGetCollection`: ApiResourceTypeLimitsGetCollection200Response
     fmt.Fprintf(os.Stdout, "Response from `ResourceTypeLimitApi.ApiResourceTypeLimitsGetCollection`: %v\n", resp)
 }
 ```
@@ -65,7 +65,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]ResourceTypeLimit**](ResourceTypeLimit.md)
+[**ApiResourceTypeLimitsGetCollection200Response**](ApiResourceTypeLimitsGetCollection200Response.md)
 
 ### Authorization
 
@@ -74,7 +74,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json, application/hal+json, text/html
+- **Accept**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -151,7 +151,7 @@ Name | Type | Description  | Notes
 
 ## ApiResourceTypeLimitsIdGet
 
-> ResourceTypeLimit ApiResourceTypeLimitsIdGet(ctx, id).Execute()
+> ResourceTypeLimitJsonhal ApiResourceTypeLimitsIdGet(ctx, id).Execute()
 
 Retrieves a ResourceTypeLimit resource.
 
@@ -179,7 +179,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `ResourceTypeLimitApi.ApiResourceTypeLimitsIdGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiResourceTypeLimitsIdGet`: ResourceTypeLimit
+    // response from `ApiResourceTypeLimitsIdGet`: ResourceTypeLimitJsonhal
     fmt.Fprintf(os.Stdout, "Response from `ResourceTypeLimitApi.ApiResourceTypeLimitsIdGet`: %v\n", resp)
 }
 ```
@@ -203,7 +203,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ResourceTypeLimit**](ResourceTypeLimit.md)
+[**ResourceTypeLimitJsonhal**](ResourceTypeLimitJsonhal.md)
 
 ### Authorization
 
@@ -212,7 +212,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json, application/hal+json, text/html
+- **Accept**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -221,7 +221,7 @@ Name | Type | Description  | Notes
 
 ## ApiResourceTypeLimitsIdPatch
 
-> ResourceTypeLimit ApiResourceTypeLimitsIdPatch(ctx, id).ResourceTypeLimit(resourceTypeLimit).Execute()
+> ResourceTypeLimitJsonhal ApiResourceTypeLimitsIdPatch(ctx, id).ResourceTypeLimit(resourceTypeLimit).Execute()
 
 Updates the ResourceTypeLimit resource.
 
@@ -250,7 +250,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `ResourceTypeLimitApi.ApiResourceTypeLimitsIdPatch``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiResourceTypeLimitsIdPatch`: ResourceTypeLimit
+    // response from `ApiResourceTypeLimitsIdPatch`: ResourceTypeLimitJsonhal
     fmt.Fprintf(os.Stdout, "Response from `ResourceTypeLimitApi.ApiResourceTypeLimitsIdPatch`: %v\n", resp)
 }
 ```
@@ -275,7 +275,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ResourceTypeLimit**](ResourceTypeLimit.md)
+[**ResourceTypeLimitJsonhal**](ResourceTypeLimitJsonhal.md)
 
 ### Authorization
 
@@ -283,8 +283,8 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: application/json, application/hal+json, text/html
-- **Accept**: application/json, application/hal+json, text/html
+- **Content-Type**: application/vnd.api+json
+- **Accept**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -293,7 +293,7 @@ Name | Type | Description  | Notes
 
 ## ApiResourceTypeLimitsIdPut
 
-> ResourceTypeLimit ApiResourceTypeLimitsIdPut(ctx, id).ResourceTypeLimit(resourceTypeLimit).Execute()
+> ResourceTypeLimitJsonhal ApiResourceTypeLimitsIdPut(ctx, id).ResourceTypeLimitJsonhal(resourceTypeLimitJsonhal).Execute()
 
 Replaces the ResourceTypeLimit resource.
 
@@ -313,16 +313,16 @@ import (
 
 func main() {
     id := "id_example" // string | ResourceTypeLimit identifier
-    resourceTypeLimit := *openapiclient.NewResourceTypeLimit() // ResourceTypeLimit | The updated ResourceTypeLimit resource
+    resourceTypeLimitJsonhal := *openapiclient.NewResourceTypeLimitJsonhal() // ResourceTypeLimitJsonhal | The updated ResourceTypeLimit resource
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ResourceTypeLimitApi.ApiResourceTypeLimitsIdPut(context.Background(), id).ResourceTypeLimit(resourceTypeLimit).Execute()
+    resp, r, err := apiClient.ResourceTypeLimitApi.ApiResourceTypeLimitsIdPut(context.Background(), id).ResourceTypeLimitJsonhal(resourceTypeLimitJsonhal).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ResourceTypeLimitApi.ApiResourceTypeLimitsIdPut``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiResourceTypeLimitsIdPut`: ResourceTypeLimit
+    // response from `ApiResourceTypeLimitsIdPut`: ResourceTypeLimitJsonhal
     fmt.Fprintf(os.Stdout, "Response from `ResourceTypeLimitApi.ApiResourceTypeLimitsIdPut`: %v\n", resp)
 }
 ```
@@ -343,11 +343,11 @@ Other parameters are passed through a pointer to a apiApiResourceTypeLimitsIdPut
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **resourceTypeLimit** | [**ResourceTypeLimit**](ResourceTypeLimit.md) | The updated ResourceTypeLimit resource | 
+ **resourceTypeLimitJsonhal** | [**ResourceTypeLimitJsonhal**](ResourceTypeLimitJsonhal.md) | The updated ResourceTypeLimit resource | 
 
 ### Return type
 
-[**ResourceTypeLimit**](ResourceTypeLimit.md)
+[**ResourceTypeLimitJsonhal**](ResourceTypeLimitJsonhal.md)
 
 ### Authorization
 
@@ -355,8 +355,8 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: application/json, application/hal+json, text/html
-- **Accept**: application/json, application/hal+json, text/html
+- **Content-Type**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
+- **Accept**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -365,7 +365,7 @@ Name | Type | Description  | Notes
 
 ## ApiResourceTypeLimitsPost
 
-> ResourceTypeLimit ApiResourceTypeLimitsPost(ctx).ResourceTypeLimit(resourceTypeLimit).Execute()
+> ResourceTypeLimitJsonhal ApiResourceTypeLimitsPost(ctx).ResourceTypeLimitJsonhal(resourceTypeLimitJsonhal).Execute()
 
 Creates a ResourceTypeLimit resource.
 
@@ -384,16 +384,16 @@ import (
 )
 
 func main() {
-    resourceTypeLimit := *openapiclient.NewResourceTypeLimit() // ResourceTypeLimit | The new ResourceTypeLimit resource
+    resourceTypeLimitJsonhal := *openapiclient.NewResourceTypeLimitJsonhal() // ResourceTypeLimitJsonhal | The new ResourceTypeLimit resource
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ResourceTypeLimitApi.ApiResourceTypeLimitsPost(context.Background()).ResourceTypeLimit(resourceTypeLimit).Execute()
+    resp, r, err := apiClient.ResourceTypeLimitApi.ApiResourceTypeLimitsPost(context.Background()).ResourceTypeLimitJsonhal(resourceTypeLimitJsonhal).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ResourceTypeLimitApi.ApiResourceTypeLimitsPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiResourceTypeLimitsPost`: ResourceTypeLimit
+    // response from `ApiResourceTypeLimitsPost`: ResourceTypeLimitJsonhal
     fmt.Fprintf(os.Stdout, "Response from `ResourceTypeLimitApi.ApiResourceTypeLimitsPost`: %v\n", resp)
 }
 ```
@@ -409,11 +409,11 @@ Other parameters are passed through a pointer to a apiApiResourceTypeLimitsPostR
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **resourceTypeLimit** | [**ResourceTypeLimit**](ResourceTypeLimit.md) | The new ResourceTypeLimit resource | 
+ **resourceTypeLimitJsonhal** | [**ResourceTypeLimitJsonhal**](ResourceTypeLimitJsonhal.md) | The new ResourceTypeLimit resource | 
 
 ### Return type
 
-[**ResourceTypeLimit**](ResourceTypeLimit.md)
+[**ResourceTypeLimitJsonhal**](ResourceTypeLimitJsonhal.md)
 
 ### Authorization
 
@@ -421,8 +421,8 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: application/json, application/hal+json, text/html
-- **Accept**: application/json, application/hal+json, text/html
+- **Content-Type**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
+- **Accept**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)

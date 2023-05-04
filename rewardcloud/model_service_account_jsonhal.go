@@ -14,22 +14,19 @@ import (
 	"encoding/json"
 )
 
-// checks if the ServiceAccountJsonhal type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &ServiceAccountJsonhal{}
-
 // ServiceAccountJsonhal Class ServiceAccount
 type ServiceAccountJsonhal struct {
-	Links *AbstractEnvironmentJsonhalLinks `json:"_links,omitempty"`
-	Id *int32 `json:"id,omitempty"`
-	Uuid *string `json:"uuid,omitempty"`
-	Email NullableString `json:"email,omitempty"`
-	Username NullableString `json:"username,omitempty"`
-	Password NullableString `json:"password,omitempty"`
-	Project NullableString `json:"project,omitempty"`
-	ServiceAccountGit NullableString `json:"serviceAccountGit,omitempty"`
-	ServiceAccountRegistry NullableString `json:"serviceAccountRegistry,omitempty"`
-	CreatedBy NullableString `json:"createdBy,omitempty"`
-	UpdatedBy NullableString `json:"updatedBy,omitempty"`
+	Links                  *AbstractEnvironmentJsonhalLinks `json:"_links,omitempty"`
+	Id                     *int32                           `json:"id,omitempty"`
+	Uuid                   *string                          `json:"uuid,omitempty"`
+	Email                  NullableString                   `json:"email,omitempty"`
+	Username               NullableString                   `json:"username,omitempty"`
+	Password               NullableString                   `json:"password,omitempty"`
+	Project                NullableString                   `json:"project,omitempty"`
+	ServiceAccountGit      NullableString                   `json:"serviceAccountGit,omitempty"`
+	ServiceAccountRegistry NullableString                   `json:"serviceAccountRegistry,omitempty"`
+	CreatedBy              NullableString                   `json:"createdBy,omitempty"`
+	UpdatedBy              NullableString                   `json:"updatedBy,omitempty"`
 }
 
 // NewServiceAccountJsonhal instantiates a new ServiceAccountJsonhal object
@@ -51,7 +48,7 @@ func NewServiceAccountJsonhalWithDefaults() *ServiceAccountJsonhal {
 
 // GetLinks returns the Links field value if set, zero value otherwise.
 func (o *ServiceAccountJsonhal) GetLinks() AbstractEnvironmentJsonhalLinks {
-	if o == nil || IsNil(o.Links) {
+	if o == nil || isNil(o.Links) {
 		var ret AbstractEnvironmentJsonhalLinks
 		return ret
 	}
@@ -61,7 +58,7 @@ func (o *ServiceAccountJsonhal) GetLinks() AbstractEnvironmentJsonhalLinks {
 // GetLinksOk returns a tuple with the Links field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ServiceAccountJsonhal) GetLinksOk() (*AbstractEnvironmentJsonhalLinks, bool) {
-	if o == nil || IsNil(o.Links) {
+	if o == nil || isNil(o.Links) {
 		return nil, false
 	}
 	return o.Links, true
@@ -69,7 +66,7 @@ func (o *ServiceAccountJsonhal) GetLinksOk() (*AbstractEnvironmentJsonhalLinks, 
 
 // HasLinks returns a boolean if a field has been set.
 func (o *ServiceAccountJsonhal) HasLinks() bool {
-	if o != nil && !IsNil(o.Links) {
+	if o != nil && !isNil(o.Links) {
 		return true
 	}
 
@@ -83,7 +80,7 @@ func (o *ServiceAccountJsonhal) SetLinks(v AbstractEnvironmentJsonhalLinks) {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *ServiceAccountJsonhal) GetId() int32 {
-	if o == nil || IsNil(o.Id) {
+	if o == nil || isNil(o.Id) {
 		var ret int32
 		return ret
 	}
@@ -93,7 +90,7 @@ func (o *ServiceAccountJsonhal) GetId() int32 {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ServiceAccountJsonhal) GetIdOk() (*int32, bool) {
-	if o == nil || IsNil(o.Id) {
+	if o == nil || isNil(o.Id) {
 		return nil, false
 	}
 	return o.Id, true
@@ -101,7 +98,7 @@ func (o *ServiceAccountJsonhal) GetIdOk() (*int32, bool) {
 
 // HasId returns a boolean if a field has been set.
 func (o *ServiceAccountJsonhal) HasId() bool {
-	if o != nil && !IsNil(o.Id) {
+	if o != nil && !isNil(o.Id) {
 		return true
 	}
 
@@ -115,7 +112,7 @@ func (o *ServiceAccountJsonhal) SetId(v int32) {
 
 // GetUuid returns the Uuid field value if set, zero value otherwise.
 func (o *ServiceAccountJsonhal) GetUuid() string {
-	if o == nil || IsNil(o.Uuid) {
+	if o == nil || isNil(o.Uuid) {
 		var ret string
 		return ret
 	}
@@ -125,7 +122,7 @@ func (o *ServiceAccountJsonhal) GetUuid() string {
 // GetUuidOk returns a tuple with the Uuid field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ServiceAccountJsonhal) GetUuidOk() (*string, bool) {
-	if o == nil || IsNil(o.Uuid) {
+	if o == nil || isNil(o.Uuid) {
 		return nil, false
 	}
 	return o.Uuid, true
@@ -133,7 +130,7 @@ func (o *ServiceAccountJsonhal) GetUuidOk() (*string, bool) {
 
 // HasUuid returns a boolean if a field has been set.
 func (o *ServiceAccountJsonhal) HasUuid() bool {
-	if o != nil && !IsNil(o.Uuid) {
+	if o != nil && !isNil(o.Uuid) {
 		return true
 	}
 
@@ -147,7 +144,7 @@ func (o *ServiceAccountJsonhal) SetUuid(v string) {
 
 // GetEmail returns the Email field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ServiceAccountJsonhal) GetEmail() string {
-	if o == nil || IsNil(o.Email.Get()) {
+	if o == nil || isNil(o.Email.Get()) {
 		var ret string
 		return ret
 	}
@@ -177,6 +174,7 @@ func (o *ServiceAccountJsonhal) HasEmail() bool {
 func (o *ServiceAccountJsonhal) SetEmail(v string) {
 	o.Email.Set(&v)
 }
+
 // SetEmailNil sets the value for Email to be an explicit nil
 func (o *ServiceAccountJsonhal) SetEmailNil() {
 	o.Email.Set(nil)
@@ -189,7 +187,7 @@ func (o *ServiceAccountJsonhal) UnsetEmail() {
 
 // GetUsername returns the Username field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ServiceAccountJsonhal) GetUsername() string {
-	if o == nil || IsNil(o.Username.Get()) {
+	if o == nil || isNil(o.Username.Get()) {
 		var ret string
 		return ret
 	}
@@ -219,6 +217,7 @@ func (o *ServiceAccountJsonhal) HasUsername() bool {
 func (o *ServiceAccountJsonhal) SetUsername(v string) {
 	o.Username.Set(&v)
 }
+
 // SetUsernameNil sets the value for Username to be an explicit nil
 func (o *ServiceAccountJsonhal) SetUsernameNil() {
 	o.Username.Set(nil)
@@ -231,7 +230,7 @@ func (o *ServiceAccountJsonhal) UnsetUsername() {
 
 // GetPassword returns the Password field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ServiceAccountJsonhal) GetPassword() string {
-	if o == nil || IsNil(o.Password.Get()) {
+	if o == nil || isNil(o.Password.Get()) {
 		var ret string
 		return ret
 	}
@@ -261,6 +260,7 @@ func (o *ServiceAccountJsonhal) HasPassword() bool {
 func (o *ServiceAccountJsonhal) SetPassword(v string) {
 	o.Password.Set(&v)
 }
+
 // SetPasswordNil sets the value for Password to be an explicit nil
 func (o *ServiceAccountJsonhal) SetPasswordNil() {
 	o.Password.Set(nil)
@@ -273,7 +273,7 @@ func (o *ServiceAccountJsonhal) UnsetPassword() {
 
 // GetProject returns the Project field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ServiceAccountJsonhal) GetProject() string {
-	if o == nil || IsNil(o.Project.Get()) {
+	if o == nil || isNil(o.Project.Get()) {
 		var ret string
 		return ret
 	}
@@ -303,6 +303,7 @@ func (o *ServiceAccountJsonhal) HasProject() bool {
 func (o *ServiceAccountJsonhal) SetProject(v string) {
 	o.Project.Set(&v)
 }
+
 // SetProjectNil sets the value for Project to be an explicit nil
 func (o *ServiceAccountJsonhal) SetProjectNil() {
 	o.Project.Set(nil)
@@ -315,7 +316,7 @@ func (o *ServiceAccountJsonhal) UnsetProject() {
 
 // GetServiceAccountGit returns the ServiceAccountGit field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ServiceAccountJsonhal) GetServiceAccountGit() string {
-	if o == nil || IsNil(o.ServiceAccountGit.Get()) {
+	if o == nil || isNil(o.ServiceAccountGit.Get()) {
 		var ret string
 		return ret
 	}
@@ -345,6 +346,7 @@ func (o *ServiceAccountJsonhal) HasServiceAccountGit() bool {
 func (o *ServiceAccountJsonhal) SetServiceAccountGit(v string) {
 	o.ServiceAccountGit.Set(&v)
 }
+
 // SetServiceAccountGitNil sets the value for ServiceAccountGit to be an explicit nil
 func (o *ServiceAccountJsonhal) SetServiceAccountGitNil() {
 	o.ServiceAccountGit.Set(nil)
@@ -357,7 +359,7 @@ func (o *ServiceAccountJsonhal) UnsetServiceAccountGit() {
 
 // GetServiceAccountRegistry returns the ServiceAccountRegistry field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ServiceAccountJsonhal) GetServiceAccountRegistry() string {
-	if o == nil || IsNil(o.ServiceAccountRegistry.Get()) {
+	if o == nil || isNil(o.ServiceAccountRegistry.Get()) {
 		var ret string
 		return ret
 	}
@@ -387,6 +389,7 @@ func (o *ServiceAccountJsonhal) HasServiceAccountRegistry() bool {
 func (o *ServiceAccountJsonhal) SetServiceAccountRegistry(v string) {
 	o.ServiceAccountRegistry.Set(&v)
 }
+
 // SetServiceAccountRegistryNil sets the value for ServiceAccountRegistry to be an explicit nil
 func (o *ServiceAccountJsonhal) SetServiceAccountRegistryNil() {
 	o.ServiceAccountRegistry.Set(nil)
@@ -399,7 +402,7 @@ func (o *ServiceAccountJsonhal) UnsetServiceAccountRegistry() {
 
 // GetCreatedBy returns the CreatedBy field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ServiceAccountJsonhal) GetCreatedBy() string {
-	if o == nil || IsNil(o.CreatedBy.Get()) {
+	if o == nil || isNil(o.CreatedBy.Get()) {
 		var ret string
 		return ret
 	}
@@ -429,6 +432,7 @@ func (o *ServiceAccountJsonhal) HasCreatedBy() bool {
 func (o *ServiceAccountJsonhal) SetCreatedBy(v string) {
 	o.CreatedBy.Set(&v)
 }
+
 // SetCreatedByNil sets the value for CreatedBy to be an explicit nil
 func (o *ServiceAccountJsonhal) SetCreatedByNil() {
 	o.CreatedBy.Set(nil)
@@ -441,7 +445,7 @@ func (o *ServiceAccountJsonhal) UnsetCreatedBy() {
 
 // GetUpdatedBy returns the UpdatedBy field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ServiceAccountJsonhal) GetUpdatedBy() string {
-	if o == nil || IsNil(o.UpdatedBy.Get()) {
+	if o == nil || isNil(o.UpdatedBy.Get()) {
 		var ret string
 		return ret
 	}
@@ -471,6 +475,7 @@ func (o *ServiceAccountJsonhal) HasUpdatedBy() bool {
 func (o *ServiceAccountJsonhal) SetUpdatedBy(v string) {
 	o.UpdatedBy.Set(&v)
 }
+
 // SetUpdatedByNil sets the value for UpdatedBy to be an explicit nil
 func (o *ServiceAccountJsonhal) SetUpdatedByNil() {
 	o.UpdatedBy.Set(nil)
@@ -482,20 +487,16 @@ func (o *ServiceAccountJsonhal) UnsetUpdatedBy() {
 }
 
 func (o ServiceAccountJsonhal) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o ServiceAccountJsonhal) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Links) {
+	if !isNil(o.Links) {
 		toSerialize["_links"] = o.Links
 	}
-	// skip: id is readOnly
-	// skip: uuid is readOnly
+	if !isNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
+	if !isNil(o.Uuid) {
+		toSerialize["uuid"] = o.Uuid
+	}
 	if o.Email.IsSet() {
 		toSerialize["email"] = o.Email.Get()
 	}
@@ -520,7 +521,7 @@ func (o ServiceAccountJsonhal) ToMap() (map[string]interface{}, error) {
 	if o.UpdatedBy.IsSet() {
 		toSerialize["updatedBy"] = o.UpdatedBy.Get()
 	}
-	return toSerialize, nil
+	return json.Marshal(toSerialize)
 }
 
 type NullableServiceAccountJsonhal struct {
@@ -558,5 +559,3 @@ func (v *NullableServiceAccountJsonhal) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

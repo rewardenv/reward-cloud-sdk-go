@@ -14,18 +14,15 @@ import (
 	"encoding/json"
 )
 
-// checks if the GitProjectPost type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &GitProjectPost{}
-
-// GitProjectPost 
+// GitProjectPost
 type GitProjectPost struct {
-	Repo NullableString `json:"repo,omitempty"`
-	Username NullableString `json:"username,omitempty"`
-	Password NullableString `json:"password,omitempty"`
-	SshPrivateKey NullableString `json:"sshPrivateKey,omitempty"`
-	SshPrivateKeyInput NullableString `json:"sshPrivateKeyInput,omitempty"`
-	GitType NullableGitProjectPostGitType `json:"gitType,omitempty"`
-	CredentialType NullableGitProjectPostCredentialType `json:"credentialType,omitempty"`
+	Repo               NullableString                       `json:"repo,omitempty"`
+	Username           NullableString                       `json:"username,omitempty"`
+	Password           NullableString                       `json:"password,omitempty"`
+	SshPrivateKey      NullableString                       `json:"sshPrivateKey,omitempty"`
+	SshPrivateKeyInput NullableString                       `json:"sshPrivateKeyInput,omitempty"`
+	GitType            NullableGitProjectPostGitType        `json:"gitType,omitempty"`
+	CredentialType     NullableGitProjectPostCredentialType `json:"credentialType,omitempty"`
 }
 
 // NewGitProjectPost instantiates a new GitProjectPost object
@@ -47,7 +44,7 @@ func NewGitProjectPostWithDefaults() *GitProjectPost {
 
 // GetRepo returns the Repo field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *GitProjectPost) GetRepo() string {
-	if o == nil || IsNil(o.Repo.Get()) {
+	if o == nil || isNil(o.Repo.Get()) {
 		var ret string
 		return ret
 	}
@@ -77,6 +74,7 @@ func (o *GitProjectPost) HasRepo() bool {
 func (o *GitProjectPost) SetRepo(v string) {
 	o.Repo.Set(&v)
 }
+
 // SetRepoNil sets the value for Repo to be an explicit nil
 func (o *GitProjectPost) SetRepoNil() {
 	o.Repo.Set(nil)
@@ -89,7 +87,7 @@ func (o *GitProjectPost) UnsetRepo() {
 
 // GetUsername returns the Username field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *GitProjectPost) GetUsername() string {
-	if o == nil || IsNil(o.Username.Get()) {
+	if o == nil || isNil(o.Username.Get()) {
 		var ret string
 		return ret
 	}
@@ -119,6 +117,7 @@ func (o *GitProjectPost) HasUsername() bool {
 func (o *GitProjectPost) SetUsername(v string) {
 	o.Username.Set(&v)
 }
+
 // SetUsernameNil sets the value for Username to be an explicit nil
 func (o *GitProjectPost) SetUsernameNil() {
 	o.Username.Set(nil)
@@ -131,7 +130,7 @@ func (o *GitProjectPost) UnsetUsername() {
 
 // GetPassword returns the Password field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *GitProjectPost) GetPassword() string {
-	if o == nil || IsNil(o.Password.Get()) {
+	if o == nil || isNil(o.Password.Get()) {
 		var ret string
 		return ret
 	}
@@ -161,6 +160,7 @@ func (o *GitProjectPost) HasPassword() bool {
 func (o *GitProjectPost) SetPassword(v string) {
 	o.Password.Set(&v)
 }
+
 // SetPasswordNil sets the value for Password to be an explicit nil
 func (o *GitProjectPost) SetPasswordNil() {
 	o.Password.Set(nil)
@@ -173,7 +173,7 @@ func (o *GitProjectPost) UnsetPassword() {
 
 // GetSshPrivateKey returns the SshPrivateKey field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *GitProjectPost) GetSshPrivateKey() string {
-	if o == nil || IsNil(o.SshPrivateKey.Get()) {
+	if o == nil || isNil(o.SshPrivateKey.Get()) {
 		var ret string
 		return ret
 	}
@@ -203,6 +203,7 @@ func (o *GitProjectPost) HasSshPrivateKey() bool {
 func (o *GitProjectPost) SetSshPrivateKey(v string) {
 	o.SshPrivateKey.Set(&v)
 }
+
 // SetSshPrivateKeyNil sets the value for SshPrivateKey to be an explicit nil
 func (o *GitProjectPost) SetSshPrivateKeyNil() {
 	o.SshPrivateKey.Set(nil)
@@ -215,7 +216,7 @@ func (o *GitProjectPost) UnsetSshPrivateKey() {
 
 // GetSshPrivateKeyInput returns the SshPrivateKeyInput field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *GitProjectPost) GetSshPrivateKeyInput() string {
-	if o == nil || IsNil(o.SshPrivateKeyInput.Get()) {
+	if o == nil || isNil(o.SshPrivateKeyInput.Get()) {
 		var ret string
 		return ret
 	}
@@ -245,6 +246,7 @@ func (o *GitProjectPost) HasSshPrivateKeyInput() bool {
 func (o *GitProjectPost) SetSshPrivateKeyInput(v string) {
 	o.SshPrivateKeyInput.Set(&v)
 }
+
 // SetSshPrivateKeyInputNil sets the value for SshPrivateKeyInput to be an explicit nil
 func (o *GitProjectPost) SetSshPrivateKeyInputNil() {
 	o.SshPrivateKeyInput.Set(nil)
@@ -257,7 +259,7 @@ func (o *GitProjectPost) UnsetSshPrivateKeyInput() {
 
 // GetGitType returns the GitType field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *GitProjectPost) GetGitType() GitProjectPostGitType {
-	if o == nil || IsNil(o.GitType.Get()) {
+	if o == nil || isNil(o.GitType.Get()) {
 		var ret GitProjectPostGitType
 		return ret
 	}
@@ -287,6 +289,7 @@ func (o *GitProjectPost) HasGitType() bool {
 func (o *GitProjectPost) SetGitType(v GitProjectPostGitType) {
 	o.GitType.Set(&v)
 }
+
 // SetGitTypeNil sets the value for GitType to be an explicit nil
 func (o *GitProjectPost) SetGitTypeNil() {
 	o.GitType.Set(nil)
@@ -299,7 +302,7 @@ func (o *GitProjectPost) UnsetGitType() {
 
 // GetCredentialType returns the CredentialType field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *GitProjectPost) GetCredentialType() GitProjectPostCredentialType {
-	if o == nil || IsNil(o.CredentialType.Get()) {
+	if o == nil || isNil(o.CredentialType.Get()) {
 		var ret GitProjectPostCredentialType
 		return ret
 	}
@@ -329,6 +332,7 @@ func (o *GitProjectPost) HasCredentialType() bool {
 func (o *GitProjectPost) SetCredentialType(v GitProjectPostCredentialType) {
 	o.CredentialType.Set(&v)
 }
+
 // SetCredentialTypeNil sets the value for CredentialType to be an explicit nil
 func (o *GitProjectPost) SetCredentialTypeNil() {
 	o.CredentialType.Set(nil)
@@ -340,14 +344,6 @@ func (o *GitProjectPost) UnsetCredentialType() {
 }
 
 func (o GitProjectPost) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o GitProjectPost) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Repo.IsSet() {
 		toSerialize["repo"] = o.Repo.Get()
@@ -370,7 +366,7 @@ func (o GitProjectPost) ToMap() (map[string]interface{}, error) {
 	if o.CredentialType.IsSet() {
 		toSerialize["credentialType"] = o.CredentialType.Get()
 	}
-	return toSerialize, nil
+	return json.Marshal(toSerialize)
 }
 
 type NullableGitProjectPost struct {
@@ -408,5 +404,3 @@ func (v *NullableGitProjectPost) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

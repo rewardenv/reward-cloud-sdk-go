@@ -15,7 +15,7 @@ Method | HTTP request | Description
 
 ## ApiImportedDatasGetCollection
 
-> []ImportedData ApiImportedDatasGetCollection(ctx).Page(page).ItemsPerPage(itemsPerPage).Environment(environment).Environment2(environment2).DataTransferDataType(dataTransferDataType).DataTransferDataType2(dataTransferDataType2).State(state).State2(state2).OrderCreatedAt(orderCreatedAt).OrderUpdatedAt(orderUpdatedAt).Execute()
+> ApiImportedDatasGetCollection200Response ApiImportedDatasGetCollection(ctx).Page(page).ItemsPerPage(itemsPerPage).Environment(environment).Environment2(environment2).DataTransferDataType(dataTransferDataType).DataTransferDataType2(dataTransferDataType2).State(state).State2(state2).OrderCreatedAt(orderCreatedAt).OrderUpdatedAt(orderUpdatedAt).Execute()
 
 Retrieves the collection of ImportedData resources.
 
@@ -52,7 +52,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `ImportedDataApi.ApiImportedDatasGetCollection``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiImportedDatasGetCollection`: []ImportedData
+    // response from `ApiImportedDatasGetCollection`: ApiImportedDatasGetCollection200Response
     fmt.Fprintf(os.Stdout, "Response from `ImportedDataApi.ApiImportedDatasGetCollection`: %v\n", resp)
 }
 ```
@@ -81,7 +81,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]ImportedData**](ImportedData.md)
+[**ApiImportedDatasGetCollection200Response**](ApiImportedDatasGetCollection200Response.md)
 
 ### Authorization
 
@@ -90,7 +90,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json, application/hal+json, text/html
+- **Accept**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -167,7 +167,7 @@ Name | Type | Description  | Notes
 
 ## ApiImportedDatasIdGet
 
-> ImportedData ApiImportedDatasIdGet(ctx, id).Execute()
+> ImportedDataJsonhal ApiImportedDatasIdGet(ctx, id).Execute()
 
 Retrieves a ImportedData resource.
 
@@ -195,7 +195,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `ImportedDataApi.ApiImportedDatasIdGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiImportedDatasIdGet`: ImportedData
+    // response from `ApiImportedDatasIdGet`: ImportedDataJsonhal
     fmt.Fprintf(os.Stdout, "Response from `ImportedDataApi.ApiImportedDatasIdGet`: %v\n", resp)
 }
 ```
@@ -219,7 +219,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ImportedData**](ImportedData.md)
+[**ImportedDataJsonhal**](ImportedDataJsonhal.md)
 
 ### Authorization
 
@@ -228,7 +228,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json, application/hal+json, text/html
+- **Accept**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -237,7 +237,7 @@ Name | Type | Description  | Notes
 
 ## ApiImportedDatasIdPatch
 
-> ImportedData ApiImportedDatasIdPatch(ctx, id).ImportedData(importedData).Execute()
+> ImportedDataJsonhal ApiImportedDatasIdPatch(ctx, id).ImportedData(importedData).Execute()
 
 Updates the ImportedData resource.
 
@@ -266,7 +266,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `ImportedDataApi.ApiImportedDatasIdPatch``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiImportedDatasIdPatch`: ImportedData
+    // response from `ApiImportedDatasIdPatch`: ImportedDataJsonhal
     fmt.Fprintf(os.Stdout, "Response from `ImportedDataApi.ApiImportedDatasIdPatch`: %v\n", resp)
 }
 ```
@@ -291,7 +291,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ImportedData**](ImportedData.md)
+[**ImportedDataJsonhal**](ImportedDataJsonhal.md)
 
 ### Authorization
 
@@ -299,8 +299,8 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: application/json, application/hal+json, text/html
-- **Accept**: application/json, application/hal+json, text/html
+- **Content-Type**: application/vnd.api+json
+- **Accept**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -309,7 +309,7 @@ Name | Type | Description  | Notes
 
 ## ApiImportedDatasIdPut
 
-> ImportedData ApiImportedDatasIdPut(ctx, id).ImportedData(importedData).Execute()
+> ImportedDataJsonhal ApiImportedDatasIdPut(ctx, id).ImportedDataJsonhal(importedDataJsonhal).Execute()
 
 Replaces the ImportedData resource.
 
@@ -329,16 +329,16 @@ import (
 
 func main() {
     id := "id_example" // string | ImportedData identifier
-    importedData := *openapiclient.NewImportedData() // ImportedData | The updated ImportedData resource
+    importedDataJsonhal := *openapiclient.NewImportedDataJsonhal() // ImportedDataJsonhal | The updated ImportedData resource
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ImportedDataApi.ApiImportedDatasIdPut(context.Background(), id).ImportedData(importedData).Execute()
+    resp, r, err := apiClient.ImportedDataApi.ApiImportedDatasIdPut(context.Background(), id).ImportedDataJsonhal(importedDataJsonhal).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ImportedDataApi.ApiImportedDatasIdPut``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiImportedDatasIdPut`: ImportedData
+    // response from `ApiImportedDatasIdPut`: ImportedDataJsonhal
     fmt.Fprintf(os.Stdout, "Response from `ImportedDataApi.ApiImportedDatasIdPut`: %v\n", resp)
 }
 ```
@@ -359,11 +359,11 @@ Other parameters are passed through a pointer to a apiApiImportedDatasIdPutReque
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **importedData** | [**ImportedData**](ImportedData.md) | The updated ImportedData resource | 
+ **importedDataJsonhal** | [**ImportedDataJsonhal**](ImportedDataJsonhal.md) | The updated ImportedData resource | 
 
 ### Return type
 
-[**ImportedData**](ImportedData.md)
+[**ImportedDataJsonhal**](ImportedDataJsonhal.md)
 
 ### Authorization
 
@@ -371,8 +371,8 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: application/json, application/hal+json, text/html
-- **Accept**: application/json, application/hal+json, text/html
+- **Content-Type**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
+- **Accept**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -381,7 +381,7 @@ Name | Type | Description  | Notes
 
 ## ApiImportedDatasPost
 
-> ImportedData ApiImportedDatasPost(ctx).ImportedData(importedData).Execute()
+> ImportedDataJsonhal ApiImportedDatasPost(ctx).ImportedDataJsonhal(importedDataJsonhal).Execute()
 
 Creates a ImportedData resource.
 
@@ -400,16 +400,16 @@ import (
 )
 
 func main() {
-    importedData := *openapiclient.NewImportedData() // ImportedData | The new ImportedData resource
+    importedDataJsonhal := *openapiclient.NewImportedDataJsonhal() // ImportedDataJsonhal | The new ImportedData resource
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ImportedDataApi.ApiImportedDatasPost(context.Background()).ImportedData(importedData).Execute()
+    resp, r, err := apiClient.ImportedDataApi.ApiImportedDatasPost(context.Background()).ImportedDataJsonhal(importedDataJsonhal).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ImportedDataApi.ApiImportedDatasPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiImportedDatasPost`: ImportedData
+    // response from `ApiImportedDatasPost`: ImportedDataJsonhal
     fmt.Fprintf(os.Stdout, "Response from `ImportedDataApi.ApiImportedDatasPost`: %v\n", resp)
 }
 ```
@@ -425,11 +425,11 @@ Other parameters are passed through a pointer to a apiApiImportedDatasPostReques
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **importedData** | [**ImportedData**](ImportedData.md) | The new ImportedData resource | 
+ **importedDataJsonhal** | [**ImportedDataJsonhal**](ImportedDataJsonhal.md) | The new ImportedData resource | 
 
 ### Return type
 
-[**ImportedData**](ImportedData.md)
+[**ImportedDataJsonhal**](ImportedDataJsonhal.md)
 
 ### Authorization
 
@@ -437,8 +437,8 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: application/json, application/hal+json, text/html
-- **Accept**: application/json, application/hal+json, text/html
+- **Content-Type**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
+- **Accept**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)

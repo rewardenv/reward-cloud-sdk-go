@@ -15,20 +15,17 @@ import (
 	"time"
 )
 
-// checks if the GitTypeJsonhal type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &GitTypeJsonhal{}
-
 // GitTypeJsonhal Class GitType
 type GitTypeJsonhal struct {
-	Links *AbstractEnvironmentJsonhalLinks `json:"_links,omitempty"`
-	Id *int32 `json:"id,omitempty"`
-	Uuid NullableString `json:"uuid,omitempty"`
-	Name NullableString `json:"name,omitempty"`
-	Git []string `json:"git,omitempty"`
-	CreatedBy NullableString `json:"createdBy,omitempty"`
-	UpdatedBy NullableString `json:"updatedBy,omitempty"`
-	CreatedAt *time.Time `json:"createdAt,omitempty"`
-	UpdatedAt *time.Time `json:"updatedAt,omitempty"`
+	Links     *AbstractEnvironmentJsonhalLinks `json:"_links,omitempty"`
+	Id        *int32                           `json:"id,omitempty"`
+	Uuid      NullableString                   `json:"uuid,omitempty"`
+	Name      NullableString                   `json:"name,omitempty"`
+	Git       []string                         `json:"git,omitempty"`
+	CreatedBy NullableString                   `json:"createdBy,omitempty"`
+	UpdatedBy NullableString                   `json:"updatedBy,omitempty"`
+	CreatedAt *time.Time                       `json:"createdAt,omitempty"`
+	UpdatedAt *time.Time                       `json:"updatedAt,omitempty"`
 }
 
 // NewGitTypeJsonhal instantiates a new GitTypeJsonhal object
@@ -50,7 +47,7 @@ func NewGitTypeJsonhalWithDefaults() *GitTypeJsonhal {
 
 // GetLinks returns the Links field value if set, zero value otherwise.
 func (o *GitTypeJsonhal) GetLinks() AbstractEnvironmentJsonhalLinks {
-	if o == nil || IsNil(o.Links) {
+	if o == nil || isNil(o.Links) {
 		var ret AbstractEnvironmentJsonhalLinks
 		return ret
 	}
@@ -60,7 +57,7 @@ func (o *GitTypeJsonhal) GetLinks() AbstractEnvironmentJsonhalLinks {
 // GetLinksOk returns a tuple with the Links field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *GitTypeJsonhal) GetLinksOk() (*AbstractEnvironmentJsonhalLinks, bool) {
-	if o == nil || IsNil(o.Links) {
+	if o == nil || isNil(o.Links) {
 		return nil, false
 	}
 	return o.Links, true
@@ -68,7 +65,7 @@ func (o *GitTypeJsonhal) GetLinksOk() (*AbstractEnvironmentJsonhalLinks, bool) {
 
 // HasLinks returns a boolean if a field has been set.
 func (o *GitTypeJsonhal) HasLinks() bool {
-	if o != nil && !IsNil(o.Links) {
+	if o != nil && !isNil(o.Links) {
 		return true
 	}
 
@@ -82,7 +79,7 @@ func (o *GitTypeJsonhal) SetLinks(v AbstractEnvironmentJsonhalLinks) {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *GitTypeJsonhal) GetId() int32 {
-	if o == nil || IsNil(o.Id) {
+	if o == nil || isNil(o.Id) {
 		var ret int32
 		return ret
 	}
@@ -92,7 +89,7 @@ func (o *GitTypeJsonhal) GetId() int32 {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *GitTypeJsonhal) GetIdOk() (*int32, bool) {
-	if o == nil || IsNil(o.Id) {
+	if o == nil || isNil(o.Id) {
 		return nil, false
 	}
 	return o.Id, true
@@ -100,7 +97,7 @@ func (o *GitTypeJsonhal) GetIdOk() (*int32, bool) {
 
 // HasId returns a boolean if a field has been set.
 func (o *GitTypeJsonhal) HasId() bool {
-	if o != nil && !IsNil(o.Id) {
+	if o != nil && !isNil(o.Id) {
 		return true
 	}
 
@@ -114,7 +111,7 @@ func (o *GitTypeJsonhal) SetId(v int32) {
 
 // GetUuid returns the Uuid field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *GitTypeJsonhal) GetUuid() string {
-	if o == nil || IsNil(o.Uuid.Get()) {
+	if o == nil || isNil(o.Uuid.Get()) {
 		var ret string
 		return ret
 	}
@@ -144,6 +141,7 @@ func (o *GitTypeJsonhal) HasUuid() bool {
 func (o *GitTypeJsonhal) SetUuid(v string) {
 	o.Uuid.Set(&v)
 }
+
 // SetUuidNil sets the value for Uuid to be an explicit nil
 func (o *GitTypeJsonhal) SetUuidNil() {
 	o.Uuid.Set(nil)
@@ -156,7 +154,7 @@ func (o *GitTypeJsonhal) UnsetUuid() {
 
 // GetName returns the Name field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *GitTypeJsonhal) GetName() string {
-	if o == nil || IsNil(o.Name.Get()) {
+	if o == nil || isNil(o.Name.Get()) {
 		var ret string
 		return ret
 	}
@@ -186,6 +184,7 @@ func (o *GitTypeJsonhal) HasName() bool {
 func (o *GitTypeJsonhal) SetName(v string) {
 	o.Name.Set(&v)
 }
+
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *GitTypeJsonhal) SetNameNil() {
 	o.Name.Set(nil)
@@ -198,7 +197,7 @@ func (o *GitTypeJsonhal) UnsetName() {
 
 // GetGit returns the Git field value if set, zero value otherwise.
 func (o *GitTypeJsonhal) GetGit() []string {
-	if o == nil || IsNil(o.Git) {
+	if o == nil || isNil(o.Git) {
 		var ret []string
 		return ret
 	}
@@ -208,7 +207,7 @@ func (o *GitTypeJsonhal) GetGit() []string {
 // GetGitOk returns a tuple with the Git field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *GitTypeJsonhal) GetGitOk() ([]string, bool) {
-	if o == nil || IsNil(o.Git) {
+	if o == nil || isNil(o.Git) {
 		return nil, false
 	}
 	return o.Git, true
@@ -216,7 +215,7 @@ func (o *GitTypeJsonhal) GetGitOk() ([]string, bool) {
 
 // HasGit returns a boolean if a field has been set.
 func (o *GitTypeJsonhal) HasGit() bool {
-	if o != nil && !IsNil(o.Git) {
+	if o != nil && !isNil(o.Git) {
 		return true
 	}
 
@@ -230,7 +229,7 @@ func (o *GitTypeJsonhal) SetGit(v []string) {
 
 // GetCreatedBy returns the CreatedBy field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *GitTypeJsonhal) GetCreatedBy() string {
-	if o == nil || IsNil(o.CreatedBy.Get()) {
+	if o == nil || isNil(o.CreatedBy.Get()) {
 		var ret string
 		return ret
 	}
@@ -260,6 +259,7 @@ func (o *GitTypeJsonhal) HasCreatedBy() bool {
 func (o *GitTypeJsonhal) SetCreatedBy(v string) {
 	o.CreatedBy.Set(&v)
 }
+
 // SetCreatedByNil sets the value for CreatedBy to be an explicit nil
 func (o *GitTypeJsonhal) SetCreatedByNil() {
 	o.CreatedBy.Set(nil)
@@ -272,7 +272,7 @@ func (o *GitTypeJsonhal) UnsetCreatedBy() {
 
 // GetUpdatedBy returns the UpdatedBy field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *GitTypeJsonhal) GetUpdatedBy() string {
-	if o == nil || IsNil(o.UpdatedBy.Get()) {
+	if o == nil || isNil(o.UpdatedBy.Get()) {
 		var ret string
 		return ret
 	}
@@ -302,6 +302,7 @@ func (o *GitTypeJsonhal) HasUpdatedBy() bool {
 func (o *GitTypeJsonhal) SetUpdatedBy(v string) {
 	o.UpdatedBy.Set(&v)
 }
+
 // SetUpdatedByNil sets the value for UpdatedBy to be an explicit nil
 func (o *GitTypeJsonhal) SetUpdatedByNil() {
 	o.UpdatedBy.Set(nil)
@@ -314,7 +315,7 @@ func (o *GitTypeJsonhal) UnsetUpdatedBy() {
 
 // GetCreatedAt returns the CreatedAt field value if set, zero value otherwise.
 func (o *GitTypeJsonhal) GetCreatedAt() time.Time {
-	if o == nil || IsNil(o.CreatedAt) {
+	if o == nil || isNil(o.CreatedAt) {
 		var ret time.Time
 		return ret
 	}
@@ -324,7 +325,7 @@ func (o *GitTypeJsonhal) GetCreatedAt() time.Time {
 // GetCreatedAtOk returns a tuple with the CreatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *GitTypeJsonhal) GetCreatedAtOk() (*time.Time, bool) {
-	if o == nil || IsNil(o.CreatedAt) {
+	if o == nil || isNil(o.CreatedAt) {
 		return nil, false
 	}
 	return o.CreatedAt, true
@@ -332,7 +333,7 @@ func (o *GitTypeJsonhal) GetCreatedAtOk() (*time.Time, bool) {
 
 // HasCreatedAt returns a boolean if a field has been set.
 func (o *GitTypeJsonhal) HasCreatedAt() bool {
-	if o != nil && !IsNil(o.CreatedAt) {
+	if o != nil && !isNil(o.CreatedAt) {
 		return true
 	}
 
@@ -346,7 +347,7 @@ func (o *GitTypeJsonhal) SetCreatedAt(v time.Time) {
 
 // GetUpdatedAt returns the UpdatedAt field value if set, zero value otherwise.
 func (o *GitTypeJsonhal) GetUpdatedAt() time.Time {
-	if o == nil || IsNil(o.UpdatedAt) {
+	if o == nil || isNil(o.UpdatedAt) {
 		var ret time.Time
 		return ret
 	}
@@ -356,7 +357,7 @@ func (o *GitTypeJsonhal) GetUpdatedAt() time.Time {
 // GetUpdatedAtOk returns a tuple with the UpdatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *GitTypeJsonhal) GetUpdatedAtOk() (*time.Time, bool) {
-	if o == nil || IsNil(o.UpdatedAt) {
+	if o == nil || isNil(o.UpdatedAt) {
 		return nil, false
 	}
 	return o.UpdatedAt, true
@@ -364,7 +365,7 @@ func (o *GitTypeJsonhal) GetUpdatedAtOk() (*time.Time, bool) {
 
 // HasUpdatedAt returns a boolean if a field has been set.
 func (o *GitTypeJsonhal) HasUpdatedAt() bool {
-	if o != nil && !IsNil(o.UpdatedAt) {
+	if o != nil && !isNil(o.UpdatedAt) {
 		return true
 	}
 
@@ -377,26 +378,20 @@ func (o *GitTypeJsonhal) SetUpdatedAt(v time.Time) {
 }
 
 func (o GitTypeJsonhal) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o GitTypeJsonhal) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Links) {
+	if !isNil(o.Links) {
 		toSerialize["_links"] = o.Links
 	}
-	// skip: id is readOnly
+	if !isNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
 	if o.Uuid.IsSet() {
 		toSerialize["uuid"] = o.Uuid.Get()
 	}
 	if o.Name.IsSet() {
 		toSerialize["name"] = o.Name.Get()
 	}
-	if !IsNil(o.Git) {
+	if !isNil(o.Git) {
 		toSerialize["git"] = o.Git
 	}
 	if o.CreatedBy.IsSet() {
@@ -405,13 +400,13 @@ func (o GitTypeJsonhal) ToMap() (map[string]interface{}, error) {
 	if o.UpdatedBy.IsSet() {
 		toSerialize["updatedBy"] = o.UpdatedBy.Get()
 	}
-	if !IsNil(o.CreatedAt) {
+	if !isNil(o.CreatedAt) {
 		toSerialize["createdAt"] = o.CreatedAt
 	}
-	if !IsNil(o.UpdatedAt) {
+	if !isNil(o.UpdatedAt) {
 		toSerialize["updatedAt"] = o.UpdatedAt
 	}
-	return toSerialize, nil
+	return json.Marshal(toSerialize)
 }
 
 type NullableGitTypeJsonhal struct {
@@ -449,5 +444,3 @@ func (v *NullableGitTypeJsonhal) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

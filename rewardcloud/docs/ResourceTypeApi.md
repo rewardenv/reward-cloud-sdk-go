@@ -15,7 +15,7 @@ Method | HTTP request | Description
 
 ## ApiResourceTypesGetCollection
 
-> []ResourceTypeResourceTypeOutput ApiResourceTypesGetCollection(ctx).Page(page).ItemsPerPage(itemsPerPage).ResourceTypeLimit(resourceTypeLimit).ResourceTypeLimit2(resourceTypeLimit2).Execute()
+> ApiResourceTypesGetCollection200Response ApiResourceTypesGetCollection(ctx).Page(page).ItemsPerPage(itemsPerPage).ResourceTypeLimit(resourceTypeLimit).ResourceTypeLimit2(resourceTypeLimit2).Execute()
 
 Retrieves the collection of ResourceType resources.
 
@@ -46,7 +46,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `ResourceTypeApi.ApiResourceTypesGetCollection``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiResourceTypesGetCollection`: []ResourceTypeResourceTypeOutput
+    // response from `ApiResourceTypesGetCollection`: ApiResourceTypesGetCollection200Response
     fmt.Fprintf(os.Stdout, "Response from `ResourceTypeApi.ApiResourceTypesGetCollection`: %v\n", resp)
 }
 ```
@@ -69,7 +69,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]ResourceTypeResourceTypeOutput**](ResourceTypeResourceTypeOutput.md)
+[**ApiResourceTypesGetCollection200Response**](ApiResourceTypesGetCollection200Response.md)
 
 ### Authorization
 
@@ -78,7 +78,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json, application/hal+json, text/html
+- **Accept**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -155,7 +155,7 @@ Name | Type | Description  | Notes
 
 ## ApiResourceTypesIdGet
 
-> ResourceTypeResourceTypeOutput ApiResourceTypesIdGet(ctx, id).Execute()
+> ResourceTypeJsonhalResourceTypeOutput ApiResourceTypesIdGet(ctx, id).Execute()
 
 Retrieves a ResourceType resource.
 
@@ -183,7 +183,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `ResourceTypeApi.ApiResourceTypesIdGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiResourceTypesIdGet`: ResourceTypeResourceTypeOutput
+    // response from `ApiResourceTypesIdGet`: ResourceTypeJsonhalResourceTypeOutput
     fmt.Fprintf(os.Stdout, "Response from `ResourceTypeApi.ApiResourceTypesIdGet`: %v\n", resp)
 }
 ```
@@ -207,7 +207,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ResourceTypeResourceTypeOutput**](ResourceTypeResourceTypeOutput.md)
+[**ResourceTypeJsonhalResourceTypeOutput**](ResourceTypeJsonhalResourceTypeOutput.md)
 
 ### Authorization
 
@@ -216,7 +216,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json, application/hal+json, text/html
+- **Accept**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -225,7 +225,7 @@ Name | Type | Description  | Notes
 
 ## ApiResourceTypesIdPatch
 
-> ResourceTypeResourceTypeOutput ApiResourceTypesIdPatch(ctx, id).ResourceTypeResourceTypeInput(resourceTypeResourceTypeInput).Execute()
+> ResourceTypeJsonhalResourceTypeOutput ApiResourceTypesIdPatch(ctx, id).ResourceTypeResourceTypeInput(resourceTypeResourceTypeInput).Execute()
 
 Updates the ResourceType resource.
 
@@ -254,7 +254,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `ResourceTypeApi.ApiResourceTypesIdPatch``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiResourceTypesIdPatch`: ResourceTypeResourceTypeOutput
+    // response from `ApiResourceTypesIdPatch`: ResourceTypeJsonhalResourceTypeOutput
     fmt.Fprintf(os.Stdout, "Response from `ResourceTypeApi.ApiResourceTypesIdPatch`: %v\n", resp)
 }
 ```
@@ -279,7 +279,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ResourceTypeResourceTypeOutput**](ResourceTypeResourceTypeOutput.md)
+[**ResourceTypeJsonhalResourceTypeOutput**](ResourceTypeJsonhalResourceTypeOutput.md)
 
 ### Authorization
 
@@ -287,8 +287,8 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: application/json, application/hal+json, text/html
-- **Accept**: application/json, application/hal+json, text/html
+- **Content-Type**: application/vnd.api+json
+- **Accept**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -297,7 +297,7 @@ Name | Type | Description  | Notes
 
 ## ApiResourceTypesIdPut
 
-> ResourceTypeResourceTypeOutput ApiResourceTypesIdPut(ctx, id).ResourceTypeResourceTypeInput(resourceTypeResourceTypeInput).Execute()
+> ResourceTypeJsonhalResourceTypeOutput ApiResourceTypesIdPut(ctx, id).ResourceTypeJsonhalResourceTypeInput(resourceTypeJsonhalResourceTypeInput).Execute()
 
 Replaces the ResourceType resource.
 
@@ -317,16 +317,16 @@ import (
 
 func main() {
     id := "id_example" // string | ResourceType identifier
-    resourceTypeResourceTypeInput := *openapiclient.NewResourceTypeResourceTypeInput() // ResourceTypeResourceTypeInput | The updated ResourceType resource
+    resourceTypeJsonhalResourceTypeInput := *openapiclient.NewResourceTypeJsonhalResourceTypeInput() // ResourceTypeJsonhalResourceTypeInput | The updated ResourceType resource
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ResourceTypeApi.ApiResourceTypesIdPut(context.Background(), id).ResourceTypeResourceTypeInput(resourceTypeResourceTypeInput).Execute()
+    resp, r, err := apiClient.ResourceTypeApi.ApiResourceTypesIdPut(context.Background(), id).ResourceTypeJsonhalResourceTypeInput(resourceTypeJsonhalResourceTypeInput).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ResourceTypeApi.ApiResourceTypesIdPut``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiResourceTypesIdPut`: ResourceTypeResourceTypeOutput
+    // response from `ApiResourceTypesIdPut`: ResourceTypeJsonhalResourceTypeOutput
     fmt.Fprintf(os.Stdout, "Response from `ResourceTypeApi.ApiResourceTypesIdPut`: %v\n", resp)
 }
 ```
@@ -347,11 +347,11 @@ Other parameters are passed through a pointer to a apiApiResourceTypesIdPutReque
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **resourceTypeResourceTypeInput** | [**ResourceTypeResourceTypeInput**](ResourceTypeResourceTypeInput.md) | The updated ResourceType resource | 
+ **resourceTypeJsonhalResourceTypeInput** | [**ResourceTypeJsonhalResourceTypeInput**](ResourceTypeJsonhalResourceTypeInput.md) | The updated ResourceType resource | 
 
 ### Return type
 
-[**ResourceTypeResourceTypeOutput**](ResourceTypeResourceTypeOutput.md)
+[**ResourceTypeJsonhalResourceTypeOutput**](ResourceTypeJsonhalResourceTypeOutput.md)
 
 ### Authorization
 
@@ -359,8 +359,8 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: application/json, application/hal+json, text/html
-- **Accept**: application/json, application/hal+json, text/html
+- **Content-Type**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
+- **Accept**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -369,7 +369,7 @@ Name | Type | Description  | Notes
 
 ## ApiResourceTypesPost
 
-> ResourceTypeResourceTypeOutput ApiResourceTypesPost(ctx).ResourceTypeResourceTypeInput(resourceTypeResourceTypeInput).Execute()
+> ResourceTypeJsonhalResourceTypeOutput ApiResourceTypesPost(ctx).ResourceTypeJsonhalResourceTypeInput(resourceTypeJsonhalResourceTypeInput).Execute()
 
 Creates a ResourceType resource.
 
@@ -388,16 +388,16 @@ import (
 )
 
 func main() {
-    resourceTypeResourceTypeInput := *openapiclient.NewResourceTypeResourceTypeInput() // ResourceTypeResourceTypeInput | The new ResourceType resource
+    resourceTypeJsonhalResourceTypeInput := *openapiclient.NewResourceTypeJsonhalResourceTypeInput() // ResourceTypeJsonhalResourceTypeInput | The new ResourceType resource
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ResourceTypeApi.ApiResourceTypesPost(context.Background()).ResourceTypeResourceTypeInput(resourceTypeResourceTypeInput).Execute()
+    resp, r, err := apiClient.ResourceTypeApi.ApiResourceTypesPost(context.Background()).ResourceTypeJsonhalResourceTypeInput(resourceTypeJsonhalResourceTypeInput).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ResourceTypeApi.ApiResourceTypesPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiResourceTypesPost`: ResourceTypeResourceTypeOutput
+    // response from `ApiResourceTypesPost`: ResourceTypeJsonhalResourceTypeOutput
     fmt.Fprintf(os.Stdout, "Response from `ResourceTypeApi.ApiResourceTypesPost`: %v\n", resp)
 }
 ```
@@ -413,11 +413,11 @@ Other parameters are passed through a pointer to a apiApiResourceTypesPostReques
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **resourceTypeResourceTypeInput** | [**ResourceTypeResourceTypeInput**](ResourceTypeResourceTypeInput.md) | The new ResourceType resource | 
+ **resourceTypeJsonhalResourceTypeInput** | [**ResourceTypeJsonhalResourceTypeInput**](ResourceTypeJsonhalResourceTypeInput.md) | The new ResourceType resource | 
 
 ### Return type
 
-[**ResourceTypeResourceTypeOutput**](ResourceTypeResourceTypeOutput.md)
+[**ResourceTypeJsonhalResourceTypeOutput**](ResourceTypeJsonhalResourceTypeOutput.md)
 
 ### Authorization
 
@@ -425,8 +425,8 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: application/json, application/hal+json, text/html
-- **Accept**: application/json, application/hal+json, text/html
+- **Content-Type**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
+- **Accept**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)

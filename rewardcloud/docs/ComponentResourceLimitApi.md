@@ -15,7 +15,7 @@ Method | HTTP request | Description
 
 ## ApiComponentResourceLimitsGetCollection
 
-> []ComponentResourceLimit ApiComponentResourceLimitsGetCollection(ctx).Page(page).ItemsPerPage(itemsPerPage).ProjectTypeVersion(projectTypeVersion).ProjectTypeVersion2(projectTypeVersion2).ResourceType(resourceType).ResourceType2(resourceType2).ComponentVersion(componentVersion).ComponentVersion2(componentVersion2).Execute()
+> ApiComponentResourceLimitsGetCollection200Response ApiComponentResourceLimitsGetCollection(ctx).Page(page).ItemsPerPage(itemsPerPage).ProjectTypeVersion(projectTypeVersion).ProjectTypeVersion2(projectTypeVersion2).ResourceType(resourceType).ResourceType2(resourceType2).ComponentVersion(componentVersion).ComponentVersion2(componentVersion2).Execute()
 
 Retrieves the collection of ComponentResourceLimit resources.
 
@@ -50,7 +50,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `ComponentResourceLimitApi.ApiComponentResourceLimitsGetCollection``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiComponentResourceLimitsGetCollection`: []ComponentResourceLimit
+    // response from `ApiComponentResourceLimitsGetCollection`: ApiComponentResourceLimitsGetCollection200Response
     fmt.Fprintf(os.Stdout, "Response from `ComponentResourceLimitApi.ApiComponentResourceLimitsGetCollection`: %v\n", resp)
 }
 ```
@@ -77,7 +77,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]ComponentResourceLimit**](ComponentResourceLimit.md)
+[**ApiComponentResourceLimitsGetCollection200Response**](ApiComponentResourceLimitsGetCollection200Response.md)
 
 ### Authorization
 
@@ -86,7 +86,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json, application/hal+json, text/html
+- **Accept**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -163,7 +163,7 @@ Name | Type | Description  | Notes
 
 ## ApiComponentResourceLimitsIdGet
 
-> ComponentResourceLimit ApiComponentResourceLimitsIdGet(ctx, id).Execute()
+> ComponentResourceLimitJsonhal ApiComponentResourceLimitsIdGet(ctx, id).Execute()
 
 Retrieves a ComponentResourceLimit resource.
 
@@ -191,7 +191,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `ComponentResourceLimitApi.ApiComponentResourceLimitsIdGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiComponentResourceLimitsIdGet`: ComponentResourceLimit
+    // response from `ApiComponentResourceLimitsIdGet`: ComponentResourceLimitJsonhal
     fmt.Fprintf(os.Stdout, "Response from `ComponentResourceLimitApi.ApiComponentResourceLimitsIdGet`: %v\n", resp)
 }
 ```
@@ -215,7 +215,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ComponentResourceLimit**](ComponentResourceLimit.md)
+[**ComponentResourceLimitJsonhal**](ComponentResourceLimitJsonhal.md)
 
 ### Authorization
 
@@ -224,7 +224,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json, application/hal+json, text/html
+- **Accept**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -233,7 +233,7 @@ Name | Type | Description  | Notes
 
 ## ApiComponentResourceLimitsIdPatch
 
-> ComponentResourceLimit ApiComponentResourceLimitsIdPatch(ctx, id).ComponentResourceLimit(componentResourceLimit).Execute()
+> ComponentResourceLimitJsonhal ApiComponentResourceLimitsIdPatch(ctx, id).ComponentResourceLimit(componentResourceLimit).Execute()
 
 Updates the ComponentResourceLimit resource.
 
@@ -262,7 +262,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `ComponentResourceLimitApi.ApiComponentResourceLimitsIdPatch``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiComponentResourceLimitsIdPatch`: ComponentResourceLimit
+    // response from `ApiComponentResourceLimitsIdPatch`: ComponentResourceLimitJsonhal
     fmt.Fprintf(os.Stdout, "Response from `ComponentResourceLimitApi.ApiComponentResourceLimitsIdPatch`: %v\n", resp)
 }
 ```
@@ -287,7 +287,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ComponentResourceLimit**](ComponentResourceLimit.md)
+[**ComponentResourceLimitJsonhal**](ComponentResourceLimitJsonhal.md)
 
 ### Authorization
 
@@ -295,8 +295,8 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: application/json, application/hal+json, text/html
-- **Accept**: application/json, application/hal+json, text/html
+- **Content-Type**: application/vnd.api+json
+- **Accept**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -305,7 +305,7 @@ Name | Type | Description  | Notes
 
 ## ApiComponentResourceLimitsIdPut
 
-> ComponentResourceLimit ApiComponentResourceLimitsIdPut(ctx, id).ComponentResourceLimit(componentResourceLimit).Execute()
+> ComponentResourceLimitJsonhal ApiComponentResourceLimitsIdPut(ctx, id).ComponentResourceLimitJsonhal(componentResourceLimitJsonhal).Execute()
 
 Replaces the ComponentResourceLimit resource.
 
@@ -325,16 +325,16 @@ import (
 
 func main() {
     id := "id_example" // string | ComponentResourceLimit identifier
-    componentResourceLimit := *openapiclient.NewComponentResourceLimit() // ComponentResourceLimit | The updated ComponentResourceLimit resource
+    componentResourceLimitJsonhal := *openapiclient.NewComponentResourceLimitJsonhal() // ComponentResourceLimitJsonhal | The updated ComponentResourceLimit resource
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ComponentResourceLimitApi.ApiComponentResourceLimitsIdPut(context.Background(), id).ComponentResourceLimit(componentResourceLimit).Execute()
+    resp, r, err := apiClient.ComponentResourceLimitApi.ApiComponentResourceLimitsIdPut(context.Background(), id).ComponentResourceLimitJsonhal(componentResourceLimitJsonhal).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ComponentResourceLimitApi.ApiComponentResourceLimitsIdPut``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiComponentResourceLimitsIdPut`: ComponentResourceLimit
+    // response from `ApiComponentResourceLimitsIdPut`: ComponentResourceLimitJsonhal
     fmt.Fprintf(os.Stdout, "Response from `ComponentResourceLimitApi.ApiComponentResourceLimitsIdPut`: %v\n", resp)
 }
 ```
@@ -355,11 +355,11 @@ Other parameters are passed through a pointer to a apiApiComponentResourceLimits
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **componentResourceLimit** | [**ComponentResourceLimit**](ComponentResourceLimit.md) | The updated ComponentResourceLimit resource | 
+ **componentResourceLimitJsonhal** | [**ComponentResourceLimitJsonhal**](ComponentResourceLimitJsonhal.md) | The updated ComponentResourceLimit resource | 
 
 ### Return type
 
-[**ComponentResourceLimit**](ComponentResourceLimit.md)
+[**ComponentResourceLimitJsonhal**](ComponentResourceLimitJsonhal.md)
 
 ### Authorization
 
@@ -367,8 +367,8 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: application/json, application/hal+json, text/html
-- **Accept**: application/json, application/hal+json, text/html
+- **Content-Type**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
+- **Accept**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -377,7 +377,7 @@ Name | Type | Description  | Notes
 
 ## ApiComponentResourceLimitsPost
 
-> ComponentResourceLimit ApiComponentResourceLimitsPost(ctx).ComponentResourceLimit(componentResourceLimit).Execute()
+> ComponentResourceLimitJsonhal ApiComponentResourceLimitsPost(ctx).ComponentResourceLimitJsonhal(componentResourceLimitJsonhal).Execute()
 
 Creates a ComponentResourceLimit resource.
 
@@ -396,16 +396,16 @@ import (
 )
 
 func main() {
-    componentResourceLimit := *openapiclient.NewComponentResourceLimit() // ComponentResourceLimit | The new ComponentResourceLimit resource
+    componentResourceLimitJsonhal := *openapiclient.NewComponentResourceLimitJsonhal() // ComponentResourceLimitJsonhal | The new ComponentResourceLimit resource
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ComponentResourceLimitApi.ApiComponentResourceLimitsPost(context.Background()).ComponentResourceLimit(componentResourceLimit).Execute()
+    resp, r, err := apiClient.ComponentResourceLimitApi.ApiComponentResourceLimitsPost(context.Background()).ComponentResourceLimitJsonhal(componentResourceLimitJsonhal).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ComponentResourceLimitApi.ApiComponentResourceLimitsPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiComponentResourceLimitsPost`: ComponentResourceLimit
+    // response from `ApiComponentResourceLimitsPost`: ComponentResourceLimitJsonhal
     fmt.Fprintf(os.Stdout, "Response from `ComponentResourceLimitApi.ApiComponentResourceLimitsPost`: %v\n", resp)
 }
 ```
@@ -421,11 +421,11 @@ Other parameters are passed through a pointer to a apiApiComponentResourceLimits
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **componentResourceLimit** | [**ComponentResourceLimit**](ComponentResourceLimit.md) | The new ComponentResourceLimit resource | 
+ **componentResourceLimitJsonhal** | [**ComponentResourceLimitJsonhal**](ComponentResourceLimitJsonhal.md) | The new ComponentResourceLimit resource | 
 
 ### Return type
 
-[**ComponentResourceLimit**](ComponentResourceLimit.md)
+[**ComponentResourceLimitJsonhal**](ComponentResourceLimitJsonhal.md)
 
 ### Authorization
 
@@ -433,8 +433,8 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: application/json, application/hal+json, text/html
-- **Accept**: application/json, application/hal+json, text/html
+- **Content-Type**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
+- **Accept**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)

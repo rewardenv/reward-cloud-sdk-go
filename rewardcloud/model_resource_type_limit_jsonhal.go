@@ -15,24 +15,21 @@ import (
 	"time"
 )
 
-// checks if the ResourceTypeLimitJsonhal type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &ResourceTypeLimitJsonhal{}
-
 // ResourceTypeLimitJsonhal Class ResourceTypeLimit
 type ResourceTypeLimitJsonhal struct {
-	Links *AbstractEnvironmentJsonhalLinks `json:"_links,omitempty"`
-	Id *int32 `json:"id,omitempty"`
-	Uuid NullableString `json:"uuid,omitempty"`
-	ProjectMinValue NullableInt32 `json:"projectMinValue,omitempty"`
-	ProjectMaxValue NullableInt32 `json:"projectMaxValue,omitempty"`
-	EnvironmentMinValue NullableInt32 `json:"environmentMinValue,omitempty"`
-	EnvironmentMaxValue NullableInt32 `json:"environmentMaxValue,omitempty"`
-	ComponentMinValue NullableInt32 `json:"componentMinValue,omitempty"`
-	ComponentMaxValue NullableInt32 `json:"componentMaxValue,omitempty"`
-	CreatedBy NullableString `json:"createdBy,omitempty"`
-	UpdatedBy NullableString `json:"updatedBy,omitempty"`
-	CreatedAt *time.Time `json:"createdAt,omitempty"`
-	UpdatedAt *time.Time `json:"updatedAt,omitempty"`
+	Links               *AbstractEnvironmentJsonhalLinks `json:"_links,omitempty"`
+	Id                  *int32                           `json:"id,omitempty"`
+	Uuid                NullableString                   `json:"uuid,omitempty"`
+	ProjectMinValue     NullableInt32                    `json:"projectMinValue,omitempty"`
+	ProjectMaxValue     NullableInt32                    `json:"projectMaxValue,omitempty"`
+	EnvironmentMinValue NullableInt32                    `json:"environmentMinValue,omitempty"`
+	EnvironmentMaxValue NullableInt32                    `json:"environmentMaxValue,omitempty"`
+	ComponentMinValue   NullableInt32                    `json:"componentMinValue,omitempty"`
+	ComponentMaxValue   NullableInt32                    `json:"componentMaxValue,omitempty"`
+	CreatedBy           NullableString                   `json:"createdBy,omitempty"`
+	UpdatedBy           NullableString                   `json:"updatedBy,omitempty"`
+	CreatedAt           *time.Time                       `json:"createdAt,omitempty"`
+	UpdatedAt           *time.Time                       `json:"updatedAt,omitempty"`
 }
 
 // NewResourceTypeLimitJsonhal instantiates a new ResourceTypeLimitJsonhal object
@@ -54,7 +51,7 @@ func NewResourceTypeLimitJsonhalWithDefaults() *ResourceTypeLimitJsonhal {
 
 // GetLinks returns the Links field value if set, zero value otherwise.
 func (o *ResourceTypeLimitJsonhal) GetLinks() AbstractEnvironmentJsonhalLinks {
-	if o == nil || IsNil(o.Links) {
+	if o == nil || isNil(o.Links) {
 		var ret AbstractEnvironmentJsonhalLinks
 		return ret
 	}
@@ -64,7 +61,7 @@ func (o *ResourceTypeLimitJsonhal) GetLinks() AbstractEnvironmentJsonhalLinks {
 // GetLinksOk returns a tuple with the Links field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ResourceTypeLimitJsonhal) GetLinksOk() (*AbstractEnvironmentJsonhalLinks, bool) {
-	if o == nil || IsNil(o.Links) {
+	if o == nil || isNil(o.Links) {
 		return nil, false
 	}
 	return o.Links, true
@@ -72,7 +69,7 @@ func (o *ResourceTypeLimitJsonhal) GetLinksOk() (*AbstractEnvironmentJsonhalLink
 
 // HasLinks returns a boolean if a field has been set.
 func (o *ResourceTypeLimitJsonhal) HasLinks() bool {
-	if o != nil && !IsNil(o.Links) {
+	if o != nil && !isNil(o.Links) {
 		return true
 	}
 
@@ -86,7 +83,7 @@ func (o *ResourceTypeLimitJsonhal) SetLinks(v AbstractEnvironmentJsonhalLinks) {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *ResourceTypeLimitJsonhal) GetId() int32 {
-	if o == nil || IsNil(o.Id) {
+	if o == nil || isNil(o.Id) {
 		var ret int32
 		return ret
 	}
@@ -96,7 +93,7 @@ func (o *ResourceTypeLimitJsonhal) GetId() int32 {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ResourceTypeLimitJsonhal) GetIdOk() (*int32, bool) {
-	if o == nil || IsNil(o.Id) {
+	if o == nil || isNil(o.Id) {
 		return nil, false
 	}
 	return o.Id, true
@@ -104,7 +101,7 @@ func (o *ResourceTypeLimitJsonhal) GetIdOk() (*int32, bool) {
 
 // HasId returns a boolean if a field has been set.
 func (o *ResourceTypeLimitJsonhal) HasId() bool {
-	if o != nil && !IsNil(o.Id) {
+	if o != nil && !isNil(o.Id) {
 		return true
 	}
 
@@ -118,7 +115,7 @@ func (o *ResourceTypeLimitJsonhal) SetId(v int32) {
 
 // GetUuid returns the Uuid field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ResourceTypeLimitJsonhal) GetUuid() string {
-	if o == nil || IsNil(o.Uuid.Get()) {
+	if o == nil || isNil(o.Uuid.Get()) {
 		var ret string
 		return ret
 	}
@@ -148,6 +145,7 @@ func (o *ResourceTypeLimitJsonhal) HasUuid() bool {
 func (o *ResourceTypeLimitJsonhal) SetUuid(v string) {
 	o.Uuid.Set(&v)
 }
+
 // SetUuidNil sets the value for Uuid to be an explicit nil
 func (o *ResourceTypeLimitJsonhal) SetUuidNil() {
 	o.Uuid.Set(nil)
@@ -160,7 +158,7 @@ func (o *ResourceTypeLimitJsonhal) UnsetUuid() {
 
 // GetProjectMinValue returns the ProjectMinValue field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ResourceTypeLimitJsonhal) GetProjectMinValue() int32 {
-	if o == nil || IsNil(o.ProjectMinValue.Get()) {
+	if o == nil || isNil(o.ProjectMinValue.Get()) {
 		var ret int32
 		return ret
 	}
@@ -190,6 +188,7 @@ func (o *ResourceTypeLimitJsonhal) HasProjectMinValue() bool {
 func (o *ResourceTypeLimitJsonhal) SetProjectMinValue(v int32) {
 	o.ProjectMinValue.Set(&v)
 }
+
 // SetProjectMinValueNil sets the value for ProjectMinValue to be an explicit nil
 func (o *ResourceTypeLimitJsonhal) SetProjectMinValueNil() {
 	o.ProjectMinValue.Set(nil)
@@ -202,7 +201,7 @@ func (o *ResourceTypeLimitJsonhal) UnsetProjectMinValue() {
 
 // GetProjectMaxValue returns the ProjectMaxValue field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ResourceTypeLimitJsonhal) GetProjectMaxValue() int32 {
-	if o == nil || IsNil(o.ProjectMaxValue.Get()) {
+	if o == nil || isNil(o.ProjectMaxValue.Get()) {
 		var ret int32
 		return ret
 	}
@@ -232,6 +231,7 @@ func (o *ResourceTypeLimitJsonhal) HasProjectMaxValue() bool {
 func (o *ResourceTypeLimitJsonhal) SetProjectMaxValue(v int32) {
 	o.ProjectMaxValue.Set(&v)
 }
+
 // SetProjectMaxValueNil sets the value for ProjectMaxValue to be an explicit nil
 func (o *ResourceTypeLimitJsonhal) SetProjectMaxValueNil() {
 	o.ProjectMaxValue.Set(nil)
@@ -244,7 +244,7 @@ func (o *ResourceTypeLimitJsonhal) UnsetProjectMaxValue() {
 
 // GetEnvironmentMinValue returns the EnvironmentMinValue field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ResourceTypeLimitJsonhal) GetEnvironmentMinValue() int32 {
-	if o == nil || IsNil(o.EnvironmentMinValue.Get()) {
+	if o == nil || isNil(o.EnvironmentMinValue.Get()) {
 		var ret int32
 		return ret
 	}
@@ -274,6 +274,7 @@ func (o *ResourceTypeLimitJsonhal) HasEnvironmentMinValue() bool {
 func (o *ResourceTypeLimitJsonhal) SetEnvironmentMinValue(v int32) {
 	o.EnvironmentMinValue.Set(&v)
 }
+
 // SetEnvironmentMinValueNil sets the value for EnvironmentMinValue to be an explicit nil
 func (o *ResourceTypeLimitJsonhal) SetEnvironmentMinValueNil() {
 	o.EnvironmentMinValue.Set(nil)
@@ -286,7 +287,7 @@ func (o *ResourceTypeLimitJsonhal) UnsetEnvironmentMinValue() {
 
 // GetEnvironmentMaxValue returns the EnvironmentMaxValue field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ResourceTypeLimitJsonhal) GetEnvironmentMaxValue() int32 {
-	if o == nil || IsNil(o.EnvironmentMaxValue.Get()) {
+	if o == nil || isNil(o.EnvironmentMaxValue.Get()) {
 		var ret int32
 		return ret
 	}
@@ -316,6 +317,7 @@ func (o *ResourceTypeLimitJsonhal) HasEnvironmentMaxValue() bool {
 func (o *ResourceTypeLimitJsonhal) SetEnvironmentMaxValue(v int32) {
 	o.EnvironmentMaxValue.Set(&v)
 }
+
 // SetEnvironmentMaxValueNil sets the value for EnvironmentMaxValue to be an explicit nil
 func (o *ResourceTypeLimitJsonhal) SetEnvironmentMaxValueNil() {
 	o.EnvironmentMaxValue.Set(nil)
@@ -328,7 +330,7 @@ func (o *ResourceTypeLimitJsonhal) UnsetEnvironmentMaxValue() {
 
 // GetComponentMinValue returns the ComponentMinValue field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ResourceTypeLimitJsonhal) GetComponentMinValue() int32 {
-	if o == nil || IsNil(o.ComponentMinValue.Get()) {
+	if o == nil || isNil(o.ComponentMinValue.Get()) {
 		var ret int32
 		return ret
 	}
@@ -358,6 +360,7 @@ func (o *ResourceTypeLimitJsonhal) HasComponentMinValue() bool {
 func (o *ResourceTypeLimitJsonhal) SetComponentMinValue(v int32) {
 	o.ComponentMinValue.Set(&v)
 }
+
 // SetComponentMinValueNil sets the value for ComponentMinValue to be an explicit nil
 func (o *ResourceTypeLimitJsonhal) SetComponentMinValueNil() {
 	o.ComponentMinValue.Set(nil)
@@ -370,7 +373,7 @@ func (o *ResourceTypeLimitJsonhal) UnsetComponentMinValue() {
 
 // GetComponentMaxValue returns the ComponentMaxValue field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ResourceTypeLimitJsonhal) GetComponentMaxValue() int32 {
-	if o == nil || IsNil(o.ComponentMaxValue.Get()) {
+	if o == nil || isNil(o.ComponentMaxValue.Get()) {
 		var ret int32
 		return ret
 	}
@@ -400,6 +403,7 @@ func (o *ResourceTypeLimitJsonhal) HasComponentMaxValue() bool {
 func (o *ResourceTypeLimitJsonhal) SetComponentMaxValue(v int32) {
 	o.ComponentMaxValue.Set(&v)
 }
+
 // SetComponentMaxValueNil sets the value for ComponentMaxValue to be an explicit nil
 func (o *ResourceTypeLimitJsonhal) SetComponentMaxValueNil() {
 	o.ComponentMaxValue.Set(nil)
@@ -412,7 +416,7 @@ func (o *ResourceTypeLimitJsonhal) UnsetComponentMaxValue() {
 
 // GetCreatedBy returns the CreatedBy field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ResourceTypeLimitJsonhal) GetCreatedBy() string {
-	if o == nil || IsNil(o.CreatedBy.Get()) {
+	if o == nil || isNil(o.CreatedBy.Get()) {
 		var ret string
 		return ret
 	}
@@ -442,6 +446,7 @@ func (o *ResourceTypeLimitJsonhal) HasCreatedBy() bool {
 func (o *ResourceTypeLimitJsonhal) SetCreatedBy(v string) {
 	o.CreatedBy.Set(&v)
 }
+
 // SetCreatedByNil sets the value for CreatedBy to be an explicit nil
 func (o *ResourceTypeLimitJsonhal) SetCreatedByNil() {
 	o.CreatedBy.Set(nil)
@@ -454,7 +459,7 @@ func (o *ResourceTypeLimitJsonhal) UnsetCreatedBy() {
 
 // GetUpdatedBy returns the UpdatedBy field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ResourceTypeLimitJsonhal) GetUpdatedBy() string {
-	if o == nil || IsNil(o.UpdatedBy.Get()) {
+	if o == nil || isNil(o.UpdatedBy.Get()) {
 		var ret string
 		return ret
 	}
@@ -484,6 +489,7 @@ func (o *ResourceTypeLimitJsonhal) HasUpdatedBy() bool {
 func (o *ResourceTypeLimitJsonhal) SetUpdatedBy(v string) {
 	o.UpdatedBy.Set(&v)
 }
+
 // SetUpdatedByNil sets the value for UpdatedBy to be an explicit nil
 func (o *ResourceTypeLimitJsonhal) SetUpdatedByNil() {
 	o.UpdatedBy.Set(nil)
@@ -496,7 +502,7 @@ func (o *ResourceTypeLimitJsonhal) UnsetUpdatedBy() {
 
 // GetCreatedAt returns the CreatedAt field value if set, zero value otherwise.
 func (o *ResourceTypeLimitJsonhal) GetCreatedAt() time.Time {
-	if o == nil || IsNil(o.CreatedAt) {
+	if o == nil || isNil(o.CreatedAt) {
 		var ret time.Time
 		return ret
 	}
@@ -506,7 +512,7 @@ func (o *ResourceTypeLimitJsonhal) GetCreatedAt() time.Time {
 // GetCreatedAtOk returns a tuple with the CreatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ResourceTypeLimitJsonhal) GetCreatedAtOk() (*time.Time, bool) {
-	if o == nil || IsNil(o.CreatedAt) {
+	if o == nil || isNil(o.CreatedAt) {
 		return nil, false
 	}
 	return o.CreatedAt, true
@@ -514,7 +520,7 @@ func (o *ResourceTypeLimitJsonhal) GetCreatedAtOk() (*time.Time, bool) {
 
 // HasCreatedAt returns a boolean if a field has been set.
 func (o *ResourceTypeLimitJsonhal) HasCreatedAt() bool {
-	if o != nil && !IsNil(o.CreatedAt) {
+	if o != nil && !isNil(o.CreatedAt) {
 		return true
 	}
 
@@ -528,7 +534,7 @@ func (o *ResourceTypeLimitJsonhal) SetCreatedAt(v time.Time) {
 
 // GetUpdatedAt returns the UpdatedAt field value if set, zero value otherwise.
 func (o *ResourceTypeLimitJsonhal) GetUpdatedAt() time.Time {
-	if o == nil || IsNil(o.UpdatedAt) {
+	if o == nil || isNil(o.UpdatedAt) {
 		var ret time.Time
 		return ret
 	}
@@ -538,7 +544,7 @@ func (o *ResourceTypeLimitJsonhal) GetUpdatedAt() time.Time {
 // GetUpdatedAtOk returns a tuple with the UpdatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ResourceTypeLimitJsonhal) GetUpdatedAtOk() (*time.Time, bool) {
-	if o == nil || IsNil(o.UpdatedAt) {
+	if o == nil || isNil(o.UpdatedAt) {
 		return nil, false
 	}
 	return o.UpdatedAt, true
@@ -546,7 +552,7 @@ func (o *ResourceTypeLimitJsonhal) GetUpdatedAtOk() (*time.Time, bool) {
 
 // HasUpdatedAt returns a boolean if a field has been set.
 func (o *ResourceTypeLimitJsonhal) HasUpdatedAt() bool {
-	if o != nil && !IsNil(o.UpdatedAt) {
+	if o != nil && !isNil(o.UpdatedAt) {
 		return true
 	}
 
@@ -559,19 +565,13 @@ func (o *ResourceTypeLimitJsonhal) SetUpdatedAt(v time.Time) {
 }
 
 func (o ResourceTypeLimitJsonhal) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o ResourceTypeLimitJsonhal) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Links) {
+	if !isNil(o.Links) {
 		toSerialize["_links"] = o.Links
 	}
-	// skip: id is readOnly
+	if !isNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
 	if o.Uuid.IsSet() {
 		toSerialize["uuid"] = o.Uuid.Get()
 	}
@@ -599,13 +599,13 @@ func (o ResourceTypeLimitJsonhal) ToMap() (map[string]interface{}, error) {
 	if o.UpdatedBy.IsSet() {
 		toSerialize["updatedBy"] = o.UpdatedBy.Get()
 	}
-	if !IsNil(o.CreatedAt) {
+	if !isNil(o.CreatedAt) {
 		toSerialize["createdAt"] = o.CreatedAt
 	}
-	if !IsNil(o.UpdatedAt) {
+	if !isNil(o.UpdatedAt) {
 		toSerialize["updatedAt"] = o.UpdatedAt
 	}
-	return toSerialize, nil
+	return json.Marshal(toSerialize)
 }
 
 type NullableResourceTypeLimitJsonhal struct {
@@ -643,5 +643,3 @@ func (v *NullableResourceTypeLimitJsonhal) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

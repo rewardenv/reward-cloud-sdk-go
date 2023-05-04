@@ -14,22 +14,19 @@ import (
 	"encoding/json"
 )
 
-// checks if the ServiceAccountGit type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &ServiceAccountGit{}
-
 // ServiceAccountGit Class Git
 type ServiceAccountGit struct {
-	Id *int32 `json:"id,omitempty"`
-	Uuid *string `json:"uuid,omitempty"`
-	IsExternal NullableBool `json:"isExternal,omitempty"`
-	Url NullableString `json:"url,omitempty"`
-	Username NullableString `json:"username,omitempty"`
-	Email NullableString `json:"email,omitempty"`
-	Password NullableString `json:"password,omitempty"`
-	SshPrivateKey NullableString `json:"sshPrivateKey,omitempty"`
+	Id             *int32         `json:"id,omitempty"`
+	Uuid           *string        `json:"uuid,omitempty"`
+	IsExternal     NullableBool   `json:"isExternal,omitempty"`
+	Url            NullableString `json:"url,omitempty"`
+	Username       NullableString `json:"username,omitempty"`
+	Email          NullableString `json:"email,omitempty"`
+	Password       NullableString `json:"password,omitempty"`
+	SshPrivateKey  NullableString `json:"sshPrivateKey,omitempty"`
 	ServiceAccount NullableString `json:"serviceAccount,omitempty"`
-	CreatedBy NullableString `json:"createdBy,omitempty"`
-	UpdatedBy NullableString `json:"updatedBy,omitempty"`
+	CreatedBy      NullableString `json:"createdBy,omitempty"`
+	UpdatedBy      NullableString `json:"updatedBy,omitempty"`
 }
 
 // NewServiceAccountGit instantiates a new ServiceAccountGit object
@@ -51,7 +48,7 @@ func NewServiceAccountGitWithDefaults() *ServiceAccountGit {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *ServiceAccountGit) GetId() int32 {
-	if o == nil || IsNil(o.Id) {
+	if o == nil || isNil(o.Id) {
 		var ret int32
 		return ret
 	}
@@ -61,7 +58,7 @@ func (o *ServiceAccountGit) GetId() int32 {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ServiceAccountGit) GetIdOk() (*int32, bool) {
-	if o == nil || IsNil(o.Id) {
+	if o == nil || isNil(o.Id) {
 		return nil, false
 	}
 	return o.Id, true
@@ -69,7 +66,7 @@ func (o *ServiceAccountGit) GetIdOk() (*int32, bool) {
 
 // HasId returns a boolean if a field has been set.
 func (o *ServiceAccountGit) HasId() bool {
-	if o != nil && !IsNil(o.Id) {
+	if o != nil && !isNil(o.Id) {
 		return true
 	}
 
@@ -83,7 +80,7 @@ func (o *ServiceAccountGit) SetId(v int32) {
 
 // GetUuid returns the Uuid field value if set, zero value otherwise.
 func (o *ServiceAccountGit) GetUuid() string {
-	if o == nil || IsNil(o.Uuid) {
+	if o == nil || isNil(o.Uuid) {
 		var ret string
 		return ret
 	}
@@ -93,7 +90,7 @@ func (o *ServiceAccountGit) GetUuid() string {
 // GetUuidOk returns a tuple with the Uuid field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ServiceAccountGit) GetUuidOk() (*string, bool) {
-	if o == nil || IsNil(o.Uuid) {
+	if o == nil || isNil(o.Uuid) {
 		return nil, false
 	}
 	return o.Uuid, true
@@ -101,7 +98,7 @@ func (o *ServiceAccountGit) GetUuidOk() (*string, bool) {
 
 // HasUuid returns a boolean if a field has been set.
 func (o *ServiceAccountGit) HasUuid() bool {
-	if o != nil && !IsNil(o.Uuid) {
+	if o != nil && !isNil(o.Uuid) {
 		return true
 	}
 
@@ -115,7 +112,7 @@ func (o *ServiceAccountGit) SetUuid(v string) {
 
 // GetIsExternal returns the IsExternal field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ServiceAccountGit) GetIsExternal() bool {
-	if o == nil || IsNil(o.IsExternal.Get()) {
+	if o == nil || isNil(o.IsExternal.Get()) {
 		var ret bool
 		return ret
 	}
@@ -145,6 +142,7 @@ func (o *ServiceAccountGit) HasIsExternal() bool {
 func (o *ServiceAccountGit) SetIsExternal(v bool) {
 	o.IsExternal.Set(&v)
 }
+
 // SetIsExternalNil sets the value for IsExternal to be an explicit nil
 func (o *ServiceAccountGit) SetIsExternalNil() {
 	o.IsExternal.Set(nil)
@@ -157,7 +155,7 @@ func (o *ServiceAccountGit) UnsetIsExternal() {
 
 // GetUrl returns the Url field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ServiceAccountGit) GetUrl() string {
-	if o == nil || IsNil(o.Url.Get()) {
+	if o == nil || isNil(o.Url.Get()) {
 		var ret string
 		return ret
 	}
@@ -187,6 +185,7 @@ func (o *ServiceAccountGit) HasUrl() bool {
 func (o *ServiceAccountGit) SetUrl(v string) {
 	o.Url.Set(&v)
 }
+
 // SetUrlNil sets the value for Url to be an explicit nil
 func (o *ServiceAccountGit) SetUrlNil() {
 	o.Url.Set(nil)
@@ -199,7 +198,7 @@ func (o *ServiceAccountGit) UnsetUrl() {
 
 // GetUsername returns the Username field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ServiceAccountGit) GetUsername() string {
-	if o == nil || IsNil(o.Username.Get()) {
+	if o == nil || isNil(o.Username.Get()) {
 		var ret string
 		return ret
 	}
@@ -229,6 +228,7 @@ func (o *ServiceAccountGit) HasUsername() bool {
 func (o *ServiceAccountGit) SetUsername(v string) {
 	o.Username.Set(&v)
 }
+
 // SetUsernameNil sets the value for Username to be an explicit nil
 func (o *ServiceAccountGit) SetUsernameNil() {
 	o.Username.Set(nil)
@@ -241,7 +241,7 @@ func (o *ServiceAccountGit) UnsetUsername() {
 
 // GetEmail returns the Email field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ServiceAccountGit) GetEmail() string {
-	if o == nil || IsNil(o.Email.Get()) {
+	if o == nil || isNil(o.Email.Get()) {
 		var ret string
 		return ret
 	}
@@ -271,6 +271,7 @@ func (o *ServiceAccountGit) HasEmail() bool {
 func (o *ServiceAccountGit) SetEmail(v string) {
 	o.Email.Set(&v)
 }
+
 // SetEmailNil sets the value for Email to be an explicit nil
 func (o *ServiceAccountGit) SetEmailNil() {
 	o.Email.Set(nil)
@@ -283,7 +284,7 @@ func (o *ServiceAccountGit) UnsetEmail() {
 
 // GetPassword returns the Password field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ServiceAccountGit) GetPassword() string {
-	if o == nil || IsNil(o.Password.Get()) {
+	if o == nil || isNil(o.Password.Get()) {
 		var ret string
 		return ret
 	}
@@ -313,6 +314,7 @@ func (o *ServiceAccountGit) HasPassword() bool {
 func (o *ServiceAccountGit) SetPassword(v string) {
 	o.Password.Set(&v)
 }
+
 // SetPasswordNil sets the value for Password to be an explicit nil
 func (o *ServiceAccountGit) SetPasswordNil() {
 	o.Password.Set(nil)
@@ -325,7 +327,7 @@ func (o *ServiceAccountGit) UnsetPassword() {
 
 // GetSshPrivateKey returns the SshPrivateKey field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ServiceAccountGit) GetSshPrivateKey() string {
-	if o == nil || IsNil(o.SshPrivateKey.Get()) {
+	if o == nil || isNil(o.SshPrivateKey.Get()) {
 		var ret string
 		return ret
 	}
@@ -355,6 +357,7 @@ func (o *ServiceAccountGit) HasSshPrivateKey() bool {
 func (o *ServiceAccountGit) SetSshPrivateKey(v string) {
 	o.SshPrivateKey.Set(&v)
 }
+
 // SetSshPrivateKeyNil sets the value for SshPrivateKey to be an explicit nil
 func (o *ServiceAccountGit) SetSshPrivateKeyNil() {
 	o.SshPrivateKey.Set(nil)
@@ -367,7 +370,7 @@ func (o *ServiceAccountGit) UnsetSshPrivateKey() {
 
 // GetServiceAccount returns the ServiceAccount field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ServiceAccountGit) GetServiceAccount() string {
-	if o == nil || IsNil(o.ServiceAccount.Get()) {
+	if o == nil || isNil(o.ServiceAccount.Get()) {
 		var ret string
 		return ret
 	}
@@ -397,6 +400,7 @@ func (o *ServiceAccountGit) HasServiceAccount() bool {
 func (o *ServiceAccountGit) SetServiceAccount(v string) {
 	o.ServiceAccount.Set(&v)
 }
+
 // SetServiceAccountNil sets the value for ServiceAccount to be an explicit nil
 func (o *ServiceAccountGit) SetServiceAccountNil() {
 	o.ServiceAccount.Set(nil)
@@ -409,7 +413,7 @@ func (o *ServiceAccountGit) UnsetServiceAccount() {
 
 // GetCreatedBy returns the CreatedBy field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ServiceAccountGit) GetCreatedBy() string {
-	if o == nil || IsNil(o.CreatedBy.Get()) {
+	if o == nil || isNil(o.CreatedBy.Get()) {
 		var ret string
 		return ret
 	}
@@ -439,6 +443,7 @@ func (o *ServiceAccountGit) HasCreatedBy() bool {
 func (o *ServiceAccountGit) SetCreatedBy(v string) {
 	o.CreatedBy.Set(&v)
 }
+
 // SetCreatedByNil sets the value for CreatedBy to be an explicit nil
 func (o *ServiceAccountGit) SetCreatedByNil() {
 	o.CreatedBy.Set(nil)
@@ -451,7 +456,7 @@ func (o *ServiceAccountGit) UnsetCreatedBy() {
 
 // GetUpdatedBy returns the UpdatedBy field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ServiceAccountGit) GetUpdatedBy() string {
-	if o == nil || IsNil(o.UpdatedBy.Get()) {
+	if o == nil || isNil(o.UpdatedBy.Get()) {
 		var ret string
 		return ret
 	}
@@ -481,6 +486,7 @@ func (o *ServiceAccountGit) HasUpdatedBy() bool {
 func (o *ServiceAccountGit) SetUpdatedBy(v string) {
 	o.UpdatedBy.Set(&v)
 }
+
 // SetUpdatedByNil sets the value for UpdatedBy to be an explicit nil
 func (o *ServiceAccountGit) SetUpdatedByNil() {
 	o.UpdatedBy.Set(nil)
@@ -492,17 +498,13 @@ func (o *ServiceAccountGit) UnsetUpdatedBy() {
 }
 
 func (o ServiceAccountGit) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o ServiceAccountGit) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	// skip: id is readOnly
-	// skip: uuid is readOnly
+	if !isNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
+	if !isNil(o.Uuid) {
+		toSerialize["uuid"] = o.Uuid
+	}
 	if o.IsExternal.IsSet() {
 		toSerialize["isExternal"] = o.IsExternal.Get()
 	}
@@ -530,7 +532,7 @@ func (o ServiceAccountGit) ToMap() (map[string]interface{}, error) {
 	if o.UpdatedBy.IsSet() {
 		toSerialize["updatedBy"] = o.UpdatedBy.Get()
 	}
-	return toSerialize, nil
+	return json.Marshal(toSerialize)
 }
 
 type NullableServiceAccountGit struct {
@@ -568,5 +570,3 @@ func (v *NullableServiceAccountGit) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

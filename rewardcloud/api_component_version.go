@@ -16,21 +16,20 @@ import (
 	"io/ioutil"
 	"net/http"
 	"net/url"
-	"strings"
 	"reflect"
+	"strings"
 )
-
 
 // ComponentVersionApiService ComponentVersionApi service
 type ComponentVersionApiService service
 
 type ApiApiComponentVersionsGetCollectionRequest struct {
-	ctx context.Context
-	ApiService *ComponentVersionApiService
-	page *int32
+	ctx          context.Context
+	ApiService   *ComponentVersionApiService
+	page         *int32
 	itemsPerPage *int32
-	component *string
-	component2 *[]string
+	component    *string
+	component2   *[]string
 }
 
 // The collection page number
@@ -45,19 +44,17 @@ func (r ApiApiComponentVersionsGetCollectionRequest) ItemsPerPage(itemsPerPage i
 	return r
 }
 
-// 
 func (r ApiApiComponentVersionsGetCollectionRequest) Component(component string) ApiApiComponentVersionsGetCollectionRequest {
 	r.component = &component
 	return r
 }
 
-// 
 func (r ApiApiComponentVersionsGetCollectionRequest) Component2(component2 []string) ApiApiComponentVersionsGetCollectionRequest {
 	r.component2 = &component2
 	return r
 }
 
-func (r ApiApiComponentVersionsGetCollectionRequest) Execute() ([]ComponentVersion, *http.Response, error) {
+func (r ApiApiComponentVersionsGetCollectionRequest) Execute() (*ApiComponentVersionsGetCollection200Response, *http.Response, error) {
 	return r.ApiService.ApiComponentVersionsGetCollectionExecute(r)
 }
 
@@ -66,24 +63,25 @@ ApiComponentVersionsGetCollection Retrieves the collection of ComponentVersion r
 
 Retrieves the collection of ComponentVersion resources.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiApiComponentVersionsGetCollectionRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiApiComponentVersionsGetCollectionRequest
 */
 func (a *ComponentVersionApiService) ApiComponentVersionsGetCollection(ctx context.Context) ApiApiComponentVersionsGetCollectionRequest {
 	return ApiApiComponentVersionsGetCollectionRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return []ComponentVersion
-func (a *ComponentVersionApiService) ApiComponentVersionsGetCollectionExecute(r ApiApiComponentVersionsGetCollectionRequest) ([]ComponentVersion, *http.Response, error) {
+//
+//	@return ApiComponentVersionsGetCollection200Response
+func (a *ComponentVersionApiService) ApiComponentVersionsGetCollectionExecute(r ApiApiComponentVersionsGetCollectionRequest) (*ApiComponentVersionsGetCollection200Response, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  []ComponentVersion
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *ApiComponentVersionsGetCollection200Response
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ComponentVersionApiService.ApiComponentVersionsGetCollection")
@@ -127,7 +125,7 @@ func (a *ComponentVersionApiService) ApiComponentVersionsGetCollectionExecute(r 
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json", "application/hal+json", "text/html"}
+	localVarHTTPHeaderAccepts := []string{"application/hal+json", "application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -186,9 +184,9 @@ func (a *ComponentVersionApiService) ApiComponentVersionsGetCollectionExecute(r 
 }
 
 type ApiApiComponentVersionsIdDeleteRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *ComponentVersionApiService
-	id string
+	id         string
 }
 
 func (r ApiApiComponentVersionsIdDeleteRequest) Execute() (*http.Response, error) {
@@ -200,24 +198,24 @@ ApiComponentVersionsIdDelete Removes the ComponentVersion resource.
 
 Removes the ComponentVersion resource.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id ComponentVersion identifier
- @return ApiApiComponentVersionsIdDeleteRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id ComponentVersion identifier
+	@return ApiApiComponentVersionsIdDeleteRequest
 */
 func (a *ComponentVersionApiService) ApiComponentVersionsIdDelete(ctx context.Context, id string) ApiApiComponentVersionsIdDeleteRequest {
 	return ApiApiComponentVersionsIdDeleteRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
 // Execute executes the request
 func (a *ComponentVersionApiService) ApiComponentVersionsIdDeleteExecute(r ApiApiComponentVersionsIdDeleteRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodDelete
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ComponentVersionApiService.ApiComponentVersionsIdDelete")
@@ -292,12 +290,12 @@ func (a *ComponentVersionApiService) ApiComponentVersionsIdDeleteExecute(r ApiAp
 }
 
 type ApiApiComponentVersionsIdGetRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *ComponentVersionApiService
-	id string
+	id         string
 }
 
-func (r ApiApiComponentVersionsIdGetRequest) Execute() (*ComponentVersion, *http.Response, error) {
+func (r ApiApiComponentVersionsIdGetRequest) Execute() (*ComponentVersionJsonhal, *http.Response, error) {
 	return r.ApiService.ApiComponentVersionsIdGetExecute(r)
 }
 
@@ -306,26 +304,27 @@ ApiComponentVersionsIdGet Retrieves a ComponentVersion resource.
 
 Retrieves a ComponentVersion resource.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id ComponentVersion identifier
- @return ApiApiComponentVersionsIdGetRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id ComponentVersion identifier
+	@return ApiApiComponentVersionsIdGetRequest
 */
 func (a *ComponentVersionApiService) ApiComponentVersionsIdGet(ctx context.Context, id string) ApiApiComponentVersionsIdGetRequest {
 	return ApiApiComponentVersionsIdGetRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
 // Execute executes the request
-//  @return ComponentVersion
-func (a *ComponentVersionApiService) ApiComponentVersionsIdGetExecute(r ApiApiComponentVersionsIdGetRequest) (*ComponentVersion, *http.Response, error) {
+//
+//	@return ComponentVersionJsonhal
+func (a *ComponentVersionApiService) ApiComponentVersionsIdGetExecute(r ApiApiComponentVersionsIdGetRequest) (*ComponentVersionJsonhal, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *ComponentVersion
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *ComponentVersionJsonhal
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ComponentVersionApiService.ApiComponentVersionsIdGet")
@@ -350,7 +349,7 @@ func (a *ComponentVersionApiService) ApiComponentVersionsIdGetExecute(r ApiApiCo
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json", "application/hal+json", "text/html"}
+	localVarHTTPHeaderAccepts := []string{"application/hal+json", "application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -409,9 +408,9 @@ func (a *ComponentVersionApiService) ApiComponentVersionsIdGetExecute(r ApiApiCo
 }
 
 type ApiApiComponentVersionsIdPatchRequest struct {
-	ctx context.Context
-	ApiService *ComponentVersionApiService
-	id string
+	ctx              context.Context
+	ApiService       *ComponentVersionApiService
+	id               string
 	componentVersion *ComponentVersion
 }
 
@@ -421,7 +420,7 @@ func (r ApiApiComponentVersionsIdPatchRequest) ComponentVersion(componentVersion
 	return r
 }
 
-func (r ApiApiComponentVersionsIdPatchRequest) Execute() (*ComponentVersion, *http.Response, error) {
+func (r ApiApiComponentVersionsIdPatchRequest) Execute() (*ComponentVersionJsonhal, *http.Response, error) {
 	return r.ApiService.ApiComponentVersionsIdPatchExecute(r)
 }
 
@@ -430,26 +429,27 @@ ApiComponentVersionsIdPatch Updates the ComponentVersion resource.
 
 Updates the ComponentVersion resource.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id ComponentVersion identifier
- @return ApiApiComponentVersionsIdPatchRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id ComponentVersion identifier
+	@return ApiApiComponentVersionsIdPatchRequest
 */
 func (a *ComponentVersionApiService) ApiComponentVersionsIdPatch(ctx context.Context, id string) ApiApiComponentVersionsIdPatchRequest {
 	return ApiApiComponentVersionsIdPatchRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
 // Execute executes the request
-//  @return ComponentVersion
-func (a *ComponentVersionApiService) ApiComponentVersionsIdPatchExecute(r ApiApiComponentVersionsIdPatchRequest) (*ComponentVersion, *http.Response, error) {
+//
+//	@return ComponentVersionJsonhal
+func (a *ComponentVersionApiService) ApiComponentVersionsIdPatchExecute(r ApiApiComponentVersionsIdPatchRequest) (*ComponentVersionJsonhal, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPatch
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *ComponentVersion
+		localVarHTTPMethod  = http.MethodPatch
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *ComponentVersionJsonhal
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ComponentVersionApiService.ApiComponentVersionsIdPatch")
@@ -468,7 +468,7 @@ func (a *ComponentVersionApiService) ApiComponentVersionsIdPatchExecute(r ApiApi
 	}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json", "application/hal+json", "text/html"}
+	localVarHTTPContentTypes := []string{"application/vnd.api+json"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -477,7 +477,7 @@ func (a *ComponentVersionApiService) ApiComponentVersionsIdPatchExecute(r ApiApi
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json", "application/hal+json", "text/html"}
+	localVarHTTPHeaderAccepts := []string{"application/hal+json", "application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -538,19 +538,19 @@ func (a *ComponentVersionApiService) ApiComponentVersionsIdPatchExecute(r ApiApi
 }
 
 type ApiApiComponentVersionsIdPutRequest struct {
-	ctx context.Context
-	ApiService *ComponentVersionApiService
-	id string
-	componentVersion *ComponentVersion
+	ctx                     context.Context
+	ApiService              *ComponentVersionApiService
+	id                      string
+	componentVersionJsonhal *ComponentVersionJsonhal
 }
 
 // The updated ComponentVersion resource
-func (r ApiApiComponentVersionsIdPutRequest) ComponentVersion(componentVersion ComponentVersion) ApiApiComponentVersionsIdPutRequest {
-	r.componentVersion = &componentVersion
+func (r ApiApiComponentVersionsIdPutRequest) ComponentVersionJsonhal(componentVersionJsonhal ComponentVersionJsonhal) ApiApiComponentVersionsIdPutRequest {
+	r.componentVersionJsonhal = &componentVersionJsonhal
 	return r
 }
 
-func (r ApiApiComponentVersionsIdPutRequest) Execute() (*ComponentVersion, *http.Response, error) {
+func (r ApiApiComponentVersionsIdPutRequest) Execute() (*ComponentVersionJsonhal, *http.Response, error) {
 	return r.ApiService.ApiComponentVersionsIdPutExecute(r)
 }
 
@@ -559,26 +559,27 @@ ApiComponentVersionsIdPut Replaces the ComponentVersion resource.
 
 Replaces the ComponentVersion resource.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id ComponentVersion identifier
- @return ApiApiComponentVersionsIdPutRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id ComponentVersion identifier
+	@return ApiApiComponentVersionsIdPutRequest
 */
 func (a *ComponentVersionApiService) ApiComponentVersionsIdPut(ctx context.Context, id string) ApiApiComponentVersionsIdPutRequest {
 	return ApiApiComponentVersionsIdPutRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
 // Execute executes the request
-//  @return ComponentVersion
-func (a *ComponentVersionApiService) ApiComponentVersionsIdPutExecute(r ApiApiComponentVersionsIdPutRequest) (*ComponentVersion, *http.Response, error) {
+//
+//	@return ComponentVersionJsonhal
+func (a *ComponentVersionApiService) ApiComponentVersionsIdPutExecute(r ApiApiComponentVersionsIdPutRequest) (*ComponentVersionJsonhal, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPut
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *ComponentVersion
+		localVarHTTPMethod  = http.MethodPut
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *ComponentVersionJsonhal
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ComponentVersionApiService.ApiComponentVersionsIdPut")
@@ -592,12 +593,12 @@ func (a *ComponentVersionApiService) ApiComponentVersionsIdPutExecute(r ApiApiCo
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.componentVersion == nil {
-		return localVarReturnValue, nil, reportError("componentVersion is required and must be specified")
+	if r.componentVersionJsonhal == nil {
+		return localVarReturnValue, nil, reportError("componentVersionJsonhal is required and must be specified")
 	}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json", "application/hal+json", "text/html"}
+	localVarHTTPContentTypes := []string{"application/hal+json", "application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -606,7 +607,7 @@ func (a *ComponentVersionApiService) ApiComponentVersionsIdPutExecute(r ApiApiCo
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json", "application/hal+json", "text/html"}
+	localVarHTTPHeaderAccepts := []string{"application/hal+json", "application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -614,7 +615,7 @@ func (a *ComponentVersionApiService) ApiComponentVersionsIdPutExecute(r ApiApiCo
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.componentVersion
+	localVarPostBody = r.componentVersionJsonhal
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
@@ -667,18 +668,18 @@ func (a *ComponentVersionApiService) ApiComponentVersionsIdPutExecute(r ApiApiCo
 }
 
 type ApiApiComponentVersionsPostRequest struct {
-	ctx context.Context
-	ApiService *ComponentVersionApiService
-	componentVersion *ComponentVersion
+	ctx                     context.Context
+	ApiService              *ComponentVersionApiService
+	componentVersionJsonhal *ComponentVersionJsonhal
 }
 
 // The new ComponentVersion resource
-func (r ApiApiComponentVersionsPostRequest) ComponentVersion(componentVersion ComponentVersion) ApiApiComponentVersionsPostRequest {
-	r.componentVersion = &componentVersion
+func (r ApiApiComponentVersionsPostRequest) ComponentVersionJsonhal(componentVersionJsonhal ComponentVersionJsonhal) ApiApiComponentVersionsPostRequest {
+	r.componentVersionJsonhal = &componentVersionJsonhal
 	return r
 }
 
-func (r ApiApiComponentVersionsPostRequest) Execute() (*ComponentVersion, *http.Response, error) {
+func (r ApiApiComponentVersionsPostRequest) Execute() (*ComponentVersionJsonhal, *http.Response, error) {
 	return r.ApiService.ApiComponentVersionsPostExecute(r)
 }
 
@@ -687,24 +688,25 @@ ApiComponentVersionsPost Creates a ComponentVersion resource.
 
 Creates a ComponentVersion resource.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiApiComponentVersionsPostRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiApiComponentVersionsPostRequest
 */
 func (a *ComponentVersionApiService) ApiComponentVersionsPost(ctx context.Context) ApiApiComponentVersionsPostRequest {
 	return ApiApiComponentVersionsPostRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return ComponentVersion
-func (a *ComponentVersionApiService) ApiComponentVersionsPostExecute(r ApiApiComponentVersionsPostRequest) (*ComponentVersion, *http.Response, error) {
+//
+//	@return ComponentVersionJsonhal
+func (a *ComponentVersionApiService) ApiComponentVersionsPostExecute(r ApiApiComponentVersionsPostRequest) (*ComponentVersionJsonhal, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *ComponentVersion
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *ComponentVersionJsonhal
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ComponentVersionApiService.ApiComponentVersionsPost")
@@ -717,12 +719,12 @@ func (a *ComponentVersionApiService) ApiComponentVersionsPostExecute(r ApiApiCom
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.componentVersion == nil {
-		return localVarReturnValue, nil, reportError("componentVersion is required and must be specified")
+	if r.componentVersionJsonhal == nil {
+		return localVarReturnValue, nil, reportError("componentVersionJsonhal is required and must be specified")
 	}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json", "application/hal+json", "text/html"}
+	localVarHTTPContentTypes := []string{"application/hal+json", "application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -731,7 +733,7 @@ func (a *ComponentVersionApiService) ApiComponentVersionsPostExecute(r ApiApiCom
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json", "application/hal+json", "text/html"}
+	localVarHTTPHeaderAccepts := []string{"application/hal+json", "application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -739,7 +741,7 @@ func (a *ComponentVersionApiService) ApiComponentVersionsPostExecute(r ApiApiCom
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.componentVersion
+	localVarPostBody = r.componentVersionJsonhal
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {

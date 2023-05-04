@@ -14,17 +14,14 @@ import (
 	"encoding/json"
 )
 
-// checks if the EnvironmentComponentJsonhalTemplateEnvironmentOutput type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &EnvironmentComponentJsonhalTemplateEnvironmentOutput{}
-
-// EnvironmentComponentJsonhalTemplateEnvironmentOutput 
+// EnvironmentComponentJsonhalTemplateEnvironmentOutput
 type EnvironmentComponentJsonhalTemplateEnvironmentOutput struct {
-	Links *AbstractEnvironmentJsonhalLinks `json:"_links,omitempty"`
-	Cpu NullableInt32 `json:"cpu,omitempty"`
-	Memory NullableInt32 `json:"memory,omitempty"`
-	Storage NullableInt32 `json:"storage,omitempty"`
-	Node NullableInt32 `json:"node,omitempty"`
-	ComponentVersion NullableString `json:"componentVersion,omitempty"`
+	Links            *AbstractEnvironmentJsonhalLinks `json:"_links,omitempty"`
+	Cpu              NullableInt32                    `json:"cpu,omitempty"`
+	Memory           NullableInt32                    `json:"memory,omitempty"`
+	Storage          NullableInt32                    `json:"storage,omitempty"`
+	Node             NullableInt32                    `json:"node,omitempty"`
+	ComponentVersion NullableString                   `json:"componentVersion,omitempty"`
 }
 
 // NewEnvironmentComponentJsonhalTemplateEnvironmentOutput instantiates a new EnvironmentComponentJsonhalTemplateEnvironmentOutput object
@@ -46,7 +43,7 @@ func NewEnvironmentComponentJsonhalTemplateEnvironmentOutputWithDefaults() *Envi
 
 // GetLinks returns the Links field value if set, zero value otherwise.
 func (o *EnvironmentComponentJsonhalTemplateEnvironmentOutput) GetLinks() AbstractEnvironmentJsonhalLinks {
-	if o == nil || IsNil(o.Links) {
+	if o == nil || isNil(o.Links) {
 		var ret AbstractEnvironmentJsonhalLinks
 		return ret
 	}
@@ -56,7 +53,7 @@ func (o *EnvironmentComponentJsonhalTemplateEnvironmentOutput) GetLinks() Abstra
 // GetLinksOk returns a tuple with the Links field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EnvironmentComponentJsonhalTemplateEnvironmentOutput) GetLinksOk() (*AbstractEnvironmentJsonhalLinks, bool) {
-	if o == nil || IsNil(o.Links) {
+	if o == nil || isNil(o.Links) {
 		return nil, false
 	}
 	return o.Links, true
@@ -64,7 +61,7 @@ func (o *EnvironmentComponentJsonhalTemplateEnvironmentOutput) GetLinksOk() (*Ab
 
 // HasLinks returns a boolean if a field has been set.
 func (o *EnvironmentComponentJsonhalTemplateEnvironmentOutput) HasLinks() bool {
-	if o != nil && !IsNil(o.Links) {
+	if o != nil && !isNil(o.Links) {
 		return true
 	}
 
@@ -78,7 +75,7 @@ func (o *EnvironmentComponentJsonhalTemplateEnvironmentOutput) SetLinks(v Abstra
 
 // GetCpu returns the Cpu field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *EnvironmentComponentJsonhalTemplateEnvironmentOutput) GetCpu() int32 {
-	if o == nil || IsNil(o.Cpu.Get()) {
+	if o == nil || isNil(o.Cpu.Get()) {
 		var ret int32
 		return ret
 	}
@@ -108,6 +105,7 @@ func (o *EnvironmentComponentJsonhalTemplateEnvironmentOutput) HasCpu() bool {
 func (o *EnvironmentComponentJsonhalTemplateEnvironmentOutput) SetCpu(v int32) {
 	o.Cpu.Set(&v)
 }
+
 // SetCpuNil sets the value for Cpu to be an explicit nil
 func (o *EnvironmentComponentJsonhalTemplateEnvironmentOutput) SetCpuNil() {
 	o.Cpu.Set(nil)
@@ -120,7 +118,7 @@ func (o *EnvironmentComponentJsonhalTemplateEnvironmentOutput) UnsetCpu() {
 
 // GetMemory returns the Memory field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *EnvironmentComponentJsonhalTemplateEnvironmentOutput) GetMemory() int32 {
-	if o == nil || IsNil(o.Memory.Get()) {
+	if o == nil || isNil(o.Memory.Get()) {
 		var ret int32
 		return ret
 	}
@@ -150,6 +148,7 @@ func (o *EnvironmentComponentJsonhalTemplateEnvironmentOutput) HasMemory() bool 
 func (o *EnvironmentComponentJsonhalTemplateEnvironmentOutput) SetMemory(v int32) {
 	o.Memory.Set(&v)
 }
+
 // SetMemoryNil sets the value for Memory to be an explicit nil
 func (o *EnvironmentComponentJsonhalTemplateEnvironmentOutput) SetMemoryNil() {
 	o.Memory.Set(nil)
@@ -162,7 +161,7 @@ func (o *EnvironmentComponentJsonhalTemplateEnvironmentOutput) UnsetMemory() {
 
 // GetStorage returns the Storage field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *EnvironmentComponentJsonhalTemplateEnvironmentOutput) GetStorage() int32 {
-	if o == nil || IsNil(o.Storage.Get()) {
+	if o == nil || isNil(o.Storage.Get()) {
 		var ret int32
 		return ret
 	}
@@ -192,6 +191,7 @@ func (o *EnvironmentComponentJsonhalTemplateEnvironmentOutput) HasStorage() bool
 func (o *EnvironmentComponentJsonhalTemplateEnvironmentOutput) SetStorage(v int32) {
 	o.Storage.Set(&v)
 }
+
 // SetStorageNil sets the value for Storage to be an explicit nil
 func (o *EnvironmentComponentJsonhalTemplateEnvironmentOutput) SetStorageNil() {
 	o.Storage.Set(nil)
@@ -204,7 +204,7 @@ func (o *EnvironmentComponentJsonhalTemplateEnvironmentOutput) UnsetStorage() {
 
 // GetNode returns the Node field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *EnvironmentComponentJsonhalTemplateEnvironmentOutput) GetNode() int32 {
-	if o == nil || IsNil(o.Node.Get()) {
+	if o == nil || isNil(o.Node.Get()) {
 		var ret int32
 		return ret
 	}
@@ -234,6 +234,7 @@ func (o *EnvironmentComponentJsonhalTemplateEnvironmentOutput) HasNode() bool {
 func (o *EnvironmentComponentJsonhalTemplateEnvironmentOutput) SetNode(v int32) {
 	o.Node.Set(&v)
 }
+
 // SetNodeNil sets the value for Node to be an explicit nil
 func (o *EnvironmentComponentJsonhalTemplateEnvironmentOutput) SetNodeNil() {
 	o.Node.Set(nil)
@@ -246,7 +247,7 @@ func (o *EnvironmentComponentJsonhalTemplateEnvironmentOutput) UnsetNode() {
 
 // GetComponentVersion returns the ComponentVersion field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *EnvironmentComponentJsonhalTemplateEnvironmentOutput) GetComponentVersion() string {
-	if o == nil || IsNil(o.ComponentVersion.Get()) {
+	if o == nil || isNil(o.ComponentVersion.Get()) {
 		var ret string
 		return ret
 	}
@@ -276,6 +277,7 @@ func (o *EnvironmentComponentJsonhalTemplateEnvironmentOutput) HasComponentVersi
 func (o *EnvironmentComponentJsonhalTemplateEnvironmentOutput) SetComponentVersion(v string) {
 	o.ComponentVersion.Set(&v)
 }
+
 // SetComponentVersionNil sets the value for ComponentVersion to be an explicit nil
 func (o *EnvironmentComponentJsonhalTemplateEnvironmentOutput) SetComponentVersionNil() {
 	o.ComponentVersion.Set(nil)
@@ -287,16 +289,8 @@ func (o *EnvironmentComponentJsonhalTemplateEnvironmentOutput) UnsetComponentVer
 }
 
 func (o EnvironmentComponentJsonhalTemplateEnvironmentOutput) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o EnvironmentComponentJsonhalTemplateEnvironmentOutput) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Links) {
+	if !isNil(o.Links) {
 		toSerialize["_links"] = o.Links
 	}
 	if o.Cpu.IsSet() {
@@ -314,7 +308,7 @@ func (o EnvironmentComponentJsonhalTemplateEnvironmentOutput) ToMap() (map[strin
 	if o.ComponentVersion.IsSet() {
 		toSerialize["componentVersion"] = o.ComponentVersion.Get()
 	}
-	return toSerialize, nil
+	return json.Marshal(toSerialize)
 }
 
 type NullableEnvironmentComponentJsonhalTemplateEnvironmentOutput struct {
@@ -352,5 +346,3 @@ func (v *NullableEnvironmentComponentJsonhalTemplateEnvironmentOutput) Unmarshal
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

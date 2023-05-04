@@ -14,12 +14,9 @@ import (
 	"encoding/json"
 )
 
-// checks if the Credentials type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &Credentials{}
-
 // Credentials struct for Credentials
 type Credentials struct {
-	Id *string `json:"id,omitempty"`
+	Id       *string `json:"id,omitempty"`
 	Password *string `json:"password,omitempty"`
 }
 
@@ -42,7 +39,7 @@ func NewCredentialsWithDefaults() *Credentials {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *Credentials) GetId() string {
-	if o == nil || IsNil(o.Id) {
+	if o == nil || isNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -52,7 +49,7 @@ func (o *Credentials) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Credentials) GetIdOk() (*string, bool) {
-	if o == nil || IsNil(o.Id) {
+	if o == nil || isNil(o.Id) {
 		return nil, false
 	}
 	return o.Id, true
@@ -60,7 +57,7 @@ func (o *Credentials) GetIdOk() (*string, bool) {
 
 // HasId returns a boolean if a field has been set.
 func (o *Credentials) HasId() bool {
-	if o != nil && !IsNil(o.Id) {
+	if o != nil && !isNil(o.Id) {
 		return true
 	}
 
@@ -74,7 +71,7 @@ func (o *Credentials) SetId(v string) {
 
 // GetPassword returns the Password field value if set, zero value otherwise.
 func (o *Credentials) GetPassword() string {
-	if o == nil || IsNil(o.Password) {
+	if o == nil || isNil(o.Password) {
 		var ret string
 		return ret
 	}
@@ -84,7 +81,7 @@ func (o *Credentials) GetPassword() string {
 // GetPasswordOk returns a tuple with the Password field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Credentials) GetPasswordOk() (*string, bool) {
-	if o == nil || IsNil(o.Password) {
+	if o == nil || isNil(o.Password) {
 		return nil, false
 	}
 	return o.Password, true
@@ -92,7 +89,7 @@ func (o *Credentials) GetPasswordOk() (*string, bool) {
 
 // HasPassword returns a boolean if a field has been set.
 func (o *Credentials) HasPassword() bool {
-	if o != nil && !IsNil(o.Password) {
+	if o != nil && !isNil(o.Password) {
 		return true
 	}
 
@@ -105,22 +102,14 @@ func (o *Credentials) SetPassword(v string) {
 }
 
 func (o Credentials) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o Credentials) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Id) {
+	if !isNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
-	if !IsNil(o.Password) {
+	if !isNil(o.Password) {
 		toSerialize["password"] = o.Password
 	}
-	return toSerialize, nil
+	return json.Marshal(toSerialize)
 }
 
 type NullableCredentials struct {
@@ -158,5 +147,3 @@ func (v *NullableCredentials) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

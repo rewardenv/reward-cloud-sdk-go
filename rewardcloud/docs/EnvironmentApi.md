@@ -20,7 +20,7 @@ Method | HTTP request | Description
 
 ## ApiEnvironmentsGetCollection
 
-> []EnvironmentEnvironmentGet ApiEnvironmentsGetCollection(ctx).Page(page).ItemsPerPage(itemsPerPage).ProjectTeamId(projectTeamId).ProjectTeamId2(projectTeamId2).Id(id).Id2(id2).Project(project).Project2(project2).Provider(provider).Provider2(provider2).State(state).State2(state2).Region(region).Region2(region2).EnvironmentAccess(environmentAccess).EnvironmentAccess2(environmentAccess2).OrderUpdatedAt(orderUpdatedAt).Execute()
+> ApiEnvironmentsGetCollection200Response ApiEnvironmentsGetCollection(ctx).Page(page).ItemsPerPage(itemsPerPage).Id(id).Id2(id2).Project(project).Project2(project2).ProjectTeamId(projectTeamId).ProjectTeamId2(projectTeamId2).Provider(provider).Provider2(provider2).State(state).State2(state2).Region(region).Region2(region2).EnvironmentAccess(environmentAccess).EnvironmentAccess2(environmentAccess2).OrderUpdatedAt(orderUpdatedAt).Execute()
 
 Retrieves the collection of Environment resources.
 
@@ -41,12 +41,12 @@ import (
 func main() {
     page := int32(56) // int32 | The collection page number (optional) (default to 1)
     itemsPerPage := int32(56) // int32 | The number of items per page (optional) (default to 30)
-    projectTeamId := int32(56) // int32 |  (optional)
-    projectTeamId2 := []int32{int32(123)} // []int32 |  (optional)
     id := int32(56) // int32 |  (optional)
     id2 := []int32{int32(123)} // []int32 |  (optional)
     project := "project_example" // string |  (optional)
     project2 := []string{"Inner_example"} // []string |  (optional)
+    projectTeamId := int32(56) // int32 |  (optional)
+    projectTeamId2 := []int32{int32(123)} // []int32 |  (optional)
     provider := "provider_example" // string |  (optional)
     provider2 := []string{"Inner_example"} // []string |  (optional)
     state := "state_example" // string |  (optional)
@@ -59,12 +59,12 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.EnvironmentApi.ApiEnvironmentsGetCollection(context.Background()).Page(page).ItemsPerPage(itemsPerPage).ProjectTeamId(projectTeamId).ProjectTeamId2(projectTeamId2).Id(id).Id2(id2).Project(project).Project2(project2).Provider(provider).Provider2(provider2).State(state).State2(state2).Region(region).Region2(region2).EnvironmentAccess(environmentAccess).EnvironmentAccess2(environmentAccess2).OrderUpdatedAt(orderUpdatedAt).Execute()
+    resp, r, err := apiClient.EnvironmentApi.ApiEnvironmentsGetCollection(context.Background()).Page(page).ItemsPerPage(itemsPerPage).Id(id).Id2(id2).Project(project).Project2(project2).ProjectTeamId(projectTeamId).ProjectTeamId2(projectTeamId2).Provider(provider).Provider2(provider2).State(state).State2(state2).Region(region).Region2(region2).EnvironmentAccess(environmentAccess).EnvironmentAccess2(environmentAccess2).OrderUpdatedAt(orderUpdatedAt).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `EnvironmentApi.ApiEnvironmentsGetCollection``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiEnvironmentsGetCollection`: []EnvironmentEnvironmentGet
+    // response from `ApiEnvironmentsGetCollection`: ApiEnvironmentsGetCollection200Response
     fmt.Fprintf(os.Stdout, "Response from `EnvironmentApi.ApiEnvironmentsGetCollection`: %v\n", resp)
 }
 ```
@@ -82,12 +82,12 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **page** | **int32** | The collection page number | [default to 1]
  **itemsPerPage** | **int32** | The number of items per page | [default to 30]
- **projectTeamId** | **int32** |  | 
- **projectTeamId2** | **[]int32** |  | 
  **id** | **int32** |  | 
  **id2** | **[]int32** |  | 
  **project** | **string** |  | 
  **project2** | **[]string** |  | 
+ **projectTeamId** | **int32** |  | 
+ **projectTeamId2** | **[]int32** |  | 
  **provider** | **string** |  | 
  **provider2** | **[]string** |  | 
  **state** | **string** |  | 
@@ -100,7 +100,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]EnvironmentEnvironmentGet**](EnvironmentEnvironmentGet.md)
+[**ApiEnvironmentsGetCollection200Response**](ApiEnvironmentsGetCollection200Response.md)
 
 ### Authorization
 
@@ -109,7 +109,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json, application/hal+json, text/html
+- **Accept**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -186,7 +186,7 @@ Name | Type | Description  | Notes
 
 ## ApiEnvironmentsIdGet
 
-> EnvironmentEnvironmentGet ApiEnvironmentsIdGet(ctx, id).Execute()
+> EnvironmentJsonhalEnvironmentGet ApiEnvironmentsIdGet(ctx, id).Execute()
 
 Retrieves a Environment resource.
 
@@ -214,7 +214,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `EnvironmentApi.ApiEnvironmentsIdGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiEnvironmentsIdGet`: EnvironmentEnvironmentGet
+    // response from `ApiEnvironmentsIdGet`: EnvironmentJsonhalEnvironmentGet
     fmt.Fprintf(os.Stdout, "Response from `EnvironmentApi.ApiEnvironmentsIdGet`: %v\n", resp)
 }
 ```
@@ -238,7 +238,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**EnvironmentEnvironmentGet**](EnvironmentEnvironmentGet.md)
+[**EnvironmentJsonhalEnvironmentGet**](EnvironmentJsonhalEnvironmentGet.md)
 
 ### Authorization
 
@@ -247,7 +247,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json, application/hal+json, text/html
+- **Accept**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -256,7 +256,7 @@ Name | Type | Description  | Notes
 
 ## ApiEnvironmentsIdPatch
 
-> EnvironmentEnvironmentGet ApiEnvironmentsIdPatch(ctx, id).EnvironmentEnvironmentPost(environmentEnvironmentPost).Execute()
+> EnvironmentJsonhalEnvironmentGet ApiEnvironmentsIdPatch(ctx, id).EnvironmentEnvironmentPost(environmentEnvironmentPost).Execute()
 
 Updates the Environment resource.
 
@@ -285,7 +285,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `EnvironmentApi.ApiEnvironmentsIdPatch``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiEnvironmentsIdPatch`: EnvironmentEnvironmentGet
+    // response from `ApiEnvironmentsIdPatch`: EnvironmentJsonhalEnvironmentGet
     fmt.Fprintf(os.Stdout, "Response from `EnvironmentApi.ApiEnvironmentsIdPatch`: %v\n", resp)
 }
 ```
@@ -310,7 +310,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**EnvironmentEnvironmentGet**](EnvironmentEnvironmentGet.md)
+[**EnvironmentJsonhalEnvironmentGet**](EnvironmentJsonhalEnvironmentGet.md)
 
 ### Authorization
 
@@ -318,8 +318,8 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: application/json, application/hal+json, text/html
-- **Accept**: application/json, application/hal+json, text/html
+- **Content-Type**: application/vnd.api+json
+- **Accept**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -328,7 +328,7 @@ Name | Type | Description  | Notes
 
 ## ApiEnvironmentsIdPut
 
-> EnvironmentEnvironmentGet ApiEnvironmentsIdPut(ctx, id).EnvironmentEnvironmentPost(environmentEnvironmentPost).Execute()
+> EnvironmentJsonhalEnvironmentGet ApiEnvironmentsIdPut(ctx, id).EnvironmentJsonhalEnvironmentPost(environmentJsonhalEnvironmentPost).Execute()
 
 Replaces the Environment resource.
 
@@ -348,16 +348,16 @@ import (
 
 func main() {
     id := "id_example" // string | Environment identifier
-    environmentEnvironmentPost := *openapiclient.NewEnvironmentEnvironmentPost() // EnvironmentEnvironmentPost | The updated Environment resource
+    environmentJsonhalEnvironmentPost := *openapiclient.NewEnvironmentJsonhalEnvironmentPost() // EnvironmentJsonhalEnvironmentPost | The updated Environment resource
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.EnvironmentApi.ApiEnvironmentsIdPut(context.Background(), id).EnvironmentEnvironmentPost(environmentEnvironmentPost).Execute()
+    resp, r, err := apiClient.EnvironmentApi.ApiEnvironmentsIdPut(context.Background(), id).EnvironmentJsonhalEnvironmentPost(environmentJsonhalEnvironmentPost).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `EnvironmentApi.ApiEnvironmentsIdPut``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiEnvironmentsIdPut`: EnvironmentEnvironmentGet
+    // response from `ApiEnvironmentsIdPut`: EnvironmentJsonhalEnvironmentGet
     fmt.Fprintf(os.Stdout, "Response from `EnvironmentApi.ApiEnvironmentsIdPut`: %v\n", resp)
 }
 ```
@@ -378,11 +378,11 @@ Other parameters are passed through a pointer to a apiApiEnvironmentsIdPutReques
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **environmentEnvironmentPost** | [**EnvironmentEnvironmentPost**](EnvironmentEnvironmentPost.md) | The updated Environment resource | 
+ **environmentJsonhalEnvironmentPost** | [**EnvironmentJsonhalEnvironmentPost**](EnvironmentJsonhalEnvironmentPost.md) | The updated Environment resource | 
 
 ### Return type
 
-[**EnvironmentEnvironmentGet**](EnvironmentEnvironmentGet.md)
+[**EnvironmentJsonhalEnvironmentGet**](EnvironmentJsonhalEnvironmentGet.md)
 
 ### Authorization
 
@@ -390,8 +390,8 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: application/json, application/hal+json, text/html
-- **Accept**: application/json, application/hal+json, text/html
+- **Content-Type**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
+- **Accept**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -400,7 +400,7 @@ Name | Type | Description  | Notes
 
 ## ApiEnvironmentsIdcostsGet
 
-> EnvironmentEnvironmentGet ApiEnvironmentsIdcostsGet(ctx, id).Execute()
+> EnvironmentJsonhalEnvironmentGet ApiEnvironmentsIdcostsGet(ctx, id).Execute()
 
 Retrieves a Environment resource.
 
@@ -428,7 +428,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `EnvironmentApi.ApiEnvironmentsIdcostsGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiEnvironmentsIdcostsGet`: EnvironmentEnvironmentGet
+    // response from `ApiEnvironmentsIdcostsGet`: EnvironmentJsonhalEnvironmentGet
     fmt.Fprintf(os.Stdout, "Response from `EnvironmentApi.ApiEnvironmentsIdcostsGet`: %v\n", resp)
 }
 ```
@@ -452,7 +452,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**EnvironmentEnvironmentGet**](EnvironmentEnvironmentGet.md)
+[**EnvironmentJsonhalEnvironmentGet**](EnvironmentJsonhalEnvironmentGet.md)
 
 ### Authorization
 
@@ -461,7 +461,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json, application/hal+json, text/html
+- **Accept**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -470,7 +470,7 @@ Name | Type | Description  | Notes
 
 ## ApiEnvironmentsIdexportDatabasePut
 
-> EnvironmentEnvironmentGet ApiEnvironmentsIdexportDatabasePut(ctx, id).EnvironmentEnvironmentPost(environmentEnvironmentPost).Execute()
+> EnvironmentJsonhalEnvironmentGet ApiEnvironmentsIdexportDatabasePut(ctx, id).EnvironmentJsonhalEnvironmentPost(environmentJsonhalEnvironmentPost).Execute()
 
 Replaces the Environment resource.
 
@@ -490,16 +490,16 @@ import (
 
 func main() {
     id := "id_example" // string | Environment identifier
-    environmentEnvironmentPost := *openapiclient.NewEnvironmentEnvironmentPost() // EnvironmentEnvironmentPost | The updated Environment resource
+    environmentJsonhalEnvironmentPost := *openapiclient.NewEnvironmentJsonhalEnvironmentPost() // EnvironmentJsonhalEnvironmentPost | The updated Environment resource
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.EnvironmentApi.ApiEnvironmentsIdexportDatabasePut(context.Background(), id).EnvironmentEnvironmentPost(environmentEnvironmentPost).Execute()
+    resp, r, err := apiClient.EnvironmentApi.ApiEnvironmentsIdexportDatabasePut(context.Background(), id).EnvironmentJsonhalEnvironmentPost(environmentJsonhalEnvironmentPost).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `EnvironmentApi.ApiEnvironmentsIdexportDatabasePut``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiEnvironmentsIdexportDatabasePut`: EnvironmentEnvironmentGet
+    // response from `ApiEnvironmentsIdexportDatabasePut`: EnvironmentJsonhalEnvironmentGet
     fmt.Fprintf(os.Stdout, "Response from `EnvironmentApi.ApiEnvironmentsIdexportDatabasePut`: %v\n", resp)
 }
 ```
@@ -520,11 +520,11 @@ Other parameters are passed through a pointer to a apiApiEnvironmentsIdexportDat
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **environmentEnvironmentPost** | [**EnvironmentEnvironmentPost**](EnvironmentEnvironmentPost.md) | The updated Environment resource | 
+ **environmentJsonhalEnvironmentPost** | [**EnvironmentJsonhalEnvironmentPost**](EnvironmentJsonhalEnvironmentPost.md) | The updated Environment resource | 
 
 ### Return type
 
-[**EnvironmentEnvironmentGet**](EnvironmentEnvironmentGet.md)
+[**EnvironmentJsonhalEnvironmentGet**](EnvironmentJsonhalEnvironmentGet.md)
 
 ### Authorization
 
@@ -532,8 +532,8 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: application/json, application/hal+json, text/html
-- **Accept**: application/json, application/hal+json, text/html
+- **Content-Type**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
+- **Accept**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -542,7 +542,7 @@ Name | Type | Description  | Notes
 
 ## ApiEnvironmentsIdexportMediaPut
 
-> EnvironmentEnvironmentGet ApiEnvironmentsIdexportMediaPut(ctx, id).EnvironmentEnvironmentPost(environmentEnvironmentPost).Execute()
+> EnvironmentJsonhalEnvironmentGet ApiEnvironmentsIdexportMediaPut(ctx, id).EnvironmentJsonhalEnvironmentPost(environmentJsonhalEnvironmentPost).Execute()
 
 Replaces the Environment resource.
 
@@ -562,16 +562,16 @@ import (
 
 func main() {
     id := "id_example" // string | Environment identifier
-    environmentEnvironmentPost := *openapiclient.NewEnvironmentEnvironmentPost() // EnvironmentEnvironmentPost | The updated Environment resource
+    environmentJsonhalEnvironmentPost := *openapiclient.NewEnvironmentJsonhalEnvironmentPost() // EnvironmentJsonhalEnvironmentPost | The updated Environment resource
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.EnvironmentApi.ApiEnvironmentsIdexportMediaPut(context.Background(), id).EnvironmentEnvironmentPost(environmentEnvironmentPost).Execute()
+    resp, r, err := apiClient.EnvironmentApi.ApiEnvironmentsIdexportMediaPut(context.Background(), id).EnvironmentJsonhalEnvironmentPost(environmentJsonhalEnvironmentPost).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `EnvironmentApi.ApiEnvironmentsIdexportMediaPut``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiEnvironmentsIdexportMediaPut`: EnvironmentEnvironmentGet
+    // response from `ApiEnvironmentsIdexportMediaPut`: EnvironmentJsonhalEnvironmentGet
     fmt.Fprintf(os.Stdout, "Response from `EnvironmentApi.ApiEnvironmentsIdexportMediaPut`: %v\n", resp)
 }
 ```
@@ -592,11 +592,11 @@ Other parameters are passed through a pointer to a apiApiEnvironmentsIdexportMed
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **environmentEnvironmentPost** | [**EnvironmentEnvironmentPost**](EnvironmentEnvironmentPost.md) | The updated Environment resource | 
+ **environmentJsonhalEnvironmentPost** | [**EnvironmentJsonhalEnvironmentPost**](EnvironmentJsonhalEnvironmentPost.md) | The updated Environment resource | 
 
 ### Return type
 
-[**EnvironmentEnvironmentGet**](EnvironmentEnvironmentGet.md)
+[**EnvironmentJsonhalEnvironmentGet**](EnvironmentJsonhalEnvironmentGet.md)
 
 ### Authorization
 
@@ -604,8 +604,8 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: application/json, application/hal+json, text/html
-- **Accept**: application/json, application/hal+json, text/html
+- **Content-Type**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
+- **Accept**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -614,7 +614,7 @@ Name | Type | Description  | Notes
 
 ## ApiEnvironmentsIdimportDatabasePost
 
-> EnvironmentEnvironmentGet ApiEnvironmentsIdimportDatabasePost(ctx, id).Name(name).Cpu(cpu).Memory(memory).Storage(storage).DataTransferSettings(dataTransferSettings).IsStripDatabase(isStripDatabase).IsAllowOutgoingEmails(isAllowOutgoingEmails).IsInitSampleData(isInitSampleData).Project(project).Provider(provider).EnvVar(envVar).State(state).EnvironmentComponent(environmentComponent).Region(region).ExportedData(exportedData).ImportedData(importedData).Execute()
+> EnvironmentJsonhalEnvironmentGet ApiEnvironmentsIdimportDatabasePost(ctx, id).TemplateIri(templateIri).Project(project).Provider(provider).State(state).Region(region).ExportedData(exportedData).ImportedData(importedData).Name(name).Cpu(cpu).Memory(memory).Storage(storage).DataTransferSettings(dataTransferSettings).IsStripDatabase(isStripDatabase).IsAllowOutgoingEmails(isAllowOutgoingEmails).IsInitSampleData(isInitSampleData).EnvVar(envVar).EnvironmentComponent(environmentComponent).Execute()
 
 Creates a Environment resource.
 
@@ -634,6 +634,13 @@ import (
 
 func main() {
     id := "id_example" // string | Environment identifier
+    templateIri := "templateIri_example" // string |  (optional)
+    project := "project_example" // string |  (optional)
+    provider := "provider_example" // string |  (optional)
+    state := "state_example" // string |  (optional)
+    region := "region_example" // string |  (optional)
+    exportedData := []string{"Inner_example"} // []string |  (optional)
+    importedData := []string{"Inner_example"} // []string |  (optional)
     name := "name_example" // string |  (optional)
     cpu := int32(56) // int32 |  (optional)
     memory := int32(56) // int32 |  (optional)
@@ -642,23 +649,17 @@ func main() {
     isStripDatabase := true // bool |  (optional)
     isAllowOutgoingEmails := true // bool |  (optional)
     isInitSampleData := true // bool |  (optional)
-    project := "project_example" // string |  (optional)
-    provider := "provider_example" // string |  (optional)
     envVar := []openapiclient.EnvironmentEnvVarEnvironmentPost{*openapiclient.NewEnvironmentEnvVarEnvironmentPost()} // []EnvironmentEnvVarEnvironmentPost |  (optional)
-    state := "state_example" // string |  (optional)
     environmentComponent := []openapiclient.EnvironmentComponentEnvironmentPost{*openapiclient.NewEnvironmentComponentEnvironmentPost()} // []EnvironmentComponentEnvironmentPost |  (optional)
-    region := "region_example" // string |  (optional)
-    exportedData := []string{"Inner_example"} // []string |  (optional)
-    importedData := []string{"Inner_example"} // []string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.EnvironmentApi.ApiEnvironmentsIdimportDatabasePost(context.Background(), id).Name(name).Cpu(cpu).Memory(memory).Storage(storage).DataTransferSettings(dataTransferSettings).IsStripDatabase(isStripDatabase).IsAllowOutgoingEmails(isAllowOutgoingEmails).IsInitSampleData(isInitSampleData).Project(project).Provider(provider).EnvVar(envVar).State(state).EnvironmentComponent(environmentComponent).Region(region).ExportedData(exportedData).ImportedData(importedData).Execute()
+    resp, r, err := apiClient.EnvironmentApi.ApiEnvironmentsIdimportDatabasePost(context.Background(), id).TemplateIri(templateIri).Project(project).Provider(provider).State(state).Region(region).ExportedData(exportedData).ImportedData(importedData).Name(name).Cpu(cpu).Memory(memory).Storage(storage).DataTransferSettings(dataTransferSettings).IsStripDatabase(isStripDatabase).IsAllowOutgoingEmails(isAllowOutgoingEmails).IsInitSampleData(isInitSampleData).EnvVar(envVar).EnvironmentComponent(environmentComponent).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `EnvironmentApi.ApiEnvironmentsIdimportDatabasePost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiEnvironmentsIdimportDatabasePost`: EnvironmentEnvironmentGet
+    // response from `ApiEnvironmentsIdimportDatabasePost`: EnvironmentJsonhalEnvironmentGet
     fmt.Fprintf(os.Stdout, "Response from `EnvironmentApi.ApiEnvironmentsIdimportDatabasePost`: %v\n", resp)
 }
 ```
@@ -679,6 +680,13 @@ Other parameters are passed through a pointer to a apiApiEnvironmentsIdimportDat
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
+ **templateIri** | **string** |  | 
+ **project** | **string** |  | 
+ **provider** | **string** |  | 
+ **state** | **string** |  | 
+ **region** | **string** |  | 
+ **exportedData** | **[]string** |  | 
+ **importedData** | **[]string** |  | 
  **name** | **string** |  | 
  **cpu** | **int32** |  | 
  **memory** | **int32** |  | 
@@ -687,18 +695,12 @@ Name | Type | Description  | Notes
  **isStripDatabase** | **bool** |  | 
  **isAllowOutgoingEmails** | **bool** |  | 
  **isInitSampleData** | **bool** |  | 
- **project** | **string** |  | 
- **provider** | **string** |  | 
  **envVar** | [**[]EnvironmentEnvVarEnvironmentPost**](EnvironmentEnvVarEnvironmentPost.md) |  | 
- **state** | **string** |  | 
  **environmentComponent** | [**[]EnvironmentComponentEnvironmentPost**](EnvironmentComponentEnvironmentPost.md) |  | 
- **region** | **string** |  | 
- **exportedData** | **[]string** |  | 
- **importedData** | **[]string** |  | 
 
 ### Return type
 
-[**EnvironmentEnvironmentGet**](EnvironmentEnvironmentGet.md)
+[**EnvironmentJsonhalEnvironmentGet**](EnvironmentJsonhalEnvironmentGet.md)
 
 ### Authorization
 
@@ -707,7 +709,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: multipart/form-data
-- **Accept**: application/json, application/hal+json, text/html
+- **Accept**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -716,7 +718,7 @@ Name | Type | Description  | Notes
 
 ## ApiEnvironmentsIdimportMediaPost
 
-> EnvironmentEnvironmentGet ApiEnvironmentsIdimportMediaPost(ctx, id).Name(name).Cpu(cpu).Memory(memory).Storage(storage).DataTransferSettings(dataTransferSettings).IsStripDatabase(isStripDatabase).IsAllowOutgoingEmails(isAllowOutgoingEmails).IsInitSampleData(isInitSampleData).Project(project).Provider(provider).EnvVar(envVar).State(state).EnvironmentComponent(environmentComponent).Region(region).ExportedData(exportedData).ImportedData(importedData).Execute()
+> EnvironmentJsonhalEnvironmentGet ApiEnvironmentsIdimportMediaPost(ctx, id).TemplateIri(templateIri).Project(project).Provider(provider).State(state).Region(region).ExportedData(exportedData).ImportedData(importedData).Name(name).Cpu(cpu).Memory(memory).Storage(storage).DataTransferSettings(dataTransferSettings).IsStripDatabase(isStripDatabase).IsAllowOutgoingEmails(isAllowOutgoingEmails).IsInitSampleData(isInitSampleData).EnvVar(envVar).EnvironmentComponent(environmentComponent).Execute()
 
 Creates a Environment resource.
 
@@ -736,6 +738,13 @@ import (
 
 func main() {
     id := "id_example" // string | Environment identifier
+    templateIri := "templateIri_example" // string |  (optional)
+    project := "project_example" // string |  (optional)
+    provider := "provider_example" // string |  (optional)
+    state := "state_example" // string |  (optional)
+    region := "region_example" // string |  (optional)
+    exportedData := []string{"Inner_example"} // []string |  (optional)
+    importedData := []string{"Inner_example"} // []string |  (optional)
     name := "name_example" // string |  (optional)
     cpu := int32(56) // int32 |  (optional)
     memory := int32(56) // int32 |  (optional)
@@ -744,23 +753,17 @@ func main() {
     isStripDatabase := true // bool |  (optional)
     isAllowOutgoingEmails := true // bool |  (optional)
     isInitSampleData := true // bool |  (optional)
-    project := "project_example" // string |  (optional)
-    provider := "provider_example" // string |  (optional)
     envVar := []openapiclient.EnvironmentEnvVarEnvironmentPost{*openapiclient.NewEnvironmentEnvVarEnvironmentPost()} // []EnvironmentEnvVarEnvironmentPost |  (optional)
-    state := "state_example" // string |  (optional)
     environmentComponent := []openapiclient.EnvironmentComponentEnvironmentPost{*openapiclient.NewEnvironmentComponentEnvironmentPost()} // []EnvironmentComponentEnvironmentPost |  (optional)
-    region := "region_example" // string |  (optional)
-    exportedData := []string{"Inner_example"} // []string |  (optional)
-    importedData := []string{"Inner_example"} // []string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.EnvironmentApi.ApiEnvironmentsIdimportMediaPost(context.Background(), id).Name(name).Cpu(cpu).Memory(memory).Storage(storage).DataTransferSettings(dataTransferSettings).IsStripDatabase(isStripDatabase).IsAllowOutgoingEmails(isAllowOutgoingEmails).IsInitSampleData(isInitSampleData).Project(project).Provider(provider).EnvVar(envVar).State(state).EnvironmentComponent(environmentComponent).Region(region).ExportedData(exportedData).ImportedData(importedData).Execute()
+    resp, r, err := apiClient.EnvironmentApi.ApiEnvironmentsIdimportMediaPost(context.Background(), id).TemplateIri(templateIri).Project(project).Provider(provider).State(state).Region(region).ExportedData(exportedData).ImportedData(importedData).Name(name).Cpu(cpu).Memory(memory).Storage(storage).DataTransferSettings(dataTransferSettings).IsStripDatabase(isStripDatabase).IsAllowOutgoingEmails(isAllowOutgoingEmails).IsInitSampleData(isInitSampleData).EnvVar(envVar).EnvironmentComponent(environmentComponent).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `EnvironmentApi.ApiEnvironmentsIdimportMediaPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiEnvironmentsIdimportMediaPost`: EnvironmentEnvironmentGet
+    // response from `ApiEnvironmentsIdimportMediaPost`: EnvironmentJsonhalEnvironmentGet
     fmt.Fprintf(os.Stdout, "Response from `EnvironmentApi.ApiEnvironmentsIdimportMediaPost`: %v\n", resp)
 }
 ```
@@ -781,6 +784,13 @@ Other parameters are passed through a pointer to a apiApiEnvironmentsIdimportMed
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
+ **templateIri** | **string** |  | 
+ **project** | **string** |  | 
+ **provider** | **string** |  | 
+ **state** | **string** |  | 
+ **region** | **string** |  | 
+ **exportedData** | **[]string** |  | 
+ **importedData** | **[]string** |  | 
  **name** | **string** |  | 
  **cpu** | **int32** |  | 
  **memory** | **int32** |  | 
@@ -789,18 +799,12 @@ Name | Type | Description  | Notes
  **isStripDatabase** | **bool** |  | 
  **isAllowOutgoingEmails** | **bool** |  | 
  **isInitSampleData** | **bool** |  | 
- **project** | **string** |  | 
- **provider** | **string** |  | 
  **envVar** | [**[]EnvironmentEnvVarEnvironmentPost**](EnvironmentEnvVarEnvironmentPost.md) |  | 
- **state** | **string** |  | 
  **environmentComponent** | [**[]EnvironmentComponentEnvironmentPost**](EnvironmentComponentEnvironmentPost.md) |  | 
- **region** | **string** |  | 
- **exportedData** | **[]string** |  | 
- **importedData** | **[]string** |  | 
 
 ### Return type
 
-[**EnvironmentEnvironmentGet**](EnvironmentEnvironmentGet.md)
+[**EnvironmentJsonhalEnvironmentGet**](EnvironmentJsonhalEnvironmentGet.md)
 
 ### Authorization
 
@@ -809,7 +813,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: multipart/form-data
-- **Accept**: application/json, application/hal+json, text/html
+- **Accept**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -818,7 +822,7 @@ Name | Type | Description  | Notes
 
 ## ApiEnvironmentsPost
 
-> EnvironmentEnvironmentGet ApiEnvironmentsPost(ctx).EnvironmentEnvironmentPost(environmentEnvironmentPost).Execute()
+> EnvironmentJsonhalEnvironmentGet ApiEnvironmentsPost(ctx).EnvironmentJsonhalEnvironmentPost(environmentJsonhalEnvironmentPost).Execute()
 
 Creates a Environment resource.
 
@@ -837,16 +841,16 @@ import (
 )
 
 func main() {
-    environmentEnvironmentPost := *openapiclient.NewEnvironmentEnvironmentPost() // EnvironmentEnvironmentPost | The new Environment resource
+    environmentJsonhalEnvironmentPost := *openapiclient.NewEnvironmentJsonhalEnvironmentPost() // EnvironmentJsonhalEnvironmentPost | The new Environment resource
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.EnvironmentApi.ApiEnvironmentsPost(context.Background()).EnvironmentEnvironmentPost(environmentEnvironmentPost).Execute()
+    resp, r, err := apiClient.EnvironmentApi.ApiEnvironmentsPost(context.Background()).EnvironmentJsonhalEnvironmentPost(environmentJsonhalEnvironmentPost).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `EnvironmentApi.ApiEnvironmentsPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiEnvironmentsPost`: EnvironmentEnvironmentGet
+    // response from `ApiEnvironmentsPost`: EnvironmentJsonhalEnvironmentGet
     fmt.Fprintf(os.Stdout, "Response from `EnvironmentApi.ApiEnvironmentsPost`: %v\n", resp)
 }
 ```
@@ -862,11 +866,11 @@ Other parameters are passed through a pointer to a apiApiEnvironmentsPostRequest
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **environmentEnvironmentPost** | [**EnvironmentEnvironmentPost**](EnvironmentEnvironmentPost.md) | The new Environment resource | 
+ **environmentJsonhalEnvironmentPost** | [**EnvironmentJsonhalEnvironmentPost**](EnvironmentJsonhalEnvironmentPost.md) | The new Environment resource | 
 
 ### Return type
 
-[**EnvironmentEnvironmentGet**](EnvironmentEnvironmentGet.md)
+[**EnvironmentJsonhalEnvironmentGet**](EnvironmentJsonhalEnvironmentGet.md)
 
 ### Authorization
 
@@ -874,8 +878,8 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: application/json, application/hal+json, text/html
-- **Accept**: application/json, application/hal+json, text/html
+- **Content-Type**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
+- **Accept**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)

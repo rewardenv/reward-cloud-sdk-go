@@ -15,7 +15,7 @@ Method | HTTP request | Description
 
 ## ApiProductsGetCollection
 
-> []ProductProductOutput ApiProductsGetCollection(ctx).Page(page).ItemsPerPage(itemsPerPage).DefaultPrice(defaultPrice).DefaultPrice2(defaultPrice2).Region(region).Region2(region2).Execute()
+> ApiProductsGetCollection200Response ApiProductsGetCollection(ctx).Page(page).ItemsPerPage(itemsPerPage).DefaultPrice(defaultPrice).DefaultPrice2(defaultPrice2).Region(region).Region2(region2).Execute()
 
 Retrieves the collection of Product resources.
 
@@ -48,7 +48,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `ProductApi.ApiProductsGetCollection``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiProductsGetCollection`: []ProductProductOutput
+    // response from `ApiProductsGetCollection`: ApiProductsGetCollection200Response
     fmt.Fprintf(os.Stdout, "Response from `ProductApi.ApiProductsGetCollection`: %v\n", resp)
 }
 ```
@@ -73,7 +73,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]ProductProductOutput**](ProductProductOutput.md)
+[**ApiProductsGetCollection200Response**](ApiProductsGetCollection200Response.md)
 
 ### Authorization
 
@@ -82,7 +82,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json, application/hal+json, text/html
+- **Accept**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -159,7 +159,7 @@ Name | Type | Description  | Notes
 
 ## ApiProductsIdGet
 
-> ProductProductOutput ApiProductsIdGet(ctx, id).Execute()
+> ProductJsonhalProductOutput ApiProductsIdGet(ctx, id).Execute()
 
 Retrieves a Product resource.
 
@@ -187,7 +187,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `ProductApi.ApiProductsIdGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiProductsIdGet`: ProductProductOutput
+    // response from `ApiProductsIdGet`: ProductJsonhalProductOutput
     fmt.Fprintf(os.Stdout, "Response from `ProductApi.ApiProductsIdGet`: %v\n", resp)
 }
 ```
@@ -211,7 +211,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ProductProductOutput**](ProductProductOutput.md)
+[**ProductJsonhalProductOutput**](ProductJsonhalProductOutput.md)
 
 ### Authorization
 
@@ -220,7 +220,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json, application/hal+json, text/html
+- **Accept**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -229,7 +229,7 @@ Name | Type | Description  | Notes
 
 ## ApiProductsIdPatch
 
-> ProductProductOutput ApiProductsIdPatch(ctx, id).ProductProductInput(productProductInput).Execute()
+> ProductJsonhalProductOutput ApiProductsIdPatch(ctx, id).ProductProductInput(productProductInput).Execute()
 
 Updates the Product resource.
 
@@ -258,7 +258,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `ProductApi.ApiProductsIdPatch``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiProductsIdPatch`: ProductProductOutput
+    // response from `ApiProductsIdPatch`: ProductJsonhalProductOutput
     fmt.Fprintf(os.Stdout, "Response from `ProductApi.ApiProductsIdPatch`: %v\n", resp)
 }
 ```
@@ -283,7 +283,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ProductProductOutput**](ProductProductOutput.md)
+[**ProductJsonhalProductOutput**](ProductJsonhalProductOutput.md)
 
 ### Authorization
 
@@ -291,8 +291,8 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: application/json, application/hal+json, text/html
-- **Accept**: application/json, application/hal+json, text/html
+- **Content-Type**: application/vnd.api+json
+- **Accept**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -301,7 +301,7 @@ Name | Type | Description  | Notes
 
 ## ApiProductsIdPut
 
-> ProductProductOutput ApiProductsIdPut(ctx, id).ProductProductInput(productProductInput).Execute()
+> ProductJsonhalProductOutput ApiProductsIdPut(ctx, id).ProductJsonhalProductInput(productJsonhalProductInput).Execute()
 
 Replaces the Product resource.
 
@@ -321,16 +321,16 @@ import (
 
 func main() {
     id := "id_example" // string | Product identifier
-    productProductInput := *openapiclient.NewProductProductInput() // ProductProductInput | The updated Product resource
+    productJsonhalProductInput := *openapiclient.NewProductJsonhalProductInput() // ProductJsonhalProductInput | The updated Product resource
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ProductApi.ApiProductsIdPut(context.Background(), id).ProductProductInput(productProductInput).Execute()
+    resp, r, err := apiClient.ProductApi.ApiProductsIdPut(context.Background(), id).ProductJsonhalProductInput(productJsonhalProductInput).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ProductApi.ApiProductsIdPut``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiProductsIdPut`: ProductProductOutput
+    // response from `ApiProductsIdPut`: ProductJsonhalProductOutput
     fmt.Fprintf(os.Stdout, "Response from `ProductApi.ApiProductsIdPut`: %v\n", resp)
 }
 ```
@@ -351,11 +351,11 @@ Other parameters are passed through a pointer to a apiApiProductsIdPutRequest st
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **productProductInput** | [**ProductProductInput**](ProductProductInput.md) | The updated Product resource | 
+ **productJsonhalProductInput** | [**ProductJsonhalProductInput**](ProductJsonhalProductInput.md) | The updated Product resource | 
 
 ### Return type
 
-[**ProductProductOutput**](ProductProductOutput.md)
+[**ProductJsonhalProductOutput**](ProductJsonhalProductOutput.md)
 
 ### Authorization
 
@@ -363,8 +363,8 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: application/json, application/hal+json, text/html
-- **Accept**: application/json, application/hal+json, text/html
+- **Content-Type**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
+- **Accept**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -373,7 +373,7 @@ Name | Type | Description  | Notes
 
 ## ApiProductsPost
 
-> ProductProductOutput ApiProductsPost(ctx).ProductProductInput(productProductInput).Execute()
+> ProductJsonhalProductOutput ApiProductsPost(ctx).ProductJsonhalProductInput(productJsonhalProductInput).Execute()
 
 Creates a Product resource.
 
@@ -392,16 +392,16 @@ import (
 )
 
 func main() {
-    productProductInput := *openapiclient.NewProductProductInput() // ProductProductInput | The new Product resource
+    productJsonhalProductInput := *openapiclient.NewProductJsonhalProductInput() // ProductJsonhalProductInput | The new Product resource
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ProductApi.ApiProductsPost(context.Background()).ProductProductInput(productProductInput).Execute()
+    resp, r, err := apiClient.ProductApi.ApiProductsPost(context.Background()).ProductJsonhalProductInput(productJsonhalProductInput).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ProductApi.ApiProductsPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiProductsPost`: ProductProductOutput
+    // response from `ApiProductsPost`: ProductJsonhalProductOutput
     fmt.Fprintf(os.Stdout, "Response from `ProductApi.ApiProductsPost`: %v\n", resp)
 }
 ```
@@ -417,11 +417,11 @@ Other parameters are passed through a pointer to a apiApiProductsPostRequest str
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **productProductInput** | [**ProductProductInput**](ProductProductInput.md) | The new Product resource | 
+ **productJsonhalProductInput** | [**ProductJsonhalProductInput**](ProductJsonhalProductInput.md) | The new Product resource | 
 
 ### Return type
 
-[**ProductProductOutput**](ProductProductOutput.md)
+[**ProductJsonhalProductOutput**](ProductJsonhalProductOutput.md)
 
 ### Authorization
 
@@ -429,8 +429,8 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: application/json, application/hal+json, text/html
-- **Accept**: application/json, application/hal+json, text/html
+- **Content-Type**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
+- **Accept**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)

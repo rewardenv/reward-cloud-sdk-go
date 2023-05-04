@@ -16,20 +16,19 @@ import (
 	"io/ioutil"
 	"net/http"
 	"net/url"
-	"strings"
 	"reflect"
+	"strings"
 )
-
 
 // ProjectTypeVersionEnvVarExampleApiService ProjectTypeVersionEnvVarExampleApi service
 type ProjectTypeVersionEnvVarExampleApiService service
 
 type ApiApiProjectTypeVersionEnvVarExamplesGetCollectionRequest struct {
-	ctx context.Context
-	ApiService *ProjectTypeVersionEnvVarExampleApiService
-	page *int32
-	itemsPerPage *int32
-	projectTypeVersionEnvVar *string
+	ctx                       context.Context
+	ApiService                *ProjectTypeVersionEnvVarExampleApiService
+	page                      *int32
+	itemsPerPage              *int32
+	projectTypeVersionEnvVar  *string
 	projectTypeVersionEnvVar2 *[]string
 }
 
@@ -45,19 +44,17 @@ func (r ApiApiProjectTypeVersionEnvVarExamplesGetCollectionRequest) ItemsPerPage
 	return r
 }
 
-// 
 func (r ApiApiProjectTypeVersionEnvVarExamplesGetCollectionRequest) ProjectTypeVersionEnvVar(projectTypeVersionEnvVar string) ApiApiProjectTypeVersionEnvVarExamplesGetCollectionRequest {
 	r.projectTypeVersionEnvVar = &projectTypeVersionEnvVar
 	return r
 }
 
-// 
 func (r ApiApiProjectTypeVersionEnvVarExamplesGetCollectionRequest) ProjectTypeVersionEnvVar2(projectTypeVersionEnvVar2 []string) ApiApiProjectTypeVersionEnvVarExamplesGetCollectionRequest {
 	r.projectTypeVersionEnvVar2 = &projectTypeVersionEnvVar2
 	return r
 }
 
-func (r ApiApiProjectTypeVersionEnvVarExamplesGetCollectionRequest) Execute() ([]ProjectTypeVersionEnvVarExample, *http.Response, error) {
+func (r ApiApiProjectTypeVersionEnvVarExamplesGetCollectionRequest) Execute() (*ApiProjectTypeVersionEnvVarExamplesGetCollection200Response, *http.Response, error) {
 	return r.ApiService.ApiProjectTypeVersionEnvVarExamplesGetCollectionExecute(r)
 }
 
@@ -66,24 +63,25 @@ ApiProjectTypeVersionEnvVarExamplesGetCollection Retrieves the collection of Pro
 
 Retrieves the collection of ProjectTypeVersionEnvVarExample resources.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiApiProjectTypeVersionEnvVarExamplesGetCollectionRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiApiProjectTypeVersionEnvVarExamplesGetCollectionRequest
 */
 func (a *ProjectTypeVersionEnvVarExampleApiService) ApiProjectTypeVersionEnvVarExamplesGetCollection(ctx context.Context) ApiApiProjectTypeVersionEnvVarExamplesGetCollectionRequest {
 	return ApiApiProjectTypeVersionEnvVarExamplesGetCollectionRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return []ProjectTypeVersionEnvVarExample
-func (a *ProjectTypeVersionEnvVarExampleApiService) ApiProjectTypeVersionEnvVarExamplesGetCollectionExecute(r ApiApiProjectTypeVersionEnvVarExamplesGetCollectionRequest) ([]ProjectTypeVersionEnvVarExample, *http.Response, error) {
+//
+//	@return ApiProjectTypeVersionEnvVarExamplesGetCollection200Response
+func (a *ProjectTypeVersionEnvVarExampleApiService) ApiProjectTypeVersionEnvVarExamplesGetCollectionExecute(r ApiApiProjectTypeVersionEnvVarExamplesGetCollectionRequest) (*ApiProjectTypeVersionEnvVarExamplesGetCollection200Response, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  []ProjectTypeVersionEnvVarExample
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *ApiProjectTypeVersionEnvVarExamplesGetCollection200Response
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectTypeVersionEnvVarExampleApiService.ApiProjectTypeVersionEnvVarExamplesGetCollection")
@@ -127,7 +125,7 @@ func (a *ProjectTypeVersionEnvVarExampleApiService) ApiProjectTypeVersionEnvVarE
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json", "application/hal+json", "text/html"}
+	localVarHTTPHeaderAccepts := []string{"application/hal+json", "application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -186,9 +184,9 @@ func (a *ProjectTypeVersionEnvVarExampleApiService) ApiProjectTypeVersionEnvVarE
 }
 
 type ApiApiProjectTypeVersionEnvVarExamplesIdDeleteRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *ProjectTypeVersionEnvVarExampleApiService
-	id string
+	id         string
 }
 
 func (r ApiApiProjectTypeVersionEnvVarExamplesIdDeleteRequest) Execute() (*http.Response, error) {
@@ -200,24 +198,24 @@ ApiProjectTypeVersionEnvVarExamplesIdDelete Removes the ProjectTypeVersionEnvVar
 
 Removes the ProjectTypeVersionEnvVarExample resource.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id ProjectTypeVersionEnvVarExample identifier
- @return ApiApiProjectTypeVersionEnvVarExamplesIdDeleteRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id ProjectTypeVersionEnvVarExample identifier
+	@return ApiApiProjectTypeVersionEnvVarExamplesIdDeleteRequest
 */
 func (a *ProjectTypeVersionEnvVarExampleApiService) ApiProjectTypeVersionEnvVarExamplesIdDelete(ctx context.Context, id string) ApiApiProjectTypeVersionEnvVarExamplesIdDeleteRequest {
 	return ApiApiProjectTypeVersionEnvVarExamplesIdDeleteRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
 // Execute executes the request
 func (a *ProjectTypeVersionEnvVarExampleApiService) ApiProjectTypeVersionEnvVarExamplesIdDeleteExecute(r ApiApiProjectTypeVersionEnvVarExamplesIdDeleteRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodDelete
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectTypeVersionEnvVarExampleApiService.ApiProjectTypeVersionEnvVarExamplesIdDelete")
@@ -292,12 +290,12 @@ func (a *ProjectTypeVersionEnvVarExampleApiService) ApiProjectTypeVersionEnvVarE
 }
 
 type ApiApiProjectTypeVersionEnvVarExamplesIdGetRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *ProjectTypeVersionEnvVarExampleApiService
-	id string
+	id         string
 }
 
-func (r ApiApiProjectTypeVersionEnvVarExamplesIdGetRequest) Execute() (*ProjectTypeVersionEnvVarExample, *http.Response, error) {
+func (r ApiApiProjectTypeVersionEnvVarExamplesIdGetRequest) Execute() (*ProjectTypeVersionEnvVarExampleJsonhal, *http.Response, error) {
 	return r.ApiService.ApiProjectTypeVersionEnvVarExamplesIdGetExecute(r)
 }
 
@@ -306,26 +304,27 @@ ApiProjectTypeVersionEnvVarExamplesIdGet Retrieves a ProjectTypeVersionEnvVarExa
 
 Retrieves a ProjectTypeVersionEnvVarExample resource.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id ProjectTypeVersionEnvVarExample identifier
- @return ApiApiProjectTypeVersionEnvVarExamplesIdGetRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id ProjectTypeVersionEnvVarExample identifier
+	@return ApiApiProjectTypeVersionEnvVarExamplesIdGetRequest
 */
 func (a *ProjectTypeVersionEnvVarExampleApiService) ApiProjectTypeVersionEnvVarExamplesIdGet(ctx context.Context, id string) ApiApiProjectTypeVersionEnvVarExamplesIdGetRequest {
 	return ApiApiProjectTypeVersionEnvVarExamplesIdGetRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
 // Execute executes the request
-//  @return ProjectTypeVersionEnvVarExample
-func (a *ProjectTypeVersionEnvVarExampleApiService) ApiProjectTypeVersionEnvVarExamplesIdGetExecute(r ApiApiProjectTypeVersionEnvVarExamplesIdGetRequest) (*ProjectTypeVersionEnvVarExample, *http.Response, error) {
+//
+//	@return ProjectTypeVersionEnvVarExampleJsonhal
+func (a *ProjectTypeVersionEnvVarExampleApiService) ApiProjectTypeVersionEnvVarExamplesIdGetExecute(r ApiApiProjectTypeVersionEnvVarExamplesIdGetRequest) (*ProjectTypeVersionEnvVarExampleJsonhal, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *ProjectTypeVersionEnvVarExample
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *ProjectTypeVersionEnvVarExampleJsonhal
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectTypeVersionEnvVarExampleApiService.ApiProjectTypeVersionEnvVarExamplesIdGet")
@@ -350,7 +349,7 @@ func (a *ProjectTypeVersionEnvVarExampleApiService) ApiProjectTypeVersionEnvVarE
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json", "application/hal+json", "text/html"}
+	localVarHTTPHeaderAccepts := []string{"application/hal+json", "application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -409,9 +408,9 @@ func (a *ProjectTypeVersionEnvVarExampleApiService) ApiProjectTypeVersionEnvVarE
 }
 
 type ApiApiProjectTypeVersionEnvVarExamplesIdPatchRequest struct {
-	ctx context.Context
-	ApiService *ProjectTypeVersionEnvVarExampleApiService
-	id string
+	ctx                             context.Context
+	ApiService                      *ProjectTypeVersionEnvVarExampleApiService
+	id                              string
 	projectTypeVersionEnvVarExample *ProjectTypeVersionEnvVarExample
 }
 
@@ -421,7 +420,7 @@ func (r ApiApiProjectTypeVersionEnvVarExamplesIdPatchRequest) ProjectTypeVersion
 	return r
 }
 
-func (r ApiApiProjectTypeVersionEnvVarExamplesIdPatchRequest) Execute() (*ProjectTypeVersionEnvVarExample, *http.Response, error) {
+func (r ApiApiProjectTypeVersionEnvVarExamplesIdPatchRequest) Execute() (*ProjectTypeVersionEnvVarExampleJsonhal, *http.Response, error) {
 	return r.ApiService.ApiProjectTypeVersionEnvVarExamplesIdPatchExecute(r)
 }
 
@@ -430,26 +429,27 @@ ApiProjectTypeVersionEnvVarExamplesIdPatch Updates the ProjectTypeVersionEnvVarE
 
 Updates the ProjectTypeVersionEnvVarExample resource.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id ProjectTypeVersionEnvVarExample identifier
- @return ApiApiProjectTypeVersionEnvVarExamplesIdPatchRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id ProjectTypeVersionEnvVarExample identifier
+	@return ApiApiProjectTypeVersionEnvVarExamplesIdPatchRequest
 */
 func (a *ProjectTypeVersionEnvVarExampleApiService) ApiProjectTypeVersionEnvVarExamplesIdPatch(ctx context.Context, id string) ApiApiProjectTypeVersionEnvVarExamplesIdPatchRequest {
 	return ApiApiProjectTypeVersionEnvVarExamplesIdPatchRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
 // Execute executes the request
-//  @return ProjectTypeVersionEnvVarExample
-func (a *ProjectTypeVersionEnvVarExampleApiService) ApiProjectTypeVersionEnvVarExamplesIdPatchExecute(r ApiApiProjectTypeVersionEnvVarExamplesIdPatchRequest) (*ProjectTypeVersionEnvVarExample, *http.Response, error) {
+//
+//	@return ProjectTypeVersionEnvVarExampleJsonhal
+func (a *ProjectTypeVersionEnvVarExampleApiService) ApiProjectTypeVersionEnvVarExamplesIdPatchExecute(r ApiApiProjectTypeVersionEnvVarExamplesIdPatchRequest) (*ProjectTypeVersionEnvVarExampleJsonhal, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPatch
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *ProjectTypeVersionEnvVarExample
+		localVarHTTPMethod  = http.MethodPatch
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *ProjectTypeVersionEnvVarExampleJsonhal
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectTypeVersionEnvVarExampleApiService.ApiProjectTypeVersionEnvVarExamplesIdPatch")
@@ -468,7 +468,7 @@ func (a *ProjectTypeVersionEnvVarExampleApiService) ApiProjectTypeVersionEnvVarE
 	}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json", "application/hal+json", "text/html"}
+	localVarHTTPContentTypes := []string{"application/vnd.api+json"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -477,7 +477,7 @@ func (a *ProjectTypeVersionEnvVarExampleApiService) ApiProjectTypeVersionEnvVarE
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json", "application/hal+json", "text/html"}
+	localVarHTTPHeaderAccepts := []string{"application/hal+json", "application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -538,19 +538,19 @@ func (a *ProjectTypeVersionEnvVarExampleApiService) ApiProjectTypeVersionEnvVarE
 }
 
 type ApiApiProjectTypeVersionEnvVarExamplesIdPutRequest struct {
-	ctx context.Context
-	ApiService *ProjectTypeVersionEnvVarExampleApiService
-	id string
-	projectTypeVersionEnvVarExample *ProjectTypeVersionEnvVarExample
+	ctx                                    context.Context
+	ApiService                             *ProjectTypeVersionEnvVarExampleApiService
+	id                                     string
+	projectTypeVersionEnvVarExampleJsonhal *ProjectTypeVersionEnvVarExampleJsonhal
 }
 
 // The updated ProjectTypeVersionEnvVarExample resource
-func (r ApiApiProjectTypeVersionEnvVarExamplesIdPutRequest) ProjectTypeVersionEnvVarExample(projectTypeVersionEnvVarExample ProjectTypeVersionEnvVarExample) ApiApiProjectTypeVersionEnvVarExamplesIdPutRequest {
-	r.projectTypeVersionEnvVarExample = &projectTypeVersionEnvVarExample
+func (r ApiApiProjectTypeVersionEnvVarExamplesIdPutRequest) ProjectTypeVersionEnvVarExampleJsonhal(projectTypeVersionEnvVarExampleJsonhal ProjectTypeVersionEnvVarExampleJsonhal) ApiApiProjectTypeVersionEnvVarExamplesIdPutRequest {
+	r.projectTypeVersionEnvVarExampleJsonhal = &projectTypeVersionEnvVarExampleJsonhal
 	return r
 }
 
-func (r ApiApiProjectTypeVersionEnvVarExamplesIdPutRequest) Execute() (*ProjectTypeVersionEnvVarExample, *http.Response, error) {
+func (r ApiApiProjectTypeVersionEnvVarExamplesIdPutRequest) Execute() (*ProjectTypeVersionEnvVarExampleJsonhal, *http.Response, error) {
 	return r.ApiService.ApiProjectTypeVersionEnvVarExamplesIdPutExecute(r)
 }
 
@@ -559,26 +559,27 @@ ApiProjectTypeVersionEnvVarExamplesIdPut Replaces the ProjectTypeVersionEnvVarEx
 
 Replaces the ProjectTypeVersionEnvVarExample resource.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id ProjectTypeVersionEnvVarExample identifier
- @return ApiApiProjectTypeVersionEnvVarExamplesIdPutRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id ProjectTypeVersionEnvVarExample identifier
+	@return ApiApiProjectTypeVersionEnvVarExamplesIdPutRequest
 */
 func (a *ProjectTypeVersionEnvVarExampleApiService) ApiProjectTypeVersionEnvVarExamplesIdPut(ctx context.Context, id string) ApiApiProjectTypeVersionEnvVarExamplesIdPutRequest {
 	return ApiApiProjectTypeVersionEnvVarExamplesIdPutRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
 // Execute executes the request
-//  @return ProjectTypeVersionEnvVarExample
-func (a *ProjectTypeVersionEnvVarExampleApiService) ApiProjectTypeVersionEnvVarExamplesIdPutExecute(r ApiApiProjectTypeVersionEnvVarExamplesIdPutRequest) (*ProjectTypeVersionEnvVarExample, *http.Response, error) {
+//
+//	@return ProjectTypeVersionEnvVarExampleJsonhal
+func (a *ProjectTypeVersionEnvVarExampleApiService) ApiProjectTypeVersionEnvVarExamplesIdPutExecute(r ApiApiProjectTypeVersionEnvVarExamplesIdPutRequest) (*ProjectTypeVersionEnvVarExampleJsonhal, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPut
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *ProjectTypeVersionEnvVarExample
+		localVarHTTPMethod  = http.MethodPut
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *ProjectTypeVersionEnvVarExampleJsonhal
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectTypeVersionEnvVarExampleApiService.ApiProjectTypeVersionEnvVarExamplesIdPut")
@@ -592,12 +593,12 @@ func (a *ProjectTypeVersionEnvVarExampleApiService) ApiProjectTypeVersionEnvVarE
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.projectTypeVersionEnvVarExample == nil {
-		return localVarReturnValue, nil, reportError("projectTypeVersionEnvVarExample is required and must be specified")
+	if r.projectTypeVersionEnvVarExampleJsonhal == nil {
+		return localVarReturnValue, nil, reportError("projectTypeVersionEnvVarExampleJsonhal is required and must be specified")
 	}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json", "application/hal+json", "text/html"}
+	localVarHTTPContentTypes := []string{"application/hal+json", "application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -606,7 +607,7 @@ func (a *ProjectTypeVersionEnvVarExampleApiService) ApiProjectTypeVersionEnvVarE
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json", "application/hal+json", "text/html"}
+	localVarHTTPHeaderAccepts := []string{"application/hal+json", "application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -614,7 +615,7 @@ func (a *ProjectTypeVersionEnvVarExampleApiService) ApiProjectTypeVersionEnvVarE
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.projectTypeVersionEnvVarExample
+	localVarPostBody = r.projectTypeVersionEnvVarExampleJsonhal
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
@@ -667,18 +668,18 @@ func (a *ProjectTypeVersionEnvVarExampleApiService) ApiProjectTypeVersionEnvVarE
 }
 
 type ApiApiProjectTypeVersionEnvVarExamplesPostRequest struct {
-	ctx context.Context
-	ApiService *ProjectTypeVersionEnvVarExampleApiService
-	projectTypeVersionEnvVarExample *ProjectTypeVersionEnvVarExample
+	ctx                                    context.Context
+	ApiService                             *ProjectTypeVersionEnvVarExampleApiService
+	projectTypeVersionEnvVarExampleJsonhal *ProjectTypeVersionEnvVarExampleJsonhal
 }
 
 // The new ProjectTypeVersionEnvVarExample resource
-func (r ApiApiProjectTypeVersionEnvVarExamplesPostRequest) ProjectTypeVersionEnvVarExample(projectTypeVersionEnvVarExample ProjectTypeVersionEnvVarExample) ApiApiProjectTypeVersionEnvVarExamplesPostRequest {
-	r.projectTypeVersionEnvVarExample = &projectTypeVersionEnvVarExample
+func (r ApiApiProjectTypeVersionEnvVarExamplesPostRequest) ProjectTypeVersionEnvVarExampleJsonhal(projectTypeVersionEnvVarExampleJsonhal ProjectTypeVersionEnvVarExampleJsonhal) ApiApiProjectTypeVersionEnvVarExamplesPostRequest {
+	r.projectTypeVersionEnvVarExampleJsonhal = &projectTypeVersionEnvVarExampleJsonhal
 	return r
 }
 
-func (r ApiApiProjectTypeVersionEnvVarExamplesPostRequest) Execute() (*ProjectTypeVersionEnvVarExample, *http.Response, error) {
+func (r ApiApiProjectTypeVersionEnvVarExamplesPostRequest) Execute() (*ProjectTypeVersionEnvVarExampleJsonhal, *http.Response, error) {
 	return r.ApiService.ApiProjectTypeVersionEnvVarExamplesPostExecute(r)
 }
 
@@ -687,24 +688,25 @@ ApiProjectTypeVersionEnvVarExamplesPost Creates a ProjectTypeVersionEnvVarExampl
 
 Creates a ProjectTypeVersionEnvVarExample resource.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiApiProjectTypeVersionEnvVarExamplesPostRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiApiProjectTypeVersionEnvVarExamplesPostRequest
 */
 func (a *ProjectTypeVersionEnvVarExampleApiService) ApiProjectTypeVersionEnvVarExamplesPost(ctx context.Context) ApiApiProjectTypeVersionEnvVarExamplesPostRequest {
 	return ApiApiProjectTypeVersionEnvVarExamplesPostRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return ProjectTypeVersionEnvVarExample
-func (a *ProjectTypeVersionEnvVarExampleApiService) ApiProjectTypeVersionEnvVarExamplesPostExecute(r ApiApiProjectTypeVersionEnvVarExamplesPostRequest) (*ProjectTypeVersionEnvVarExample, *http.Response, error) {
+//
+//	@return ProjectTypeVersionEnvVarExampleJsonhal
+func (a *ProjectTypeVersionEnvVarExampleApiService) ApiProjectTypeVersionEnvVarExamplesPostExecute(r ApiApiProjectTypeVersionEnvVarExamplesPostRequest) (*ProjectTypeVersionEnvVarExampleJsonhal, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *ProjectTypeVersionEnvVarExample
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *ProjectTypeVersionEnvVarExampleJsonhal
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectTypeVersionEnvVarExampleApiService.ApiProjectTypeVersionEnvVarExamplesPost")
@@ -717,12 +719,12 @@ func (a *ProjectTypeVersionEnvVarExampleApiService) ApiProjectTypeVersionEnvVarE
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.projectTypeVersionEnvVarExample == nil {
-		return localVarReturnValue, nil, reportError("projectTypeVersionEnvVarExample is required and must be specified")
+	if r.projectTypeVersionEnvVarExampleJsonhal == nil {
+		return localVarReturnValue, nil, reportError("projectTypeVersionEnvVarExampleJsonhal is required and must be specified")
 	}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json", "application/hal+json", "text/html"}
+	localVarHTTPContentTypes := []string{"application/hal+json", "application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -731,7 +733,7 @@ func (a *ProjectTypeVersionEnvVarExampleApiService) ApiProjectTypeVersionEnvVarE
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json", "application/hal+json", "text/html"}
+	localVarHTTPHeaderAccepts := []string{"application/hal+json", "application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -739,7 +741,7 @@ func (a *ProjectTypeVersionEnvVarExampleApiService) ApiProjectTypeVersionEnvVarE
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.projectTypeVersionEnvVarExample
+	localVarPostBody = r.projectTypeVersionEnvVarExampleJsonhal
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {

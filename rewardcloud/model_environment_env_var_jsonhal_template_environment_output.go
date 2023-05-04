@@ -14,16 +14,13 @@ import (
 	"encoding/json"
 )
 
-// checks if the EnvironmentEnvVarJsonhalTemplateEnvironmentOutput type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &EnvironmentEnvVarJsonhalTemplateEnvironmentOutput{}
-
-// EnvironmentEnvVarJsonhalTemplateEnvironmentOutput 
+// EnvironmentEnvVarJsonhalTemplateEnvironmentOutput
 type EnvironmentEnvVarJsonhalTemplateEnvironmentOutput struct {
-	Links *AbstractEnvironmentJsonhalLinks `json:"_links,omitempty"`
-	Key NullableString `json:"key,omitempty"`
-	Value NullableString `json:"value,omitempty"`
-	IsEncrypted NullableBool `json:"isEncrypted,omitempty"`
-	EnvVarType NullableString `json:"envVarType,omitempty"`
+	Links       *AbstractEnvironmentJsonhalLinks `json:"_links,omitempty"`
+	Key         NullableString                   `json:"key,omitempty"`
+	Value       NullableString                   `json:"value,omitempty"`
+	IsEncrypted NullableBool                     `json:"isEncrypted,omitempty"`
+	EnvVarType  NullableString                   `json:"envVarType,omitempty"`
 }
 
 // NewEnvironmentEnvVarJsonhalTemplateEnvironmentOutput instantiates a new EnvironmentEnvVarJsonhalTemplateEnvironmentOutput object
@@ -45,7 +42,7 @@ func NewEnvironmentEnvVarJsonhalTemplateEnvironmentOutputWithDefaults() *Environ
 
 // GetLinks returns the Links field value if set, zero value otherwise.
 func (o *EnvironmentEnvVarJsonhalTemplateEnvironmentOutput) GetLinks() AbstractEnvironmentJsonhalLinks {
-	if o == nil || IsNil(o.Links) {
+	if o == nil || isNil(o.Links) {
 		var ret AbstractEnvironmentJsonhalLinks
 		return ret
 	}
@@ -55,7 +52,7 @@ func (o *EnvironmentEnvVarJsonhalTemplateEnvironmentOutput) GetLinks() AbstractE
 // GetLinksOk returns a tuple with the Links field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EnvironmentEnvVarJsonhalTemplateEnvironmentOutput) GetLinksOk() (*AbstractEnvironmentJsonhalLinks, bool) {
-	if o == nil || IsNil(o.Links) {
+	if o == nil || isNil(o.Links) {
 		return nil, false
 	}
 	return o.Links, true
@@ -63,7 +60,7 @@ func (o *EnvironmentEnvVarJsonhalTemplateEnvironmentOutput) GetLinksOk() (*Abstr
 
 // HasLinks returns a boolean if a field has been set.
 func (o *EnvironmentEnvVarJsonhalTemplateEnvironmentOutput) HasLinks() bool {
-	if o != nil && !IsNil(o.Links) {
+	if o != nil && !isNil(o.Links) {
 		return true
 	}
 
@@ -77,7 +74,7 @@ func (o *EnvironmentEnvVarJsonhalTemplateEnvironmentOutput) SetLinks(v AbstractE
 
 // GetKey returns the Key field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *EnvironmentEnvVarJsonhalTemplateEnvironmentOutput) GetKey() string {
-	if o == nil || IsNil(o.Key.Get()) {
+	if o == nil || isNil(o.Key.Get()) {
 		var ret string
 		return ret
 	}
@@ -107,6 +104,7 @@ func (o *EnvironmentEnvVarJsonhalTemplateEnvironmentOutput) HasKey() bool {
 func (o *EnvironmentEnvVarJsonhalTemplateEnvironmentOutput) SetKey(v string) {
 	o.Key.Set(&v)
 }
+
 // SetKeyNil sets the value for Key to be an explicit nil
 func (o *EnvironmentEnvVarJsonhalTemplateEnvironmentOutput) SetKeyNil() {
 	o.Key.Set(nil)
@@ -119,7 +117,7 @@ func (o *EnvironmentEnvVarJsonhalTemplateEnvironmentOutput) UnsetKey() {
 
 // GetValue returns the Value field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *EnvironmentEnvVarJsonhalTemplateEnvironmentOutput) GetValue() string {
-	if o == nil || IsNil(o.Value.Get()) {
+	if o == nil || isNil(o.Value.Get()) {
 		var ret string
 		return ret
 	}
@@ -149,6 +147,7 @@ func (o *EnvironmentEnvVarJsonhalTemplateEnvironmentOutput) HasValue() bool {
 func (o *EnvironmentEnvVarJsonhalTemplateEnvironmentOutput) SetValue(v string) {
 	o.Value.Set(&v)
 }
+
 // SetValueNil sets the value for Value to be an explicit nil
 func (o *EnvironmentEnvVarJsonhalTemplateEnvironmentOutput) SetValueNil() {
 	o.Value.Set(nil)
@@ -161,7 +160,7 @@ func (o *EnvironmentEnvVarJsonhalTemplateEnvironmentOutput) UnsetValue() {
 
 // GetIsEncrypted returns the IsEncrypted field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *EnvironmentEnvVarJsonhalTemplateEnvironmentOutput) GetIsEncrypted() bool {
-	if o == nil || IsNil(o.IsEncrypted.Get()) {
+	if o == nil || isNil(o.IsEncrypted.Get()) {
 		var ret bool
 		return ret
 	}
@@ -191,6 +190,7 @@ func (o *EnvironmentEnvVarJsonhalTemplateEnvironmentOutput) HasIsEncrypted() boo
 func (o *EnvironmentEnvVarJsonhalTemplateEnvironmentOutput) SetIsEncrypted(v bool) {
 	o.IsEncrypted.Set(&v)
 }
+
 // SetIsEncryptedNil sets the value for IsEncrypted to be an explicit nil
 func (o *EnvironmentEnvVarJsonhalTemplateEnvironmentOutput) SetIsEncryptedNil() {
 	o.IsEncrypted.Set(nil)
@@ -203,7 +203,7 @@ func (o *EnvironmentEnvVarJsonhalTemplateEnvironmentOutput) UnsetIsEncrypted() {
 
 // GetEnvVarType returns the EnvVarType field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *EnvironmentEnvVarJsonhalTemplateEnvironmentOutput) GetEnvVarType() string {
-	if o == nil || IsNil(o.EnvVarType.Get()) {
+	if o == nil || isNil(o.EnvVarType.Get()) {
 		var ret string
 		return ret
 	}
@@ -233,6 +233,7 @@ func (o *EnvironmentEnvVarJsonhalTemplateEnvironmentOutput) HasEnvVarType() bool
 func (o *EnvironmentEnvVarJsonhalTemplateEnvironmentOutput) SetEnvVarType(v string) {
 	o.EnvVarType.Set(&v)
 }
+
 // SetEnvVarTypeNil sets the value for EnvVarType to be an explicit nil
 func (o *EnvironmentEnvVarJsonhalTemplateEnvironmentOutput) SetEnvVarTypeNil() {
 	o.EnvVarType.Set(nil)
@@ -244,16 +245,8 @@ func (o *EnvironmentEnvVarJsonhalTemplateEnvironmentOutput) UnsetEnvVarType() {
 }
 
 func (o EnvironmentEnvVarJsonhalTemplateEnvironmentOutput) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o EnvironmentEnvVarJsonhalTemplateEnvironmentOutput) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Links) {
+	if !isNil(o.Links) {
 		toSerialize["_links"] = o.Links
 	}
 	if o.Key.IsSet() {
@@ -268,7 +261,7 @@ func (o EnvironmentEnvVarJsonhalTemplateEnvironmentOutput) ToMap() (map[string]i
 	if o.EnvVarType.IsSet() {
 		toSerialize["envVarType"] = o.EnvVarType.Get()
 	}
-	return toSerialize, nil
+	return json.Marshal(toSerialize)
 }
 
 type NullableEnvironmentEnvVarJsonhalTemplateEnvironmentOutput struct {
@@ -306,5 +299,3 @@ func (v *NullableEnvironmentEnvVarJsonhalTemplateEnvironmentOutput) UnmarshalJSO
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

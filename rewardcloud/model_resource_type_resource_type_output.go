@@ -14,12 +14,9 @@ import (
 	"encoding/json"
 )
 
-// checks if the ResourceTypeResourceTypeOutput type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &ResourceTypeResourceTypeOutput{}
-
 // ResourceTypeResourceTypeOutput Class ResourceType
 type ResourceTypeResourceTypeOutput struct {
-	Name NullableString `json:"name,omitempty"`
+	Name              NullableString                                          `json:"name,omitempty"`
 	ResourceTypeLimit NullableResourceTypeResourceTypeOutputResourceTypeLimit `json:"resourceTypeLimit,omitempty"`
 }
 
@@ -42,7 +39,7 @@ func NewResourceTypeResourceTypeOutputWithDefaults() *ResourceTypeResourceTypeOu
 
 // GetName returns the Name field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ResourceTypeResourceTypeOutput) GetName() string {
-	if o == nil || IsNil(o.Name.Get()) {
+	if o == nil || isNil(o.Name.Get()) {
 		var ret string
 		return ret
 	}
@@ -72,6 +69,7 @@ func (o *ResourceTypeResourceTypeOutput) HasName() bool {
 func (o *ResourceTypeResourceTypeOutput) SetName(v string) {
 	o.Name.Set(&v)
 }
+
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *ResourceTypeResourceTypeOutput) SetNameNil() {
 	o.Name.Set(nil)
@@ -84,7 +82,7 @@ func (o *ResourceTypeResourceTypeOutput) UnsetName() {
 
 // GetResourceTypeLimit returns the ResourceTypeLimit field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ResourceTypeResourceTypeOutput) GetResourceTypeLimit() ResourceTypeResourceTypeOutputResourceTypeLimit {
-	if o == nil || IsNil(o.ResourceTypeLimit.Get()) {
+	if o == nil || isNil(o.ResourceTypeLimit.Get()) {
 		var ret ResourceTypeResourceTypeOutputResourceTypeLimit
 		return ret
 	}
@@ -114,6 +112,7 @@ func (o *ResourceTypeResourceTypeOutput) HasResourceTypeLimit() bool {
 func (o *ResourceTypeResourceTypeOutput) SetResourceTypeLimit(v ResourceTypeResourceTypeOutputResourceTypeLimit) {
 	o.ResourceTypeLimit.Set(&v)
 }
+
 // SetResourceTypeLimitNil sets the value for ResourceTypeLimit to be an explicit nil
 func (o *ResourceTypeResourceTypeOutput) SetResourceTypeLimitNil() {
 	o.ResourceTypeLimit.Set(nil)
@@ -125,14 +124,6 @@ func (o *ResourceTypeResourceTypeOutput) UnsetResourceTypeLimit() {
 }
 
 func (o ResourceTypeResourceTypeOutput) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o ResourceTypeResourceTypeOutput) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Name.IsSet() {
 		toSerialize["name"] = o.Name.Get()
@@ -140,7 +131,7 @@ func (o ResourceTypeResourceTypeOutput) ToMap() (map[string]interface{}, error) 
 	if o.ResourceTypeLimit.IsSet() {
 		toSerialize["resourceTypeLimit"] = o.ResourceTypeLimit.Get()
 	}
-	return toSerialize, nil
+	return json.Marshal(toSerialize)
 }
 
 type NullableResourceTypeResourceTypeOutput struct {
@@ -178,5 +169,3 @@ func (v *NullableResourceTypeResourceTypeOutput) UnmarshalJSON(src []byte) error
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

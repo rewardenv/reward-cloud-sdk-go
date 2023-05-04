@@ -19,14 +19,13 @@ import (
 	"strings"
 )
 
-
 // EnvVarTypeApiService EnvVarTypeApi service
 type EnvVarTypeApiService service
 
 type ApiApiEnvVarTypesGetCollectionRequest struct {
-	ctx context.Context
-	ApiService *EnvVarTypeApiService
-	page *int32
+	ctx          context.Context
+	ApiService   *EnvVarTypeApiService
+	page         *int32
 	itemsPerPage *int32
 }
 
@@ -42,7 +41,7 @@ func (r ApiApiEnvVarTypesGetCollectionRequest) ItemsPerPage(itemsPerPage int32) 
 	return r
 }
 
-func (r ApiApiEnvVarTypesGetCollectionRequest) Execute() ([]EnvVarType, *http.Response, error) {
+func (r ApiApiEnvVarTypesGetCollectionRequest) Execute() (*ApiEnvVarTypesGetCollection200Response, *http.Response, error) {
 	return r.ApiService.ApiEnvVarTypesGetCollectionExecute(r)
 }
 
@@ -51,24 +50,25 @@ ApiEnvVarTypesGetCollection Retrieves the collection of EnvVarType resources.
 
 Retrieves the collection of EnvVarType resources.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiApiEnvVarTypesGetCollectionRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiApiEnvVarTypesGetCollectionRequest
 */
 func (a *EnvVarTypeApiService) ApiEnvVarTypesGetCollection(ctx context.Context) ApiApiEnvVarTypesGetCollectionRequest {
 	return ApiApiEnvVarTypesGetCollectionRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return []EnvVarType
-func (a *EnvVarTypeApiService) ApiEnvVarTypesGetCollectionExecute(r ApiApiEnvVarTypesGetCollectionRequest) ([]EnvVarType, *http.Response, error) {
+//
+//	@return ApiEnvVarTypesGetCollection200Response
+func (a *EnvVarTypeApiService) ApiEnvVarTypesGetCollectionExecute(r ApiApiEnvVarTypesGetCollectionRequest) (*ApiEnvVarTypesGetCollection200Response, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  []EnvVarType
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *ApiEnvVarTypesGetCollection200Response
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnvVarTypeApiService.ApiEnvVarTypesGetCollection")
@@ -98,7 +98,7 @@ func (a *EnvVarTypeApiService) ApiEnvVarTypesGetCollectionExecute(r ApiApiEnvVar
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json", "application/hal+json", "text/html"}
+	localVarHTTPHeaderAccepts := []string{"application/hal+json", "application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -157,9 +157,9 @@ func (a *EnvVarTypeApiService) ApiEnvVarTypesGetCollectionExecute(r ApiApiEnvVar
 }
 
 type ApiApiEnvVarTypesIdDeleteRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *EnvVarTypeApiService
-	id string
+	id         string
 }
 
 func (r ApiApiEnvVarTypesIdDeleteRequest) Execute() (*http.Response, error) {
@@ -171,24 +171,24 @@ ApiEnvVarTypesIdDelete Removes the EnvVarType resource.
 
 Removes the EnvVarType resource.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id EnvVarType identifier
- @return ApiApiEnvVarTypesIdDeleteRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id EnvVarType identifier
+	@return ApiApiEnvVarTypesIdDeleteRequest
 */
 func (a *EnvVarTypeApiService) ApiEnvVarTypesIdDelete(ctx context.Context, id string) ApiApiEnvVarTypesIdDeleteRequest {
 	return ApiApiEnvVarTypesIdDeleteRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
 // Execute executes the request
 func (a *EnvVarTypeApiService) ApiEnvVarTypesIdDeleteExecute(r ApiApiEnvVarTypesIdDeleteRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodDelete
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnvVarTypeApiService.ApiEnvVarTypesIdDelete")
@@ -263,12 +263,12 @@ func (a *EnvVarTypeApiService) ApiEnvVarTypesIdDeleteExecute(r ApiApiEnvVarTypes
 }
 
 type ApiApiEnvVarTypesIdGetRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *EnvVarTypeApiService
-	id string
+	id         string
 }
 
-func (r ApiApiEnvVarTypesIdGetRequest) Execute() (*EnvVarType, *http.Response, error) {
+func (r ApiApiEnvVarTypesIdGetRequest) Execute() (*EnvVarTypeJsonhal, *http.Response, error) {
 	return r.ApiService.ApiEnvVarTypesIdGetExecute(r)
 }
 
@@ -277,26 +277,27 @@ ApiEnvVarTypesIdGet Retrieves a EnvVarType resource.
 
 Retrieves a EnvVarType resource.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id EnvVarType identifier
- @return ApiApiEnvVarTypesIdGetRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id EnvVarType identifier
+	@return ApiApiEnvVarTypesIdGetRequest
 */
 func (a *EnvVarTypeApiService) ApiEnvVarTypesIdGet(ctx context.Context, id string) ApiApiEnvVarTypesIdGetRequest {
 	return ApiApiEnvVarTypesIdGetRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
 // Execute executes the request
-//  @return EnvVarType
-func (a *EnvVarTypeApiService) ApiEnvVarTypesIdGetExecute(r ApiApiEnvVarTypesIdGetRequest) (*EnvVarType, *http.Response, error) {
+//
+//	@return EnvVarTypeJsonhal
+func (a *EnvVarTypeApiService) ApiEnvVarTypesIdGetExecute(r ApiApiEnvVarTypesIdGetRequest) (*EnvVarTypeJsonhal, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *EnvVarType
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *EnvVarTypeJsonhal
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnvVarTypeApiService.ApiEnvVarTypesIdGet")
@@ -321,7 +322,7 @@ func (a *EnvVarTypeApiService) ApiEnvVarTypesIdGetExecute(r ApiApiEnvVarTypesIdG
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json", "application/hal+json", "text/html"}
+	localVarHTTPHeaderAccepts := []string{"application/hal+json", "application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -380,9 +381,9 @@ func (a *EnvVarTypeApiService) ApiEnvVarTypesIdGetExecute(r ApiApiEnvVarTypesIdG
 }
 
 type ApiApiEnvVarTypesIdPatchRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *EnvVarTypeApiService
-	id string
+	id         string
 	envVarType *EnvVarType
 }
 
@@ -392,7 +393,7 @@ func (r ApiApiEnvVarTypesIdPatchRequest) EnvVarType(envVarType EnvVarType) ApiAp
 	return r
 }
 
-func (r ApiApiEnvVarTypesIdPatchRequest) Execute() (*EnvVarType, *http.Response, error) {
+func (r ApiApiEnvVarTypesIdPatchRequest) Execute() (*EnvVarTypeJsonhal, *http.Response, error) {
 	return r.ApiService.ApiEnvVarTypesIdPatchExecute(r)
 }
 
@@ -401,26 +402,27 @@ ApiEnvVarTypesIdPatch Updates the EnvVarType resource.
 
 Updates the EnvVarType resource.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id EnvVarType identifier
- @return ApiApiEnvVarTypesIdPatchRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id EnvVarType identifier
+	@return ApiApiEnvVarTypesIdPatchRequest
 */
 func (a *EnvVarTypeApiService) ApiEnvVarTypesIdPatch(ctx context.Context, id string) ApiApiEnvVarTypesIdPatchRequest {
 	return ApiApiEnvVarTypesIdPatchRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
 // Execute executes the request
-//  @return EnvVarType
-func (a *EnvVarTypeApiService) ApiEnvVarTypesIdPatchExecute(r ApiApiEnvVarTypesIdPatchRequest) (*EnvVarType, *http.Response, error) {
+//
+//	@return EnvVarTypeJsonhal
+func (a *EnvVarTypeApiService) ApiEnvVarTypesIdPatchExecute(r ApiApiEnvVarTypesIdPatchRequest) (*EnvVarTypeJsonhal, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPatch
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *EnvVarType
+		localVarHTTPMethod  = http.MethodPatch
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *EnvVarTypeJsonhal
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnvVarTypeApiService.ApiEnvVarTypesIdPatch")
@@ -439,7 +441,7 @@ func (a *EnvVarTypeApiService) ApiEnvVarTypesIdPatchExecute(r ApiApiEnvVarTypesI
 	}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json", "application/hal+json", "text/html"}
+	localVarHTTPContentTypes := []string{"application/vnd.api+json"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -448,7 +450,7 @@ func (a *EnvVarTypeApiService) ApiEnvVarTypesIdPatchExecute(r ApiApiEnvVarTypesI
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json", "application/hal+json", "text/html"}
+	localVarHTTPHeaderAccepts := []string{"application/hal+json", "application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -509,19 +511,19 @@ func (a *EnvVarTypeApiService) ApiEnvVarTypesIdPatchExecute(r ApiApiEnvVarTypesI
 }
 
 type ApiApiEnvVarTypesIdPutRequest struct {
-	ctx context.Context
-	ApiService *EnvVarTypeApiService
-	id string
-	envVarType *EnvVarType
+	ctx               context.Context
+	ApiService        *EnvVarTypeApiService
+	id                string
+	envVarTypeJsonhal *EnvVarTypeJsonhal
 }
 
 // The updated EnvVarType resource
-func (r ApiApiEnvVarTypesIdPutRequest) EnvVarType(envVarType EnvVarType) ApiApiEnvVarTypesIdPutRequest {
-	r.envVarType = &envVarType
+func (r ApiApiEnvVarTypesIdPutRequest) EnvVarTypeJsonhal(envVarTypeJsonhal EnvVarTypeJsonhal) ApiApiEnvVarTypesIdPutRequest {
+	r.envVarTypeJsonhal = &envVarTypeJsonhal
 	return r
 }
 
-func (r ApiApiEnvVarTypesIdPutRequest) Execute() (*EnvVarType, *http.Response, error) {
+func (r ApiApiEnvVarTypesIdPutRequest) Execute() (*EnvVarTypeJsonhal, *http.Response, error) {
 	return r.ApiService.ApiEnvVarTypesIdPutExecute(r)
 }
 
@@ -530,26 +532,27 @@ ApiEnvVarTypesIdPut Replaces the EnvVarType resource.
 
 Replaces the EnvVarType resource.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id EnvVarType identifier
- @return ApiApiEnvVarTypesIdPutRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id EnvVarType identifier
+	@return ApiApiEnvVarTypesIdPutRequest
 */
 func (a *EnvVarTypeApiService) ApiEnvVarTypesIdPut(ctx context.Context, id string) ApiApiEnvVarTypesIdPutRequest {
 	return ApiApiEnvVarTypesIdPutRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
 // Execute executes the request
-//  @return EnvVarType
-func (a *EnvVarTypeApiService) ApiEnvVarTypesIdPutExecute(r ApiApiEnvVarTypesIdPutRequest) (*EnvVarType, *http.Response, error) {
+//
+//	@return EnvVarTypeJsonhal
+func (a *EnvVarTypeApiService) ApiEnvVarTypesIdPutExecute(r ApiApiEnvVarTypesIdPutRequest) (*EnvVarTypeJsonhal, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPut
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *EnvVarType
+		localVarHTTPMethod  = http.MethodPut
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *EnvVarTypeJsonhal
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnvVarTypeApiService.ApiEnvVarTypesIdPut")
@@ -563,12 +566,12 @@ func (a *EnvVarTypeApiService) ApiEnvVarTypesIdPutExecute(r ApiApiEnvVarTypesIdP
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.envVarType == nil {
-		return localVarReturnValue, nil, reportError("envVarType is required and must be specified")
+	if r.envVarTypeJsonhal == nil {
+		return localVarReturnValue, nil, reportError("envVarTypeJsonhal is required and must be specified")
 	}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json", "application/hal+json", "text/html"}
+	localVarHTTPContentTypes := []string{"application/hal+json", "application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -577,7 +580,7 @@ func (a *EnvVarTypeApiService) ApiEnvVarTypesIdPutExecute(r ApiApiEnvVarTypesIdP
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json", "application/hal+json", "text/html"}
+	localVarHTTPHeaderAccepts := []string{"application/hal+json", "application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -585,7 +588,7 @@ func (a *EnvVarTypeApiService) ApiEnvVarTypesIdPutExecute(r ApiApiEnvVarTypesIdP
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.envVarType
+	localVarPostBody = r.envVarTypeJsonhal
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
@@ -638,18 +641,18 @@ func (a *EnvVarTypeApiService) ApiEnvVarTypesIdPutExecute(r ApiApiEnvVarTypesIdP
 }
 
 type ApiApiEnvVarTypesPostRequest struct {
-	ctx context.Context
-	ApiService *EnvVarTypeApiService
-	envVarType *EnvVarType
+	ctx               context.Context
+	ApiService        *EnvVarTypeApiService
+	envVarTypeJsonhal *EnvVarTypeJsonhal
 }
 
 // The new EnvVarType resource
-func (r ApiApiEnvVarTypesPostRequest) EnvVarType(envVarType EnvVarType) ApiApiEnvVarTypesPostRequest {
-	r.envVarType = &envVarType
+func (r ApiApiEnvVarTypesPostRequest) EnvVarTypeJsonhal(envVarTypeJsonhal EnvVarTypeJsonhal) ApiApiEnvVarTypesPostRequest {
+	r.envVarTypeJsonhal = &envVarTypeJsonhal
 	return r
 }
 
-func (r ApiApiEnvVarTypesPostRequest) Execute() (*EnvVarType, *http.Response, error) {
+func (r ApiApiEnvVarTypesPostRequest) Execute() (*EnvVarTypeJsonhal, *http.Response, error) {
 	return r.ApiService.ApiEnvVarTypesPostExecute(r)
 }
 
@@ -658,24 +661,25 @@ ApiEnvVarTypesPost Creates a EnvVarType resource.
 
 Creates a EnvVarType resource.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiApiEnvVarTypesPostRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiApiEnvVarTypesPostRequest
 */
 func (a *EnvVarTypeApiService) ApiEnvVarTypesPost(ctx context.Context) ApiApiEnvVarTypesPostRequest {
 	return ApiApiEnvVarTypesPostRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return EnvVarType
-func (a *EnvVarTypeApiService) ApiEnvVarTypesPostExecute(r ApiApiEnvVarTypesPostRequest) (*EnvVarType, *http.Response, error) {
+//
+//	@return EnvVarTypeJsonhal
+func (a *EnvVarTypeApiService) ApiEnvVarTypesPostExecute(r ApiApiEnvVarTypesPostRequest) (*EnvVarTypeJsonhal, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *EnvVarType
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *EnvVarTypeJsonhal
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnvVarTypeApiService.ApiEnvVarTypesPost")
@@ -688,12 +692,12 @@ func (a *EnvVarTypeApiService) ApiEnvVarTypesPostExecute(r ApiApiEnvVarTypesPost
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.envVarType == nil {
-		return localVarReturnValue, nil, reportError("envVarType is required and must be specified")
+	if r.envVarTypeJsonhal == nil {
+		return localVarReturnValue, nil, reportError("envVarTypeJsonhal is required and must be specified")
 	}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json", "application/hal+json", "text/html"}
+	localVarHTTPContentTypes := []string{"application/hal+json", "application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -702,7 +706,7 @@ func (a *EnvVarTypeApiService) ApiEnvVarTypesPostExecute(r ApiApiEnvVarTypesPost
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json", "application/hal+json", "text/html"}
+	localVarHTTPHeaderAccepts := []string{"application/hal+json", "application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -710,7 +714,7 @@ func (a *EnvVarTypeApiService) ApiEnvVarTypesPostExecute(r ApiApiEnvVarTypesPost
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.envVarType
+	localVarPostBody = r.envVarTypeJsonhal
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {

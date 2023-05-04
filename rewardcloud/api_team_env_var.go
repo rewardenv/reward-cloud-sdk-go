@@ -16,23 +16,22 @@ import (
 	"io/ioutil"
 	"net/http"
 	"net/url"
-	"strings"
 	"reflect"
+	"strings"
 )
-
 
 // TeamEnvVarApiService TeamEnvVarApi service
 type TeamEnvVarApiService service
 
 type ApiApiTeamEnvVarsGetCollectionRequest struct {
-	ctx context.Context
-	ApiService *TeamEnvVarApiService
-	page *int32
+	ctx          context.Context
+	ApiService   *TeamEnvVarApiService
+	page         *int32
 	itemsPerPage *int32
-	team *string
-	team2 *[]string
-	envVarType *string
-	envVarType2 *[]string
+	team         *string
+	team2        *[]string
+	envVarType   *string
+	envVarType2  *[]string
 }
 
 // The collection page number
@@ -47,31 +46,27 @@ func (r ApiApiTeamEnvVarsGetCollectionRequest) ItemsPerPage(itemsPerPage int32) 
 	return r
 }
 
-// 
 func (r ApiApiTeamEnvVarsGetCollectionRequest) Team(team string) ApiApiTeamEnvVarsGetCollectionRequest {
 	r.team = &team
 	return r
 }
 
-// 
 func (r ApiApiTeamEnvVarsGetCollectionRequest) Team2(team2 []string) ApiApiTeamEnvVarsGetCollectionRequest {
 	r.team2 = &team2
 	return r
 }
 
-// 
 func (r ApiApiTeamEnvVarsGetCollectionRequest) EnvVarType(envVarType string) ApiApiTeamEnvVarsGetCollectionRequest {
 	r.envVarType = &envVarType
 	return r
 }
 
-// 
 func (r ApiApiTeamEnvVarsGetCollectionRequest) EnvVarType2(envVarType2 []string) ApiApiTeamEnvVarsGetCollectionRequest {
 	r.envVarType2 = &envVarType2
 	return r
 }
 
-func (r ApiApiTeamEnvVarsGetCollectionRequest) Execute() ([]TeamEnvVar, *http.Response, error) {
+func (r ApiApiTeamEnvVarsGetCollectionRequest) Execute() (*ApiTeamEnvVarsGetCollection200Response, *http.Response, error) {
 	return r.ApiService.ApiTeamEnvVarsGetCollectionExecute(r)
 }
 
@@ -80,24 +75,25 @@ ApiTeamEnvVarsGetCollection Retrieves the collection of TeamEnvVar resources.
 
 Retrieves the collection of TeamEnvVar resources.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiApiTeamEnvVarsGetCollectionRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiApiTeamEnvVarsGetCollectionRequest
 */
 func (a *TeamEnvVarApiService) ApiTeamEnvVarsGetCollection(ctx context.Context) ApiApiTeamEnvVarsGetCollectionRequest {
 	return ApiApiTeamEnvVarsGetCollectionRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return []TeamEnvVar
-func (a *TeamEnvVarApiService) ApiTeamEnvVarsGetCollectionExecute(r ApiApiTeamEnvVarsGetCollectionRequest) ([]TeamEnvVar, *http.Response, error) {
+//
+//	@return ApiTeamEnvVarsGetCollection200Response
+func (a *TeamEnvVarApiService) ApiTeamEnvVarsGetCollectionExecute(r ApiApiTeamEnvVarsGetCollectionRequest) (*ApiTeamEnvVarsGetCollection200Response, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  []TeamEnvVar
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *ApiTeamEnvVarsGetCollection200Response
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TeamEnvVarApiService.ApiTeamEnvVarsGetCollection")
@@ -155,7 +151,7 @@ func (a *TeamEnvVarApiService) ApiTeamEnvVarsGetCollectionExecute(r ApiApiTeamEn
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json", "application/hal+json", "text/html"}
+	localVarHTTPHeaderAccepts := []string{"application/hal+json", "application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -214,9 +210,9 @@ func (a *TeamEnvVarApiService) ApiTeamEnvVarsGetCollectionExecute(r ApiApiTeamEn
 }
 
 type ApiApiTeamEnvVarsIdDeleteRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *TeamEnvVarApiService
-	id string
+	id         string
 }
 
 func (r ApiApiTeamEnvVarsIdDeleteRequest) Execute() (*http.Response, error) {
@@ -228,24 +224,24 @@ ApiTeamEnvVarsIdDelete Removes the TeamEnvVar resource.
 
 Removes the TeamEnvVar resource.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id TeamEnvVar identifier
- @return ApiApiTeamEnvVarsIdDeleteRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id TeamEnvVar identifier
+	@return ApiApiTeamEnvVarsIdDeleteRequest
 */
 func (a *TeamEnvVarApiService) ApiTeamEnvVarsIdDelete(ctx context.Context, id string) ApiApiTeamEnvVarsIdDeleteRequest {
 	return ApiApiTeamEnvVarsIdDeleteRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
 // Execute executes the request
 func (a *TeamEnvVarApiService) ApiTeamEnvVarsIdDeleteExecute(r ApiApiTeamEnvVarsIdDeleteRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodDelete
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TeamEnvVarApiService.ApiTeamEnvVarsIdDelete")
@@ -320,12 +316,12 @@ func (a *TeamEnvVarApiService) ApiTeamEnvVarsIdDeleteExecute(r ApiApiTeamEnvVars
 }
 
 type ApiApiTeamEnvVarsIdGetRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *TeamEnvVarApiService
-	id string
+	id         string
 }
 
-func (r ApiApiTeamEnvVarsIdGetRequest) Execute() (*TeamEnvVar, *http.Response, error) {
+func (r ApiApiTeamEnvVarsIdGetRequest) Execute() (*TeamEnvVarJsonhal, *http.Response, error) {
 	return r.ApiService.ApiTeamEnvVarsIdGetExecute(r)
 }
 
@@ -334,26 +330,27 @@ ApiTeamEnvVarsIdGet Retrieves a TeamEnvVar resource.
 
 Retrieves a TeamEnvVar resource.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id TeamEnvVar identifier
- @return ApiApiTeamEnvVarsIdGetRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id TeamEnvVar identifier
+	@return ApiApiTeamEnvVarsIdGetRequest
 */
 func (a *TeamEnvVarApiService) ApiTeamEnvVarsIdGet(ctx context.Context, id string) ApiApiTeamEnvVarsIdGetRequest {
 	return ApiApiTeamEnvVarsIdGetRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
 // Execute executes the request
-//  @return TeamEnvVar
-func (a *TeamEnvVarApiService) ApiTeamEnvVarsIdGetExecute(r ApiApiTeamEnvVarsIdGetRequest) (*TeamEnvVar, *http.Response, error) {
+//
+//	@return TeamEnvVarJsonhal
+func (a *TeamEnvVarApiService) ApiTeamEnvVarsIdGetExecute(r ApiApiTeamEnvVarsIdGetRequest) (*TeamEnvVarJsonhal, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *TeamEnvVar
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *TeamEnvVarJsonhal
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TeamEnvVarApiService.ApiTeamEnvVarsIdGet")
@@ -378,7 +375,7 @@ func (a *TeamEnvVarApiService) ApiTeamEnvVarsIdGetExecute(r ApiApiTeamEnvVarsIdG
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json", "application/hal+json", "text/html"}
+	localVarHTTPHeaderAccepts := []string{"application/hal+json", "application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -437,9 +434,9 @@ func (a *TeamEnvVarApiService) ApiTeamEnvVarsIdGetExecute(r ApiApiTeamEnvVarsIdG
 }
 
 type ApiApiTeamEnvVarsIdPatchRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *TeamEnvVarApiService
-	id string
+	id         string
 	teamEnvVar *TeamEnvVar
 }
 
@@ -449,7 +446,7 @@ func (r ApiApiTeamEnvVarsIdPatchRequest) TeamEnvVar(teamEnvVar TeamEnvVar) ApiAp
 	return r
 }
 
-func (r ApiApiTeamEnvVarsIdPatchRequest) Execute() (*TeamEnvVar, *http.Response, error) {
+func (r ApiApiTeamEnvVarsIdPatchRequest) Execute() (*TeamEnvVarJsonhal, *http.Response, error) {
 	return r.ApiService.ApiTeamEnvVarsIdPatchExecute(r)
 }
 
@@ -458,26 +455,27 @@ ApiTeamEnvVarsIdPatch Updates the TeamEnvVar resource.
 
 Updates the TeamEnvVar resource.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id TeamEnvVar identifier
- @return ApiApiTeamEnvVarsIdPatchRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id TeamEnvVar identifier
+	@return ApiApiTeamEnvVarsIdPatchRequest
 */
 func (a *TeamEnvVarApiService) ApiTeamEnvVarsIdPatch(ctx context.Context, id string) ApiApiTeamEnvVarsIdPatchRequest {
 	return ApiApiTeamEnvVarsIdPatchRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
 // Execute executes the request
-//  @return TeamEnvVar
-func (a *TeamEnvVarApiService) ApiTeamEnvVarsIdPatchExecute(r ApiApiTeamEnvVarsIdPatchRequest) (*TeamEnvVar, *http.Response, error) {
+//
+//	@return TeamEnvVarJsonhal
+func (a *TeamEnvVarApiService) ApiTeamEnvVarsIdPatchExecute(r ApiApiTeamEnvVarsIdPatchRequest) (*TeamEnvVarJsonhal, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPatch
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *TeamEnvVar
+		localVarHTTPMethod  = http.MethodPatch
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *TeamEnvVarJsonhal
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TeamEnvVarApiService.ApiTeamEnvVarsIdPatch")
@@ -496,7 +494,7 @@ func (a *TeamEnvVarApiService) ApiTeamEnvVarsIdPatchExecute(r ApiApiTeamEnvVarsI
 	}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json", "application/hal+json", "text/html"}
+	localVarHTTPContentTypes := []string{"application/vnd.api+json"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -505,7 +503,7 @@ func (a *TeamEnvVarApiService) ApiTeamEnvVarsIdPatchExecute(r ApiApiTeamEnvVarsI
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json", "application/hal+json", "text/html"}
+	localVarHTTPHeaderAccepts := []string{"application/hal+json", "application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -566,19 +564,19 @@ func (a *TeamEnvVarApiService) ApiTeamEnvVarsIdPatchExecute(r ApiApiTeamEnvVarsI
 }
 
 type ApiApiTeamEnvVarsIdPutRequest struct {
-	ctx context.Context
-	ApiService *TeamEnvVarApiService
-	id string
-	teamEnvVar *TeamEnvVar
+	ctx               context.Context
+	ApiService        *TeamEnvVarApiService
+	id                string
+	teamEnvVarJsonhal *TeamEnvVarJsonhal
 }
 
 // The updated TeamEnvVar resource
-func (r ApiApiTeamEnvVarsIdPutRequest) TeamEnvVar(teamEnvVar TeamEnvVar) ApiApiTeamEnvVarsIdPutRequest {
-	r.teamEnvVar = &teamEnvVar
+func (r ApiApiTeamEnvVarsIdPutRequest) TeamEnvVarJsonhal(teamEnvVarJsonhal TeamEnvVarJsonhal) ApiApiTeamEnvVarsIdPutRequest {
+	r.teamEnvVarJsonhal = &teamEnvVarJsonhal
 	return r
 }
 
-func (r ApiApiTeamEnvVarsIdPutRequest) Execute() (*TeamEnvVar, *http.Response, error) {
+func (r ApiApiTeamEnvVarsIdPutRequest) Execute() (*TeamEnvVarJsonhal, *http.Response, error) {
 	return r.ApiService.ApiTeamEnvVarsIdPutExecute(r)
 }
 
@@ -587,26 +585,27 @@ ApiTeamEnvVarsIdPut Replaces the TeamEnvVar resource.
 
 Replaces the TeamEnvVar resource.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id TeamEnvVar identifier
- @return ApiApiTeamEnvVarsIdPutRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id TeamEnvVar identifier
+	@return ApiApiTeamEnvVarsIdPutRequest
 */
 func (a *TeamEnvVarApiService) ApiTeamEnvVarsIdPut(ctx context.Context, id string) ApiApiTeamEnvVarsIdPutRequest {
 	return ApiApiTeamEnvVarsIdPutRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
 // Execute executes the request
-//  @return TeamEnvVar
-func (a *TeamEnvVarApiService) ApiTeamEnvVarsIdPutExecute(r ApiApiTeamEnvVarsIdPutRequest) (*TeamEnvVar, *http.Response, error) {
+//
+//	@return TeamEnvVarJsonhal
+func (a *TeamEnvVarApiService) ApiTeamEnvVarsIdPutExecute(r ApiApiTeamEnvVarsIdPutRequest) (*TeamEnvVarJsonhal, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPut
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *TeamEnvVar
+		localVarHTTPMethod  = http.MethodPut
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *TeamEnvVarJsonhal
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TeamEnvVarApiService.ApiTeamEnvVarsIdPut")
@@ -620,12 +619,12 @@ func (a *TeamEnvVarApiService) ApiTeamEnvVarsIdPutExecute(r ApiApiTeamEnvVarsIdP
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.teamEnvVar == nil {
-		return localVarReturnValue, nil, reportError("teamEnvVar is required and must be specified")
+	if r.teamEnvVarJsonhal == nil {
+		return localVarReturnValue, nil, reportError("teamEnvVarJsonhal is required and must be specified")
 	}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json", "application/hal+json", "text/html"}
+	localVarHTTPContentTypes := []string{"application/hal+json", "application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -634,7 +633,7 @@ func (a *TeamEnvVarApiService) ApiTeamEnvVarsIdPutExecute(r ApiApiTeamEnvVarsIdP
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json", "application/hal+json", "text/html"}
+	localVarHTTPHeaderAccepts := []string{"application/hal+json", "application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -642,7 +641,7 @@ func (a *TeamEnvVarApiService) ApiTeamEnvVarsIdPutExecute(r ApiApiTeamEnvVarsIdP
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.teamEnvVar
+	localVarPostBody = r.teamEnvVarJsonhal
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
@@ -695,18 +694,18 @@ func (a *TeamEnvVarApiService) ApiTeamEnvVarsIdPutExecute(r ApiApiTeamEnvVarsIdP
 }
 
 type ApiApiTeamEnvVarsPostRequest struct {
-	ctx context.Context
-	ApiService *TeamEnvVarApiService
-	teamEnvVar *TeamEnvVar
+	ctx               context.Context
+	ApiService        *TeamEnvVarApiService
+	teamEnvVarJsonhal *TeamEnvVarJsonhal
 }
 
 // The new TeamEnvVar resource
-func (r ApiApiTeamEnvVarsPostRequest) TeamEnvVar(teamEnvVar TeamEnvVar) ApiApiTeamEnvVarsPostRequest {
-	r.teamEnvVar = &teamEnvVar
+func (r ApiApiTeamEnvVarsPostRequest) TeamEnvVarJsonhal(teamEnvVarJsonhal TeamEnvVarJsonhal) ApiApiTeamEnvVarsPostRequest {
+	r.teamEnvVarJsonhal = &teamEnvVarJsonhal
 	return r
 }
 
-func (r ApiApiTeamEnvVarsPostRequest) Execute() (*TeamEnvVar, *http.Response, error) {
+func (r ApiApiTeamEnvVarsPostRequest) Execute() (*TeamEnvVarJsonhal, *http.Response, error) {
 	return r.ApiService.ApiTeamEnvVarsPostExecute(r)
 }
 
@@ -715,24 +714,25 @@ ApiTeamEnvVarsPost Creates a TeamEnvVar resource.
 
 Creates a TeamEnvVar resource.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiApiTeamEnvVarsPostRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiApiTeamEnvVarsPostRequest
 */
 func (a *TeamEnvVarApiService) ApiTeamEnvVarsPost(ctx context.Context) ApiApiTeamEnvVarsPostRequest {
 	return ApiApiTeamEnvVarsPostRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return TeamEnvVar
-func (a *TeamEnvVarApiService) ApiTeamEnvVarsPostExecute(r ApiApiTeamEnvVarsPostRequest) (*TeamEnvVar, *http.Response, error) {
+//
+//	@return TeamEnvVarJsonhal
+func (a *TeamEnvVarApiService) ApiTeamEnvVarsPostExecute(r ApiApiTeamEnvVarsPostRequest) (*TeamEnvVarJsonhal, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *TeamEnvVar
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *TeamEnvVarJsonhal
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TeamEnvVarApiService.ApiTeamEnvVarsPost")
@@ -745,12 +745,12 @@ func (a *TeamEnvVarApiService) ApiTeamEnvVarsPostExecute(r ApiApiTeamEnvVarsPost
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.teamEnvVar == nil {
-		return localVarReturnValue, nil, reportError("teamEnvVar is required and must be specified")
+	if r.teamEnvVarJsonhal == nil {
+		return localVarReturnValue, nil, reportError("teamEnvVarJsonhal is required and must be specified")
 	}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json", "application/hal+json", "text/html"}
+	localVarHTTPContentTypes := []string{"application/hal+json", "application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -759,7 +759,7 @@ func (a *TeamEnvVarApiService) ApiTeamEnvVarsPostExecute(r ApiApiTeamEnvVarsPost
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json", "application/hal+json", "text/html"}
+	localVarHTTPHeaderAccepts := []string{"application/hal+json", "application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -767,7 +767,7 @@ func (a *TeamEnvVarApiService) ApiTeamEnvVarsPostExecute(r ApiApiTeamEnvVarsPost
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.teamEnvVar
+	localVarPostBody = r.teamEnvVarJsonhal
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {

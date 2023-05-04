@@ -15,7 +15,7 @@ Method | HTTP request | Description
 
 ## ApiServiceAccountRegistriesGetCollection
 
-> []ServiceAccountRegistry ApiServiceAccountRegistriesGetCollection(ctx).Page(page).ItemsPerPage(itemsPerPage).ServiceAccount(serviceAccount).ServiceAccount2(serviceAccount2).Execute()
+> ApiServiceAccountRegistriesGetCollection200Response ApiServiceAccountRegistriesGetCollection(ctx).Page(page).ItemsPerPage(itemsPerPage).ServiceAccount(serviceAccount).ServiceAccount2(serviceAccount2).Execute()
 
 Retrieves the collection of ServiceAccountRegistry resources.
 
@@ -46,7 +46,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `ServiceAccountRegistryApi.ApiServiceAccountRegistriesGetCollection``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiServiceAccountRegistriesGetCollection`: []ServiceAccountRegistry
+    // response from `ApiServiceAccountRegistriesGetCollection`: ApiServiceAccountRegistriesGetCollection200Response
     fmt.Fprintf(os.Stdout, "Response from `ServiceAccountRegistryApi.ApiServiceAccountRegistriesGetCollection`: %v\n", resp)
 }
 ```
@@ -69,7 +69,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]ServiceAccountRegistry**](ServiceAccountRegistry.md)
+[**ApiServiceAccountRegistriesGetCollection200Response**](ApiServiceAccountRegistriesGetCollection200Response.md)
 
 ### Authorization
 
@@ -78,7 +78,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json, application/hal+json, text/html
+- **Accept**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -155,7 +155,7 @@ Name | Type | Description  | Notes
 
 ## ApiServiceAccountRegistriesIdGet
 
-> ServiceAccountRegistry ApiServiceAccountRegistriesIdGet(ctx, id).Execute()
+> ServiceAccountRegistryJsonhal ApiServiceAccountRegistriesIdGet(ctx, id).Execute()
 
 Retrieves a ServiceAccountRegistry resource.
 
@@ -183,7 +183,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `ServiceAccountRegistryApi.ApiServiceAccountRegistriesIdGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiServiceAccountRegistriesIdGet`: ServiceAccountRegistry
+    // response from `ApiServiceAccountRegistriesIdGet`: ServiceAccountRegistryJsonhal
     fmt.Fprintf(os.Stdout, "Response from `ServiceAccountRegistryApi.ApiServiceAccountRegistriesIdGet`: %v\n", resp)
 }
 ```
@@ -207,7 +207,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ServiceAccountRegistry**](ServiceAccountRegistry.md)
+[**ServiceAccountRegistryJsonhal**](ServiceAccountRegistryJsonhal.md)
 
 ### Authorization
 
@@ -216,7 +216,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json, application/hal+json, text/html
+- **Accept**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -225,7 +225,7 @@ Name | Type | Description  | Notes
 
 ## ApiServiceAccountRegistriesIdPatch
 
-> ServiceAccountRegistry ApiServiceAccountRegistriesIdPatch(ctx, id).ServiceAccountRegistry(serviceAccountRegistry).Execute()
+> ServiceAccountRegistryJsonhal ApiServiceAccountRegistriesIdPatch(ctx, id).ServiceAccountRegistry(serviceAccountRegistry).Execute()
 
 Updates the ServiceAccountRegistry resource.
 
@@ -254,7 +254,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `ServiceAccountRegistryApi.ApiServiceAccountRegistriesIdPatch``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiServiceAccountRegistriesIdPatch`: ServiceAccountRegistry
+    // response from `ApiServiceAccountRegistriesIdPatch`: ServiceAccountRegistryJsonhal
     fmt.Fprintf(os.Stdout, "Response from `ServiceAccountRegistryApi.ApiServiceAccountRegistriesIdPatch`: %v\n", resp)
 }
 ```
@@ -279,7 +279,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ServiceAccountRegistry**](ServiceAccountRegistry.md)
+[**ServiceAccountRegistryJsonhal**](ServiceAccountRegistryJsonhal.md)
 
 ### Authorization
 
@@ -287,8 +287,8 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: application/json, application/hal+json, text/html
-- **Accept**: application/json, application/hal+json, text/html
+- **Content-Type**: application/vnd.api+json
+- **Accept**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -297,7 +297,7 @@ Name | Type | Description  | Notes
 
 ## ApiServiceAccountRegistriesIdPut
 
-> ServiceAccountRegistry ApiServiceAccountRegistriesIdPut(ctx, id).ServiceAccountRegistry(serviceAccountRegistry).Execute()
+> ServiceAccountRegistryJsonhal ApiServiceAccountRegistriesIdPut(ctx, id).ServiceAccountRegistryJsonhal(serviceAccountRegistryJsonhal).Execute()
 
 Replaces the ServiceAccountRegistry resource.
 
@@ -317,16 +317,16 @@ import (
 
 func main() {
     id := "id_example" // string | ServiceAccountRegistry identifier
-    serviceAccountRegistry := *openapiclient.NewServiceAccountRegistry() // ServiceAccountRegistry | The updated ServiceAccountRegistry resource
+    serviceAccountRegistryJsonhal := *openapiclient.NewServiceAccountRegistryJsonhal() // ServiceAccountRegistryJsonhal | The updated ServiceAccountRegistry resource
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ServiceAccountRegistryApi.ApiServiceAccountRegistriesIdPut(context.Background(), id).ServiceAccountRegistry(serviceAccountRegistry).Execute()
+    resp, r, err := apiClient.ServiceAccountRegistryApi.ApiServiceAccountRegistriesIdPut(context.Background(), id).ServiceAccountRegistryJsonhal(serviceAccountRegistryJsonhal).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ServiceAccountRegistryApi.ApiServiceAccountRegistriesIdPut``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiServiceAccountRegistriesIdPut`: ServiceAccountRegistry
+    // response from `ApiServiceAccountRegistriesIdPut`: ServiceAccountRegistryJsonhal
     fmt.Fprintf(os.Stdout, "Response from `ServiceAccountRegistryApi.ApiServiceAccountRegistriesIdPut`: %v\n", resp)
 }
 ```
@@ -347,11 +347,11 @@ Other parameters are passed through a pointer to a apiApiServiceAccountRegistrie
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **serviceAccountRegistry** | [**ServiceAccountRegistry**](ServiceAccountRegistry.md) | The updated ServiceAccountRegistry resource | 
+ **serviceAccountRegistryJsonhal** | [**ServiceAccountRegistryJsonhal**](ServiceAccountRegistryJsonhal.md) | The updated ServiceAccountRegistry resource | 
 
 ### Return type
 
-[**ServiceAccountRegistry**](ServiceAccountRegistry.md)
+[**ServiceAccountRegistryJsonhal**](ServiceAccountRegistryJsonhal.md)
 
 ### Authorization
 
@@ -359,8 +359,8 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: application/json, application/hal+json, text/html
-- **Accept**: application/json, application/hal+json, text/html
+- **Content-Type**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
+- **Accept**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -369,7 +369,7 @@ Name | Type | Description  | Notes
 
 ## ApiServiceAccountRegistriesPost
 
-> ServiceAccountRegistry ApiServiceAccountRegistriesPost(ctx).ServiceAccountRegistry(serviceAccountRegistry).Execute()
+> ServiceAccountRegistryJsonhal ApiServiceAccountRegistriesPost(ctx).ServiceAccountRegistryJsonhal(serviceAccountRegistryJsonhal).Execute()
 
 Creates a ServiceAccountRegistry resource.
 
@@ -388,16 +388,16 @@ import (
 )
 
 func main() {
-    serviceAccountRegistry := *openapiclient.NewServiceAccountRegistry() // ServiceAccountRegistry | The new ServiceAccountRegistry resource
+    serviceAccountRegistryJsonhal := *openapiclient.NewServiceAccountRegistryJsonhal() // ServiceAccountRegistryJsonhal | The new ServiceAccountRegistry resource
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ServiceAccountRegistryApi.ApiServiceAccountRegistriesPost(context.Background()).ServiceAccountRegistry(serviceAccountRegistry).Execute()
+    resp, r, err := apiClient.ServiceAccountRegistryApi.ApiServiceAccountRegistriesPost(context.Background()).ServiceAccountRegistryJsonhal(serviceAccountRegistryJsonhal).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ServiceAccountRegistryApi.ApiServiceAccountRegistriesPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiServiceAccountRegistriesPost`: ServiceAccountRegistry
+    // response from `ApiServiceAccountRegistriesPost`: ServiceAccountRegistryJsonhal
     fmt.Fprintf(os.Stdout, "Response from `ServiceAccountRegistryApi.ApiServiceAccountRegistriesPost`: %v\n", resp)
 }
 ```
@@ -413,11 +413,11 @@ Other parameters are passed through a pointer to a apiApiServiceAccountRegistrie
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **serviceAccountRegistry** | [**ServiceAccountRegistry**](ServiceAccountRegistry.md) | The new ServiceAccountRegistry resource | 
+ **serviceAccountRegistryJsonhal** | [**ServiceAccountRegistryJsonhal**](ServiceAccountRegistryJsonhal.md) | The new ServiceAccountRegistry resource | 
 
 ### Return type
 
-[**ServiceAccountRegistry**](ServiceAccountRegistry.md)
+[**ServiceAccountRegistryJsonhal**](ServiceAccountRegistryJsonhal.md)
 
 ### Authorization
 
@@ -425,8 +425,8 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: application/json, application/hal+json, text/html
-- **Accept**: application/json, application/hal+json, text/html
+- **Content-Type**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
+- **Accept**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)

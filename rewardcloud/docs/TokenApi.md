@@ -4,7 +4,7 @@ All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**PostCredentialsItem**](TokenApi.md#PostCredentialsItem) | **Post** /authentication_token | Get JWT token to login.
+[**PostCredentialsItem**](TokenApi.md#PostCredentialsItem) | **Post** /api/authentication_token | Get JWT token to login.
 
 
 
@@ -13,8 +13,6 @@ Method | HTTP request | Description
 > Token PostCredentialsItem(ctx).Credentials(credentials).Execute()
 
 Get JWT token to login.
-
-
 
 ### Example
 

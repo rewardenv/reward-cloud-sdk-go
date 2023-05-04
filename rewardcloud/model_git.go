@@ -15,25 +15,22 @@ import (
 	"time"
 )
 
-// checks if the Git type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &Git{}
-
 // Git Class Git
 type Git struct {
-	Id *int32 `json:"id,omitempty"`
-	Uuid NullableString `json:"uuid,omitempty"`
-	Repo NullableString `json:"repo,omitempty"`
-	Username NullableString `json:"username,omitempty"`
-	Password NullableString `json:"password,omitempty"`
-	SshPrivateKey NullableString `json:"sshPrivateKey,omitempty"`
+	Id                 *int32         `json:"id,omitempty"`
+	Uuid               NullableString `json:"uuid,omitempty"`
+	Repo               NullableString `json:"repo,omitempty"`
+	Username           NullableString `json:"username,omitempty"`
+	Password           NullableString `json:"password,omitempty"`
+	SshPrivateKey      NullableString `json:"sshPrivateKey,omitempty"`
 	SshPrivateKeyInput NullableString `json:"sshPrivateKeyInput,omitempty"`
-	Project NullableString `json:"project,omitempty"`
-	GitType NullableString `json:"gitType,omitempty"`
-	CredentialType NullableString `json:"credentialType,omitempty"`
-	CreatedBy NullableString `json:"createdBy,omitempty"`
-	UpdatedBy NullableString `json:"updatedBy,omitempty"`
-	CreatedAt *time.Time `json:"createdAt,omitempty"`
-	UpdatedAt *time.Time `json:"updatedAt,omitempty"`
+	Project            NullableString `json:"project,omitempty"`
+	GitType            NullableString `json:"gitType,omitempty"`
+	CredentialType     NullableString `json:"credentialType,omitempty"`
+	CreatedBy          NullableString `json:"createdBy,omitempty"`
+	UpdatedBy          NullableString `json:"updatedBy,omitempty"`
+	CreatedAt          *time.Time     `json:"createdAt,omitempty"`
+	UpdatedAt          *time.Time     `json:"updatedAt,omitempty"`
 }
 
 // NewGit instantiates a new Git object
@@ -55,7 +52,7 @@ func NewGitWithDefaults() *Git {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *Git) GetId() int32 {
-	if o == nil || IsNil(o.Id) {
+	if o == nil || isNil(o.Id) {
 		var ret int32
 		return ret
 	}
@@ -65,7 +62,7 @@ func (o *Git) GetId() int32 {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Git) GetIdOk() (*int32, bool) {
-	if o == nil || IsNil(o.Id) {
+	if o == nil || isNil(o.Id) {
 		return nil, false
 	}
 	return o.Id, true
@@ -73,7 +70,7 @@ func (o *Git) GetIdOk() (*int32, bool) {
 
 // HasId returns a boolean if a field has been set.
 func (o *Git) HasId() bool {
-	if o != nil && !IsNil(o.Id) {
+	if o != nil && !isNil(o.Id) {
 		return true
 	}
 
@@ -87,7 +84,7 @@ func (o *Git) SetId(v int32) {
 
 // GetUuid returns the Uuid field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Git) GetUuid() string {
-	if o == nil || IsNil(o.Uuid.Get()) {
+	if o == nil || isNil(o.Uuid.Get()) {
 		var ret string
 		return ret
 	}
@@ -117,6 +114,7 @@ func (o *Git) HasUuid() bool {
 func (o *Git) SetUuid(v string) {
 	o.Uuid.Set(&v)
 }
+
 // SetUuidNil sets the value for Uuid to be an explicit nil
 func (o *Git) SetUuidNil() {
 	o.Uuid.Set(nil)
@@ -129,7 +127,7 @@ func (o *Git) UnsetUuid() {
 
 // GetRepo returns the Repo field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Git) GetRepo() string {
-	if o == nil || IsNil(o.Repo.Get()) {
+	if o == nil || isNil(o.Repo.Get()) {
 		var ret string
 		return ret
 	}
@@ -159,6 +157,7 @@ func (o *Git) HasRepo() bool {
 func (o *Git) SetRepo(v string) {
 	o.Repo.Set(&v)
 }
+
 // SetRepoNil sets the value for Repo to be an explicit nil
 func (o *Git) SetRepoNil() {
 	o.Repo.Set(nil)
@@ -171,7 +170,7 @@ func (o *Git) UnsetRepo() {
 
 // GetUsername returns the Username field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Git) GetUsername() string {
-	if o == nil || IsNil(o.Username.Get()) {
+	if o == nil || isNil(o.Username.Get()) {
 		var ret string
 		return ret
 	}
@@ -201,6 +200,7 @@ func (o *Git) HasUsername() bool {
 func (o *Git) SetUsername(v string) {
 	o.Username.Set(&v)
 }
+
 // SetUsernameNil sets the value for Username to be an explicit nil
 func (o *Git) SetUsernameNil() {
 	o.Username.Set(nil)
@@ -213,7 +213,7 @@ func (o *Git) UnsetUsername() {
 
 // GetPassword returns the Password field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Git) GetPassword() string {
-	if o == nil || IsNil(o.Password.Get()) {
+	if o == nil || isNil(o.Password.Get()) {
 		var ret string
 		return ret
 	}
@@ -243,6 +243,7 @@ func (o *Git) HasPassword() bool {
 func (o *Git) SetPassword(v string) {
 	o.Password.Set(&v)
 }
+
 // SetPasswordNil sets the value for Password to be an explicit nil
 func (o *Git) SetPasswordNil() {
 	o.Password.Set(nil)
@@ -255,7 +256,7 @@ func (o *Git) UnsetPassword() {
 
 // GetSshPrivateKey returns the SshPrivateKey field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Git) GetSshPrivateKey() string {
-	if o == nil || IsNil(o.SshPrivateKey.Get()) {
+	if o == nil || isNil(o.SshPrivateKey.Get()) {
 		var ret string
 		return ret
 	}
@@ -285,6 +286,7 @@ func (o *Git) HasSshPrivateKey() bool {
 func (o *Git) SetSshPrivateKey(v string) {
 	o.SshPrivateKey.Set(&v)
 }
+
 // SetSshPrivateKeyNil sets the value for SshPrivateKey to be an explicit nil
 func (o *Git) SetSshPrivateKeyNil() {
 	o.SshPrivateKey.Set(nil)
@@ -297,7 +299,7 @@ func (o *Git) UnsetSshPrivateKey() {
 
 // GetSshPrivateKeyInput returns the SshPrivateKeyInput field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Git) GetSshPrivateKeyInput() string {
-	if o == nil || IsNil(o.SshPrivateKeyInput.Get()) {
+	if o == nil || isNil(o.SshPrivateKeyInput.Get()) {
 		var ret string
 		return ret
 	}
@@ -327,6 +329,7 @@ func (o *Git) HasSshPrivateKeyInput() bool {
 func (o *Git) SetSshPrivateKeyInput(v string) {
 	o.SshPrivateKeyInput.Set(&v)
 }
+
 // SetSshPrivateKeyInputNil sets the value for SshPrivateKeyInput to be an explicit nil
 func (o *Git) SetSshPrivateKeyInputNil() {
 	o.SshPrivateKeyInput.Set(nil)
@@ -339,7 +342,7 @@ func (o *Git) UnsetSshPrivateKeyInput() {
 
 // GetProject returns the Project field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Git) GetProject() string {
-	if o == nil || IsNil(o.Project.Get()) {
+	if o == nil || isNil(o.Project.Get()) {
 		var ret string
 		return ret
 	}
@@ -369,6 +372,7 @@ func (o *Git) HasProject() bool {
 func (o *Git) SetProject(v string) {
 	o.Project.Set(&v)
 }
+
 // SetProjectNil sets the value for Project to be an explicit nil
 func (o *Git) SetProjectNil() {
 	o.Project.Set(nil)
@@ -381,7 +385,7 @@ func (o *Git) UnsetProject() {
 
 // GetGitType returns the GitType field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Git) GetGitType() string {
-	if o == nil || IsNil(o.GitType.Get()) {
+	if o == nil || isNil(o.GitType.Get()) {
 		var ret string
 		return ret
 	}
@@ -411,6 +415,7 @@ func (o *Git) HasGitType() bool {
 func (o *Git) SetGitType(v string) {
 	o.GitType.Set(&v)
 }
+
 // SetGitTypeNil sets the value for GitType to be an explicit nil
 func (o *Git) SetGitTypeNil() {
 	o.GitType.Set(nil)
@@ -423,7 +428,7 @@ func (o *Git) UnsetGitType() {
 
 // GetCredentialType returns the CredentialType field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Git) GetCredentialType() string {
-	if o == nil || IsNil(o.CredentialType.Get()) {
+	if o == nil || isNil(o.CredentialType.Get()) {
 		var ret string
 		return ret
 	}
@@ -453,6 +458,7 @@ func (o *Git) HasCredentialType() bool {
 func (o *Git) SetCredentialType(v string) {
 	o.CredentialType.Set(&v)
 }
+
 // SetCredentialTypeNil sets the value for CredentialType to be an explicit nil
 func (o *Git) SetCredentialTypeNil() {
 	o.CredentialType.Set(nil)
@@ -465,7 +471,7 @@ func (o *Git) UnsetCredentialType() {
 
 // GetCreatedBy returns the CreatedBy field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Git) GetCreatedBy() string {
-	if o == nil || IsNil(o.CreatedBy.Get()) {
+	if o == nil || isNil(o.CreatedBy.Get()) {
 		var ret string
 		return ret
 	}
@@ -495,6 +501,7 @@ func (o *Git) HasCreatedBy() bool {
 func (o *Git) SetCreatedBy(v string) {
 	o.CreatedBy.Set(&v)
 }
+
 // SetCreatedByNil sets the value for CreatedBy to be an explicit nil
 func (o *Git) SetCreatedByNil() {
 	o.CreatedBy.Set(nil)
@@ -507,7 +514,7 @@ func (o *Git) UnsetCreatedBy() {
 
 // GetUpdatedBy returns the UpdatedBy field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Git) GetUpdatedBy() string {
-	if o == nil || IsNil(o.UpdatedBy.Get()) {
+	if o == nil || isNil(o.UpdatedBy.Get()) {
 		var ret string
 		return ret
 	}
@@ -537,6 +544,7 @@ func (o *Git) HasUpdatedBy() bool {
 func (o *Git) SetUpdatedBy(v string) {
 	o.UpdatedBy.Set(&v)
 }
+
 // SetUpdatedByNil sets the value for UpdatedBy to be an explicit nil
 func (o *Git) SetUpdatedByNil() {
 	o.UpdatedBy.Set(nil)
@@ -549,7 +557,7 @@ func (o *Git) UnsetUpdatedBy() {
 
 // GetCreatedAt returns the CreatedAt field value if set, zero value otherwise.
 func (o *Git) GetCreatedAt() time.Time {
-	if o == nil || IsNil(o.CreatedAt) {
+	if o == nil || isNil(o.CreatedAt) {
 		var ret time.Time
 		return ret
 	}
@@ -559,7 +567,7 @@ func (o *Git) GetCreatedAt() time.Time {
 // GetCreatedAtOk returns a tuple with the CreatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Git) GetCreatedAtOk() (*time.Time, bool) {
-	if o == nil || IsNil(o.CreatedAt) {
+	if o == nil || isNil(o.CreatedAt) {
 		return nil, false
 	}
 	return o.CreatedAt, true
@@ -567,7 +575,7 @@ func (o *Git) GetCreatedAtOk() (*time.Time, bool) {
 
 // HasCreatedAt returns a boolean if a field has been set.
 func (o *Git) HasCreatedAt() bool {
-	if o != nil && !IsNil(o.CreatedAt) {
+	if o != nil && !isNil(o.CreatedAt) {
 		return true
 	}
 
@@ -581,7 +589,7 @@ func (o *Git) SetCreatedAt(v time.Time) {
 
 // GetUpdatedAt returns the UpdatedAt field value if set, zero value otherwise.
 func (o *Git) GetUpdatedAt() time.Time {
-	if o == nil || IsNil(o.UpdatedAt) {
+	if o == nil || isNil(o.UpdatedAt) {
 		var ret time.Time
 		return ret
 	}
@@ -591,7 +599,7 @@ func (o *Git) GetUpdatedAt() time.Time {
 // GetUpdatedAtOk returns a tuple with the UpdatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Git) GetUpdatedAtOk() (*time.Time, bool) {
-	if o == nil || IsNil(o.UpdatedAt) {
+	if o == nil || isNil(o.UpdatedAt) {
 		return nil, false
 	}
 	return o.UpdatedAt, true
@@ -599,7 +607,7 @@ func (o *Git) GetUpdatedAtOk() (*time.Time, bool) {
 
 // HasUpdatedAt returns a boolean if a field has been set.
 func (o *Git) HasUpdatedAt() bool {
-	if o != nil && !IsNil(o.UpdatedAt) {
+	if o != nil && !isNil(o.UpdatedAt) {
 		return true
 	}
 
@@ -612,16 +620,10 @@ func (o *Git) SetUpdatedAt(v time.Time) {
 }
 
 func (o Git) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o Git) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	// skip: id is readOnly
+	if !isNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
 	if o.Uuid.IsSet() {
 		toSerialize["uuid"] = o.Uuid.Get()
 	}
@@ -655,13 +657,13 @@ func (o Git) ToMap() (map[string]interface{}, error) {
 	if o.UpdatedBy.IsSet() {
 		toSerialize["updatedBy"] = o.UpdatedBy.Get()
 	}
-	if !IsNil(o.CreatedAt) {
+	if !isNil(o.CreatedAt) {
 		toSerialize["createdAt"] = o.CreatedAt
 	}
-	if !IsNil(o.UpdatedAt) {
+	if !isNil(o.UpdatedAt) {
 		toSerialize["updatedAt"] = o.UpdatedAt
 	}
-	return toSerialize, nil
+	return json.Marshal(toSerialize)
 }
 
 type NullableGit struct {
@@ -699,5 +701,3 @@ func (v *NullableGit) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

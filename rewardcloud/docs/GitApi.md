@@ -15,7 +15,7 @@ Method | HTTP request | Description
 
 ## ApiGitsGetCollection
 
-> []Git ApiGitsGetCollection(ctx).Page(page).ItemsPerPage(itemsPerPage).Project(project).Project2(project2).GitType(gitType).GitType2(gitType2).CredentialType(credentialType).CredentialType2(credentialType2).Execute()
+> ApiGitsGetCollection200Response ApiGitsGetCollection(ctx).Page(page).ItemsPerPage(itemsPerPage).Project(project).Project2(project2).GitType(gitType).GitType2(gitType2).CredentialType(credentialType).CredentialType2(credentialType2).Execute()
 
 Retrieves the collection of Git resources.
 
@@ -50,7 +50,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `GitApi.ApiGitsGetCollection``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiGitsGetCollection`: []Git
+    // response from `ApiGitsGetCollection`: ApiGitsGetCollection200Response
     fmt.Fprintf(os.Stdout, "Response from `GitApi.ApiGitsGetCollection`: %v\n", resp)
 }
 ```
@@ -77,7 +77,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]Git**](Git.md)
+[**ApiGitsGetCollection200Response**](ApiGitsGetCollection200Response.md)
 
 ### Authorization
 
@@ -86,7 +86,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json, application/hal+json, text/html
+- **Accept**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -163,7 +163,7 @@ Name | Type | Description  | Notes
 
 ## ApiGitsIdGet
 
-> Git ApiGitsIdGet(ctx, id).Execute()
+> GitJsonhal ApiGitsIdGet(ctx, id).Execute()
 
 Retrieves a Git resource.
 
@@ -191,7 +191,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `GitApi.ApiGitsIdGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiGitsIdGet`: Git
+    // response from `ApiGitsIdGet`: GitJsonhal
     fmt.Fprintf(os.Stdout, "Response from `GitApi.ApiGitsIdGet`: %v\n", resp)
 }
 ```
@@ -215,7 +215,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Git**](Git.md)
+[**GitJsonhal**](GitJsonhal.md)
 
 ### Authorization
 
@@ -224,7 +224,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json, application/hal+json, text/html
+- **Accept**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -233,7 +233,7 @@ Name | Type | Description  | Notes
 
 ## ApiGitsIdPatch
 
-> Git ApiGitsIdPatch(ctx, id).Git(git).Execute()
+> GitJsonhal ApiGitsIdPatch(ctx, id).Git(git).Execute()
 
 Updates the Git resource.
 
@@ -262,7 +262,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `GitApi.ApiGitsIdPatch``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiGitsIdPatch`: Git
+    // response from `ApiGitsIdPatch`: GitJsonhal
     fmt.Fprintf(os.Stdout, "Response from `GitApi.ApiGitsIdPatch`: %v\n", resp)
 }
 ```
@@ -287,7 +287,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Git**](Git.md)
+[**GitJsonhal**](GitJsonhal.md)
 
 ### Authorization
 
@@ -295,8 +295,8 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: application/json, application/hal+json, text/html
-- **Accept**: application/json, application/hal+json, text/html
+- **Content-Type**: application/vnd.api+json
+- **Accept**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -305,7 +305,7 @@ Name | Type | Description  | Notes
 
 ## ApiGitsIdPut
 
-> Git ApiGitsIdPut(ctx, id).Git(git).Execute()
+> GitJsonhal ApiGitsIdPut(ctx, id).GitJsonhal(gitJsonhal).Execute()
 
 Replaces the Git resource.
 
@@ -325,16 +325,16 @@ import (
 
 func main() {
     id := "id_example" // string | Git identifier
-    git := *openapiclient.NewGit() // Git | The updated Git resource
+    gitJsonhal := *openapiclient.NewGitJsonhal() // GitJsonhal | The updated Git resource
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.GitApi.ApiGitsIdPut(context.Background(), id).Git(git).Execute()
+    resp, r, err := apiClient.GitApi.ApiGitsIdPut(context.Background(), id).GitJsonhal(gitJsonhal).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `GitApi.ApiGitsIdPut``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiGitsIdPut`: Git
+    // response from `ApiGitsIdPut`: GitJsonhal
     fmt.Fprintf(os.Stdout, "Response from `GitApi.ApiGitsIdPut`: %v\n", resp)
 }
 ```
@@ -355,11 +355,11 @@ Other parameters are passed through a pointer to a apiApiGitsIdPutRequest struct
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **git** | [**Git**](Git.md) | The updated Git resource | 
+ **gitJsonhal** | [**GitJsonhal**](GitJsonhal.md) | The updated Git resource | 
 
 ### Return type
 
-[**Git**](Git.md)
+[**GitJsonhal**](GitJsonhal.md)
 
 ### Authorization
 
@@ -367,8 +367,8 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: application/json, application/hal+json, text/html
-- **Accept**: application/json, application/hal+json, text/html
+- **Content-Type**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
+- **Accept**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -377,7 +377,7 @@ Name | Type | Description  | Notes
 
 ## ApiGitsPost
 
-> Git ApiGitsPost(ctx).Git(git).Execute()
+> GitJsonhal ApiGitsPost(ctx).GitJsonhal(gitJsonhal).Execute()
 
 Creates a Git resource.
 
@@ -396,16 +396,16 @@ import (
 )
 
 func main() {
-    git := *openapiclient.NewGit() // Git | The new Git resource
+    gitJsonhal := *openapiclient.NewGitJsonhal() // GitJsonhal | The new Git resource
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.GitApi.ApiGitsPost(context.Background()).Git(git).Execute()
+    resp, r, err := apiClient.GitApi.ApiGitsPost(context.Background()).GitJsonhal(gitJsonhal).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `GitApi.ApiGitsPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiGitsPost`: Git
+    // response from `ApiGitsPost`: GitJsonhal
     fmt.Fprintf(os.Stdout, "Response from `GitApi.ApiGitsPost`: %v\n", resp)
 }
 ```
@@ -421,11 +421,11 @@ Other parameters are passed through a pointer to a apiApiGitsPostRequest struct 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **git** | [**Git**](Git.md) | The new Git resource | 
+ **gitJsonhal** | [**GitJsonhal**](GitJsonhal.md) | The new Git resource | 
 
 ### Return type
 
-[**Git**](Git.md)
+[**GitJsonhal**](GitJsonhal.md)
 
 ### Authorization
 
@@ -433,8 +433,8 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: application/json, application/hal+json, text/html
-- **Accept**: application/json, application/hal+json, text/html
+- **Content-Type**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
+- **Accept**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
