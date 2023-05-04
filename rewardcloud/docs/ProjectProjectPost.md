@@ -4,20 +4,21 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**TemplateIri** | Pointer to **NullableString** |  | [optional] 
+**Git** | Pointer to [**NullableProjectProjectPostGit**](ProjectProjectPostGit.md) |  | [optional] 
+**Team** | Pointer to **NullableString** |  | [optional] 
+**Environment** | Pointer to **[]string** |  | [optional] 
 **Name** | Pointer to **NullableString** |  | [optional] 
-**IsActive** | Pointer to **bool** |  | [optional] 
+**IsActive** | Pointer to **NullableBool** |  | [optional] 
 **Cpu** | Pointer to **NullableInt32** |  | [optional] 
 **Memory** | Pointer to **NullableInt32** |  | [optional] 
 **Storage** | Pointer to **NullableInt32** |  | [optional] 
 **Code** | Pointer to **NullableString** |  | [optional] 
 **Color** | Pointer to **NullableString** |  | [optional] 
 **IsInitProjectSkeleton** | Pointer to **NullableBool** |  | [optional] 
-**Environment** | Pointer to **[]string** |  | [optional] 
-**Team** | Pointer to **NullableString** |  | [optional] 
-**Git** | Pointer to [**NullableProjectProjectPostGit**](ProjectProjectPostGit.md) |  | [optional] 
-**ProjectEnvVar** | Pointer to [**[]ProjectEnvVarProjectPost**](ProjectEnvVarProjectPost.md) |  | [optional] 
-**ProjectTypeVersion** | Pointer to **NullableString** |  | [optional] 
 **ComponentVersion** | Pointer to **[]string** |  | [optional] 
+**ProjectTypeVersion** | Pointer to **NullableString** |  | [optional] 
+**ProjectEnvVar** | Pointer to [**[]ProjectEnvVarProjectPost**](ProjectEnvVarProjectPost.md) |  | [optional] 
 
 ## Methods
 
@@ -37,6 +38,136 @@ will change when the set of required properties is changed
 NewProjectProjectPostWithDefaults instantiates a new ProjectProjectPost object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetTemplateIri
+
+`func (o *ProjectProjectPost) GetTemplateIri() string`
+
+GetTemplateIri returns the TemplateIri field if non-nil, zero value otherwise.
+
+### GetTemplateIriOk
+
+`func (o *ProjectProjectPost) GetTemplateIriOk() (*string, bool)`
+
+GetTemplateIriOk returns a tuple with the TemplateIri field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTemplateIri
+
+`func (o *ProjectProjectPost) SetTemplateIri(v string)`
+
+SetTemplateIri sets TemplateIri field to given value.
+
+### HasTemplateIri
+
+`func (o *ProjectProjectPost) HasTemplateIri() bool`
+
+HasTemplateIri returns a boolean if a field has been set.
+
+### SetTemplateIriNil
+
+`func (o *ProjectProjectPost) SetTemplateIriNil(b bool)`
+
+ SetTemplateIriNil sets the value for TemplateIri to be an explicit nil
+
+### UnsetTemplateIri
+`func (o *ProjectProjectPost) UnsetTemplateIri()`
+
+UnsetTemplateIri ensures that no value is present for TemplateIri, not even an explicit nil
+### GetGit
+
+`func (o *ProjectProjectPost) GetGit() ProjectProjectPostGit`
+
+GetGit returns the Git field if non-nil, zero value otherwise.
+
+### GetGitOk
+
+`func (o *ProjectProjectPost) GetGitOk() (*ProjectProjectPostGit, bool)`
+
+GetGitOk returns a tuple with the Git field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGit
+
+`func (o *ProjectProjectPost) SetGit(v ProjectProjectPostGit)`
+
+SetGit sets Git field to given value.
+
+### HasGit
+
+`func (o *ProjectProjectPost) HasGit() bool`
+
+HasGit returns a boolean if a field has been set.
+
+### SetGitNil
+
+`func (o *ProjectProjectPost) SetGitNil(b bool)`
+
+ SetGitNil sets the value for Git to be an explicit nil
+
+### UnsetGit
+`func (o *ProjectProjectPost) UnsetGit()`
+
+UnsetGit ensures that no value is present for Git, not even an explicit nil
+### GetTeam
+
+`func (o *ProjectProjectPost) GetTeam() string`
+
+GetTeam returns the Team field if non-nil, zero value otherwise.
+
+### GetTeamOk
+
+`func (o *ProjectProjectPost) GetTeamOk() (*string, bool)`
+
+GetTeamOk returns a tuple with the Team field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTeam
+
+`func (o *ProjectProjectPost) SetTeam(v string)`
+
+SetTeam sets Team field to given value.
+
+### HasTeam
+
+`func (o *ProjectProjectPost) HasTeam() bool`
+
+HasTeam returns a boolean if a field has been set.
+
+### SetTeamNil
+
+`func (o *ProjectProjectPost) SetTeamNil(b bool)`
+
+ SetTeamNil sets the value for Team to be an explicit nil
+
+### UnsetTeam
+`func (o *ProjectProjectPost) UnsetTeam()`
+
+UnsetTeam ensures that no value is present for Team, not even an explicit nil
+### GetEnvironment
+
+`func (o *ProjectProjectPost) GetEnvironment() []string`
+
+GetEnvironment returns the Environment field if non-nil, zero value otherwise.
+
+### GetEnvironmentOk
+
+`func (o *ProjectProjectPost) GetEnvironmentOk() (*[]string, bool)`
+
+GetEnvironmentOk returns a tuple with the Environment field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEnvironment
+
+`func (o *ProjectProjectPost) SetEnvironment(v []string)`
+
+SetEnvironment sets Environment field to given value.
+
+### HasEnvironment
+
+`func (o *ProjectProjectPost) HasEnvironment() bool`
+
+HasEnvironment returns a boolean if a field has been set.
 
 ### GetName
 
@@ -98,6 +229,16 @@ SetIsActive sets IsActive field to given value.
 
 HasIsActive returns a boolean if a field has been set.
 
+### SetIsActiveNil
+
+`func (o *ProjectProjectPost) SetIsActiveNil(b bool)`
+
+ SetIsActiveNil sets the value for IsActive to be an explicit nil
+
+### UnsetIsActive
+`func (o *ProjectProjectPost) UnsetIsActive()`
+
+UnsetIsActive ensures that no value is present for IsActive, not even an explicit nil
 ### GetCpu
 
 `func (o *ProjectProjectPost) GetCpu() int32`
@@ -308,125 +449,30 @@ HasIsInitProjectSkeleton returns a boolean if a field has been set.
 `func (o *ProjectProjectPost) UnsetIsInitProjectSkeleton()`
 
 UnsetIsInitProjectSkeleton ensures that no value is present for IsInitProjectSkeleton, not even an explicit nil
-### GetEnvironment
+### GetComponentVersion
 
-`func (o *ProjectProjectPost) GetEnvironment() []string`
+`func (o *ProjectProjectPost) GetComponentVersion() []string`
 
-GetEnvironment returns the Environment field if non-nil, zero value otherwise.
+GetComponentVersion returns the ComponentVersion field if non-nil, zero value otherwise.
 
-### GetEnvironmentOk
+### GetComponentVersionOk
 
-`func (o *ProjectProjectPost) GetEnvironmentOk() (*[]string, bool)`
+`func (o *ProjectProjectPost) GetComponentVersionOk() (*[]string, bool)`
 
-GetEnvironmentOk returns a tuple with the Environment field if it's non-nil, zero value otherwise
+GetComponentVersionOk returns a tuple with the ComponentVersion field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetEnvironment
+### SetComponentVersion
 
-`func (o *ProjectProjectPost) SetEnvironment(v []string)`
+`func (o *ProjectProjectPost) SetComponentVersion(v []string)`
 
-SetEnvironment sets Environment field to given value.
+SetComponentVersion sets ComponentVersion field to given value.
 
-### HasEnvironment
+### HasComponentVersion
 
-`func (o *ProjectProjectPost) HasEnvironment() bool`
+`func (o *ProjectProjectPost) HasComponentVersion() bool`
 
-HasEnvironment returns a boolean if a field has been set.
-
-### GetTeam
-
-`func (o *ProjectProjectPost) GetTeam() string`
-
-GetTeam returns the Team field if non-nil, zero value otherwise.
-
-### GetTeamOk
-
-`func (o *ProjectProjectPost) GetTeamOk() (*string, bool)`
-
-GetTeamOk returns a tuple with the Team field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetTeam
-
-`func (o *ProjectProjectPost) SetTeam(v string)`
-
-SetTeam sets Team field to given value.
-
-### HasTeam
-
-`func (o *ProjectProjectPost) HasTeam() bool`
-
-HasTeam returns a boolean if a field has been set.
-
-### SetTeamNil
-
-`func (o *ProjectProjectPost) SetTeamNil(b bool)`
-
- SetTeamNil sets the value for Team to be an explicit nil
-
-### UnsetTeam
-`func (o *ProjectProjectPost) UnsetTeam()`
-
-UnsetTeam ensures that no value is present for Team, not even an explicit nil
-### GetGit
-
-`func (o *ProjectProjectPost) GetGit() ProjectProjectPostGit`
-
-GetGit returns the Git field if non-nil, zero value otherwise.
-
-### GetGitOk
-
-`func (o *ProjectProjectPost) GetGitOk() (*ProjectProjectPostGit, bool)`
-
-GetGitOk returns a tuple with the Git field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetGit
-
-`func (o *ProjectProjectPost) SetGit(v ProjectProjectPostGit)`
-
-SetGit sets Git field to given value.
-
-### HasGit
-
-`func (o *ProjectProjectPost) HasGit() bool`
-
-HasGit returns a boolean if a field has been set.
-
-### SetGitNil
-
-`func (o *ProjectProjectPost) SetGitNil(b bool)`
-
- SetGitNil sets the value for Git to be an explicit nil
-
-### UnsetGit
-`func (o *ProjectProjectPost) UnsetGit()`
-
-UnsetGit ensures that no value is present for Git, not even an explicit nil
-### GetProjectEnvVar
-
-`func (o *ProjectProjectPost) GetProjectEnvVar() []ProjectEnvVarProjectPost`
-
-GetProjectEnvVar returns the ProjectEnvVar field if non-nil, zero value otherwise.
-
-### GetProjectEnvVarOk
-
-`func (o *ProjectProjectPost) GetProjectEnvVarOk() (*[]ProjectEnvVarProjectPost, bool)`
-
-GetProjectEnvVarOk returns a tuple with the ProjectEnvVar field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetProjectEnvVar
-
-`func (o *ProjectProjectPost) SetProjectEnvVar(v []ProjectEnvVarProjectPost)`
-
-SetProjectEnvVar sets ProjectEnvVar field to given value.
-
-### HasProjectEnvVar
-
-`func (o *ProjectProjectPost) HasProjectEnvVar() bool`
-
-HasProjectEnvVar returns a boolean if a field has been set.
+HasComponentVersion returns a boolean if a field has been set.
 
 ### GetProjectTypeVersion
 
@@ -463,30 +509,30 @@ HasProjectTypeVersion returns a boolean if a field has been set.
 `func (o *ProjectProjectPost) UnsetProjectTypeVersion()`
 
 UnsetProjectTypeVersion ensures that no value is present for ProjectTypeVersion, not even an explicit nil
-### GetComponentVersion
+### GetProjectEnvVar
 
-`func (o *ProjectProjectPost) GetComponentVersion() []string`
+`func (o *ProjectProjectPost) GetProjectEnvVar() []ProjectEnvVarProjectPost`
 
-GetComponentVersion returns the ComponentVersion field if non-nil, zero value otherwise.
+GetProjectEnvVar returns the ProjectEnvVar field if non-nil, zero value otherwise.
 
-### GetComponentVersionOk
+### GetProjectEnvVarOk
 
-`func (o *ProjectProjectPost) GetComponentVersionOk() (*[]string, bool)`
+`func (o *ProjectProjectPost) GetProjectEnvVarOk() (*[]ProjectEnvVarProjectPost, bool)`
 
-GetComponentVersionOk returns a tuple with the ComponentVersion field if it's non-nil, zero value otherwise
+GetProjectEnvVarOk returns a tuple with the ProjectEnvVar field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetComponentVersion
+### SetProjectEnvVar
 
-`func (o *ProjectProjectPost) SetComponentVersion(v []string)`
+`func (o *ProjectProjectPost) SetProjectEnvVar(v []ProjectEnvVarProjectPost)`
 
-SetComponentVersion sets ComponentVersion field to given value.
+SetProjectEnvVar sets ProjectEnvVar field to given value.
 
-### HasComponentVersion
+### HasProjectEnvVar
 
-`func (o *ProjectProjectPost) HasComponentVersion() bool`
+`func (o *ProjectProjectPost) HasProjectEnvVar() bool`
 
-HasComponentVersion returns a boolean if a field has been set.
+HasProjectEnvVar returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

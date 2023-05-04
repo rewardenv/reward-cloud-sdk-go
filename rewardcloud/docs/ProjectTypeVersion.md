@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **Id** | Pointer to **int32** |  | [optional] [readonly] 
 **Uuid** | Pointer to **NullableString** |  | [optional] [readonly] 
 **Version** | Pointer to **NullableString** |  | [optional] 
-**Project** | Pointer to **[]string** |  | [optional] 
+**Project** | Pointer to [**[]AbstractProject**](AbstractProject.md) |  | [optional] 
 **ProjectType** | Pointer to **NullableString** |  | [optional] 
 **ProjectTypeVersionEnvVar** | Pointer to **[]string** |  | [optional] 
 **ComponentResourceLimit** | Pointer to **[]string** |  | [optional] 
@@ -132,20 +132,20 @@ HasVersion returns a boolean if a field has been set.
 UnsetVersion ensures that no value is present for Version, not even an explicit nil
 ### GetProject
 
-`func (o *ProjectTypeVersion) GetProject() []string`
+`func (o *ProjectTypeVersion) GetProject() []AbstractProject`
 
 GetProject returns the Project field if non-nil, zero value otherwise.
 
 ### GetProjectOk
 
-`func (o *ProjectTypeVersion) GetProjectOk() (*[]string, bool)`
+`func (o *ProjectTypeVersion) GetProjectOk() (*[]AbstractProject, bool)`
 
 GetProjectOk returns a tuple with the Project field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetProject
 
-`func (o *ProjectTypeVersion) SetProject(v []string)`
+`func (o *ProjectTypeVersion) SetProject(v []AbstractProject)`
 
 SetProject sets Project field to given value.
 

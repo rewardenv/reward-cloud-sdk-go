@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ApiComponentsGetCollection200Response type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ApiComponentsGetCollection200Response{}
+
 // ApiComponentsGetCollection200Response struct for ApiComponentsGetCollection200Response
 type ApiComponentsGetCollection200Response struct {
 	Embedded []ComponentJsonhal `json:"_embedded"`
@@ -55,7 +58,7 @@ func (o *ApiComponentsGetCollection200Response) GetEmbedded() []ComponentJsonhal
 // and a boolean to check if the value has been set.
 func (o *ApiComponentsGetCollection200Response) GetEmbeddedOk() ([]ComponentJsonhal, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return o.Embedded, true
 }
@@ -67,7 +70,7 @@ func (o *ApiComponentsGetCollection200Response) SetEmbedded(v []ComponentJsonhal
 
 // GetTotalItems returns the TotalItems field value if set, zero value otherwise.
 func (o *ApiComponentsGetCollection200Response) GetTotalItems() int32 {
-	if o == nil || isNil(o.TotalItems) {
+	if o == nil || IsNil(o.TotalItems) {
 		var ret int32
 		return ret
 	}
@@ -77,15 +80,15 @@ func (o *ApiComponentsGetCollection200Response) GetTotalItems() int32 {
 // GetTotalItemsOk returns a tuple with the TotalItems field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ApiComponentsGetCollection200Response) GetTotalItemsOk() (*int32, bool) {
-	if o == nil || isNil(o.TotalItems) {
-    return nil, false
+	if o == nil || IsNil(o.TotalItems) {
+		return nil, false
 	}
 	return o.TotalItems, true
 }
 
 // HasTotalItems returns a boolean if a field has been set.
 func (o *ApiComponentsGetCollection200Response) HasTotalItems() bool {
-	if o != nil && !isNil(o.TotalItems) {
+	if o != nil && !IsNil(o.TotalItems) {
 		return true
 	}
 
@@ -99,7 +102,7 @@ func (o *ApiComponentsGetCollection200Response) SetTotalItems(v int32) {
 
 // GetItemsPerPage returns the ItemsPerPage field value if set, zero value otherwise.
 func (o *ApiComponentsGetCollection200Response) GetItemsPerPage() int32 {
-	if o == nil || isNil(o.ItemsPerPage) {
+	if o == nil || IsNil(o.ItemsPerPage) {
 		var ret int32
 		return ret
 	}
@@ -109,15 +112,15 @@ func (o *ApiComponentsGetCollection200Response) GetItemsPerPage() int32 {
 // GetItemsPerPageOk returns a tuple with the ItemsPerPage field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ApiComponentsGetCollection200Response) GetItemsPerPageOk() (*int32, bool) {
-	if o == nil || isNil(o.ItemsPerPage) {
-    return nil, false
+	if o == nil || IsNil(o.ItemsPerPage) {
+		return nil, false
 	}
 	return o.ItemsPerPage, true
 }
 
 // HasItemsPerPage returns a boolean if a field has been set.
 func (o *ApiComponentsGetCollection200Response) HasItemsPerPage() bool {
-	if o != nil && !isNil(o.ItemsPerPage) {
+	if o != nil && !IsNil(o.ItemsPerPage) {
 		return true
 	}
 
@@ -143,7 +146,7 @@ func (o *ApiComponentsGetCollection200Response) GetLinks() ApiComponentResourceL
 // and a boolean to check if the value has been set.
 func (o *ApiComponentsGetCollection200Response) GetLinksOk() (*ApiComponentResourceLimitsGetCollection200ResponseLinks, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.Links, true
 }
@@ -154,20 +157,24 @@ func (o *ApiComponentsGetCollection200Response) SetLinks(v ApiComponentResourceL
 }
 
 func (o ApiComponentsGetCollection200Response) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["_embedded"] = o.Embedded
-	}
-	if !isNil(o.TotalItems) {
-		toSerialize["totalItems"] = o.TotalItems
-	}
-	if !isNil(o.ItemsPerPage) {
-		toSerialize["itemsPerPage"] = o.ItemsPerPage
-	}
-	if true {
-		toSerialize["_links"] = o.Links
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ApiComponentsGetCollection200Response) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["_embedded"] = o.Embedded
+	if !IsNil(o.TotalItems) {
+		toSerialize["totalItems"] = o.TotalItems
+	}
+	if !IsNil(o.ItemsPerPage) {
+		toSerialize["itemsPerPage"] = o.ItemsPerPage
+	}
+	toSerialize["_links"] = o.Links
+	return toSerialize, nil
 }
 
 type NullableApiComponentsGetCollection200Response struct {

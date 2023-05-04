@@ -4,11 +4,12 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Links** | Pointer to [**ComponentJsonhalLinks**](ComponentJsonhalLinks.md) |  | [optional] 
+**Links** | Pointer to [**AbstractEnvironmentJsonhalLinks**](AbstractEnvironmentJsonhalLinks.md) |  | [optional] 
 **Id** | Pointer to **int32** |  | [optional] [readonly] 
 **Uuid** | Pointer to **NullableString** |  | [optional] 
 **Name** | Pointer to **NullableString** |  | [optional] 
 **CodeName** | Pointer to **NullableString** |  | [optional] 
+**IsDefault** | Pointer to **NullableBool** |  | [optional] 
 **Environment** | Pointer to **[]string** |  | [optional] 
 **Region** | Pointer to **[]string** |  | [optional] 
 **CreatedBy** | Pointer to **NullableString** |  | [optional] 
@@ -37,20 +38,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetLinks
 
-`func (o *ProviderJsonhal) GetLinks() ComponentJsonhalLinks`
+`func (o *ProviderJsonhal) GetLinks() AbstractEnvironmentJsonhalLinks`
 
 GetLinks returns the Links field if non-nil, zero value otherwise.
 
 ### GetLinksOk
 
-`func (o *ProviderJsonhal) GetLinksOk() (*ComponentJsonhalLinks, bool)`
+`func (o *ProviderJsonhal) GetLinksOk() (*AbstractEnvironmentJsonhalLinks, bool)`
 
 GetLinksOk returns a tuple with the Links field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetLinks
 
-`func (o *ProviderJsonhal) SetLinks(v ComponentJsonhalLinks)`
+`func (o *ProviderJsonhal) SetLinks(v AbstractEnvironmentJsonhalLinks)`
 
 SetLinks sets Links field to given value.
 
@@ -190,6 +191,41 @@ HasCodeName returns a boolean if a field has been set.
 `func (o *ProviderJsonhal) UnsetCodeName()`
 
 UnsetCodeName ensures that no value is present for CodeName, not even an explicit nil
+### GetIsDefault
+
+`func (o *ProviderJsonhal) GetIsDefault() bool`
+
+GetIsDefault returns the IsDefault field if non-nil, zero value otherwise.
+
+### GetIsDefaultOk
+
+`func (o *ProviderJsonhal) GetIsDefaultOk() (*bool, bool)`
+
+GetIsDefaultOk returns a tuple with the IsDefault field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIsDefault
+
+`func (o *ProviderJsonhal) SetIsDefault(v bool)`
+
+SetIsDefault sets IsDefault field to given value.
+
+### HasIsDefault
+
+`func (o *ProviderJsonhal) HasIsDefault() bool`
+
+HasIsDefault returns a boolean if a field has been set.
+
+### SetIsDefaultNil
+
+`func (o *ProviderJsonhal) SetIsDefaultNil(b bool)`
+
+ SetIsDefaultNil sets the value for IsDefault to be an explicit nil
+
+### UnsetIsDefault
+`func (o *ProviderJsonhal) UnsetIsDefault()`
+
+UnsetIsDefault ensures that no value is present for IsDefault, not even an explicit nil
 ### GetEnvironment
 
 `func (o *ProviderJsonhal) GetEnvironment() []string`

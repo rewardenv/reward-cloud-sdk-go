@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **KubecostUser** | Pointer to **NullableString** |  | [optional] 
 **KubecostPass** | Pointer to **NullableString** |  | [optional] 
 **ChangeKubecostPass** | Pointer to **NullableString** |  | [optional] 
+**IsDefault** | Pointer to **NullableBool** |  | [optional] 
 **Environment** | Pointer to **[]string** |  | [optional] 
 **Provider** | Pointer to **NullableString** |  | [optional] 
 **Products** | Pointer to **[]string** |  | [optional] 
@@ -273,6 +274,41 @@ HasChangeKubecostPass returns a boolean if a field has been set.
 `func (o *Region) UnsetChangeKubecostPass()`
 
 UnsetChangeKubecostPass ensures that no value is present for ChangeKubecostPass, not even an explicit nil
+### GetIsDefault
+
+`func (o *Region) GetIsDefault() bool`
+
+GetIsDefault returns the IsDefault field if non-nil, zero value otherwise.
+
+### GetIsDefaultOk
+
+`func (o *Region) GetIsDefaultOk() (*bool, bool)`
+
+GetIsDefaultOk returns a tuple with the IsDefault field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIsDefault
+
+`func (o *Region) SetIsDefault(v bool)`
+
+SetIsDefault sets IsDefault field to given value.
+
+### HasIsDefault
+
+`func (o *Region) HasIsDefault() bool`
+
+HasIsDefault returns a boolean if a field has been set.
+
+### SetIsDefaultNil
+
+`func (o *Region) SetIsDefaultNil(b bool)`
+
+ SetIsDefaultNil sets the value for IsDefault to be an explicit nil
+
+### UnsetIsDefault
+`func (o *Region) UnsetIsDefault()`
+
+UnsetIsDefault ensures that no value is present for IsDefault, not even an explicit nil
 ### GetEnvironment
 
 `func (o *Region) GetEnvironment() []string`

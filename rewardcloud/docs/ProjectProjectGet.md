@@ -4,24 +4,25 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**TemplateIri** | Pointer to **NullableString** |  | [optional] 
+**State** | Pointer to **NullableString** |  | [optional] 
+**Git** | Pointer to [**NullableProjectProjectGetGit**](ProjectProjectGetGit.md) |  | [optional] 
+**ServiceAccount** | Pointer to [**NullableProjectProjectGetServiceAccount**](ProjectProjectGetServiceAccount.md) |  | [optional] 
+**Team** | Pointer to **NullableString** |  | [optional] 
+**Environment** | Pointer to **[]string** |  | [optional] 
 **Id** | Pointer to **int32** |  | [optional] [readonly] 
 **Uuid** | Pointer to **string** |  | [optional] [readonly] 
 **Name** | Pointer to **NullableString** |  | [optional] 
-**IsActive** | Pointer to **bool** |  | [optional] 
+**IsActive** | Pointer to **NullableBool** |  | [optional] 
 **Cpu** | Pointer to **NullableInt32** |  | [optional] 
 **Memory** | Pointer to **NullableInt32** |  | [optional] 
 **Storage** | Pointer to **NullableInt32** |  | [optional] 
 **Code** | Pointer to **NullableString** |  | [optional] 
 **Color** | Pointer to **NullableString** |  | [optional] 
 **IsInitProjectSkeleton** | Pointer to **NullableBool** |  | [optional] 
-**Environment** | Pointer to **[]string** |  | [optional] 
-**Team** | Pointer to **NullableString** |  | [optional] 
-**Git** | Pointer to [**NullableProjectProjectGetGit**](ProjectProjectGetGit.md) |  | [optional] 
-**ServiceAccount** | Pointer to [**NullableProjectProjectGetServiceAccount**](ProjectProjectGetServiceAccount.md) |  | [optional] 
-**State** | Pointer to **NullableString** |  | [optional] 
-**ProjectEnvVar** | Pointer to [**[]ProjectEnvVarProjectGet**](ProjectEnvVarProjectGet.md) |  | [optional] 
-**ProjectTypeVersion** | Pointer to **NullableString** |  | [optional] 
 **ComponentVersion** | Pointer to **[]string** |  | [optional] 
+**ProjectTypeVersion** | Pointer to **NullableString** |  | [optional] 
+**ProjectEnvVar** | Pointer to [**[]ProjectEnvVarProjectGet**](ProjectEnvVarProjectGet.md) |  | [optional] 
 **CreatedAt** | Pointer to **time.Time** |  | [optional] 
 **UpdatedAt** | Pointer to **time.Time** |  | [optional] 
 
@@ -43,6 +44,206 @@ will change when the set of required properties is changed
 NewProjectProjectGetWithDefaults instantiates a new ProjectProjectGet object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetTemplateIri
+
+`func (o *ProjectProjectGet) GetTemplateIri() string`
+
+GetTemplateIri returns the TemplateIri field if non-nil, zero value otherwise.
+
+### GetTemplateIriOk
+
+`func (o *ProjectProjectGet) GetTemplateIriOk() (*string, bool)`
+
+GetTemplateIriOk returns a tuple with the TemplateIri field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTemplateIri
+
+`func (o *ProjectProjectGet) SetTemplateIri(v string)`
+
+SetTemplateIri sets TemplateIri field to given value.
+
+### HasTemplateIri
+
+`func (o *ProjectProjectGet) HasTemplateIri() bool`
+
+HasTemplateIri returns a boolean if a field has been set.
+
+### SetTemplateIriNil
+
+`func (o *ProjectProjectGet) SetTemplateIriNil(b bool)`
+
+ SetTemplateIriNil sets the value for TemplateIri to be an explicit nil
+
+### UnsetTemplateIri
+`func (o *ProjectProjectGet) UnsetTemplateIri()`
+
+UnsetTemplateIri ensures that no value is present for TemplateIri, not even an explicit nil
+### GetState
+
+`func (o *ProjectProjectGet) GetState() string`
+
+GetState returns the State field if non-nil, zero value otherwise.
+
+### GetStateOk
+
+`func (o *ProjectProjectGet) GetStateOk() (*string, bool)`
+
+GetStateOk returns a tuple with the State field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetState
+
+`func (o *ProjectProjectGet) SetState(v string)`
+
+SetState sets State field to given value.
+
+### HasState
+
+`func (o *ProjectProjectGet) HasState() bool`
+
+HasState returns a boolean if a field has been set.
+
+### SetStateNil
+
+`func (o *ProjectProjectGet) SetStateNil(b bool)`
+
+ SetStateNil sets the value for State to be an explicit nil
+
+### UnsetState
+`func (o *ProjectProjectGet) UnsetState()`
+
+UnsetState ensures that no value is present for State, not even an explicit nil
+### GetGit
+
+`func (o *ProjectProjectGet) GetGit() ProjectProjectGetGit`
+
+GetGit returns the Git field if non-nil, zero value otherwise.
+
+### GetGitOk
+
+`func (o *ProjectProjectGet) GetGitOk() (*ProjectProjectGetGit, bool)`
+
+GetGitOk returns a tuple with the Git field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGit
+
+`func (o *ProjectProjectGet) SetGit(v ProjectProjectGetGit)`
+
+SetGit sets Git field to given value.
+
+### HasGit
+
+`func (o *ProjectProjectGet) HasGit() bool`
+
+HasGit returns a boolean if a field has been set.
+
+### SetGitNil
+
+`func (o *ProjectProjectGet) SetGitNil(b bool)`
+
+ SetGitNil sets the value for Git to be an explicit nil
+
+### UnsetGit
+`func (o *ProjectProjectGet) UnsetGit()`
+
+UnsetGit ensures that no value is present for Git, not even an explicit nil
+### GetServiceAccount
+
+`func (o *ProjectProjectGet) GetServiceAccount() ProjectProjectGetServiceAccount`
+
+GetServiceAccount returns the ServiceAccount field if non-nil, zero value otherwise.
+
+### GetServiceAccountOk
+
+`func (o *ProjectProjectGet) GetServiceAccountOk() (*ProjectProjectGetServiceAccount, bool)`
+
+GetServiceAccountOk returns a tuple with the ServiceAccount field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetServiceAccount
+
+`func (o *ProjectProjectGet) SetServiceAccount(v ProjectProjectGetServiceAccount)`
+
+SetServiceAccount sets ServiceAccount field to given value.
+
+### HasServiceAccount
+
+`func (o *ProjectProjectGet) HasServiceAccount() bool`
+
+HasServiceAccount returns a boolean if a field has been set.
+
+### SetServiceAccountNil
+
+`func (o *ProjectProjectGet) SetServiceAccountNil(b bool)`
+
+ SetServiceAccountNil sets the value for ServiceAccount to be an explicit nil
+
+### UnsetServiceAccount
+`func (o *ProjectProjectGet) UnsetServiceAccount()`
+
+UnsetServiceAccount ensures that no value is present for ServiceAccount, not even an explicit nil
+### GetTeam
+
+`func (o *ProjectProjectGet) GetTeam() string`
+
+GetTeam returns the Team field if non-nil, zero value otherwise.
+
+### GetTeamOk
+
+`func (o *ProjectProjectGet) GetTeamOk() (*string, bool)`
+
+GetTeamOk returns a tuple with the Team field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTeam
+
+`func (o *ProjectProjectGet) SetTeam(v string)`
+
+SetTeam sets Team field to given value.
+
+### HasTeam
+
+`func (o *ProjectProjectGet) HasTeam() bool`
+
+HasTeam returns a boolean if a field has been set.
+
+### SetTeamNil
+
+`func (o *ProjectProjectGet) SetTeamNil(b bool)`
+
+ SetTeamNil sets the value for Team to be an explicit nil
+
+### UnsetTeam
+`func (o *ProjectProjectGet) UnsetTeam()`
+
+UnsetTeam ensures that no value is present for Team, not even an explicit nil
+### GetEnvironment
+
+`func (o *ProjectProjectGet) GetEnvironment() []string`
+
+GetEnvironment returns the Environment field if non-nil, zero value otherwise.
+
+### GetEnvironmentOk
+
+`func (o *ProjectProjectGet) GetEnvironmentOk() (*[]string, bool)`
+
+GetEnvironmentOk returns a tuple with the Environment field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEnvironment
+
+`func (o *ProjectProjectGet) SetEnvironment(v []string)`
+
+SetEnvironment sets Environment field to given value.
+
+### HasEnvironment
+
+`func (o *ProjectProjectGet) HasEnvironment() bool`
+
+HasEnvironment returns a boolean if a field has been set.
 
 ### GetId
 
@@ -154,6 +355,16 @@ SetIsActive sets IsActive field to given value.
 
 HasIsActive returns a boolean if a field has been set.
 
+### SetIsActiveNil
+
+`func (o *ProjectProjectGet) SetIsActiveNil(b bool)`
+
+ SetIsActiveNil sets the value for IsActive to be an explicit nil
+
+### UnsetIsActive
+`func (o *ProjectProjectGet) UnsetIsActive()`
+
+UnsetIsActive ensures that no value is present for IsActive, not even an explicit nil
 ### GetCpu
 
 `func (o *ProjectProjectGet) GetCpu() int32`
@@ -364,195 +575,30 @@ HasIsInitProjectSkeleton returns a boolean if a field has been set.
 `func (o *ProjectProjectGet) UnsetIsInitProjectSkeleton()`
 
 UnsetIsInitProjectSkeleton ensures that no value is present for IsInitProjectSkeleton, not even an explicit nil
-### GetEnvironment
+### GetComponentVersion
 
-`func (o *ProjectProjectGet) GetEnvironment() []string`
+`func (o *ProjectProjectGet) GetComponentVersion() []string`
 
-GetEnvironment returns the Environment field if non-nil, zero value otherwise.
+GetComponentVersion returns the ComponentVersion field if non-nil, zero value otherwise.
 
-### GetEnvironmentOk
+### GetComponentVersionOk
 
-`func (o *ProjectProjectGet) GetEnvironmentOk() (*[]string, bool)`
+`func (o *ProjectProjectGet) GetComponentVersionOk() (*[]string, bool)`
 
-GetEnvironmentOk returns a tuple with the Environment field if it's non-nil, zero value otherwise
+GetComponentVersionOk returns a tuple with the ComponentVersion field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetEnvironment
+### SetComponentVersion
 
-`func (o *ProjectProjectGet) SetEnvironment(v []string)`
+`func (o *ProjectProjectGet) SetComponentVersion(v []string)`
 
-SetEnvironment sets Environment field to given value.
+SetComponentVersion sets ComponentVersion field to given value.
 
-### HasEnvironment
+### HasComponentVersion
 
-`func (o *ProjectProjectGet) HasEnvironment() bool`
+`func (o *ProjectProjectGet) HasComponentVersion() bool`
 
-HasEnvironment returns a boolean if a field has been set.
-
-### GetTeam
-
-`func (o *ProjectProjectGet) GetTeam() string`
-
-GetTeam returns the Team field if non-nil, zero value otherwise.
-
-### GetTeamOk
-
-`func (o *ProjectProjectGet) GetTeamOk() (*string, bool)`
-
-GetTeamOk returns a tuple with the Team field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetTeam
-
-`func (o *ProjectProjectGet) SetTeam(v string)`
-
-SetTeam sets Team field to given value.
-
-### HasTeam
-
-`func (o *ProjectProjectGet) HasTeam() bool`
-
-HasTeam returns a boolean if a field has been set.
-
-### SetTeamNil
-
-`func (o *ProjectProjectGet) SetTeamNil(b bool)`
-
- SetTeamNil sets the value for Team to be an explicit nil
-
-### UnsetTeam
-`func (o *ProjectProjectGet) UnsetTeam()`
-
-UnsetTeam ensures that no value is present for Team, not even an explicit nil
-### GetGit
-
-`func (o *ProjectProjectGet) GetGit() ProjectProjectGetGit`
-
-GetGit returns the Git field if non-nil, zero value otherwise.
-
-### GetGitOk
-
-`func (o *ProjectProjectGet) GetGitOk() (*ProjectProjectGetGit, bool)`
-
-GetGitOk returns a tuple with the Git field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetGit
-
-`func (o *ProjectProjectGet) SetGit(v ProjectProjectGetGit)`
-
-SetGit sets Git field to given value.
-
-### HasGit
-
-`func (o *ProjectProjectGet) HasGit() bool`
-
-HasGit returns a boolean if a field has been set.
-
-### SetGitNil
-
-`func (o *ProjectProjectGet) SetGitNil(b bool)`
-
- SetGitNil sets the value for Git to be an explicit nil
-
-### UnsetGit
-`func (o *ProjectProjectGet) UnsetGit()`
-
-UnsetGit ensures that no value is present for Git, not even an explicit nil
-### GetServiceAccount
-
-`func (o *ProjectProjectGet) GetServiceAccount() ProjectProjectGetServiceAccount`
-
-GetServiceAccount returns the ServiceAccount field if non-nil, zero value otherwise.
-
-### GetServiceAccountOk
-
-`func (o *ProjectProjectGet) GetServiceAccountOk() (*ProjectProjectGetServiceAccount, bool)`
-
-GetServiceAccountOk returns a tuple with the ServiceAccount field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetServiceAccount
-
-`func (o *ProjectProjectGet) SetServiceAccount(v ProjectProjectGetServiceAccount)`
-
-SetServiceAccount sets ServiceAccount field to given value.
-
-### HasServiceAccount
-
-`func (o *ProjectProjectGet) HasServiceAccount() bool`
-
-HasServiceAccount returns a boolean if a field has been set.
-
-### SetServiceAccountNil
-
-`func (o *ProjectProjectGet) SetServiceAccountNil(b bool)`
-
- SetServiceAccountNil sets the value for ServiceAccount to be an explicit nil
-
-### UnsetServiceAccount
-`func (o *ProjectProjectGet) UnsetServiceAccount()`
-
-UnsetServiceAccount ensures that no value is present for ServiceAccount, not even an explicit nil
-### GetState
-
-`func (o *ProjectProjectGet) GetState() string`
-
-GetState returns the State field if non-nil, zero value otherwise.
-
-### GetStateOk
-
-`func (o *ProjectProjectGet) GetStateOk() (*string, bool)`
-
-GetStateOk returns a tuple with the State field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetState
-
-`func (o *ProjectProjectGet) SetState(v string)`
-
-SetState sets State field to given value.
-
-### HasState
-
-`func (o *ProjectProjectGet) HasState() bool`
-
-HasState returns a boolean if a field has been set.
-
-### SetStateNil
-
-`func (o *ProjectProjectGet) SetStateNil(b bool)`
-
- SetStateNil sets the value for State to be an explicit nil
-
-### UnsetState
-`func (o *ProjectProjectGet) UnsetState()`
-
-UnsetState ensures that no value is present for State, not even an explicit nil
-### GetProjectEnvVar
-
-`func (o *ProjectProjectGet) GetProjectEnvVar() []ProjectEnvVarProjectGet`
-
-GetProjectEnvVar returns the ProjectEnvVar field if non-nil, zero value otherwise.
-
-### GetProjectEnvVarOk
-
-`func (o *ProjectProjectGet) GetProjectEnvVarOk() (*[]ProjectEnvVarProjectGet, bool)`
-
-GetProjectEnvVarOk returns a tuple with the ProjectEnvVar field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetProjectEnvVar
-
-`func (o *ProjectProjectGet) SetProjectEnvVar(v []ProjectEnvVarProjectGet)`
-
-SetProjectEnvVar sets ProjectEnvVar field to given value.
-
-### HasProjectEnvVar
-
-`func (o *ProjectProjectGet) HasProjectEnvVar() bool`
-
-HasProjectEnvVar returns a boolean if a field has been set.
+HasComponentVersion returns a boolean if a field has been set.
 
 ### GetProjectTypeVersion
 
@@ -589,30 +635,30 @@ HasProjectTypeVersion returns a boolean if a field has been set.
 `func (o *ProjectProjectGet) UnsetProjectTypeVersion()`
 
 UnsetProjectTypeVersion ensures that no value is present for ProjectTypeVersion, not even an explicit nil
-### GetComponentVersion
+### GetProjectEnvVar
 
-`func (o *ProjectProjectGet) GetComponentVersion() []string`
+`func (o *ProjectProjectGet) GetProjectEnvVar() []ProjectEnvVarProjectGet`
 
-GetComponentVersion returns the ComponentVersion field if non-nil, zero value otherwise.
+GetProjectEnvVar returns the ProjectEnvVar field if non-nil, zero value otherwise.
 
-### GetComponentVersionOk
+### GetProjectEnvVarOk
 
-`func (o *ProjectProjectGet) GetComponentVersionOk() (*[]string, bool)`
+`func (o *ProjectProjectGet) GetProjectEnvVarOk() (*[]ProjectEnvVarProjectGet, bool)`
 
-GetComponentVersionOk returns a tuple with the ComponentVersion field if it's non-nil, zero value otherwise
+GetProjectEnvVarOk returns a tuple with the ProjectEnvVar field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetComponentVersion
+### SetProjectEnvVar
 
-`func (o *ProjectProjectGet) SetComponentVersion(v []string)`
+`func (o *ProjectProjectGet) SetProjectEnvVar(v []ProjectEnvVarProjectGet)`
 
-SetComponentVersion sets ComponentVersion field to given value.
+SetProjectEnvVar sets ProjectEnvVar field to given value.
 
-### HasComponentVersion
+### HasProjectEnvVar
 
-`func (o *ProjectProjectGet) HasComponentVersion() bool`
+`func (o *ProjectProjectGet) HasProjectEnvVar() bool`
 
-HasComponentVersion returns a boolean if a field has been set.
+HasProjectEnvVar returns a boolean if a field has been set.
 
 ### GetCreatedAt
 

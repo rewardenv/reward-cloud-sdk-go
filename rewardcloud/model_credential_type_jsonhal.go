@@ -15,9 +15,12 @@ import (
 	"time"
 )
 
+// checks if the CredentialTypeJsonhal type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &CredentialTypeJsonhal{}
+
 // CredentialTypeJsonhal Class CredentialType
 type CredentialTypeJsonhal struct {
-	Links *ComponentJsonhalLinks `json:"_links,omitempty"`
+	Links *AbstractEnvironmentJsonhalLinks `json:"_links,omitempty"`
 	Id *int32 `json:"id,omitempty"`
 	Uuid NullableString `json:"uuid,omitempty"`
 	Name NullableString `json:"name,omitempty"`
@@ -47,9 +50,9 @@ func NewCredentialTypeJsonhalWithDefaults() *CredentialTypeJsonhal {
 }
 
 // GetLinks returns the Links field value if set, zero value otherwise.
-func (o *CredentialTypeJsonhal) GetLinks() ComponentJsonhalLinks {
-	if o == nil || isNil(o.Links) {
-		var ret ComponentJsonhalLinks
+func (o *CredentialTypeJsonhal) GetLinks() AbstractEnvironmentJsonhalLinks {
+	if o == nil || IsNil(o.Links) {
+		var ret AbstractEnvironmentJsonhalLinks
 		return ret
 	}
 	return *o.Links
@@ -57,30 +60,30 @@ func (o *CredentialTypeJsonhal) GetLinks() ComponentJsonhalLinks {
 
 // GetLinksOk returns a tuple with the Links field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CredentialTypeJsonhal) GetLinksOk() (*ComponentJsonhalLinks, bool) {
-	if o == nil || isNil(o.Links) {
-    return nil, false
+func (o *CredentialTypeJsonhal) GetLinksOk() (*AbstractEnvironmentJsonhalLinks, bool) {
+	if o == nil || IsNil(o.Links) {
+		return nil, false
 	}
 	return o.Links, true
 }
 
 // HasLinks returns a boolean if a field has been set.
 func (o *CredentialTypeJsonhal) HasLinks() bool {
-	if o != nil && !isNil(o.Links) {
+	if o != nil && !IsNil(o.Links) {
 		return true
 	}
 
 	return false
 }
 
-// SetLinks gets a reference to the given ComponentJsonhalLinks and assigns it to the Links field.
-func (o *CredentialTypeJsonhal) SetLinks(v ComponentJsonhalLinks) {
+// SetLinks gets a reference to the given AbstractEnvironmentJsonhalLinks and assigns it to the Links field.
+func (o *CredentialTypeJsonhal) SetLinks(v AbstractEnvironmentJsonhalLinks) {
 	o.Links = &v
 }
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *CredentialTypeJsonhal) GetId() int32 {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		var ret int32
 		return ret
 	}
@@ -90,15 +93,15 @@ func (o *CredentialTypeJsonhal) GetId() int32 {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CredentialTypeJsonhal) GetIdOk() (*int32, bool) {
-	if o == nil || isNil(o.Id) {
-    return nil, false
+	if o == nil || IsNil(o.Id) {
+		return nil, false
 	}
 	return o.Id, true
 }
 
 // HasId returns a boolean if a field has been set.
 func (o *CredentialTypeJsonhal) HasId() bool {
-	if o != nil && !isNil(o.Id) {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -112,7 +115,7 @@ func (o *CredentialTypeJsonhal) SetId(v int32) {
 
 // GetUuid returns the Uuid field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CredentialTypeJsonhal) GetUuid() string {
-	if o == nil || isNil(o.Uuid.Get()) {
+	if o == nil || IsNil(o.Uuid.Get()) {
 		var ret string
 		return ret
 	}
@@ -124,7 +127,7 @@ func (o *CredentialTypeJsonhal) GetUuid() string {
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CredentialTypeJsonhal) GetUuidOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return o.Uuid.Get(), o.Uuid.IsSet()
 }
@@ -154,7 +157,7 @@ func (o *CredentialTypeJsonhal) UnsetUuid() {
 
 // GetName returns the Name field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CredentialTypeJsonhal) GetName() string {
-	if o == nil || isNil(o.Name.Get()) {
+	if o == nil || IsNil(o.Name.Get()) {
 		var ret string
 		return ret
 	}
@@ -166,7 +169,7 @@ func (o *CredentialTypeJsonhal) GetName() string {
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CredentialTypeJsonhal) GetNameOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return o.Name.Get(), o.Name.IsSet()
 }
@@ -196,7 +199,7 @@ func (o *CredentialTypeJsonhal) UnsetName() {
 
 // GetCodeName returns the CodeName field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CredentialTypeJsonhal) GetCodeName() string {
-	if o == nil || isNil(o.CodeName.Get()) {
+	if o == nil || IsNil(o.CodeName.Get()) {
 		var ret string
 		return ret
 	}
@@ -208,7 +211,7 @@ func (o *CredentialTypeJsonhal) GetCodeName() string {
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CredentialTypeJsonhal) GetCodeNameOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return o.CodeName.Get(), o.CodeName.IsSet()
 }
@@ -238,7 +241,7 @@ func (o *CredentialTypeJsonhal) UnsetCodeName() {
 
 // GetGit returns the Git field value if set, zero value otherwise.
 func (o *CredentialTypeJsonhal) GetGit() []string {
-	if o == nil || isNil(o.Git) {
+	if o == nil || IsNil(o.Git) {
 		var ret []string
 		return ret
 	}
@@ -248,15 +251,15 @@ func (o *CredentialTypeJsonhal) GetGit() []string {
 // GetGitOk returns a tuple with the Git field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CredentialTypeJsonhal) GetGitOk() ([]string, bool) {
-	if o == nil || isNil(o.Git) {
-    return nil, false
+	if o == nil || IsNil(o.Git) {
+		return nil, false
 	}
 	return o.Git, true
 }
 
 // HasGit returns a boolean if a field has been set.
 func (o *CredentialTypeJsonhal) HasGit() bool {
-	if o != nil && !isNil(o.Git) {
+	if o != nil && !IsNil(o.Git) {
 		return true
 	}
 
@@ -270,7 +273,7 @@ func (o *CredentialTypeJsonhal) SetGit(v []string) {
 
 // GetCreatedBy returns the CreatedBy field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CredentialTypeJsonhal) GetCreatedBy() string {
-	if o == nil || isNil(o.CreatedBy.Get()) {
+	if o == nil || IsNil(o.CreatedBy.Get()) {
 		var ret string
 		return ret
 	}
@@ -282,7 +285,7 @@ func (o *CredentialTypeJsonhal) GetCreatedBy() string {
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CredentialTypeJsonhal) GetCreatedByOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return o.CreatedBy.Get(), o.CreatedBy.IsSet()
 }
@@ -312,7 +315,7 @@ func (o *CredentialTypeJsonhal) UnsetCreatedBy() {
 
 // GetUpdatedBy returns the UpdatedBy field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CredentialTypeJsonhal) GetUpdatedBy() string {
-	if o == nil || isNil(o.UpdatedBy.Get()) {
+	if o == nil || IsNil(o.UpdatedBy.Get()) {
 		var ret string
 		return ret
 	}
@@ -324,7 +327,7 @@ func (o *CredentialTypeJsonhal) GetUpdatedBy() string {
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CredentialTypeJsonhal) GetUpdatedByOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return o.UpdatedBy.Get(), o.UpdatedBy.IsSet()
 }
@@ -354,7 +357,7 @@ func (o *CredentialTypeJsonhal) UnsetUpdatedBy() {
 
 // GetCreatedAt returns the CreatedAt field value if set, zero value otherwise.
 func (o *CredentialTypeJsonhal) GetCreatedAt() time.Time {
-	if o == nil || isNil(o.CreatedAt) {
+	if o == nil || IsNil(o.CreatedAt) {
 		var ret time.Time
 		return ret
 	}
@@ -364,15 +367,15 @@ func (o *CredentialTypeJsonhal) GetCreatedAt() time.Time {
 // GetCreatedAtOk returns a tuple with the CreatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CredentialTypeJsonhal) GetCreatedAtOk() (*time.Time, bool) {
-	if o == nil || isNil(o.CreatedAt) {
-    return nil, false
+	if o == nil || IsNil(o.CreatedAt) {
+		return nil, false
 	}
 	return o.CreatedAt, true
 }
 
 // HasCreatedAt returns a boolean if a field has been set.
 func (o *CredentialTypeJsonhal) HasCreatedAt() bool {
-	if o != nil && !isNil(o.CreatedAt) {
+	if o != nil && !IsNil(o.CreatedAt) {
 		return true
 	}
 
@@ -386,7 +389,7 @@ func (o *CredentialTypeJsonhal) SetCreatedAt(v time.Time) {
 
 // GetUpdatedAt returns the UpdatedAt field value if set, zero value otherwise.
 func (o *CredentialTypeJsonhal) GetUpdatedAt() time.Time {
-	if o == nil || isNil(o.UpdatedAt) {
+	if o == nil || IsNil(o.UpdatedAt) {
 		var ret time.Time
 		return ret
 	}
@@ -396,15 +399,15 @@ func (o *CredentialTypeJsonhal) GetUpdatedAt() time.Time {
 // GetUpdatedAtOk returns a tuple with the UpdatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CredentialTypeJsonhal) GetUpdatedAtOk() (*time.Time, bool) {
-	if o == nil || isNil(o.UpdatedAt) {
-    return nil, false
+	if o == nil || IsNil(o.UpdatedAt) {
+		return nil, false
 	}
 	return o.UpdatedAt, true
 }
 
 // HasUpdatedAt returns a boolean if a field has been set.
 func (o *CredentialTypeJsonhal) HasUpdatedAt() bool {
-	if o != nil && !isNil(o.UpdatedAt) {
+	if o != nil && !IsNil(o.UpdatedAt) {
 		return true
 	}
 
@@ -417,13 +420,19 @@ func (o *CredentialTypeJsonhal) SetUpdatedAt(v time.Time) {
 }
 
 func (o CredentialTypeJsonhal) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o CredentialTypeJsonhal) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Links) {
+	if !IsNil(o.Links) {
 		toSerialize["_links"] = o.Links
 	}
-	if !isNil(o.Id) {
-		toSerialize["id"] = o.Id
-	}
+	// skip: id is readOnly
 	if o.Uuid.IsSet() {
 		toSerialize["uuid"] = o.Uuid.Get()
 	}
@@ -433,7 +442,7 @@ func (o CredentialTypeJsonhal) MarshalJSON() ([]byte, error) {
 	if o.CodeName.IsSet() {
 		toSerialize["codeName"] = o.CodeName.Get()
 	}
-	if !isNil(o.Git) {
+	if !IsNil(o.Git) {
 		toSerialize["git"] = o.Git
 	}
 	if o.CreatedBy.IsSet() {
@@ -442,13 +451,13 @@ func (o CredentialTypeJsonhal) MarshalJSON() ([]byte, error) {
 	if o.UpdatedBy.IsSet() {
 		toSerialize["updatedBy"] = o.UpdatedBy.Get()
 	}
-	if !isNil(o.CreatedAt) {
+	if !IsNil(o.CreatedAt) {
 		toSerialize["createdAt"] = o.CreatedAt
 	}
-	if !isNil(o.UpdatedAt) {
+	if !IsNil(o.UpdatedAt) {
 		toSerialize["updatedAt"] = o.UpdatedAt
 	}
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 type NullableCredentialTypeJsonhal struct {

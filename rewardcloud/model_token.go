@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the Token type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &Token{}
+
 // Token struct for Token
 type Token struct {
 	Token *string `json:"token,omitempty"`
@@ -39,7 +42,7 @@ func NewTokenWithDefaults() *Token {
 
 // GetToken returns the Token field value if set, zero value otherwise.
 func (o *Token) GetToken() string {
-	if o == nil || isNil(o.Token) {
+	if o == nil || IsNil(o.Token) {
 		var ret string
 		return ret
 	}
@@ -49,15 +52,15 @@ func (o *Token) GetToken() string {
 // GetTokenOk returns a tuple with the Token field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Token) GetTokenOk() (*string, bool) {
-	if o == nil || isNil(o.Token) {
-    return nil, false
+	if o == nil || IsNil(o.Token) {
+		return nil, false
 	}
 	return o.Token, true
 }
 
 // HasToken returns a boolean if a field has been set.
 func (o *Token) HasToken() bool {
-	if o != nil && !isNil(o.Token) {
+	if o != nil && !IsNil(o.Token) {
 		return true
 	}
 
@@ -71,7 +74,7 @@ func (o *Token) SetToken(v string) {
 
 // GetData returns the Data field value if set, zero value otherwise.
 func (o *Token) GetData() TokenData {
-	if o == nil || isNil(o.Data) {
+	if o == nil || IsNil(o.Data) {
 		var ret TokenData
 		return ret
 	}
@@ -81,15 +84,15 @@ func (o *Token) GetData() TokenData {
 // GetDataOk returns a tuple with the Data field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Token) GetDataOk() (*TokenData, bool) {
-	if o == nil || isNil(o.Data) {
-    return nil, false
+	if o == nil || IsNil(o.Data) {
+		return nil, false
 	}
 	return o.Data, true
 }
 
 // HasData returns a boolean if a field has been set.
 func (o *Token) HasData() bool {
-	if o != nil && !isNil(o.Data) {
+	if o != nil && !IsNil(o.Data) {
 		return true
 	}
 
@@ -102,14 +105,20 @@ func (o *Token) SetData(v TokenData) {
 }
 
 func (o Token) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.Token) {
-		toSerialize["token"] = o.Token
-	}
-	if !isNil(o.Data) {
-		toSerialize["data"] = o.Data
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o Token) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	// skip: token is readOnly
+	if !IsNil(o.Data) {
+		toSerialize["data"] = o.Data
+	}
+	return toSerialize, nil
 }
 
 type NullableToken struct {

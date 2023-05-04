@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ApiComponentResourceLimitsGetCollection200ResponseLinks type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ApiComponentResourceLimitsGetCollection200ResponseLinks{}
+
 // ApiComponentResourceLimitsGetCollection200ResponseLinks struct for ApiComponentResourceLimitsGetCollection200ResponseLinks
 type ApiComponentResourceLimitsGetCollection200ResponseLinks struct {
 	Self *ApiComponentResourceLimitsGetCollection200ResponseLinksSelf `json:"self,omitempty"`
@@ -42,7 +45,7 @@ func NewApiComponentResourceLimitsGetCollection200ResponseLinksWithDefaults() *A
 
 // GetSelf returns the Self field value if set, zero value otherwise.
 func (o *ApiComponentResourceLimitsGetCollection200ResponseLinks) GetSelf() ApiComponentResourceLimitsGetCollection200ResponseLinksSelf {
-	if o == nil || isNil(o.Self) {
+	if o == nil || IsNil(o.Self) {
 		var ret ApiComponentResourceLimitsGetCollection200ResponseLinksSelf
 		return ret
 	}
@@ -52,15 +55,15 @@ func (o *ApiComponentResourceLimitsGetCollection200ResponseLinks) GetSelf() ApiC
 // GetSelfOk returns a tuple with the Self field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ApiComponentResourceLimitsGetCollection200ResponseLinks) GetSelfOk() (*ApiComponentResourceLimitsGetCollection200ResponseLinksSelf, bool) {
-	if o == nil || isNil(o.Self) {
-    return nil, false
+	if o == nil || IsNil(o.Self) {
+		return nil, false
 	}
 	return o.Self, true
 }
 
 // HasSelf returns a boolean if a field has been set.
 func (o *ApiComponentResourceLimitsGetCollection200ResponseLinks) HasSelf() bool {
-	if o != nil && !isNil(o.Self) {
+	if o != nil && !IsNil(o.Self) {
 		return true
 	}
 
@@ -74,7 +77,7 @@ func (o *ApiComponentResourceLimitsGetCollection200ResponseLinks) SetSelf(v ApiC
 
 // GetFirst returns the First field value if set, zero value otherwise.
 func (o *ApiComponentResourceLimitsGetCollection200ResponseLinks) GetFirst() ApiComponentResourceLimitsGetCollection200ResponseLinksSelf {
-	if o == nil || isNil(o.First) {
+	if o == nil || IsNil(o.First) {
 		var ret ApiComponentResourceLimitsGetCollection200ResponseLinksSelf
 		return ret
 	}
@@ -84,15 +87,15 @@ func (o *ApiComponentResourceLimitsGetCollection200ResponseLinks) GetFirst() Api
 // GetFirstOk returns a tuple with the First field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ApiComponentResourceLimitsGetCollection200ResponseLinks) GetFirstOk() (*ApiComponentResourceLimitsGetCollection200ResponseLinksSelf, bool) {
-	if o == nil || isNil(o.First) {
-    return nil, false
+	if o == nil || IsNil(o.First) {
+		return nil, false
 	}
 	return o.First, true
 }
 
 // HasFirst returns a boolean if a field has been set.
 func (o *ApiComponentResourceLimitsGetCollection200ResponseLinks) HasFirst() bool {
-	if o != nil && !isNil(o.First) {
+	if o != nil && !IsNil(o.First) {
 		return true
 	}
 
@@ -106,7 +109,7 @@ func (o *ApiComponentResourceLimitsGetCollection200ResponseLinks) SetFirst(v Api
 
 // GetLast returns the Last field value if set, zero value otherwise.
 func (o *ApiComponentResourceLimitsGetCollection200ResponseLinks) GetLast() ApiComponentResourceLimitsGetCollection200ResponseLinksSelf {
-	if o == nil || isNil(o.Last) {
+	if o == nil || IsNil(o.Last) {
 		var ret ApiComponentResourceLimitsGetCollection200ResponseLinksSelf
 		return ret
 	}
@@ -116,15 +119,15 @@ func (o *ApiComponentResourceLimitsGetCollection200ResponseLinks) GetLast() ApiC
 // GetLastOk returns a tuple with the Last field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ApiComponentResourceLimitsGetCollection200ResponseLinks) GetLastOk() (*ApiComponentResourceLimitsGetCollection200ResponseLinksSelf, bool) {
-	if o == nil || isNil(o.Last) {
-    return nil, false
+	if o == nil || IsNil(o.Last) {
+		return nil, false
 	}
 	return o.Last, true
 }
 
 // HasLast returns a boolean if a field has been set.
 func (o *ApiComponentResourceLimitsGetCollection200ResponseLinks) HasLast() bool {
-	if o != nil && !isNil(o.Last) {
+	if o != nil && !IsNil(o.Last) {
 		return true
 	}
 
@@ -138,7 +141,7 @@ func (o *ApiComponentResourceLimitsGetCollection200ResponseLinks) SetLast(v ApiC
 
 // GetNext returns the Next field value if set, zero value otherwise.
 func (o *ApiComponentResourceLimitsGetCollection200ResponseLinks) GetNext() ApiComponentResourceLimitsGetCollection200ResponseLinksSelf {
-	if o == nil || isNil(o.Next) {
+	if o == nil || IsNil(o.Next) {
 		var ret ApiComponentResourceLimitsGetCollection200ResponseLinksSelf
 		return ret
 	}
@@ -148,15 +151,15 @@ func (o *ApiComponentResourceLimitsGetCollection200ResponseLinks) GetNext() ApiC
 // GetNextOk returns a tuple with the Next field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ApiComponentResourceLimitsGetCollection200ResponseLinks) GetNextOk() (*ApiComponentResourceLimitsGetCollection200ResponseLinksSelf, bool) {
-	if o == nil || isNil(o.Next) {
-    return nil, false
+	if o == nil || IsNil(o.Next) {
+		return nil, false
 	}
 	return o.Next, true
 }
 
 // HasNext returns a boolean if a field has been set.
 func (o *ApiComponentResourceLimitsGetCollection200ResponseLinks) HasNext() bool {
-	if o != nil && !isNil(o.Next) {
+	if o != nil && !IsNil(o.Next) {
 		return true
 	}
 
@@ -170,7 +173,7 @@ func (o *ApiComponentResourceLimitsGetCollection200ResponseLinks) SetNext(v ApiC
 
 // GetPrevious returns the Previous field value if set, zero value otherwise.
 func (o *ApiComponentResourceLimitsGetCollection200ResponseLinks) GetPrevious() ApiComponentResourceLimitsGetCollection200ResponseLinksSelf {
-	if o == nil || isNil(o.Previous) {
+	if o == nil || IsNil(o.Previous) {
 		var ret ApiComponentResourceLimitsGetCollection200ResponseLinksSelf
 		return ret
 	}
@@ -180,15 +183,15 @@ func (o *ApiComponentResourceLimitsGetCollection200ResponseLinks) GetPrevious() 
 // GetPreviousOk returns a tuple with the Previous field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ApiComponentResourceLimitsGetCollection200ResponseLinks) GetPreviousOk() (*ApiComponentResourceLimitsGetCollection200ResponseLinksSelf, bool) {
-	if o == nil || isNil(o.Previous) {
-    return nil, false
+	if o == nil || IsNil(o.Previous) {
+		return nil, false
 	}
 	return o.Previous, true
 }
 
 // HasPrevious returns a boolean if a field has been set.
 func (o *ApiComponentResourceLimitsGetCollection200ResponseLinks) HasPrevious() bool {
-	if o != nil && !isNil(o.Previous) {
+	if o != nil && !IsNil(o.Previous) {
 		return true
 	}
 
@@ -201,23 +204,31 @@ func (o *ApiComponentResourceLimitsGetCollection200ResponseLinks) SetPrevious(v 
 }
 
 func (o ApiComponentResourceLimitsGetCollection200ResponseLinks) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.Self) {
-		toSerialize["self"] = o.Self
-	}
-	if !isNil(o.First) {
-		toSerialize["first"] = o.First
-	}
-	if !isNil(o.Last) {
-		toSerialize["last"] = o.Last
-	}
-	if !isNil(o.Next) {
-		toSerialize["next"] = o.Next
-	}
-	if !isNil(o.Previous) {
-		toSerialize["previous"] = o.Previous
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ApiComponentResourceLimitsGetCollection200ResponseLinks) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Self) {
+		toSerialize["self"] = o.Self
+	}
+	if !IsNil(o.First) {
+		toSerialize["first"] = o.First
+	}
+	if !IsNil(o.Last) {
+		toSerialize["last"] = o.Last
+	}
+	if !IsNil(o.Next) {
+		toSerialize["next"] = o.Next
+	}
+	if !IsNil(o.Previous) {
+		toSerialize["previous"] = o.Previous
+	}
+	return toSerialize, nil
 }
 
 type NullableApiComponentResourceLimitsGetCollection200ResponseLinks struct {

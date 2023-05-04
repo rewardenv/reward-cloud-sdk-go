@@ -15,9 +15,12 @@ import (
 	"time"
 )
 
+// checks if the ComponentResourceLimitJsonhal type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ComponentResourceLimitJsonhal{}
+
 // ComponentResourceLimitJsonhal Class ComponentResourceLimit
 type ComponentResourceLimitJsonhal struct {
-	Links *ComponentJsonhalLinks `json:"_links,omitempty"`
+	Links *AbstractEnvironmentJsonhalLinks `json:"_links,omitempty"`
 	Id *int32 `json:"id,omitempty"`
 	Uuid NullableString `json:"uuid,omitempty"`
 	MinValue NullableInt32 `json:"minValue,omitempty"`
@@ -49,9 +52,9 @@ func NewComponentResourceLimitJsonhalWithDefaults() *ComponentResourceLimitJsonh
 }
 
 // GetLinks returns the Links field value if set, zero value otherwise.
-func (o *ComponentResourceLimitJsonhal) GetLinks() ComponentJsonhalLinks {
-	if o == nil || isNil(o.Links) {
-		var ret ComponentJsonhalLinks
+func (o *ComponentResourceLimitJsonhal) GetLinks() AbstractEnvironmentJsonhalLinks {
+	if o == nil || IsNil(o.Links) {
+		var ret AbstractEnvironmentJsonhalLinks
 		return ret
 	}
 	return *o.Links
@@ -59,30 +62,30 @@ func (o *ComponentResourceLimitJsonhal) GetLinks() ComponentJsonhalLinks {
 
 // GetLinksOk returns a tuple with the Links field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ComponentResourceLimitJsonhal) GetLinksOk() (*ComponentJsonhalLinks, bool) {
-	if o == nil || isNil(o.Links) {
-    return nil, false
+func (o *ComponentResourceLimitJsonhal) GetLinksOk() (*AbstractEnvironmentJsonhalLinks, bool) {
+	if o == nil || IsNil(o.Links) {
+		return nil, false
 	}
 	return o.Links, true
 }
 
 // HasLinks returns a boolean if a field has been set.
 func (o *ComponentResourceLimitJsonhal) HasLinks() bool {
-	if o != nil && !isNil(o.Links) {
+	if o != nil && !IsNil(o.Links) {
 		return true
 	}
 
 	return false
 }
 
-// SetLinks gets a reference to the given ComponentJsonhalLinks and assigns it to the Links field.
-func (o *ComponentResourceLimitJsonhal) SetLinks(v ComponentJsonhalLinks) {
+// SetLinks gets a reference to the given AbstractEnvironmentJsonhalLinks and assigns it to the Links field.
+func (o *ComponentResourceLimitJsonhal) SetLinks(v AbstractEnvironmentJsonhalLinks) {
 	o.Links = &v
 }
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *ComponentResourceLimitJsonhal) GetId() int32 {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		var ret int32
 		return ret
 	}
@@ -92,15 +95,15 @@ func (o *ComponentResourceLimitJsonhal) GetId() int32 {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComponentResourceLimitJsonhal) GetIdOk() (*int32, bool) {
-	if o == nil || isNil(o.Id) {
-    return nil, false
+	if o == nil || IsNil(o.Id) {
+		return nil, false
 	}
 	return o.Id, true
 }
 
 // HasId returns a boolean if a field has been set.
 func (o *ComponentResourceLimitJsonhal) HasId() bool {
-	if o != nil && !isNil(o.Id) {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -114,7 +117,7 @@ func (o *ComponentResourceLimitJsonhal) SetId(v int32) {
 
 // GetUuid returns the Uuid field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ComponentResourceLimitJsonhal) GetUuid() string {
-	if o == nil || isNil(o.Uuid.Get()) {
+	if o == nil || IsNil(o.Uuid.Get()) {
 		var ret string
 		return ret
 	}
@@ -126,7 +129,7 @@ func (o *ComponentResourceLimitJsonhal) GetUuid() string {
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ComponentResourceLimitJsonhal) GetUuidOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return o.Uuid.Get(), o.Uuid.IsSet()
 }
@@ -156,7 +159,7 @@ func (o *ComponentResourceLimitJsonhal) UnsetUuid() {
 
 // GetMinValue returns the MinValue field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ComponentResourceLimitJsonhal) GetMinValue() int32 {
-	if o == nil || isNil(o.MinValue.Get()) {
+	if o == nil || IsNil(o.MinValue.Get()) {
 		var ret int32
 		return ret
 	}
@@ -168,7 +171,7 @@ func (o *ComponentResourceLimitJsonhal) GetMinValue() int32 {
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ComponentResourceLimitJsonhal) GetMinValueOk() (*int32, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return o.MinValue.Get(), o.MinValue.IsSet()
 }
@@ -198,7 +201,7 @@ func (o *ComponentResourceLimitJsonhal) UnsetMinValue() {
 
 // GetMaxValue returns the MaxValue field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ComponentResourceLimitJsonhal) GetMaxValue() int32 {
-	if o == nil || isNil(o.MaxValue.Get()) {
+	if o == nil || IsNil(o.MaxValue.Get()) {
 		var ret int32
 		return ret
 	}
@@ -210,7 +213,7 @@ func (o *ComponentResourceLimitJsonhal) GetMaxValue() int32 {
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ComponentResourceLimitJsonhal) GetMaxValueOk() (*int32, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return o.MaxValue.Get(), o.MaxValue.IsSet()
 }
@@ -240,7 +243,7 @@ func (o *ComponentResourceLimitJsonhal) UnsetMaxValue() {
 
 // GetProjectTypeVersion returns the ProjectTypeVersion field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ComponentResourceLimitJsonhal) GetProjectTypeVersion() string {
-	if o == nil || isNil(o.ProjectTypeVersion.Get()) {
+	if o == nil || IsNil(o.ProjectTypeVersion.Get()) {
 		var ret string
 		return ret
 	}
@@ -252,7 +255,7 @@ func (o *ComponentResourceLimitJsonhal) GetProjectTypeVersion() string {
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ComponentResourceLimitJsonhal) GetProjectTypeVersionOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return o.ProjectTypeVersion.Get(), o.ProjectTypeVersion.IsSet()
 }
@@ -282,7 +285,7 @@ func (o *ComponentResourceLimitJsonhal) UnsetProjectTypeVersion() {
 
 // GetResourceType returns the ResourceType field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ComponentResourceLimitJsonhal) GetResourceType() string {
-	if o == nil || isNil(o.ResourceType.Get()) {
+	if o == nil || IsNil(o.ResourceType.Get()) {
 		var ret string
 		return ret
 	}
@@ -294,7 +297,7 @@ func (o *ComponentResourceLimitJsonhal) GetResourceType() string {
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ComponentResourceLimitJsonhal) GetResourceTypeOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return o.ResourceType.Get(), o.ResourceType.IsSet()
 }
@@ -324,7 +327,7 @@ func (o *ComponentResourceLimitJsonhal) UnsetResourceType() {
 
 // GetComponentVersion returns the ComponentVersion field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ComponentResourceLimitJsonhal) GetComponentVersion() string {
-	if o == nil || isNil(o.ComponentVersion.Get()) {
+	if o == nil || IsNil(o.ComponentVersion.Get()) {
 		var ret string
 		return ret
 	}
@@ -336,7 +339,7 @@ func (o *ComponentResourceLimitJsonhal) GetComponentVersion() string {
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ComponentResourceLimitJsonhal) GetComponentVersionOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return o.ComponentVersion.Get(), o.ComponentVersion.IsSet()
 }
@@ -366,7 +369,7 @@ func (o *ComponentResourceLimitJsonhal) UnsetComponentVersion() {
 
 // GetCreatedBy returns the CreatedBy field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ComponentResourceLimitJsonhal) GetCreatedBy() string {
-	if o == nil || isNil(o.CreatedBy.Get()) {
+	if o == nil || IsNil(o.CreatedBy.Get()) {
 		var ret string
 		return ret
 	}
@@ -378,7 +381,7 @@ func (o *ComponentResourceLimitJsonhal) GetCreatedBy() string {
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ComponentResourceLimitJsonhal) GetCreatedByOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return o.CreatedBy.Get(), o.CreatedBy.IsSet()
 }
@@ -408,7 +411,7 @@ func (o *ComponentResourceLimitJsonhal) UnsetCreatedBy() {
 
 // GetUpdatedBy returns the UpdatedBy field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ComponentResourceLimitJsonhal) GetUpdatedBy() string {
-	if o == nil || isNil(o.UpdatedBy.Get()) {
+	if o == nil || IsNil(o.UpdatedBy.Get()) {
 		var ret string
 		return ret
 	}
@@ -420,7 +423,7 @@ func (o *ComponentResourceLimitJsonhal) GetUpdatedBy() string {
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ComponentResourceLimitJsonhal) GetUpdatedByOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return o.UpdatedBy.Get(), o.UpdatedBy.IsSet()
 }
@@ -450,7 +453,7 @@ func (o *ComponentResourceLimitJsonhal) UnsetUpdatedBy() {
 
 // GetCreatedAt returns the CreatedAt field value if set, zero value otherwise.
 func (o *ComponentResourceLimitJsonhal) GetCreatedAt() time.Time {
-	if o == nil || isNil(o.CreatedAt) {
+	if o == nil || IsNil(o.CreatedAt) {
 		var ret time.Time
 		return ret
 	}
@@ -460,15 +463,15 @@ func (o *ComponentResourceLimitJsonhal) GetCreatedAt() time.Time {
 // GetCreatedAtOk returns a tuple with the CreatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComponentResourceLimitJsonhal) GetCreatedAtOk() (*time.Time, bool) {
-	if o == nil || isNil(o.CreatedAt) {
-    return nil, false
+	if o == nil || IsNil(o.CreatedAt) {
+		return nil, false
 	}
 	return o.CreatedAt, true
 }
 
 // HasCreatedAt returns a boolean if a field has been set.
 func (o *ComponentResourceLimitJsonhal) HasCreatedAt() bool {
-	if o != nil && !isNil(o.CreatedAt) {
+	if o != nil && !IsNil(o.CreatedAt) {
 		return true
 	}
 
@@ -482,7 +485,7 @@ func (o *ComponentResourceLimitJsonhal) SetCreatedAt(v time.Time) {
 
 // GetUpdatedAt returns the UpdatedAt field value if set, zero value otherwise.
 func (o *ComponentResourceLimitJsonhal) GetUpdatedAt() time.Time {
-	if o == nil || isNil(o.UpdatedAt) {
+	if o == nil || IsNil(o.UpdatedAt) {
 		var ret time.Time
 		return ret
 	}
@@ -492,15 +495,15 @@ func (o *ComponentResourceLimitJsonhal) GetUpdatedAt() time.Time {
 // GetUpdatedAtOk returns a tuple with the UpdatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComponentResourceLimitJsonhal) GetUpdatedAtOk() (*time.Time, bool) {
-	if o == nil || isNil(o.UpdatedAt) {
-    return nil, false
+	if o == nil || IsNil(o.UpdatedAt) {
+		return nil, false
 	}
 	return o.UpdatedAt, true
 }
 
 // HasUpdatedAt returns a boolean if a field has been set.
 func (o *ComponentResourceLimitJsonhal) HasUpdatedAt() bool {
-	if o != nil && !isNil(o.UpdatedAt) {
+	if o != nil && !IsNil(o.UpdatedAt) {
 		return true
 	}
 
@@ -513,13 +516,19 @@ func (o *ComponentResourceLimitJsonhal) SetUpdatedAt(v time.Time) {
 }
 
 func (o ComponentResourceLimitJsonhal) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o ComponentResourceLimitJsonhal) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Links) {
+	if !IsNil(o.Links) {
 		toSerialize["_links"] = o.Links
 	}
-	if !isNil(o.Id) {
-		toSerialize["id"] = o.Id
-	}
+	// skip: id is readOnly
 	if o.Uuid.IsSet() {
 		toSerialize["uuid"] = o.Uuid.Get()
 	}
@@ -544,13 +553,13 @@ func (o ComponentResourceLimitJsonhal) MarshalJSON() ([]byte, error) {
 	if o.UpdatedBy.IsSet() {
 		toSerialize["updatedBy"] = o.UpdatedBy.Get()
 	}
-	if !isNil(o.CreatedAt) {
+	if !IsNil(o.CreatedAt) {
 		toSerialize["createdAt"] = o.CreatedAt
 	}
-	if !isNil(o.UpdatedAt) {
+	if !IsNil(o.UpdatedAt) {
 		toSerialize["updatedAt"] = o.UpdatedAt
 	}
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 type NullableComponentResourceLimitJsonhal struct {

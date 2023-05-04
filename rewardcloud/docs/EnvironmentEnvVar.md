@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **Key** | Pointer to **NullableString** |  | [optional] 
 **Value** | Pointer to **NullableString** |  | [optional] 
 **IsEncrypted** | Pointer to **NullableBool** |  | [optional] 
-**Environment** | Pointer to **NullableString** |  | [optional] 
+**Environment** | Pointer to [**NullableEnvironmentComponentEnvironment**](EnvironmentComponentEnvironment.md) |  | [optional] 
 **EnvVarType** | Pointer to **NullableString** |  | [optional] 
 **CreatedBy** | Pointer to **NullableString** |  | [optional] 
 **UpdatedBy** | Pointer to **NullableString** |  | [optional] 
@@ -203,20 +203,20 @@ HasIsEncrypted returns a boolean if a field has been set.
 UnsetIsEncrypted ensures that no value is present for IsEncrypted, not even an explicit nil
 ### GetEnvironment
 
-`func (o *EnvironmentEnvVar) GetEnvironment() string`
+`func (o *EnvironmentEnvVar) GetEnvironment() EnvironmentComponentEnvironment`
 
 GetEnvironment returns the Environment field if non-nil, zero value otherwise.
 
 ### GetEnvironmentOk
 
-`func (o *EnvironmentEnvVar) GetEnvironmentOk() (*string, bool)`
+`func (o *EnvironmentEnvVar) GetEnvironmentOk() (*EnvironmentComponentEnvironment, bool)`
 
 GetEnvironmentOk returns a tuple with the Environment field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetEnvironment
 
-`func (o *EnvironmentEnvVar) SetEnvironment(v string)`
+`func (o *EnvironmentEnvVar) SetEnvironment(v EnvironmentComponentEnvironment)`
 
 SetEnvironment sets Environment field to given value.
 

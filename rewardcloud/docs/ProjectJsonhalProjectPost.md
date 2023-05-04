@@ -4,21 +4,22 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Links** | Pointer to [**ComponentJsonhalLinks**](ComponentJsonhalLinks.md) |  | [optional] 
+**Links** | Pointer to [**AbstractEnvironmentJsonhalLinks**](AbstractEnvironmentJsonhalLinks.md) |  | [optional] 
+**TemplateIri** | Pointer to **NullableString** |  | [optional] 
+**Git** | Pointer to [**NullableProjectJsonhalProjectPostGit**](ProjectJsonhalProjectPostGit.md) |  | [optional] 
+**Team** | Pointer to **NullableString** |  | [optional] 
+**Environment** | Pointer to **[]string** |  | [optional] 
 **Name** | Pointer to **NullableString** |  | [optional] 
-**IsActive** | Pointer to **bool** |  | [optional] 
+**IsActive** | Pointer to **NullableBool** |  | [optional] 
 **Cpu** | Pointer to **NullableInt32** |  | [optional] 
 **Memory** | Pointer to **NullableInt32** |  | [optional] 
 **Storage** | Pointer to **NullableInt32** |  | [optional] 
 **Code** | Pointer to **NullableString** |  | [optional] 
 **Color** | Pointer to **NullableString** |  | [optional] 
 **IsInitProjectSkeleton** | Pointer to **NullableBool** |  | [optional] 
-**Environment** | Pointer to **[]string** |  | [optional] 
-**Team** | Pointer to **NullableString** |  | [optional] 
-**Git** | Pointer to [**NullableProjectJsonhalProjectPostGit**](ProjectJsonhalProjectPostGit.md) |  | [optional] 
-**ProjectEnvVar** | Pointer to [**[]ProjectEnvVarJsonhalProjectPost**](ProjectEnvVarJsonhalProjectPost.md) |  | [optional] 
-**ProjectTypeVersion** | Pointer to **NullableString** |  | [optional] 
 **ComponentVersion** | Pointer to **[]string** |  | [optional] 
+**ProjectTypeVersion** | Pointer to **NullableString** |  | [optional] 
+**ProjectEnvVar** | Pointer to [**[]ProjectEnvVarJsonhalProjectPost**](ProjectEnvVarJsonhalProjectPost.md) |  | [optional] 
 
 ## Methods
 
@@ -41,20 +42,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetLinks
 
-`func (o *ProjectJsonhalProjectPost) GetLinks() ComponentJsonhalLinks`
+`func (o *ProjectJsonhalProjectPost) GetLinks() AbstractEnvironmentJsonhalLinks`
 
 GetLinks returns the Links field if non-nil, zero value otherwise.
 
 ### GetLinksOk
 
-`func (o *ProjectJsonhalProjectPost) GetLinksOk() (*ComponentJsonhalLinks, bool)`
+`func (o *ProjectJsonhalProjectPost) GetLinksOk() (*AbstractEnvironmentJsonhalLinks, bool)`
 
 GetLinksOk returns a tuple with the Links field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetLinks
 
-`func (o *ProjectJsonhalProjectPost) SetLinks(v ComponentJsonhalLinks)`
+`func (o *ProjectJsonhalProjectPost) SetLinks(v AbstractEnvironmentJsonhalLinks)`
 
 SetLinks sets Links field to given value.
 
@@ -63,6 +64,136 @@ SetLinks sets Links field to given value.
 `func (o *ProjectJsonhalProjectPost) HasLinks() bool`
 
 HasLinks returns a boolean if a field has been set.
+
+### GetTemplateIri
+
+`func (o *ProjectJsonhalProjectPost) GetTemplateIri() string`
+
+GetTemplateIri returns the TemplateIri field if non-nil, zero value otherwise.
+
+### GetTemplateIriOk
+
+`func (o *ProjectJsonhalProjectPost) GetTemplateIriOk() (*string, bool)`
+
+GetTemplateIriOk returns a tuple with the TemplateIri field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTemplateIri
+
+`func (o *ProjectJsonhalProjectPost) SetTemplateIri(v string)`
+
+SetTemplateIri sets TemplateIri field to given value.
+
+### HasTemplateIri
+
+`func (o *ProjectJsonhalProjectPost) HasTemplateIri() bool`
+
+HasTemplateIri returns a boolean if a field has been set.
+
+### SetTemplateIriNil
+
+`func (o *ProjectJsonhalProjectPost) SetTemplateIriNil(b bool)`
+
+ SetTemplateIriNil sets the value for TemplateIri to be an explicit nil
+
+### UnsetTemplateIri
+`func (o *ProjectJsonhalProjectPost) UnsetTemplateIri()`
+
+UnsetTemplateIri ensures that no value is present for TemplateIri, not even an explicit nil
+### GetGit
+
+`func (o *ProjectJsonhalProjectPost) GetGit() ProjectJsonhalProjectPostGit`
+
+GetGit returns the Git field if non-nil, zero value otherwise.
+
+### GetGitOk
+
+`func (o *ProjectJsonhalProjectPost) GetGitOk() (*ProjectJsonhalProjectPostGit, bool)`
+
+GetGitOk returns a tuple with the Git field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGit
+
+`func (o *ProjectJsonhalProjectPost) SetGit(v ProjectJsonhalProjectPostGit)`
+
+SetGit sets Git field to given value.
+
+### HasGit
+
+`func (o *ProjectJsonhalProjectPost) HasGit() bool`
+
+HasGit returns a boolean if a field has been set.
+
+### SetGitNil
+
+`func (o *ProjectJsonhalProjectPost) SetGitNil(b bool)`
+
+ SetGitNil sets the value for Git to be an explicit nil
+
+### UnsetGit
+`func (o *ProjectJsonhalProjectPost) UnsetGit()`
+
+UnsetGit ensures that no value is present for Git, not even an explicit nil
+### GetTeam
+
+`func (o *ProjectJsonhalProjectPost) GetTeam() string`
+
+GetTeam returns the Team field if non-nil, zero value otherwise.
+
+### GetTeamOk
+
+`func (o *ProjectJsonhalProjectPost) GetTeamOk() (*string, bool)`
+
+GetTeamOk returns a tuple with the Team field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTeam
+
+`func (o *ProjectJsonhalProjectPost) SetTeam(v string)`
+
+SetTeam sets Team field to given value.
+
+### HasTeam
+
+`func (o *ProjectJsonhalProjectPost) HasTeam() bool`
+
+HasTeam returns a boolean if a field has been set.
+
+### SetTeamNil
+
+`func (o *ProjectJsonhalProjectPost) SetTeamNil(b bool)`
+
+ SetTeamNil sets the value for Team to be an explicit nil
+
+### UnsetTeam
+`func (o *ProjectJsonhalProjectPost) UnsetTeam()`
+
+UnsetTeam ensures that no value is present for Team, not even an explicit nil
+### GetEnvironment
+
+`func (o *ProjectJsonhalProjectPost) GetEnvironment() []string`
+
+GetEnvironment returns the Environment field if non-nil, zero value otherwise.
+
+### GetEnvironmentOk
+
+`func (o *ProjectJsonhalProjectPost) GetEnvironmentOk() (*[]string, bool)`
+
+GetEnvironmentOk returns a tuple with the Environment field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEnvironment
+
+`func (o *ProjectJsonhalProjectPost) SetEnvironment(v []string)`
+
+SetEnvironment sets Environment field to given value.
+
+### HasEnvironment
+
+`func (o *ProjectJsonhalProjectPost) HasEnvironment() bool`
+
+HasEnvironment returns a boolean if a field has been set.
 
 ### GetName
 
@@ -124,6 +255,16 @@ SetIsActive sets IsActive field to given value.
 
 HasIsActive returns a boolean if a field has been set.
 
+### SetIsActiveNil
+
+`func (o *ProjectJsonhalProjectPost) SetIsActiveNil(b bool)`
+
+ SetIsActiveNil sets the value for IsActive to be an explicit nil
+
+### UnsetIsActive
+`func (o *ProjectJsonhalProjectPost) UnsetIsActive()`
+
+UnsetIsActive ensures that no value is present for IsActive, not even an explicit nil
 ### GetCpu
 
 `func (o *ProjectJsonhalProjectPost) GetCpu() int32`
@@ -334,125 +475,30 @@ HasIsInitProjectSkeleton returns a boolean if a field has been set.
 `func (o *ProjectJsonhalProjectPost) UnsetIsInitProjectSkeleton()`
 
 UnsetIsInitProjectSkeleton ensures that no value is present for IsInitProjectSkeleton, not even an explicit nil
-### GetEnvironment
+### GetComponentVersion
 
-`func (o *ProjectJsonhalProjectPost) GetEnvironment() []string`
+`func (o *ProjectJsonhalProjectPost) GetComponentVersion() []string`
 
-GetEnvironment returns the Environment field if non-nil, zero value otherwise.
+GetComponentVersion returns the ComponentVersion field if non-nil, zero value otherwise.
 
-### GetEnvironmentOk
+### GetComponentVersionOk
 
-`func (o *ProjectJsonhalProjectPost) GetEnvironmentOk() (*[]string, bool)`
+`func (o *ProjectJsonhalProjectPost) GetComponentVersionOk() (*[]string, bool)`
 
-GetEnvironmentOk returns a tuple with the Environment field if it's non-nil, zero value otherwise
+GetComponentVersionOk returns a tuple with the ComponentVersion field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetEnvironment
+### SetComponentVersion
 
-`func (o *ProjectJsonhalProjectPost) SetEnvironment(v []string)`
+`func (o *ProjectJsonhalProjectPost) SetComponentVersion(v []string)`
 
-SetEnvironment sets Environment field to given value.
+SetComponentVersion sets ComponentVersion field to given value.
 
-### HasEnvironment
+### HasComponentVersion
 
-`func (o *ProjectJsonhalProjectPost) HasEnvironment() bool`
+`func (o *ProjectJsonhalProjectPost) HasComponentVersion() bool`
 
-HasEnvironment returns a boolean if a field has been set.
-
-### GetTeam
-
-`func (o *ProjectJsonhalProjectPost) GetTeam() string`
-
-GetTeam returns the Team field if non-nil, zero value otherwise.
-
-### GetTeamOk
-
-`func (o *ProjectJsonhalProjectPost) GetTeamOk() (*string, bool)`
-
-GetTeamOk returns a tuple with the Team field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetTeam
-
-`func (o *ProjectJsonhalProjectPost) SetTeam(v string)`
-
-SetTeam sets Team field to given value.
-
-### HasTeam
-
-`func (o *ProjectJsonhalProjectPost) HasTeam() bool`
-
-HasTeam returns a boolean if a field has been set.
-
-### SetTeamNil
-
-`func (o *ProjectJsonhalProjectPost) SetTeamNil(b bool)`
-
- SetTeamNil sets the value for Team to be an explicit nil
-
-### UnsetTeam
-`func (o *ProjectJsonhalProjectPost) UnsetTeam()`
-
-UnsetTeam ensures that no value is present for Team, not even an explicit nil
-### GetGit
-
-`func (o *ProjectJsonhalProjectPost) GetGit() ProjectJsonhalProjectPostGit`
-
-GetGit returns the Git field if non-nil, zero value otherwise.
-
-### GetGitOk
-
-`func (o *ProjectJsonhalProjectPost) GetGitOk() (*ProjectJsonhalProjectPostGit, bool)`
-
-GetGitOk returns a tuple with the Git field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetGit
-
-`func (o *ProjectJsonhalProjectPost) SetGit(v ProjectJsonhalProjectPostGit)`
-
-SetGit sets Git field to given value.
-
-### HasGit
-
-`func (o *ProjectJsonhalProjectPost) HasGit() bool`
-
-HasGit returns a boolean if a field has been set.
-
-### SetGitNil
-
-`func (o *ProjectJsonhalProjectPost) SetGitNil(b bool)`
-
- SetGitNil sets the value for Git to be an explicit nil
-
-### UnsetGit
-`func (o *ProjectJsonhalProjectPost) UnsetGit()`
-
-UnsetGit ensures that no value is present for Git, not even an explicit nil
-### GetProjectEnvVar
-
-`func (o *ProjectJsonhalProjectPost) GetProjectEnvVar() []ProjectEnvVarJsonhalProjectPost`
-
-GetProjectEnvVar returns the ProjectEnvVar field if non-nil, zero value otherwise.
-
-### GetProjectEnvVarOk
-
-`func (o *ProjectJsonhalProjectPost) GetProjectEnvVarOk() (*[]ProjectEnvVarJsonhalProjectPost, bool)`
-
-GetProjectEnvVarOk returns a tuple with the ProjectEnvVar field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetProjectEnvVar
-
-`func (o *ProjectJsonhalProjectPost) SetProjectEnvVar(v []ProjectEnvVarJsonhalProjectPost)`
-
-SetProjectEnvVar sets ProjectEnvVar field to given value.
-
-### HasProjectEnvVar
-
-`func (o *ProjectJsonhalProjectPost) HasProjectEnvVar() bool`
-
-HasProjectEnvVar returns a boolean if a field has been set.
+HasComponentVersion returns a boolean if a field has been set.
 
 ### GetProjectTypeVersion
 
@@ -489,30 +535,30 @@ HasProjectTypeVersion returns a boolean if a field has been set.
 `func (o *ProjectJsonhalProjectPost) UnsetProjectTypeVersion()`
 
 UnsetProjectTypeVersion ensures that no value is present for ProjectTypeVersion, not even an explicit nil
-### GetComponentVersion
+### GetProjectEnvVar
 
-`func (o *ProjectJsonhalProjectPost) GetComponentVersion() []string`
+`func (o *ProjectJsonhalProjectPost) GetProjectEnvVar() []ProjectEnvVarJsonhalProjectPost`
 
-GetComponentVersion returns the ComponentVersion field if non-nil, zero value otherwise.
+GetProjectEnvVar returns the ProjectEnvVar field if non-nil, zero value otherwise.
 
-### GetComponentVersionOk
+### GetProjectEnvVarOk
 
-`func (o *ProjectJsonhalProjectPost) GetComponentVersionOk() (*[]string, bool)`
+`func (o *ProjectJsonhalProjectPost) GetProjectEnvVarOk() (*[]ProjectEnvVarJsonhalProjectPost, bool)`
 
-GetComponentVersionOk returns a tuple with the ComponentVersion field if it's non-nil, zero value otherwise
+GetProjectEnvVarOk returns a tuple with the ProjectEnvVar field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetComponentVersion
+### SetProjectEnvVar
 
-`func (o *ProjectJsonhalProjectPost) SetComponentVersion(v []string)`
+`func (o *ProjectJsonhalProjectPost) SetProjectEnvVar(v []ProjectEnvVarJsonhalProjectPost)`
 
-SetComponentVersion sets ComponentVersion field to given value.
+SetProjectEnvVar sets ProjectEnvVar field to given value.
 
-### HasComponentVersion
+### HasProjectEnvVar
 
-`func (o *ProjectJsonhalProjectPost) HasComponentVersion() bool`
+`func (o *ProjectJsonhalProjectPost) HasProjectEnvVar() bool`
 
-HasComponentVersion returns a boolean if a field has been set.
+HasProjectEnvVar returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

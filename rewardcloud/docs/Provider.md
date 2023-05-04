@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **Uuid** | Pointer to **NullableString** |  | [optional] 
 **Name** | Pointer to **NullableString** |  | [optional] 
 **CodeName** | Pointer to **NullableString** |  | [optional] 
+**IsDefault** | Pointer to **NullableBool** |  | [optional] 
 **Environment** | Pointer to **[]string** |  | [optional] 
 **Region** | Pointer to **[]string** |  | [optional] 
 **CreatedBy** | Pointer to **NullableString** |  | [optional] 
@@ -164,6 +165,41 @@ HasCodeName returns a boolean if a field has been set.
 `func (o *Provider) UnsetCodeName()`
 
 UnsetCodeName ensures that no value is present for CodeName, not even an explicit nil
+### GetIsDefault
+
+`func (o *Provider) GetIsDefault() bool`
+
+GetIsDefault returns the IsDefault field if non-nil, zero value otherwise.
+
+### GetIsDefaultOk
+
+`func (o *Provider) GetIsDefaultOk() (*bool, bool)`
+
+GetIsDefaultOk returns a tuple with the IsDefault field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIsDefault
+
+`func (o *Provider) SetIsDefault(v bool)`
+
+SetIsDefault sets IsDefault field to given value.
+
+### HasIsDefault
+
+`func (o *Provider) HasIsDefault() bool`
+
+HasIsDefault returns a boolean if a field has been set.
+
+### SetIsDefaultNil
+
+`func (o *Provider) SetIsDefaultNil(b bool)`
+
+ SetIsDefaultNil sets the value for IsDefault to be an explicit nil
+
+### UnsetIsDefault
+`func (o *Provider) UnsetIsDefault()`
+
+UnsetIsDefault ensures that no value is present for IsDefault, not even an explicit nil
 ### GetEnvironment
 
 `func (o *Provider) GetEnvironment() []string`

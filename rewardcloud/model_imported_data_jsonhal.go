@@ -15,9 +15,12 @@ import (
 	"time"
 )
 
+// checks if the ImportedDataJsonhal type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ImportedDataJsonhal{}
+
 // ImportedDataJsonhal Class ImportedData
 type ImportedDataJsonhal struct {
-	Links *ComponentJsonhalLinks `json:"_links,omitempty"`
+	Links *AbstractEnvironmentJsonhalLinks `json:"_links,omitempty"`
 	Id *int32 `json:"id,omitempty"`
 	Uuid NullableString `json:"uuid,omitempty"`
 	Environment NullableString `json:"environment,omitempty"`
@@ -47,9 +50,9 @@ func NewImportedDataJsonhalWithDefaults() *ImportedDataJsonhal {
 }
 
 // GetLinks returns the Links field value if set, zero value otherwise.
-func (o *ImportedDataJsonhal) GetLinks() ComponentJsonhalLinks {
-	if o == nil || isNil(o.Links) {
-		var ret ComponentJsonhalLinks
+func (o *ImportedDataJsonhal) GetLinks() AbstractEnvironmentJsonhalLinks {
+	if o == nil || IsNil(o.Links) {
+		var ret AbstractEnvironmentJsonhalLinks
 		return ret
 	}
 	return *o.Links
@@ -57,30 +60,30 @@ func (o *ImportedDataJsonhal) GetLinks() ComponentJsonhalLinks {
 
 // GetLinksOk returns a tuple with the Links field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ImportedDataJsonhal) GetLinksOk() (*ComponentJsonhalLinks, bool) {
-	if o == nil || isNil(o.Links) {
-    return nil, false
+func (o *ImportedDataJsonhal) GetLinksOk() (*AbstractEnvironmentJsonhalLinks, bool) {
+	if o == nil || IsNil(o.Links) {
+		return nil, false
 	}
 	return o.Links, true
 }
 
 // HasLinks returns a boolean if a field has been set.
 func (o *ImportedDataJsonhal) HasLinks() bool {
-	if o != nil && !isNil(o.Links) {
+	if o != nil && !IsNil(o.Links) {
 		return true
 	}
 
 	return false
 }
 
-// SetLinks gets a reference to the given ComponentJsonhalLinks and assigns it to the Links field.
-func (o *ImportedDataJsonhal) SetLinks(v ComponentJsonhalLinks) {
+// SetLinks gets a reference to the given AbstractEnvironmentJsonhalLinks and assigns it to the Links field.
+func (o *ImportedDataJsonhal) SetLinks(v AbstractEnvironmentJsonhalLinks) {
 	o.Links = &v
 }
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *ImportedDataJsonhal) GetId() int32 {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		var ret int32
 		return ret
 	}
@@ -90,15 +93,15 @@ func (o *ImportedDataJsonhal) GetId() int32 {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ImportedDataJsonhal) GetIdOk() (*int32, bool) {
-	if o == nil || isNil(o.Id) {
-    return nil, false
+	if o == nil || IsNil(o.Id) {
+		return nil, false
 	}
 	return o.Id, true
 }
 
 // HasId returns a boolean if a field has been set.
 func (o *ImportedDataJsonhal) HasId() bool {
-	if o != nil && !isNil(o.Id) {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -112,7 +115,7 @@ func (o *ImportedDataJsonhal) SetId(v int32) {
 
 // GetUuid returns the Uuid field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ImportedDataJsonhal) GetUuid() string {
-	if o == nil || isNil(o.Uuid.Get()) {
+	if o == nil || IsNil(o.Uuid.Get()) {
 		var ret string
 		return ret
 	}
@@ -124,7 +127,7 @@ func (o *ImportedDataJsonhal) GetUuid() string {
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ImportedDataJsonhal) GetUuidOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return o.Uuid.Get(), o.Uuid.IsSet()
 }
@@ -154,7 +157,7 @@ func (o *ImportedDataJsonhal) UnsetUuid() {
 
 // GetEnvironment returns the Environment field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ImportedDataJsonhal) GetEnvironment() string {
-	if o == nil || isNil(o.Environment.Get()) {
+	if o == nil || IsNil(o.Environment.Get()) {
 		var ret string
 		return ret
 	}
@@ -166,7 +169,7 @@ func (o *ImportedDataJsonhal) GetEnvironment() string {
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ImportedDataJsonhal) GetEnvironmentOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return o.Environment.Get(), o.Environment.IsSet()
 }
@@ -196,7 +199,7 @@ func (o *ImportedDataJsonhal) UnsetEnvironment() {
 
 // GetDataTransferDataType returns the DataTransferDataType field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ImportedDataJsonhal) GetDataTransferDataType() string {
-	if o == nil || isNil(o.DataTransferDataType.Get()) {
+	if o == nil || IsNil(o.DataTransferDataType.Get()) {
 		var ret string
 		return ret
 	}
@@ -208,7 +211,7 @@ func (o *ImportedDataJsonhal) GetDataTransferDataType() string {
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ImportedDataJsonhal) GetDataTransferDataTypeOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return o.DataTransferDataType.Get(), o.DataTransferDataType.IsSet()
 }
@@ -238,7 +241,7 @@ func (o *ImportedDataJsonhal) UnsetDataTransferDataType() {
 
 // GetState returns the State field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ImportedDataJsonhal) GetState() string {
-	if o == nil || isNil(o.State.Get()) {
+	if o == nil || IsNil(o.State.Get()) {
 		var ret string
 		return ret
 	}
@@ -250,7 +253,7 @@ func (o *ImportedDataJsonhal) GetState() string {
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ImportedDataJsonhal) GetStateOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return o.State.Get(), o.State.IsSet()
 }
@@ -280,7 +283,7 @@ func (o *ImportedDataJsonhal) UnsetState() {
 
 // GetCreatedAt returns the CreatedAt field value if set, zero value otherwise.
 func (o *ImportedDataJsonhal) GetCreatedAt() time.Time {
-	if o == nil || isNil(o.CreatedAt) {
+	if o == nil || IsNil(o.CreatedAt) {
 		var ret time.Time
 		return ret
 	}
@@ -290,15 +293,15 @@ func (o *ImportedDataJsonhal) GetCreatedAt() time.Time {
 // GetCreatedAtOk returns a tuple with the CreatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ImportedDataJsonhal) GetCreatedAtOk() (*time.Time, bool) {
-	if o == nil || isNil(o.CreatedAt) {
-    return nil, false
+	if o == nil || IsNil(o.CreatedAt) {
+		return nil, false
 	}
 	return o.CreatedAt, true
 }
 
 // HasCreatedAt returns a boolean if a field has been set.
 func (o *ImportedDataJsonhal) HasCreatedAt() bool {
-	if o != nil && !isNil(o.CreatedAt) {
+	if o != nil && !IsNil(o.CreatedAt) {
 		return true
 	}
 
@@ -312,7 +315,7 @@ func (o *ImportedDataJsonhal) SetCreatedAt(v time.Time) {
 
 // GetUpdatedAt returns the UpdatedAt field value if set, zero value otherwise.
 func (o *ImportedDataJsonhal) GetUpdatedAt() time.Time {
-	if o == nil || isNil(o.UpdatedAt) {
+	if o == nil || IsNil(o.UpdatedAt) {
 		var ret time.Time
 		return ret
 	}
@@ -322,15 +325,15 @@ func (o *ImportedDataJsonhal) GetUpdatedAt() time.Time {
 // GetUpdatedAtOk returns a tuple with the UpdatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ImportedDataJsonhal) GetUpdatedAtOk() (*time.Time, bool) {
-	if o == nil || isNil(o.UpdatedAt) {
-    return nil, false
+	if o == nil || IsNil(o.UpdatedAt) {
+		return nil, false
 	}
 	return o.UpdatedAt, true
 }
 
 // HasUpdatedAt returns a boolean if a field has been set.
 func (o *ImportedDataJsonhal) HasUpdatedAt() bool {
-	if o != nil && !isNil(o.UpdatedAt) {
+	if o != nil && !IsNil(o.UpdatedAt) {
 		return true
 	}
 
@@ -344,7 +347,7 @@ func (o *ImportedDataJsonhal) SetUpdatedAt(v time.Time) {
 
 // GetCreatedBy returns the CreatedBy field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ImportedDataJsonhal) GetCreatedBy() string {
-	if o == nil || isNil(o.CreatedBy.Get()) {
+	if o == nil || IsNil(o.CreatedBy.Get()) {
 		var ret string
 		return ret
 	}
@@ -356,7 +359,7 @@ func (o *ImportedDataJsonhal) GetCreatedBy() string {
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ImportedDataJsonhal) GetCreatedByOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return o.CreatedBy.Get(), o.CreatedBy.IsSet()
 }
@@ -386,7 +389,7 @@ func (o *ImportedDataJsonhal) UnsetCreatedBy() {
 
 // GetUpdatedBy returns the UpdatedBy field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ImportedDataJsonhal) GetUpdatedBy() string {
-	if o == nil || isNil(o.UpdatedBy.Get()) {
+	if o == nil || IsNil(o.UpdatedBy.Get()) {
 		var ret string
 		return ret
 	}
@@ -398,7 +401,7 @@ func (o *ImportedDataJsonhal) GetUpdatedBy() string {
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ImportedDataJsonhal) GetUpdatedByOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return o.UpdatedBy.Get(), o.UpdatedBy.IsSet()
 }
@@ -427,13 +430,19 @@ func (o *ImportedDataJsonhal) UnsetUpdatedBy() {
 }
 
 func (o ImportedDataJsonhal) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o ImportedDataJsonhal) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Links) {
+	if !IsNil(o.Links) {
 		toSerialize["_links"] = o.Links
 	}
-	if !isNil(o.Id) {
-		toSerialize["id"] = o.Id
-	}
+	// skip: id is readOnly
 	if o.Uuid.IsSet() {
 		toSerialize["uuid"] = o.Uuid.Get()
 	}
@@ -446,10 +455,10 @@ func (o ImportedDataJsonhal) MarshalJSON() ([]byte, error) {
 	if o.State.IsSet() {
 		toSerialize["state"] = o.State.Get()
 	}
-	if !isNil(o.CreatedAt) {
+	if !IsNil(o.CreatedAt) {
 		toSerialize["createdAt"] = o.CreatedAt
 	}
-	if !isNil(o.UpdatedAt) {
+	if !IsNil(o.UpdatedAt) {
 		toSerialize["updatedAt"] = o.UpdatedAt
 	}
 	if o.CreatedBy.IsSet() {
@@ -458,7 +467,7 @@ func (o ImportedDataJsonhal) MarshalJSON() ([]byte, error) {
 	if o.UpdatedBy.IsSet() {
 		toSerialize["updatedBy"] = o.UpdatedBy.Get()
 	}
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 type NullableImportedDataJsonhal struct {

@@ -4,7 +4,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Links** | Pointer to [**ComponentJsonhalLinks**](ComponentJsonhalLinks.md) |  | [optional] 
+**Links** | Pointer to [**AbstractEnvironmentJsonhalLinks**](AbstractEnvironmentJsonhalLinks.md) |  | [optional] 
+**TemplateIri** | Pointer to **NullableString** |  | [optional] 
+**Project** | Pointer to **NullableString** |  | [optional] 
+**Provider** | Pointer to **NullableString** |  | [optional] 
+**State** | Pointer to **NullableString** |  | [optional] 
+**Region** | Pointer to **NullableString** |  | [optional] 
+**EnvironmentAccess** | Pointer to **NullableString** |  | [optional] 
+**ExportedData** | Pointer to **[]string** |  | [optional] 
+**ImportedData** | Pointer to **[]string** |  | [optional] 
 **Id** | Pointer to **int32** |  | [optional] [readonly] 
 **Uuid** | Pointer to **NullableString** |  | [optional] [readonly] 
 **Name** | Pointer to **NullableString** |  | [optional] 
@@ -15,17 +23,10 @@ Name | Type | Description | Notes
 **IsStripDatabase** | Pointer to **NullableBool** |  | [optional] 
 **IsAllowOutgoingEmails** | Pointer to **NullableBool** |  | [optional] 
 **IsInitSampleData** | Pointer to **NullableBool** |  | [optional] 
-**Project** | Pointer to **NullableString** |  | [optional] 
-**Provider** | Pointer to **NullableString** |  | [optional] 
-**EnvVar** | Pointer to [**[]EnvironmentEnvVarJsonhalEnvironmentGet**](EnvironmentEnvVarJsonhalEnvironmentGet.md) |  | [optional] 
-**State** | Pointer to **NullableString** |  | [optional] 
-**EnvironmentComponent** | Pointer to [**[]EnvironmentComponentJsonhalEnvironmentGet**](EnvironmentComponentJsonhalEnvironmentGet.md) |  | [optional] 
-**Region** | Pointer to **NullableString** |  | [optional] 
-**ExportedData** | Pointer to **[]string** |  | [optional] 
-**EnvironmentAccess** | Pointer to **NullableString** |  | [optional] 
-**ImportedData** | Pointer to **[]string** |  | [optional] 
 **CreatedAt** | Pointer to **time.Time** |  | [optional] 
 **UpdatedAt** | Pointer to **time.Time** |  | [optional] 
+**EnvVar** | Pointer to [**[]EnvironmentEnvVarJsonhalEnvironmentGet**](EnvironmentEnvVarJsonhalEnvironmentGet.md) |  | [optional] 
+**EnvironmentComponent** | Pointer to [**[]EnvironmentComponentJsonhalEnvironmentGet**](EnvironmentComponentJsonhalEnvironmentGet.md) |  | [optional] 
 
 ## Methods
 
@@ -48,20 +49,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetLinks
 
-`func (o *EnvironmentJsonhalEnvironmentGet) GetLinks() ComponentJsonhalLinks`
+`func (o *EnvironmentJsonhalEnvironmentGet) GetLinks() AbstractEnvironmentJsonhalLinks`
 
 GetLinks returns the Links field if non-nil, zero value otherwise.
 
 ### GetLinksOk
 
-`func (o *EnvironmentJsonhalEnvironmentGet) GetLinksOk() (*ComponentJsonhalLinks, bool)`
+`func (o *EnvironmentJsonhalEnvironmentGet) GetLinksOk() (*AbstractEnvironmentJsonhalLinks, bool)`
 
 GetLinksOk returns a tuple with the Links field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetLinks
 
-`func (o *EnvironmentJsonhalEnvironmentGet) SetLinks(v ComponentJsonhalLinks)`
+`func (o *EnvironmentJsonhalEnvironmentGet) SetLinks(v AbstractEnvironmentJsonhalLinks)`
 
 SetLinks sets Links field to given value.
 
@@ -70,6 +71,266 @@ SetLinks sets Links field to given value.
 `func (o *EnvironmentJsonhalEnvironmentGet) HasLinks() bool`
 
 HasLinks returns a boolean if a field has been set.
+
+### GetTemplateIri
+
+`func (o *EnvironmentJsonhalEnvironmentGet) GetTemplateIri() string`
+
+GetTemplateIri returns the TemplateIri field if non-nil, zero value otherwise.
+
+### GetTemplateIriOk
+
+`func (o *EnvironmentJsonhalEnvironmentGet) GetTemplateIriOk() (*string, bool)`
+
+GetTemplateIriOk returns a tuple with the TemplateIri field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTemplateIri
+
+`func (o *EnvironmentJsonhalEnvironmentGet) SetTemplateIri(v string)`
+
+SetTemplateIri sets TemplateIri field to given value.
+
+### HasTemplateIri
+
+`func (o *EnvironmentJsonhalEnvironmentGet) HasTemplateIri() bool`
+
+HasTemplateIri returns a boolean if a field has been set.
+
+### SetTemplateIriNil
+
+`func (o *EnvironmentJsonhalEnvironmentGet) SetTemplateIriNil(b bool)`
+
+ SetTemplateIriNil sets the value for TemplateIri to be an explicit nil
+
+### UnsetTemplateIri
+`func (o *EnvironmentJsonhalEnvironmentGet) UnsetTemplateIri()`
+
+UnsetTemplateIri ensures that no value is present for TemplateIri, not even an explicit nil
+### GetProject
+
+`func (o *EnvironmentJsonhalEnvironmentGet) GetProject() string`
+
+GetProject returns the Project field if non-nil, zero value otherwise.
+
+### GetProjectOk
+
+`func (o *EnvironmentJsonhalEnvironmentGet) GetProjectOk() (*string, bool)`
+
+GetProjectOk returns a tuple with the Project field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetProject
+
+`func (o *EnvironmentJsonhalEnvironmentGet) SetProject(v string)`
+
+SetProject sets Project field to given value.
+
+### HasProject
+
+`func (o *EnvironmentJsonhalEnvironmentGet) HasProject() bool`
+
+HasProject returns a boolean if a field has been set.
+
+### SetProjectNil
+
+`func (o *EnvironmentJsonhalEnvironmentGet) SetProjectNil(b bool)`
+
+ SetProjectNil sets the value for Project to be an explicit nil
+
+### UnsetProject
+`func (o *EnvironmentJsonhalEnvironmentGet) UnsetProject()`
+
+UnsetProject ensures that no value is present for Project, not even an explicit nil
+### GetProvider
+
+`func (o *EnvironmentJsonhalEnvironmentGet) GetProvider() string`
+
+GetProvider returns the Provider field if non-nil, zero value otherwise.
+
+### GetProviderOk
+
+`func (o *EnvironmentJsonhalEnvironmentGet) GetProviderOk() (*string, bool)`
+
+GetProviderOk returns a tuple with the Provider field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetProvider
+
+`func (o *EnvironmentJsonhalEnvironmentGet) SetProvider(v string)`
+
+SetProvider sets Provider field to given value.
+
+### HasProvider
+
+`func (o *EnvironmentJsonhalEnvironmentGet) HasProvider() bool`
+
+HasProvider returns a boolean if a field has been set.
+
+### SetProviderNil
+
+`func (o *EnvironmentJsonhalEnvironmentGet) SetProviderNil(b bool)`
+
+ SetProviderNil sets the value for Provider to be an explicit nil
+
+### UnsetProvider
+`func (o *EnvironmentJsonhalEnvironmentGet) UnsetProvider()`
+
+UnsetProvider ensures that no value is present for Provider, not even an explicit nil
+### GetState
+
+`func (o *EnvironmentJsonhalEnvironmentGet) GetState() string`
+
+GetState returns the State field if non-nil, zero value otherwise.
+
+### GetStateOk
+
+`func (o *EnvironmentJsonhalEnvironmentGet) GetStateOk() (*string, bool)`
+
+GetStateOk returns a tuple with the State field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetState
+
+`func (o *EnvironmentJsonhalEnvironmentGet) SetState(v string)`
+
+SetState sets State field to given value.
+
+### HasState
+
+`func (o *EnvironmentJsonhalEnvironmentGet) HasState() bool`
+
+HasState returns a boolean if a field has been set.
+
+### SetStateNil
+
+`func (o *EnvironmentJsonhalEnvironmentGet) SetStateNil(b bool)`
+
+ SetStateNil sets the value for State to be an explicit nil
+
+### UnsetState
+`func (o *EnvironmentJsonhalEnvironmentGet) UnsetState()`
+
+UnsetState ensures that no value is present for State, not even an explicit nil
+### GetRegion
+
+`func (o *EnvironmentJsonhalEnvironmentGet) GetRegion() string`
+
+GetRegion returns the Region field if non-nil, zero value otherwise.
+
+### GetRegionOk
+
+`func (o *EnvironmentJsonhalEnvironmentGet) GetRegionOk() (*string, bool)`
+
+GetRegionOk returns a tuple with the Region field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRegion
+
+`func (o *EnvironmentJsonhalEnvironmentGet) SetRegion(v string)`
+
+SetRegion sets Region field to given value.
+
+### HasRegion
+
+`func (o *EnvironmentJsonhalEnvironmentGet) HasRegion() bool`
+
+HasRegion returns a boolean if a field has been set.
+
+### SetRegionNil
+
+`func (o *EnvironmentJsonhalEnvironmentGet) SetRegionNil(b bool)`
+
+ SetRegionNil sets the value for Region to be an explicit nil
+
+### UnsetRegion
+`func (o *EnvironmentJsonhalEnvironmentGet) UnsetRegion()`
+
+UnsetRegion ensures that no value is present for Region, not even an explicit nil
+### GetEnvironmentAccess
+
+`func (o *EnvironmentJsonhalEnvironmentGet) GetEnvironmentAccess() string`
+
+GetEnvironmentAccess returns the EnvironmentAccess field if non-nil, zero value otherwise.
+
+### GetEnvironmentAccessOk
+
+`func (o *EnvironmentJsonhalEnvironmentGet) GetEnvironmentAccessOk() (*string, bool)`
+
+GetEnvironmentAccessOk returns a tuple with the EnvironmentAccess field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEnvironmentAccess
+
+`func (o *EnvironmentJsonhalEnvironmentGet) SetEnvironmentAccess(v string)`
+
+SetEnvironmentAccess sets EnvironmentAccess field to given value.
+
+### HasEnvironmentAccess
+
+`func (o *EnvironmentJsonhalEnvironmentGet) HasEnvironmentAccess() bool`
+
+HasEnvironmentAccess returns a boolean if a field has been set.
+
+### SetEnvironmentAccessNil
+
+`func (o *EnvironmentJsonhalEnvironmentGet) SetEnvironmentAccessNil(b bool)`
+
+ SetEnvironmentAccessNil sets the value for EnvironmentAccess to be an explicit nil
+
+### UnsetEnvironmentAccess
+`func (o *EnvironmentJsonhalEnvironmentGet) UnsetEnvironmentAccess()`
+
+UnsetEnvironmentAccess ensures that no value is present for EnvironmentAccess, not even an explicit nil
+### GetExportedData
+
+`func (o *EnvironmentJsonhalEnvironmentGet) GetExportedData() []string`
+
+GetExportedData returns the ExportedData field if non-nil, zero value otherwise.
+
+### GetExportedDataOk
+
+`func (o *EnvironmentJsonhalEnvironmentGet) GetExportedDataOk() (*[]string, bool)`
+
+GetExportedDataOk returns a tuple with the ExportedData field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetExportedData
+
+`func (o *EnvironmentJsonhalEnvironmentGet) SetExportedData(v []string)`
+
+SetExportedData sets ExportedData field to given value.
+
+### HasExportedData
+
+`func (o *EnvironmentJsonhalEnvironmentGet) HasExportedData() bool`
+
+HasExportedData returns a boolean if a field has been set.
+
+### GetImportedData
+
+`func (o *EnvironmentJsonhalEnvironmentGet) GetImportedData() []string`
+
+GetImportedData returns the ImportedData field if non-nil, zero value otherwise.
+
+### GetImportedDataOk
+
+`func (o *EnvironmentJsonhalEnvironmentGet) GetImportedDataOk() (*[]string, bool)`
+
+GetImportedDataOk returns a tuple with the ImportedData field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetImportedData
+
+`func (o *EnvironmentJsonhalEnvironmentGet) SetImportedData(v []string)`
+
+SetImportedData sets ImportedData field to given value.
+
+### HasImportedData
+
+`func (o *EnvironmentJsonhalEnvironmentGet) HasImportedData() bool`
+
+HasImportedData returns a boolean if a field has been set.
 
 ### GetId
 
@@ -411,281 +672,6 @@ HasIsInitSampleData returns a boolean if a field has been set.
 `func (o *EnvironmentJsonhalEnvironmentGet) UnsetIsInitSampleData()`
 
 UnsetIsInitSampleData ensures that no value is present for IsInitSampleData, not even an explicit nil
-### GetProject
-
-`func (o *EnvironmentJsonhalEnvironmentGet) GetProject() string`
-
-GetProject returns the Project field if non-nil, zero value otherwise.
-
-### GetProjectOk
-
-`func (o *EnvironmentJsonhalEnvironmentGet) GetProjectOk() (*string, bool)`
-
-GetProjectOk returns a tuple with the Project field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetProject
-
-`func (o *EnvironmentJsonhalEnvironmentGet) SetProject(v string)`
-
-SetProject sets Project field to given value.
-
-### HasProject
-
-`func (o *EnvironmentJsonhalEnvironmentGet) HasProject() bool`
-
-HasProject returns a boolean if a field has been set.
-
-### SetProjectNil
-
-`func (o *EnvironmentJsonhalEnvironmentGet) SetProjectNil(b bool)`
-
- SetProjectNil sets the value for Project to be an explicit nil
-
-### UnsetProject
-`func (o *EnvironmentJsonhalEnvironmentGet) UnsetProject()`
-
-UnsetProject ensures that no value is present for Project, not even an explicit nil
-### GetProvider
-
-`func (o *EnvironmentJsonhalEnvironmentGet) GetProvider() string`
-
-GetProvider returns the Provider field if non-nil, zero value otherwise.
-
-### GetProviderOk
-
-`func (o *EnvironmentJsonhalEnvironmentGet) GetProviderOk() (*string, bool)`
-
-GetProviderOk returns a tuple with the Provider field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetProvider
-
-`func (o *EnvironmentJsonhalEnvironmentGet) SetProvider(v string)`
-
-SetProvider sets Provider field to given value.
-
-### HasProvider
-
-`func (o *EnvironmentJsonhalEnvironmentGet) HasProvider() bool`
-
-HasProvider returns a boolean if a field has been set.
-
-### SetProviderNil
-
-`func (o *EnvironmentJsonhalEnvironmentGet) SetProviderNil(b bool)`
-
- SetProviderNil sets the value for Provider to be an explicit nil
-
-### UnsetProvider
-`func (o *EnvironmentJsonhalEnvironmentGet) UnsetProvider()`
-
-UnsetProvider ensures that no value is present for Provider, not even an explicit nil
-### GetEnvVar
-
-`func (o *EnvironmentJsonhalEnvironmentGet) GetEnvVar() []EnvironmentEnvVarJsonhalEnvironmentGet`
-
-GetEnvVar returns the EnvVar field if non-nil, zero value otherwise.
-
-### GetEnvVarOk
-
-`func (o *EnvironmentJsonhalEnvironmentGet) GetEnvVarOk() (*[]EnvironmentEnvVarJsonhalEnvironmentGet, bool)`
-
-GetEnvVarOk returns a tuple with the EnvVar field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetEnvVar
-
-`func (o *EnvironmentJsonhalEnvironmentGet) SetEnvVar(v []EnvironmentEnvVarJsonhalEnvironmentGet)`
-
-SetEnvVar sets EnvVar field to given value.
-
-### HasEnvVar
-
-`func (o *EnvironmentJsonhalEnvironmentGet) HasEnvVar() bool`
-
-HasEnvVar returns a boolean if a field has been set.
-
-### GetState
-
-`func (o *EnvironmentJsonhalEnvironmentGet) GetState() string`
-
-GetState returns the State field if non-nil, zero value otherwise.
-
-### GetStateOk
-
-`func (o *EnvironmentJsonhalEnvironmentGet) GetStateOk() (*string, bool)`
-
-GetStateOk returns a tuple with the State field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetState
-
-`func (o *EnvironmentJsonhalEnvironmentGet) SetState(v string)`
-
-SetState sets State field to given value.
-
-### HasState
-
-`func (o *EnvironmentJsonhalEnvironmentGet) HasState() bool`
-
-HasState returns a boolean if a field has been set.
-
-### SetStateNil
-
-`func (o *EnvironmentJsonhalEnvironmentGet) SetStateNil(b bool)`
-
- SetStateNil sets the value for State to be an explicit nil
-
-### UnsetState
-`func (o *EnvironmentJsonhalEnvironmentGet) UnsetState()`
-
-UnsetState ensures that no value is present for State, not even an explicit nil
-### GetEnvironmentComponent
-
-`func (o *EnvironmentJsonhalEnvironmentGet) GetEnvironmentComponent() []EnvironmentComponentJsonhalEnvironmentGet`
-
-GetEnvironmentComponent returns the EnvironmentComponent field if non-nil, zero value otherwise.
-
-### GetEnvironmentComponentOk
-
-`func (o *EnvironmentJsonhalEnvironmentGet) GetEnvironmentComponentOk() (*[]EnvironmentComponentJsonhalEnvironmentGet, bool)`
-
-GetEnvironmentComponentOk returns a tuple with the EnvironmentComponent field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetEnvironmentComponent
-
-`func (o *EnvironmentJsonhalEnvironmentGet) SetEnvironmentComponent(v []EnvironmentComponentJsonhalEnvironmentGet)`
-
-SetEnvironmentComponent sets EnvironmentComponent field to given value.
-
-### HasEnvironmentComponent
-
-`func (o *EnvironmentJsonhalEnvironmentGet) HasEnvironmentComponent() bool`
-
-HasEnvironmentComponent returns a boolean if a field has been set.
-
-### GetRegion
-
-`func (o *EnvironmentJsonhalEnvironmentGet) GetRegion() string`
-
-GetRegion returns the Region field if non-nil, zero value otherwise.
-
-### GetRegionOk
-
-`func (o *EnvironmentJsonhalEnvironmentGet) GetRegionOk() (*string, bool)`
-
-GetRegionOk returns a tuple with the Region field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetRegion
-
-`func (o *EnvironmentJsonhalEnvironmentGet) SetRegion(v string)`
-
-SetRegion sets Region field to given value.
-
-### HasRegion
-
-`func (o *EnvironmentJsonhalEnvironmentGet) HasRegion() bool`
-
-HasRegion returns a boolean if a field has been set.
-
-### SetRegionNil
-
-`func (o *EnvironmentJsonhalEnvironmentGet) SetRegionNil(b bool)`
-
- SetRegionNil sets the value for Region to be an explicit nil
-
-### UnsetRegion
-`func (o *EnvironmentJsonhalEnvironmentGet) UnsetRegion()`
-
-UnsetRegion ensures that no value is present for Region, not even an explicit nil
-### GetExportedData
-
-`func (o *EnvironmentJsonhalEnvironmentGet) GetExportedData() []string`
-
-GetExportedData returns the ExportedData field if non-nil, zero value otherwise.
-
-### GetExportedDataOk
-
-`func (o *EnvironmentJsonhalEnvironmentGet) GetExportedDataOk() (*[]string, bool)`
-
-GetExportedDataOk returns a tuple with the ExportedData field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetExportedData
-
-`func (o *EnvironmentJsonhalEnvironmentGet) SetExportedData(v []string)`
-
-SetExportedData sets ExportedData field to given value.
-
-### HasExportedData
-
-`func (o *EnvironmentJsonhalEnvironmentGet) HasExportedData() bool`
-
-HasExportedData returns a boolean if a field has been set.
-
-### GetEnvironmentAccess
-
-`func (o *EnvironmentJsonhalEnvironmentGet) GetEnvironmentAccess() string`
-
-GetEnvironmentAccess returns the EnvironmentAccess field if non-nil, zero value otherwise.
-
-### GetEnvironmentAccessOk
-
-`func (o *EnvironmentJsonhalEnvironmentGet) GetEnvironmentAccessOk() (*string, bool)`
-
-GetEnvironmentAccessOk returns a tuple with the EnvironmentAccess field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetEnvironmentAccess
-
-`func (o *EnvironmentJsonhalEnvironmentGet) SetEnvironmentAccess(v string)`
-
-SetEnvironmentAccess sets EnvironmentAccess field to given value.
-
-### HasEnvironmentAccess
-
-`func (o *EnvironmentJsonhalEnvironmentGet) HasEnvironmentAccess() bool`
-
-HasEnvironmentAccess returns a boolean if a field has been set.
-
-### SetEnvironmentAccessNil
-
-`func (o *EnvironmentJsonhalEnvironmentGet) SetEnvironmentAccessNil(b bool)`
-
- SetEnvironmentAccessNil sets the value for EnvironmentAccess to be an explicit nil
-
-### UnsetEnvironmentAccess
-`func (o *EnvironmentJsonhalEnvironmentGet) UnsetEnvironmentAccess()`
-
-UnsetEnvironmentAccess ensures that no value is present for EnvironmentAccess, not even an explicit nil
-### GetImportedData
-
-`func (o *EnvironmentJsonhalEnvironmentGet) GetImportedData() []string`
-
-GetImportedData returns the ImportedData field if non-nil, zero value otherwise.
-
-### GetImportedDataOk
-
-`func (o *EnvironmentJsonhalEnvironmentGet) GetImportedDataOk() (*[]string, bool)`
-
-GetImportedDataOk returns a tuple with the ImportedData field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetImportedData
-
-`func (o *EnvironmentJsonhalEnvironmentGet) SetImportedData(v []string)`
-
-SetImportedData sets ImportedData field to given value.
-
-### HasImportedData
-
-`func (o *EnvironmentJsonhalEnvironmentGet) HasImportedData() bool`
-
-HasImportedData returns a boolean if a field has been set.
-
 ### GetCreatedAt
 
 `func (o *EnvironmentJsonhalEnvironmentGet) GetCreatedAt() time.Time`
@@ -735,6 +721,56 @@ SetUpdatedAt sets UpdatedAt field to given value.
 `func (o *EnvironmentJsonhalEnvironmentGet) HasUpdatedAt() bool`
 
 HasUpdatedAt returns a boolean if a field has been set.
+
+### GetEnvVar
+
+`func (o *EnvironmentJsonhalEnvironmentGet) GetEnvVar() []EnvironmentEnvVarJsonhalEnvironmentGet`
+
+GetEnvVar returns the EnvVar field if non-nil, zero value otherwise.
+
+### GetEnvVarOk
+
+`func (o *EnvironmentJsonhalEnvironmentGet) GetEnvVarOk() (*[]EnvironmentEnvVarJsonhalEnvironmentGet, bool)`
+
+GetEnvVarOk returns a tuple with the EnvVar field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEnvVar
+
+`func (o *EnvironmentJsonhalEnvironmentGet) SetEnvVar(v []EnvironmentEnvVarJsonhalEnvironmentGet)`
+
+SetEnvVar sets EnvVar field to given value.
+
+### HasEnvVar
+
+`func (o *EnvironmentJsonhalEnvironmentGet) HasEnvVar() bool`
+
+HasEnvVar returns a boolean if a field has been set.
+
+### GetEnvironmentComponent
+
+`func (o *EnvironmentJsonhalEnvironmentGet) GetEnvironmentComponent() []EnvironmentComponentJsonhalEnvironmentGet`
+
+GetEnvironmentComponent returns the EnvironmentComponent field if non-nil, zero value otherwise.
+
+### GetEnvironmentComponentOk
+
+`func (o *EnvironmentJsonhalEnvironmentGet) GetEnvironmentComponentOk() (*[]EnvironmentComponentJsonhalEnvironmentGet, bool)`
+
+GetEnvironmentComponentOk returns a tuple with the EnvironmentComponent field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEnvironmentComponent
+
+`func (o *EnvironmentJsonhalEnvironmentGet) SetEnvironmentComponent(v []EnvironmentComponentJsonhalEnvironmentGet)`
+
+SetEnvironmentComponent sets EnvironmentComponent field to given value.
+
+### HasEnvironmentComponent
+
+`func (o *EnvironmentJsonhalEnvironmentGet) HasEnvironmentComponent() bool`
+
+HasEnvironmentComponent returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

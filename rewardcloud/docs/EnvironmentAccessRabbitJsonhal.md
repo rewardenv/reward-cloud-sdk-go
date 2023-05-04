@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Links** | Pointer to [**ComponentJsonhalLinks**](ComponentJsonhalLinks.md) |  | [optional] 
+**Links** | Pointer to [**AbstractEnvironmentJsonhalLinks**](AbstractEnvironmentJsonhalLinks.md) |  | [optional] 
 **Id** | Pointer to **int32** |  | [optional] [readonly] 
 **Uuid** | Pointer to **NullableString** |  | [optional] [readonly] 
 **Url** | Pointer to **NullableString** |  | [optional] 
@@ -39,20 +39,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetLinks
 
-`func (o *EnvironmentAccessRabbitJsonhal) GetLinks() ComponentJsonhalLinks`
+`func (o *EnvironmentAccessRabbitJsonhal) GetLinks() AbstractEnvironmentJsonhalLinks`
 
 GetLinks returns the Links field if non-nil, zero value otherwise.
 
 ### GetLinksOk
 
-`func (o *EnvironmentAccessRabbitJsonhal) GetLinksOk() (*ComponentJsonhalLinks, bool)`
+`func (o *EnvironmentAccessRabbitJsonhal) GetLinksOk() (*AbstractEnvironmentJsonhalLinks, bool)`
 
 GetLinksOk returns a tuple with the Links field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetLinks
 
-`func (o *EnvironmentAccessRabbitJsonhal) SetLinks(v ComponentJsonhalLinks)`
+`func (o *EnvironmentAccessRabbitJsonhal) SetLinks(v AbstractEnvironmentJsonhalLinks)`
 
 SetLinks sets Links field to given value.
 

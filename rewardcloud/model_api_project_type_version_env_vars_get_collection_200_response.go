@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ApiProjectTypeVersionEnvVarsGetCollection200Response type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ApiProjectTypeVersionEnvVarsGetCollection200Response{}
+
 // ApiProjectTypeVersionEnvVarsGetCollection200Response struct for ApiProjectTypeVersionEnvVarsGetCollection200Response
 type ApiProjectTypeVersionEnvVarsGetCollection200Response struct {
 	Embedded []ProjectTypeVersionEnvVarJsonhal `json:"_embedded"`
@@ -55,7 +58,7 @@ func (o *ApiProjectTypeVersionEnvVarsGetCollection200Response) GetEmbedded() []P
 // and a boolean to check if the value has been set.
 func (o *ApiProjectTypeVersionEnvVarsGetCollection200Response) GetEmbeddedOk() ([]ProjectTypeVersionEnvVarJsonhal, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return o.Embedded, true
 }
@@ -67,7 +70,7 @@ func (o *ApiProjectTypeVersionEnvVarsGetCollection200Response) SetEmbedded(v []P
 
 // GetTotalItems returns the TotalItems field value if set, zero value otherwise.
 func (o *ApiProjectTypeVersionEnvVarsGetCollection200Response) GetTotalItems() int32 {
-	if o == nil || isNil(o.TotalItems) {
+	if o == nil || IsNil(o.TotalItems) {
 		var ret int32
 		return ret
 	}
@@ -77,15 +80,15 @@ func (o *ApiProjectTypeVersionEnvVarsGetCollection200Response) GetTotalItems() i
 // GetTotalItemsOk returns a tuple with the TotalItems field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ApiProjectTypeVersionEnvVarsGetCollection200Response) GetTotalItemsOk() (*int32, bool) {
-	if o == nil || isNil(o.TotalItems) {
-    return nil, false
+	if o == nil || IsNil(o.TotalItems) {
+		return nil, false
 	}
 	return o.TotalItems, true
 }
 
 // HasTotalItems returns a boolean if a field has been set.
 func (o *ApiProjectTypeVersionEnvVarsGetCollection200Response) HasTotalItems() bool {
-	if o != nil && !isNil(o.TotalItems) {
+	if o != nil && !IsNil(o.TotalItems) {
 		return true
 	}
 
@@ -99,7 +102,7 @@ func (o *ApiProjectTypeVersionEnvVarsGetCollection200Response) SetTotalItems(v i
 
 // GetItemsPerPage returns the ItemsPerPage field value if set, zero value otherwise.
 func (o *ApiProjectTypeVersionEnvVarsGetCollection200Response) GetItemsPerPage() int32 {
-	if o == nil || isNil(o.ItemsPerPage) {
+	if o == nil || IsNil(o.ItemsPerPage) {
 		var ret int32
 		return ret
 	}
@@ -109,15 +112,15 @@ func (o *ApiProjectTypeVersionEnvVarsGetCollection200Response) GetItemsPerPage()
 // GetItemsPerPageOk returns a tuple with the ItemsPerPage field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ApiProjectTypeVersionEnvVarsGetCollection200Response) GetItemsPerPageOk() (*int32, bool) {
-	if o == nil || isNil(o.ItemsPerPage) {
-    return nil, false
+	if o == nil || IsNil(o.ItemsPerPage) {
+		return nil, false
 	}
 	return o.ItemsPerPage, true
 }
 
 // HasItemsPerPage returns a boolean if a field has been set.
 func (o *ApiProjectTypeVersionEnvVarsGetCollection200Response) HasItemsPerPage() bool {
-	if o != nil && !isNil(o.ItemsPerPage) {
+	if o != nil && !IsNil(o.ItemsPerPage) {
 		return true
 	}
 
@@ -143,7 +146,7 @@ func (o *ApiProjectTypeVersionEnvVarsGetCollection200Response) GetLinks() ApiCom
 // and a boolean to check if the value has been set.
 func (o *ApiProjectTypeVersionEnvVarsGetCollection200Response) GetLinksOk() (*ApiComponentResourceLimitsGetCollection200ResponseLinks, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.Links, true
 }
@@ -154,20 +157,24 @@ func (o *ApiProjectTypeVersionEnvVarsGetCollection200Response) SetLinks(v ApiCom
 }
 
 func (o ApiProjectTypeVersionEnvVarsGetCollection200Response) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["_embedded"] = o.Embedded
-	}
-	if !isNil(o.TotalItems) {
-		toSerialize["totalItems"] = o.TotalItems
-	}
-	if !isNil(o.ItemsPerPage) {
-		toSerialize["itemsPerPage"] = o.ItemsPerPage
-	}
-	if true {
-		toSerialize["_links"] = o.Links
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ApiProjectTypeVersionEnvVarsGetCollection200Response) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["_embedded"] = o.Embedded
+	if !IsNil(o.TotalItems) {
+		toSerialize["totalItems"] = o.TotalItems
+	}
+	if !IsNil(o.ItemsPerPage) {
+		toSerialize["itemsPerPage"] = o.ItemsPerPage
+	}
+	toSerialize["_links"] = o.Links
+	return toSerialize, nil
 }
 
 type NullableApiProjectTypeVersionEnvVarsGetCollection200Response struct {

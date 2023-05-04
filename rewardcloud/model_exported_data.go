@@ -15,6 +15,9 @@ import (
 	"time"
 )
 
+// checks if the ExportedData type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ExportedData{}
+
 // ExportedData Class ExportedData
 type ExportedData struct {
 	Id *int32 `json:"id,omitempty"`
@@ -47,7 +50,7 @@ func NewExportedDataWithDefaults() *ExportedData {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *ExportedData) GetId() int32 {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		var ret int32
 		return ret
 	}
@@ -57,15 +60,15 @@ func (o *ExportedData) GetId() int32 {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ExportedData) GetIdOk() (*int32, bool) {
-	if o == nil || isNil(o.Id) {
-    return nil, false
+	if o == nil || IsNil(o.Id) {
+		return nil, false
 	}
 	return o.Id, true
 }
 
 // HasId returns a boolean if a field has been set.
 func (o *ExportedData) HasId() bool {
-	if o != nil && !isNil(o.Id) {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -79,7 +82,7 @@ func (o *ExportedData) SetId(v int32) {
 
 // GetUuid returns the Uuid field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ExportedData) GetUuid() string {
-	if o == nil || isNil(o.Uuid.Get()) {
+	if o == nil || IsNil(o.Uuid.Get()) {
 		var ret string
 		return ret
 	}
@@ -91,7 +94,7 @@ func (o *ExportedData) GetUuid() string {
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ExportedData) GetUuidOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return o.Uuid.Get(), o.Uuid.IsSet()
 }
@@ -121,7 +124,7 @@ func (o *ExportedData) UnsetUuid() {
 
 // GetUrl returns the Url field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ExportedData) GetUrl() string {
-	if o == nil || isNil(o.Url.Get()) {
+	if o == nil || IsNil(o.Url.Get()) {
 		var ret string
 		return ret
 	}
@@ -133,7 +136,7 @@ func (o *ExportedData) GetUrl() string {
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ExportedData) GetUrlOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return o.Url.Get(), o.Url.IsSet()
 }
@@ -163,7 +166,7 @@ func (o *ExportedData) UnsetUrl() {
 
 // GetDataTransferDataType returns the DataTransferDataType field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ExportedData) GetDataTransferDataType() string {
-	if o == nil || isNil(o.DataTransferDataType.Get()) {
+	if o == nil || IsNil(o.DataTransferDataType.Get()) {
 		var ret string
 		return ret
 	}
@@ -175,7 +178,7 @@ func (o *ExportedData) GetDataTransferDataType() string {
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ExportedData) GetDataTransferDataTypeOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return o.DataTransferDataType.Get(), o.DataTransferDataType.IsSet()
 }
@@ -205,7 +208,7 @@ func (o *ExportedData) UnsetDataTransferDataType() {
 
 // GetEnvironment returns the Environment field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ExportedData) GetEnvironment() string {
-	if o == nil || isNil(o.Environment.Get()) {
+	if o == nil || IsNil(o.Environment.Get()) {
 		var ret string
 		return ret
 	}
@@ -217,7 +220,7 @@ func (o *ExportedData) GetEnvironment() string {
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ExportedData) GetEnvironmentOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return o.Environment.Get(), o.Environment.IsSet()
 }
@@ -247,7 +250,7 @@ func (o *ExportedData) UnsetEnvironment() {
 
 // GetCreatedAt returns the CreatedAt field value if set, zero value otherwise.
 func (o *ExportedData) GetCreatedAt() time.Time {
-	if o == nil || isNil(o.CreatedAt) {
+	if o == nil || IsNil(o.CreatedAt) {
 		var ret time.Time
 		return ret
 	}
@@ -257,15 +260,15 @@ func (o *ExportedData) GetCreatedAt() time.Time {
 // GetCreatedAtOk returns a tuple with the CreatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ExportedData) GetCreatedAtOk() (*time.Time, bool) {
-	if o == nil || isNil(o.CreatedAt) {
-    return nil, false
+	if o == nil || IsNil(o.CreatedAt) {
+		return nil, false
 	}
 	return o.CreatedAt, true
 }
 
 // HasCreatedAt returns a boolean if a field has been set.
 func (o *ExportedData) HasCreatedAt() bool {
-	if o != nil && !isNil(o.CreatedAt) {
+	if o != nil && !IsNil(o.CreatedAt) {
 		return true
 	}
 
@@ -279,7 +282,7 @@ func (o *ExportedData) SetCreatedAt(v time.Time) {
 
 // GetUpdatedAt returns the UpdatedAt field value if set, zero value otherwise.
 func (o *ExportedData) GetUpdatedAt() time.Time {
-	if o == nil || isNil(o.UpdatedAt) {
+	if o == nil || IsNil(o.UpdatedAt) {
 		var ret time.Time
 		return ret
 	}
@@ -289,15 +292,15 @@ func (o *ExportedData) GetUpdatedAt() time.Time {
 // GetUpdatedAtOk returns a tuple with the UpdatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ExportedData) GetUpdatedAtOk() (*time.Time, bool) {
-	if o == nil || isNil(o.UpdatedAt) {
-    return nil, false
+	if o == nil || IsNil(o.UpdatedAt) {
+		return nil, false
 	}
 	return o.UpdatedAt, true
 }
 
 // HasUpdatedAt returns a boolean if a field has been set.
 func (o *ExportedData) HasUpdatedAt() bool {
-	if o != nil && !isNil(o.UpdatedAt) {
+	if o != nil && !IsNil(o.UpdatedAt) {
 		return true
 	}
 
@@ -311,7 +314,7 @@ func (o *ExportedData) SetUpdatedAt(v time.Time) {
 
 // GetCreatedBy returns the CreatedBy field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ExportedData) GetCreatedBy() string {
-	if o == nil || isNil(o.CreatedBy.Get()) {
+	if o == nil || IsNil(o.CreatedBy.Get()) {
 		var ret string
 		return ret
 	}
@@ -323,7 +326,7 @@ func (o *ExportedData) GetCreatedBy() string {
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ExportedData) GetCreatedByOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return o.CreatedBy.Get(), o.CreatedBy.IsSet()
 }
@@ -353,7 +356,7 @@ func (o *ExportedData) UnsetCreatedBy() {
 
 // GetUpdatedBy returns the UpdatedBy field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ExportedData) GetUpdatedBy() string {
-	if o == nil || isNil(o.UpdatedBy.Get()) {
+	if o == nil || IsNil(o.UpdatedBy.Get()) {
 		var ret string
 		return ret
 	}
@@ -365,7 +368,7 @@ func (o *ExportedData) GetUpdatedBy() string {
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ExportedData) GetUpdatedByOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return o.UpdatedBy.Get(), o.UpdatedBy.IsSet()
 }
@@ -394,10 +397,16 @@ func (o *ExportedData) UnsetUpdatedBy() {
 }
 
 func (o ExportedData) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.Id) {
-		toSerialize["id"] = o.Id
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
+	return json.Marshal(toSerialize)
+}
+
+func (o ExportedData) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	// skip: id is readOnly
 	if o.Uuid.IsSet() {
 		toSerialize["uuid"] = o.Uuid.Get()
 	}
@@ -410,10 +419,10 @@ func (o ExportedData) MarshalJSON() ([]byte, error) {
 	if o.Environment.IsSet() {
 		toSerialize["environment"] = o.Environment.Get()
 	}
-	if !isNil(o.CreatedAt) {
+	if !IsNil(o.CreatedAt) {
 		toSerialize["createdAt"] = o.CreatedAt
 	}
-	if !isNil(o.UpdatedAt) {
+	if !IsNil(o.UpdatedAt) {
 		toSerialize["updatedAt"] = o.UpdatedAt
 	}
 	if o.CreatedBy.IsSet() {
@@ -422,7 +431,7 @@ func (o ExportedData) MarshalJSON() ([]byte, error) {
 	if o.UpdatedBy.IsSet() {
 		toSerialize["updatedBy"] = o.UpdatedBy.Get()
 	}
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 type NullableExportedData struct {

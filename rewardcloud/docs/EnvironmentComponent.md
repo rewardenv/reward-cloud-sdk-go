@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 **Storage** | Pointer to **NullableInt32** |  | [optional] 
 **Node** | Pointer to **NullableInt32** |  | [optional] 
 **ComponentVersion** | Pointer to **NullableString** |  | [optional] 
-**Environment** | Pointer to **NullableString** |  | [optional] 
+**Environment** | Pointer to [**NullableEnvironmentComponentEnvironment**](EnvironmentComponentEnvironment.md) |  | [optional] 
 **CreatedBy** | Pointer to **NullableString** |  | [optional] 
 **UpdatedBy** | Pointer to **NullableString** |  | [optional] 
 **CreatedAt** | Pointer to **time.Time** |  | [optional] 
@@ -273,20 +273,20 @@ HasComponentVersion returns a boolean if a field has been set.
 UnsetComponentVersion ensures that no value is present for ComponentVersion, not even an explicit nil
 ### GetEnvironment
 
-`func (o *EnvironmentComponent) GetEnvironment() string`
+`func (o *EnvironmentComponent) GetEnvironment() EnvironmentComponentEnvironment`
 
 GetEnvironment returns the Environment field if non-nil, zero value otherwise.
 
 ### GetEnvironmentOk
 
-`func (o *EnvironmentComponent) GetEnvironmentOk() (*string, bool)`
+`func (o *EnvironmentComponent) GetEnvironmentOk() (*EnvironmentComponentEnvironment, bool)`
 
 GetEnvironmentOk returns a tuple with the Environment field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetEnvironment
 
-`func (o *EnvironmentComponent) SetEnvironment(v string)`
+`func (o *EnvironmentComponent) SetEnvironment(v EnvironmentComponentEnvironment)`
 
 SetEnvironment sets Environment field to given value.
 

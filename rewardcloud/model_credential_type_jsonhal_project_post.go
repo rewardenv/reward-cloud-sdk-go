@@ -14,9 +14,12 @@ import (
 	"encoding/json"
 )
 
+// checks if the CredentialTypeJsonhalProjectPost type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &CredentialTypeJsonhalProjectPost{}
+
 // CredentialTypeJsonhalProjectPost 
 type CredentialTypeJsonhalProjectPost struct {
-	Links *ComponentJsonhalLinks `json:"_links,omitempty"`
+	Links *AbstractEnvironmentJsonhalLinks `json:"_links,omitempty"`
 	Uuid NullableString `json:"uuid,omitempty"`
 	Name NullableString `json:"name,omitempty"`
 }
@@ -39,9 +42,9 @@ func NewCredentialTypeJsonhalProjectPostWithDefaults() *CredentialTypeJsonhalPro
 }
 
 // GetLinks returns the Links field value if set, zero value otherwise.
-func (o *CredentialTypeJsonhalProjectPost) GetLinks() ComponentJsonhalLinks {
-	if o == nil || isNil(o.Links) {
-		var ret ComponentJsonhalLinks
+func (o *CredentialTypeJsonhalProjectPost) GetLinks() AbstractEnvironmentJsonhalLinks {
+	if o == nil || IsNil(o.Links) {
+		var ret AbstractEnvironmentJsonhalLinks
 		return ret
 	}
 	return *o.Links
@@ -49,30 +52,30 @@ func (o *CredentialTypeJsonhalProjectPost) GetLinks() ComponentJsonhalLinks {
 
 // GetLinksOk returns a tuple with the Links field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CredentialTypeJsonhalProjectPost) GetLinksOk() (*ComponentJsonhalLinks, bool) {
-	if o == nil || isNil(o.Links) {
-    return nil, false
+func (o *CredentialTypeJsonhalProjectPost) GetLinksOk() (*AbstractEnvironmentJsonhalLinks, bool) {
+	if o == nil || IsNil(o.Links) {
+		return nil, false
 	}
 	return o.Links, true
 }
 
 // HasLinks returns a boolean if a field has been set.
 func (o *CredentialTypeJsonhalProjectPost) HasLinks() bool {
-	if o != nil && !isNil(o.Links) {
+	if o != nil && !IsNil(o.Links) {
 		return true
 	}
 
 	return false
 }
 
-// SetLinks gets a reference to the given ComponentJsonhalLinks and assigns it to the Links field.
-func (o *CredentialTypeJsonhalProjectPost) SetLinks(v ComponentJsonhalLinks) {
+// SetLinks gets a reference to the given AbstractEnvironmentJsonhalLinks and assigns it to the Links field.
+func (o *CredentialTypeJsonhalProjectPost) SetLinks(v AbstractEnvironmentJsonhalLinks) {
 	o.Links = &v
 }
 
 // GetUuid returns the Uuid field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CredentialTypeJsonhalProjectPost) GetUuid() string {
-	if o == nil || isNil(o.Uuid.Get()) {
+	if o == nil || IsNil(o.Uuid.Get()) {
 		var ret string
 		return ret
 	}
@@ -84,7 +87,7 @@ func (o *CredentialTypeJsonhalProjectPost) GetUuid() string {
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CredentialTypeJsonhalProjectPost) GetUuidOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return o.Uuid.Get(), o.Uuid.IsSet()
 }
@@ -114,7 +117,7 @@ func (o *CredentialTypeJsonhalProjectPost) UnsetUuid() {
 
 // GetName returns the Name field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CredentialTypeJsonhalProjectPost) GetName() string {
-	if o == nil || isNil(o.Name.Get()) {
+	if o == nil || IsNil(o.Name.Get()) {
 		var ret string
 		return ret
 	}
@@ -126,7 +129,7 @@ func (o *CredentialTypeJsonhalProjectPost) GetName() string {
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CredentialTypeJsonhalProjectPost) GetNameOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return o.Name.Get(), o.Name.IsSet()
 }
@@ -155,8 +158,16 @@ func (o *CredentialTypeJsonhalProjectPost) UnsetName() {
 }
 
 func (o CredentialTypeJsonhalProjectPost) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o CredentialTypeJsonhalProjectPost) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Links) {
+	if !IsNil(o.Links) {
 		toSerialize["_links"] = o.Links
 	}
 	if o.Uuid.IsSet() {
@@ -165,7 +176,7 @@ func (o CredentialTypeJsonhalProjectPost) MarshalJSON() ([]byte, error) {
 	if o.Name.IsSet() {
 		toSerialize["name"] = o.Name.Get()
 	}
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 type NullableCredentialTypeJsonhalProjectPost struct {

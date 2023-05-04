@@ -15,6 +15,9 @@ import (
 	"time"
 )
 
+// checks if the Region type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &Region{}
+
 // Region Class Region
 type Region struct {
 	Id *int32 `json:"id,omitempty"`
@@ -24,6 +27,7 @@ type Region struct {
 	KubecostUser NullableString `json:"kubecostUser,omitempty"`
 	KubecostPass NullableString `json:"kubecostPass,omitempty"`
 	ChangeKubecostPass NullableString `json:"changeKubecostPass,omitempty"`
+	IsDefault NullableBool `json:"isDefault,omitempty"`
 	Environment []string `json:"environment,omitempty"`
 	Provider NullableString `json:"provider,omitempty"`
 	Products []string `json:"products,omitempty"`
@@ -52,7 +56,7 @@ func NewRegionWithDefaults() *Region {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *Region) GetId() int32 {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		var ret int32
 		return ret
 	}
@@ -62,15 +66,15 @@ func (o *Region) GetId() int32 {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Region) GetIdOk() (*int32, bool) {
-	if o == nil || isNil(o.Id) {
-    return nil, false
+	if o == nil || IsNil(o.Id) {
+		return nil, false
 	}
 	return o.Id, true
 }
 
 // HasId returns a boolean if a field has been set.
 func (o *Region) HasId() bool {
-	if o != nil && !isNil(o.Id) {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -84,7 +88,7 @@ func (o *Region) SetId(v int32) {
 
 // GetUuid returns the Uuid field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Region) GetUuid() string {
-	if o == nil || isNil(o.Uuid.Get()) {
+	if o == nil || IsNil(o.Uuid.Get()) {
 		var ret string
 		return ret
 	}
@@ -96,7 +100,7 @@ func (o *Region) GetUuid() string {
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Region) GetUuidOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return o.Uuid.Get(), o.Uuid.IsSet()
 }
@@ -126,7 +130,7 @@ func (o *Region) UnsetUuid() {
 
 // GetName returns the Name field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Region) GetName() string {
-	if o == nil || isNil(o.Name.Get()) {
+	if o == nil || IsNil(o.Name.Get()) {
 		var ret string
 		return ret
 	}
@@ -138,7 +142,7 @@ func (o *Region) GetName() string {
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Region) GetNameOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return o.Name.Get(), o.Name.IsSet()
 }
@@ -168,7 +172,7 @@ func (o *Region) UnsetName() {
 
 // GetKubecostUrl returns the KubecostUrl field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Region) GetKubecostUrl() string {
-	if o == nil || isNil(o.KubecostUrl.Get()) {
+	if o == nil || IsNil(o.KubecostUrl.Get()) {
 		var ret string
 		return ret
 	}
@@ -180,7 +184,7 @@ func (o *Region) GetKubecostUrl() string {
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Region) GetKubecostUrlOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return o.KubecostUrl.Get(), o.KubecostUrl.IsSet()
 }
@@ -210,7 +214,7 @@ func (o *Region) UnsetKubecostUrl() {
 
 // GetKubecostUser returns the KubecostUser field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Region) GetKubecostUser() string {
-	if o == nil || isNil(o.KubecostUser.Get()) {
+	if o == nil || IsNil(o.KubecostUser.Get()) {
 		var ret string
 		return ret
 	}
@@ -222,7 +226,7 @@ func (o *Region) GetKubecostUser() string {
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Region) GetKubecostUserOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return o.KubecostUser.Get(), o.KubecostUser.IsSet()
 }
@@ -252,7 +256,7 @@ func (o *Region) UnsetKubecostUser() {
 
 // GetKubecostPass returns the KubecostPass field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Region) GetKubecostPass() string {
-	if o == nil || isNil(o.KubecostPass.Get()) {
+	if o == nil || IsNil(o.KubecostPass.Get()) {
 		var ret string
 		return ret
 	}
@@ -264,7 +268,7 @@ func (o *Region) GetKubecostPass() string {
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Region) GetKubecostPassOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return o.KubecostPass.Get(), o.KubecostPass.IsSet()
 }
@@ -294,7 +298,7 @@ func (o *Region) UnsetKubecostPass() {
 
 // GetChangeKubecostPass returns the ChangeKubecostPass field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Region) GetChangeKubecostPass() string {
-	if o == nil || isNil(o.ChangeKubecostPass.Get()) {
+	if o == nil || IsNil(o.ChangeKubecostPass.Get()) {
 		var ret string
 		return ret
 	}
@@ -306,7 +310,7 @@ func (o *Region) GetChangeKubecostPass() string {
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Region) GetChangeKubecostPassOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return o.ChangeKubecostPass.Get(), o.ChangeKubecostPass.IsSet()
 }
@@ -334,9 +338,51 @@ func (o *Region) UnsetChangeKubecostPass() {
 	o.ChangeKubecostPass.Unset()
 }
 
+// GetIsDefault returns the IsDefault field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *Region) GetIsDefault() bool {
+	if o == nil || IsNil(o.IsDefault.Get()) {
+		var ret bool
+		return ret
+	}
+	return *o.IsDefault.Get()
+}
+
+// GetIsDefaultOk returns a tuple with the IsDefault field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *Region) GetIsDefaultOk() (*bool, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.IsDefault.Get(), o.IsDefault.IsSet()
+}
+
+// HasIsDefault returns a boolean if a field has been set.
+func (o *Region) HasIsDefault() bool {
+	if o != nil && o.IsDefault.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetIsDefault gets a reference to the given NullableBool and assigns it to the IsDefault field.
+func (o *Region) SetIsDefault(v bool) {
+	o.IsDefault.Set(&v)
+}
+// SetIsDefaultNil sets the value for IsDefault to be an explicit nil
+func (o *Region) SetIsDefaultNil() {
+	o.IsDefault.Set(nil)
+}
+
+// UnsetIsDefault ensures that no value is present for IsDefault, not even an explicit nil
+func (o *Region) UnsetIsDefault() {
+	o.IsDefault.Unset()
+}
+
 // GetEnvironment returns the Environment field value if set, zero value otherwise.
 func (o *Region) GetEnvironment() []string {
-	if o == nil || isNil(o.Environment) {
+	if o == nil || IsNil(o.Environment) {
 		var ret []string
 		return ret
 	}
@@ -346,15 +392,15 @@ func (o *Region) GetEnvironment() []string {
 // GetEnvironmentOk returns a tuple with the Environment field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Region) GetEnvironmentOk() ([]string, bool) {
-	if o == nil || isNil(o.Environment) {
-    return nil, false
+	if o == nil || IsNil(o.Environment) {
+		return nil, false
 	}
 	return o.Environment, true
 }
 
 // HasEnvironment returns a boolean if a field has been set.
 func (o *Region) HasEnvironment() bool {
-	if o != nil && !isNil(o.Environment) {
+	if o != nil && !IsNil(o.Environment) {
 		return true
 	}
 
@@ -368,7 +414,7 @@ func (o *Region) SetEnvironment(v []string) {
 
 // GetProvider returns the Provider field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Region) GetProvider() string {
-	if o == nil || isNil(o.Provider.Get()) {
+	if o == nil || IsNil(o.Provider.Get()) {
 		var ret string
 		return ret
 	}
@@ -380,7 +426,7 @@ func (o *Region) GetProvider() string {
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Region) GetProviderOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return o.Provider.Get(), o.Provider.IsSet()
 }
@@ -410,7 +456,7 @@ func (o *Region) UnsetProvider() {
 
 // GetProducts returns the Products field value if set, zero value otherwise.
 func (o *Region) GetProducts() []string {
-	if o == nil || isNil(o.Products) {
+	if o == nil || IsNil(o.Products) {
 		var ret []string
 		return ret
 	}
@@ -420,15 +466,15 @@ func (o *Region) GetProducts() []string {
 // GetProductsOk returns a tuple with the Products field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Region) GetProductsOk() ([]string, bool) {
-	if o == nil || isNil(o.Products) {
-    return nil, false
+	if o == nil || IsNil(o.Products) {
+		return nil, false
 	}
 	return o.Products, true
 }
 
 // HasProducts returns a boolean if a field has been set.
 func (o *Region) HasProducts() bool {
-	if o != nil && !isNil(o.Products) {
+	if o != nil && !IsNil(o.Products) {
 		return true
 	}
 
@@ -442,7 +488,7 @@ func (o *Region) SetProducts(v []string) {
 
 // GetCreatedBy returns the CreatedBy field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Region) GetCreatedBy() string {
-	if o == nil || isNil(o.CreatedBy.Get()) {
+	if o == nil || IsNil(o.CreatedBy.Get()) {
 		var ret string
 		return ret
 	}
@@ -454,7 +500,7 @@ func (o *Region) GetCreatedBy() string {
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Region) GetCreatedByOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return o.CreatedBy.Get(), o.CreatedBy.IsSet()
 }
@@ -484,7 +530,7 @@ func (o *Region) UnsetCreatedBy() {
 
 // GetUpdatedBy returns the UpdatedBy field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Region) GetUpdatedBy() string {
-	if o == nil || isNil(o.UpdatedBy.Get()) {
+	if o == nil || IsNil(o.UpdatedBy.Get()) {
 		var ret string
 		return ret
 	}
@@ -496,7 +542,7 @@ func (o *Region) GetUpdatedBy() string {
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Region) GetUpdatedByOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return o.UpdatedBy.Get(), o.UpdatedBy.IsSet()
 }
@@ -526,7 +572,7 @@ func (o *Region) UnsetUpdatedBy() {
 
 // GetCreatedAt returns the CreatedAt field value if set, zero value otherwise.
 func (o *Region) GetCreatedAt() time.Time {
-	if o == nil || isNil(o.CreatedAt) {
+	if o == nil || IsNil(o.CreatedAt) {
 		var ret time.Time
 		return ret
 	}
@@ -536,15 +582,15 @@ func (o *Region) GetCreatedAt() time.Time {
 // GetCreatedAtOk returns a tuple with the CreatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Region) GetCreatedAtOk() (*time.Time, bool) {
-	if o == nil || isNil(o.CreatedAt) {
-    return nil, false
+	if o == nil || IsNil(o.CreatedAt) {
+		return nil, false
 	}
 	return o.CreatedAt, true
 }
 
 // HasCreatedAt returns a boolean if a field has been set.
 func (o *Region) HasCreatedAt() bool {
-	if o != nil && !isNil(o.CreatedAt) {
+	if o != nil && !IsNil(o.CreatedAt) {
 		return true
 	}
 
@@ -558,7 +604,7 @@ func (o *Region) SetCreatedAt(v time.Time) {
 
 // GetUpdatedAt returns the UpdatedAt field value if set, zero value otherwise.
 func (o *Region) GetUpdatedAt() time.Time {
-	if o == nil || isNil(o.UpdatedAt) {
+	if o == nil || IsNil(o.UpdatedAt) {
 		var ret time.Time
 		return ret
 	}
@@ -568,15 +614,15 @@ func (o *Region) GetUpdatedAt() time.Time {
 // GetUpdatedAtOk returns a tuple with the UpdatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Region) GetUpdatedAtOk() (*time.Time, bool) {
-	if o == nil || isNil(o.UpdatedAt) {
-    return nil, false
+	if o == nil || IsNil(o.UpdatedAt) {
+		return nil, false
 	}
 	return o.UpdatedAt, true
 }
 
 // HasUpdatedAt returns a boolean if a field has been set.
 func (o *Region) HasUpdatedAt() bool {
-	if o != nil && !isNil(o.UpdatedAt) {
+	if o != nil && !IsNil(o.UpdatedAt) {
 		return true
 	}
 
@@ -589,10 +635,16 @@ func (o *Region) SetUpdatedAt(v time.Time) {
 }
 
 func (o Region) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.Id) {
-		toSerialize["id"] = o.Id
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
+	return json.Marshal(toSerialize)
+}
+
+func (o Region) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	// skip: id is readOnly
 	if o.Uuid.IsSet() {
 		toSerialize["uuid"] = o.Uuid.Get()
 	}
@@ -611,13 +663,16 @@ func (o Region) MarshalJSON() ([]byte, error) {
 	if o.ChangeKubecostPass.IsSet() {
 		toSerialize["changeKubecostPass"] = o.ChangeKubecostPass.Get()
 	}
-	if !isNil(o.Environment) {
+	if o.IsDefault.IsSet() {
+		toSerialize["isDefault"] = o.IsDefault.Get()
+	}
+	if !IsNil(o.Environment) {
 		toSerialize["environment"] = o.Environment
 	}
 	if o.Provider.IsSet() {
 		toSerialize["provider"] = o.Provider.Get()
 	}
-	if !isNil(o.Products) {
+	if !IsNil(o.Products) {
 		toSerialize["products"] = o.Products
 	}
 	if o.CreatedBy.IsSet() {
@@ -626,13 +681,13 @@ func (o Region) MarshalJSON() ([]byte, error) {
 	if o.UpdatedBy.IsSet() {
 		toSerialize["updatedBy"] = o.UpdatedBy.Get()
 	}
-	if !isNil(o.CreatedAt) {
+	if !IsNil(o.CreatedAt) {
 		toSerialize["createdAt"] = o.CreatedAt
 	}
-	if !isNil(o.UpdatedAt) {
+	if !IsNil(o.UpdatedAt) {
 		toSerialize["updatedAt"] = o.UpdatedAt
 	}
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 type NullableRegion struct {

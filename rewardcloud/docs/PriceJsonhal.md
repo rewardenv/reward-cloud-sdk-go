@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Links** | Pointer to [**ComponentJsonhalLinks**](ComponentJsonhalLinks.md) |  | [optional] 
+**Links** | Pointer to [**AbstractEnvironmentJsonhalLinks**](AbstractEnvironmentJsonhalLinks.md) |  | [optional] 
 **Id** | Pointer to **int32** |  | [optional] [readonly] 
 **Uuid** | Pointer to **NullableString** |  | [optional] [readonly] 
 **PaymentId** | Pointer to **NullableString** |  | [optional] 
@@ -39,20 +39,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetLinks
 
-`func (o *PriceJsonhal) GetLinks() ComponentJsonhalLinks`
+`func (o *PriceJsonhal) GetLinks() AbstractEnvironmentJsonhalLinks`
 
 GetLinks returns the Links field if non-nil, zero value otherwise.
 
 ### GetLinksOk
 
-`func (o *PriceJsonhal) GetLinksOk() (*ComponentJsonhalLinks, bool)`
+`func (o *PriceJsonhal) GetLinksOk() (*AbstractEnvironmentJsonhalLinks, bool)`
 
 GetLinksOk returns a tuple with the Links field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetLinks
 
-`func (o *PriceJsonhal) SetLinks(v ComponentJsonhalLinks)`
+`func (o *PriceJsonhal) SetLinks(v AbstractEnvironmentJsonhalLinks)`
 
 SetLinks sets Links field to given value.
 

@@ -14,9 +14,12 @@ import (
 	"encoding/json"
 )
 
+// checks if the EnvironmentEnvVarJsonhalEnvironmentPost type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &EnvironmentEnvVarJsonhalEnvironmentPost{}
+
 // EnvironmentEnvVarJsonhalEnvironmentPost 
 type EnvironmentEnvVarJsonhalEnvironmentPost struct {
-	Links *ComponentJsonhalLinks `json:"_links,omitempty"`
+	Links *AbstractEnvironmentJsonhalLinks `json:"_links,omitempty"`
 	Key NullableString `json:"key,omitempty"`
 	Value NullableString `json:"value,omitempty"`
 	IsEncrypted NullableBool `json:"isEncrypted,omitempty"`
@@ -41,9 +44,9 @@ func NewEnvironmentEnvVarJsonhalEnvironmentPostWithDefaults() *EnvironmentEnvVar
 }
 
 // GetLinks returns the Links field value if set, zero value otherwise.
-func (o *EnvironmentEnvVarJsonhalEnvironmentPost) GetLinks() ComponentJsonhalLinks {
-	if o == nil || isNil(o.Links) {
-		var ret ComponentJsonhalLinks
+func (o *EnvironmentEnvVarJsonhalEnvironmentPost) GetLinks() AbstractEnvironmentJsonhalLinks {
+	if o == nil || IsNil(o.Links) {
+		var ret AbstractEnvironmentJsonhalLinks
 		return ret
 	}
 	return *o.Links
@@ -51,30 +54,30 @@ func (o *EnvironmentEnvVarJsonhalEnvironmentPost) GetLinks() ComponentJsonhalLin
 
 // GetLinksOk returns a tuple with the Links field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *EnvironmentEnvVarJsonhalEnvironmentPost) GetLinksOk() (*ComponentJsonhalLinks, bool) {
-	if o == nil || isNil(o.Links) {
-    return nil, false
+func (o *EnvironmentEnvVarJsonhalEnvironmentPost) GetLinksOk() (*AbstractEnvironmentJsonhalLinks, bool) {
+	if o == nil || IsNil(o.Links) {
+		return nil, false
 	}
 	return o.Links, true
 }
 
 // HasLinks returns a boolean if a field has been set.
 func (o *EnvironmentEnvVarJsonhalEnvironmentPost) HasLinks() bool {
-	if o != nil && !isNil(o.Links) {
+	if o != nil && !IsNil(o.Links) {
 		return true
 	}
 
 	return false
 }
 
-// SetLinks gets a reference to the given ComponentJsonhalLinks and assigns it to the Links field.
-func (o *EnvironmentEnvVarJsonhalEnvironmentPost) SetLinks(v ComponentJsonhalLinks) {
+// SetLinks gets a reference to the given AbstractEnvironmentJsonhalLinks and assigns it to the Links field.
+func (o *EnvironmentEnvVarJsonhalEnvironmentPost) SetLinks(v AbstractEnvironmentJsonhalLinks) {
 	o.Links = &v
 }
 
 // GetKey returns the Key field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *EnvironmentEnvVarJsonhalEnvironmentPost) GetKey() string {
-	if o == nil || isNil(o.Key.Get()) {
+	if o == nil || IsNil(o.Key.Get()) {
 		var ret string
 		return ret
 	}
@@ -86,7 +89,7 @@ func (o *EnvironmentEnvVarJsonhalEnvironmentPost) GetKey() string {
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *EnvironmentEnvVarJsonhalEnvironmentPost) GetKeyOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return o.Key.Get(), o.Key.IsSet()
 }
@@ -116,7 +119,7 @@ func (o *EnvironmentEnvVarJsonhalEnvironmentPost) UnsetKey() {
 
 // GetValue returns the Value field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *EnvironmentEnvVarJsonhalEnvironmentPost) GetValue() string {
-	if o == nil || isNil(o.Value.Get()) {
+	if o == nil || IsNil(o.Value.Get()) {
 		var ret string
 		return ret
 	}
@@ -128,7 +131,7 @@ func (o *EnvironmentEnvVarJsonhalEnvironmentPost) GetValue() string {
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *EnvironmentEnvVarJsonhalEnvironmentPost) GetValueOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return o.Value.Get(), o.Value.IsSet()
 }
@@ -158,7 +161,7 @@ func (o *EnvironmentEnvVarJsonhalEnvironmentPost) UnsetValue() {
 
 // GetIsEncrypted returns the IsEncrypted field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *EnvironmentEnvVarJsonhalEnvironmentPost) GetIsEncrypted() bool {
-	if o == nil || isNil(o.IsEncrypted.Get()) {
+	if o == nil || IsNil(o.IsEncrypted.Get()) {
 		var ret bool
 		return ret
 	}
@@ -170,7 +173,7 @@ func (o *EnvironmentEnvVarJsonhalEnvironmentPost) GetIsEncrypted() bool {
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *EnvironmentEnvVarJsonhalEnvironmentPost) GetIsEncryptedOk() (*bool, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return o.IsEncrypted.Get(), o.IsEncrypted.IsSet()
 }
@@ -200,7 +203,7 @@ func (o *EnvironmentEnvVarJsonhalEnvironmentPost) UnsetIsEncrypted() {
 
 // GetEnvVarType returns the EnvVarType field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *EnvironmentEnvVarJsonhalEnvironmentPost) GetEnvVarType() string {
-	if o == nil || isNil(o.EnvVarType.Get()) {
+	if o == nil || IsNil(o.EnvVarType.Get()) {
 		var ret string
 		return ret
 	}
@@ -212,7 +215,7 @@ func (o *EnvironmentEnvVarJsonhalEnvironmentPost) GetEnvVarType() string {
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *EnvironmentEnvVarJsonhalEnvironmentPost) GetEnvVarTypeOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return o.EnvVarType.Get(), o.EnvVarType.IsSet()
 }
@@ -241,8 +244,16 @@ func (o *EnvironmentEnvVarJsonhalEnvironmentPost) UnsetEnvVarType() {
 }
 
 func (o EnvironmentEnvVarJsonhalEnvironmentPost) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o EnvironmentEnvVarJsonhalEnvironmentPost) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Links) {
+	if !IsNil(o.Links) {
 		toSerialize["_links"] = o.Links
 	}
 	if o.Key.IsSet() {
@@ -257,7 +268,7 @@ func (o EnvironmentEnvVarJsonhalEnvironmentPost) MarshalJSON() ([]byte, error) {
 	if o.EnvVarType.IsSet() {
 		toSerialize["envVarType"] = o.EnvVarType.Get()
 	}
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 type NullableEnvironmentEnvVarJsonhalEnvironmentPost struct {

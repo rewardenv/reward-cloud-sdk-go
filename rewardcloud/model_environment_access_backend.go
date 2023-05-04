@@ -15,6 +15,9 @@ import (
 	"time"
 )
 
+// checks if the EnvironmentAccessBackend type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &EnvironmentAccessBackend{}
+
 // EnvironmentAccessBackend Class EnvironmentAccessBackend
 type EnvironmentAccessBackend struct {
 	Id *int32 `json:"id,omitempty"`
@@ -48,7 +51,7 @@ func NewEnvironmentAccessBackendWithDefaults() *EnvironmentAccessBackend {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *EnvironmentAccessBackend) GetId() int32 {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		var ret int32
 		return ret
 	}
@@ -58,15 +61,15 @@ func (o *EnvironmentAccessBackend) GetId() int32 {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EnvironmentAccessBackend) GetIdOk() (*int32, bool) {
-	if o == nil || isNil(o.Id) {
-    return nil, false
+	if o == nil || IsNil(o.Id) {
+		return nil, false
 	}
 	return o.Id, true
 }
 
 // HasId returns a boolean if a field has been set.
 func (o *EnvironmentAccessBackend) HasId() bool {
-	if o != nil && !isNil(o.Id) {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -80,7 +83,7 @@ func (o *EnvironmentAccessBackend) SetId(v int32) {
 
 // GetUuid returns the Uuid field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *EnvironmentAccessBackend) GetUuid() string {
-	if o == nil || isNil(o.Uuid.Get()) {
+	if o == nil || IsNil(o.Uuid.Get()) {
 		var ret string
 		return ret
 	}
@@ -92,7 +95,7 @@ func (o *EnvironmentAccessBackend) GetUuid() string {
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *EnvironmentAccessBackend) GetUuidOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return o.Uuid.Get(), o.Uuid.IsSet()
 }
@@ -122,7 +125,7 @@ func (o *EnvironmentAccessBackend) UnsetUuid() {
 
 // GetUrl returns the Url field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *EnvironmentAccessBackend) GetUrl() string {
-	if o == nil || isNil(o.Url.Get()) {
+	if o == nil || IsNil(o.Url.Get()) {
 		var ret string
 		return ret
 	}
@@ -134,7 +137,7 @@ func (o *EnvironmentAccessBackend) GetUrl() string {
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *EnvironmentAccessBackend) GetUrlOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return o.Url.Get(), o.Url.IsSet()
 }
@@ -164,7 +167,7 @@ func (o *EnvironmentAccessBackend) UnsetUrl() {
 
 // GetUsername returns the Username field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *EnvironmentAccessBackend) GetUsername() string {
-	if o == nil || isNil(o.Username.Get()) {
+	if o == nil || IsNil(o.Username.Get()) {
 		var ret string
 		return ret
 	}
@@ -176,7 +179,7 @@ func (o *EnvironmentAccessBackend) GetUsername() string {
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *EnvironmentAccessBackend) GetUsernameOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return o.Username.Get(), o.Username.IsSet()
 }
@@ -206,7 +209,7 @@ func (o *EnvironmentAccessBackend) UnsetUsername() {
 
 // GetPassword returns the Password field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *EnvironmentAccessBackend) GetPassword() string {
-	if o == nil || isNil(o.Password.Get()) {
+	if o == nil || IsNil(o.Password.Get()) {
 		var ret string
 		return ret
 	}
@@ -218,7 +221,7 @@ func (o *EnvironmentAccessBackend) GetPassword() string {
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *EnvironmentAccessBackend) GetPasswordOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return o.Password.Get(), o.Password.IsSet()
 }
@@ -248,7 +251,7 @@ func (o *EnvironmentAccessBackend) UnsetPassword() {
 
 // GetEnvironmentAccess returns the EnvironmentAccess field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *EnvironmentAccessBackend) GetEnvironmentAccess() string {
-	if o == nil || isNil(o.EnvironmentAccess.Get()) {
+	if o == nil || IsNil(o.EnvironmentAccess.Get()) {
 		var ret string
 		return ret
 	}
@@ -260,7 +263,7 @@ func (o *EnvironmentAccessBackend) GetEnvironmentAccess() string {
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *EnvironmentAccessBackend) GetEnvironmentAccessOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return o.EnvironmentAccess.Get(), o.EnvironmentAccess.IsSet()
 }
@@ -290,7 +293,7 @@ func (o *EnvironmentAccessBackend) UnsetEnvironmentAccess() {
 
 // GetCreatedBy returns the CreatedBy field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *EnvironmentAccessBackend) GetCreatedBy() string {
-	if o == nil || isNil(o.CreatedBy.Get()) {
+	if o == nil || IsNil(o.CreatedBy.Get()) {
 		var ret string
 		return ret
 	}
@@ -302,7 +305,7 @@ func (o *EnvironmentAccessBackend) GetCreatedBy() string {
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *EnvironmentAccessBackend) GetCreatedByOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return o.CreatedBy.Get(), o.CreatedBy.IsSet()
 }
@@ -332,7 +335,7 @@ func (o *EnvironmentAccessBackend) UnsetCreatedBy() {
 
 // GetUpdatedBy returns the UpdatedBy field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *EnvironmentAccessBackend) GetUpdatedBy() string {
-	if o == nil || isNil(o.UpdatedBy.Get()) {
+	if o == nil || IsNil(o.UpdatedBy.Get()) {
 		var ret string
 		return ret
 	}
@@ -344,7 +347,7 @@ func (o *EnvironmentAccessBackend) GetUpdatedBy() string {
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *EnvironmentAccessBackend) GetUpdatedByOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return o.UpdatedBy.Get(), o.UpdatedBy.IsSet()
 }
@@ -374,7 +377,7 @@ func (o *EnvironmentAccessBackend) UnsetUpdatedBy() {
 
 // GetCreatedAt returns the CreatedAt field value if set, zero value otherwise.
 func (o *EnvironmentAccessBackend) GetCreatedAt() time.Time {
-	if o == nil || isNil(o.CreatedAt) {
+	if o == nil || IsNil(o.CreatedAt) {
 		var ret time.Time
 		return ret
 	}
@@ -384,15 +387,15 @@ func (o *EnvironmentAccessBackend) GetCreatedAt() time.Time {
 // GetCreatedAtOk returns a tuple with the CreatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EnvironmentAccessBackend) GetCreatedAtOk() (*time.Time, bool) {
-	if o == nil || isNil(o.CreatedAt) {
-    return nil, false
+	if o == nil || IsNil(o.CreatedAt) {
+		return nil, false
 	}
 	return o.CreatedAt, true
 }
 
 // HasCreatedAt returns a boolean if a field has been set.
 func (o *EnvironmentAccessBackend) HasCreatedAt() bool {
-	if o != nil && !isNil(o.CreatedAt) {
+	if o != nil && !IsNil(o.CreatedAt) {
 		return true
 	}
 
@@ -406,7 +409,7 @@ func (o *EnvironmentAccessBackend) SetCreatedAt(v time.Time) {
 
 // GetUpdatedAt returns the UpdatedAt field value if set, zero value otherwise.
 func (o *EnvironmentAccessBackend) GetUpdatedAt() time.Time {
-	if o == nil || isNil(o.UpdatedAt) {
+	if o == nil || IsNil(o.UpdatedAt) {
 		var ret time.Time
 		return ret
 	}
@@ -416,15 +419,15 @@ func (o *EnvironmentAccessBackend) GetUpdatedAt() time.Time {
 // GetUpdatedAtOk returns a tuple with the UpdatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EnvironmentAccessBackend) GetUpdatedAtOk() (*time.Time, bool) {
-	if o == nil || isNil(o.UpdatedAt) {
-    return nil, false
+	if o == nil || IsNil(o.UpdatedAt) {
+		return nil, false
 	}
 	return o.UpdatedAt, true
 }
 
 // HasUpdatedAt returns a boolean if a field has been set.
 func (o *EnvironmentAccessBackend) HasUpdatedAt() bool {
-	if o != nil && !isNil(o.UpdatedAt) {
+	if o != nil && !IsNil(o.UpdatedAt) {
 		return true
 	}
 
@@ -437,10 +440,16 @@ func (o *EnvironmentAccessBackend) SetUpdatedAt(v time.Time) {
 }
 
 func (o EnvironmentAccessBackend) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.Id) {
-		toSerialize["id"] = o.Id
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
+	return json.Marshal(toSerialize)
+}
+
+func (o EnvironmentAccessBackend) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	// skip: id is readOnly
 	if o.Uuid.IsSet() {
 		toSerialize["uuid"] = o.Uuid.Get()
 	}
@@ -462,13 +471,13 @@ func (o EnvironmentAccessBackend) MarshalJSON() ([]byte, error) {
 	if o.UpdatedBy.IsSet() {
 		toSerialize["updatedBy"] = o.UpdatedBy.Get()
 	}
-	if !isNil(o.CreatedAt) {
+	if !IsNil(o.CreatedAt) {
 		toSerialize["createdAt"] = o.CreatedAt
 	}
-	if !isNil(o.UpdatedAt) {
+	if !IsNil(o.UpdatedAt) {
 		toSerialize["updatedAt"] = o.UpdatedAt
 	}
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 type NullableEnvironmentAccessBackend struct {

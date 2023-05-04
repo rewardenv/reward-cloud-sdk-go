@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the TeamTeamPost type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &TeamTeamPost{}
+
 // TeamTeamPost Class Team
 type TeamTeamPost struct {
 	Name NullableString `json:"name,omitempty"`
@@ -44,7 +47,7 @@ func NewTeamTeamPostWithDefaults() *TeamTeamPost {
 
 // GetName returns the Name field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *TeamTeamPost) GetName() string {
-	if o == nil || isNil(o.Name.Get()) {
+	if o == nil || IsNil(o.Name.Get()) {
 		var ret string
 		return ret
 	}
@@ -56,7 +59,7 @@ func (o *TeamTeamPost) GetName() string {
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *TeamTeamPost) GetNameOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return o.Name.Get(), o.Name.IsSet()
 }
@@ -86,7 +89,7 @@ func (o *TeamTeamPost) UnsetName() {
 
 // GetCodeName returns the CodeName field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *TeamTeamPost) GetCodeName() string {
-	if o == nil || isNil(o.CodeName.Get()) {
+	if o == nil || IsNil(o.CodeName.Get()) {
 		var ret string
 		return ret
 	}
@@ -98,7 +101,7 @@ func (o *TeamTeamPost) GetCodeName() string {
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *TeamTeamPost) GetCodeNameOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return o.CodeName.Get(), o.CodeName.IsSet()
 }
@@ -128,7 +131,7 @@ func (o *TeamTeamPost) UnsetCodeName() {
 
 // GetIsDefault returns the IsDefault field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *TeamTeamPost) GetIsDefault() bool {
-	if o == nil || isNil(o.IsDefault.Get()) {
+	if o == nil || IsNil(o.IsDefault.Get()) {
 		var ret bool
 		return ret
 	}
@@ -140,7 +143,7 @@ func (o *TeamTeamPost) GetIsDefault() bool {
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *TeamTeamPost) GetIsDefaultOk() (*bool, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return o.IsDefault.Get(), o.IsDefault.IsSet()
 }
@@ -170,7 +173,7 @@ func (o *TeamTeamPost) UnsetIsDefault() {
 
 // GetUser returns the User field value if set, zero value otherwise.
 func (o *TeamTeamPost) GetUser() []string {
-	if o == nil || isNil(o.User) {
+	if o == nil || IsNil(o.User) {
 		var ret []string
 		return ret
 	}
@@ -180,15 +183,15 @@ func (o *TeamTeamPost) GetUser() []string {
 // GetUserOk returns a tuple with the User field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TeamTeamPost) GetUserOk() ([]string, bool) {
-	if o == nil || isNil(o.User) {
-    return nil, false
+	if o == nil || IsNil(o.User) {
+		return nil, false
 	}
 	return o.User, true
 }
 
 // HasUser returns a boolean if a field has been set.
 func (o *TeamTeamPost) HasUser() bool {
-	if o != nil && !isNil(o.User) {
+	if o != nil && !IsNil(o.User) {
 		return true
 	}
 
@@ -202,7 +205,7 @@ func (o *TeamTeamPost) SetUser(v []string) {
 
 // GetProject returns the Project field value if set, zero value otherwise.
 func (o *TeamTeamPost) GetProject() []string {
-	if o == nil || isNil(o.Project) {
+	if o == nil || IsNil(o.Project) {
 		var ret []string
 		return ret
 	}
@@ -212,15 +215,15 @@ func (o *TeamTeamPost) GetProject() []string {
 // GetProjectOk returns a tuple with the Project field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TeamTeamPost) GetProjectOk() ([]string, bool) {
-	if o == nil || isNil(o.Project) {
-    return nil, false
+	if o == nil || IsNil(o.Project) {
+		return nil, false
 	}
 	return o.Project, true
 }
 
 // HasProject returns a boolean if a field has been set.
 func (o *TeamTeamPost) HasProject() bool {
-	if o != nil && !isNil(o.Project) {
+	if o != nil && !IsNil(o.Project) {
 		return true
 	}
 
@@ -234,7 +237,7 @@ func (o *TeamTeamPost) SetProject(v []string) {
 
 // GetOrganisation returns the Organisation field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *TeamTeamPost) GetOrganisation() string {
-	if o == nil || isNil(o.Organisation.Get()) {
+	if o == nil || IsNil(o.Organisation.Get()) {
 		var ret string
 		return ret
 	}
@@ -246,7 +249,7 @@ func (o *TeamTeamPost) GetOrganisation() string {
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *TeamTeamPost) GetOrganisationOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return o.Organisation.Get(), o.Organisation.IsSet()
 }
@@ -276,7 +279,7 @@ func (o *TeamTeamPost) UnsetOrganisation() {
 
 // GetTeamEnvVar returns the TeamEnvVar field value if set, zero value otherwise.
 func (o *TeamTeamPost) GetTeamEnvVar() []TeamEnvVarTeamPost {
-	if o == nil || isNil(o.TeamEnvVar) {
+	if o == nil || IsNil(o.TeamEnvVar) {
 		var ret []TeamEnvVarTeamPost
 		return ret
 	}
@@ -286,15 +289,15 @@ func (o *TeamTeamPost) GetTeamEnvVar() []TeamEnvVarTeamPost {
 // GetTeamEnvVarOk returns a tuple with the TeamEnvVar field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TeamTeamPost) GetTeamEnvVarOk() ([]TeamEnvVarTeamPost, bool) {
-	if o == nil || isNil(o.TeamEnvVar) {
-    return nil, false
+	if o == nil || IsNil(o.TeamEnvVar) {
+		return nil, false
 	}
 	return o.TeamEnvVar, true
 }
 
 // HasTeamEnvVar returns a boolean if a field has been set.
 func (o *TeamTeamPost) HasTeamEnvVar() bool {
-	if o != nil && !isNil(o.TeamEnvVar) {
+	if o != nil && !IsNil(o.TeamEnvVar) {
 		return true
 	}
 
@@ -307,6 +310,14 @@ func (o *TeamTeamPost) SetTeamEnvVar(v []TeamEnvVarTeamPost) {
 }
 
 func (o TeamTeamPost) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o TeamTeamPost) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Name.IsSet() {
 		toSerialize["name"] = o.Name.Get()
@@ -317,19 +328,19 @@ func (o TeamTeamPost) MarshalJSON() ([]byte, error) {
 	if o.IsDefault.IsSet() {
 		toSerialize["isDefault"] = o.IsDefault.Get()
 	}
-	if !isNil(o.User) {
+	if !IsNil(o.User) {
 		toSerialize["user"] = o.User
 	}
-	if !isNil(o.Project) {
+	if !IsNil(o.Project) {
 		toSerialize["project"] = o.Project
 	}
 	if o.Organisation.IsSet() {
 		toSerialize["organisation"] = o.Organisation.Get()
 	}
-	if !isNil(o.TeamEnvVar) {
+	if !IsNil(o.TeamEnvVar) {
 		toSerialize["teamEnvVar"] = o.TeamEnvVar
 	}
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 type NullableTeamTeamPost struct {

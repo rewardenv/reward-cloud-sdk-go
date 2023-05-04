@@ -4,6 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**TemplateIri** | Pointer to **NullableString** |  | [optional] 
+**Project** | Pointer to **NullableString** |  | [optional] 
+**Provider** | Pointer to **NullableString** |  | [optional] 
+**State** | Pointer to **NullableString** |  | [optional] 
+**Region** | Pointer to **NullableString** |  | [optional] 
+**EnvironmentAccess** | Pointer to **NullableString** |  | [optional] 
+**ExportedData** | Pointer to **[]string** |  | [optional] 
+**ImportedData** | Pointer to **[]string** |  | [optional] 
 **Id** | Pointer to **int32** |  | [optional] [readonly] 
 **Uuid** | Pointer to **NullableString** |  | [optional] [readonly] 
 **Name** | Pointer to **NullableString** |  | [optional] 
@@ -14,17 +22,10 @@ Name | Type | Description | Notes
 **IsStripDatabase** | Pointer to **NullableBool** |  | [optional] 
 **IsAllowOutgoingEmails** | Pointer to **NullableBool** |  | [optional] 
 **IsInitSampleData** | Pointer to **NullableBool** |  | [optional] 
-**Project** | Pointer to **NullableString** |  | [optional] 
-**Provider** | Pointer to **NullableString** |  | [optional] 
-**EnvVar** | Pointer to [**[]EnvironmentEnvVarEnvironmentGet**](EnvironmentEnvVarEnvironmentGet.md) |  | [optional] 
-**State** | Pointer to **NullableString** |  | [optional] 
-**EnvironmentComponent** | Pointer to [**[]EnvironmentComponentEnvironmentGet**](EnvironmentComponentEnvironmentGet.md) |  | [optional] 
-**Region** | Pointer to **NullableString** |  | [optional] 
-**ExportedData** | Pointer to **[]string** |  | [optional] 
-**EnvironmentAccess** | Pointer to **NullableString** |  | [optional] 
-**ImportedData** | Pointer to **[]string** |  | [optional] 
 **CreatedAt** | Pointer to **time.Time** |  | [optional] 
 **UpdatedAt** | Pointer to **time.Time** |  | [optional] 
+**EnvVar** | Pointer to [**[]EnvironmentEnvVarEnvironmentGet**](EnvironmentEnvVarEnvironmentGet.md) |  | [optional] 
+**EnvironmentComponent** | Pointer to [**[]EnvironmentComponentEnvironmentGet**](EnvironmentComponentEnvironmentGet.md) |  | [optional] 
 
 ## Methods
 
@@ -44,6 +45,266 @@ will change when the set of required properties is changed
 NewEnvironmentEnvironmentGetWithDefaults instantiates a new EnvironmentEnvironmentGet object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetTemplateIri
+
+`func (o *EnvironmentEnvironmentGet) GetTemplateIri() string`
+
+GetTemplateIri returns the TemplateIri field if non-nil, zero value otherwise.
+
+### GetTemplateIriOk
+
+`func (o *EnvironmentEnvironmentGet) GetTemplateIriOk() (*string, bool)`
+
+GetTemplateIriOk returns a tuple with the TemplateIri field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTemplateIri
+
+`func (o *EnvironmentEnvironmentGet) SetTemplateIri(v string)`
+
+SetTemplateIri sets TemplateIri field to given value.
+
+### HasTemplateIri
+
+`func (o *EnvironmentEnvironmentGet) HasTemplateIri() bool`
+
+HasTemplateIri returns a boolean if a field has been set.
+
+### SetTemplateIriNil
+
+`func (o *EnvironmentEnvironmentGet) SetTemplateIriNil(b bool)`
+
+ SetTemplateIriNil sets the value for TemplateIri to be an explicit nil
+
+### UnsetTemplateIri
+`func (o *EnvironmentEnvironmentGet) UnsetTemplateIri()`
+
+UnsetTemplateIri ensures that no value is present for TemplateIri, not even an explicit nil
+### GetProject
+
+`func (o *EnvironmentEnvironmentGet) GetProject() string`
+
+GetProject returns the Project field if non-nil, zero value otherwise.
+
+### GetProjectOk
+
+`func (o *EnvironmentEnvironmentGet) GetProjectOk() (*string, bool)`
+
+GetProjectOk returns a tuple with the Project field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetProject
+
+`func (o *EnvironmentEnvironmentGet) SetProject(v string)`
+
+SetProject sets Project field to given value.
+
+### HasProject
+
+`func (o *EnvironmentEnvironmentGet) HasProject() bool`
+
+HasProject returns a boolean if a field has been set.
+
+### SetProjectNil
+
+`func (o *EnvironmentEnvironmentGet) SetProjectNil(b bool)`
+
+ SetProjectNil sets the value for Project to be an explicit nil
+
+### UnsetProject
+`func (o *EnvironmentEnvironmentGet) UnsetProject()`
+
+UnsetProject ensures that no value is present for Project, not even an explicit nil
+### GetProvider
+
+`func (o *EnvironmentEnvironmentGet) GetProvider() string`
+
+GetProvider returns the Provider field if non-nil, zero value otherwise.
+
+### GetProviderOk
+
+`func (o *EnvironmentEnvironmentGet) GetProviderOk() (*string, bool)`
+
+GetProviderOk returns a tuple with the Provider field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetProvider
+
+`func (o *EnvironmentEnvironmentGet) SetProvider(v string)`
+
+SetProvider sets Provider field to given value.
+
+### HasProvider
+
+`func (o *EnvironmentEnvironmentGet) HasProvider() bool`
+
+HasProvider returns a boolean if a field has been set.
+
+### SetProviderNil
+
+`func (o *EnvironmentEnvironmentGet) SetProviderNil(b bool)`
+
+ SetProviderNil sets the value for Provider to be an explicit nil
+
+### UnsetProvider
+`func (o *EnvironmentEnvironmentGet) UnsetProvider()`
+
+UnsetProvider ensures that no value is present for Provider, not even an explicit nil
+### GetState
+
+`func (o *EnvironmentEnvironmentGet) GetState() string`
+
+GetState returns the State field if non-nil, zero value otherwise.
+
+### GetStateOk
+
+`func (o *EnvironmentEnvironmentGet) GetStateOk() (*string, bool)`
+
+GetStateOk returns a tuple with the State field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetState
+
+`func (o *EnvironmentEnvironmentGet) SetState(v string)`
+
+SetState sets State field to given value.
+
+### HasState
+
+`func (o *EnvironmentEnvironmentGet) HasState() bool`
+
+HasState returns a boolean if a field has been set.
+
+### SetStateNil
+
+`func (o *EnvironmentEnvironmentGet) SetStateNil(b bool)`
+
+ SetStateNil sets the value for State to be an explicit nil
+
+### UnsetState
+`func (o *EnvironmentEnvironmentGet) UnsetState()`
+
+UnsetState ensures that no value is present for State, not even an explicit nil
+### GetRegion
+
+`func (o *EnvironmentEnvironmentGet) GetRegion() string`
+
+GetRegion returns the Region field if non-nil, zero value otherwise.
+
+### GetRegionOk
+
+`func (o *EnvironmentEnvironmentGet) GetRegionOk() (*string, bool)`
+
+GetRegionOk returns a tuple with the Region field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRegion
+
+`func (o *EnvironmentEnvironmentGet) SetRegion(v string)`
+
+SetRegion sets Region field to given value.
+
+### HasRegion
+
+`func (o *EnvironmentEnvironmentGet) HasRegion() bool`
+
+HasRegion returns a boolean if a field has been set.
+
+### SetRegionNil
+
+`func (o *EnvironmentEnvironmentGet) SetRegionNil(b bool)`
+
+ SetRegionNil sets the value for Region to be an explicit nil
+
+### UnsetRegion
+`func (o *EnvironmentEnvironmentGet) UnsetRegion()`
+
+UnsetRegion ensures that no value is present for Region, not even an explicit nil
+### GetEnvironmentAccess
+
+`func (o *EnvironmentEnvironmentGet) GetEnvironmentAccess() string`
+
+GetEnvironmentAccess returns the EnvironmentAccess field if non-nil, zero value otherwise.
+
+### GetEnvironmentAccessOk
+
+`func (o *EnvironmentEnvironmentGet) GetEnvironmentAccessOk() (*string, bool)`
+
+GetEnvironmentAccessOk returns a tuple with the EnvironmentAccess field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEnvironmentAccess
+
+`func (o *EnvironmentEnvironmentGet) SetEnvironmentAccess(v string)`
+
+SetEnvironmentAccess sets EnvironmentAccess field to given value.
+
+### HasEnvironmentAccess
+
+`func (o *EnvironmentEnvironmentGet) HasEnvironmentAccess() bool`
+
+HasEnvironmentAccess returns a boolean if a field has been set.
+
+### SetEnvironmentAccessNil
+
+`func (o *EnvironmentEnvironmentGet) SetEnvironmentAccessNil(b bool)`
+
+ SetEnvironmentAccessNil sets the value for EnvironmentAccess to be an explicit nil
+
+### UnsetEnvironmentAccess
+`func (o *EnvironmentEnvironmentGet) UnsetEnvironmentAccess()`
+
+UnsetEnvironmentAccess ensures that no value is present for EnvironmentAccess, not even an explicit nil
+### GetExportedData
+
+`func (o *EnvironmentEnvironmentGet) GetExportedData() []string`
+
+GetExportedData returns the ExportedData field if non-nil, zero value otherwise.
+
+### GetExportedDataOk
+
+`func (o *EnvironmentEnvironmentGet) GetExportedDataOk() (*[]string, bool)`
+
+GetExportedDataOk returns a tuple with the ExportedData field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetExportedData
+
+`func (o *EnvironmentEnvironmentGet) SetExportedData(v []string)`
+
+SetExportedData sets ExportedData field to given value.
+
+### HasExportedData
+
+`func (o *EnvironmentEnvironmentGet) HasExportedData() bool`
+
+HasExportedData returns a boolean if a field has been set.
+
+### GetImportedData
+
+`func (o *EnvironmentEnvironmentGet) GetImportedData() []string`
+
+GetImportedData returns the ImportedData field if non-nil, zero value otherwise.
+
+### GetImportedDataOk
+
+`func (o *EnvironmentEnvironmentGet) GetImportedDataOk() (*[]string, bool)`
+
+GetImportedDataOk returns a tuple with the ImportedData field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetImportedData
+
+`func (o *EnvironmentEnvironmentGet) SetImportedData(v []string)`
+
+SetImportedData sets ImportedData field to given value.
+
+### HasImportedData
+
+`func (o *EnvironmentEnvironmentGet) HasImportedData() bool`
+
+HasImportedData returns a boolean if a field has been set.
 
 ### GetId
 
@@ -385,281 +646,6 @@ HasIsInitSampleData returns a boolean if a field has been set.
 `func (o *EnvironmentEnvironmentGet) UnsetIsInitSampleData()`
 
 UnsetIsInitSampleData ensures that no value is present for IsInitSampleData, not even an explicit nil
-### GetProject
-
-`func (o *EnvironmentEnvironmentGet) GetProject() string`
-
-GetProject returns the Project field if non-nil, zero value otherwise.
-
-### GetProjectOk
-
-`func (o *EnvironmentEnvironmentGet) GetProjectOk() (*string, bool)`
-
-GetProjectOk returns a tuple with the Project field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetProject
-
-`func (o *EnvironmentEnvironmentGet) SetProject(v string)`
-
-SetProject sets Project field to given value.
-
-### HasProject
-
-`func (o *EnvironmentEnvironmentGet) HasProject() bool`
-
-HasProject returns a boolean if a field has been set.
-
-### SetProjectNil
-
-`func (o *EnvironmentEnvironmentGet) SetProjectNil(b bool)`
-
- SetProjectNil sets the value for Project to be an explicit nil
-
-### UnsetProject
-`func (o *EnvironmentEnvironmentGet) UnsetProject()`
-
-UnsetProject ensures that no value is present for Project, not even an explicit nil
-### GetProvider
-
-`func (o *EnvironmentEnvironmentGet) GetProvider() string`
-
-GetProvider returns the Provider field if non-nil, zero value otherwise.
-
-### GetProviderOk
-
-`func (o *EnvironmentEnvironmentGet) GetProviderOk() (*string, bool)`
-
-GetProviderOk returns a tuple with the Provider field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetProvider
-
-`func (o *EnvironmentEnvironmentGet) SetProvider(v string)`
-
-SetProvider sets Provider field to given value.
-
-### HasProvider
-
-`func (o *EnvironmentEnvironmentGet) HasProvider() bool`
-
-HasProvider returns a boolean if a field has been set.
-
-### SetProviderNil
-
-`func (o *EnvironmentEnvironmentGet) SetProviderNil(b bool)`
-
- SetProviderNil sets the value for Provider to be an explicit nil
-
-### UnsetProvider
-`func (o *EnvironmentEnvironmentGet) UnsetProvider()`
-
-UnsetProvider ensures that no value is present for Provider, not even an explicit nil
-### GetEnvVar
-
-`func (o *EnvironmentEnvironmentGet) GetEnvVar() []EnvironmentEnvVarEnvironmentGet`
-
-GetEnvVar returns the EnvVar field if non-nil, zero value otherwise.
-
-### GetEnvVarOk
-
-`func (o *EnvironmentEnvironmentGet) GetEnvVarOk() (*[]EnvironmentEnvVarEnvironmentGet, bool)`
-
-GetEnvVarOk returns a tuple with the EnvVar field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetEnvVar
-
-`func (o *EnvironmentEnvironmentGet) SetEnvVar(v []EnvironmentEnvVarEnvironmentGet)`
-
-SetEnvVar sets EnvVar field to given value.
-
-### HasEnvVar
-
-`func (o *EnvironmentEnvironmentGet) HasEnvVar() bool`
-
-HasEnvVar returns a boolean if a field has been set.
-
-### GetState
-
-`func (o *EnvironmentEnvironmentGet) GetState() string`
-
-GetState returns the State field if non-nil, zero value otherwise.
-
-### GetStateOk
-
-`func (o *EnvironmentEnvironmentGet) GetStateOk() (*string, bool)`
-
-GetStateOk returns a tuple with the State field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetState
-
-`func (o *EnvironmentEnvironmentGet) SetState(v string)`
-
-SetState sets State field to given value.
-
-### HasState
-
-`func (o *EnvironmentEnvironmentGet) HasState() bool`
-
-HasState returns a boolean if a field has been set.
-
-### SetStateNil
-
-`func (o *EnvironmentEnvironmentGet) SetStateNil(b bool)`
-
- SetStateNil sets the value for State to be an explicit nil
-
-### UnsetState
-`func (o *EnvironmentEnvironmentGet) UnsetState()`
-
-UnsetState ensures that no value is present for State, not even an explicit nil
-### GetEnvironmentComponent
-
-`func (o *EnvironmentEnvironmentGet) GetEnvironmentComponent() []EnvironmentComponentEnvironmentGet`
-
-GetEnvironmentComponent returns the EnvironmentComponent field if non-nil, zero value otherwise.
-
-### GetEnvironmentComponentOk
-
-`func (o *EnvironmentEnvironmentGet) GetEnvironmentComponentOk() (*[]EnvironmentComponentEnvironmentGet, bool)`
-
-GetEnvironmentComponentOk returns a tuple with the EnvironmentComponent field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetEnvironmentComponent
-
-`func (o *EnvironmentEnvironmentGet) SetEnvironmentComponent(v []EnvironmentComponentEnvironmentGet)`
-
-SetEnvironmentComponent sets EnvironmentComponent field to given value.
-
-### HasEnvironmentComponent
-
-`func (o *EnvironmentEnvironmentGet) HasEnvironmentComponent() bool`
-
-HasEnvironmentComponent returns a boolean if a field has been set.
-
-### GetRegion
-
-`func (o *EnvironmentEnvironmentGet) GetRegion() string`
-
-GetRegion returns the Region field if non-nil, zero value otherwise.
-
-### GetRegionOk
-
-`func (o *EnvironmentEnvironmentGet) GetRegionOk() (*string, bool)`
-
-GetRegionOk returns a tuple with the Region field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetRegion
-
-`func (o *EnvironmentEnvironmentGet) SetRegion(v string)`
-
-SetRegion sets Region field to given value.
-
-### HasRegion
-
-`func (o *EnvironmentEnvironmentGet) HasRegion() bool`
-
-HasRegion returns a boolean if a field has been set.
-
-### SetRegionNil
-
-`func (o *EnvironmentEnvironmentGet) SetRegionNil(b bool)`
-
- SetRegionNil sets the value for Region to be an explicit nil
-
-### UnsetRegion
-`func (o *EnvironmentEnvironmentGet) UnsetRegion()`
-
-UnsetRegion ensures that no value is present for Region, not even an explicit nil
-### GetExportedData
-
-`func (o *EnvironmentEnvironmentGet) GetExportedData() []string`
-
-GetExportedData returns the ExportedData field if non-nil, zero value otherwise.
-
-### GetExportedDataOk
-
-`func (o *EnvironmentEnvironmentGet) GetExportedDataOk() (*[]string, bool)`
-
-GetExportedDataOk returns a tuple with the ExportedData field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetExportedData
-
-`func (o *EnvironmentEnvironmentGet) SetExportedData(v []string)`
-
-SetExportedData sets ExportedData field to given value.
-
-### HasExportedData
-
-`func (o *EnvironmentEnvironmentGet) HasExportedData() bool`
-
-HasExportedData returns a boolean if a field has been set.
-
-### GetEnvironmentAccess
-
-`func (o *EnvironmentEnvironmentGet) GetEnvironmentAccess() string`
-
-GetEnvironmentAccess returns the EnvironmentAccess field if non-nil, zero value otherwise.
-
-### GetEnvironmentAccessOk
-
-`func (o *EnvironmentEnvironmentGet) GetEnvironmentAccessOk() (*string, bool)`
-
-GetEnvironmentAccessOk returns a tuple with the EnvironmentAccess field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetEnvironmentAccess
-
-`func (o *EnvironmentEnvironmentGet) SetEnvironmentAccess(v string)`
-
-SetEnvironmentAccess sets EnvironmentAccess field to given value.
-
-### HasEnvironmentAccess
-
-`func (o *EnvironmentEnvironmentGet) HasEnvironmentAccess() bool`
-
-HasEnvironmentAccess returns a boolean if a field has been set.
-
-### SetEnvironmentAccessNil
-
-`func (o *EnvironmentEnvironmentGet) SetEnvironmentAccessNil(b bool)`
-
- SetEnvironmentAccessNil sets the value for EnvironmentAccess to be an explicit nil
-
-### UnsetEnvironmentAccess
-`func (o *EnvironmentEnvironmentGet) UnsetEnvironmentAccess()`
-
-UnsetEnvironmentAccess ensures that no value is present for EnvironmentAccess, not even an explicit nil
-### GetImportedData
-
-`func (o *EnvironmentEnvironmentGet) GetImportedData() []string`
-
-GetImportedData returns the ImportedData field if non-nil, zero value otherwise.
-
-### GetImportedDataOk
-
-`func (o *EnvironmentEnvironmentGet) GetImportedDataOk() (*[]string, bool)`
-
-GetImportedDataOk returns a tuple with the ImportedData field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetImportedData
-
-`func (o *EnvironmentEnvironmentGet) SetImportedData(v []string)`
-
-SetImportedData sets ImportedData field to given value.
-
-### HasImportedData
-
-`func (o *EnvironmentEnvironmentGet) HasImportedData() bool`
-
-HasImportedData returns a boolean if a field has been set.
-
 ### GetCreatedAt
 
 `func (o *EnvironmentEnvironmentGet) GetCreatedAt() time.Time`
@@ -709,6 +695,56 @@ SetUpdatedAt sets UpdatedAt field to given value.
 `func (o *EnvironmentEnvironmentGet) HasUpdatedAt() bool`
 
 HasUpdatedAt returns a boolean if a field has been set.
+
+### GetEnvVar
+
+`func (o *EnvironmentEnvironmentGet) GetEnvVar() []EnvironmentEnvVarEnvironmentGet`
+
+GetEnvVar returns the EnvVar field if non-nil, zero value otherwise.
+
+### GetEnvVarOk
+
+`func (o *EnvironmentEnvironmentGet) GetEnvVarOk() (*[]EnvironmentEnvVarEnvironmentGet, bool)`
+
+GetEnvVarOk returns a tuple with the EnvVar field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEnvVar
+
+`func (o *EnvironmentEnvironmentGet) SetEnvVar(v []EnvironmentEnvVarEnvironmentGet)`
+
+SetEnvVar sets EnvVar field to given value.
+
+### HasEnvVar
+
+`func (o *EnvironmentEnvironmentGet) HasEnvVar() bool`
+
+HasEnvVar returns a boolean if a field has been set.
+
+### GetEnvironmentComponent
+
+`func (o *EnvironmentEnvironmentGet) GetEnvironmentComponent() []EnvironmentComponentEnvironmentGet`
+
+GetEnvironmentComponent returns the EnvironmentComponent field if non-nil, zero value otherwise.
+
+### GetEnvironmentComponentOk
+
+`func (o *EnvironmentEnvironmentGet) GetEnvironmentComponentOk() (*[]EnvironmentComponentEnvironmentGet, bool)`
+
+GetEnvironmentComponentOk returns a tuple with the EnvironmentComponent field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEnvironmentComponent
+
+`func (o *EnvironmentEnvironmentGet) SetEnvironmentComponent(v []EnvironmentComponentEnvironmentGet)`
+
+SetEnvironmentComponent sets EnvironmentComponent field to given value.
+
+### HasEnvironmentComponent
+
+`func (o *EnvironmentEnvironmentGet) HasEnvironmentComponent() bool`
+
+HasEnvironmentComponent returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

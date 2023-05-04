@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Links** | Pointer to [**ComponentJsonhalLinks**](ComponentJsonhalLinks.md) |  | [optional] 
+**Links** | Pointer to [**AbstractEnvironmentJsonhalLinks**](AbstractEnvironmentJsonhalLinks.md) |  | [optional] 
 **Id** | Pointer to **int32** |  | [optional] [readonly] 
 **Uuid** | Pointer to **NullableString** |  | [optional] [readonly] 
 **Name** | Pointer to **NullableString** |  | [optional] 
@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **KubecostUser** | Pointer to **NullableString** |  | [optional] 
 **KubecostPass** | Pointer to **NullableString** |  | [optional] 
 **ChangeKubecostPass** | Pointer to **NullableString** |  | [optional] 
+**IsDefault** | Pointer to **NullableBool** |  | [optional] 
 **Environment** | Pointer to **[]string** |  | [optional] 
 **Provider** | Pointer to **NullableString** |  | [optional] 
 **Products** | Pointer to **[]string** |  | [optional] 
@@ -41,20 +42,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetLinks
 
-`func (o *RegionJsonhal) GetLinks() ComponentJsonhalLinks`
+`func (o *RegionJsonhal) GetLinks() AbstractEnvironmentJsonhalLinks`
 
 GetLinks returns the Links field if non-nil, zero value otherwise.
 
 ### GetLinksOk
 
-`func (o *RegionJsonhal) GetLinksOk() (*ComponentJsonhalLinks, bool)`
+`func (o *RegionJsonhal) GetLinksOk() (*AbstractEnvironmentJsonhalLinks, bool)`
 
 GetLinksOk returns a tuple with the Links field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetLinks
 
-`func (o *RegionJsonhal) SetLinks(v ComponentJsonhalLinks)`
+`func (o *RegionJsonhal) SetLinks(v AbstractEnvironmentJsonhalLinks)`
 
 SetLinks sets Links field to given value.
 
@@ -299,6 +300,41 @@ HasChangeKubecostPass returns a boolean if a field has been set.
 `func (o *RegionJsonhal) UnsetChangeKubecostPass()`
 
 UnsetChangeKubecostPass ensures that no value is present for ChangeKubecostPass, not even an explicit nil
+### GetIsDefault
+
+`func (o *RegionJsonhal) GetIsDefault() bool`
+
+GetIsDefault returns the IsDefault field if non-nil, zero value otherwise.
+
+### GetIsDefaultOk
+
+`func (o *RegionJsonhal) GetIsDefaultOk() (*bool, bool)`
+
+GetIsDefaultOk returns a tuple with the IsDefault field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIsDefault
+
+`func (o *RegionJsonhal) SetIsDefault(v bool)`
+
+SetIsDefault sets IsDefault field to given value.
+
+### HasIsDefault
+
+`func (o *RegionJsonhal) HasIsDefault() bool`
+
+HasIsDefault returns a boolean if a field has been set.
+
+### SetIsDefaultNil
+
+`func (o *RegionJsonhal) SetIsDefaultNil(b bool)`
+
+ SetIsDefaultNil sets the value for IsDefault to be an explicit nil
+
+### UnsetIsDefault
+`func (o *RegionJsonhal) UnsetIsDefault()`
+
+UnsetIsDefault ensures that no value is present for IsDefault, not even an explicit nil
 ### GetEnvironment
 
 `func (o *RegionJsonhal) GetEnvironment() []string`

@@ -15,9 +15,12 @@ import (
 	"time"
 )
 
+// checks if the PriceJsonhal type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &PriceJsonhal{}
+
 // PriceJsonhal Class Price
 type PriceJsonhal struct {
-	Links *ComponentJsonhalLinks `json:"_links,omitempty"`
+	Links *AbstractEnvironmentJsonhalLinks `json:"_links,omitempty"`
 	Id *int32 `json:"id,omitempty"`
 	Uuid NullableString `json:"uuid,omitempty"`
 	PaymentId NullableString `json:"paymentId,omitempty"`
@@ -50,9 +53,9 @@ func NewPriceJsonhalWithDefaults() *PriceJsonhal {
 }
 
 // GetLinks returns the Links field value if set, zero value otherwise.
-func (o *PriceJsonhal) GetLinks() ComponentJsonhalLinks {
-	if o == nil || isNil(o.Links) {
-		var ret ComponentJsonhalLinks
+func (o *PriceJsonhal) GetLinks() AbstractEnvironmentJsonhalLinks {
+	if o == nil || IsNil(o.Links) {
+		var ret AbstractEnvironmentJsonhalLinks
 		return ret
 	}
 	return *o.Links
@@ -60,30 +63,30 @@ func (o *PriceJsonhal) GetLinks() ComponentJsonhalLinks {
 
 // GetLinksOk returns a tuple with the Links field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PriceJsonhal) GetLinksOk() (*ComponentJsonhalLinks, bool) {
-	if o == nil || isNil(o.Links) {
-    return nil, false
+func (o *PriceJsonhal) GetLinksOk() (*AbstractEnvironmentJsonhalLinks, bool) {
+	if o == nil || IsNil(o.Links) {
+		return nil, false
 	}
 	return o.Links, true
 }
 
 // HasLinks returns a boolean if a field has been set.
 func (o *PriceJsonhal) HasLinks() bool {
-	if o != nil && !isNil(o.Links) {
+	if o != nil && !IsNil(o.Links) {
 		return true
 	}
 
 	return false
 }
 
-// SetLinks gets a reference to the given ComponentJsonhalLinks and assigns it to the Links field.
-func (o *PriceJsonhal) SetLinks(v ComponentJsonhalLinks) {
+// SetLinks gets a reference to the given AbstractEnvironmentJsonhalLinks and assigns it to the Links field.
+func (o *PriceJsonhal) SetLinks(v AbstractEnvironmentJsonhalLinks) {
 	o.Links = &v
 }
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *PriceJsonhal) GetId() int32 {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		var ret int32
 		return ret
 	}
@@ -93,15 +96,15 @@ func (o *PriceJsonhal) GetId() int32 {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PriceJsonhal) GetIdOk() (*int32, bool) {
-	if o == nil || isNil(o.Id) {
-    return nil, false
+	if o == nil || IsNil(o.Id) {
+		return nil, false
 	}
 	return o.Id, true
 }
 
 // HasId returns a boolean if a field has been set.
 func (o *PriceJsonhal) HasId() bool {
-	if o != nil && !isNil(o.Id) {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -115,7 +118,7 @@ func (o *PriceJsonhal) SetId(v int32) {
 
 // GetUuid returns the Uuid field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *PriceJsonhal) GetUuid() string {
-	if o == nil || isNil(o.Uuid.Get()) {
+	if o == nil || IsNil(o.Uuid.Get()) {
 		var ret string
 		return ret
 	}
@@ -127,7 +130,7 @@ func (o *PriceJsonhal) GetUuid() string {
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *PriceJsonhal) GetUuidOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return o.Uuid.Get(), o.Uuid.IsSet()
 }
@@ -157,7 +160,7 @@ func (o *PriceJsonhal) UnsetUuid() {
 
 // GetPaymentId returns the PaymentId field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *PriceJsonhal) GetPaymentId() string {
-	if o == nil || isNil(o.PaymentId.Get()) {
+	if o == nil || IsNil(o.PaymentId.Get()) {
 		var ret string
 		return ret
 	}
@@ -169,7 +172,7 @@ func (o *PriceJsonhal) GetPaymentId() string {
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *PriceJsonhal) GetPaymentIdOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return o.PaymentId.Get(), o.PaymentId.IsSet()
 }
@@ -199,7 +202,7 @@ func (o *PriceJsonhal) UnsetPaymentId() {
 
 // GetAmount returns the Amount field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *PriceJsonhal) GetAmount() float32 {
-	if o == nil || isNil(o.Amount.Get()) {
+	if o == nil || IsNil(o.Amount.Get()) {
 		var ret float32
 		return ret
 	}
@@ -211,7 +214,7 @@ func (o *PriceJsonhal) GetAmount() float32 {
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *PriceJsonhal) GetAmountOk() (*float32, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return o.Amount.Get(), o.Amount.IsSet()
 }
@@ -241,7 +244,7 @@ func (o *PriceJsonhal) UnsetAmount() {
 
 // GetCurrency returns the Currency field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *PriceJsonhal) GetCurrency() string {
-	if o == nil || isNil(o.Currency.Get()) {
+	if o == nil || IsNil(o.Currency.Get()) {
 		var ret string
 		return ret
 	}
@@ -253,7 +256,7 @@ func (o *PriceJsonhal) GetCurrency() string {
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *PriceJsonhal) GetCurrencyOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return o.Currency.Get(), o.Currency.IsSet()
 }
@@ -283,7 +286,7 @@ func (o *PriceJsonhal) UnsetCurrency() {
 
 // GetIsActive returns the IsActive field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *PriceJsonhal) GetIsActive() bool {
-	if o == nil || isNil(o.IsActive.Get()) {
+	if o == nil || IsNil(o.IsActive.Get()) {
 		var ret bool
 		return ret
 	}
@@ -295,7 +298,7 @@ func (o *PriceJsonhal) GetIsActive() bool {
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *PriceJsonhal) GetIsActiveOk() (*bool, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return o.IsActive.Get(), o.IsActive.IsSet()
 }
@@ -325,7 +328,7 @@ func (o *PriceJsonhal) UnsetIsActive() {
 
 // GetProduct returns the Product field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *PriceJsonhal) GetProduct() PriceJsonhalProduct {
-	if o == nil || isNil(o.Product.Get()) {
+	if o == nil || IsNil(o.Product.Get()) {
 		var ret PriceJsonhalProduct
 		return ret
 	}
@@ -337,7 +340,7 @@ func (o *PriceJsonhal) GetProduct() PriceJsonhalProduct {
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *PriceJsonhal) GetProductOk() (*PriceJsonhalProduct, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return o.Product.Get(), o.Product.IsSet()
 }
@@ -367,7 +370,7 @@ func (o *PriceJsonhal) UnsetProduct() {
 
 // GetProducts returns the Products field value if set, zero value otherwise.
 func (o *PriceJsonhal) GetProducts() []string {
-	if o == nil || isNil(o.Products) {
+	if o == nil || IsNil(o.Products) {
 		var ret []string
 		return ret
 	}
@@ -377,15 +380,15 @@ func (o *PriceJsonhal) GetProducts() []string {
 // GetProductsOk returns a tuple with the Products field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PriceJsonhal) GetProductsOk() ([]string, bool) {
-	if o == nil || isNil(o.Products) {
-    return nil, false
+	if o == nil || IsNil(o.Products) {
+		return nil, false
 	}
 	return o.Products, true
 }
 
 // HasProducts returns a boolean if a field has been set.
 func (o *PriceJsonhal) HasProducts() bool {
-	if o != nil && !isNil(o.Products) {
+	if o != nil && !IsNil(o.Products) {
 		return true
 	}
 
@@ -399,7 +402,7 @@ func (o *PriceJsonhal) SetProducts(v []string) {
 
 // GetCreatedBy returns the CreatedBy field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *PriceJsonhal) GetCreatedBy() string {
-	if o == nil || isNil(o.CreatedBy.Get()) {
+	if o == nil || IsNil(o.CreatedBy.Get()) {
 		var ret string
 		return ret
 	}
@@ -411,7 +414,7 @@ func (o *PriceJsonhal) GetCreatedBy() string {
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *PriceJsonhal) GetCreatedByOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return o.CreatedBy.Get(), o.CreatedBy.IsSet()
 }
@@ -441,7 +444,7 @@ func (o *PriceJsonhal) UnsetCreatedBy() {
 
 // GetUpdatedBy returns the UpdatedBy field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *PriceJsonhal) GetUpdatedBy() string {
-	if o == nil || isNil(o.UpdatedBy.Get()) {
+	if o == nil || IsNil(o.UpdatedBy.Get()) {
 		var ret string
 		return ret
 	}
@@ -453,7 +456,7 @@ func (o *PriceJsonhal) GetUpdatedBy() string {
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *PriceJsonhal) GetUpdatedByOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return o.UpdatedBy.Get(), o.UpdatedBy.IsSet()
 }
@@ -483,7 +486,7 @@ func (o *PriceJsonhal) UnsetUpdatedBy() {
 
 // GetCreatedAt returns the CreatedAt field value if set, zero value otherwise.
 func (o *PriceJsonhal) GetCreatedAt() time.Time {
-	if o == nil || isNil(o.CreatedAt) {
+	if o == nil || IsNil(o.CreatedAt) {
 		var ret time.Time
 		return ret
 	}
@@ -493,15 +496,15 @@ func (o *PriceJsonhal) GetCreatedAt() time.Time {
 // GetCreatedAtOk returns a tuple with the CreatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PriceJsonhal) GetCreatedAtOk() (*time.Time, bool) {
-	if o == nil || isNil(o.CreatedAt) {
-    return nil, false
+	if o == nil || IsNil(o.CreatedAt) {
+		return nil, false
 	}
 	return o.CreatedAt, true
 }
 
 // HasCreatedAt returns a boolean if a field has been set.
 func (o *PriceJsonhal) HasCreatedAt() bool {
-	if o != nil && !isNil(o.CreatedAt) {
+	if o != nil && !IsNil(o.CreatedAt) {
 		return true
 	}
 
@@ -515,7 +518,7 @@ func (o *PriceJsonhal) SetCreatedAt(v time.Time) {
 
 // GetUpdatedAt returns the UpdatedAt field value if set, zero value otherwise.
 func (o *PriceJsonhal) GetUpdatedAt() time.Time {
-	if o == nil || isNil(o.UpdatedAt) {
+	if o == nil || IsNil(o.UpdatedAt) {
 		var ret time.Time
 		return ret
 	}
@@ -525,15 +528,15 @@ func (o *PriceJsonhal) GetUpdatedAt() time.Time {
 // GetUpdatedAtOk returns a tuple with the UpdatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PriceJsonhal) GetUpdatedAtOk() (*time.Time, bool) {
-	if o == nil || isNil(o.UpdatedAt) {
-    return nil, false
+	if o == nil || IsNil(o.UpdatedAt) {
+		return nil, false
 	}
 	return o.UpdatedAt, true
 }
 
 // HasUpdatedAt returns a boolean if a field has been set.
 func (o *PriceJsonhal) HasUpdatedAt() bool {
-	if o != nil && !isNil(o.UpdatedAt) {
+	if o != nil && !IsNil(o.UpdatedAt) {
 		return true
 	}
 
@@ -546,13 +549,19 @@ func (o *PriceJsonhal) SetUpdatedAt(v time.Time) {
 }
 
 func (o PriceJsonhal) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o PriceJsonhal) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Links) {
+	if !IsNil(o.Links) {
 		toSerialize["_links"] = o.Links
 	}
-	if !isNil(o.Id) {
-		toSerialize["id"] = o.Id
-	}
+	// skip: id is readOnly
 	if o.Uuid.IsSet() {
 		toSerialize["uuid"] = o.Uuid.Get()
 	}
@@ -571,7 +580,7 @@ func (o PriceJsonhal) MarshalJSON() ([]byte, error) {
 	if o.Product.IsSet() {
 		toSerialize["product"] = o.Product.Get()
 	}
-	if !isNil(o.Products) {
+	if !IsNil(o.Products) {
 		toSerialize["products"] = o.Products
 	}
 	if o.CreatedBy.IsSet() {
@@ -580,13 +589,13 @@ func (o PriceJsonhal) MarshalJSON() ([]byte, error) {
 	if o.UpdatedBy.IsSet() {
 		toSerialize["updatedBy"] = o.UpdatedBy.Get()
 	}
-	if !isNil(o.CreatedAt) {
+	if !IsNil(o.CreatedAt) {
 		toSerialize["createdAt"] = o.CreatedAt
 	}
-	if !isNil(o.UpdatedAt) {
+	if !IsNil(o.UpdatedAt) {
 		toSerialize["updatedAt"] = o.UpdatedAt
 	}
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 type NullablePriceJsonhal struct {

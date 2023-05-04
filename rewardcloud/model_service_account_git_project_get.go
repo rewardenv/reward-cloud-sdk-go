@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ServiceAccountGitProjectGet type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ServiceAccountGitProjectGet{}
+
 // ServiceAccountGitProjectGet 
 type ServiceAccountGitProjectGet struct {
 	IsExternal NullableBool `json:"isExternal,omitempty"`
@@ -40,7 +43,7 @@ func NewServiceAccountGitProjectGetWithDefaults() *ServiceAccountGitProjectGet {
 
 // GetIsExternal returns the IsExternal field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ServiceAccountGitProjectGet) GetIsExternal() bool {
-	if o == nil || isNil(o.IsExternal.Get()) {
+	if o == nil || IsNil(o.IsExternal.Get()) {
 		var ret bool
 		return ret
 	}
@@ -52,7 +55,7 @@ func (o *ServiceAccountGitProjectGet) GetIsExternal() bool {
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ServiceAccountGitProjectGet) GetIsExternalOk() (*bool, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return o.IsExternal.Get(), o.IsExternal.IsSet()
 }
@@ -82,7 +85,7 @@ func (o *ServiceAccountGitProjectGet) UnsetIsExternal() {
 
 // GetUrl returns the Url field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ServiceAccountGitProjectGet) GetUrl() string {
-	if o == nil || isNil(o.Url.Get()) {
+	if o == nil || IsNil(o.Url.Get()) {
 		var ret string
 		return ret
 	}
@@ -94,7 +97,7 @@ func (o *ServiceAccountGitProjectGet) GetUrl() string {
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ServiceAccountGitProjectGet) GetUrlOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return o.Url.Get(), o.Url.IsSet()
 }
@@ -124,7 +127,7 @@ func (o *ServiceAccountGitProjectGet) UnsetUrl() {
 
 // GetSshPrivateKey returns the SshPrivateKey field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ServiceAccountGitProjectGet) GetSshPrivateKey() string {
-	if o == nil || isNil(o.SshPrivateKey.Get()) {
+	if o == nil || IsNil(o.SshPrivateKey.Get()) {
 		var ret string
 		return ret
 	}
@@ -136,7 +139,7 @@ func (o *ServiceAccountGitProjectGet) GetSshPrivateKey() string {
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ServiceAccountGitProjectGet) GetSshPrivateKeyOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return o.SshPrivateKey.Get(), o.SshPrivateKey.IsSet()
 }
@@ -165,6 +168,14 @@ func (o *ServiceAccountGitProjectGet) UnsetSshPrivateKey() {
 }
 
 func (o ServiceAccountGitProjectGet) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o ServiceAccountGitProjectGet) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if o.IsExternal.IsSet() {
 		toSerialize["isExternal"] = o.IsExternal.Get()
@@ -175,7 +186,7 @@ func (o ServiceAccountGitProjectGet) MarshalJSON() ([]byte, error) {
 	if o.SshPrivateKey.IsSet() {
 		toSerialize["sshPrivateKey"] = o.SshPrivateKey.Get()
 	}
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 type NullableServiceAccountGitProjectGet struct {

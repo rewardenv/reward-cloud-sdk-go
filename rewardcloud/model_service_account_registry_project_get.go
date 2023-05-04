@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ServiceAccountRegistryProjectGet type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ServiceAccountRegistryProjectGet{}
+
 // ServiceAccountRegistryProjectGet 
 type ServiceAccountRegistryProjectGet struct {
 	Url NullableString `json:"url,omitempty"`
@@ -38,7 +41,7 @@ func NewServiceAccountRegistryProjectGetWithDefaults() *ServiceAccountRegistryPr
 
 // GetUrl returns the Url field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ServiceAccountRegistryProjectGet) GetUrl() string {
-	if o == nil || isNil(o.Url.Get()) {
+	if o == nil || IsNil(o.Url.Get()) {
 		var ret string
 		return ret
 	}
@@ -50,7 +53,7 @@ func (o *ServiceAccountRegistryProjectGet) GetUrl() string {
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ServiceAccountRegistryProjectGet) GetUrlOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return o.Url.Get(), o.Url.IsSet()
 }
@@ -79,11 +82,19 @@ func (o *ServiceAccountRegistryProjectGet) UnsetUrl() {
 }
 
 func (o ServiceAccountRegistryProjectGet) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o ServiceAccountRegistryProjectGet) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Url.IsSet() {
 		toSerialize["url"] = o.Url.Get()
 	}
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 type NullableServiceAccountRegistryProjectGet struct {

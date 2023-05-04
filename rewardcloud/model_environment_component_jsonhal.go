@@ -15,9 +15,12 @@ import (
 	"time"
 )
 
+// checks if the EnvironmentComponentJsonhal type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &EnvironmentComponentJsonhal{}
+
 // EnvironmentComponentJsonhal Class EnvironmentComponent
 type EnvironmentComponentJsonhal struct {
-	Links *ComponentJsonhalLinks `json:"_links,omitempty"`
+	Links *AbstractEnvironmentJsonhalLinks `json:"_links,omitempty"`
 	Id *int32 `json:"id,omitempty"`
 	Uuid NullableString `json:"uuid,omitempty"`
 	Cpu NullableInt32 `json:"cpu,omitempty"`
@@ -25,7 +28,7 @@ type EnvironmentComponentJsonhal struct {
 	Storage NullableInt32 `json:"storage,omitempty"`
 	Node NullableInt32 `json:"node,omitempty"`
 	ComponentVersion NullableString `json:"componentVersion,omitempty"`
-	Environment NullableString `json:"environment,omitempty"`
+	Environment NullableEnvironmentComponentJsonhalEnvironment `json:"environment,omitempty"`
 	CreatedBy NullableString `json:"createdBy,omitempty"`
 	UpdatedBy NullableString `json:"updatedBy,omitempty"`
 	CreatedAt *time.Time `json:"createdAt,omitempty"`
@@ -50,9 +53,9 @@ func NewEnvironmentComponentJsonhalWithDefaults() *EnvironmentComponentJsonhal {
 }
 
 // GetLinks returns the Links field value if set, zero value otherwise.
-func (o *EnvironmentComponentJsonhal) GetLinks() ComponentJsonhalLinks {
-	if o == nil || isNil(o.Links) {
-		var ret ComponentJsonhalLinks
+func (o *EnvironmentComponentJsonhal) GetLinks() AbstractEnvironmentJsonhalLinks {
+	if o == nil || IsNil(o.Links) {
+		var ret AbstractEnvironmentJsonhalLinks
 		return ret
 	}
 	return *o.Links
@@ -60,30 +63,30 @@ func (o *EnvironmentComponentJsonhal) GetLinks() ComponentJsonhalLinks {
 
 // GetLinksOk returns a tuple with the Links field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *EnvironmentComponentJsonhal) GetLinksOk() (*ComponentJsonhalLinks, bool) {
-	if o == nil || isNil(o.Links) {
-    return nil, false
+func (o *EnvironmentComponentJsonhal) GetLinksOk() (*AbstractEnvironmentJsonhalLinks, bool) {
+	if o == nil || IsNil(o.Links) {
+		return nil, false
 	}
 	return o.Links, true
 }
 
 // HasLinks returns a boolean if a field has been set.
 func (o *EnvironmentComponentJsonhal) HasLinks() bool {
-	if o != nil && !isNil(o.Links) {
+	if o != nil && !IsNil(o.Links) {
 		return true
 	}
 
 	return false
 }
 
-// SetLinks gets a reference to the given ComponentJsonhalLinks and assigns it to the Links field.
-func (o *EnvironmentComponentJsonhal) SetLinks(v ComponentJsonhalLinks) {
+// SetLinks gets a reference to the given AbstractEnvironmentJsonhalLinks and assigns it to the Links field.
+func (o *EnvironmentComponentJsonhal) SetLinks(v AbstractEnvironmentJsonhalLinks) {
 	o.Links = &v
 }
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *EnvironmentComponentJsonhal) GetId() int32 {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		var ret int32
 		return ret
 	}
@@ -93,15 +96,15 @@ func (o *EnvironmentComponentJsonhal) GetId() int32 {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EnvironmentComponentJsonhal) GetIdOk() (*int32, bool) {
-	if o == nil || isNil(o.Id) {
-    return nil, false
+	if o == nil || IsNil(o.Id) {
+		return nil, false
 	}
 	return o.Id, true
 }
 
 // HasId returns a boolean if a field has been set.
 func (o *EnvironmentComponentJsonhal) HasId() bool {
-	if o != nil && !isNil(o.Id) {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -115,7 +118,7 @@ func (o *EnvironmentComponentJsonhal) SetId(v int32) {
 
 // GetUuid returns the Uuid field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *EnvironmentComponentJsonhal) GetUuid() string {
-	if o == nil || isNil(o.Uuid.Get()) {
+	if o == nil || IsNil(o.Uuid.Get()) {
 		var ret string
 		return ret
 	}
@@ -127,7 +130,7 @@ func (o *EnvironmentComponentJsonhal) GetUuid() string {
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *EnvironmentComponentJsonhal) GetUuidOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return o.Uuid.Get(), o.Uuid.IsSet()
 }
@@ -157,7 +160,7 @@ func (o *EnvironmentComponentJsonhal) UnsetUuid() {
 
 // GetCpu returns the Cpu field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *EnvironmentComponentJsonhal) GetCpu() int32 {
-	if o == nil || isNil(o.Cpu.Get()) {
+	if o == nil || IsNil(o.Cpu.Get()) {
 		var ret int32
 		return ret
 	}
@@ -169,7 +172,7 @@ func (o *EnvironmentComponentJsonhal) GetCpu() int32 {
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *EnvironmentComponentJsonhal) GetCpuOk() (*int32, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return o.Cpu.Get(), o.Cpu.IsSet()
 }
@@ -199,7 +202,7 @@ func (o *EnvironmentComponentJsonhal) UnsetCpu() {
 
 // GetMemory returns the Memory field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *EnvironmentComponentJsonhal) GetMemory() int32 {
-	if o == nil || isNil(o.Memory.Get()) {
+	if o == nil || IsNil(o.Memory.Get()) {
 		var ret int32
 		return ret
 	}
@@ -211,7 +214,7 @@ func (o *EnvironmentComponentJsonhal) GetMemory() int32 {
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *EnvironmentComponentJsonhal) GetMemoryOk() (*int32, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return o.Memory.Get(), o.Memory.IsSet()
 }
@@ -241,7 +244,7 @@ func (o *EnvironmentComponentJsonhal) UnsetMemory() {
 
 // GetStorage returns the Storage field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *EnvironmentComponentJsonhal) GetStorage() int32 {
-	if o == nil || isNil(o.Storage.Get()) {
+	if o == nil || IsNil(o.Storage.Get()) {
 		var ret int32
 		return ret
 	}
@@ -253,7 +256,7 @@ func (o *EnvironmentComponentJsonhal) GetStorage() int32 {
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *EnvironmentComponentJsonhal) GetStorageOk() (*int32, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return o.Storage.Get(), o.Storage.IsSet()
 }
@@ -283,7 +286,7 @@ func (o *EnvironmentComponentJsonhal) UnsetStorage() {
 
 // GetNode returns the Node field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *EnvironmentComponentJsonhal) GetNode() int32 {
-	if o == nil || isNil(o.Node.Get()) {
+	if o == nil || IsNil(o.Node.Get()) {
 		var ret int32
 		return ret
 	}
@@ -295,7 +298,7 @@ func (o *EnvironmentComponentJsonhal) GetNode() int32 {
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *EnvironmentComponentJsonhal) GetNodeOk() (*int32, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return o.Node.Get(), o.Node.IsSet()
 }
@@ -325,7 +328,7 @@ func (o *EnvironmentComponentJsonhal) UnsetNode() {
 
 // GetComponentVersion returns the ComponentVersion field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *EnvironmentComponentJsonhal) GetComponentVersion() string {
-	if o == nil || isNil(o.ComponentVersion.Get()) {
+	if o == nil || IsNil(o.ComponentVersion.Get()) {
 		var ret string
 		return ret
 	}
@@ -337,7 +340,7 @@ func (o *EnvironmentComponentJsonhal) GetComponentVersion() string {
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *EnvironmentComponentJsonhal) GetComponentVersionOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return o.ComponentVersion.Get(), o.ComponentVersion.IsSet()
 }
@@ -366,9 +369,9 @@ func (o *EnvironmentComponentJsonhal) UnsetComponentVersion() {
 }
 
 // GetEnvironment returns the Environment field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *EnvironmentComponentJsonhal) GetEnvironment() string {
-	if o == nil || isNil(o.Environment.Get()) {
-		var ret string
+func (o *EnvironmentComponentJsonhal) GetEnvironment() EnvironmentComponentJsonhalEnvironment {
+	if o == nil || IsNil(o.Environment.Get()) {
+		var ret EnvironmentComponentJsonhalEnvironment
 		return ret
 	}
 	return *o.Environment.Get()
@@ -377,9 +380,9 @@ func (o *EnvironmentComponentJsonhal) GetEnvironment() string {
 // GetEnvironmentOk returns a tuple with the Environment field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *EnvironmentComponentJsonhal) GetEnvironmentOk() (*string, bool) {
+func (o *EnvironmentComponentJsonhal) GetEnvironmentOk() (*EnvironmentComponentJsonhalEnvironment, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return o.Environment.Get(), o.Environment.IsSet()
 }
@@ -393,8 +396,8 @@ func (o *EnvironmentComponentJsonhal) HasEnvironment() bool {
 	return false
 }
 
-// SetEnvironment gets a reference to the given NullableString and assigns it to the Environment field.
-func (o *EnvironmentComponentJsonhal) SetEnvironment(v string) {
+// SetEnvironment gets a reference to the given NullableEnvironmentComponentJsonhalEnvironment and assigns it to the Environment field.
+func (o *EnvironmentComponentJsonhal) SetEnvironment(v EnvironmentComponentJsonhalEnvironment) {
 	o.Environment.Set(&v)
 }
 // SetEnvironmentNil sets the value for Environment to be an explicit nil
@@ -409,7 +412,7 @@ func (o *EnvironmentComponentJsonhal) UnsetEnvironment() {
 
 // GetCreatedBy returns the CreatedBy field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *EnvironmentComponentJsonhal) GetCreatedBy() string {
-	if o == nil || isNil(o.CreatedBy.Get()) {
+	if o == nil || IsNil(o.CreatedBy.Get()) {
 		var ret string
 		return ret
 	}
@@ -421,7 +424,7 @@ func (o *EnvironmentComponentJsonhal) GetCreatedBy() string {
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *EnvironmentComponentJsonhal) GetCreatedByOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return o.CreatedBy.Get(), o.CreatedBy.IsSet()
 }
@@ -451,7 +454,7 @@ func (o *EnvironmentComponentJsonhal) UnsetCreatedBy() {
 
 // GetUpdatedBy returns the UpdatedBy field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *EnvironmentComponentJsonhal) GetUpdatedBy() string {
-	if o == nil || isNil(o.UpdatedBy.Get()) {
+	if o == nil || IsNil(o.UpdatedBy.Get()) {
 		var ret string
 		return ret
 	}
@@ -463,7 +466,7 @@ func (o *EnvironmentComponentJsonhal) GetUpdatedBy() string {
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *EnvironmentComponentJsonhal) GetUpdatedByOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return o.UpdatedBy.Get(), o.UpdatedBy.IsSet()
 }
@@ -493,7 +496,7 @@ func (o *EnvironmentComponentJsonhal) UnsetUpdatedBy() {
 
 // GetCreatedAt returns the CreatedAt field value if set, zero value otherwise.
 func (o *EnvironmentComponentJsonhal) GetCreatedAt() time.Time {
-	if o == nil || isNil(o.CreatedAt) {
+	if o == nil || IsNil(o.CreatedAt) {
 		var ret time.Time
 		return ret
 	}
@@ -503,15 +506,15 @@ func (o *EnvironmentComponentJsonhal) GetCreatedAt() time.Time {
 // GetCreatedAtOk returns a tuple with the CreatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EnvironmentComponentJsonhal) GetCreatedAtOk() (*time.Time, bool) {
-	if o == nil || isNil(o.CreatedAt) {
-    return nil, false
+	if o == nil || IsNil(o.CreatedAt) {
+		return nil, false
 	}
 	return o.CreatedAt, true
 }
 
 // HasCreatedAt returns a boolean if a field has been set.
 func (o *EnvironmentComponentJsonhal) HasCreatedAt() bool {
-	if o != nil && !isNil(o.CreatedAt) {
+	if o != nil && !IsNil(o.CreatedAt) {
 		return true
 	}
 
@@ -525,7 +528,7 @@ func (o *EnvironmentComponentJsonhal) SetCreatedAt(v time.Time) {
 
 // GetUpdatedAt returns the UpdatedAt field value if set, zero value otherwise.
 func (o *EnvironmentComponentJsonhal) GetUpdatedAt() time.Time {
-	if o == nil || isNil(o.UpdatedAt) {
+	if o == nil || IsNil(o.UpdatedAt) {
 		var ret time.Time
 		return ret
 	}
@@ -535,15 +538,15 @@ func (o *EnvironmentComponentJsonhal) GetUpdatedAt() time.Time {
 // GetUpdatedAtOk returns a tuple with the UpdatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EnvironmentComponentJsonhal) GetUpdatedAtOk() (*time.Time, bool) {
-	if o == nil || isNil(o.UpdatedAt) {
-    return nil, false
+	if o == nil || IsNil(o.UpdatedAt) {
+		return nil, false
 	}
 	return o.UpdatedAt, true
 }
 
 // HasUpdatedAt returns a boolean if a field has been set.
 func (o *EnvironmentComponentJsonhal) HasUpdatedAt() bool {
-	if o != nil && !isNil(o.UpdatedAt) {
+	if o != nil && !IsNil(o.UpdatedAt) {
 		return true
 	}
 
@@ -556,13 +559,19 @@ func (o *EnvironmentComponentJsonhal) SetUpdatedAt(v time.Time) {
 }
 
 func (o EnvironmentComponentJsonhal) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o EnvironmentComponentJsonhal) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Links) {
+	if !IsNil(o.Links) {
 		toSerialize["_links"] = o.Links
 	}
-	if !isNil(o.Id) {
-		toSerialize["id"] = o.Id
-	}
+	// skip: id is readOnly
 	if o.Uuid.IsSet() {
 		toSerialize["uuid"] = o.Uuid.Get()
 	}
@@ -590,13 +599,13 @@ func (o EnvironmentComponentJsonhal) MarshalJSON() ([]byte, error) {
 	if o.UpdatedBy.IsSet() {
 		toSerialize["updatedBy"] = o.UpdatedBy.Get()
 	}
-	if !isNil(o.CreatedAt) {
+	if !IsNil(o.CreatedAt) {
 		toSerialize["createdAt"] = o.CreatedAt
 	}
-	if !isNil(o.UpdatedAt) {
+	if !IsNil(o.UpdatedAt) {
 		toSerialize["updatedAt"] = o.UpdatedAt
 	}
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 type NullableEnvironmentComponentJsonhal struct {

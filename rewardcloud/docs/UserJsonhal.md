@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Links** | Pointer to [**ComponentJsonhalLinks**](ComponentJsonhalLinks.md) |  | [optional] 
+**Links** | Pointer to [**AbstractEnvironmentJsonhalLinks**](AbstractEnvironmentJsonhalLinks.md) |  | [optional] 
 **Id** | Pointer to **int32** |  | [optional] [readonly] 
 **Uuid** | Pointer to **NullableString** |  | [optional] [readonly] 
 **PaymentId** | Pointer to **NullableString** |  | [optional] 
@@ -16,6 +16,7 @@ Name | Type | Description | Notes
 **Currency** | Pointer to **NullableString** |  | [optional] 
 **Password** | Pointer to **string** |  | [optional] 
 **ChangePassword** | Pointer to **NullableString** |  | [optional] 
+**CurrentPassword** | Pointer to **NullableString** |  | [optional] 
 **IsEnabled** | Pointer to **bool** |  | [optional] 
 **RoleGroup** | Pointer to **NullableString** |  | [optional] 
 **Team** | Pointer to **[]string** |  | [optional] 
@@ -47,20 +48,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetLinks
 
-`func (o *UserJsonhal) GetLinks() ComponentJsonhalLinks`
+`func (o *UserJsonhal) GetLinks() AbstractEnvironmentJsonhalLinks`
 
 GetLinks returns the Links field if non-nil, zero value otherwise.
 
 ### GetLinksOk
 
-`func (o *UserJsonhal) GetLinksOk() (*ComponentJsonhalLinks, bool)`
+`func (o *UserJsonhal) GetLinksOk() (*AbstractEnvironmentJsonhalLinks, bool)`
 
 GetLinksOk returns a tuple with the Links field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetLinks
 
-`func (o *UserJsonhal) SetLinks(v ComponentJsonhalLinks)`
+`func (o *UserJsonhal) SetLinks(v AbstractEnvironmentJsonhalLinks)`
 
 SetLinks sets Links field to given value.
 
@@ -435,6 +436,41 @@ HasChangePassword returns a boolean if a field has been set.
 `func (o *UserJsonhal) UnsetChangePassword()`
 
 UnsetChangePassword ensures that no value is present for ChangePassword, not even an explicit nil
+### GetCurrentPassword
+
+`func (o *UserJsonhal) GetCurrentPassword() string`
+
+GetCurrentPassword returns the CurrentPassword field if non-nil, zero value otherwise.
+
+### GetCurrentPasswordOk
+
+`func (o *UserJsonhal) GetCurrentPasswordOk() (*string, bool)`
+
+GetCurrentPasswordOk returns a tuple with the CurrentPassword field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCurrentPassword
+
+`func (o *UserJsonhal) SetCurrentPassword(v string)`
+
+SetCurrentPassword sets CurrentPassword field to given value.
+
+### HasCurrentPassword
+
+`func (o *UserJsonhal) HasCurrentPassword() bool`
+
+HasCurrentPassword returns a boolean if a field has been set.
+
+### SetCurrentPasswordNil
+
+`func (o *UserJsonhal) SetCurrentPasswordNil(b bool)`
+
+ SetCurrentPasswordNil sets the value for CurrentPassword to be an explicit nil
+
+### UnsetCurrentPassword
+`func (o *UserJsonhal) UnsetCurrentPassword()`
+
+UnsetCurrentPassword ensures that no value is present for CurrentPassword, not even an explicit nil
 ### GetIsEnabled
 
 `func (o *UserJsonhal) GetIsEnabled() bool`

@@ -15,6 +15,9 @@ import (
 	"time"
 )
 
+// checks if the ComponentVersion type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ComponentVersion{}
+
 // ComponentVersion Class ComponentVersion
 type ComponentVersion struct {
 	Id *int32 `json:"id,omitempty"`
@@ -22,7 +25,7 @@ type ComponentVersion struct {
 	Version NullableString `json:"version,omitempty"`
 	Component NullableString `json:"component,omitempty"`
 	ComponentVersionEnvVar []string `json:"componentVersionEnvVar,omitempty"`
-	Project []string `json:"project,omitempty"`
+	Project []AbstractProject `json:"project,omitempty"`
 	EnvironmentComponent []string `json:"environmentComponent,omitempty"`
 	ComponentResourceLimit []string `json:"componentResourceLimit,omitempty"`
 	CreatedBy NullableString `json:"createdBy,omitempty"`
@@ -50,7 +53,7 @@ func NewComponentVersionWithDefaults() *ComponentVersion {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *ComponentVersion) GetId() int32 {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		var ret int32
 		return ret
 	}
@@ -60,15 +63,15 @@ func (o *ComponentVersion) GetId() int32 {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComponentVersion) GetIdOk() (*int32, bool) {
-	if o == nil || isNil(o.Id) {
-    return nil, false
+	if o == nil || IsNil(o.Id) {
+		return nil, false
 	}
 	return o.Id, true
 }
 
 // HasId returns a boolean if a field has been set.
 func (o *ComponentVersion) HasId() bool {
-	if o != nil && !isNil(o.Id) {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -82,7 +85,7 @@ func (o *ComponentVersion) SetId(v int32) {
 
 // GetUuid returns the Uuid field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ComponentVersion) GetUuid() string {
-	if o == nil || isNil(o.Uuid.Get()) {
+	if o == nil || IsNil(o.Uuid.Get()) {
 		var ret string
 		return ret
 	}
@@ -94,7 +97,7 @@ func (o *ComponentVersion) GetUuid() string {
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ComponentVersion) GetUuidOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return o.Uuid.Get(), o.Uuid.IsSet()
 }
@@ -124,7 +127,7 @@ func (o *ComponentVersion) UnsetUuid() {
 
 // GetVersion returns the Version field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ComponentVersion) GetVersion() string {
-	if o == nil || isNil(o.Version.Get()) {
+	if o == nil || IsNil(o.Version.Get()) {
 		var ret string
 		return ret
 	}
@@ -136,7 +139,7 @@ func (o *ComponentVersion) GetVersion() string {
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ComponentVersion) GetVersionOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return o.Version.Get(), o.Version.IsSet()
 }
@@ -166,7 +169,7 @@ func (o *ComponentVersion) UnsetVersion() {
 
 // GetComponent returns the Component field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ComponentVersion) GetComponent() string {
-	if o == nil || isNil(o.Component.Get()) {
+	if o == nil || IsNil(o.Component.Get()) {
 		var ret string
 		return ret
 	}
@@ -178,7 +181,7 @@ func (o *ComponentVersion) GetComponent() string {
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ComponentVersion) GetComponentOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return o.Component.Get(), o.Component.IsSet()
 }
@@ -208,7 +211,7 @@ func (o *ComponentVersion) UnsetComponent() {
 
 // GetComponentVersionEnvVar returns the ComponentVersionEnvVar field value if set, zero value otherwise.
 func (o *ComponentVersion) GetComponentVersionEnvVar() []string {
-	if o == nil || isNil(o.ComponentVersionEnvVar) {
+	if o == nil || IsNil(o.ComponentVersionEnvVar) {
 		var ret []string
 		return ret
 	}
@@ -218,15 +221,15 @@ func (o *ComponentVersion) GetComponentVersionEnvVar() []string {
 // GetComponentVersionEnvVarOk returns a tuple with the ComponentVersionEnvVar field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComponentVersion) GetComponentVersionEnvVarOk() ([]string, bool) {
-	if o == nil || isNil(o.ComponentVersionEnvVar) {
-    return nil, false
+	if o == nil || IsNil(o.ComponentVersionEnvVar) {
+		return nil, false
 	}
 	return o.ComponentVersionEnvVar, true
 }
 
 // HasComponentVersionEnvVar returns a boolean if a field has been set.
 func (o *ComponentVersion) HasComponentVersionEnvVar() bool {
-	if o != nil && !isNil(o.ComponentVersionEnvVar) {
+	if o != nil && !IsNil(o.ComponentVersionEnvVar) {
 		return true
 	}
 
@@ -239,9 +242,9 @@ func (o *ComponentVersion) SetComponentVersionEnvVar(v []string) {
 }
 
 // GetProject returns the Project field value if set, zero value otherwise.
-func (o *ComponentVersion) GetProject() []string {
-	if o == nil || isNil(o.Project) {
-		var ret []string
+func (o *ComponentVersion) GetProject() []AbstractProject {
+	if o == nil || IsNil(o.Project) {
+		var ret []AbstractProject
 		return ret
 	}
 	return o.Project
@@ -249,30 +252,30 @@ func (o *ComponentVersion) GetProject() []string {
 
 // GetProjectOk returns a tuple with the Project field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ComponentVersion) GetProjectOk() ([]string, bool) {
-	if o == nil || isNil(o.Project) {
-    return nil, false
+func (o *ComponentVersion) GetProjectOk() ([]AbstractProject, bool) {
+	if o == nil || IsNil(o.Project) {
+		return nil, false
 	}
 	return o.Project, true
 }
 
 // HasProject returns a boolean if a field has been set.
 func (o *ComponentVersion) HasProject() bool {
-	if o != nil && !isNil(o.Project) {
+	if o != nil && !IsNil(o.Project) {
 		return true
 	}
 
 	return false
 }
 
-// SetProject gets a reference to the given []string and assigns it to the Project field.
-func (o *ComponentVersion) SetProject(v []string) {
+// SetProject gets a reference to the given []AbstractProject and assigns it to the Project field.
+func (o *ComponentVersion) SetProject(v []AbstractProject) {
 	o.Project = v
 }
 
 // GetEnvironmentComponent returns the EnvironmentComponent field value if set, zero value otherwise.
 func (o *ComponentVersion) GetEnvironmentComponent() []string {
-	if o == nil || isNil(o.EnvironmentComponent) {
+	if o == nil || IsNil(o.EnvironmentComponent) {
 		var ret []string
 		return ret
 	}
@@ -282,15 +285,15 @@ func (o *ComponentVersion) GetEnvironmentComponent() []string {
 // GetEnvironmentComponentOk returns a tuple with the EnvironmentComponent field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComponentVersion) GetEnvironmentComponentOk() ([]string, bool) {
-	if o == nil || isNil(o.EnvironmentComponent) {
-    return nil, false
+	if o == nil || IsNil(o.EnvironmentComponent) {
+		return nil, false
 	}
 	return o.EnvironmentComponent, true
 }
 
 // HasEnvironmentComponent returns a boolean if a field has been set.
 func (o *ComponentVersion) HasEnvironmentComponent() bool {
-	if o != nil && !isNil(o.EnvironmentComponent) {
+	if o != nil && !IsNil(o.EnvironmentComponent) {
 		return true
 	}
 
@@ -304,7 +307,7 @@ func (o *ComponentVersion) SetEnvironmentComponent(v []string) {
 
 // GetComponentResourceLimit returns the ComponentResourceLimit field value if set, zero value otherwise.
 func (o *ComponentVersion) GetComponentResourceLimit() []string {
-	if o == nil || isNil(o.ComponentResourceLimit) {
+	if o == nil || IsNil(o.ComponentResourceLimit) {
 		var ret []string
 		return ret
 	}
@@ -314,15 +317,15 @@ func (o *ComponentVersion) GetComponentResourceLimit() []string {
 // GetComponentResourceLimitOk returns a tuple with the ComponentResourceLimit field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComponentVersion) GetComponentResourceLimitOk() ([]string, bool) {
-	if o == nil || isNil(o.ComponentResourceLimit) {
-    return nil, false
+	if o == nil || IsNil(o.ComponentResourceLimit) {
+		return nil, false
 	}
 	return o.ComponentResourceLimit, true
 }
 
 // HasComponentResourceLimit returns a boolean if a field has been set.
 func (o *ComponentVersion) HasComponentResourceLimit() bool {
-	if o != nil && !isNil(o.ComponentResourceLimit) {
+	if o != nil && !IsNil(o.ComponentResourceLimit) {
 		return true
 	}
 
@@ -336,7 +339,7 @@ func (o *ComponentVersion) SetComponentResourceLimit(v []string) {
 
 // GetCreatedBy returns the CreatedBy field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ComponentVersion) GetCreatedBy() string {
-	if o == nil || isNil(o.CreatedBy.Get()) {
+	if o == nil || IsNil(o.CreatedBy.Get()) {
 		var ret string
 		return ret
 	}
@@ -348,7 +351,7 @@ func (o *ComponentVersion) GetCreatedBy() string {
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ComponentVersion) GetCreatedByOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return o.CreatedBy.Get(), o.CreatedBy.IsSet()
 }
@@ -378,7 +381,7 @@ func (o *ComponentVersion) UnsetCreatedBy() {
 
 // GetUpdatedBy returns the UpdatedBy field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ComponentVersion) GetUpdatedBy() string {
-	if o == nil || isNil(o.UpdatedBy.Get()) {
+	if o == nil || IsNil(o.UpdatedBy.Get()) {
 		var ret string
 		return ret
 	}
@@ -390,7 +393,7 @@ func (o *ComponentVersion) GetUpdatedBy() string {
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ComponentVersion) GetUpdatedByOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return o.UpdatedBy.Get(), o.UpdatedBy.IsSet()
 }
@@ -420,7 +423,7 @@ func (o *ComponentVersion) UnsetUpdatedBy() {
 
 // GetCreatedAt returns the CreatedAt field value if set, zero value otherwise.
 func (o *ComponentVersion) GetCreatedAt() time.Time {
-	if o == nil || isNil(o.CreatedAt) {
+	if o == nil || IsNil(o.CreatedAt) {
 		var ret time.Time
 		return ret
 	}
@@ -430,15 +433,15 @@ func (o *ComponentVersion) GetCreatedAt() time.Time {
 // GetCreatedAtOk returns a tuple with the CreatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComponentVersion) GetCreatedAtOk() (*time.Time, bool) {
-	if o == nil || isNil(o.CreatedAt) {
-    return nil, false
+	if o == nil || IsNil(o.CreatedAt) {
+		return nil, false
 	}
 	return o.CreatedAt, true
 }
 
 // HasCreatedAt returns a boolean if a field has been set.
 func (o *ComponentVersion) HasCreatedAt() bool {
-	if o != nil && !isNil(o.CreatedAt) {
+	if o != nil && !IsNil(o.CreatedAt) {
 		return true
 	}
 
@@ -452,7 +455,7 @@ func (o *ComponentVersion) SetCreatedAt(v time.Time) {
 
 // GetUpdatedAt returns the UpdatedAt field value if set, zero value otherwise.
 func (o *ComponentVersion) GetUpdatedAt() time.Time {
-	if o == nil || isNil(o.UpdatedAt) {
+	if o == nil || IsNil(o.UpdatedAt) {
 		var ret time.Time
 		return ret
 	}
@@ -462,15 +465,15 @@ func (o *ComponentVersion) GetUpdatedAt() time.Time {
 // GetUpdatedAtOk returns a tuple with the UpdatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComponentVersion) GetUpdatedAtOk() (*time.Time, bool) {
-	if o == nil || isNil(o.UpdatedAt) {
-    return nil, false
+	if o == nil || IsNil(o.UpdatedAt) {
+		return nil, false
 	}
 	return o.UpdatedAt, true
 }
 
 // HasUpdatedAt returns a boolean if a field has been set.
 func (o *ComponentVersion) HasUpdatedAt() bool {
-	if o != nil && !isNil(o.UpdatedAt) {
+	if o != nil && !IsNil(o.UpdatedAt) {
 		return true
 	}
 
@@ -483,10 +486,16 @@ func (o *ComponentVersion) SetUpdatedAt(v time.Time) {
 }
 
 func (o ComponentVersion) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.Id) {
-		toSerialize["id"] = o.Id
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
+	return json.Marshal(toSerialize)
+}
+
+func (o ComponentVersion) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	// skip: id is readOnly
 	if o.Uuid.IsSet() {
 		toSerialize["uuid"] = o.Uuid.Get()
 	}
@@ -496,16 +505,16 @@ func (o ComponentVersion) MarshalJSON() ([]byte, error) {
 	if o.Component.IsSet() {
 		toSerialize["component"] = o.Component.Get()
 	}
-	if !isNil(o.ComponentVersionEnvVar) {
+	if !IsNil(o.ComponentVersionEnvVar) {
 		toSerialize["componentVersionEnvVar"] = o.ComponentVersionEnvVar
 	}
-	if !isNil(o.Project) {
+	if !IsNil(o.Project) {
 		toSerialize["project"] = o.Project
 	}
-	if !isNil(o.EnvironmentComponent) {
+	if !IsNil(o.EnvironmentComponent) {
 		toSerialize["environmentComponent"] = o.EnvironmentComponent
 	}
-	if !isNil(o.ComponentResourceLimit) {
+	if !IsNil(o.ComponentResourceLimit) {
 		toSerialize["componentResourceLimit"] = o.ComponentResourceLimit
 	}
 	if o.CreatedBy.IsSet() {
@@ -514,13 +523,13 @@ func (o ComponentVersion) MarshalJSON() ([]byte, error) {
 	if o.UpdatedBy.IsSet() {
 		toSerialize["updatedBy"] = o.UpdatedBy.Get()
 	}
-	if !isNil(o.CreatedAt) {
+	if !IsNil(o.CreatedAt) {
 		toSerialize["createdAt"] = o.CreatedAt
 	}
-	if !isNil(o.UpdatedAt) {
+	if !IsNil(o.UpdatedAt) {
 		toSerialize["updatedAt"] = o.UpdatedAt
 	}
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 type NullableComponentVersion struct {

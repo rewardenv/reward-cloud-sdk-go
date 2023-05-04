@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the TokenDataTeamsInner type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &TokenDataTeamsInner{}
+
 // TokenDataTeamsInner struct for TokenDataTeamsInner
 type TokenDataTeamsInner struct {
 	Uuid *string `json:"uuid,omitempty"`
@@ -38,7 +41,7 @@ func NewTokenDataTeamsInnerWithDefaults() *TokenDataTeamsInner {
 
 // GetUuid returns the Uuid field value if set, zero value otherwise.
 func (o *TokenDataTeamsInner) GetUuid() string {
-	if o == nil || isNil(o.Uuid) {
+	if o == nil || IsNil(o.Uuid) {
 		var ret string
 		return ret
 	}
@@ -48,15 +51,15 @@ func (o *TokenDataTeamsInner) GetUuid() string {
 // GetUuidOk returns a tuple with the Uuid field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TokenDataTeamsInner) GetUuidOk() (*string, bool) {
-	if o == nil || isNil(o.Uuid) {
-    return nil, false
+	if o == nil || IsNil(o.Uuid) {
+		return nil, false
 	}
 	return o.Uuid, true
 }
 
 // HasUuid returns a boolean if a field has been set.
 func (o *TokenDataTeamsInner) HasUuid() bool {
-	if o != nil && !isNil(o.Uuid) {
+	if o != nil && !IsNil(o.Uuid) {
 		return true
 	}
 
@@ -69,11 +72,19 @@ func (o *TokenDataTeamsInner) SetUuid(v string) {
 }
 
 func (o TokenDataTeamsInner) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.Uuid) {
-		toSerialize["uuid"] = o.Uuid
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o TokenDataTeamsInner) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Uuid) {
+		toSerialize["uuid"] = o.Uuid
+	}
+	return toSerialize, nil
 }
 
 type NullableTokenDataTeamsInner struct {

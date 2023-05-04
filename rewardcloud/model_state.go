@@ -15,6 +15,9 @@ import (
 	"time"
 )
 
+// checks if the State type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &State{}
+
 // State Class State
 type State struct {
 	Id *int32 `json:"id,omitempty"`
@@ -49,7 +52,7 @@ func NewStateWithDefaults() *State {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *State) GetId() int32 {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		var ret int32
 		return ret
 	}
@@ -59,15 +62,15 @@ func (o *State) GetId() int32 {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *State) GetIdOk() (*int32, bool) {
-	if o == nil || isNil(o.Id) {
-    return nil, false
+	if o == nil || IsNil(o.Id) {
+		return nil, false
 	}
 	return o.Id, true
 }
 
 // HasId returns a boolean if a field has been set.
 func (o *State) HasId() bool {
-	if o != nil && !isNil(o.Id) {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -81,7 +84,7 @@ func (o *State) SetId(v int32) {
 
 // GetUuid returns the Uuid field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *State) GetUuid() string {
-	if o == nil || isNil(o.Uuid.Get()) {
+	if o == nil || IsNil(o.Uuid.Get()) {
 		var ret string
 		return ret
 	}
@@ -93,7 +96,7 @@ func (o *State) GetUuid() string {
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *State) GetUuidOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return o.Uuid.Get(), o.Uuid.IsSet()
 }
@@ -123,7 +126,7 @@ func (o *State) UnsetUuid() {
 
 // GetName returns the Name field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *State) GetName() string {
-	if o == nil || isNil(o.Name.Get()) {
+	if o == nil || IsNil(o.Name.Get()) {
 		var ret string
 		return ret
 	}
@@ -135,7 +138,7 @@ func (o *State) GetName() string {
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *State) GetNameOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return o.Name.Get(), o.Name.IsSet()
 }
@@ -165,7 +168,7 @@ func (o *State) UnsetName() {
 
 // GetSeqNumber returns the SeqNumber field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *State) GetSeqNumber() int32 {
-	if o == nil || isNil(o.SeqNumber.Get()) {
+	if o == nil || IsNil(o.SeqNumber.Get()) {
 		var ret int32
 		return ret
 	}
@@ -177,7 +180,7 @@ func (o *State) GetSeqNumber() int32 {
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *State) GetSeqNumberOk() (*int32, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return o.SeqNumber.Get(), o.SeqNumber.IsSet()
 }
@@ -207,7 +210,7 @@ func (o *State) UnsetSeqNumber() {
 
 // GetProject returns the Project field value if set, zero value otherwise.
 func (o *State) GetProject() []string {
-	if o == nil || isNil(o.Project) {
+	if o == nil || IsNil(o.Project) {
 		var ret []string
 		return ret
 	}
@@ -217,15 +220,15 @@ func (o *State) GetProject() []string {
 // GetProjectOk returns a tuple with the Project field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *State) GetProjectOk() ([]string, bool) {
-	if o == nil || isNil(o.Project) {
-    return nil, false
+	if o == nil || IsNil(o.Project) {
+		return nil, false
 	}
 	return o.Project, true
 }
 
 // HasProject returns a boolean if a field has been set.
 func (o *State) HasProject() bool {
-	if o != nil && !isNil(o.Project) {
+	if o != nil && !IsNil(o.Project) {
 		return true
 	}
 
@@ -239,7 +242,7 @@ func (o *State) SetProject(v []string) {
 
 // GetEnvironment returns the Environment field value if set, zero value otherwise.
 func (o *State) GetEnvironment() []string {
-	if o == nil || isNil(o.Environment) {
+	if o == nil || IsNil(o.Environment) {
 		var ret []string
 		return ret
 	}
@@ -249,15 +252,15 @@ func (o *State) GetEnvironment() []string {
 // GetEnvironmentOk returns a tuple with the Environment field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *State) GetEnvironmentOk() ([]string, bool) {
-	if o == nil || isNil(o.Environment) {
-    return nil, false
+	if o == nil || IsNil(o.Environment) {
+		return nil, false
 	}
 	return o.Environment, true
 }
 
 // HasEnvironment returns a boolean if a field has been set.
 func (o *State) HasEnvironment() bool {
-	if o != nil && !isNil(o.Environment) {
+	if o != nil && !IsNil(o.Environment) {
 		return true
 	}
 
@@ -271,7 +274,7 @@ func (o *State) SetEnvironment(v []string) {
 
 // GetImportedData returns the ImportedData field value if set, zero value otherwise.
 func (o *State) GetImportedData() []string {
-	if o == nil || isNil(o.ImportedData) {
+	if o == nil || IsNil(o.ImportedData) {
 		var ret []string
 		return ret
 	}
@@ -281,15 +284,15 @@ func (o *State) GetImportedData() []string {
 // GetImportedDataOk returns a tuple with the ImportedData field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *State) GetImportedDataOk() ([]string, bool) {
-	if o == nil || isNil(o.ImportedData) {
-    return nil, false
+	if o == nil || IsNil(o.ImportedData) {
+		return nil, false
 	}
 	return o.ImportedData, true
 }
 
 // HasImportedData returns a boolean if a field has been set.
 func (o *State) HasImportedData() bool {
-	if o != nil && !isNil(o.ImportedData) {
+	if o != nil && !IsNil(o.ImportedData) {
 		return true
 	}
 
@@ -303,7 +306,7 @@ func (o *State) SetImportedData(v []string) {
 
 // GetCreatedBy returns the CreatedBy field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *State) GetCreatedBy() string {
-	if o == nil || isNil(o.CreatedBy.Get()) {
+	if o == nil || IsNil(o.CreatedBy.Get()) {
 		var ret string
 		return ret
 	}
@@ -315,7 +318,7 @@ func (o *State) GetCreatedBy() string {
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *State) GetCreatedByOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return o.CreatedBy.Get(), o.CreatedBy.IsSet()
 }
@@ -345,7 +348,7 @@ func (o *State) UnsetCreatedBy() {
 
 // GetUpdatedBy returns the UpdatedBy field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *State) GetUpdatedBy() string {
-	if o == nil || isNil(o.UpdatedBy.Get()) {
+	if o == nil || IsNil(o.UpdatedBy.Get()) {
 		var ret string
 		return ret
 	}
@@ -357,7 +360,7 @@ func (o *State) GetUpdatedBy() string {
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *State) GetUpdatedByOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return o.UpdatedBy.Get(), o.UpdatedBy.IsSet()
 }
@@ -387,7 +390,7 @@ func (o *State) UnsetUpdatedBy() {
 
 // GetCreatedAt returns the CreatedAt field value if set, zero value otherwise.
 func (o *State) GetCreatedAt() time.Time {
-	if o == nil || isNil(o.CreatedAt) {
+	if o == nil || IsNil(o.CreatedAt) {
 		var ret time.Time
 		return ret
 	}
@@ -397,15 +400,15 @@ func (o *State) GetCreatedAt() time.Time {
 // GetCreatedAtOk returns a tuple with the CreatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *State) GetCreatedAtOk() (*time.Time, bool) {
-	if o == nil || isNil(o.CreatedAt) {
-    return nil, false
+	if o == nil || IsNil(o.CreatedAt) {
+		return nil, false
 	}
 	return o.CreatedAt, true
 }
 
 // HasCreatedAt returns a boolean if a field has been set.
 func (o *State) HasCreatedAt() bool {
-	if o != nil && !isNil(o.CreatedAt) {
+	if o != nil && !IsNil(o.CreatedAt) {
 		return true
 	}
 
@@ -419,7 +422,7 @@ func (o *State) SetCreatedAt(v time.Time) {
 
 // GetUpdatedAt returns the UpdatedAt field value if set, zero value otherwise.
 func (o *State) GetUpdatedAt() time.Time {
-	if o == nil || isNil(o.UpdatedAt) {
+	if o == nil || IsNil(o.UpdatedAt) {
 		var ret time.Time
 		return ret
 	}
@@ -429,15 +432,15 @@ func (o *State) GetUpdatedAt() time.Time {
 // GetUpdatedAtOk returns a tuple with the UpdatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *State) GetUpdatedAtOk() (*time.Time, bool) {
-	if o == nil || isNil(o.UpdatedAt) {
-    return nil, false
+	if o == nil || IsNil(o.UpdatedAt) {
+		return nil, false
 	}
 	return o.UpdatedAt, true
 }
 
 // HasUpdatedAt returns a boolean if a field has been set.
 func (o *State) HasUpdatedAt() bool {
-	if o != nil && !isNil(o.UpdatedAt) {
+	if o != nil && !IsNil(o.UpdatedAt) {
 		return true
 	}
 
@@ -450,10 +453,16 @@ func (o *State) SetUpdatedAt(v time.Time) {
 }
 
 func (o State) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.Id) {
-		toSerialize["id"] = o.Id
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
+	return json.Marshal(toSerialize)
+}
+
+func (o State) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	// skip: id is readOnly
 	if o.Uuid.IsSet() {
 		toSerialize["uuid"] = o.Uuid.Get()
 	}
@@ -463,13 +472,13 @@ func (o State) MarshalJSON() ([]byte, error) {
 	if o.SeqNumber.IsSet() {
 		toSerialize["seqNumber"] = o.SeqNumber.Get()
 	}
-	if !isNil(o.Project) {
+	if !IsNil(o.Project) {
 		toSerialize["project"] = o.Project
 	}
-	if !isNil(o.Environment) {
+	if !IsNil(o.Environment) {
 		toSerialize["environment"] = o.Environment
 	}
-	if !isNil(o.ImportedData) {
+	if !IsNil(o.ImportedData) {
 		toSerialize["importedData"] = o.ImportedData
 	}
 	if o.CreatedBy.IsSet() {
@@ -478,13 +487,13 @@ func (o State) MarshalJSON() ([]byte, error) {
 	if o.UpdatedBy.IsSet() {
 		toSerialize["updatedBy"] = o.UpdatedBy.Get()
 	}
-	if !isNil(o.CreatedAt) {
+	if !IsNil(o.CreatedAt) {
 		toSerialize["createdAt"] = o.CreatedAt
 	}
-	if !isNil(o.UpdatedAt) {
+	if !IsNil(o.UpdatedAt) {
 		toSerialize["updatedAt"] = o.UpdatedAt
 	}
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 type NullableState struct {

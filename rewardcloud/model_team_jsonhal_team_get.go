@@ -14,9 +14,12 @@ import (
 	"encoding/json"
 )
 
+// checks if the TeamJsonhalTeamGet type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &TeamJsonhalTeamGet{}
+
 // TeamJsonhalTeamGet Class Team
 type TeamJsonhalTeamGet struct {
-	Links *ComponentJsonhalLinks `json:"_links,omitempty"`
+	Links *AbstractEnvironmentJsonhalLinks `json:"_links,omitempty"`
 	Id *int32 `json:"id,omitempty"`
 	Uuid *string `json:"uuid,omitempty"`
 	Name NullableString `json:"name,omitempty"`
@@ -46,9 +49,9 @@ func NewTeamJsonhalTeamGetWithDefaults() *TeamJsonhalTeamGet {
 }
 
 // GetLinks returns the Links field value if set, zero value otherwise.
-func (o *TeamJsonhalTeamGet) GetLinks() ComponentJsonhalLinks {
-	if o == nil || isNil(o.Links) {
-		var ret ComponentJsonhalLinks
+func (o *TeamJsonhalTeamGet) GetLinks() AbstractEnvironmentJsonhalLinks {
+	if o == nil || IsNil(o.Links) {
+		var ret AbstractEnvironmentJsonhalLinks
 		return ret
 	}
 	return *o.Links
@@ -56,30 +59,30 @@ func (o *TeamJsonhalTeamGet) GetLinks() ComponentJsonhalLinks {
 
 // GetLinksOk returns a tuple with the Links field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *TeamJsonhalTeamGet) GetLinksOk() (*ComponentJsonhalLinks, bool) {
-	if o == nil || isNil(o.Links) {
-    return nil, false
+func (o *TeamJsonhalTeamGet) GetLinksOk() (*AbstractEnvironmentJsonhalLinks, bool) {
+	if o == nil || IsNil(o.Links) {
+		return nil, false
 	}
 	return o.Links, true
 }
 
 // HasLinks returns a boolean if a field has been set.
 func (o *TeamJsonhalTeamGet) HasLinks() bool {
-	if o != nil && !isNil(o.Links) {
+	if o != nil && !IsNil(o.Links) {
 		return true
 	}
 
 	return false
 }
 
-// SetLinks gets a reference to the given ComponentJsonhalLinks and assigns it to the Links field.
-func (o *TeamJsonhalTeamGet) SetLinks(v ComponentJsonhalLinks) {
+// SetLinks gets a reference to the given AbstractEnvironmentJsonhalLinks and assigns it to the Links field.
+func (o *TeamJsonhalTeamGet) SetLinks(v AbstractEnvironmentJsonhalLinks) {
 	o.Links = &v
 }
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *TeamJsonhalTeamGet) GetId() int32 {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		var ret int32
 		return ret
 	}
@@ -89,15 +92,15 @@ func (o *TeamJsonhalTeamGet) GetId() int32 {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TeamJsonhalTeamGet) GetIdOk() (*int32, bool) {
-	if o == nil || isNil(o.Id) {
-    return nil, false
+	if o == nil || IsNil(o.Id) {
+		return nil, false
 	}
 	return o.Id, true
 }
 
 // HasId returns a boolean if a field has been set.
 func (o *TeamJsonhalTeamGet) HasId() bool {
-	if o != nil && !isNil(o.Id) {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -111,7 +114,7 @@ func (o *TeamJsonhalTeamGet) SetId(v int32) {
 
 // GetUuid returns the Uuid field value if set, zero value otherwise.
 func (o *TeamJsonhalTeamGet) GetUuid() string {
-	if o == nil || isNil(o.Uuid) {
+	if o == nil || IsNil(o.Uuid) {
 		var ret string
 		return ret
 	}
@@ -121,15 +124,15 @@ func (o *TeamJsonhalTeamGet) GetUuid() string {
 // GetUuidOk returns a tuple with the Uuid field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TeamJsonhalTeamGet) GetUuidOk() (*string, bool) {
-	if o == nil || isNil(o.Uuid) {
-    return nil, false
+	if o == nil || IsNil(o.Uuid) {
+		return nil, false
 	}
 	return o.Uuid, true
 }
 
 // HasUuid returns a boolean if a field has been set.
 func (o *TeamJsonhalTeamGet) HasUuid() bool {
-	if o != nil && !isNil(o.Uuid) {
+	if o != nil && !IsNil(o.Uuid) {
 		return true
 	}
 
@@ -143,7 +146,7 @@ func (o *TeamJsonhalTeamGet) SetUuid(v string) {
 
 // GetName returns the Name field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *TeamJsonhalTeamGet) GetName() string {
-	if o == nil || isNil(o.Name.Get()) {
+	if o == nil || IsNil(o.Name.Get()) {
 		var ret string
 		return ret
 	}
@@ -155,7 +158,7 @@ func (o *TeamJsonhalTeamGet) GetName() string {
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *TeamJsonhalTeamGet) GetNameOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return o.Name.Get(), o.Name.IsSet()
 }
@@ -185,7 +188,7 @@ func (o *TeamJsonhalTeamGet) UnsetName() {
 
 // GetCodeName returns the CodeName field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *TeamJsonhalTeamGet) GetCodeName() string {
-	if o == nil || isNil(o.CodeName.Get()) {
+	if o == nil || IsNil(o.CodeName.Get()) {
 		var ret string
 		return ret
 	}
@@ -197,7 +200,7 @@ func (o *TeamJsonhalTeamGet) GetCodeName() string {
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *TeamJsonhalTeamGet) GetCodeNameOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return o.CodeName.Get(), o.CodeName.IsSet()
 }
@@ -227,7 +230,7 @@ func (o *TeamJsonhalTeamGet) UnsetCodeName() {
 
 // GetIsDefault returns the IsDefault field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *TeamJsonhalTeamGet) GetIsDefault() bool {
-	if o == nil || isNil(o.IsDefault.Get()) {
+	if o == nil || IsNil(o.IsDefault.Get()) {
 		var ret bool
 		return ret
 	}
@@ -239,7 +242,7 @@ func (o *TeamJsonhalTeamGet) GetIsDefault() bool {
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *TeamJsonhalTeamGet) GetIsDefaultOk() (*bool, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return o.IsDefault.Get(), o.IsDefault.IsSet()
 }
@@ -269,7 +272,7 @@ func (o *TeamJsonhalTeamGet) UnsetIsDefault() {
 
 // GetUser returns the User field value if set, zero value otherwise.
 func (o *TeamJsonhalTeamGet) GetUser() []string {
-	if o == nil || isNil(o.User) {
+	if o == nil || IsNil(o.User) {
 		var ret []string
 		return ret
 	}
@@ -279,15 +282,15 @@ func (o *TeamJsonhalTeamGet) GetUser() []string {
 // GetUserOk returns a tuple with the User field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TeamJsonhalTeamGet) GetUserOk() ([]string, bool) {
-	if o == nil || isNil(o.User) {
-    return nil, false
+	if o == nil || IsNil(o.User) {
+		return nil, false
 	}
 	return o.User, true
 }
 
 // HasUser returns a boolean if a field has been set.
 func (o *TeamJsonhalTeamGet) HasUser() bool {
-	if o != nil && !isNil(o.User) {
+	if o != nil && !IsNil(o.User) {
 		return true
 	}
 
@@ -301,7 +304,7 @@ func (o *TeamJsonhalTeamGet) SetUser(v []string) {
 
 // GetProject returns the Project field value if set, zero value otherwise.
 func (o *TeamJsonhalTeamGet) GetProject() []string {
-	if o == nil || isNil(o.Project) {
+	if o == nil || IsNil(o.Project) {
 		var ret []string
 		return ret
 	}
@@ -311,15 +314,15 @@ func (o *TeamJsonhalTeamGet) GetProject() []string {
 // GetProjectOk returns a tuple with the Project field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TeamJsonhalTeamGet) GetProjectOk() ([]string, bool) {
-	if o == nil || isNil(o.Project) {
-    return nil, false
+	if o == nil || IsNil(o.Project) {
+		return nil, false
 	}
 	return o.Project, true
 }
 
 // HasProject returns a boolean if a field has been set.
 func (o *TeamJsonhalTeamGet) HasProject() bool {
-	if o != nil && !isNil(o.Project) {
+	if o != nil && !IsNil(o.Project) {
 		return true
 	}
 
@@ -333,7 +336,7 @@ func (o *TeamJsonhalTeamGet) SetProject(v []string) {
 
 // GetOrganisation returns the Organisation field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *TeamJsonhalTeamGet) GetOrganisation() string {
-	if o == nil || isNil(o.Organisation.Get()) {
+	if o == nil || IsNil(o.Organisation.Get()) {
 		var ret string
 		return ret
 	}
@@ -345,7 +348,7 @@ func (o *TeamJsonhalTeamGet) GetOrganisation() string {
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *TeamJsonhalTeamGet) GetOrganisationOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return o.Organisation.Get(), o.Organisation.IsSet()
 }
@@ -375,7 +378,7 @@ func (o *TeamJsonhalTeamGet) UnsetOrganisation() {
 
 // GetTeamEnvVar returns the TeamEnvVar field value if set, zero value otherwise.
 func (o *TeamJsonhalTeamGet) GetTeamEnvVar() []TeamEnvVarJsonhalTeamGet {
-	if o == nil || isNil(o.TeamEnvVar) {
+	if o == nil || IsNil(o.TeamEnvVar) {
 		var ret []TeamEnvVarJsonhalTeamGet
 		return ret
 	}
@@ -385,15 +388,15 @@ func (o *TeamJsonhalTeamGet) GetTeamEnvVar() []TeamEnvVarJsonhalTeamGet {
 // GetTeamEnvVarOk returns a tuple with the TeamEnvVar field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TeamJsonhalTeamGet) GetTeamEnvVarOk() ([]TeamEnvVarJsonhalTeamGet, bool) {
-	if o == nil || isNil(o.TeamEnvVar) {
-    return nil, false
+	if o == nil || IsNil(o.TeamEnvVar) {
+		return nil, false
 	}
 	return o.TeamEnvVar, true
 }
 
 // HasTeamEnvVar returns a boolean if a field has been set.
 func (o *TeamJsonhalTeamGet) HasTeamEnvVar() bool {
-	if o != nil && !isNil(o.TeamEnvVar) {
+	if o != nil && !IsNil(o.TeamEnvVar) {
 		return true
 	}
 
@@ -406,16 +409,20 @@ func (o *TeamJsonhalTeamGet) SetTeamEnvVar(v []TeamEnvVarJsonhalTeamGet) {
 }
 
 func (o TeamJsonhalTeamGet) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o TeamJsonhalTeamGet) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Links) {
+	if !IsNil(o.Links) {
 		toSerialize["_links"] = o.Links
 	}
-	if !isNil(o.Id) {
-		toSerialize["id"] = o.Id
-	}
-	if !isNil(o.Uuid) {
-		toSerialize["uuid"] = o.Uuid
-	}
+	// skip: id is readOnly
+	// skip: uuid is readOnly
 	if o.Name.IsSet() {
 		toSerialize["name"] = o.Name.Get()
 	}
@@ -425,19 +432,19 @@ func (o TeamJsonhalTeamGet) MarshalJSON() ([]byte, error) {
 	if o.IsDefault.IsSet() {
 		toSerialize["isDefault"] = o.IsDefault.Get()
 	}
-	if !isNil(o.User) {
+	if !IsNil(o.User) {
 		toSerialize["user"] = o.User
 	}
-	if !isNil(o.Project) {
+	if !IsNil(o.Project) {
 		toSerialize["project"] = o.Project
 	}
 	if o.Organisation.IsSet() {
 		toSerialize["organisation"] = o.Organisation.Get()
 	}
-	if !isNil(o.TeamEnvVar) {
+	if !IsNil(o.TeamEnvVar) {
 		toSerialize["teamEnvVar"] = o.TeamEnvVar
 	}
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 type NullableTeamJsonhalTeamGet struct {

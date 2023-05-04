@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **Key** | Pointer to **NullableString** |  | [optional] 
 **Value** | Pointer to **NullableString** |  | [optional] 
 **IsEncrypted** | Pointer to **NullableBool** |  | [optional] 
-**Project** | Pointer to **NullableString** |  | [optional] 
+**Project** | Pointer to [**NullableProjectEnvVarProject**](ProjectEnvVarProject.md) |  | [optional] 
 **EnvVarType** | Pointer to **NullableString** |  | [optional] 
 **CreatedBy** | Pointer to **NullableString** |  | [optional] 
 **UpdatedBy** | Pointer to **NullableString** |  | [optional] 
@@ -203,20 +203,20 @@ HasIsEncrypted returns a boolean if a field has been set.
 UnsetIsEncrypted ensures that no value is present for IsEncrypted, not even an explicit nil
 ### GetProject
 
-`func (o *ProjectEnvVar) GetProject() string`
+`func (o *ProjectEnvVar) GetProject() ProjectEnvVarProject`
 
 GetProject returns the Project field if non-nil, zero value otherwise.
 
 ### GetProjectOk
 
-`func (o *ProjectEnvVar) GetProjectOk() (*string, bool)`
+`func (o *ProjectEnvVar) GetProjectOk() (*ProjectEnvVarProject, bool)`
 
 GetProjectOk returns a tuple with the Project field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetProject
 
-`func (o *ProjectEnvVar) SetProject(v string)`
+`func (o *ProjectEnvVar) SetProject(v ProjectEnvVarProject)`
 
 SetProject sets Project field to given value.
 

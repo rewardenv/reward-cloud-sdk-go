@@ -14,9 +14,12 @@ import (
 	"encoding/json"
 )
 
+// checks if the ResourceTypeJsonhalResourceTypeInput type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ResourceTypeJsonhalResourceTypeInput{}
+
 // ResourceTypeJsonhalResourceTypeInput Class ResourceType
 type ResourceTypeJsonhalResourceTypeInput struct {
-	Links *ComponentJsonhalLinks `json:"_links,omitempty"`
+	Links *AbstractEnvironmentJsonhalLinks `json:"_links,omitempty"`
 	Name NullableString `json:"name,omitempty"`
 	ResourceTypeLimit NullableResourceTypeJsonhalResourceTypeInputResourceTypeLimit `json:"resourceTypeLimit,omitempty"`
 }
@@ -39,9 +42,9 @@ func NewResourceTypeJsonhalResourceTypeInputWithDefaults() *ResourceTypeJsonhalR
 }
 
 // GetLinks returns the Links field value if set, zero value otherwise.
-func (o *ResourceTypeJsonhalResourceTypeInput) GetLinks() ComponentJsonhalLinks {
-	if o == nil || isNil(o.Links) {
-		var ret ComponentJsonhalLinks
+func (o *ResourceTypeJsonhalResourceTypeInput) GetLinks() AbstractEnvironmentJsonhalLinks {
+	if o == nil || IsNil(o.Links) {
+		var ret AbstractEnvironmentJsonhalLinks
 		return ret
 	}
 	return *o.Links
@@ -49,30 +52,30 @@ func (o *ResourceTypeJsonhalResourceTypeInput) GetLinks() ComponentJsonhalLinks 
 
 // GetLinksOk returns a tuple with the Links field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ResourceTypeJsonhalResourceTypeInput) GetLinksOk() (*ComponentJsonhalLinks, bool) {
-	if o == nil || isNil(o.Links) {
-    return nil, false
+func (o *ResourceTypeJsonhalResourceTypeInput) GetLinksOk() (*AbstractEnvironmentJsonhalLinks, bool) {
+	if o == nil || IsNil(o.Links) {
+		return nil, false
 	}
 	return o.Links, true
 }
 
 // HasLinks returns a boolean if a field has been set.
 func (o *ResourceTypeJsonhalResourceTypeInput) HasLinks() bool {
-	if o != nil && !isNil(o.Links) {
+	if o != nil && !IsNil(o.Links) {
 		return true
 	}
 
 	return false
 }
 
-// SetLinks gets a reference to the given ComponentJsonhalLinks and assigns it to the Links field.
-func (o *ResourceTypeJsonhalResourceTypeInput) SetLinks(v ComponentJsonhalLinks) {
+// SetLinks gets a reference to the given AbstractEnvironmentJsonhalLinks and assigns it to the Links field.
+func (o *ResourceTypeJsonhalResourceTypeInput) SetLinks(v AbstractEnvironmentJsonhalLinks) {
 	o.Links = &v
 }
 
 // GetName returns the Name field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ResourceTypeJsonhalResourceTypeInput) GetName() string {
-	if o == nil || isNil(o.Name.Get()) {
+	if o == nil || IsNil(o.Name.Get()) {
 		var ret string
 		return ret
 	}
@@ -84,7 +87,7 @@ func (o *ResourceTypeJsonhalResourceTypeInput) GetName() string {
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ResourceTypeJsonhalResourceTypeInput) GetNameOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return o.Name.Get(), o.Name.IsSet()
 }
@@ -114,7 +117,7 @@ func (o *ResourceTypeJsonhalResourceTypeInput) UnsetName() {
 
 // GetResourceTypeLimit returns the ResourceTypeLimit field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ResourceTypeJsonhalResourceTypeInput) GetResourceTypeLimit() ResourceTypeJsonhalResourceTypeInputResourceTypeLimit {
-	if o == nil || isNil(o.ResourceTypeLimit.Get()) {
+	if o == nil || IsNil(o.ResourceTypeLimit.Get()) {
 		var ret ResourceTypeJsonhalResourceTypeInputResourceTypeLimit
 		return ret
 	}
@@ -126,7 +129,7 @@ func (o *ResourceTypeJsonhalResourceTypeInput) GetResourceTypeLimit() ResourceTy
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ResourceTypeJsonhalResourceTypeInput) GetResourceTypeLimitOk() (*ResourceTypeJsonhalResourceTypeInputResourceTypeLimit, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return o.ResourceTypeLimit.Get(), o.ResourceTypeLimit.IsSet()
 }
@@ -155,8 +158,16 @@ func (o *ResourceTypeJsonhalResourceTypeInput) UnsetResourceTypeLimit() {
 }
 
 func (o ResourceTypeJsonhalResourceTypeInput) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o ResourceTypeJsonhalResourceTypeInput) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Links) {
+	if !IsNil(o.Links) {
 		toSerialize["_links"] = o.Links
 	}
 	if o.Name.IsSet() {
@@ -165,7 +176,7 @@ func (o ResourceTypeJsonhalResourceTypeInput) MarshalJSON() ([]byte, error) {
 	if o.ResourceTypeLimit.IsSet() {
 		toSerialize["resourceTypeLimit"] = o.ResourceTypeLimit.Get()
 	}
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 type NullableResourceTypeJsonhalResourceTypeInput struct {

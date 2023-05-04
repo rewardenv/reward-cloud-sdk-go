@@ -15,9 +15,12 @@ import (
 	"time"
 )
 
+// checks if the ProjectTypeVersionEnvVarExampleJsonhal type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ProjectTypeVersionEnvVarExampleJsonhal{}
+
 // ProjectTypeVersionEnvVarExampleJsonhal Class ProjectTypeEnvVarExample
 type ProjectTypeVersionEnvVarExampleJsonhal struct {
-	Links *ComponentJsonhalLinks `json:"_links,omitempty"`
+	Links *AbstractEnvironmentJsonhalLinks `json:"_links,omitempty"`
 	Id *int32 `json:"id,omitempty"`
 	Uuid NullableString `json:"uuid,omitempty"`
 	Value NullableString `json:"value,omitempty"`
@@ -47,9 +50,9 @@ func NewProjectTypeVersionEnvVarExampleJsonhalWithDefaults() *ProjectTypeVersion
 }
 
 // GetLinks returns the Links field value if set, zero value otherwise.
-func (o *ProjectTypeVersionEnvVarExampleJsonhal) GetLinks() ComponentJsonhalLinks {
-	if o == nil || isNil(o.Links) {
-		var ret ComponentJsonhalLinks
+func (o *ProjectTypeVersionEnvVarExampleJsonhal) GetLinks() AbstractEnvironmentJsonhalLinks {
+	if o == nil || IsNil(o.Links) {
+		var ret AbstractEnvironmentJsonhalLinks
 		return ret
 	}
 	return *o.Links
@@ -57,30 +60,30 @@ func (o *ProjectTypeVersionEnvVarExampleJsonhal) GetLinks() ComponentJsonhalLink
 
 // GetLinksOk returns a tuple with the Links field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ProjectTypeVersionEnvVarExampleJsonhal) GetLinksOk() (*ComponentJsonhalLinks, bool) {
-	if o == nil || isNil(o.Links) {
-    return nil, false
+func (o *ProjectTypeVersionEnvVarExampleJsonhal) GetLinksOk() (*AbstractEnvironmentJsonhalLinks, bool) {
+	if o == nil || IsNil(o.Links) {
+		return nil, false
 	}
 	return o.Links, true
 }
 
 // HasLinks returns a boolean if a field has been set.
 func (o *ProjectTypeVersionEnvVarExampleJsonhal) HasLinks() bool {
-	if o != nil && !isNil(o.Links) {
+	if o != nil && !IsNil(o.Links) {
 		return true
 	}
 
 	return false
 }
 
-// SetLinks gets a reference to the given ComponentJsonhalLinks and assigns it to the Links field.
-func (o *ProjectTypeVersionEnvVarExampleJsonhal) SetLinks(v ComponentJsonhalLinks) {
+// SetLinks gets a reference to the given AbstractEnvironmentJsonhalLinks and assigns it to the Links field.
+func (o *ProjectTypeVersionEnvVarExampleJsonhal) SetLinks(v AbstractEnvironmentJsonhalLinks) {
 	o.Links = &v
 }
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *ProjectTypeVersionEnvVarExampleJsonhal) GetId() int32 {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		var ret int32
 		return ret
 	}
@@ -90,15 +93,15 @@ func (o *ProjectTypeVersionEnvVarExampleJsonhal) GetId() int32 {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ProjectTypeVersionEnvVarExampleJsonhal) GetIdOk() (*int32, bool) {
-	if o == nil || isNil(o.Id) {
-    return nil, false
+	if o == nil || IsNil(o.Id) {
+		return nil, false
 	}
 	return o.Id, true
 }
 
 // HasId returns a boolean if a field has been set.
 func (o *ProjectTypeVersionEnvVarExampleJsonhal) HasId() bool {
-	if o != nil && !isNil(o.Id) {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -112,7 +115,7 @@ func (o *ProjectTypeVersionEnvVarExampleJsonhal) SetId(v int32) {
 
 // GetUuid returns the Uuid field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ProjectTypeVersionEnvVarExampleJsonhal) GetUuid() string {
-	if o == nil || isNil(o.Uuid.Get()) {
+	if o == nil || IsNil(o.Uuid.Get()) {
 		var ret string
 		return ret
 	}
@@ -124,7 +127,7 @@ func (o *ProjectTypeVersionEnvVarExampleJsonhal) GetUuid() string {
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ProjectTypeVersionEnvVarExampleJsonhal) GetUuidOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return o.Uuid.Get(), o.Uuid.IsSet()
 }
@@ -154,7 +157,7 @@ func (o *ProjectTypeVersionEnvVarExampleJsonhal) UnsetUuid() {
 
 // GetValue returns the Value field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ProjectTypeVersionEnvVarExampleJsonhal) GetValue() string {
-	if o == nil || isNil(o.Value.Get()) {
+	if o == nil || IsNil(o.Value.Get()) {
 		var ret string
 		return ret
 	}
@@ -166,7 +169,7 @@ func (o *ProjectTypeVersionEnvVarExampleJsonhal) GetValue() string {
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ProjectTypeVersionEnvVarExampleJsonhal) GetValueOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return o.Value.Get(), o.Value.IsSet()
 }
@@ -196,7 +199,7 @@ func (o *ProjectTypeVersionEnvVarExampleJsonhal) UnsetValue() {
 
 // GetIsDefault returns the IsDefault field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ProjectTypeVersionEnvVarExampleJsonhal) GetIsDefault() bool {
-	if o == nil || isNil(o.IsDefault.Get()) {
+	if o == nil || IsNil(o.IsDefault.Get()) {
 		var ret bool
 		return ret
 	}
@@ -208,7 +211,7 @@ func (o *ProjectTypeVersionEnvVarExampleJsonhal) GetIsDefault() bool {
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ProjectTypeVersionEnvVarExampleJsonhal) GetIsDefaultOk() (*bool, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return o.IsDefault.Get(), o.IsDefault.IsSet()
 }
@@ -238,7 +241,7 @@ func (o *ProjectTypeVersionEnvVarExampleJsonhal) UnsetIsDefault() {
 
 // GetProjectTypeVersionEnvVar returns the ProjectTypeVersionEnvVar field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ProjectTypeVersionEnvVarExampleJsonhal) GetProjectTypeVersionEnvVar() string {
-	if o == nil || isNil(o.ProjectTypeVersionEnvVar.Get()) {
+	if o == nil || IsNil(o.ProjectTypeVersionEnvVar.Get()) {
 		var ret string
 		return ret
 	}
@@ -250,7 +253,7 @@ func (o *ProjectTypeVersionEnvVarExampleJsonhal) GetProjectTypeVersionEnvVar() s
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ProjectTypeVersionEnvVarExampleJsonhal) GetProjectTypeVersionEnvVarOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return o.ProjectTypeVersionEnvVar.Get(), o.ProjectTypeVersionEnvVar.IsSet()
 }
@@ -280,7 +283,7 @@ func (o *ProjectTypeVersionEnvVarExampleJsonhal) UnsetProjectTypeVersionEnvVar()
 
 // GetCreatedBy returns the CreatedBy field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ProjectTypeVersionEnvVarExampleJsonhal) GetCreatedBy() string {
-	if o == nil || isNil(o.CreatedBy.Get()) {
+	if o == nil || IsNil(o.CreatedBy.Get()) {
 		var ret string
 		return ret
 	}
@@ -292,7 +295,7 @@ func (o *ProjectTypeVersionEnvVarExampleJsonhal) GetCreatedBy() string {
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ProjectTypeVersionEnvVarExampleJsonhal) GetCreatedByOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return o.CreatedBy.Get(), o.CreatedBy.IsSet()
 }
@@ -322,7 +325,7 @@ func (o *ProjectTypeVersionEnvVarExampleJsonhal) UnsetCreatedBy() {
 
 // GetUpdatedBy returns the UpdatedBy field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ProjectTypeVersionEnvVarExampleJsonhal) GetUpdatedBy() string {
-	if o == nil || isNil(o.UpdatedBy.Get()) {
+	if o == nil || IsNil(o.UpdatedBy.Get()) {
 		var ret string
 		return ret
 	}
@@ -334,7 +337,7 @@ func (o *ProjectTypeVersionEnvVarExampleJsonhal) GetUpdatedBy() string {
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ProjectTypeVersionEnvVarExampleJsonhal) GetUpdatedByOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return o.UpdatedBy.Get(), o.UpdatedBy.IsSet()
 }
@@ -364,7 +367,7 @@ func (o *ProjectTypeVersionEnvVarExampleJsonhal) UnsetUpdatedBy() {
 
 // GetCreatedAt returns the CreatedAt field value if set, zero value otherwise.
 func (o *ProjectTypeVersionEnvVarExampleJsonhal) GetCreatedAt() time.Time {
-	if o == nil || isNil(o.CreatedAt) {
+	if o == nil || IsNil(o.CreatedAt) {
 		var ret time.Time
 		return ret
 	}
@@ -374,15 +377,15 @@ func (o *ProjectTypeVersionEnvVarExampleJsonhal) GetCreatedAt() time.Time {
 // GetCreatedAtOk returns a tuple with the CreatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ProjectTypeVersionEnvVarExampleJsonhal) GetCreatedAtOk() (*time.Time, bool) {
-	if o == nil || isNil(o.CreatedAt) {
-    return nil, false
+	if o == nil || IsNil(o.CreatedAt) {
+		return nil, false
 	}
 	return o.CreatedAt, true
 }
 
 // HasCreatedAt returns a boolean if a field has been set.
 func (o *ProjectTypeVersionEnvVarExampleJsonhal) HasCreatedAt() bool {
-	if o != nil && !isNil(o.CreatedAt) {
+	if o != nil && !IsNil(o.CreatedAt) {
 		return true
 	}
 
@@ -396,7 +399,7 @@ func (o *ProjectTypeVersionEnvVarExampleJsonhal) SetCreatedAt(v time.Time) {
 
 // GetUpdatedAt returns the UpdatedAt field value if set, zero value otherwise.
 func (o *ProjectTypeVersionEnvVarExampleJsonhal) GetUpdatedAt() time.Time {
-	if o == nil || isNil(o.UpdatedAt) {
+	if o == nil || IsNil(o.UpdatedAt) {
 		var ret time.Time
 		return ret
 	}
@@ -406,15 +409,15 @@ func (o *ProjectTypeVersionEnvVarExampleJsonhal) GetUpdatedAt() time.Time {
 // GetUpdatedAtOk returns a tuple with the UpdatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ProjectTypeVersionEnvVarExampleJsonhal) GetUpdatedAtOk() (*time.Time, bool) {
-	if o == nil || isNil(o.UpdatedAt) {
-    return nil, false
+	if o == nil || IsNil(o.UpdatedAt) {
+		return nil, false
 	}
 	return o.UpdatedAt, true
 }
 
 // HasUpdatedAt returns a boolean if a field has been set.
 func (o *ProjectTypeVersionEnvVarExampleJsonhal) HasUpdatedAt() bool {
-	if o != nil && !isNil(o.UpdatedAt) {
+	if o != nil && !IsNil(o.UpdatedAt) {
 		return true
 	}
 
@@ -427,13 +430,19 @@ func (o *ProjectTypeVersionEnvVarExampleJsonhal) SetUpdatedAt(v time.Time) {
 }
 
 func (o ProjectTypeVersionEnvVarExampleJsonhal) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o ProjectTypeVersionEnvVarExampleJsonhal) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Links) {
+	if !IsNil(o.Links) {
 		toSerialize["_links"] = o.Links
 	}
-	if !isNil(o.Id) {
-		toSerialize["id"] = o.Id
-	}
+	// skip: id is readOnly
 	if o.Uuid.IsSet() {
 		toSerialize["uuid"] = o.Uuid.Get()
 	}
@@ -452,13 +461,13 @@ func (o ProjectTypeVersionEnvVarExampleJsonhal) MarshalJSON() ([]byte, error) {
 	if o.UpdatedBy.IsSet() {
 		toSerialize["updatedBy"] = o.UpdatedBy.Get()
 	}
-	if !isNil(o.CreatedAt) {
+	if !IsNil(o.CreatedAt) {
 		toSerialize["createdAt"] = o.CreatedAt
 	}
-	if !isNil(o.UpdatedAt) {
+	if !IsNil(o.UpdatedAt) {
 		toSerialize["updatedAt"] = o.UpdatedAt
 	}
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 type NullableProjectTypeVersionEnvVarExampleJsonhal struct {

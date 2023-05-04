@@ -14,9 +14,12 @@ import (
 	"encoding/json"
 )
 
+// checks if the ProjectEnvVarJsonhalProjectGet type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ProjectEnvVarJsonhalProjectGet{}
+
 // ProjectEnvVarJsonhalProjectGet 
 type ProjectEnvVarJsonhalProjectGet struct {
-	Links *ComponentJsonhalLinks `json:"_links,omitempty"`
+	Links *AbstractEnvironmentJsonhalLinks `json:"_links,omitempty"`
 	Key NullableString `json:"key,omitempty"`
 	Value NullableString `json:"value,omitempty"`
 	IsEncrypted NullableBool `json:"isEncrypted,omitempty"`
@@ -41,9 +44,9 @@ func NewProjectEnvVarJsonhalProjectGetWithDefaults() *ProjectEnvVarJsonhalProjec
 }
 
 // GetLinks returns the Links field value if set, zero value otherwise.
-func (o *ProjectEnvVarJsonhalProjectGet) GetLinks() ComponentJsonhalLinks {
-	if o == nil || isNil(o.Links) {
-		var ret ComponentJsonhalLinks
+func (o *ProjectEnvVarJsonhalProjectGet) GetLinks() AbstractEnvironmentJsonhalLinks {
+	if o == nil || IsNil(o.Links) {
+		var ret AbstractEnvironmentJsonhalLinks
 		return ret
 	}
 	return *o.Links
@@ -51,30 +54,30 @@ func (o *ProjectEnvVarJsonhalProjectGet) GetLinks() ComponentJsonhalLinks {
 
 // GetLinksOk returns a tuple with the Links field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ProjectEnvVarJsonhalProjectGet) GetLinksOk() (*ComponentJsonhalLinks, bool) {
-	if o == nil || isNil(o.Links) {
-    return nil, false
+func (o *ProjectEnvVarJsonhalProjectGet) GetLinksOk() (*AbstractEnvironmentJsonhalLinks, bool) {
+	if o == nil || IsNil(o.Links) {
+		return nil, false
 	}
 	return o.Links, true
 }
 
 // HasLinks returns a boolean if a field has been set.
 func (o *ProjectEnvVarJsonhalProjectGet) HasLinks() bool {
-	if o != nil && !isNil(o.Links) {
+	if o != nil && !IsNil(o.Links) {
 		return true
 	}
 
 	return false
 }
 
-// SetLinks gets a reference to the given ComponentJsonhalLinks and assigns it to the Links field.
-func (o *ProjectEnvVarJsonhalProjectGet) SetLinks(v ComponentJsonhalLinks) {
+// SetLinks gets a reference to the given AbstractEnvironmentJsonhalLinks and assigns it to the Links field.
+func (o *ProjectEnvVarJsonhalProjectGet) SetLinks(v AbstractEnvironmentJsonhalLinks) {
 	o.Links = &v
 }
 
 // GetKey returns the Key field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ProjectEnvVarJsonhalProjectGet) GetKey() string {
-	if o == nil || isNil(o.Key.Get()) {
+	if o == nil || IsNil(o.Key.Get()) {
 		var ret string
 		return ret
 	}
@@ -86,7 +89,7 @@ func (o *ProjectEnvVarJsonhalProjectGet) GetKey() string {
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ProjectEnvVarJsonhalProjectGet) GetKeyOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return o.Key.Get(), o.Key.IsSet()
 }
@@ -116,7 +119,7 @@ func (o *ProjectEnvVarJsonhalProjectGet) UnsetKey() {
 
 // GetValue returns the Value field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ProjectEnvVarJsonhalProjectGet) GetValue() string {
-	if o == nil || isNil(o.Value.Get()) {
+	if o == nil || IsNil(o.Value.Get()) {
 		var ret string
 		return ret
 	}
@@ -128,7 +131,7 @@ func (o *ProjectEnvVarJsonhalProjectGet) GetValue() string {
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ProjectEnvVarJsonhalProjectGet) GetValueOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return o.Value.Get(), o.Value.IsSet()
 }
@@ -158,7 +161,7 @@ func (o *ProjectEnvVarJsonhalProjectGet) UnsetValue() {
 
 // GetIsEncrypted returns the IsEncrypted field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ProjectEnvVarJsonhalProjectGet) GetIsEncrypted() bool {
-	if o == nil || isNil(o.IsEncrypted.Get()) {
+	if o == nil || IsNil(o.IsEncrypted.Get()) {
 		var ret bool
 		return ret
 	}
@@ -170,7 +173,7 @@ func (o *ProjectEnvVarJsonhalProjectGet) GetIsEncrypted() bool {
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ProjectEnvVarJsonhalProjectGet) GetIsEncryptedOk() (*bool, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return o.IsEncrypted.Get(), o.IsEncrypted.IsSet()
 }
@@ -200,7 +203,7 @@ func (o *ProjectEnvVarJsonhalProjectGet) UnsetIsEncrypted() {
 
 // GetEnvVarType returns the EnvVarType field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ProjectEnvVarJsonhalProjectGet) GetEnvVarType() string {
-	if o == nil || isNil(o.EnvVarType.Get()) {
+	if o == nil || IsNil(o.EnvVarType.Get()) {
 		var ret string
 		return ret
 	}
@@ -212,7 +215,7 @@ func (o *ProjectEnvVarJsonhalProjectGet) GetEnvVarType() string {
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ProjectEnvVarJsonhalProjectGet) GetEnvVarTypeOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return o.EnvVarType.Get(), o.EnvVarType.IsSet()
 }
@@ -241,8 +244,16 @@ func (o *ProjectEnvVarJsonhalProjectGet) UnsetEnvVarType() {
 }
 
 func (o ProjectEnvVarJsonhalProjectGet) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o ProjectEnvVarJsonhalProjectGet) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Links) {
+	if !IsNil(o.Links) {
 		toSerialize["_links"] = o.Links
 	}
 	if o.Key.IsSet() {
@@ -257,7 +268,7 @@ func (o ProjectEnvVarJsonhalProjectGet) MarshalJSON() ([]byte, error) {
 	if o.EnvVarType.IsSet() {
 		toSerialize["envVarType"] = o.EnvVarType.Get()
 	}
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 type NullableProjectEnvVarJsonhalProjectGet struct {

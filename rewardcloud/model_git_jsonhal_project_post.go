@@ -14,9 +14,12 @@ import (
 	"encoding/json"
 )
 
+// checks if the GitJsonhalProjectPost type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &GitJsonhalProjectPost{}
+
 // GitJsonhalProjectPost 
 type GitJsonhalProjectPost struct {
-	Links *ComponentJsonhalLinks `json:"_links,omitempty"`
+	Links *AbstractEnvironmentJsonhalLinks `json:"_links,omitempty"`
 	Repo NullableString `json:"repo,omitempty"`
 	Username NullableString `json:"username,omitempty"`
 	Password NullableString `json:"password,omitempty"`
@@ -44,9 +47,9 @@ func NewGitJsonhalProjectPostWithDefaults() *GitJsonhalProjectPost {
 }
 
 // GetLinks returns the Links field value if set, zero value otherwise.
-func (o *GitJsonhalProjectPost) GetLinks() ComponentJsonhalLinks {
-	if o == nil || isNil(o.Links) {
-		var ret ComponentJsonhalLinks
+func (o *GitJsonhalProjectPost) GetLinks() AbstractEnvironmentJsonhalLinks {
+	if o == nil || IsNil(o.Links) {
+		var ret AbstractEnvironmentJsonhalLinks
 		return ret
 	}
 	return *o.Links
@@ -54,30 +57,30 @@ func (o *GitJsonhalProjectPost) GetLinks() ComponentJsonhalLinks {
 
 // GetLinksOk returns a tuple with the Links field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GitJsonhalProjectPost) GetLinksOk() (*ComponentJsonhalLinks, bool) {
-	if o == nil || isNil(o.Links) {
-    return nil, false
+func (o *GitJsonhalProjectPost) GetLinksOk() (*AbstractEnvironmentJsonhalLinks, bool) {
+	if o == nil || IsNil(o.Links) {
+		return nil, false
 	}
 	return o.Links, true
 }
 
 // HasLinks returns a boolean if a field has been set.
 func (o *GitJsonhalProjectPost) HasLinks() bool {
-	if o != nil && !isNil(o.Links) {
+	if o != nil && !IsNil(o.Links) {
 		return true
 	}
 
 	return false
 }
 
-// SetLinks gets a reference to the given ComponentJsonhalLinks and assigns it to the Links field.
-func (o *GitJsonhalProjectPost) SetLinks(v ComponentJsonhalLinks) {
+// SetLinks gets a reference to the given AbstractEnvironmentJsonhalLinks and assigns it to the Links field.
+func (o *GitJsonhalProjectPost) SetLinks(v AbstractEnvironmentJsonhalLinks) {
 	o.Links = &v
 }
 
 // GetRepo returns the Repo field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *GitJsonhalProjectPost) GetRepo() string {
-	if o == nil || isNil(o.Repo.Get()) {
+	if o == nil || IsNil(o.Repo.Get()) {
 		var ret string
 		return ret
 	}
@@ -89,7 +92,7 @@ func (o *GitJsonhalProjectPost) GetRepo() string {
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *GitJsonhalProjectPost) GetRepoOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return o.Repo.Get(), o.Repo.IsSet()
 }
@@ -119,7 +122,7 @@ func (o *GitJsonhalProjectPost) UnsetRepo() {
 
 // GetUsername returns the Username field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *GitJsonhalProjectPost) GetUsername() string {
-	if o == nil || isNil(o.Username.Get()) {
+	if o == nil || IsNil(o.Username.Get()) {
 		var ret string
 		return ret
 	}
@@ -131,7 +134,7 @@ func (o *GitJsonhalProjectPost) GetUsername() string {
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *GitJsonhalProjectPost) GetUsernameOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return o.Username.Get(), o.Username.IsSet()
 }
@@ -161,7 +164,7 @@ func (o *GitJsonhalProjectPost) UnsetUsername() {
 
 // GetPassword returns the Password field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *GitJsonhalProjectPost) GetPassword() string {
-	if o == nil || isNil(o.Password.Get()) {
+	if o == nil || IsNil(o.Password.Get()) {
 		var ret string
 		return ret
 	}
@@ -173,7 +176,7 @@ func (o *GitJsonhalProjectPost) GetPassword() string {
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *GitJsonhalProjectPost) GetPasswordOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return o.Password.Get(), o.Password.IsSet()
 }
@@ -203,7 +206,7 @@ func (o *GitJsonhalProjectPost) UnsetPassword() {
 
 // GetSshPrivateKey returns the SshPrivateKey field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *GitJsonhalProjectPost) GetSshPrivateKey() string {
-	if o == nil || isNil(o.SshPrivateKey.Get()) {
+	if o == nil || IsNil(o.SshPrivateKey.Get()) {
 		var ret string
 		return ret
 	}
@@ -215,7 +218,7 @@ func (o *GitJsonhalProjectPost) GetSshPrivateKey() string {
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *GitJsonhalProjectPost) GetSshPrivateKeyOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return o.SshPrivateKey.Get(), o.SshPrivateKey.IsSet()
 }
@@ -245,7 +248,7 @@ func (o *GitJsonhalProjectPost) UnsetSshPrivateKey() {
 
 // GetSshPrivateKeyInput returns the SshPrivateKeyInput field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *GitJsonhalProjectPost) GetSshPrivateKeyInput() string {
-	if o == nil || isNil(o.SshPrivateKeyInput.Get()) {
+	if o == nil || IsNil(o.SshPrivateKeyInput.Get()) {
 		var ret string
 		return ret
 	}
@@ -257,7 +260,7 @@ func (o *GitJsonhalProjectPost) GetSshPrivateKeyInput() string {
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *GitJsonhalProjectPost) GetSshPrivateKeyInputOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return o.SshPrivateKeyInput.Get(), o.SshPrivateKeyInput.IsSet()
 }
@@ -287,7 +290,7 @@ func (o *GitJsonhalProjectPost) UnsetSshPrivateKeyInput() {
 
 // GetGitType returns the GitType field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *GitJsonhalProjectPost) GetGitType() GitJsonhalProjectPostGitType {
-	if o == nil || isNil(o.GitType.Get()) {
+	if o == nil || IsNil(o.GitType.Get()) {
 		var ret GitJsonhalProjectPostGitType
 		return ret
 	}
@@ -299,7 +302,7 @@ func (o *GitJsonhalProjectPost) GetGitType() GitJsonhalProjectPostGitType {
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *GitJsonhalProjectPost) GetGitTypeOk() (*GitJsonhalProjectPostGitType, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return o.GitType.Get(), o.GitType.IsSet()
 }
@@ -329,7 +332,7 @@ func (o *GitJsonhalProjectPost) UnsetGitType() {
 
 // GetCredentialType returns the CredentialType field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *GitJsonhalProjectPost) GetCredentialType() GitJsonhalProjectPostCredentialType {
-	if o == nil || isNil(o.CredentialType.Get()) {
+	if o == nil || IsNil(o.CredentialType.Get()) {
 		var ret GitJsonhalProjectPostCredentialType
 		return ret
 	}
@@ -341,7 +344,7 @@ func (o *GitJsonhalProjectPost) GetCredentialType() GitJsonhalProjectPostCredent
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *GitJsonhalProjectPost) GetCredentialTypeOk() (*GitJsonhalProjectPostCredentialType, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return o.CredentialType.Get(), o.CredentialType.IsSet()
 }
@@ -370,8 +373,16 @@ func (o *GitJsonhalProjectPost) UnsetCredentialType() {
 }
 
 func (o GitJsonhalProjectPost) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o GitJsonhalProjectPost) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Links) {
+	if !IsNil(o.Links) {
 		toSerialize["_links"] = o.Links
 	}
 	if o.Repo.IsSet() {
@@ -395,7 +406,7 @@ func (o GitJsonhalProjectPost) MarshalJSON() ([]byte, error) {
 	if o.CredentialType.IsSet() {
 		toSerialize["credentialType"] = o.CredentialType.Get()
 	}
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 type NullableGitJsonhalProjectPost struct {

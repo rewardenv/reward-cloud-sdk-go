@@ -15,6 +15,7 @@ Name | Type | Description | Notes
 **Currency** | Pointer to **NullableString** |  | [optional] 
 **Password** | Pointer to **string** |  | [optional] 
 **ChangePassword** | Pointer to **NullableString** |  | [optional] 
+**CurrentPassword** | Pointer to **NullableString** |  | [optional] 
 **IsEnabled** | Pointer to **bool** |  | [optional] 
 **RoleGroup** | Pointer to **NullableString** |  | [optional] 
 **Team** | Pointer to **[]string** |  | [optional] 
@@ -409,6 +410,41 @@ HasChangePassword returns a boolean if a field has been set.
 `func (o *User) UnsetChangePassword()`
 
 UnsetChangePassword ensures that no value is present for ChangePassword, not even an explicit nil
+### GetCurrentPassword
+
+`func (o *User) GetCurrentPassword() string`
+
+GetCurrentPassword returns the CurrentPassword field if non-nil, zero value otherwise.
+
+### GetCurrentPasswordOk
+
+`func (o *User) GetCurrentPasswordOk() (*string, bool)`
+
+GetCurrentPasswordOk returns a tuple with the CurrentPassword field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCurrentPassword
+
+`func (o *User) SetCurrentPassword(v string)`
+
+SetCurrentPassword sets CurrentPassword field to given value.
+
+### HasCurrentPassword
+
+`func (o *User) HasCurrentPassword() bool`
+
+HasCurrentPassword returns a boolean if a field has been set.
+
+### SetCurrentPasswordNil
+
+`func (o *User) SetCurrentPasswordNil(b bool)`
+
+ SetCurrentPasswordNil sets the value for CurrentPassword to be an explicit nil
+
+### UnsetCurrentPassword
+`func (o *User) UnsetCurrentPassword()`
+
+UnsetCurrentPassword ensures that no value is present for CurrentPassword, not even an explicit nil
 ### GetIsEnabled
 
 `func (o *User) GetIsEnabled() bool`

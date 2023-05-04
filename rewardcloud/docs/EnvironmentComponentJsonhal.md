@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Links** | Pointer to [**ComponentJsonhalLinks**](ComponentJsonhalLinks.md) |  | [optional] 
+**Links** | Pointer to [**AbstractEnvironmentJsonhalLinks**](AbstractEnvironmentJsonhalLinks.md) |  | [optional] 
 **Id** | Pointer to **int32** |  | [optional] [readonly] 
 **Uuid** | Pointer to **NullableString** |  | [optional] [readonly] 
 **Cpu** | Pointer to **NullableInt32** |  | [optional] 
@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 **Storage** | Pointer to **NullableInt32** |  | [optional] 
 **Node** | Pointer to **NullableInt32** |  | [optional] 
 **ComponentVersion** | Pointer to **NullableString** |  | [optional] 
-**Environment** | Pointer to **NullableString** |  | [optional] 
+**Environment** | Pointer to [**NullableEnvironmentComponentJsonhalEnvironment**](EnvironmentComponentJsonhalEnvironment.md) |  | [optional] 
 **CreatedBy** | Pointer to **NullableString** |  | [optional] 
 **UpdatedBy** | Pointer to **NullableString** |  | [optional] 
 **CreatedAt** | Pointer to **time.Time** |  | [optional] 
@@ -39,20 +39,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetLinks
 
-`func (o *EnvironmentComponentJsonhal) GetLinks() ComponentJsonhalLinks`
+`func (o *EnvironmentComponentJsonhal) GetLinks() AbstractEnvironmentJsonhalLinks`
 
 GetLinks returns the Links field if non-nil, zero value otherwise.
 
 ### GetLinksOk
 
-`func (o *EnvironmentComponentJsonhal) GetLinksOk() (*ComponentJsonhalLinks, bool)`
+`func (o *EnvironmentComponentJsonhal) GetLinksOk() (*AbstractEnvironmentJsonhalLinks, bool)`
 
 GetLinksOk returns a tuple with the Links field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetLinks
 
-`func (o *EnvironmentComponentJsonhal) SetLinks(v ComponentJsonhalLinks)`
+`func (o *EnvironmentComponentJsonhal) SetLinks(v AbstractEnvironmentJsonhalLinks)`
 
 SetLinks sets Links field to given value.
 
@@ -299,20 +299,20 @@ HasComponentVersion returns a boolean if a field has been set.
 UnsetComponentVersion ensures that no value is present for ComponentVersion, not even an explicit nil
 ### GetEnvironment
 
-`func (o *EnvironmentComponentJsonhal) GetEnvironment() string`
+`func (o *EnvironmentComponentJsonhal) GetEnvironment() EnvironmentComponentJsonhalEnvironment`
 
 GetEnvironment returns the Environment field if non-nil, zero value otherwise.
 
 ### GetEnvironmentOk
 
-`func (o *EnvironmentComponentJsonhal) GetEnvironmentOk() (*string, bool)`
+`func (o *EnvironmentComponentJsonhal) GetEnvironmentOk() (*EnvironmentComponentJsonhalEnvironment, bool)`
 
 GetEnvironmentOk returns a tuple with the Environment field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetEnvironment
 
-`func (o *EnvironmentComponentJsonhal) SetEnvironment(v string)`
+`func (o *EnvironmentComponentJsonhal) SetEnvironment(v EnvironmentComponentJsonhalEnvironment)`
 
 SetEnvironment sets Environment field to given value.
 

@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the GitTypeProjectGet type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &GitTypeProjectGet{}
+
 // GitTypeProjectGet 
 type GitTypeProjectGet struct {
 	Uuid NullableString `json:"uuid,omitempty"`
@@ -39,7 +42,7 @@ func NewGitTypeProjectGetWithDefaults() *GitTypeProjectGet {
 
 // GetUuid returns the Uuid field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *GitTypeProjectGet) GetUuid() string {
-	if o == nil || isNil(o.Uuid.Get()) {
+	if o == nil || IsNil(o.Uuid.Get()) {
 		var ret string
 		return ret
 	}
@@ -51,7 +54,7 @@ func (o *GitTypeProjectGet) GetUuid() string {
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *GitTypeProjectGet) GetUuidOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return o.Uuid.Get(), o.Uuid.IsSet()
 }
@@ -81,7 +84,7 @@ func (o *GitTypeProjectGet) UnsetUuid() {
 
 // GetName returns the Name field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *GitTypeProjectGet) GetName() string {
-	if o == nil || isNil(o.Name.Get()) {
+	if o == nil || IsNil(o.Name.Get()) {
 		var ret string
 		return ret
 	}
@@ -93,7 +96,7 @@ func (o *GitTypeProjectGet) GetName() string {
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *GitTypeProjectGet) GetNameOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return o.Name.Get(), o.Name.IsSet()
 }
@@ -122,6 +125,14 @@ func (o *GitTypeProjectGet) UnsetName() {
 }
 
 func (o GitTypeProjectGet) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o GitTypeProjectGet) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Uuid.IsSet() {
 		toSerialize["uuid"] = o.Uuid.Get()
@@ -129,7 +140,7 @@ func (o GitTypeProjectGet) MarshalJSON() ([]byte, error) {
 	if o.Name.IsSet() {
 		toSerialize["name"] = o.Name.Get()
 	}
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 type NullableGitTypeProjectGet struct {

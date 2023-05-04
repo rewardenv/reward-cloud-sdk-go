@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the EnvironmentComponentEnvironmentGet type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &EnvironmentComponentEnvironmentGet{}
+
 // EnvironmentComponentEnvironmentGet 
 type EnvironmentComponentEnvironmentGet struct {
 	Cpu NullableInt32 `json:"cpu,omitempty"`
@@ -42,7 +45,7 @@ func NewEnvironmentComponentEnvironmentGetWithDefaults() *EnvironmentComponentEn
 
 // GetCpu returns the Cpu field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *EnvironmentComponentEnvironmentGet) GetCpu() int32 {
-	if o == nil || isNil(o.Cpu.Get()) {
+	if o == nil || IsNil(o.Cpu.Get()) {
 		var ret int32
 		return ret
 	}
@@ -54,7 +57,7 @@ func (o *EnvironmentComponentEnvironmentGet) GetCpu() int32 {
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *EnvironmentComponentEnvironmentGet) GetCpuOk() (*int32, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return o.Cpu.Get(), o.Cpu.IsSet()
 }
@@ -84,7 +87,7 @@ func (o *EnvironmentComponentEnvironmentGet) UnsetCpu() {
 
 // GetMemory returns the Memory field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *EnvironmentComponentEnvironmentGet) GetMemory() int32 {
-	if o == nil || isNil(o.Memory.Get()) {
+	if o == nil || IsNil(o.Memory.Get()) {
 		var ret int32
 		return ret
 	}
@@ -96,7 +99,7 @@ func (o *EnvironmentComponentEnvironmentGet) GetMemory() int32 {
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *EnvironmentComponentEnvironmentGet) GetMemoryOk() (*int32, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return o.Memory.Get(), o.Memory.IsSet()
 }
@@ -126,7 +129,7 @@ func (o *EnvironmentComponentEnvironmentGet) UnsetMemory() {
 
 // GetStorage returns the Storage field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *EnvironmentComponentEnvironmentGet) GetStorage() int32 {
-	if o == nil || isNil(o.Storage.Get()) {
+	if o == nil || IsNil(o.Storage.Get()) {
 		var ret int32
 		return ret
 	}
@@ -138,7 +141,7 @@ func (o *EnvironmentComponentEnvironmentGet) GetStorage() int32 {
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *EnvironmentComponentEnvironmentGet) GetStorageOk() (*int32, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return o.Storage.Get(), o.Storage.IsSet()
 }
@@ -168,7 +171,7 @@ func (o *EnvironmentComponentEnvironmentGet) UnsetStorage() {
 
 // GetNode returns the Node field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *EnvironmentComponentEnvironmentGet) GetNode() int32 {
-	if o == nil || isNil(o.Node.Get()) {
+	if o == nil || IsNil(o.Node.Get()) {
 		var ret int32
 		return ret
 	}
@@ -180,7 +183,7 @@ func (o *EnvironmentComponentEnvironmentGet) GetNode() int32 {
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *EnvironmentComponentEnvironmentGet) GetNodeOk() (*int32, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return o.Node.Get(), o.Node.IsSet()
 }
@@ -210,7 +213,7 @@ func (o *EnvironmentComponentEnvironmentGet) UnsetNode() {
 
 // GetComponentVersion returns the ComponentVersion field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *EnvironmentComponentEnvironmentGet) GetComponentVersion() string {
-	if o == nil || isNil(o.ComponentVersion.Get()) {
+	if o == nil || IsNil(o.ComponentVersion.Get()) {
 		var ret string
 		return ret
 	}
@@ -222,7 +225,7 @@ func (o *EnvironmentComponentEnvironmentGet) GetComponentVersion() string {
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *EnvironmentComponentEnvironmentGet) GetComponentVersionOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return o.ComponentVersion.Get(), o.ComponentVersion.IsSet()
 }
@@ -251,6 +254,14 @@ func (o *EnvironmentComponentEnvironmentGet) UnsetComponentVersion() {
 }
 
 func (o EnvironmentComponentEnvironmentGet) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o EnvironmentComponentEnvironmentGet) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Cpu.IsSet() {
 		toSerialize["cpu"] = o.Cpu.Get()
@@ -267,7 +278,7 @@ func (o EnvironmentComponentEnvironmentGet) MarshalJSON() ([]byte, error) {
 	if o.ComponentVersion.IsSet() {
 		toSerialize["componentVersion"] = o.ComponentVersion.Get()
 	}
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 type NullableEnvironmentComponentEnvironmentGet struct {

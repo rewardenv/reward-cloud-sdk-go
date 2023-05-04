@@ -15,9 +15,12 @@ import (
 	"time"
 )
 
+// checks if the DataTransferDataTypeJsonhal type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &DataTransferDataTypeJsonhal{}
+
 // DataTransferDataTypeJsonhal Class DataTransferDataType
 type DataTransferDataTypeJsonhal struct {
-	Links *ComponentJsonhalLinks `json:"_links,omitempty"`
+	Links *AbstractEnvironmentJsonhalLinks `json:"_links,omitempty"`
 	Id *int32 `json:"id,omitempty"`
 	Name NullableString `json:"name,omitempty"`
 	ExportedData []string `json:"exportedData,omitempty"`
@@ -46,9 +49,9 @@ func NewDataTransferDataTypeJsonhalWithDefaults() *DataTransferDataTypeJsonhal {
 }
 
 // GetLinks returns the Links field value if set, zero value otherwise.
-func (o *DataTransferDataTypeJsonhal) GetLinks() ComponentJsonhalLinks {
-	if o == nil || isNil(o.Links) {
-		var ret ComponentJsonhalLinks
+func (o *DataTransferDataTypeJsonhal) GetLinks() AbstractEnvironmentJsonhalLinks {
+	if o == nil || IsNil(o.Links) {
+		var ret AbstractEnvironmentJsonhalLinks
 		return ret
 	}
 	return *o.Links
@@ -56,30 +59,30 @@ func (o *DataTransferDataTypeJsonhal) GetLinks() ComponentJsonhalLinks {
 
 // GetLinksOk returns a tuple with the Links field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DataTransferDataTypeJsonhal) GetLinksOk() (*ComponentJsonhalLinks, bool) {
-	if o == nil || isNil(o.Links) {
-    return nil, false
+func (o *DataTransferDataTypeJsonhal) GetLinksOk() (*AbstractEnvironmentJsonhalLinks, bool) {
+	if o == nil || IsNil(o.Links) {
+		return nil, false
 	}
 	return o.Links, true
 }
 
 // HasLinks returns a boolean if a field has been set.
 func (o *DataTransferDataTypeJsonhal) HasLinks() bool {
-	if o != nil && !isNil(o.Links) {
+	if o != nil && !IsNil(o.Links) {
 		return true
 	}
 
 	return false
 }
 
-// SetLinks gets a reference to the given ComponentJsonhalLinks and assigns it to the Links field.
-func (o *DataTransferDataTypeJsonhal) SetLinks(v ComponentJsonhalLinks) {
+// SetLinks gets a reference to the given AbstractEnvironmentJsonhalLinks and assigns it to the Links field.
+func (o *DataTransferDataTypeJsonhal) SetLinks(v AbstractEnvironmentJsonhalLinks) {
 	o.Links = &v
 }
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *DataTransferDataTypeJsonhal) GetId() int32 {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		var ret int32
 		return ret
 	}
@@ -89,15 +92,15 @@ func (o *DataTransferDataTypeJsonhal) GetId() int32 {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DataTransferDataTypeJsonhal) GetIdOk() (*int32, bool) {
-	if o == nil || isNil(o.Id) {
-    return nil, false
+	if o == nil || IsNil(o.Id) {
+		return nil, false
 	}
 	return o.Id, true
 }
 
 // HasId returns a boolean if a field has been set.
 func (o *DataTransferDataTypeJsonhal) HasId() bool {
-	if o != nil && !isNil(o.Id) {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -111,7 +114,7 @@ func (o *DataTransferDataTypeJsonhal) SetId(v int32) {
 
 // GetName returns the Name field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *DataTransferDataTypeJsonhal) GetName() string {
-	if o == nil || isNil(o.Name.Get()) {
+	if o == nil || IsNil(o.Name.Get()) {
 		var ret string
 		return ret
 	}
@@ -123,7 +126,7 @@ func (o *DataTransferDataTypeJsonhal) GetName() string {
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *DataTransferDataTypeJsonhal) GetNameOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return o.Name.Get(), o.Name.IsSet()
 }
@@ -153,7 +156,7 @@ func (o *DataTransferDataTypeJsonhal) UnsetName() {
 
 // GetExportedData returns the ExportedData field value if set, zero value otherwise.
 func (o *DataTransferDataTypeJsonhal) GetExportedData() []string {
-	if o == nil || isNil(o.ExportedData) {
+	if o == nil || IsNil(o.ExportedData) {
 		var ret []string
 		return ret
 	}
@@ -163,15 +166,15 @@ func (o *DataTransferDataTypeJsonhal) GetExportedData() []string {
 // GetExportedDataOk returns a tuple with the ExportedData field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DataTransferDataTypeJsonhal) GetExportedDataOk() ([]string, bool) {
-	if o == nil || isNil(o.ExportedData) {
-    return nil, false
+	if o == nil || IsNil(o.ExportedData) {
+		return nil, false
 	}
 	return o.ExportedData, true
 }
 
 // HasExportedData returns a boolean if a field has been set.
 func (o *DataTransferDataTypeJsonhal) HasExportedData() bool {
-	if o != nil && !isNil(o.ExportedData) {
+	if o != nil && !IsNil(o.ExportedData) {
 		return true
 	}
 
@@ -185,7 +188,7 @@ func (o *DataTransferDataTypeJsonhal) SetExportedData(v []string) {
 
 // GetImportedData returns the ImportedData field value if set, zero value otherwise.
 func (o *DataTransferDataTypeJsonhal) GetImportedData() []string {
-	if o == nil || isNil(o.ImportedData) {
+	if o == nil || IsNil(o.ImportedData) {
 		var ret []string
 		return ret
 	}
@@ -195,15 +198,15 @@ func (o *DataTransferDataTypeJsonhal) GetImportedData() []string {
 // GetImportedDataOk returns a tuple with the ImportedData field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DataTransferDataTypeJsonhal) GetImportedDataOk() ([]string, bool) {
-	if o == nil || isNil(o.ImportedData) {
-    return nil, false
+	if o == nil || IsNil(o.ImportedData) {
+		return nil, false
 	}
 	return o.ImportedData, true
 }
 
 // HasImportedData returns a boolean if a field has been set.
 func (o *DataTransferDataTypeJsonhal) HasImportedData() bool {
-	if o != nil && !isNil(o.ImportedData) {
+	if o != nil && !IsNil(o.ImportedData) {
 		return true
 	}
 
@@ -217,7 +220,7 @@ func (o *DataTransferDataTypeJsonhal) SetImportedData(v []string) {
 
 // GetCreatedBy returns the CreatedBy field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *DataTransferDataTypeJsonhal) GetCreatedBy() string {
-	if o == nil || isNil(o.CreatedBy.Get()) {
+	if o == nil || IsNil(o.CreatedBy.Get()) {
 		var ret string
 		return ret
 	}
@@ -229,7 +232,7 @@ func (o *DataTransferDataTypeJsonhal) GetCreatedBy() string {
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *DataTransferDataTypeJsonhal) GetCreatedByOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return o.CreatedBy.Get(), o.CreatedBy.IsSet()
 }
@@ -259,7 +262,7 @@ func (o *DataTransferDataTypeJsonhal) UnsetCreatedBy() {
 
 // GetUpdatedBy returns the UpdatedBy field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *DataTransferDataTypeJsonhal) GetUpdatedBy() string {
-	if o == nil || isNil(o.UpdatedBy.Get()) {
+	if o == nil || IsNil(o.UpdatedBy.Get()) {
 		var ret string
 		return ret
 	}
@@ -271,7 +274,7 @@ func (o *DataTransferDataTypeJsonhal) GetUpdatedBy() string {
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *DataTransferDataTypeJsonhal) GetUpdatedByOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return o.UpdatedBy.Get(), o.UpdatedBy.IsSet()
 }
@@ -301,7 +304,7 @@ func (o *DataTransferDataTypeJsonhal) UnsetUpdatedBy() {
 
 // GetCreatedAt returns the CreatedAt field value if set, zero value otherwise.
 func (o *DataTransferDataTypeJsonhal) GetCreatedAt() time.Time {
-	if o == nil || isNil(o.CreatedAt) {
+	if o == nil || IsNil(o.CreatedAt) {
 		var ret time.Time
 		return ret
 	}
@@ -311,15 +314,15 @@ func (o *DataTransferDataTypeJsonhal) GetCreatedAt() time.Time {
 // GetCreatedAtOk returns a tuple with the CreatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DataTransferDataTypeJsonhal) GetCreatedAtOk() (*time.Time, bool) {
-	if o == nil || isNil(o.CreatedAt) {
-    return nil, false
+	if o == nil || IsNil(o.CreatedAt) {
+		return nil, false
 	}
 	return o.CreatedAt, true
 }
 
 // HasCreatedAt returns a boolean if a field has been set.
 func (o *DataTransferDataTypeJsonhal) HasCreatedAt() bool {
-	if o != nil && !isNil(o.CreatedAt) {
+	if o != nil && !IsNil(o.CreatedAt) {
 		return true
 	}
 
@@ -333,7 +336,7 @@ func (o *DataTransferDataTypeJsonhal) SetCreatedAt(v time.Time) {
 
 // GetUpdatedAt returns the UpdatedAt field value if set, zero value otherwise.
 func (o *DataTransferDataTypeJsonhal) GetUpdatedAt() time.Time {
-	if o == nil || isNil(o.UpdatedAt) {
+	if o == nil || IsNil(o.UpdatedAt) {
 		var ret time.Time
 		return ret
 	}
@@ -343,15 +346,15 @@ func (o *DataTransferDataTypeJsonhal) GetUpdatedAt() time.Time {
 // GetUpdatedAtOk returns a tuple with the UpdatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DataTransferDataTypeJsonhal) GetUpdatedAtOk() (*time.Time, bool) {
-	if o == nil || isNil(o.UpdatedAt) {
-    return nil, false
+	if o == nil || IsNil(o.UpdatedAt) {
+		return nil, false
 	}
 	return o.UpdatedAt, true
 }
 
 // HasUpdatedAt returns a boolean if a field has been set.
 func (o *DataTransferDataTypeJsonhal) HasUpdatedAt() bool {
-	if o != nil && !isNil(o.UpdatedAt) {
+	if o != nil && !IsNil(o.UpdatedAt) {
 		return true
 	}
 
@@ -364,20 +367,26 @@ func (o *DataTransferDataTypeJsonhal) SetUpdatedAt(v time.Time) {
 }
 
 func (o DataTransferDataTypeJsonhal) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o DataTransferDataTypeJsonhal) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Links) {
+	if !IsNil(o.Links) {
 		toSerialize["_links"] = o.Links
 	}
-	if !isNil(o.Id) {
-		toSerialize["id"] = o.Id
-	}
+	// skip: id is readOnly
 	if o.Name.IsSet() {
 		toSerialize["name"] = o.Name.Get()
 	}
-	if !isNil(o.ExportedData) {
+	if !IsNil(o.ExportedData) {
 		toSerialize["exportedData"] = o.ExportedData
 	}
-	if !isNil(o.ImportedData) {
+	if !IsNil(o.ImportedData) {
 		toSerialize["importedData"] = o.ImportedData
 	}
 	if o.CreatedBy.IsSet() {
@@ -386,13 +395,13 @@ func (o DataTransferDataTypeJsonhal) MarshalJSON() ([]byte, error) {
 	if o.UpdatedBy.IsSet() {
 		toSerialize["updatedBy"] = o.UpdatedBy.Get()
 	}
-	if !isNil(o.CreatedAt) {
+	if !IsNil(o.CreatedAt) {
 		toSerialize["createdAt"] = o.CreatedAt
 	}
-	if !isNil(o.UpdatedAt) {
+	if !IsNil(o.UpdatedAt) {
 		toSerialize["updatedAt"] = o.UpdatedAt
 	}
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 type NullableDataTransferDataTypeJsonhal struct {

@@ -4,11 +4,11 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Links** | Pointer to [**ComponentJsonhalLinks**](ComponentJsonhalLinks.md) |  | [optional] 
+**Links** | Pointer to [**AbstractEnvironmentJsonhalLinks**](AbstractEnvironmentJsonhalLinks.md) |  | [optional] 
 **Id** | Pointer to **int32** |  | [optional] [readonly] 
 **Uuid** | Pointer to **NullableString** |  | [optional] [readonly] 
 **Version** | Pointer to **NullableString** |  | [optional] 
-**Project** | Pointer to **[]string** |  | [optional] 
+**Project** | Pointer to [**[]AbstractProjectJsonhal**](AbstractProjectJsonhal.md) |  | [optional] 
 **ProjectType** | Pointer to **NullableString** |  | [optional] 
 **ProjectTypeVersionEnvVar** | Pointer to **[]string** |  | [optional] 
 **ComponentResourceLimit** | Pointer to **[]string** |  | [optional] 
@@ -38,20 +38,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetLinks
 
-`func (o *ProjectTypeVersionJsonhal) GetLinks() ComponentJsonhalLinks`
+`func (o *ProjectTypeVersionJsonhal) GetLinks() AbstractEnvironmentJsonhalLinks`
 
 GetLinks returns the Links field if non-nil, zero value otherwise.
 
 ### GetLinksOk
 
-`func (o *ProjectTypeVersionJsonhal) GetLinksOk() (*ComponentJsonhalLinks, bool)`
+`func (o *ProjectTypeVersionJsonhal) GetLinksOk() (*AbstractEnvironmentJsonhalLinks, bool)`
 
 GetLinksOk returns a tuple with the Links field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetLinks
 
-`func (o *ProjectTypeVersionJsonhal) SetLinks(v ComponentJsonhalLinks)`
+`func (o *ProjectTypeVersionJsonhal) SetLinks(v AbstractEnvironmentJsonhalLinks)`
 
 SetLinks sets Links field to given value.
 
@@ -158,20 +158,20 @@ HasVersion returns a boolean if a field has been set.
 UnsetVersion ensures that no value is present for Version, not even an explicit nil
 ### GetProject
 
-`func (o *ProjectTypeVersionJsonhal) GetProject() []string`
+`func (o *ProjectTypeVersionJsonhal) GetProject() []AbstractProjectJsonhal`
 
 GetProject returns the Project field if non-nil, zero value otherwise.
 
 ### GetProjectOk
 
-`func (o *ProjectTypeVersionJsonhal) GetProjectOk() (*[]string, bool)`
+`func (o *ProjectTypeVersionJsonhal) GetProjectOk() (*[]AbstractProjectJsonhal, bool)`
 
 GetProjectOk returns a tuple with the Project field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetProject
 
-`func (o *ProjectTypeVersionJsonhal) SetProject(v []string)`
+`func (o *ProjectTypeVersionJsonhal) SetProject(v []AbstractProjectJsonhal)`
 
 SetProject sets Project field to given value.
 

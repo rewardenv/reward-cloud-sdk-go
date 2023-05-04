@@ -4,13 +4,13 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Links** | Pointer to [**ComponentJsonhalLinks**](ComponentJsonhalLinks.md) |  | [optional] 
+**Links** | Pointer to [**AbstractEnvironmentJsonhalLinks**](AbstractEnvironmentJsonhalLinks.md) |  | [optional] 
 **Id** | Pointer to **int32** |  | [optional] [readonly] 
 **Uuid** | Pointer to **NullableString** |  | [optional] [readonly] 
 **Key** | Pointer to **NullableString** |  | [optional] 
 **Value** | Pointer to **NullableString** |  | [optional] 
 **IsEncrypted** | Pointer to **NullableBool** |  | [optional] 
-**Environment** | Pointer to **NullableString** |  | [optional] 
+**Environment** | Pointer to [**NullableEnvironmentComponentJsonhalEnvironment**](EnvironmentComponentJsonhalEnvironment.md) |  | [optional] 
 **EnvVarType** | Pointer to **NullableString** |  | [optional] 
 **CreatedBy** | Pointer to **NullableString** |  | [optional] 
 **UpdatedBy** | Pointer to **NullableString** |  | [optional] 
@@ -39,20 +39,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetLinks
 
-`func (o *EnvironmentEnvVarJsonhal) GetLinks() ComponentJsonhalLinks`
+`func (o *EnvironmentEnvVarJsonhal) GetLinks() AbstractEnvironmentJsonhalLinks`
 
 GetLinks returns the Links field if non-nil, zero value otherwise.
 
 ### GetLinksOk
 
-`func (o *EnvironmentEnvVarJsonhal) GetLinksOk() (*ComponentJsonhalLinks, bool)`
+`func (o *EnvironmentEnvVarJsonhal) GetLinksOk() (*AbstractEnvironmentJsonhalLinks, bool)`
 
 GetLinksOk returns a tuple with the Links field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetLinks
 
-`func (o *EnvironmentEnvVarJsonhal) SetLinks(v ComponentJsonhalLinks)`
+`func (o *EnvironmentEnvVarJsonhal) SetLinks(v AbstractEnvironmentJsonhalLinks)`
 
 SetLinks sets Links field to given value.
 
@@ -229,20 +229,20 @@ HasIsEncrypted returns a boolean if a field has been set.
 UnsetIsEncrypted ensures that no value is present for IsEncrypted, not even an explicit nil
 ### GetEnvironment
 
-`func (o *EnvironmentEnvVarJsonhal) GetEnvironment() string`
+`func (o *EnvironmentEnvVarJsonhal) GetEnvironment() EnvironmentComponentJsonhalEnvironment`
 
 GetEnvironment returns the Environment field if non-nil, zero value otherwise.
 
 ### GetEnvironmentOk
 
-`func (o *EnvironmentEnvVarJsonhal) GetEnvironmentOk() (*string, bool)`
+`func (o *EnvironmentEnvVarJsonhal) GetEnvironmentOk() (*EnvironmentComponentJsonhalEnvironment, bool)`
 
 GetEnvironmentOk returns a tuple with the Environment field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetEnvironment
 
-`func (o *EnvironmentEnvVarJsonhal) SetEnvironment(v string)`
+`func (o *EnvironmentEnvVarJsonhal) SetEnvironment(v EnvironmentComponentJsonhalEnvironment)`
 
 SetEnvironment sets Environment field to given value.
 
