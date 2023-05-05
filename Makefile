@@ -25,6 +25,6 @@ generate: ## Generate Go code from OpenAPI spec
 	docker run --rm -v "$${PWD}:/local" openapitools/openapi-generator-cli:v6.5.0 generate -i /local/reward-api.yaml -c /local/config.yaml -g go -o /local/rewardcloud
 	rm -f rewardcloud/go.mod && rm -f rewardcloud/go.sum
 
-generate-with-ld: ## Generate Go code from OpenAPI spec
-	docker run --rm -v "$${PWD}:/local" openapitools/openapi-generator-cli:v6.5.0 generate -i /local/api.yaml -c /local/config.yaml -g go -o /local/rewardcloud
-	rm -f rewardcloud/go.mod && rm -f rewardcloud/go.sum
+.PHONY: convert
+convert: ## Convert json to yaml
+	yq api.json -oy > api.yaml
