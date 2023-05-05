@@ -15,6 +15,9 @@ import (
 	"time"
 )
 
+// checks if the GitType type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &GitType{}
+
 // GitType Class GitType
 type GitType struct {
 	Id        *int32         `json:"id,omitempty"`
@@ -46,7 +49,7 @@ func NewGitTypeWithDefaults() *GitType {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *GitType) GetId() int32 {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		var ret int32
 		return ret
 	}
@@ -56,7 +59,7 @@ func (o *GitType) GetId() int32 {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *GitType) GetIdOk() (*int32, bool) {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
 	return o.Id, true
@@ -64,7 +67,7 @@ func (o *GitType) GetIdOk() (*int32, bool) {
 
 // HasId returns a boolean if a field has been set.
 func (o *GitType) HasId() bool {
-	if o != nil && !isNil(o.Id) {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -78,7 +81,7 @@ func (o *GitType) SetId(v int32) {
 
 // GetUuid returns the Uuid field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *GitType) GetUuid() string {
-	if o == nil || isNil(o.Uuid.Get()) {
+	if o == nil || IsNil(o.Uuid.Get()) {
 		var ret string
 		return ret
 	}
@@ -121,7 +124,7 @@ func (o *GitType) UnsetUuid() {
 
 // GetName returns the Name field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *GitType) GetName() string {
-	if o == nil || isNil(o.Name.Get()) {
+	if o == nil || IsNil(o.Name.Get()) {
 		var ret string
 		return ret
 	}
@@ -164,7 +167,7 @@ func (o *GitType) UnsetName() {
 
 // GetGit returns the Git field value if set, zero value otherwise.
 func (o *GitType) GetGit() []string {
-	if o == nil || isNil(o.Git) {
+	if o == nil || IsNil(o.Git) {
 		var ret []string
 		return ret
 	}
@@ -174,7 +177,7 @@ func (o *GitType) GetGit() []string {
 // GetGitOk returns a tuple with the Git field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *GitType) GetGitOk() ([]string, bool) {
-	if o == nil || isNil(o.Git) {
+	if o == nil || IsNil(o.Git) {
 		return nil, false
 	}
 	return o.Git, true
@@ -182,7 +185,7 @@ func (o *GitType) GetGitOk() ([]string, bool) {
 
 // HasGit returns a boolean if a field has been set.
 func (o *GitType) HasGit() bool {
-	if o != nil && !isNil(o.Git) {
+	if o != nil && !IsNil(o.Git) {
 		return true
 	}
 
@@ -196,7 +199,7 @@ func (o *GitType) SetGit(v []string) {
 
 // GetCreatedBy returns the CreatedBy field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *GitType) GetCreatedBy() string {
-	if o == nil || isNil(o.CreatedBy.Get()) {
+	if o == nil || IsNil(o.CreatedBy.Get()) {
 		var ret string
 		return ret
 	}
@@ -239,7 +242,7 @@ func (o *GitType) UnsetCreatedBy() {
 
 // GetUpdatedBy returns the UpdatedBy field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *GitType) GetUpdatedBy() string {
-	if o == nil || isNil(o.UpdatedBy.Get()) {
+	if o == nil || IsNil(o.UpdatedBy.Get()) {
 		var ret string
 		return ret
 	}
@@ -282,7 +285,7 @@ func (o *GitType) UnsetUpdatedBy() {
 
 // GetCreatedAt returns the CreatedAt field value if set, zero value otherwise.
 func (o *GitType) GetCreatedAt() time.Time {
-	if o == nil || isNil(o.CreatedAt) {
+	if o == nil || IsNil(o.CreatedAt) {
 		var ret time.Time
 		return ret
 	}
@@ -292,7 +295,7 @@ func (o *GitType) GetCreatedAt() time.Time {
 // GetCreatedAtOk returns a tuple with the CreatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *GitType) GetCreatedAtOk() (*time.Time, bool) {
-	if o == nil || isNil(o.CreatedAt) {
+	if o == nil || IsNil(o.CreatedAt) {
 		return nil, false
 	}
 	return o.CreatedAt, true
@@ -300,7 +303,7 @@ func (o *GitType) GetCreatedAtOk() (*time.Time, bool) {
 
 // HasCreatedAt returns a boolean if a field has been set.
 func (o *GitType) HasCreatedAt() bool {
-	if o != nil && !isNil(o.CreatedAt) {
+	if o != nil && !IsNil(o.CreatedAt) {
 		return true
 	}
 
@@ -314,7 +317,7 @@ func (o *GitType) SetCreatedAt(v time.Time) {
 
 // GetUpdatedAt returns the UpdatedAt field value if set, zero value otherwise.
 func (o *GitType) GetUpdatedAt() time.Time {
-	if o == nil || isNil(o.UpdatedAt) {
+	if o == nil || IsNil(o.UpdatedAt) {
 		var ret time.Time
 		return ret
 	}
@@ -324,7 +327,7 @@ func (o *GitType) GetUpdatedAt() time.Time {
 // GetUpdatedAtOk returns a tuple with the UpdatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *GitType) GetUpdatedAtOk() (*time.Time, bool) {
-	if o == nil || isNil(o.UpdatedAt) {
+	if o == nil || IsNil(o.UpdatedAt) {
 		return nil, false
 	}
 	return o.UpdatedAt, true
@@ -332,7 +335,7 @@ func (o *GitType) GetUpdatedAtOk() (*time.Time, bool) {
 
 // HasUpdatedAt returns a boolean if a field has been set.
 func (o *GitType) HasUpdatedAt() bool {
-	if o != nil && !isNil(o.UpdatedAt) {
+	if o != nil && !IsNil(o.UpdatedAt) {
 		return true
 	}
 
@@ -345,17 +348,23 @@ func (o *GitType) SetUpdatedAt(v time.Time) {
 }
 
 func (o GitType) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.Id) {
-		toSerialize["id"] = o.Id
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
+	return json.Marshal(toSerialize)
+}
+
+func (o GitType) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	// skip: id is readOnly
 	if o.Uuid.IsSet() {
 		toSerialize["uuid"] = o.Uuid.Get()
 	}
 	if o.Name.IsSet() {
 		toSerialize["name"] = o.Name.Get()
 	}
-	if !isNil(o.Git) {
+	if !IsNil(o.Git) {
 		toSerialize["git"] = o.Git
 	}
 	if o.CreatedBy.IsSet() {
@@ -364,13 +373,13 @@ func (o GitType) MarshalJSON() ([]byte, error) {
 	if o.UpdatedBy.IsSet() {
 		toSerialize["updatedBy"] = o.UpdatedBy.Get()
 	}
-	if !isNil(o.CreatedAt) {
+	if !IsNil(o.CreatedAt) {
 		toSerialize["createdAt"] = o.CreatedAt
 	}
-	if !isNil(o.UpdatedAt) {
+	if !IsNil(o.UpdatedAt) {
 		toSerialize["updatedAt"] = o.UpdatedAt
 	}
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 type NullableGitType struct {

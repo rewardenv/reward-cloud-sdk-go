@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the OrganisationJsonhalOrganisationPost type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &OrganisationJsonhalOrganisationPost{}
+
 // OrganisationJsonhalOrganisationPost Class Organisation
 type OrganisationJsonhalOrganisationPost struct {
 	Links              *AbstractEnvironmentJsonhalLinks            `json:"_links,omitempty"`
@@ -43,7 +46,7 @@ func NewOrganisationJsonhalOrganisationPostWithDefaults() *OrganisationJsonhalOr
 
 // GetLinks returns the Links field value if set, zero value otherwise.
 func (o *OrganisationJsonhalOrganisationPost) GetLinks() AbstractEnvironmentJsonhalLinks {
-	if o == nil || isNil(o.Links) {
+	if o == nil || IsNil(o.Links) {
 		var ret AbstractEnvironmentJsonhalLinks
 		return ret
 	}
@@ -53,7 +56,7 @@ func (o *OrganisationJsonhalOrganisationPost) GetLinks() AbstractEnvironmentJson
 // GetLinksOk returns a tuple with the Links field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *OrganisationJsonhalOrganisationPost) GetLinksOk() (*AbstractEnvironmentJsonhalLinks, bool) {
-	if o == nil || isNil(o.Links) {
+	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
 	return o.Links, true
@@ -61,7 +64,7 @@ func (o *OrganisationJsonhalOrganisationPost) GetLinksOk() (*AbstractEnvironment
 
 // HasLinks returns a boolean if a field has been set.
 func (o *OrganisationJsonhalOrganisationPost) HasLinks() bool {
-	if o != nil && !isNil(o.Links) {
+	if o != nil && !IsNil(o.Links) {
 		return true
 	}
 
@@ -75,7 +78,7 @@ func (o *OrganisationJsonhalOrganisationPost) SetLinks(v AbstractEnvironmentJson
 
 // GetName returns the Name field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *OrganisationJsonhalOrganisationPost) GetName() string {
-	if o == nil || isNil(o.Name.Get()) {
+	if o == nil || IsNil(o.Name.Get()) {
 		var ret string
 		return ret
 	}
@@ -118,7 +121,7 @@ func (o *OrganisationJsonhalOrganisationPost) UnsetName() {
 
 // GetCodeName returns the CodeName field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *OrganisationJsonhalOrganisationPost) GetCodeName() string {
-	if o == nil || isNil(o.CodeName.Get()) {
+	if o == nil || IsNil(o.CodeName.Get()) {
 		var ret string
 		return ret
 	}
@@ -161,7 +164,7 @@ func (o *OrganisationJsonhalOrganisationPost) UnsetCodeName() {
 
 // GetIsDefault returns the IsDefault field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *OrganisationJsonhalOrganisationPost) GetIsDefault() bool {
-	if o == nil || isNil(o.IsDefault.Get()) {
+	if o == nil || IsNil(o.IsDefault.Get()) {
 		var ret bool
 		return ret
 	}
@@ -204,7 +207,7 @@ func (o *OrganisationJsonhalOrganisationPost) UnsetIsDefault() {
 
 // GetTeam returns the Team field value if set, zero value otherwise.
 func (o *OrganisationJsonhalOrganisationPost) GetTeam() []string {
-	if o == nil || isNil(o.Team) {
+	if o == nil || IsNil(o.Team) {
 		var ret []string
 		return ret
 	}
@@ -214,7 +217,7 @@ func (o *OrganisationJsonhalOrganisationPost) GetTeam() []string {
 // GetTeamOk returns a tuple with the Team field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *OrganisationJsonhalOrganisationPost) GetTeamOk() ([]string, bool) {
-	if o == nil || isNil(o.Team) {
+	if o == nil || IsNil(o.Team) {
 		return nil, false
 	}
 	return o.Team, true
@@ -222,7 +225,7 @@ func (o *OrganisationJsonhalOrganisationPost) GetTeamOk() ([]string, bool) {
 
 // HasTeam returns a boolean if a field has been set.
 func (o *OrganisationJsonhalOrganisationPost) HasTeam() bool {
-	if o != nil && !isNil(o.Team) {
+	if o != nil && !IsNil(o.Team) {
 		return true
 	}
 
@@ -236,7 +239,7 @@ func (o *OrganisationJsonhalOrganisationPost) SetTeam(v []string) {
 
 // GetOrganisationEnvVar returns the OrganisationEnvVar field value if set, zero value otherwise.
 func (o *OrganisationJsonhalOrganisationPost) GetOrganisationEnvVar() []OrganisationEnvVarJsonhalOrganisationPost {
-	if o == nil || isNil(o.OrganisationEnvVar) {
+	if o == nil || IsNil(o.OrganisationEnvVar) {
 		var ret []OrganisationEnvVarJsonhalOrganisationPost
 		return ret
 	}
@@ -246,7 +249,7 @@ func (o *OrganisationJsonhalOrganisationPost) GetOrganisationEnvVar() []Organisa
 // GetOrganisationEnvVarOk returns a tuple with the OrganisationEnvVar field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *OrganisationJsonhalOrganisationPost) GetOrganisationEnvVarOk() ([]OrganisationEnvVarJsonhalOrganisationPost, bool) {
-	if o == nil || isNil(o.OrganisationEnvVar) {
+	if o == nil || IsNil(o.OrganisationEnvVar) {
 		return nil, false
 	}
 	return o.OrganisationEnvVar, true
@@ -254,7 +257,7 @@ func (o *OrganisationJsonhalOrganisationPost) GetOrganisationEnvVarOk() ([]Organ
 
 // HasOrganisationEnvVar returns a boolean if a field has been set.
 func (o *OrganisationJsonhalOrganisationPost) HasOrganisationEnvVar() bool {
-	if o != nil && !isNil(o.OrganisationEnvVar) {
+	if o != nil && !IsNil(o.OrganisationEnvVar) {
 		return true
 	}
 
@@ -267,8 +270,16 @@ func (o *OrganisationJsonhalOrganisationPost) SetOrganisationEnvVar(v []Organisa
 }
 
 func (o OrganisationJsonhalOrganisationPost) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o OrganisationJsonhalOrganisationPost) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Links) {
+	if !IsNil(o.Links) {
 		toSerialize["_links"] = o.Links
 	}
 	if o.Name.IsSet() {
@@ -280,13 +291,13 @@ func (o OrganisationJsonhalOrganisationPost) MarshalJSON() ([]byte, error) {
 	if o.IsDefault.IsSet() {
 		toSerialize["isDefault"] = o.IsDefault.Get()
 	}
-	if !isNil(o.Team) {
+	if !IsNil(o.Team) {
 		toSerialize["team"] = o.Team
 	}
-	if !isNil(o.OrganisationEnvVar) {
+	if !IsNil(o.OrganisationEnvVar) {
 		toSerialize["organisationEnvVar"] = o.OrganisationEnvVar
 	}
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 type NullableOrganisationJsonhalOrganisationPost struct {

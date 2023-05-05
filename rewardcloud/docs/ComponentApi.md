@@ -15,7 +15,7 @@ Method | HTTP request | Description
 
 ## ApiComponentsGetCollection
 
-> ApiComponentsGetCollection200Response ApiComponentsGetCollection(ctx).Page(page).ItemsPerPage(itemsPerPage).OrderName(orderName).Execute()
+> []Component ApiComponentsGetCollection(ctx).Page(page).ItemsPerPage(itemsPerPage).OrderName(orderName).Execute()
 
 Retrieves the collection of Component resources.
 
@@ -30,7 +30,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
@@ -45,7 +45,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `ComponentApi.ApiComponentsGetCollection``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiComponentsGetCollection`: ApiComponentsGetCollection200Response
+    // response from `ApiComponentsGetCollection`: []Component
     fmt.Fprintf(os.Stdout, "Response from `ComponentApi.ApiComponentsGetCollection`: %v\n", resp)
 }
 ```
@@ -67,7 +67,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ApiComponentsGetCollection200Response**](ApiComponentsGetCollection200Response.md)
+[**[]Component**](Component.md)
 
 ### Authorization
 
@@ -76,7 +76,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
+- **Accept**: application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -100,7 +100,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
@@ -108,7 +108,7 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ComponentApi.ApiComponentsIdDelete(context.Background(), id).Execute()
+    r, err := apiClient.ComponentApi.ApiComponentsIdDelete(context.Background(), id).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ComponentApi.ApiComponentsIdDelete``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -153,7 +153,7 @@ Name | Type | Description  | Notes
 
 ## ApiComponentsIdGet
 
-> ComponentJsonhal ApiComponentsIdGet(ctx, id).Execute()
+> Component ApiComponentsIdGet(ctx, id).Execute()
 
 Retrieves a Component resource.
 
@@ -168,7 +168,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
@@ -181,7 +181,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `ComponentApi.ApiComponentsIdGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiComponentsIdGet`: ComponentJsonhal
+    // response from `ApiComponentsIdGet`: Component
     fmt.Fprintf(os.Stdout, "Response from `ComponentApi.ApiComponentsIdGet`: %v\n", resp)
 }
 ```
@@ -205,7 +205,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ComponentJsonhal**](ComponentJsonhal.md)
+[**Component**](Component.md)
 
 ### Authorization
 
@@ -214,7 +214,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
+- **Accept**: application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -223,7 +223,7 @@ Name | Type | Description  | Notes
 
 ## ApiComponentsIdPatch
 
-> ComponentJsonhal ApiComponentsIdPatch(ctx, id).Component(component).Execute()
+> Component ApiComponentsIdPatch(ctx, id).Component(component).Execute()
 
 Updates the Component resource.
 
@@ -238,12 +238,12 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    id := "id_example" // string | Component identifier
     component := *openapiclient.NewComponent() // Component | The updated Component resource
+    id := "id_example" // string | Component identifier
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -252,7 +252,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `ComponentApi.ApiComponentsIdPatch``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiComponentsIdPatch`: ComponentJsonhal
+    // response from `ApiComponentsIdPatch`: Component
     fmt.Fprintf(os.Stdout, "Response from `ComponentApi.ApiComponentsIdPatch`: %v\n", resp)
 }
 ```
@@ -272,12 +272,12 @@ Other parameters are passed through a pointer to a apiApiComponentsIdPatchReques
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-
  **component** | [**Component**](Component.md) | The updated Component resource | 
+
 
 ### Return type
 
-[**ComponentJsonhal**](ComponentJsonhal.md)
+[**Component**](Component.md)
 
 ### Authorization
 
@@ -285,8 +285,8 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: application/vnd.api+json
-- **Accept**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
+- **Content-Type**: application/merge-patch+json, application/vnd.api+json
+- **Accept**: application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -295,7 +295,7 @@ Name | Type | Description  | Notes
 
 ## ApiComponentsIdPut
 
-> ComponentJsonhal ApiComponentsIdPut(ctx, id).ComponentJsonhal(componentJsonhal).Execute()
+> Component ApiComponentsIdPut(ctx, id).Component(component).Execute()
 
 Replaces the Component resource.
 
@@ -310,21 +310,21 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
+    component := *openapiclient.NewComponent() // Component | The updated Component resource
     id := "id_example" // string | Component identifier
-    componentJsonhal := *openapiclient.NewComponentJsonhal() // ComponentJsonhal | The updated Component resource
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ComponentApi.ApiComponentsIdPut(context.Background(), id).ComponentJsonhal(componentJsonhal).Execute()
+    resp, r, err := apiClient.ComponentApi.ApiComponentsIdPut(context.Background(), id).Component(component).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ComponentApi.ApiComponentsIdPut``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiComponentsIdPut`: ComponentJsonhal
+    // response from `ApiComponentsIdPut`: Component
     fmt.Fprintf(os.Stdout, "Response from `ComponentApi.ApiComponentsIdPut`: %v\n", resp)
 }
 ```
@@ -344,12 +344,12 @@ Other parameters are passed through a pointer to a apiApiComponentsIdPutRequest 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **component** | [**Component**](Component.md) | The updated Component resource | 
 
- **componentJsonhal** | [**ComponentJsonhal**](ComponentJsonhal.md) | The updated Component resource | 
 
 ### Return type
 
-[**ComponentJsonhal**](ComponentJsonhal.md)
+[**Component**](Component.md)
 
 ### Authorization
 
@@ -357,8 +357,8 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
-- **Accept**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
+- **Content-Type**: application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
+- **Accept**: application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -367,7 +367,7 @@ Name | Type | Description  | Notes
 
 ## ApiComponentsPost
 
-> ComponentJsonhal ApiComponentsPost(ctx).ComponentJsonhal(componentJsonhal).Execute()
+> Component ApiComponentsPost(ctx).Component(component).Execute()
 
 Creates a Component resource.
 
@@ -382,20 +382,20 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    componentJsonhal := *openapiclient.NewComponentJsonhal() // ComponentJsonhal | The new Component resource
+    component := *openapiclient.NewComponent() // Component | The new Component resource
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ComponentApi.ApiComponentsPost(context.Background()).ComponentJsonhal(componentJsonhal).Execute()
+    resp, r, err := apiClient.ComponentApi.ApiComponentsPost(context.Background()).Component(component).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ComponentApi.ApiComponentsPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiComponentsPost`: ComponentJsonhal
+    // response from `ApiComponentsPost`: Component
     fmt.Fprintf(os.Stdout, "Response from `ComponentApi.ApiComponentsPost`: %v\n", resp)
 }
 ```
@@ -411,11 +411,11 @@ Other parameters are passed through a pointer to a apiApiComponentsPostRequest s
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **componentJsonhal** | [**ComponentJsonhal**](ComponentJsonhal.md) | The new Component resource | 
+ **component** | [**Component**](Component.md) | The new Component resource | 
 
 ### Return type
 
-[**ComponentJsonhal**](ComponentJsonhal.md)
+[**Component**](Component.md)
 
 ### Authorization
 
@@ -423,8 +423,8 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
-- **Accept**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
+- **Content-Type**: application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
+- **Accept**: application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)

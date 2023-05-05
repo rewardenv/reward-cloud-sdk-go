@@ -15,6 +15,9 @@ import (
 	"time"
 )
 
+// checks if the RegionJsonhal type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &RegionJsonhal{}
+
 // RegionJsonhal Class Region
 type RegionJsonhal struct {
 	Links              *AbstractEnvironmentJsonhalLinks `json:"_links,omitempty"`
@@ -54,7 +57,7 @@ func NewRegionJsonhalWithDefaults() *RegionJsonhal {
 
 // GetLinks returns the Links field value if set, zero value otherwise.
 func (o *RegionJsonhal) GetLinks() AbstractEnvironmentJsonhalLinks {
-	if o == nil || isNil(o.Links) {
+	if o == nil || IsNil(o.Links) {
 		var ret AbstractEnvironmentJsonhalLinks
 		return ret
 	}
@@ -64,7 +67,7 @@ func (o *RegionJsonhal) GetLinks() AbstractEnvironmentJsonhalLinks {
 // GetLinksOk returns a tuple with the Links field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RegionJsonhal) GetLinksOk() (*AbstractEnvironmentJsonhalLinks, bool) {
-	if o == nil || isNil(o.Links) {
+	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
 	return o.Links, true
@@ -72,7 +75,7 @@ func (o *RegionJsonhal) GetLinksOk() (*AbstractEnvironmentJsonhalLinks, bool) {
 
 // HasLinks returns a boolean if a field has been set.
 func (o *RegionJsonhal) HasLinks() bool {
-	if o != nil && !isNil(o.Links) {
+	if o != nil && !IsNil(o.Links) {
 		return true
 	}
 
@@ -86,7 +89,7 @@ func (o *RegionJsonhal) SetLinks(v AbstractEnvironmentJsonhalLinks) {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *RegionJsonhal) GetId() int32 {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		var ret int32
 		return ret
 	}
@@ -96,7 +99,7 @@ func (o *RegionJsonhal) GetId() int32 {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RegionJsonhal) GetIdOk() (*int32, bool) {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
 	return o.Id, true
@@ -104,7 +107,7 @@ func (o *RegionJsonhal) GetIdOk() (*int32, bool) {
 
 // HasId returns a boolean if a field has been set.
 func (o *RegionJsonhal) HasId() bool {
-	if o != nil && !isNil(o.Id) {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -118,7 +121,7 @@ func (o *RegionJsonhal) SetId(v int32) {
 
 // GetUuid returns the Uuid field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *RegionJsonhal) GetUuid() string {
-	if o == nil || isNil(o.Uuid.Get()) {
+	if o == nil || IsNil(o.Uuid.Get()) {
 		var ret string
 		return ret
 	}
@@ -161,7 +164,7 @@ func (o *RegionJsonhal) UnsetUuid() {
 
 // GetName returns the Name field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *RegionJsonhal) GetName() string {
-	if o == nil || isNil(o.Name.Get()) {
+	if o == nil || IsNil(o.Name.Get()) {
 		var ret string
 		return ret
 	}
@@ -204,7 +207,7 @@ func (o *RegionJsonhal) UnsetName() {
 
 // GetKubecostUrl returns the KubecostUrl field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *RegionJsonhal) GetKubecostUrl() string {
-	if o == nil || isNil(o.KubecostUrl.Get()) {
+	if o == nil || IsNil(o.KubecostUrl.Get()) {
 		var ret string
 		return ret
 	}
@@ -247,7 +250,7 @@ func (o *RegionJsonhal) UnsetKubecostUrl() {
 
 // GetKubecostUser returns the KubecostUser field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *RegionJsonhal) GetKubecostUser() string {
-	if o == nil || isNil(o.KubecostUser.Get()) {
+	if o == nil || IsNil(o.KubecostUser.Get()) {
 		var ret string
 		return ret
 	}
@@ -290,7 +293,7 @@ func (o *RegionJsonhal) UnsetKubecostUser() {
 
 // GetKubecostPass returns the KubecostPass field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *RegionJsonhal) GetKubecostPass() string {
-	if o == nil || isNil(o.KubecostPass.Get()) {
+	if o == nil || IsNil(o.KubecostPass.Get()) {
 		var ret string
 		return ret
 	}
@@ -333,7 +336,7 @@ func (o *RegionJsonhal) UnsetKubecostPass() {
 
 // GetChangeKubecostPass returns the ChangeKubecostPass field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *RegionJsonhal) GetChangeKubecostPass() string {
-	if o == nil || isNil(o.ChangeKubecostPass.Get()) {
+	if o == nil || IsNil(o.ChangeKubecostPass.Get()) {
 		var ret string
 		return ret
 	}
@@ -376,7 +379,7 @@ func (o *RegionJsonhal) UnsetChangeKubecostPass() {
 
 // GetIsDefault returns the IsDefault field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *RegionJsonhal) GetIsDefault() bool {
-	if o == nil || isNil(o.IsDefault.Get()) {
+	if o == nil || IsNil(o.IsDefault.Get()) {
 		var ret bool
 		return ret
 	}
@@ -419,7 +422,7 @@ func (o *RegionJsonhal) UnsetIsDefault() {
 
 // GetEnvironment returns the Environment field value if set, zero value otherwise.
 func (o *RegionJsonhal) GetEnvironment() []string {
-	if o == nil || isNil(o.Environment) {
+	if o == nil || IsNil(o.Environment) {
 		var ret []string
 		return ret
 	}
@@ -429,7 +432,7 @@ func (o *RegionJsonhal) GetEnvironment() []string {
 // GetEnvironmentOk returns a tuple with the Environment field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RegionJsonhal) GetEnvironmentOk() ([]string, bool) {
-	if o == nil || isNil(o.Environment) {
+	if o == nil || IsNil(o.Environment) {
 		return nil, false
 	}
 	return o.Environment, true
@@ -437,7 +440,7 @@ func (o *RegionJsonhal) GetEnvironmentOk() ([]string, bool) {
 
 // HasEnvironment returns a boolean if a field has been set.
 func (o *RegionJsonhal) HasEnvironment() bool {
-	if o != nil && !isNil(o.Environment) {
+	if o != nil && !IsNil(o.Environment) {
 		return true
 	}
 
@@ -451,7 +454,7 @@ func (o *RegionJsonhal) SetEnvironment(v []string) {
 
 // GetProvider returns the Provider field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *RegionJsonhal) GetProvider() string {
-	if o == nil || isNil(o.Provider.Get()) {
+	if o == nil || IsNil(o.Provider.Get()) {
 		var ret string
 		return ret
 	}
@@ -494,7 +497,7 @@ func (o *RegionJsonhal) UnsetProvider() {
 
 // GetProducts returns the Products field value if set, zero value otherwise.
 func (o *RegionJsonhal) GetProducts() []string {
-	if o == nil || isNil(o.Products) {
+	if o == nil || IsNil(o.Products) {
 		var ret []string
 		return ret
 	}
@@ -504,7 +507,7 @@ func (o *RegionJsonhal) GetProducts() []string {
 // GetProductsOk returns a tuple with the Products field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RegionJsonhal) GetProductsOk() ([]string, bool) {
-	if o == nil || isNil(o.Products) {
+	if o == nil || IsNil(o.Products) {
 		return nil, false
 	}
 	return o.Products, true
@@ -512,7 +515,7 @@ func (o *RegionJsonhal) GetProductsOk() ([]string, bool) {
 
 // HasProducts returns a boolean if a field has been set.
 func (o *RegionJsonhal) HasProducts() bool {
-	if o != nil && !isNil(o.Products) {
+	if o != nil && !IsNil(o.Products) {
 		return true
 	}
 
@@ -526,7 +529,7 @@ func (o *RegionJsonhal) SetProducts(v []string) {
 
 // GetCreatedBy returns the CreatedBy field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *RegionJsonhal) GetCreatedBy() string {
-	if o == nil || isNil(o.CreatedBy.Get()) {
+	if o == nil || IsNil(o.CreatedBy.Get()) {
 		var ret string
 		return ret
 	}
@@ -569,7 +572,7 @@ func (o *RegionJsonhal) UnsetCreatedBy() {
 
 // GetUpdatedBy returns the UpdatedBy field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *RegionJsonhal) GetUpdatedBy() string {
-	if o == nil || isNil(o.UpdatedBy.Get()) {
+	if o == nil || IsNil(o.UpdatedBy.Get()) {
 		var ret string
 		return ret
 	}
@@ -612,7 +615,7 @@ func (o *RegionJsonhal) UnsetUpdatedBy() {
 
 // GetCreatedAt returns the CreatedAt field value if set, zero value otherwise.
 func (o *RegionJsonhal) GetCreatedAt() time.Time {
-	if o == nil || isNil(o.CreatedAt) {
+	if o == nil || IsNil(o.CreatedAt) {
 		var ret time.Time
 		return ret
 	}
@@ -622,7 +625,7 @@ func (o *RegionJsonhal) GetCreatedAt() time.Time {
 // GetCreatedAtOk returns a tuple with the CreatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RegionJsonhal) GetCreatedAtOk() (*time.Time, bool) {
-	if o == nil || isNil(o.CreatedAt) {
+	if o == nil || IsNil(o.CreatedAt) {
 		return nil, false
 	}
 	return o.CreatedAt, true
@@ -630,7 +633,7 @@ func (o *RegionJsonhal) GetCreatedAtOk() (*time.Time, bool) {
 
 // HasCreatedAt returns a boolean if a field has been set.
 func (o *RegionJsonhal) HasCreatedAt() bool {
-	if o != nil && !isNil(o.CreatedAt) {
+	if o != nil && !IsNil(o.CreatedAt) {
 		return true
 	}
 
@@ -644,7 +647,7 @@ func (o *RegionJsonhal) SetCreatedAt(v time.Time) {
 
 // GetUpdatedAt returns the UpdatedAt field value if set, zero value otherwise.
 func (o *RegionJsonhal) GetUpdatedAt() time.Time {
-	if o == nil || isNil(o.UpdatedAt) {
+	if o == nil || IsNil(o.UpdatedAt) {
 		var ret time.Time
 		return ret
 	}
@@ -654,7 +657,7 @@ func (o *RegionJsonhal) GetUpdatedAt() time.Time {
 // GetUpdatedAtOk returns a tuple with the UpdatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RegionJsonhal) GetUpdatedAtOk() (*time.Time, bool) {
-	if o == nil || isNil(o.UpdatedAt) {
+	if o == nil || IsNil(o.UpdatedAt) {
 		return nil, false
 	}
 	return o.UpdatedAt, true
@@ -662,7 +665,7 @@ func (o *RegionJsonhal) GetUpdatedAtOk() (*time.Time, bool) {
 
 // HasUpdatedAt returns a boolean if a field has been set.
 func (o *RegionJsonhal) HasUpdatedAt() bool {
-	if o != nil && !isNil(o.UpdatedAt) {
+	if o != nil && !IsNil(o.UpdatedAt) {
 		return true
 	}
 
@@ -675,13 +678,19 @@ func (o *RegionJsonhal) SetUpdatedAt(v time.Time) {
 }
 
 func (o RegionJsonhal) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o RegionJsonhal) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Links) {
+	if !IsNil(o.Links) {
 		toSerialize["_links"] = o.Links
 	}
-	if !isNil(o.Id) {
-		toSerialize["id"] = o.Id
-	}
+	// skip: id is readOnly
 	if o.Uuid.IsSet() {
 		toSerialize["uuid"] = o.Uuid.Get()
 	}
@@ -703,13 +712,13 @@ func (o RegionJsonhal) MarshalJSON() ([]byte, error) {
 	if o.IsDefault.IsSet() {
 		toSerialize["isDefault"] = o.IsDefault.Get()
 	}
-	if !isNil(o.Environment) {
+	if !IsNil(o.Environment) {
 		toSerialize["environment"] = o.Environment
 	}
 	if o.Provider.IsSet() {
 		toSerialize["provider"] = o.Provider.Get()
 	}
-	if !isNil(o.Products) {
+	if !IsNil(o.Products) {
 		toSerialize["products"] = o.Products
 	}
 	if o.CreatedBy.IsSet() {
@@ -718,13 +727,13 @@ func (o RegionJsonhal) MarshalJSON() ([]byte, error) {
 	if o.UpdatedBy.IsSet() {
 		toSerialize["updatedBy"] = o.UpdatedBy.Get()
 	}
-	if !isNil(o.CreatedAt) {
+	if !IsNil(o.CreatedAt) {
 		toSerialize["createdAt"] = o.CreatedAt
 	}
-	if !isNil(o.UpdatedAt) {
+	if !IsNil(o.UpdatedAt) {
 		toSerialize["updatedAt"] = o.UpdatedAt
 	}
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 type NullableRegionJsonhal struct {

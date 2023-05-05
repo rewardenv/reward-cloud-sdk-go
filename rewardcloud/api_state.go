@@ -13,7 +13,7 @@ package rewardcloud
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"strings"
@@ -22,7 +22,7 @@ import (
 // StateApiService StateApi service
 type StateApiService service
 
-type ApiApiStatesGetCollectionRequest struct {
+type StateApiApiStatesGetCollectionRequest struct {
 	ctx          context.Context
 	ApiService   *StateApiService
 	page         *int32
@@ -30,18 +30,18 @@ type ApiApiStatesGetCollectionRequest struct {
 }
 
 // The collection page number
-func (r ApiApiStatesGetCollectionRequest) Page(page int32) ApiApiStatesGetCollectionRequest {
+func (r StateApiApiStatesGetCollectionRequest) Page(page int32) StateApiApiStatesGetCollectionRequest {
 	r.page = &page
 	return r
 }
 
 // The number of items per page
-func (r ApiApiStatesGetCollectionRequest) ItemsPerPage(itemsPerPage int32) ApiApiStatesGetCollectionRequest {
+func (r StateApiApiStatesGetCollectionRequest) ItemsPerPage(itemsPerPage int32) StateApiApiStatesGetCollectionRequest {
 	r.itemsPerPage = &itemsPerPage
 	return r
 }
 
-func (r ApiApiStatesGetCollectionRequest) Execute() (*ApiStatesGetCollection200Response, *http.Response, error) {
+func (r StateApiApiStatesGetCollectionRequest) Execute() ([]State, *http.Response, error) {
 	return r.ApiService.ApiStatesGetCollectionExecute(r)
 }
 
@@ -51,10 +51,10 @@ ApiStatesGetCollection Retrieves the collection of State resources.
 Retrieves the collection of State resources.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiApiStatesGetCollectionRequest
+	@return StateApiApiStatesGetCollectionRequest
 */
-func (a *StateApiService) ApiStatesGetCollection(ctx context.Context) ApiApiStatesGetCollectionRequest {
-	return ApiApiStatesGetCollectionRequest{
+func (a *StateApiService) ApiStatesGetCollection(ctx context.Context) StateApiApiStatesGetCollectionRequest {
+	return StateApiApiStatesGetCollectionRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -62,13 +62,13 @@ func (a *StateApiService) ApiStatesGetCollection(ctx context.Context) ApiApiStat
 
 // Execute executes the request
 //
-//	@return ApiStatesGetCollection200Response
-func (a *StateApiService) ApiStatesGetCollectionExecute(r ApiApiStatesGetCollectionRequest) (*ApiStatesGetCollection200Response, *http.Response, error) {
+//	@return []State
+func (a *StateApiService) ApiStatesGetCollectionExecute(r StateApiApiStatesGetCollectionRequest) ([]State, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *ApiStatesGetCollection200Response
+		localVarReturnValue []State
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StateApiService.ApiStatesGetCollection")
@@ -83,10 +83,10 @@ func (a *StateApiService) ApiStatesGetCollectionExecute(r ApiApiStatesGetCollect
 	localVarFormParams := url.Values{}
 
 	if r.page != nil {
-		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
 	}
 	if r.itemsPerPage != nil {
-		localVarQueryParams.Add("itemsPerPage", parameterToString(*r.itemsPerPage, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "itemsPerPage", r.itemsPerPage, "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -98,7 +98,7 @@ func (a *StateApiService) ApiStatesGetCollectionExecute(r ApiApiStatesGetCollect
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/hal+json", "application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
+	localVarHTTPHeaderAccepts := []string{"application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -129,9 +129,9 @@ func (a *StateApiService) ApiStatesGetCollectionExecute(r ApiApiStatesGetCollect
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -156,13 +156,13 @@ func (a *StateApiService) ApiStatesGetCollectionExecute(r ApiApiStatesGetCollect
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiApiStatesIdDeleteRequest struct {
+type StateApiApiStatesIdDeleteRequest struct {
 	ctx        context.Context
 	ApiService *StateApiService
 	id         string
 }
 
-func (r ApiApiStatesIdDeleteRequest) Execute() (*http.Response, error) {
+func (r StateApiApiStatesIdDeleteRequest) Execute() (*http.Response, error) {
 	return r.ApiService.ApiStatesIdDeleteExecute(r)
 }
 
@@ -173,10 +173,10 @@ Removes the State resource.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id State identifier
-	@return ApiApiStatesIdDeleteRequest
+	@return StateApiApiStatesIdDeleteRequest
 */
-func (a *StateApiService) ApiStatesIdDelete(ctx context.Context, id string) ApiApiStatesIdDeleteRequest {
-	return ApiApiStatesIdDeleteRequest{
+func (a *StateApiService) ApiStatesIdDelete(ctx context.Context, id string) StateApiApiStatesIdDeleteRequest {
+	return StateApiApiStatesIdDeleteRequest{
 		ApiService: a,
 		ctx:        ctx,
 		id:         id,
@@ -184,7 +184,7 @@ func (a *StateApiService) ApiStatesIdDelete(ctx context.Context, id string) ApiA
 }
 
 // Execute executes the request
-func (a *StateApiService) ApiStatesIdDeleteExecute(r ApiApiStatesIdDeleteRequest) (*http.Response, error) {
+func (a *StateApiService) ApiStatesIdDeleteExecute(r StateApiApiStatesIdDeleteRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
 		localVarPostBody   interface{}
@@ -197,7 +197,7 @@ func (a *StateApiService) ApiStatesIdDeleteExecute(r ApiApiStatesIdDeleteRequest
 	}
 
 	localVarPath := localBasePath + "/api/states/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -244,9 +244,9 @@ func (a *StateApiService) ApiStatesIdDeleteExecute(r ApiApiStatesIdDeleteRequest
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -262,13 +262,13 @@ func (a *StateApiService) ApiStatesIdDeleteExecute(r ApiApiStatesIdDeleteRequest
 	return localVarHTTPResponse, nil
 }
 
-type ApiApiStatesIdGetRequest struct {
+type StateApiApiStatesIdGetRequest struct {
 	ctx        context.Context
 	ApiService *StateApiService
 	id         string
 }
 
-func (r ApiApiStatesIdGetRequest) Execute() (*StateJsonhal, *http.Response, error) {
+func (r StateApiApiStatesIdGetRequest) Execute() (*State, *http.Response, error) {
 	return r.ApiService.ApiStatesIdGetExecute(r)
 }
 
@@ -279,10 +279,10 @@ Retrieves a State resource.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id State identifier
-	@return ApiApiStatesIdGetRequest
+	@return StateApiApiStatesIdGetRequest
 */
-func (a *StateApiService) ApiStatesIdGet(ctx context.Context, id string) ApiApiStatesIdGetRequest {
-	return ApiApiStatesIdGetRequest{
+func (a *StateApiService) ApiStatesIdGet(ctx context.Context, id string) StateApiApiStatesIdGetRequest {
+	return StateApiApiStatesIdGetRequest{
 		ApiService: a,
 		ctx:        ctx,
 		id:         id,
@@ -291,13 +291,13 @@ func (a *StateApiService) ApiStatesIdGet(ctx context.Context, id string) ApiApiS
 
 // Execute executes the request
 //
-//	@return StateJsonhal
-func (a *StateApiService) ApiStatesIdGetExecute(r ApiApiStatesIdGetRequest) (*StateJsonhal, *http.Response, error) {
+//	@return State
+func (a *StateApiService) ApiStatesIdGetExecute(r StateApiApiStatesIdGetRequest) (*State, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *StateJsonhal
+		localVarReturnValue *State
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StateApiService.ApiStatesIdGet")
@@ -306,7 +306,7 @@ func (a *StateApiService) ApiStatesIdGetExecute(r ApiApiStatesIdGetRequest) (*St
 	}
 
 	localVarPath := localBasePath + "/api/states/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -322,7 +322,7 @@ func (a *StateApiService) ApiStatesIdGetExecute(r ApiApiStatesIdGetRequest) (*St
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/hal+json", "application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
+	localVarHTTPHeaderAccepts := []string{"application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -353,9 +353,9 @@ func (a *StateApiService) ApiStatesIdGetExecute(r ApiApiStatesIdGetRequest) (*St
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -380,20 +380,20 @@ func (a *StateApiService) ApiStatesIdGetExecute(r ApiApiStatesIdGetRequest) (*St
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiApiStatesIdPatchRequest struct {
+type StateApiApiStatesIdPatchRequest struct {
 	ctx        context.Context
 	ApiService *StateApiService
-	id         string
 	state      *State
+	id         string
 }
 
 // The updated State resource
-func (r ApiApiStatesIdPatchRequest) State(state State) ApiApiStatesIdPatchRequest {
+func (r StateApiApiStatesIdPatchRequest) State(state State) StateApiApiStatesIdPatchRequest {
 	r.state = &state
 	return r
 }
 
-func (r ApiApiStatesIdPatchRequest) Execute() (*StateJsonhal, *http.Response, error) {
+func (r StateApiApiStatesIdPatchRequest) Execute() (*State, *http.Response, error) {
 	return r.ApiService.ApiStatesIdPatchExecute(r)
 }
 
@@ -404,10 +404,10 @@ Updates the State resource.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id State identifier
-	@return ApiApiStatesIdPatchRequest
+	@return StateApiApiStatesIdPatchRequest
 */
-func (a *StateApiService) ApiStatesIdPatch(ctx context.Context, id string) ApiApiStatesIdPatchRequest {
-	return ApiApiStatesIdPatchRequest{
+func (a *StateApiService) ApiStatesIdPatch(ctx context.Context, id string) StateApiApiStatesIdPatchRequest {
+	return StateApiApiStatesIdPatchRequest{
 		ApiService: a,
 		ctx:        ctx,
 		id:         id,
@@ -416,13 +416,13 @@ func (a *StateApiService) ApiStatesIdPatch(ctx context.Context, id string) ApiAp
 
 // Execute executes the request
 //
-//	@return StateJsonhal
-func (a *StateApiService) ApiStatesIdPatchExecute(r ApiApiStatesIdPatchRequest) (*StateJsonhal, *http.Response, error) {
+//	@return State
+func (a *StateApiService) ApiStatesIdPatchExecute(r StateApiApiStatesIdPatchRequest) (*State, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *StateJsonhal
+		localVarReturnValue *State
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StateApiService.ApiStatesIdPatch")
@@ -431,7 +431,7 @@ func (a *StateApiService) ApiStatesIdPatchExecute(r ApiApiStatesIdPatchRequest) 
 	}
 
 	localVarPath := localBasePath + "/api/states/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -441,7 +441,7 @@ func (a *StateApiService) ApiStatesIdPatchExecute(r ApiApiStatesIdPatchRequest) 
 	}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/vnd.api+json"}
+	localVarHTTPContentTypes := []string{"application/merge-patch+json", "application/vnd.api+json"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -450,7 +450,7 @@ func (a *StateApiService) ApiStatesIdPatchExecute(r ApiApiStatesIdPatchRequest) 
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/hal+json", "application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
+	localVarHTTPHeaderAccepts := []string{"application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -483,9 +483,9 @@ func (a *StateApiService) ApiStatesIdPatchExecute(r ApiApiStatesIdPatchRequest) 
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -510,20 +510,20 @@ func (a *StateApiService) ApiStatesIdPatchExecute(r ApiApiStatesIdPatchRequest) 
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiApiStatesIdPutRequest struct {
-	ctx          context.Context
-	ApiService   *StateApiService
-	id           string
-	stateJsonhal *StateJsonhal
+type StateApiApiStatesIdPutRequest struct {
+	ctx        context.Context
+	ApiService *StateApiService
+	state      *State
+	id         string
 }
 
 // The updated State resource
-func (r ApiApiStatesIdPutRequest) StateJsonhal(stateJsonhal StateJsonhal) ApiApiStatesIdPutRequest {
-	r.stateJsonhal = &stateJsonhal
+func (r StateApiApiStatesIdPutRequest) State(state State) StateApiApiStatesIdPutRequest {
+	r.state = &state
 	return r
 }
 
-func (r ApiApiStatesIdPutRequest) Execute() (*StateJsonhal, *http.Response, error) {
+func (r StateApiApiStatesIdPutRequest) Execute() (*State, *http.Response, error) {
 	return r.ApiService.ApiStatesIdPutExecute(r)
 }
 
@@ -534,10 +534,10 @@ Replaces the State resource.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id State identifier
-	@return ApiApiStatesIdPutRequest
+	@return StateApiApiStatesIdPutRequest
 */
-func (a *StateApiService) ApiStatesIdPut(ctx context.Context, id string) ApiApiStatesIdPutRequest {
-	return ApiApiStatesIdPutRequest{
+func (a *StateApiService) ApiStatesIdPut(ctx context.Context, id string) StateApiApiStatesIdPutRequest {
+	return StateApiApiStatesIdPutRequest{
 		ApiService: a,
 		ctx:        ctx,
 		id:         id,
@@ -546,13 +546,13 @@ func (a *StateApiService) ApiStatesIdPut(ctx context.Context, id string) ApiApiS
 
 // Execute executes the request
 //
-//	@return StateJsonhal
-func (a *StateApiService) ApiStatesIdPutExecute(r ApiApiStatesIdPutRequest) (*StateJsonhal, *http.Response, error) {
+//	@return State
+func (a *StateApiService) ApiStatesIdPutExecute(r StateApiApiStatesIdPutRequest) (*State, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *StateJsonhal
+		localVarReturnValue *State
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StateApiService.ApiStatesIdPut")
@@ -561,17 +561,17 @@ func (a *StateApiService) ApiStatesIdPutExecute(r ApiApiStatesIdPutRequest) (*St
 	}
 
 	localVarPath := localBasePath + "/api/states/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.stateJsonhal == nil {
-		return localVarReturnValue, nil, reportError("stateJsonhal is required and must be specified")
+	if r.state == nil {
+		return localVarReturnValue, nil, reportError("state is required and must be specified")
 	}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/hal+json", "application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
+	localVarHTTPContentTypes := []string{"application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -580,7 +580,7 @@ func (a *StateApiService) ApiStatesIdPutExecute(r ApiApiStatesIdPutRequest) (*St
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/hal+json", "application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
+	localVarHTTPHeaderAccepts := []string{"application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -588,7 +588,7 @@ func (a *StateApiService) ApiStatesIdPutExecute(r ApiApiStatesIdPutRequest) (*St
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.stateJsonhal
+	localVarPostBody = r.state
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
@@ -613,9 +613,9 @@ func (a *StateApiService) ApiStatesIdPutExecute(r ApiApiStatesIdPutRequest) (*St
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -640,19 +640,19 @@ func (a *StateApiService) ApiStatesIdPutExecute(r ApiApiStatesIdPutRequest) (*St
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiApiStatesPostRequest struct {
-	ctx          context.Context
-	ApiService   *StateApiService
-	stateJsonhal *StateJsonhal
+type StateApiApiStatesPostRequest struct {
+	ctx        context.Context
+	ApiService *StateApiService
+	state      *State
 }
 
 // The new State resource
-func (r ApiApiStatesPostRequest) StateJsonhal(stateJsonhal StateJsonhal) ApiApiStatesPostRequest {
-	r.stateJsonhal = &stateJsonhal
+func (r StateApiApiStatesPostRequest) State(state State) StateApiApiStatesPostRequest {
+	r.state = &state
 	return r
 }
 
-func (r ApiApiStatesPostRequest) Execute() (*StateJsonhal, *http.Response, error) {
+func (r StateApiApiStatesPostRequest) Execute() (*State, *http.Response, error) {
 	return r.ApiService.ApiStatesPostExecute(r)
 }
 
@@ -662,10 +662,10 @@ ApiStatesPost Creates a State resource.
 Creates a State resource.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiApiStatesPostRequest
+	@return StateApiApiStatesPostRequest
 */
-func (a *StateApiService) ApiStatesPost(ctx context.Context) ApiApiStatesPostRequest {
-	return ApiApiStatesPostRequest{
+func (a *StateApiService) ApiStatesPost(ctx context.Context) StateApiApiStatesPostRequest {
+	return StateApiApiStatesPostRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -673,13 +673,13 @@ func (a *StateApiService) ApiStatesPost(ctx context.Context) ApiApiStatesPostReq
 
 // Execute executes the request
 //
-//	@return StateJsonhal
-func (a *StateApiService) ApiStatesPostExecute(r ApiApiStatesPostRequest) (*StateJsonhal, *http.Response, error) {
+//	@return State
+func (a *StateApiService) ApiStatesPostExecute(r StateApiApiStatesPostRequest) (*State, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *StateJsonhal
+		localVarReturnValue *State
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StateApiService.ApiStatesPost")
@@ -692,12 +692,12 @@ func (a *StateApiService) ApiStatesPostExecute(r ApiApiStatesPostRequest) (*Stat
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.stateJsonhal == nil {
-		return localVarReturnValue, nil, reportError("stateJsonhal is required and must be specified")
+	if r.state == nil {
+		return localVarReturnValue, nil, reportError("state is required and must be specified")
 	}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/hal+json", "application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
+	localVarHTTPContentTypes := []string{"application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -706,7 +706,7 @@ func (a *StateApiService) ApiStatesPostExecute(r ApiApiStatesPostRequest) (*Stat
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/hal+json", "application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
+	localVarHTTPHeaderAccepts := []string{"application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -714,7 +714,7 @@ func (a *StateApiService) ApiStatesPostExecute(r ApiApiStatesPostRequest) (*Stat
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.stateJsonhal
+	localVarPostBody = r.state
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
@@ -739,9 +739,9 @@ func (a *StateApiService) ApiStatesPostExecute(r ApiApiStatesPostRequest) (*Stat
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}

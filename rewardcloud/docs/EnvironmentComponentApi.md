@@ -15,7 +15,7 @@ Method | HTTP request | Description
 
 ## ApiEnvironmentComponentsGetCollection
 
-> ApiEnvironmentComponentsGetCollection200Response ApiEnvironmentComponentsGetCollection(ctx).Page(page).ItemsPerPage(itemsPerPage).ComponentVersion(componentVersion).ComponentVersion2(componentVersion2).Environment(environment).Environment2(environment2).Execute()
+> []EnvironmentComponent ApiEnvironmentComponentsGetCollection(ctx).Page(page).ItemsPerPage(itemsPerPage).ComponentVersion(componentVersion).ComponentVersion2(componentVersion2).Environment(environment).Environment2(environment2).Execute()
 
 Retrieves the collection of EnvironmentComponent resources.
 
@@ -30,7 +30,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
@@ -48,7 +48,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `EnvironmentComponentApi.ApiEnvironmentComponentsGetCollection``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiEnvironmentComponentsGetCollection`: ApiEnvironmentComponentsGetCollection200Response
+    // response from `ApiEnvironmentComponentsGetCollection`: []EnvironmentComponent
     fmt.Fprintf(os.Stdout, "Response from `EnvironmentComponentApi.ApiEnvironmentComponentsGetCollection`: %v\n", resp)
 }
 ```
@@ -73,7 +73,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ApiEnvironmentComponentsGetCollection200Response**](ApiEnvironmentComponentsGetCollection200Response.md)
+[**[]EnvironmentComponent**](EnvironmentComponent.md)
 
 ### Authorization
 
@@ -82,7 +82,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
+- **Accept**: application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -106,7 +106,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
@@ -114,7 +114,7 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.EnvironmentComponentApi.ApiEnvironmentComponentsIdDelete(context.Background(), id).Execute()
+    r, err := apiClient.EnvironmentComponentApi.ApiEnvironmentComponentsIdDelete(context.Background(), id).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `EnvironmentComponentApi.ApiEnvironmentComponentsIdDelete``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -159,7 +159,7 @@ Name | Type | Description  | Notes
 
 ## ApiEnvironmentComponentsIdGet
 
-> EnvironmentComponentJsonhal ApiEnvironmentComponentsIdGet(ctx, id).Execute()
+> EnvironmentComponent ApiEnvironmentComponentsIdGet(ctx, id).Execute()
 
 Retrieves a EnvironmentComponent resource.
 
@@ -174,7 +174,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
@@ -187,7 +187,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `EnvironmentComponentApi.ApiEnvironmentComponentsIdGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiEnvironmentComponentsIdGet`: EnvironmentComponentJsonhal
+    // response from `ApiEnvironmentComponentsIdGet`: EnvironmentComponent
     fmt.Fprintf(os.Stdout, "Response from `EnvironmentComponentApi.ApiEnvironmentComponentsIdGet`: %v\n", resp)
 }
 ```
@@ -211,7 +211,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**EnvironmentComponentJsonhal**](EnvironmentComponentJsonhal.md)
+[**EnvironmentComponent**](EnvironmentComponent.md)
 
 ### Authorization
 
@@ -220,7 +220,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
+- **Accept**: application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -229,7 +229,7 @@ Name | Type | Description  | Notes
 
 ## ApiEnvironmentComponentsIdPatch
 
-> EnvironmentComponentJsonhal ApiEnvironmentComponentsIdPatch(ctx, id).EnvironmentComponent(environmentComponent).Execute()
+> EnvironmentComponent ApiEnvironmentComponentsIdPatch(ctx, id).EnvironmentComponent(environmentComponent).Execute()
 
 Updates the EnvironmentComponent resource.
 
@@ -244,12 +244,12 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    id := "id_example" // string | EnvironmentComponent identifier
     environmentComponent := *openapiclient.NewEnvironmentComponent() // EnvironmentComponent | The updated EnvironmentComponent resource
+    id := "id_example" // string | EnvironmentComponent identifier
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -258,7 +258,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `EnvironmentComponentApi.ApiEnvironmentComponentsIdPatch``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiEnvironmentComponentsIdPatch`: EnvironmentComponentJsonhal
+    // response from `ApiEnvironmentComponentsIdPatch`: EnvironmentComponent
     fmt.Fprintf(os.Stdout, "Response from `EnvironmentComponentApi.ApiEnvironmentComponentsIdPatch`: %v\n", resp)
 }
 ```
@@ -278,12 +278,12 @@ Other parameters are passed through a pointer to a apiApiEnvironmentComponentsId
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-
  **environmentComponent** | [**EnvironmentComponent**](EnvironmentComponent.md) | The updated EnvironmentComponent resource | 
+
 
 ### Return type
 
-[**EnvironmentComponentJsonhal**](EnvironmentComponentJsonhal.md)
+[**EnvironmentComponent**](EnvironmentComponent.md)
 
 ### Authorization
 
@@ -291,8 +291,8 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: application/vnd.api+json
-- **Accept**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
+- **Content-Type**: application/merge-patch+json, application/vnd.api+json
+- **Accept**: application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -301,7 +301,7 @@ Name | Type | Description  | Notes
 
 ## ApiEnvironmentComponentsIdPut
 
-> EnvironmentComponentJsonhal ApiEnvironmentComponentsIdPut(ctx, id).EnvironmentComponentJsonhal(environmentComponentJsonhal).Execute()
+> EnvironmentComponent ApiEnvironmentComponentsIdPut(ctx, id).EnvironmentComponent(environmentComponent).Execute()
 
 Replaces the EnvironmentComponent resource.
 
@@ -316,21 +316,21 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
+    environmentComponent := *openapiclient.NewEnvironmentComponent() // EnvironmentComponent | The updated EnvironmentComponent resource
     id := "id_example" // string | EnvironmentComponent identifier
-    environmentComponentJsonhal := *openapiclient.NewEnvironmentComponentJsonhal() // EnvironmentComponentJsonhal | The updated EnvironmentComponent resource
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.EnvironmentComponentApi.ApiEnvironmentComponentsIdPut(context.Background(), id).EnvironmentComponentJsonhal(environmentComponentJsonhal).Execute()
+    resp, r, err := apiClient.EnvironmentComponentApi.ApiEnvironmentComponentsIdPut(context.Background(), id).EnvironmentComponent(environmentComponent).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `EnvironmentComponentApi.ApiEnvironmentComponentsIdPut``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiEnvironmentComponentsIdPut`: EnvironmentComponentJsonhal
+    // response from `ApiEnvironmentComponentsIdPut`: EnvironmentComponent
     fmt.Fprintf(os.Stdout, "Response from `EnvironmentComponentApi.ApiEnvironmentComponentsIdPut`: %v\n", resp)
 }
 ```
@@ -350,12 +350,12 @@ Other parameters are passed through a pointer to a apiApiEnvironmentComponentsId
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **environmentComponent** | [**EnvironmentComponent**](EnvironmentComponent.md) | The updated EnvironmentComponent resource | 
 
- **environmentComponentJsonhal** | [**EnvironmentComponentJsonhal**](EnvironmentComponentJsonhal.md) | The updated EnvironmentComponent resource | 
 
 ### Return type
 
-[**EnvironmentComponentJsonhal**](EnvironmentComponentJsonhal.md)
+[**EnvironmentComponent**](EnvironmentComponent.md)
 
 ### Authorization
 
@@ -363,8 +363,8 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
-- **Accept**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
+- **Content-Type**: application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
+- **Accept**: application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -373,7 +373,7 @@ Name | Type | Description  | Notes
 
 ## ApiEnvironmentComponentsPost
 
-> EnvironmentComponentJsonhal ApiEnvironmentComponentsPost(ctx).EnvironmentComponentJsonhal(environmentComponentJsonhal).Execute()
+> EnvironmentComponent ApiEnvironmentComponentsPost(ctx).EnvironmentComponent(environmentComponent).Execute()
 
 Creates a EnvironmentComponent resource.
 
@@ -388,20 +388,20 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    environmentComponentJsonhal := *openapiclient.NewEnvironmentComponentJsonhal() // EnvironmentComponentJsonhal | The new EnvironmentComponent resource
+    environmentComponent := *openapiclient.NewEnvironmentComponent() // EnvironmentComponent | The new EnvironmentComponent resource
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.EnvironmentComponentApi.ApiEnvironmentComponentsPost(context.Background()).EnvironmentComponentJsonhal(environmentComponentJsonhal).Execute()
+    resp, r, err := apiClient.EnvironmentComponentApi.ApiEnvironmentComponentsPost(context.Background()).EnvironmentComponent(environmentComponent).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `EnvironmentComponentApi.ApiEnvironmentComponentsPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiEnvironmentComponentsPost`: EnvironmentComponentJsonhal
+    // response from `ApiEnvironmentComponentsPost`: EnvironmentComponent
     fmt.Fprintf(os.Stdout, "Response from `EnvironmentComponentApi.ApiEnvironmentComponentsPost`: %v\n", resp)
 }
 ```
@@ -417,11 +417,11 @@ Other parameters are passed through a pointer to a apiApiEnvironmentComponentsPo
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **environmentComponentJsonhal** | [**EnvironmentComponentJsonhal**](EnvironmentComponentJsonhal.md) | The new EnvironmentComponent resource | 
+ **environmentComponent** | [**EnvironmentComponent**](EnvironmentComponent.md) | The new EnvironmentComponent resource | 
 
 ### Return type
 
-[**EnvironmentComponentJsonhal**](EnvironmentComponentJsonhal.md)
+[**EnvironmentComponent**](EnvironmentComponent.md)
 
 ### Authorization
 
@@ -429,8 +429,8 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
-- **Accept**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
+- **Content-Type**: application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
+- **Accept**: application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)

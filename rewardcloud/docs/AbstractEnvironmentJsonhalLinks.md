@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Self** | Pointer to [**ApiComponentResourceLimitsGetCollection200ResponseLinksSelf**](ApiComponentResourceLimitsGetCollection200ResponseLinksSelf.md) |  | [optional] 
+**Self** | Pointer to [**AbstractEnvironmentJsonhalLinksSelf**](AbstractEnvironmentJsonhalLinksSelf.md) |  | [optional] 
 
 ## Methods
 
@@ -27,20 +27,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetSelf
 
-`func (o *AbstractEnvironmentJsonhalLinks) GetSelf() ApiComponentResourceLimitsGetCollection200ResponseLinksSelf`
+`func (o *AbstractEnvironmentJsonhalLinks) GetSelf() AbstractEnvironmentJsonhalLinksSelf`
 
 GetSelf returns the Self field if non-nil, zero value otherwise.
 
 ### GetSelfOk
 
-`func (o *AbstractEnvironmentJsonhalLinks) GetSelfOk() (*ApiComponentResourceLimitsGetCollection200ResponseLinksSelf, bool)`
+`func (o *AbstractEnvironmentJsonhalLinks) GetSelfOk() (*AbstractEnvironmentJsonhalLinksSelf, bool)`
 
 GetSelfOk returns a tuple with the Self field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSelf
 
-`func (o *AbstractEnvironmentJsonhalLinks) SetSelf(v ApiComponentResourceLimitsGetCollection200ResponseLinksSelf)`
+`func (o *AbstractEnvironmentJsonhalLinks) SetSelf(v AbstractEnvironmentJsonhalLinksSelf)`
 
 SetSelf sets Self field to given value.
 

@@ -15,6 +15,9 @@ import (
 	"time"
 )
 
+// checks if the AbstractProjectJsonhal type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &AbstractProjectJsonhal{}
+
 // AbstractProjectJsonhal
 type AbstractProjectJsonhal struct {
 	Links                 *AbstractEnvironmentJsonhalLinks `json:"_links,omitempty"`
@@ -55,7 +58,7 @@ func NewAbstractProjectJsonhalWithDefaults() *AbstractProjectJsonhal {
 
 // GetLinks returns the Links field value if set, zero value otherwise.
 func (o *AbstractProjectJsonhal) GetLinks() AbstractEnvironmentJsonhalLinks {
-	if o == nil || isNil(o.Links) {
+	if o == nil || IsNil(o.Links) {
 		var ret AbstractEnvironmentJsonhalLinks
 		return ret
 	}
@@ -65,7 +68,7 @@ func (o *AbstractProjectJsonhal) GetLinks() AbstractEnvironmentJsonhalLinks {
 // GetLinksOk returns a tuple with the Links field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AbstractProjectJsonhal) GetLinksOk() (*AbstractEnvironmentJsonhalLinks, bool) {
-	if o == nil || isNil(o.Links) {
+	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
 	return o.Links, true
@@ -73,7 +76,7 @@ func (o *AbstractProjectJsonhal) GetLinksOk() (*AbstractEnvironmentJsonhalLinks,
 
 // HasLinks returns a boolean if a field has been set.
 func (o *AbstractProjectJsonhal) HasLinks() bool {
-	if o != nil && !isNil(o.Links) {
+	if o != nil && !IsNil(o.Links) {
 		return true
 	}
 
@@ -87,7 +90,7 @@ func (o *AbstractProjectJsonhal) SetLinks(v AbstractEnvironmentJsonhalLinks) {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *AbstractProjectJsonhal) GetId() int32 {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		var ret int32
 		return ret
 	}
@@ -97,7 +100,7 @@ func (o *AbstractProjectJsonhal) GetId() int32 {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AbstractProjectJsonhal) GetIdOk() (*int32, bool) {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
 	return o.Id, true
@@ -105,7 +108,7 @@ func (o *AbstractProjectJsonhal) GetIdOk() (*int32, bool) {
 
 // HasId returns a boolean if a field has been set.
 func (o *AbstractProjectJsonhal) HasId() bool {
-	if o != nil && !isNil(o.Id) {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -119,7 +122,7 @@ func (o *AbstractProjectJsonhal) SetId(v int32) {
 
 // GetUuid returns the Uuid field value if set, zero value otherwise.
 func (o *AbstractProjectJsonhal) GetUuid() string {
-	if o == nil || isNil(o.Uuid) {
+	if o == nil || IsNil(o.Uuid) {
 		var ret string
 		return ret
 	}
@@ -129,7 +132,7 @@ func (o *AbstractProjectJsonhal) GetUuid() string {
 // GetUuidOk returns a tuple with the Uuid field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AbstractProjectJsonhal) GetUuidOk() (*string, bool) {
-	if o == nil || isNil(o.Uuid) {
+	if o == nil || IsNil(o.Uuid) {
 		return nil, false
 	}
 	return o.Uuid, true
@@ -137,7 +140,7 @@ func (o *AbstractProjectJsonhal) GetUuidOk() (*string, bool) {
 
 // HasUuid returns a boolean if a field has been set.
 func (o *AbstractProjectJsonhal) HasUuid() bool {
-	if o != nil && !isNil(o.Uuid) {
+	if o != nil && !IsNil(o.Uuid) {
 		return true
 	}
 
@@ -151,7 +154,7 @@ func (o *AbstractProjectJsonhal) SetUuid(v string) {
 
 // GetName returns the Name field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AbstractProjectJsonhal) GetName() string {
-	if o == nil || isNil(o.Name.Get()) {
+	if o == nil || IsNil(o.Name.Get()) {
 		var ret string
 		return ret
 	}
@@ -194,7 +197,7 @@ func (o *AbstractProjectJsonhal) UnsetName() {
 
 // GetCodeName returns the CodeName field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AbstractProjectJsonhal) GetCodeName() string {
-	if o == nil || isNil(o.CodeName.Get()) {
+	if o == nil || IsNil(o.CodeName.Get()) {
 		var ret string
 		return ret
 	}
@@ -237,7 +240,7 @@ func (o *AbstractProjectJsonhal) UnsetCodeName() {
 
 // GetIsActive returns the IsActive field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AbstractProjectJsonhal) GetIsActive() bool {
-	if o == nil || isNil(o.IsActive.Get()) {
+	if o == nil || IsNil(o.IsActive.Get()) {
 		var ret bool
 		return ret
 	}
@@ -280,7 +283,7 @@ func (o *AbstractProjectJsonhal) UnsetIsActive() {
 
 // GetCpu returns the Cpu field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AbstractProjectJsonhal) GetCpu() int32 {
-	if o == nil || isNil(o.Cpu.Get()) {
+	if o == nil || IsNil(o.Cpu.Get()) {
 		var ret int32
 		return ret
 	}
@@ -323,7 +326,7 @@ func (o *AbstractProjectJsonhal) UnsetCpu() {
 
 // GetMemory returns the Memory field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AbstractProjectJsonhal) GetMemory() int32 {
-	if o == nil || isNil(o.Memory.Get()) {
+	if o == nil || IsNil(o.Memory.Get()) {
 		var ret int32
 		return ret
 	}
@@ -366,7 +369,7 @@ func (o *AbstractProjectJsonhal) UnsetMemory() {
 
 // GetStorage returns the Storage field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AbstractProjectJsonhal) GetStorage() int32 {
-	if o == nil || isNil(o.Storage.Get()) {
+	if o == nil || IsNil(o.Storage.Get()) {
 		var ret int32
 		return ret
 	}
@@ -409,7 +412,7 @@ func (o *AbstractProjectJsonhal) UnsetStorage() {
 
 // GetCode returns the Code field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AbstractProjectJsonhal) GetCode() string {
-	if o == nil || isNil(o.Code.Get()) {
+	if o == nil || IsNil(o.Code.Get()) {
 		var ret string
 		return ret
 	}
@@ -452,7 +455,7 @@ func (o *AbstractProjectJsonhal) UnsetCode() {
 
 // GetColor returns the Color field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AbstractProjectJsonhal) GetColor() string {
-	if o == nil || isNil(o.Color.Get()) {
+	if o == nil || IsNil(o.Color.Get()) {
 		var ret string
 		return ret
 	}
@@ -495,7 +498,7 @@ func (o *AbstractProjectJsonhal) UnsetColor() {
 
 // GetIsInitProjectSkeleton returns the IsInitProjectSkeleton field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AbstractProjectJsonhal) GetIsInitProjectSkeleton() bool {
-	if o == nil || isNil(o.IsInitProjectSkeleton.Get()) {
+	if o == nil || IsNil(o.IsInitProjectSkeleton.Get()) {
 		var ret bool
 		return ret
 	}
@@ -538,7 +541,7 @@ func (o *AbstractProjectJsonhal) UnsetIsInitProjectSkeleton() {
 
 // GetComponentVersion returns the ComponentVersion field value if set, zero value otherwise.
 func (o *AbstractProjectJsonhal) GetComponentVersion() []ComponentVersionJsonhal {
-	if o == nil || isNil(o.ComponentVersion) {
+	if o == nil || IsNil(o.ComponentVersion) {
 		var ret []ComponentVersionJsonhal
 		return ret
 	}
@@ -548,7 +551,7 @@ func (o *AbstractProjectJsonhal) GetComponentVersion() []ComponentVersionJsonhal
 // GetComponentVersionOk returns a tuple with the ComponentVersion field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AbstractProjectJsonhal) GetComponentVersionOk() ([]ComponentVersionJsonhal, bool) {
-	if o == nil || isNil(o.ComponentVersion) {
+	if o == nil || IsNil(o.ComponentVersion) {
 		return nil, false
 	}
 	return o.ComponentVersion, true
@@ -556,7 +559,7 @@ func (o *AbstractProjectJsonhal) GetComponentVersionOk() ([]ComponentVersionJson
 
 // HasComponentVersion returns a boolean if a field has been set.
 func (o *AbstractProjectJsonhal) HasComponentVersion() bool {
-	if o != nil && !isNil(o.ComponentVersion) {
+	if o != nil && !IsNil(o.ComponentVersion) {
 		return true
 	}
 
@@ -570,7 +573,7 @@ func (o *AbstractProjectJsonhal) SetComponentVersion(v []ComponentVersionJsonhal
 
 // GetProjectTypeVersion returns the ProjectTypeVersion field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AbstractProjectJsonhal) GetProjectTypeVersion() string {
-	if o == nil || isNil(o.ProjectTypeVersion.Get()) {
+	if o == nil || IsNil(o.ProjectTypeVersion.Get()) {
 		var ret string
 		return ret
 	}
@@ -613,7 +616,7 @@ func (o *AbstractProjectJsonhal) UnsetProjectTypeVersion() {
 
 // GetProjectEnvVar returns the ProjectEnvVar field value if set, zero value otherwise.
 func (o *AbstractProjectJsonhal) GetProjectEnvVar() []ProjectEnvVarJsonhal {
-	if o == nil || isNil(o.ProjectEnvVar) {
+	if o == nil || IsNil(o.ProjectEnvVar) {
 		var ret []ProjectEnvVarJsonhal
 		return ret
 	}
@@ -623,7 +626,7 @@ func (o *AbstractProjectJsonhal) GetProjectEnvVar() []ProjectEnvVarJsonhal {
 // GetProjectEnvVarOk returns a tuple with the ProjectEnvVar field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AbstractProjectJsonhal) GetProjectEnvVarOk() ([]ProjectEnvVarJsonhal, bool) {
-	if o == nil || isNil(o.ProjectEnvVar) {
+	if o == nil || IsNil(o.ProjectEnvVar) {
 		return nil, false
 	}
 	return o.ProjectEnvVar, true
@@ -631,7 +634,7 @@ func (o *AbstractProjectJsonhal) GetProjectEnvVarOk() ([]ProjectEnvVarJsonhal, b
 
 // HasProjectEnvVar returns a boolean if a field has been set.
 func (o *AbstractProjectJsonhal) HasProjectEnvVar() bool {
-	if o != nil && !isNil(o.ProjectEnvVar) {
+	if o != nil && !IsNil(o.ProjectEnvVar) {
 		return true
 	}
 
@@ -645,7 +648,7 @@ func (o *AbstractProjectJsonhal) SetProjectEnvVar(v []ProjectEnvVarJsonhal) {
 
 // GetCreatedAt returns the CreatedAt field value if set, zero value otherwise.
 func (o *AbstractProjectJsonhal) GetCreatedAt() time.Time {
-	if o == nil || isNil(o.CreatedAt) {
+	if o == nil || IsNil(o.CreatedAt) {
 		var ret time.Time
 		return ret
 	}
@@ -655,7 +658,7 @@ func (o *AbstractProjectJsonhal) GetCreatedAt() time.Time {
 // GetCreatedAtOk returns a tuple with the CreatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AbstractProjectJsonhal) GetCreatedAtOk() (*time.Time, bool) {
-	if o == nil || isNil(o.CreatedAt) {
+	if o == nil || IsNil(o.CreatedAt) {
 		return nil, false
 	}
 	return o.CreatedAt, true
@@ -663,7 +666,7 @@ func (o *AbstractProjectJsonhal) GetCreatedAtOk() (*time.Time, bool) {
 
 // HasCreatedAt returns a boolean if a field has been set.
 func (o *AbstractProjectJsonhal) HasCreatedAt() bool {
-	if o != nil && !isNil(o.CreatedAt) {
+	if o != nil && !IsNil(o.CreatedAt) {
 		return true
 	}
 
@@ -677,7 +680,7 @@ func (o *AbstractProjectJsonhal) SetCreatedAt(v time.Time) {
 
 // GetUpdatedAt returns the UpdatedAt field value if set, zero value otherwise.
 func (o *AbstractProjectJsonhal) GetUpdatedAt() time.Time {
-	if o == nil || isNil(o.UpdatedAt) {
+	if o == nil || IsNil(o.UpdatedAt) {
 		var ret time.Time
 		return ret
 	}
@@ -687,7 +690,7 @@ func (o *AbstractProjectJsonhal) GetUpdatedAt() time.Time {
 // GetUpdatedAtOk returns a tuple with the UpdatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AbstractProjectJsonhal) GetUpdatedAtOk() (*time.Time, bool) {
-	if o == nil || isNil(o.UpdatedAt) {
+	if o == nil || IsNil(o.UpdatedAt) {
 		return nil, false
 	}
 	return o.UpdatedAt, true
@@ -695,7 +698,7 @@ func (o *AbstractProjectJsonhal) GetUpdatedAtOk() (*time.Time, bool) {
 
 // HasUpdatedAt returns a boolean if a field has been set.
 func (o *AbstractProjectJsonhal) HasUpdatedAt() bool {
-	if o != nil && !isNil(o.UpdatedAt) {
+	if o != nil && !IsNil(o.UpdatedAt) {
 		return true
 	}
 
@@ -708,16 +711,20 @@ func (o *AbstractProjectJsonhal) SetUpdatedAt(v time.Time) {
 }
 
 func (o AbstractProjectJsonhal) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o AbstractProjectJsonhal) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Links) {
+	if !IsNil(o.Links) {
 		toSerialize["_links"] = o.Links
 	}
-	if !isNil(o.Id) {
-		toSerialize["id"] = o.Id
-	}
-	if !isNil(o.Uuid) {
-		toSerialize["uuid"] = o.Uuid
-	}
+	// skip: id is readOnly
+	// skip: uuid is readOnly
 	if o.Name.IsSet() {
 		toSerialize["name"] = o.Name.Get()
 	}
@@ -745,22 +752,22 @@ func (o AbstractProjectJsonhal) MarshalJSON() ([]byte, error) {
 	if o.IsInitProjectSkeleton.IsSet() {
 		toSerialize["isInitProjectSkeleton"] = o.IsInitProjectSkeleton.Get()
 	}
-	if !isNil(o.ComponentVersion) {
+	if !IsNil(o.ComponentVersion) {
 		toSerialize["componentVersion"] = o.ComponentVersion
 	}
 	if o.ProjectTypeVersion.IsSet() {
 		toSerialize["projectTypeVersion"] = o.ProjectTypeVersion.Get()
 	}
-	if !isNil(o.ProjectEnvVar) {
+	if !IsNil(o.ProjectEnvVar) {
 		toSerialize["projectEnvVar"] = o.ProjectEnvVar
 	}
-	if !isNil(o.CreatedAt) {
+	if !IsNil(o.CreatedAt) {
 		toSerialize["createdAt"] = o.CreatedAt
 	}
-	if !isNil(o.UpdatedAt) {
+	if !IsNil(o.UpdatedAt) {
 		toSerialize["updatedAt"] = o.UpdatedAt
 	}
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 type NullableAbstractProjectJsonhal struct {

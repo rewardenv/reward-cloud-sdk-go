@@ -15,6 +15,9 @@ import (
 	"time"
 )
 
+// checks if the ProjectProjectGet type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ProjectProjectGet{}
+
 // ProjectProjectGet Class Project
 type ProjectProjectGet struct {
 	TemplateIri           NullableString                          `json:"templateIri,omitempty"`
@@ -59,7 +62,7 @@ func NewProjectProjectGetWithDefaults() *ProjectProjectGet {
 
 // GetTemplateIri returns the TemplateIri field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ProjectProjectGet) GetTemplateIri() string {
-	if o == nil || isNil(o.TemplateIri.Get()) {
+	if o == nil || IsNil(o.TemplateIri.Get()) {
 		var ret string
 		return ret
 	}
@@ -102,7 +105,7 @@ func (o *ProjectProjectGet) UnsetTemplateIri() {
 
 // GetState returns the State field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ProjectProjectGet) GetState() string {
-	if o == nil || isNil(o.State.Get()) {
+	if o == nil || IsNil(o.State.Get()) {
 		var ret string
 		return ret
 	}
@@ -145,7 +148,7 @@ func (o *ProjectProjectGet) UnsetState() {
 
 // GetGit returns the Git field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ProjectProjectGet) GetGit() ProjectProjectGetGit {
-	if o == nil || isNil(o.Git.Get()) {
+	if o == nil || IsNil(o.Git.Get()) {
 		var ret ProjectProjectGetGit
 		return ret
 	}
@@ -188,7 +191,7 @@ func (o *ProjectProjectGet) UnsetGit() {
 
 // GetServiceAccount returns the ServiceAccount field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ProjectProjectGet) GetServiceAccount() ProjectProjectGetServiceAccount {
-	if o == nil || isNil(o.ServiceAccount.Get()) {
+	if o == nil || IsNil(o.ServiceAccount.Get()) {
 		var ret ProjectProjectGetServiceAccount
 		return ret
 	}
@@ -231,7 +234,7 @@ func (o *ProjectProjectGet) UnsetServiceAccount() {
 
 // GetTeam returns the Team field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ProjectProjectGet) GetTeam() string {
-	if o == nil || isNil(o.Team.Get()) {
+	if o == nil || IsNil(o.Team.Get()) {
 		var ret string
 		return ret
 	}
@@ -274,7 +277,7 @@ func (o *ProjectProjectGet) UnsetTeam() {
 
 // GetEnvironment returns the Environment field value if set, zero value otherwise.
 func (o *ProjectProjectGet) GetEnvironment() []string {
-	if o == nil || isNil(o.Environment) {
+	if o == nil || IsNil(o.Environment) {
 		var ret []string
 		return ret
 	}
@@ -284,7 +287,7 @@ func (o *ProjectProjectGet) GetEnvironment() []string {
 // GetEnvironmentOk returns a tuple with the Environment field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ProjectProjectGet) GetEnvironmentOk() ([]string, bool) {
-	if o == nil || isNil(o.Environment) {
+	if o == nil || IsNil(o.Environment) {
 		return nil, false
 	}
 	return o.Environment, true
@@ -292,7 +295,7 @@ func (o *ProjectProjectGet) GetEnvironmentOk() ([]string, bool) {
 
 // HasEnvironment returns a boolean if a field has been set.
 func (o *ProjectProjectGet) HasEnvironment() bool {
-	if o != nil && !isNil(o.Environment) {
+	if o != nil && !IsNil(o.Environment) {
 		return true
 	}
 
@@ -306,7 +309,7 @@ func (o *ProjectProjectGet) SetEnvironment(v []string) {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *ProjectProjectGet) GetId() int32 {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		var ret int32
 		return ret
 	}
@@ -316,7 +319,7 @@ func (o *ProjectProjectGet) GetId() int32 {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ProjectProjectGet) GetIdOk() (*int32, bool) {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
 	return o.Id, true
@@ -324,7 +327,7 @@ func (o *ProjectProjectGet) GetIdOk() (*int32, bool) {
 
 // HasId returns a boolean if a field has been set.
 func (o *ProjectProjectGet) HasId() bool {
-	if o != nil && !isNil(o.Id) {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -338,7 +341,7 @@ func (o *ProjectProjectGet) SetId(v int32) {
 
 // GetUuid returns the Uuid field value if set, zero value otherwise.
 func (o *ProjectProjectGet) GetUuid() string {
-	if o == nil || isNil(o.Uuid) {
+	if o == nil || IsNil(o.Uuid) {
 		var ret string
 		return ret
 	}
@@ -348,7 +351,7 @@ func (o *ProjectProjectGet) GetUuid() string {
 // GetUuidOk returns a tuple with the Uuid field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ProjectProjectGet) GetUuidOk() (*string, bool) {
-	if o == nil || isNil(o.Uuid) {
+	if o == nil || IsNil(o.Uuid) {
 		return nil, false
 	}
 	return o.Uuid, true
@@ -356,7 +359,7 @@ func (o *ProjectProjectGet) GetUuidOk() (*string, bool) {
 
 // HasUuid returns a boolean if a field has been set.
 func (o *ProjectProjectGet) HasUuid() bool {
-	if o != nil && !isNil(o.Uuid) {
+	if o != nil && !IsNil(o.Uuid) {
 		return true
 	}
 
@@ -370,7 +373,7 @@ func (o *ProjectProjectGet) SetUuid(v string) {
 
 // GetName returns the Name field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ProjectProjectGet) GetName() string {
-	if o == nil || isNil(o.Name.Get()) {
+	if o == nil || IsNil(o.Name.Get()) {
 		var ret string
 		return ret
 	}
@@ -413,7 +416,7 @@ func (o *ProjectProjectGet) UnsetName() {
 
 // GetIsActive returns the IsActive field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ProjectProjectGet) GetIsActive() bool {
-	if o == nil || isNil(o.IsActive.Get()) {
+	if o == nil || IsNil(o.IsActive.Get()) {
 		var ret bool
 		return ret
 	}
@@ -456,7 +459,7 @@ func (o *ProjectProjectGet) UnsetIsActive() {
 
 // GetCpu returns the Cpu field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ProjectProjectGet) GetCpu() int32 {
-	if o == nil || isNil(o.Cpu.Get()) {
+	if o == nil || IsNil(o.Cpu.Get()) {
 		var ret int32
 		return ret
 	}
@@ -499,7 +502,7 @@ func (o *ProjectProjectGet) UnsetCpu() {
 
 // GetMemory returns the Memory field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ProjectProjectGet) GetMemory() int32 {
-	if o == nil || isNil(o.Memory.Get()) {
+	if o == nil || IsNil(o.Memory.Get()) {
 		var ret int32
 		return ret
 	}
@@ -542,7 +545,7 @@ func (o *ProjectProjectGet) UnsetMemory() {
 
 // GetStorage returns the Storage field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ProjectProjectGet) GetStorage() int32 {
-	if o == nil || isNil(o.Storage.Get()) {
+	if o == nil || IsNil(o.Storage.Get()) {
 		var ret int32
 		return ret
 	}
@@ -585,7 +588,7 @@ func (o *ProjectProjectGet) UnsetStorage() {
 
 // GetCode returns the Code field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ProjectProjectGet) GetCode() string {
-	if o == nil || isNil(o.Code.Get()) {
+	if o == nil || IsNil(o.Code.Get()) {
 		var ret string
 		return ret
 	}
@@ -628,7 +631,7 @@ func (o *ProjectProjectGet) UnsetCode() {
 
 // GetColor returns the Color field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ProjectProjectGet) GetColor() string {
-	if o == nil || isNil(o.Color.Get()) {
+	if o == nil || IsNil(o.Color.Get()) {
 		var ret string
 		return ret
 	}
@@ -671,7 +674,7 @@ func (o *ProjectProjectGet) UnsetColor() {
 
 // GetIsInitProjectSkeleton returns the IsInitProjectSkeleton field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ProjectProjectGet) GetIsInitProjectSkeleton() bool {
-	if o == nil || isNil(o.IsInitProjectSkeleton.Get()) {
+	if o == nil || IsNil(o.IsInitProjectSkeleton.Get()) {
 		var ret bool
 		return ret
 	}
@@ -714,7 +717,7 @@ func (o *ProjectProjectGet) UnsetIsInitProjectSkeleton() {
 
 // GetComponentVersion returns the ComponentVersion field value if set, zero value otherwise.
 func (o *ProjectProjectGet) GetComponentVersion() []string {
-	if o == nil || isNil(o.ComponentVersion) {
+	if o == nil || IsNil(o.ComponentVersion) {
 		var ret []string
 		return ret
 	}
@@ -724,7 +727,7 @@ func (o *ProjectProjectGet) GetComponentVersion() []string {
 // GetComponentVersionOk returns a tuple with the ComponentVersion field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ProjectProjectGet) GetComponentVersionOk() ([]string, bool) {
-	if o == nil || isNil(o.ComponentVersion) {
+	if o == nil || IsNil(o.ComponentVersion) {
 		return nil, false
 	}
 	return o.ComponentVersion, true
@@ -732,7 +735,7 @@ func (o *ProjectProjectGet) GetComponentVersionOk() ([]string, bool) {
 
 // HasComponentVersion returns a boolean if a field has been set.
 func (o *ProjectProjectGet) HasComponentVersion() bool {
-	if o != nil && !isNil(o.ComponentVersion) {
+	if o != nil && !IsNil(o.ComponentVersion) {
 		return true
 	}
 
@@ -746,7 +749,7 @@ func (o *ProjectProjectGet) SetComponentVersion(v []string) {
 
 // GetProjectTypeVersion returns the ProjectTypeVersion field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ProjectProjectGet) GetProjectTypeVersion() string {
-	if o == nil || isNil(o.ProjectTypeVersion.Get()) {
+	if o == nil || IsNil(o.ProjectTypeVersion.Get()) {
 		var ret string
 		return ret
 	}
@@ -789,7 +792,7 @@ func (o *ProjectProjectGet) UnsetProjectTypeVersion() {
 
 // GetProjectEnvVar returns the ProjectEnvVar field value if set, zero value otherwise.
 func (o *ProjectProjectGet) GetProjectEnvVar() []ProjectEnvVarProjectGet {
-	if o == nil || isNil(o.ProjectEnvVar) {
+	if o == nil || IsNil(o.ProjectEnvVar) {
 		var ret []ProjectEnvVarProjectGet
 		return ret
 	}
@@ -799,7 +802,7 @@ func (o *ProjectProjectGet) GetProjectEnvVar() []ProjectEnvVarProjectGet {
 // GetProjectEnvVarOk returns a tuple with the ProjectEnvVar field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ProjectProjectGet) GetProjectEnvVarOk() ([]ProjectEnvVarProjectGet, bool) {
-	if o == nil || isNil(o.ProjectEnvVar) {
+	if o == nil || IsNil(o.ProjectEnvVar) {
 		return nil, false
 	}
 	return o.ProjectEnvVar, true
@@ -807,7 +810,7 @@ func (o *ProjectProjectGet) GetProjectEnvVarOk() ([]ProjectEnvVarProjectGet, boo
 
 // HasProjectEnvVar returns a boolean if a field has been set.
 func (o *ProjectProjectGet) HasProjectEnvVar() bool {
-	if o != nil && !isNil(o.ProjectEnvVar) {
+	if o != nil && !IsNil(o.ProjectEnvVar) {
 		return true
 	}
 
@@ -821,7 +824,7 @@ func (o *ProjectProjectGet) SetProjectEnvVar(v []ProjectEnvVarProjectGet) {
 
 // GetCreatedAt returns the CreatedAt field value if set, zero value otherwise.
 func (o *ProjectProjectGet) GetCreatedAt() time.Time {
-	if o == nil || isNil(o.CreatedAt) {
+	if o == nil || IsNil(o.CreatedAt) {
 		var ret time.Time
 		return ret
 	}
@@ -831,7 +834,7 @@ func (o *ProjectProjectGet) GetCreatedAt() time.Time {
 // GetCreatedAtOk returns a tuple with the CreatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ProjectProjectGet) GetCreatedAtOk() (*time.Time, bool) {
-	if o == nil || isNil(o.CreatedAt) {
+	if o == nil || IsNil(o.CreatedAt) {
 		return nil, false
 	}
 	return o.CreatedAt, true
@@ -839,7 +842,7 @@ func (o *ProjectProjectGet) GetCreatedAtOk() (*time.Time, bool) {
 
 // HasCreatedAt returns a boolean if a field has been set.
 func (o *ProjectProjectGet) HasCreatedAt() bool {
-	if o != nil && !isNil(o.CreatedAt) {
+	if o != nil && !IsNil(o.CreatedAt) {
 		return true
 	}
 
@@ -853,7 +856,7 @@ func (o *ProjectProjectGet) SetCreatedAt(v time.Time) {
 
 // GetUpdatedAt returns the UpdatedAt field value if set, zero value otherwise.
 func (o *ProjectProjectGet) GetUpdatedAt() time.Time {
-	if o == nil || isNil(o.UpdatedAt) {
+	if o == nil || IsNil(o.UpdatedAt) {
 		var ret time.Time
 		return ret
 	}
@@ -863,7 +866,7 @@ func (o *ProjectProjectGet) GetUpdatedAt() time.Time {
 // GetUpdatedAtOk returns a tuple with the UpdatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ProjectProjectGet) GetUpdatedAtOk() (*time.Time, bool) {
-	if o == nil || isNil(o.UpdatedAt) {
+	if o == nil || IsNil(o.UpdatedAt) {
 		return nil, false
 	}
 	return o.UpdatedAt, true
@@ -871,7 +874,7 @@ func (o *ProjectProjectGet) GetUpdatedAtOk() (*time.Time, bool) {
 
 // HasUpdatedAt returns a boolean if a field has been set.
 func (o *ProjectProjectGet) HasUpdatedAt() bool {
-	if o != nil && !isNil(o.UpdatedAt) {
+	if o != nil && !IsNil(o.UpdatedAt) {
 		return true
 	}
 
@@ -884,6 +887,14 @@ func (o *ProjectProjectGet) SetUpdatedAt(v time.Time) {
 }
 
 func (o ProjectProjectGet) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o ProjectProjectGet) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if o.TemplateIri.IsSet() {
 		toSerialize["templateIri"] = o.TemplateIri.Get()
@@ -900,15 +911,11 @@ func (o ProjectProjectGet) MarshalJSON() ([]byte, error) {
 	if o.Team.IsSet() {
 		toSerialize["team"] = o.Team.Get()
 	}
-	if !isNil(o.Environment) {
+	if !IsNil(o.Environment) {
 		toSerialize["environment"] = o.Environment
 	}
-	if !isNil(o.Id) {
-		toSerialize["id"] = o.Id
-	}
-	if !isNil(o.Uuid) {
-		toSerialize["uuid"] = o.Uuid
-	}
+	// skip: id is readOnly
+	// skip: uuid is readOnly
 	if o.Name.IsSet() {
 		toSerialize["name"] = o.Name.Get()
 	}
@@ -933,22 +940,22 @@ func (o ProjectProjectGet) MarshalJSON() ([]byte, error) {
 	if o.IsInitProjectSkeleton.IsSet() {
 		toSerialize["isInitProjectSkeleton"] = o.IsInitProjectSkeleton.Get()
 	}
-	if !isNil(o.ComponentVersion) {
+	if !IsNil(o.ComponentVersion) {
 		toSerialize["componentVersion"] = o.ComponentVersion
 	}
 	if o.ProjectTypeVersion.IsSet() {
 		toSerialize["projectTypeVersion"] = o.ProjectTypeVersion.Get()
 	}
-	if !isNil(o.ProjectEnvVar) {
+	if !IsNil(o.ProjectEnvVar) {
 		toSerialize["projectEnvVar"] = o.ProjectEnvVar
 	}
-	if !isNil(o.CreatedAt) {
+	if !IsNil(o.CreatedAt) {
 		toSerialize["createdAt"] = o.CreatedAt
 	}
-	if !isNil(o.UpdatedAt) {
+	if !IsNil(o.UpdatedAt) {
 		toSerialize["updatedAt"] = o.UpdatedAt
 	}
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 type NullableProjectProjectGet struct {

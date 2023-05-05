@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the TokenData type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &TokenData{}
+
 // TokenData struct for TokenData
 type TokenData struct {
 	Id       *int32                `json:"id,omitempty"`
@@ -41,7 +44,7 @@ func NewTokenDataWithDefaults() *TokenData {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *TokenData) GetId() int32 {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		var ret int32
 		return ret
 	}
@@ -51,7 +54,7 @@ func (o *TokenData) GetId() int32 {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TokenData) GetIdOk() (*int32, bool) {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
 	return o.Id, true
@@ -59,7 +62,7 @@ func (o *TokenData) GetIdOk() (*int32, bool) {
 
 // HasId returns a boolean if a field has been set.
 func (o *TokenData) HasId() bool {
-	if o != nil && !isNil(o.Id) {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -73,7 +76,7 @@ func (o *TokenData) SetId(v int32) {
 
 // GetFullname returns the Fullname field value if set, zero value otherwise.
 func (o *TokenData) GetFullname() string {
-	if o == nil || isNil(o.Fullname) {
+	if o == nil || IsNil(o.Fullname) {
 		var ret string
 		return ret
 	}
@@ -83,7 +86,7 @@ func (o *TokenData) GetFullname() string {
 // GetFullnameOk returns a tuple with the Fullname field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TokenData) GetFullnameOk() (*string, bool) {
-	if o == nil || isNil(o.Fullname) {
+	if o == nil || IsNil(o.Fullname) {
 		return nil, false
 	}
 	return o.Fullname, true
@@ -91,7 +94,7 @@ func (o *TokenData) GetFullnameOk() (*string, bool) {
 
 // HasFullname returns a boolean if a field has been set.
 func (o *TokenData) HasFullname() bool {
-	if o != nil && !isNil(o.Fullname) {
+	if o != nil && !IsNil(o.Fullname) {
 		return true
 	}
 
@@ -105,7 +108,7 @@ func (o *TokenData) SetFullname(v string) {
 
 // GetRoles returns the Roles field value if set, zero value otherwise.
 func (o *TokenData) GetRoles() []string {
-	if o == nil || isNil(o.Roles) {
+	if o == nil || IsNil(o.Roles) {
 		var ret []string
 		return ret
 	}
@@ -115,7 +118,7 @@ func (o *TokenData) GetRoles() []string {
 // GetRolesOk returns a tuple with the Roles field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TokenData) GetRolesOk() ([]string, bool) {
-	if o == nil || isNil(o.Roles) {
+	if o == nil || IsNil(o.Roles) {
 		return nil, false
 	}
 	return o.Roles, true
@@ -123,7 +126,7 @@ func (o *TokenData) GetRolesOk() ([]string, bool) {
 
 // HasRoles returns a boolean if a field has been set.
 func (o *TokenData) HasRoles() bool {
-	if o != nil && !isNil(o.Roles) {
+	if o != nil && !IsNil(o.Roles) {
 		return true
 	}
 
@@ -137,7 +140,7 @@ func (o *TokenData) SetRoles(v []string) {
 
 // GetTeams returns the Teams field value if set, zero value otherwise.
 func (o *TokenData) GetTeams() []TokenDataTeamsInner {
-	if o == nil || isNil(o.Teams) {
+	if o == nil || IsNil(o.Teams) {
 		var ret []TokenDataTeamsInner
 		return ret
 	}
@@ -147,7 +150,7 @@ func (o *TokenData) GetTeams() []TokenDataTeamsInner {
 // GetTeamsOk returns a tuple with the Teams field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TokenData) GetTeamsOk() ([]TokenDataTeamsInner, bool) {
-	if o == nil || isNil(o.Teams) {
+	if o == nil || IsNil(o.Teams) {
 		return nil, false
 	}
 	return o.Teams, true
@@ -155,7 +158,7 @@ func (o *TokenData) GetTeamsOk() ([]TokenDataTeamsInner, bool) {
 
 // HasTeams returns a boolean if a field has been set.
 func (o *TokenData) HasTeams() bool {
-	if o != nil && !isNil(o.Teams) {
+	if o != nil && !IsNil(o.Teams) {
 		return true
 	}
 
@@ -168,20 +171,28 @@ func (o *TokenData) SetTeams(v []TokenDataTeamsInner) {
 }
 
 func (o TokenData) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.Id) {
-		toSerialize["id"] = o.Id
-	}
-	if !isNil(o.Fullname) {
-		toSerialize["fullname"] = o.Fullname
-	}
-	if !isNil(o.Roles) {
-		toSerialize["roles"] = o.Roles
-	}
-	if !isNil(o.Teams) {
-		toSerialize["teams"] = o.Teams
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o TokenData) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
+	if !IsNil(o.Fullname) {
+		toSerialize["fullname"] = o.Fullname
+	}
+	if !IsNil(o.Roles) {
+		toSerialize["roles"] = o.Roles
+	}
+	if !IsNil(o.Teams) {
+		toSerialize["teams"] = o.Teams
+	}
+	return toSerialize, nil
 }
 
 type NullableTokenData struct {

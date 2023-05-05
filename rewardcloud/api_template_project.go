@@ -13,7 +13,7 @@ package rewardcloud
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"reflect"
@@ -23,7 +23,7 @@ import (
 // TemplateProjectApiService TemplateProjectApi service
 type TemplateProjectApiService service
 
-type ApiApiTemplateProjectsGetCollectionRequest struct {
+type TemplateProjectApiApiTemplateProjectsGetCollectionRequest struct {
 	ctx                 context.Context
 	ApiService          *TemplateProjectApiService
 	page                *int32
@@ -34,33 +34,33 @@ type ApiApiTemplateProjectsGetCollectionRequest struct {
 }
 
 // The collection page number
-func (r ApiApiTemplateProjectsGetCollectionRequest) Page(page int32) ApiApiTemplateProjectsGetCollectionRequest {
+func (r TemplateProjectApiApiTemplateProjectsGetCollectionRequest) Page(page int32) TemplateProjectApiApiTemplateProjectsGetCollectionRequest {
 	r.page = &page
 	return r
 }
 
 // The number of items per page
-func (r ApiApiTemplateProjectsGetCollectionRequest) ItemsPerPage(itemsPerPage int32) ApiApiTemplateProjectsGetCollectionRequest {
+func (r TemplateProjectApiApiTemplateProjectsGetCollectionRequest) ItemsPerPage(itemsPerPage int32) TemplateProjectApiApiTemplateProjectsGetCollectionRequest {
 	r.itemsPerPage = &itemsPerPage
 	return r
 }
 
-func (r ApiApiTemplateProjectsGetCollectionRequest) ProjectTypeVersion(projectTypeVersion string) ApiApiTemplateProjectsGetCollectionRequest {
+func (r TemplateProjectApiApiTemplateProjectsGetCollectionRequest) ProjectTypeVersion(projectTypeVersion string) TemplateProjectApiApiTemplateProjectsGetCollectionRequest {
 	r.projectTypeVersion = &projectTypeVersion
 	return r
 }
 
-func (r ApiApiTemplateProjectsGetCollectionRequest) ProjectTypeVersion2(projectTypeVersion2 []string) ApiApiTemplateProjectsGetCollectionRequest {
+func (r TemplateProjectApiApiTemplateProjectsGetCollectionRequest) ProjectTypeVersion2(projectTypeVersion2 []string) TemplateProjectApiApiTemplateProjectsGetCollectionRequest {
 	r.projectTypeVersion2 = &projectTypeVersion2
 	return r
 }
 
-func (r ApiApiTemplateProjectsGetCollectionRequest) OrderUpdatedAt(orderUpdatedAt string) ApiApiTemplateProjectsGetCollectionRequest {
+func (r TemplateProjectApiApiTemplateProjectsGetCollectionRequest) OrderUpdatedAt(orderUpdatedAt string) TemplateProjectApiApiTemplateProjectsGetCollectionRequest {
 	r.orderUpdatedAt = &orderUpdatedAt
 	return r
 }
 
-func (r ApiApiTemplateProjectsGetCollectionRequest) Execute() (*ApiTemplateProjectsGetCollection200Response, *http.Response, error) {
+func (r TemplateProjectApiApiTemplateProjectsGetCollectionRequest) Execute() ([]TemplateProjectTemplateProjectOutput, *http.Response, error) {
 	return r.ApiService.ApiTemplateProjectsGetCollectionExecute(r)
 }
 
@@ -70,10 +70,10 @@ ApiTemplateProjectsGetCollection Retrieves the collection of TemplateProject res
 Retrieves the collection of TemplateProject resources.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiApiTemplateProjectsGetCollectionRequest
+	@return TemplateProjectApiApiTemplateProjectsGetCollectionRequest
 */
-func (a *TemplateProjectApiService) ApiTemplateProjectsGetCollection(ctx context.Context) ApiApiTemplateProjectsGetCollectionRequest {
-	return ApiApiTemplateProjectsGetCollectionRequest{
+func (a *TemplateProjectApiService) ApiTemplateProjectsGetCollection(ctx context.Context) TemplateProjectApiApiTemplateProjectsGetCollectionRequest {
+	return TemplateProjectApiApiTemplateProjectsGetCollectionRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -81,13 +81,13 @@ func (a *TemplateProjectApiService) ApiTemplateProjectsGetCollection(ctx context
 
 // Execute executes the request
 //
-//	@return ApiTemplateProjectsGetCollection200Response
-func (a *TemplateProjectApiService) ApiTemplateProjectsGetCollectionExecute(r ApiApiTemplateProjectsGetCollectionRequest) (*ApiTemplateProjectsGetCollection200Response, *http.Response, error) {
+//	@return []TemplateProjectTemplateProjectOutput
+func (a *TemplateProjectApiService) ApiTemplateProjectsGetCollectionExecute(r TemplateProjectApiApiTemplateProjectsGetCollectionRequest) ([]TemplateProjectTemplateProjectOutput, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *ApiTemplateProjectsGetCollection200Response
+		localVarReturnValue []TemplateProjectTemplateProjectOutput
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TemplateProjectApiService.ApiTemplateProjectsGetCollection")
@@ -102,27 +102,27 @@ func (a *TemplateProjectApiService) ApiTemplateProjectsGetCollectionExecute(r Ap
 	localVarFormParams := url.Values{}
 
 	if r.page != nil {
-		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
 	}
 	if r.itemsPerPage != nil {
-		localVarQueryParams.Add("itemsPerPage", parameterToString(*r.itemsPerPage, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "itemsPerPage", r.itemsPerPage, "")
 	}
 	if r.projectTypeVersion != nil {
-		localVarQueryParams.Add("projectTypeVersion", parameterToString(*r.projectTypeVersion, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "projectTypeVersion", r.projectTypeVersion, "")
 	}
 	if r.projectTypeVersion2 != nil {
 		t := *r.projectTypeVersion2
 		if reflect.TypeOf(t).Kind() == reflect.Slice {
 			s := reflect.ValueOf(t)
 			for i := 0; i < s.Len(); i++ {
-				localVarQueryParams.Add("projectTypeVersion[]", parameterToString(s.Index(i), "multi"))
+				parameterAddToHeaderOrQuery(localVarQueryParams, "projectTypeVersion[]", s.Index(i), "multi")
 			}
 		} else {
-			localVarQueryParams.Add("projectTypeVersion[]", parameterToString(t, "multi"))
+			parameterAddToHeaderOrQuery(localVarQueryParams, "projectTypeVersion[]", t, "multi")
 		}
 	}
 	if r.orderUpdatedAt != nil {
-		localVarQueryParams.Add("order[updatedAt]", parameterToString(*r.orderUpdatedAt, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "order[updatedAt]", r.orderUpdatedAt, "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -134,7 +134,7 @@ func (a *TemplateProjectApiService) ApiTemplateProjectsGetCollectionExecute(r Ap
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/hal+json", "application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
+	localVarHTTPHeaderAccepts := []string{"application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -165,9 +165,9 @@ func (a *TemplateProjectApiService) ApiTemplateProjectsGetCollectionExecute(r Ap
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -192,13 +192,13 @@ func (a *TemplateProjectApiService) ApiTemplateProjectsGetCollectionExecute(r Ap
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiApiTemplateProjectsIdDeleteRequest struct {
+type TemplateProjectApiApiTemplateProjectsIdDeleteRequest struct {
 	ctx        context.Context
 	ApiService *TemplateProjectApiService
 	id         string
 }
 
-func (r ApiApiTemplateProjectsIdDeleteRequest) Execute() (*http.Response, error) {
+func (r TemplateProjectApiApiTemplateProjectsIdDeleteRequest) Execute() (*http.Response, error) {
 	return r.ApiService.ApiTemplateProjectsIdDeleteExecute(r)
 }
 
@@ -209,10 +209,10 @@ Removes the TemplateProject resource.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id TemplateProject identifier
-	@return ApiApiTemplateProjectsIdDeleteRequest
+	@return TemplateProjectApiApiTemplateProjectsIdDeleteRequest
 */
-func (a *TemplateProjectApiService) ApiTemplateProjectsIdDelete(ctx context.Context, id string) ApiApiTemplateProjectsIdDeleteRequest {
-	return ApiApiTemplateProjectsIdDeleteRequest{
+func (a *TemplateProjectApiService) ApiTemplateProjectsIdDelete(ctx context.Context, id string) TemplateProjectApiApiTemplateProjectsIdDeleteRequest {
+	return TemplateProjectApiApiTemplateProjectsIdDeleteRequest{
 		ApiService: a,
 		ctx:        ctx,
 		id:         id,
@@ -220,7 +220,7 @@ func (a *TemplateProjectApiService) ApiTemplateProjectsIdDelete(ctx context.Cont
 }
 
 // Execute executes the request
-func (a *TemplateProjectApiService) ApiTemplateProjectsIdDeleteExecute(r ApiApiTemplateProjectsIdDeleteRequest) (*http.Response, error) {
+func (a *TemplateProjectApiService) ApiTemplateProjectsIdDeleteExecute(r TemplateProjectApiApiTemplateProjectsIdDeleteRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
 		localVarPostBody   interface{}
@@ -233,7 +233,7 @@ func (a *TemplateProjectApiService) ApiTemplateProjectsIdDeleteExecute(r ApiApiT
 	}
 
 	localVarPath := localBasePath + "/api/template_projects/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -280,9 +280,9 @@ func (a *TemplateProjectApiService) ApiTemplateProjectsIdDeleteExecute(r ApiApiT
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -298,13 +298,13 @@ func (a *TemplateProjectApiService) ApiTemplateProjectsIdDeleteExecute(r ApiApiT
 	return localVarHTTPResponse, nil
 }
 
-type ApiApiTemplateProjectsIdGetRequest struct {
+type TemplateProjectApiApiTemplateProjectsIdGetRequest struct {
 	ctx        context.Context
 	ApiService *TemplateProjectApiService
 	id         string
 }
 
-func (r ApiApiTemplateProjectsIdGetRequest) Execute() (*TemplateProjectJsonhalTemplateProjectOutput, *http.Response, error) {
+func (r TemplateProjectApiApiTemplateProjectsIdGetRequest) Execute() (*TemplateProjectTemplateProjectOutput, *http.Response, error) {
 	return r.ApiService.ApiTemplateProjectsIdGetExecute(r)
 }
 
@@ -315,10 +315,10 @@ Retrieves a TemplateProject resource.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id TemplateProject identifier
-	@return ApiApiTemplateProjectsIdGetRequest
+	@return TemplateProjectApiApiTemplateProjectsIdGetRequest
 */
-func (a *TemplateProjectApiService) ApiTemplateProjectsIdGet(ctx context.Context, id string) ApiApiTemplateProjectsIdGetRequest {
-	return ApiApiTemplateProjectsIdGetRequest{
+func (a *TemplateProjectApiService) ApiTemplateProjectsIdGet(ctx context.Context, id string) TemplateProjectApiApiTemplateProjectsIdGetRequest {
+	return TemplateProjectApiApiTemplateProjectsIdGetRequest{
 		ApiService: a,
 		ctx:        ctx,
 		id:         id,
@@ -327,13 +327,13 @@ func (a *TemplateProjectApiService) ApiTemplateProjectsIdGet(ctx context.Context
 
 // Execute executes the request
 //
-//	@return TemplateProjectJsonhalTemplateProjectOutput
-func (a *TemplateProjectApiService) ApiTemplateProjectsIdGetExecute(r ApiApiTemplateProjectsIdGetRequest) (*TemplateProjectJsonhalTemplateProjectOutput, *http.Response, error) {
+//	@return TemplateProjectTemplateProjectOutput
+func (a *TemplateProjectApiService) ApiTemplateProjectsIdGetExecute(r TemplateProjectApiApiTemplateProjectsIdGetRequest) (*TemplateProjectTemplateProjectOutput, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *TemplateProjectJsonhalTemplateProjectOutput
+		localVarReturnValue *TemplateProjectTemplateProjectOutput
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TemplateProjectApiService.ApiTemplateProjectsIdGet")
@@ -342,7 +342,7 @@ func (a *TemplateProjectApiService) ApiTemplateProjectsIdGetExecute(r ApiApiTemp
 	}
 
 	localVarPath := localBasePath + "/api/template_projects/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -358,7 +358,7 @@ func (a *TemplateProjectApiService) ApiTemplateProjectsIdGetExecute(r ApiApiTemp
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/hal+json", "application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
+	localVarHTTPHeaderAccepts := []string{"application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -389,9 +389,9 @@ func (a *TemplateProjectApiService) ApiTemplateProjectsIdGetExecute(r ApiApiTemp
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -416,20 +416,20 @@ func (a *TemplateProjectApiService) ApiTemplateProjectsIdGetExecute(r ApiApiTemp
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiApiTemplateProjectsIdPatchRequest struct {
+type TemplateProjectApiApiTemplateProjectsIdPatchRequest struct {
 	ctx                                 context.Context
 	ApiService                          *TemplateProjectApiService
-	id                                  string
 	templateProjectTemplateProjectInput *TemplateProjectTemplateProjectInput
+	id                                  string
 }
 
 // The updated TemplateProject resource
-func (r ApiApiTemplateProjectsIdPatchRequest) TemplateProjectTemplateProjectInput(templateProjectTemplateProjectInput TemplateProjectTemplateProjectInput) ApiApiTemplateProjectsIdPatchRequest {
+func (r TemplateProjectApiApiTemplateProjectsIdPatchRequest) TemplateProjectTemplateProjectInput(templateProjectTemplateProjectInput TemplateProjectTemplateProjectInput) TemplateProjectApiApiTemplateProjectsIdPatchRequest {
 	r.templateProjectTemplateProjectInput = &templateProjectTemplateProjectInput
 	return r
 }
 
-func (r ApiApiTemplateProjectsIdPatchRequest) Execute() (*TemplateProjectJsonhalTemplateProjectOutput, *http.Response, error) {
+func (r TemplateProjectApiApiTemplateProjectsIdPatchRequest) Execute() (*TemplateProjectTemplateProjectOutput, *http.Response, error) {
 	return r.ApiService.ApiTemplateProjectsIdPatchExecute(r)
 }
 
@@ -440,10 +440,10 @@ Updates the TemplateProject resource.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id TemplateProject identifier
-	@return ApiApiTemplateProjectsIdPatchRequest
+	@return TemplateProjectApiApiTemplateProjectsIdPatchRequest
 */
-func (a *TemplateProjectApiService) ApiTemplateProjectsIdPatch(ctx context.Context, id string) ApiApiTemplateProjectsIdPatchRequest {
-	return ApiApiTemplateProjectsIdPatchRequest{
+func (a *TemplateProjectApiService) ApiTemplateProjectsIdPatch(ctx context.Context, id string) TemplateProjectApiApiTemplateProjectsIdPatchRequest {
+	return TemplateProjectApiApiTemplateProjectsIdPatchRequest{
 		ApiService: a,
 		ctx:        ctx,
 		id:         id,
@@ -452,13 +452,13 @@ func (a *TemplateProjectApiService) ApiTemplateProjectsIdPatch(ctx context.Conte
 
 // Execute executes the request
 //
-//	@return TemplateProjectJsonhalTemplateProjectOutput
-func (a *TemplateProjectApiService) ApiTemplateProjectsIdPatchExecute(r ApiApiTemplateProjectsIdPatchRequest) (*TemplateProjectJsonhalTemplateProjectOutput, *http.Response, error) {
+//	@return TemplateProjectTemplateProjectOutput
+func (a *TemplateProjectApiService) ApiTemplateProjectsIdPatchExecute(r TemplateProjectApiApiTemplateProjectsIdPatchRequest) (*TemplateProjectTemplateProjectOutput, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *TemplateProjectJsonhalTemplateProjectOutput
+		localVarReturnValue *TemplateProjectTemplateProjectOutput
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TemplateProjectApiService.ApiTemplateProjectsIdPatch")
@@ -467,7 +467,7 @@ func (a *TemplateProjectApiService) ApiTemplateProjectsIdPatchExecute(r ApiApiTe
 	}
 
 	localVarPath := localBasePath + "/api/template_projects/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -477,7 +477,7 @@ func (a *TemplateProjectApiService) ApiTemplateProjectsIdPatchExecute(r ApiApiTe
 	}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/vnd.api+json"}
+	localVarHTTPContentTypes := []string{"application/merge-patch+json", "application/vnd.api+json"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -486,7 +486,7 @@ func (a *TemplateProjectApiService) ApiTemplateProjectsIdPatchExecute(r ApiApiTe
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/hal+json", "application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
+	localVarHTTPHeaderAccepts := []string{"application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -519,9 +519,9 @@ func (a *TemplateProjectApiService) ApiTemplateProjectsIdPatchExecute(r ApiApiTe
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -546,20 +546,20 @@ func (a *TemplateProjectApiService) ApiTemplateProjectsIdPatchExecute(r ApiApiTe
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiApiTemplateProjectsIdPutRequest struct {
-	ctx                                        context.Context
-	ApiService                                 *TemplateProjectApiService
-	id                                         string
-	templateProjectJsonhalTemplateProjectInput *TemplateProjectJsonhalTemplateProjectInput
+type TemplateProjectApiApiTemplateProjectsIdPutRequest struct {
+	ctx                                 context.Context
+	ApiService                          *TemplateProjectApiService
+	templateProjectTemplateProjectInput *TemplateProjectTemplateProjectInput
+	id                                  string
 }
 
 // The updated TemplateProject resource
-func (r ApiApiTemplateProjectsIdPutRequest) TemplateProjectJsonhalTemplateProjectInput(templateProjectJsonhalTemplateProjectInput TemplateProjectJsonhalTemplateProjectInput) ApiApiTemplateProjectsIdPutRequest {
-	r.templateProjectJsonhalTemplateProjectInput = &templateProjectJsonhalTemplateProjectInput
+func (r TemplateProjectApiApiTemplateProjectsIdPutRequest) TemplateProjectTemplateProjectInput(templateProjectTemplateProjectInput TemplateProjectTemplateProjectInput) TemplateProjectApiApiTemplateProjectsIdPutRequest {
+	r.templateProjectTemplateProjectInput = &templateProjectTemplateProjectInput
 	return r
 }
 
-func (r ApiApiTemplateProjectsIdPutRequest) Execute() (*TemplateProjectJsonhalTemplateProjectOutput, *http.Response, error) {
+func (r TemplateProjectApiApiTemplateProjectsIdPutRequest) Execute() (*TemplateProjectTemplateProjectOutput, *http.Response, error) {
 	return r.ApiService.ApiTemplateProjectsIdPutExecute(r)
 }
 
@@ -570,10 +570,10 @@ Replaces the TemplateProject resource.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id TemplateProject identifier
-	@return ApiApiTemplateProjectsIdPutRequest
+	@return TemplateProjectApiApiTemplateProjectsIdPutRequest
 */
-func (a *TemplateProjectApiService) ApiTemplateProjectsIdPut(ctx context.Context, id string) ApiApiTemplateProjectsIdPutRequest {
-	return ApiApiTemplateProjectsIdPutRequest{
+func (a *TemplateProjectApiService) ApiTemplateProjectsIdPut(ctx context.Context, id string) TemplateProjectApiApiTemplateProjectsIdPutRequest {
+	return TemplateProjectApiApiTemplateProjectsIdPutRequest{
 		ApiService: a,
 		ctx:        ctx,
 		id:         id,
@@ -582,13 +582,13 @@ func (a *TemplateProjectApiService) ApiTemplateProjectsIdPut(ctx context.Context
 
 // Execute executes the request
 //
-//	@return TemplateProjectJsonhalTemplateProjectOutput
-func (a *TemplateProjectApiService) ApiTemplateProjectsIdPutExecute(r ApiApiTemplateProjectsIdPutRequest) (*TemplateProjectJsonhalTemplateProjectOutput, *http.Response, error) {
+//	@return TemplateProjectTemplateProjectOutput
+func (a *TemplateProjectApiService) ApiTemplateProjectsIdPutExecute(r TemplateProjectApiApiTemplateProjectsIdPutRequest) (*TemplateProjectTemplateProjectOutput, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *TemplateProjectJsonhalTemplateProjectOutput
+		localVarReturnValue *TemplateProjectTemplateProjectOutput
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TemplateProjectApiService.ApiTemplateProjectsIdPut")
@@ -597,17 +597,17 @@ func (a *TemplateProjectApiService) ApiTemplateProjectsIdPutExecute(r ApiApiTemp
 	}
 
 	localVarPath := localBasePath + "/api/template_projects/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.templateProjectJsonhalTemplateProjectInput == nil {
-		return localVarReturnValue, nil, reportError("templateProjectJsonhalTemplateProjectInput is required and must be specified")
+	if r.templateProjectTemplateProjectInput == nil {
+		return localVarReturnValue, nil, reportError("templateProjectTemplateProjectInput is required and must be specified")
 	}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/hal+json", "application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
+	localVarHTTPContentTypes := []string{"application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -616,7 +616,7 @@ func (a *TemplateProjectApiService) ApiTemplateProjectsIdPutExecute(r ApiApiTemp
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/hal+json", "application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
+	localVarHTTPHeaderAccepts := []string{"application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -624,7 +624,7 @@ func (a *TemplateProjectApiService) ApiTemplateProjectsIdPutExecute(r ApiApiTemp
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.templateProjectJsonhalTemplateProjectInput
+	localVarPostBody = r.templateProjectTemplateProjectInput
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
@@ -649,9 +649,9 @@ func (a *TemplateProjectApiService) ApiTemplateProjectsIdPutExecute(r ApiApiTemp
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -676,19 +676,19 @@ func (a *TemplateProjectApiService) ApiTemplateProjectsIdPutExecute(r ApiApiTemp
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiApiTemplateProjectsPostRequest struct {
-	ctx                                        context.Context
-	ApiService                                 *TemplateProjectApiService
-	templateProjectJsonhalTemplateProjectInput *TemplateProjectJsonhalTemplateProjectInput
+type TemplateProjectApiApiTemplateProjectsPostRequest struct {
+	ctx                                 context.Context
+	ApiService                          *TemplateProjectApiService
+	templateProjectTemplateProjectInput *TemplateProjectTemplateProjectInput
 }
 
 // The new TemplateProject resource
-func (r ApiApiTemplateProjectsPostRequest) TemplateProjectJsonhalTemplateProjectInput(templateProjectJsonhalTemplateProjectInput TemplateProjectJsonhalTemplateProjectInput) ApiApiTemplateProjectsPostRequest {
-	r.templateProjectJsonhalTemplateProjectInput = &templateProjectJsonhalTemplateProjectInput
+func (r TemplateProjectApiApiTemplateProjectsPostRequest) TemplateProjectTemplateProjectInput(templateProjectTemplateProjectInput TemplateProjectTemplateProjectInput) TemplateProjectApiApiTemplateProjectsPostRequest {
+	r.templateProjectTemplateProjectInput = &templateProjectTemplateProjectInput
 	return r
 }
 
-func (r ApiApiTemplateProjectsPostRequest) Execute() (*TemplateProjectJsonhalTemplateProjectOutput, *http.Response, error) {
+func (r TemplateProjectApiApiTemplateProjectsPostRequest) Execute() (*TemplateProjectTemplateProjectOutput, *http.Response, error) {
 	return r.ApiService.ApiTemplateProjectsPostExecute(r)
 }
 
@@ -698,10 +698,10 @@ ApiTemplateProjectsPost Creates a TemplateProject resource.
 Creates a TemplateProject resource.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiApiTemplateProjectsPostRequest
+	@return TemplateProjectApiApiTemplateProjectsPostRequest
 */
-func (a *TemplateProjectApiService) ApiTemplateProjectsPost(ctx context.Context) ApiApiTemplateProjectsPostRequest {
-	return ApiApiTemplateProjectsPostRequest{
+func (a *TemplateProjectApiService) ApiTemplateProjectsPost(ctx context.Context) TemplateProjectApiApiTemplateProjectsPostRequest {
+	return TemplateProjectApiApiTemplateProjectsPostRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -709,13 +709,13 @@ func (a *TemplateProjectApiService) ApiTemplateProjectsPost(ctx context.Context)
 
 // Execute executes the request
 //
-//	@return TemplateProjectJsonhalTemplateProjectOutput
-func (a *TemplateProjectApiService) ApiTemplateProjectsPostExecute(r ApiApiTemplateProjectsPostRequest) (*TemplateProjectJsonhalTemplateProjectOutput, *http.Response, error) {
+//	@return TemplateProjectTemplateProjectOutput
+func (a *TemplateProjectApiService) ApiTemplateProjectsPostExecute(r TemplateProjectApiApiTemplateProjectsPostRequest) (*TemplateProjectTemplateProjectOutput, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *TemplateProjectJsonhalTemplateProjectOutput
+		localVarReturnValue *TemplateProjectTemplateProjectOutput
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TemplateProjectApiService.ApiTemplateProjectsPost")
@@ -728,12 +728,12 @@ func (a *TemplateProjectApiService) ApiTemplateProjectsPostExecute(r ApiApiTempl
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.templateProjectJsonhalTemplateProjectInput == nil {
-		return localVarReturnValue, nil, reportError("templateProjectJsonhalTemplateProjectInput is required and must be specified")
+	if r.templateProjectTemplateProjectInput == nil {
+		return localVarReturnValue, nil, reportError("templateProjectTemplateProjectInput is required and must be specified")
 	}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/hal+json", "application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
+	localVarHTTPContentTypes := []string{"application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -742,7 +742,7 @@ func (a *TemplateProjectApiService) ApiTemplateProjectsPostExecute(r ApiApiTempl
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/hal+json", "application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
+	localVarHTTPHeaderAccepts := []string{"application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -750,7 +750,7 @@ func (a *TemplateProjectApiService) ApiTemplateProjectsPostExecute(r ApiApiTempl
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.templateProjectJsonhalTemplateProjectInput
+	localVarPostBody = r.templateProjectTemplateProjectInput
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
@@ -775,9 +775,9 @@ func (a *TemplateProjectApiService) ApiTemplateProjectsPostExecute(r ApiApiTempl
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}

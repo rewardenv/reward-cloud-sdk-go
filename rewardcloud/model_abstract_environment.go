@@ -15,6 +15,9 @@ import (
 	"time"
 )
 
+// checks if the AbstractEnvironment type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &AbstractEnvironment{}
+
 // AbstractEnvironment
 type AbstractEnvironment struct {
 	Id                    *int32                 `json:"id,omitempty"`
@@ -55,7 +58,7 @@ func NewAbstractEnvironmentWithDefaults() *AbstractEnvironment {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *AbstractEnvironment) GetId() int32 {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		var ret int32
 		return ret
 	}
@@ -65,7 +68,7 @@ func (o *AbstractEnvironment) GetId() int32 {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AbstractEnvironment) GetIdOk() (*int32, bool) {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
 	return o.Id, true
@@ -73,7 +76,7 @@ func (o *AbstractEnvironment) GetIdOk() (*int32, bool) {
 
 // HasId returns a boolean if a field has been set.
 func (o *AbstractEnvironment) HasId() bool {
-	if o != nil && !isNil(o.Id) {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -87,7 +90,7 @@ func (o *AbstractEnvironment) SetId(v int32) {
 
 // GetUuid returns the Uuid field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AbstractEnvironment) GetUuid() string {
-	if o == nil || isNil(o.Uuid.Get()) {
+	if o == nil || IsNil(o.Uuid.Get()) {
 		var ret string
 		return ret
 	}
@@ -130,7 +133,7 @@ func (o *AbstractEnvironment) UnsetUuid() {
 
 // GetName returns the Name field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AbstractEnvironment) GetName() string {
-	if o == nil || isNil(o.Name.Get()) {
+	if o == nil || IsNil(o.Name.Get()) {
 		var ret string
 		return ret
 	}
@@ -173,7 +176,7 @@ func (o *AbstractEnvironment) UnsetName() {
 
 // GetCodeName returns the CodeName field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AbstractEnvironment) GetCodeName() string {
-	if o == nil || isNil(o.CodeName.Get()) {
+	if o == nil || IsNil(o.CodeName.Get()) {
 		var ret string
 		return ret
 	}
@@ -216,7 +219,7 @@ func (o *AbstractEnvironment) UnsetCodeName() {
 
 // GetCpu returns the Cpu field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AbstractEnvironment) GetCpu() int32 {
-	if o == nil || isNil(o.Cpu.Get()) {
+	if o == nil || IsNil(o.Cpu.Get()) {
 		var ret int32
 		return ret
 	}
@@ -259,7 +262,7 @@ func (o *AbstractEnvironment) UnsetCpu() {
 
 // GetMemory returns the Memory field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AbstractEnvironment) GetMemory() int32 {
-	if o == nil || isNil(o.Memory.Get()) {
+	if o == nil || IsNil(o.Memory.Get()) {
 		var ret int32
 		return ret
 	}
@@ -302,7 +305,7 @@ func (o *AbstractEnvironment) UnsetMemory() {
 
 // GetStorage returns the Storage field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AbstractEnvironment) GetStorage() int32 {
-	if o == nil || isNil(o.Storage.Get()) {
+	if o == nil || IsNil(o.Storage.Get()) {
 		var ret int32
 		return ret
 	}
@@ -345,7 +348,7 @@ func (o *AbstractEnvironment) UnsetStorage() {
 
 // GetDataTransferSettings returns the DataTransferSettings field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AbstractEnvironment) GetDataTransferSettings() string {
-	if o == nil || isNil(o.DataTransferSettings.Get()) {
+	if o == nil || IsNil(o.DataTransferSettings.Get()) {
 		var ret string
 		return ret
 	}
@@ -388,7 +391,7 @@ func (o *AbstractEnvironment) UnsetDataTransferSettings() {
 
 // GetIsStripDatabase returns the IsStripDatabase field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AbstractEnvironment) GetIsStripDatabase() bool {
-	if o == nil || isNil(o.IsStripDatabase.Get()) {
+	if o == nil || IsNil(o.IsStripDatabase.Get()) {
 		var ret bool
 		return ret
 	}
@@ -431,7 +434,7 @@ func (o *AbstractEnvironment) UnsetIsStripDatabase() {
 
 // GetIsAllowOutgoingEmails returns the IsAllowOutgoingEmails field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AbstractEnvironment) GetIsAllowOutgoingEmails() bool {
-	if o == nil || isNil(o.IsAllowOutgoingEmails.Get()) {
+	if o == nil || IsNil(o.IsAllowOutgoingEmails.Get()) {
 		var ret bool
 		return ret
 	}
@@ -474,7 +477,7 @@ func (o *AbstractEnvironment) UnsetIsAllowOutgoingEmails() {
 
 // GetIsInitSampleData returns the IsInitSampleData field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AbstractEnvironment) GetIsInitSampleData() bool {
-	if o == nil || isNil(o.IsInitSampleData.Get()) {
+	if o == nil || IsNil(o.IsInitSampleData.Get()) {
 		var ret bool
 		return ret
 	}
@@ -517,7 +520,7 @@ func (o *AbstractEnvironment) UnsetIsInitSampleData() {
 
 // GetEnvVar returns the EnvVar field value if set, zero value otherwise.
 func (o *AbstractEnvironment) GetEnvVar() []EnvironmentEnvVar {
-	if o == nil || isNil(o.EnvVar) {
+	if o == nil || IsNil(o.EnvVar) {
 		var ret []EnvironmentEnvVar
 		return ret
 	}
@@ -527,7 +530,7 @@ func (o *AbstractEnvironment) GetEnvVar() []EnvironmentEnvVar {
 // GetEnvVarOk returns a tuple with the EnvVar field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AbstractEnvironment) GetEnvVarOk() ([]EnvironmentEnvVar, bool) {
-	if o == nil || isNil(o.EnvVar) {
+	if o == nil || IsNil(o.EnvVar) {
 		return nil, false
 	}
 	return o.EnvVar, true
@@ -535,7 +538,7 @@ func (o *AbstractEnvironment) GetEnvVarOk() ([]EnvironmentEnvVar, bool) {
 
 // HasEnvVar returns a boolean if a field has been set.
 func (o *AbstractEnvironment) HasEnvVar() bool {
-	if o != nil && !isNil(o.EnvVar) {
+	if o != nil && !IsNil(o.EnvVar) {
 		return true
 	}
 
@@ -549,7 +552,7 @@ func (o *AbstractEnvironment) SetEnvVar(v []EnvironmentEnvVar) {
 
 // GetEnvironmentComponent returns the EnvironmentComponent field value if set, zero value otherwise.
 func (o *AbstractEnvironment) GetEnvironmentComponent() []EnvironmentComponent {
-	if o == nil || isNil(o.EnvironmentComponent) {
+	if o == nil || IsNil(o.EnvironmentComponent) {
 		var ret []EnvironmentComponent
 		return ret
 	}
@@ -559,7 +562,7 @@ func (o *AbstractEnvironment) GetEnvironmentComponent() []EnvironmentComponent {
 // GetEnvironmentComponentOk returns a tuple with the EnvironmentComponent field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AbstractEnvironment) GetEnvironmentComponentOk() ([]EnvironmentComponent, bool) {
-	if o == nil || isNil(o.EnvironmentComponent) {
+	if o == nil || IsNil(o.EnvironmentComponent) {
 		return nil, false
 	}
 	return o.EnvironmentComponent, true
@@ -567,7 +570,7 @@ func (o *AbstractEnvironment) GetEnvironmentComponentOk() ([]EnvironmentComponen
 
 // HasEnvironmentComponent returns a boolean if a field has been set.
 func (o *AbstractEnvironment) HasEnvironmentComponent() bool {
-	if o != nil && !isNil(o.EnvironmentComponent) {
+	if o != nil && !IsNil(o.EnvironmentComponent) {
 		return true
 	}
 
@@ -581,7 +584,7 @@ func (o *AbstractEnvironment) SetEnvironmentComponent(v []EnvironmentComponent) 
 
 // GetCreatedAt returns the CreatedAt field value if set, zero value otherwise.
 func (o *AbstractEnvironment) GetCreatedAt() time.Time {
-	if o == nil || isNil(o.CreatedAt) {
+	if o == nil || IsNil(o.CreatedAt) {
 		var ret time.Time
 		return ret
 	}
@@ -591,7 +594,7 @@ func (o *AbstractEnvironment) GetCreatedAt() time.Time {
 // GetCreatedAtOk returns a tuple with the CreatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AbstractEnvironment) GetCreatedAtOk() (*time.Time, bool) {
-	if o == nil || isNil(o.CreatedAt) {
+	if o == nil || IsNil(o.CreatedAt) {
 		return nil, false
 	}
 	return o.CreatedAt, true
@@ -599,7 +602,7 @@ func (o *AbstractEnvironment) GetCreatedAtOk() (*time.Time, bool) {
 
 // HasCreatedAt returns a boolean if a field has been set.
 func (o *AbstractEnvironment) HasCreatedAt() bool {
-	if o != nil && !isNil(o.CreatedAt) {
+	if o != nil && !IsNil(o.CreatedAt) {
 		return true
 	}
 
@@ -613,7 +616,7 @@ func (o *AbstractEnvironment) SetCreatedAt(v time.Time) {
 
 // GetUpdatedAt returns the UpdatedAt field value if set, zero value otherwise.
 func (o *AbstractEnvironment) GetUpdatedAt() time.Time {
-	if o == nil || isNil(o.UpdatedAt) {
+	if o == nil || IsNil(o.UpdatedAt) {
 		var ret time.Time
 		return ret
 	}
@@ -623,7 +626,7 @@ func (o *AbstractEnvironment) GetUpdatedAt() time.Time {
 // GetUpdatedAtOk returns a tuple with the UpdatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AbstractEnvironment) GetUpdatedAtOk() (*time.Time, bool) {
-	if o == nil || isNil(o.UpdatedAt) {
+	if o == nil || IsNil(o.UpdatedAt) {
 		return nil, false
 	}
 	return o.UpdatedAt, true
@@ -631,7 +634,7 @@ func (o *AbstractEnvironment) GetUpdatedAtOk() (*time.Time, bool) {
 
 // HasUpdatedAt returns a boolean if a field has been set.
 func (o *AbstractEnvironment) HasUpdatedAt() bool {
-	if o != nil && !isNil(o.UpdatedAt) {
+	if o != nil && !IsNil(o.UpdatedAt) {
 		return true
 	}
 
@@ -645,7 +648,7 @@ func (o *AbstractEnvironment) SetUpdatedAt(v time.Time) {
 
 // GetCreatedBy returns the CreatedBy field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AbstractEnvironment) GetCreatedBy() string {
-	if o == nil || isNil(o.CreatedBy.Get()) {
+	if o == nil || IsNil(o.CreatedBy.Get()) {
 		var ret string
 		return ret
 	}
@@ -688,7 +691,7 @@ func (o *AbstractEnvironment) UnsetCreatedBy() {
 
 // GetUpdatedBy returns the UpdatedBy field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AbstractEnvironment) GetUpdatedBy() string {
-	if o == nil || isNil(o.UpdatedBy.Get()) {
+	if o == nil || IsNil(o.UpdatedBy.Get()) {
 		var ret string
 		return ret
 	}
@@ -730,10 +733,16 @@ func (o *AbstractEnvironment) UnsetUpdatedBy() {
 }
 
 func (o AbstractEnvironment) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.Id) {
-		toSerialize["id"] = o.Id
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
+	return json.Marshal(toSerialize)
+}
+
+func (o AbstractEnvironment) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	// skip: id is readOnly
 	if o.Uuid.IsSet() {
 		toSerialize["uuid"] = o.Uuid.Get()
 	}
@@ -764,16 +773,16 @@ func (o AbstractEnvironment) MarshalJSON() ([]byte, error) {
 	if o.IsInitSampleData.IsSet() {
 		toSerialize["isInitSampleData"] = o.IsInitSampleData.Get()
 	}
-	if !isNil(o.EnvVar) {
+	if !IsNil(o.EnvVar) {
 		toSerialize["envVar"] = o.EnvVar
 	}
-	if !isNil(o.EnvironmentComponent) {
+	if !IsNil(o.EnvironmentComponent) {
 		toSerialize["environmentComponent"] = o.EnvironmentComponent
 	}
-	if !isNil(o.CreatedAt) {
+	if !IsNil(o.CreatedAt) {
 		toSerialize["createdAt"] = o.CreatedAt
 	}
-	if !isNil(o.UpdatedAt) {
+	if !IsNil(o.UpdatedAt) {
 		toSerialize["updatedAt"] = o.UpdatedAt
 	}
 	if o.CreatedBy.IsSet() {
@@ -782,7 +791,7 @@ func (o AbstractEnvironment) MarshalJSON() ([]byte, error) {
 	if o.UpdatedBy.IsSet() {
 		toSerialize["updatedBy"] = o.UpdatedBy.Get()
 	}
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 type NullableAbstractEnvironment struct {

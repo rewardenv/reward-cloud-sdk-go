@@ -13,7 +13,7 @@ package rewardcloud
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"reflect"
@@ -23,7 +23,7 @@ import (
 // OrganisationEnvVarApiService OrganisationEnvVarApi service
 type OrganisationEnvVarApiService service
 
-type ApiApiOrganisationEnvVarsGetCollectionRequest struct {
+type OrganisationEnvVarApiApiOrganisationEnvVarsGetCollectionRequest struct {
 	ctx           context.Context
 	ApiService    *OrganisationEnvVarApiService
 	page          *int32
@@ -35,38 +35,38 @@ type ApiApiOrganisationEnvVarsGetCollectionRequest struct {
 }
 
 // The collection page number
-func (r ApiApiOrganisationEnvVarsGetCollectionRequest) Page(page int32) ApiApiOrganisationEnvVarsGetCollectionRequest {
+func (r OrganisationEnvVarApiApiOrganisationEnvVarsGetCollectionRequest) Page(page int32) OrganisationEnvVarApiApiOrganisationEnvVarsGetCollectionRequest {
 	r.page = &page
 	return r
 }
 
 // The number of items per page
-func (r ApiApiOrganisationEnvVarsGetCollectionRequest) ItemsPerPage(itemsPerPage int32) ApiApiOrganisationEnvVarsGetCollectionRequest {
+func (r OrganisationEnvVarApiApiOrganisationEnvVarsGetCollectionRequest) ItemsPerPage(itemsPerPage int32) OrganisationEnvVarApiApiOrganisationEnvVarsGetCollectionRequest {
 	r.itemsPerPage = &itemsPerPage
 	return r
 }
 
-func (r ApiApiOrganisationEnvVarsGetCollectionRequest) Organisation(organisation string) ApiApiOrganisationEnvVarsGetCollectionRequest {
+func (r OrganisationEnvVarApiApiOrganisationEnvVarsGetCollectionRequest) Organisation(organisation string) OrganisationEnvVarApiApiOrganisationEnvVarsGetCollectionRequest {
 	r.organisation = &organisation
 	return r
 }
 
-func (r ApiApiOrganisationEnvVarsGetCollectionRequest) Organisation2(organisation2 []string) ApiApiOrganisationEnvVarsGetCollectionRequest {
+func (r OrganisationEnvVarApiApiOrganisationEnvVarsGetCollectionRequest) Organisation2(organisation2 []string) OrganisationEnvVarApiApiOrganisationEnvVarsGetCollectionRequest {
 	r.organisation2 = &organisation2
 	return r
 }
 
-func (r ApiApiOrganisationEnvVarsGetCollectionRequest) EnvVarType(envVarType string) ApiApiOrganisationEnvVarsGetCollectionRequest {
+func (r OrganisationEnvVarApiApiOrganisationEnvVarsGetCollectionRequest) EnvVarType(envVarType string) OrganisationEnvVarApiApiOrganisationEnvVarsGetCollectionRequest {
 	r.envVarType = &envVarType
 	return r
 }
 
-func (r ApiApiOrganisationEnvVarsGetCollectionRequest) EnvVarType2(envVarType2 []string) ApiApiOrganisationEnvVarsGetCollectionRequest {
+func (r OrganisationEnvVarApiApiOrganisationEnvVarsGetCollectionRequest) EnvVarType2(envVarType2 []string) OrganisationEnvVarApiApiOrganisationEnvVarsGetCollectionRequest {
 	r.envVarType2 = &envVarType2
 	return r
 }
 
-func (r ApiApiOrganisationEnvVarsGetCollectionRequest) Execute() (*ApiOrganisationEnvVarsGetCollection200Response, *http.Response, error) {
+func (r OrganisationEnvVarApiApiOrganisationEnvVarsGetCollectionRequest) Execute() ([]OrganisationEnvVar, *http.Response, error) {
 	return r.ApiService.ApiOrganisationEnvVarsGetCollectionExecute(r)
 }
 
@@ -76,10 +76,10 @@ ApiOrganisationEnvVarsGetCollection Retrieves the collection of OrganisationEnvV
 Retrieves the collection of OrganisationEnvVar resources.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiApiOrganisationEnvVarsGetCollectionRequest
+	@return OrganisationEnvVarApiApiOrganisationEnvVarsGetCollectionRequest
 */
-func (a *OrganisationEnvVarApiService) ApiOrganisationEnvVarsGetCollection(ctx context.Context) ApiApiOrganisationEnvVarsGetCollectionRequest {
-	return ApiApiOrganisationEnvVarsGetCollectionRequest{
+func (a *OrganisationEnvVarApiService) ApiOrganisationEnvVarsGetCollection(ctx context.Context) OrganisationEnvVarApiApiOrganisationEnvVarsGetCollectionRequest {
+	return OrganisationEnvVarApiApiOrganisationEnvVarsGetCollectionRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -87,13 +87,13 @@ func (a *OrganisationEnvVarApiService) ApiOrganisationEnvVarsGetCollection(ctx c
 
 // Execute executes the request
 //
-//	@return ApiOrganisationEnvVarsGetCollection200Response
-func (a *OrganisationEnvVarApiService) ApiOrganisationEnvVarsGetCollectionExecute(r ApiApiOrganisationEnvVarsGetCollectionRequest) (*ApiOrganisationEnvVarsGetCollection200Response, *http.Response, error) {
+//	@return []OrganisationEnvVar
+func (a *OrganisationEnvVarApiService) ApiOrganisationEnvVarsGetCollectionExecute(r OrganisationEnvVarApiApiOrganisationEnvVarsGetCollectionRequest) ([]OrganisationEnvVar, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *ApiOrganisationEnvVarsGetCollection200Response
+		localVarReturnValue []OrganisationEnvVar
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganisationEnvVarApiService.ApiOrganisationEnvVarsGetCollection")
@@ -108,37 +108,37 @@ func (a *OrganisationEnvVarApiService) ApiOrganisationEnvVarsGetCollectionExecut
 	localVarFormParams := url.Values{}
 
 	if r.page != nil {
-		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
 	}
 	if r.itemsPerPage != nil {
-		localVarQueryParams.Add("itemsPerPage", parameterToString(*r.itemsPerPage, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "itemsPerPage", r.itemsPerPage, "")
 	}
 	if r.organisation != nil {
-		localVarQueryParams.Add("organisation", parameterToString(*r.organisation, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "organisation", r.organisation, "")
 	}
 	if r.organisation2 != nil {
 		t := *r.organisation2
 		if reflect.TypeOf(t).Kind() == reflect.Slice {
 			s := reflect.ValueOf(t)
 			for i := 0; i < s.Len(); i++ {
-				localVarQueryParams.Add("organisation[]", parameterToString(s.Index(i), "multi"))
+				parameterAddToHeaderOrQuery(localVarQueryParams, "organisation[]", s.Index(i), "multi")
 			}
 		} else {
-			localVarQueryParams.Add("organisation[]", parameterToString(t, "multi"))
+			parameterAddToHeaderOrQuery(localVarQueryParams, "organisation[]", t, "multi")
 		}
 	}
 	if r.envVarType != nil {
-		localVarQueryParams.Add("envVarType", parameterToString(*r.envVarType, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "envVarType", r.envVarType, "")
 	}
 	if r.envVarType2 != nil {
 		t := *r.envVarType2
 		if reflect.TypeOf(t).Kind() == reflect.Slice {
 			s := reflect.ValueOf(t)
 			for i := 0; i < s.Len(); i++ {
-				localVarQueryParams.Add("envVarType[]", parameterToString(s.Index(i), "multi"))
+				parameterAddToHeaderOrQuery(localVarQueryParams, "envVarType[]", s.Index(i), "multi")
 			}
 		} else {
-			localVarQueryParams.Add("envVarType[]", parameterToString(t, "multi"))
+			parameterAddToHeaderOrQuery(localVarQueryParams, "envVarType[]", t, "multi")
 		}
 	}
 	// to determine the Content-Type header
@@ -151,7 +151,7 @@ func (a *OrganisationEnvVarApiService) ApiOrganisationEnvVarsGetCollectionExecut
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/hal+json", "application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
+	localVarHTTPHeaderAccepts := []string{"application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -182,9 +182,9 @@ func (a *OrganisationEnvVarApiService) ApiOrganisationEnvVarsGetCollectionExecut
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -209,13 +209,13 @@ func (a *OrganisationEnvVarApiService) ApiOrganisationEnvVarsGetCollectionExecut
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiApiOrganisationEnvVarsIdDeleteRequest struct {
+type OrganisationEnvVarApiApiOrganisationEnvVarsIdDeleteRequest struct {
 	ctx        context.Context
 	ApiService *OrganisationEnvVarApiService
 	id         string
 }
 
-func (r ApiApiOrganisationEnvVarsIdDeleteRequest) Execute() (*http.Response, error) {
+func (r OrganisationEnvVarApiApiOrganisationEnvVarsIdDeleteRequest) Execute() (*http.Response, error) {
 	return r.ApiService.ApiOrganisationEnvVarsIdDeleteExecute(r)
 }
 
@@ -226,10 +226,10 @@ Removes the OrganisationEnvVar resource.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id OrganisationEnvVar identifier
-	@return ApiApiOrganisationEnvVarsIdDeleteRequest
+	@return OrganisationEnvVarApiApiOrganisationEnvVarsIdDeleteRequest
 */
-func (a *OrganisationEnvVarApiService) ApiOrganisationEnvVarsIdDelete(ctx context.Context, id string) ApiApiOrganisationEnvVarsIdDeleteRequest {
-	return ApiApiOrganisationEnvVarsIdDeleteRequest{
+func (a *OrganisationEnvVarApiService) ApiOrganisationEnvVarsIdDelete(ctx context.Context, id string) OrganisationEnvVarApiApiOrganisationEnvVarsIdDeleteRequest {
+	return OrganisationEnvVarApiApiOrganisationEnvVarsIdDeleteRequest{
 		ApiService: a,
 		ctx:        ctx,
 		id:         id,
@@ -237,7 +237,7 @@ func (a *OrganisationEnvVarApiService) ApiOrganisationEnvVarsIdDelete(ctx contex
 }
 
 // Execute executes the request
-func (a *OrganisationEnvVarApiService) ApiOrganisationEnvVarsIdDeleteExecute(r ApiApiOrganisationEnvVarsIdDeleteRequest) (*http.Response, error) {
+func (a *OrganisationEnvVarApiService) ApiOrganisationEnvVarsIdDeleteExecute(r OrganisationEnvVarApiApiOrganisationEnvVarsIdDeleteRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
 		localVarPostBody   interface{}
@@ -250,7 +250,7 @@ func (a *OrganisationEnvVarApiService) ApiOrganisationEnvVarsIdDeleteExecute(r A
 	}
 
 	localVarPath := localBasePath + "/api/organisation_env_vars/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -297,9 +297,9 @@ func (a *OrganisationEnvVarApiService) ApiOrganisationEnvVarsIdDeleteExecute(r A
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -315,13 +315,13 @@ func (a *OrganisationEnvVarApiService) ApiOrganisationEnvVarsIdDeleteExecute(r A
 	return localVarHTTPResponse, nil
 }
 
-type ApiApiOrganisationEnvVarsIdGetRequest struct {
+type OrganisationEnvVarApiApiOrganisationEnvVarsIdGetRequest struct {
 	ctx        context.Context
 	ApiService *OrganisationEnvVarApiService
 	id         string
 }
 
-func (r ApiApiOrganisationEnvVarsIdGetRequest) Execute() (*OrganisationEnvVarJsonhal, *http.Response, error) {
+func (r OrganisationEnvVarApiApiOrganisationEnvVarsIdGetRequest) Execute() (*OrganisationEnvVar, *http.Response, error) {
 	return r.ApiService.ApiOrganisationEnvVarsIdGetExecute(r)
 }
 
@@ -332,10 +332,10 @@ Retrieves a OrganisationEnvVar resource.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id OrganisationEnvVar identifier
-	@return ApiApiOrganisationEnvVarsIdGetRequest
+	@return OrganisationEnvVarApiApiOrganisationEnvVarsIdGetRequest
 */
-func (a *OrganisationEnvVarApiService) ApiOrganisationEnvVarsIdGet(ctx context.Context, id string) ApiApiOrganisationEnvVarsIdGetRequest {
-	return ApiApiOrganisationEnvVarsIdGetRequest{
+func (a *OrganisationEnvVarApiService) ApiOrganisationEnvVarsIdGet(ctx context.Context, id string) OrganisationEnvVarApiApiOrganisationEnvVarsIdGetRequest {
+	return OrganisationEnvVarApiApiOrganisationEnvVarsIdGetRequest{
 		ApiService: a,
 		ctx:        ctx,
 		id:         id,
@@ -344,13 +344,13 @@ func (a *OrganisationEnvVarApiService) ApiOrganisationEnvVarsIdGet(ctx context.C
 
 // Execute executes the request
 //
-//	@return OrganisationEnvVarJsonhal
-func (a *OrganisationEnvVarApiService) ApiOrganisationEnvVarsIdGetExecute(r ApiApiOrganisationEnvVarsIdGetRequest) (*OrganisationEnvVarJsonhal, *http.Response, error) {
+//	@return OrganisationEnvVar
+func (a *OrganisationEnvVarApiService) ApiOrganisationEnvVarsIdGetExecute(r OrganisationEnvVarApiApiOrganisationEnvVarsIdGetRequest) (*OrganisationEnvVar, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *OrganisationEnvVarJsonhal
+		localVarReturnValue *OrganisationEnvVar
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganisationEnvVarApiService.ApiOrganisationEnvVarsIdGet")
@@ -359,7 +359,7 @@ func (a *OrganisationEnvVarApiService) ApiOrganisationEnvVarsIdGetExecute(r ApiA
 	}
 
 	localVarPath := localBasePath + "/api/organisation_env_vars/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -375,7 +375,7 @@ func (a *OrganisationEnvVarApiService) ApiOrganisationEnvVarsIdGetExecute(r ApiA
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/hal+json", "application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
+	localVarHTTPHeaderAccepts := []string{"application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -406,9 +406,9 @@ func (a *OrganisationEnvVarApiService) ApiOrganisationEnvVarsIdGetExecute(r ApiA
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -433,20 +433,20 @@ func (a *OrganisationEnvVarApiService) ApiOrganisationEnvVarsIdGetExecute(r ApiA
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiApiOrganisationEnvVarsIdPatchRequest struct {
+type OrganisationEnvVarApiApiOrganisationEnvVarsIdPatchRequest struct {
 	ctx                context.Context
 	ApiService         *OrganisationEnvVarApiService
-	id                 string
 	organisationEnvVar *OrganisationEnvVar
+	id                 string
 }
 
 // The updated OrganisationEnvVar resource
-func (r ApiApiOrganisationEnvVarsIdPatchRequest) OrganisationEnvVar(organisationEnvVar OrganisationEnvVar) ApiApiOrganisationEnvVarsIdPatchRequest {
+func (r OrganisationEnvVarApiApiOrganisationEnvVarsIdPatchRequest) OrganisationEnvVar(organisationEnvVar OrganisationEnvVar) OrganisationEnvVarApiApiOrganisationEnvVarsIdPatchRequest {
 	r.organisationEnvVar = &organisationEnvVar
 	return r
 }
 
-func (r ApiApiOrganisationEnvVarsIdPatchRequest) Execute() (*OrganisationEnvVarJsonhal, *http.Response, error) {
+func (r OrganisationEnvVarApiApiOrganisationEnvVarsIdPatchRequest) Execute() (*OrganisationEnvVar, *http.Response, error) {
 	return r.ApiService.ApiOrganisationEnvVarsIdPatchExecute(r)
 }
 
@@ -457,10 +457,10 @@ Updates the OrganisationEnvVar resource.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id OrganisationEnvVar identifier
-	@return ApiApiOrganisationEnvVarsIdPatchRequest
+	@return OrganisationEnvVarApiApiOrganisationEnvVarsIdPatchRequest
 */
-func (a *OrganisationEnvVarApiService) ApiOrganisationEnvVarsIdPatch(ctx context.Context, id string) ApiApiOrganisationEnvVarsIdPatchRequest {
-	return ApiApiOrganisationEnvVarsIdPatchRequest{
+func (a *OrganisationEnvVarApiService) ApiOrganisationEnvVarsIdPatch(ctx context.Context, id string) OrganisationEnvVarApiApiOrganisationEnvVarsIdPatchRequest {
+	return OrganisationEnvVarApiApiOrganisationEnvVarsIdPatchRequest{
 		ApiService: a,
 		ctx:        ctx,
 		id:         id,
@@ -469,13 +469,13 @@ func (a *OrganisationEnvVarApiService) ApiOrganisationEnvVarsIdPatch(ctx context
 
 // Execute executes the request
 //
-//	@return OrganisationEnvVarJsonhal
-func (a *OrganisationEnvVarApiService) ApiOrganisationEnvVarsIdPatchExecute(r ApiApiOrganisationEnvVarsIdPatchRequest) (*OrganisationEnvVarJsonhal, *http.Response, error) {
+//	@return OrganisationEnvVar
+func (a *OrganisationEnvVarApiService) ApiOrganisationEnvVarsIdPatchExecute(r OrganisationEnvVarApiApiOrganisationEnvVarsIdPatchRequest) (*OrganisationEnvVar, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *OrganisationEnvVarJsonhal
+		localVarReturnValue *OrganisationEnvVar
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganisationEnvVarApiService.ApiOrganisationEnvVarsIdPatch")
@@ -484,7 +484,7 @@ func (a *OrganisationEnvVarApiService) ApiOrganisationEnvVarsIdPatchExecute(r Ap
 	}
 
 	localVarPath := localBasePath + "/api/organisation_env_vars/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -494,7 +494,7 @@ func (a *OrganisationEnvVarApiService) ApiOrganisationEnvVarsIdPatchExecute(r Ap
 	}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/vnd.api+json"}
+	localVarHTTPContentTypes := []string{"application/merge-patch+json", "application/vnd.api+json"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -503,7 +503,7 @@ func (a *OrganisationEnvVarApiService) ApiOrganisationEnvVarsIdPatchExecute(r Ap
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/hal+json", "application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
+	localVarHTTPHeaderAccepts := []string{"application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -536,9 +536,9 @@ func (a *OrganisationEnvVarApiService) ApiOrganisationEnvVarsIdPatchExecute(r Ap
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -563,20 +563,20 @@ func (a *OrganisationEnvVarApiService) ApiOrganisationEnvVarsIdPatchExecute(r Ap
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiApiOrganisationEnvVarsIdPutRequest struct {
-	ctx                       context.Context
-	ApiService                *OrganisationEnvVarApiService
-	id                        string
-	organisationEnvVarJsonhal *OrganisationEnvVarJsonhal
+type OrganisationEnvVarApiApiOrganisationEnvVarsIdPutRequest struct {
+	ctx                context.Context
+	ApiService         *OrganisationEnvVarApiService
+	organisationEnvVar *OrganisationEnvVar
+	id                 string
 }
 
 // The updated OrganisationEnvVar resource
-func (r ApiApiOrganisationEnvVarsIdPutRequest) OrganisationEnvVarJsonhal(organisationEnvVarJsonhal OrganisationEnvVarJsonhal) ApiApiOrganisationEnvVarsIdPutRequest {
-	r.organisationEnvVarJsonhal = &organisationEnvVarJsonhal
+func (r OrganisationEnvVarApiApiOrganisationEnvVarsIdPutRequest) OrganisationEnvVar(organisationEnvVar OrganisationEnvVar) OrganisationEnvVarApiApiOrganisationEnvVarsIdPutRequest {
+	r.organisationEnvVar = &organisationEnvVar
 	return r
 }
 
-func (r ApiApiOrganisationEnvVarsIdPutRequest) Execute() (*OrganisationEnvVarJsonhal, *http.Response, error) {
+func (r OrganisationEnvVarApiApiOrganisationEnvVarsIdPutRequest) Execute() (*OrganisationEnvVar, *http.Response, error) {
 	return r.ApiService.ApiOrganisationEnvVarsIdPutExecute(r)
 }
 
@@ -587,10 +587,10 @@ Replaces the OrganisationEnvVar resource.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id OrganisationEnvVar identifier
-	@return ApiApiOrganisationEnvVarsIdPutRequest
+	@return OrganisationEnvVarApiApiOrganisationEnvVarsIdPutRequest
 */
-func (a *OrganisationEnvVarApiService) ApiOrganisationEnvVarsIdPut(ctx context.Context, id string) ApiApiOrganisationEnvVarsIdPutRequest {
-	return ApiApiOrganisationEnvVarsIdPutRequest{
+func (a *OrganisationEnvVarApiService) ApiOrganisationEnvVarsIdPut(ctx context.Context, id string) OrganisationEnvVarApiApiOrganisationEnvVarsIdPutRequest {
+	return OrganisationEnvVarApiApiOrganisationEnvVarsIdPutRequest{
 		ApiService: a,
 		ctx:        ctx,
 		id:         id,
@@ -599,13 +599,13 @@ func (a *OrganisationEnvVarApiService) ApiOrganisationEnvVarsIdPut(ctx context.C
 
 // Execute executes the request
 //
-//	@return OrganisationEnvVarJsonhal
-func (a *OrganisationEnvVarApiService) ApiOrganisationEnvVarsIdPutExecute(r ApiApiOrganisationEnvVarsIdPutRequest) (*OrganisationEnvVarJsonhal, *http.Response, error) {
+//	@return OrganisationEnvVar
+func (a *OrganisationEnvVarApiService) ApiOrganisationEnvVarsIdPutExecute(r OrganisationEnvVarApiApiOrganisationEnvVarsIdPutRequest) (*OrganisationEnvVar, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *OrganisationEnvVarJsonhal
+		localVarReturnValue *OrganisationEnvVar
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganisationEnvVarApiService.ApiOrganisationEnvVarsIdPut")
@@ -614,17 +614,17 @@ func (a *OrganisationEnvVarApiService) ApiOrganisationEnvVarsIdPutExecute(r ApiA
 	}
 
 	localVarPath := localBasePath + "/api/organisation_env_vars/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.organisationEnvVarJsonhal == nil {
-		return localVarReturnValue, nil, reportError("organisationEnvVarJsonhal is required and must be specified")
+	if r.organisationEnvVar == nil {
+		return localVarReturnValue, nil, reportError("organisationEnvVar is required and must be specified")
 	}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/hal+json", "application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
+	localVarHTTPContentTypes := []string{"application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -633,7 +633,7 @@ func (a *OrganisationEnvVarApiService) ApiOrganisationEnvVarsIdPutExecute(r ApiA
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/hal+json", "application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
+	localVarHTTPHeaderAccepts := []string{"application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -641,7 +641,7 @@ func (a *OrganisationEnvVarApiService) ApiOrganisationEnvVarsIdPutExecute(r ApiA
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.organisationEnvVarJsonhal
+	localVarPostBody = r.organisationEnvVar
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
@@ -666,9 +666,9 @@ func (a *OrganisationEnvVarApiService) ApiOrganisationEnvVarsIdPutExecute(r ApiA
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -693,19 +693,19 @@ func (a *OrganisationEnvVarApiService) ApiOrganisationEnvVarsIdPutExecute(r ApiA
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiApiOrganisationEnvVarsPostRequest struct {
-	ctx                       context.Context
-	ApiService                *OrganisationEnvVarApiService
-	organisationEnvVarJsonhal *OrganisationEnvVarJsonhal
+type OrganisationEnvVarApiApiOrganisationEnvVarsPostRequest struct {
+	ctx                context.Context
+	ApiService         *OrganisationEnvVarApiService
+	organisationEnvVar *OrganisationEnvVar
 }
 
 // The new OrganisationEnvVar resource
-func (r ApiApiOrganisationEnvVarsPostRequest) OrganisationEnvVarJsonhal(organisationEnvVarJsonhal OrganisationEnvVarJsonhal) ApiApiOrganisationEnvVarsPostRequest {
-	r.organisationEnvVarJsonhal = &organisationEnvVarJsonhal
+func (r OrganisationEnvVarApiApiOrganisationEnvVarsPostRequest) OrganisationEnvVar(organisationEnvVar OrganisationEnvVar) OrganisationEnvVarApiApiOrganisationEnvVarsPostRequest {
+	r.organisationEnvVar = &organisationEnvVar
 	return r
 }
 
-func (r ApiApiOrganisationEnvVarsPostRequest) Execute() (*OrganisationEnvVarJsonhal, *http.Response, error) {
+func (r OrganisationEnvVarApiApiOrganisationEnvVarsPostRequest) Execute() (*OrganisationEnvVar, *http.Response, error) {
 	return r.ApiService.ApiOrganisationEnvVarsPostExecute(r)
 }
 
@@ -715,10 +715,10 @@ ApiOrganisationEnvVarsPost Creates a OrganisationEnvVar resource.
 Creates a OrganisationEnvVar resource.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiApiOrganisationEnvVarsPostRequest
+	@return OrganisationEnvVarApiApiOrganisationEnvVarsPostRequest
 */
-func (a *OrganisationEnvVarApiService) ApiOrganisationEnvVarsPost(ctx context.Context) ApiApiOrganisationEnvVarsPostRequest {
-	return ApiApiOrganisationEnvVarsPostRequest{
+func (a *OrganisationEnvVarApiService) ApiOrganisationEnvVarsPost(ctx context.Context) OrganisationEnvVarApiApiOrganisationEnvVarsPostRequest {
+	return OrganisationEnvVarApiApiOrganisationEnvVarsPostRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -726,13 +726,13 @@ func (a *OrganisationEnvVarApiService) ApiOrganisationEnvVarsPost(ctx context.Co
 
 // Execute executes the request
 //
-//	@return OrganisationEnvVarJsonhal
-func (a *OrganisationEnvVarApiService) ApiOrganisationEnvVarsPostExecute(r ApiApiOrganisationEnvVarsPostRequest) (*OrganisationEnvVarJsonhal, *http.Response, error) {
+//	@return OrganisationEnvVar
+func (a *OrganisationEnvVarApiService) ApiOrganisationEnvVarsPostExecute(r OrganisationEnvVarApiApiOrganisationEnvVarsPostRequest) (*OrganisationEnvVar, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *OrganisationEnvVarJsonhal
+		localVarReturnValue *OrganisationEnvVar
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganisationEnvVarApiService.ApiOrganisationEnvVarsPost")
@@ -745,12 +745,12 @@ func (a *OrganisationEnvVarApiService) ApiOrganisationEnvVarsPostExecute(r ApiAp
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.organisationEnvVarJsonhal == nil {
-		return localVarReturnValue, nil, reportError("organisationEnvVarJsonhal is required and must be specified")
+	if r.organisationEnvVar == nil {
+		return localVarReturnValue, nil, reportError("organisationEnvVar is required and must be specified")
 	}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/hal+json", "application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
+	localVarHTTPContentTypes := []string{"application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -759,7 +759,7 @@ func (a *OrganisationEnvVarApiService) ApiOrganisationEnvVarsPostExecute(r ApiAp
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/hal+json", "application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
+	localVarHTTPHeaderAccepts := []string{"application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -767,7 +767,7 @@ func (a *OrganisationEnvVarApiService) ApiOrganisationEnvVarsPostExecute(r ApiAp
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.organisationEnvVarJsonhal
+	localVarPostBody = r.organisationEnvVar
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
@@ -792,9 +792,9 @@ func (a *OrganisationEnvVarApiService) ApiOrganisationEnvVarsPostExecute(r ApiAp
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}

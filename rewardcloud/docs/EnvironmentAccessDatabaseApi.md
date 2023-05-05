@@ -15,7 +15,7 @@ Method | HTTP request | Description
 
 ## ApiEnvironmentAccessDatabasesGetCollection
 
-> ApiEnvironmentAccessDatabasesGetCollection200Response ApiEnvironmentAccessDatabasesGetCollection(ctx).Page(page).ItemsPerPage(itemsPerPage).Execute()
+> []EnvironmentAccessDatabase ApiEnvironmentAccessDatabasesGetCollection(ctx).Page(page).ItemsPerPage(itemsPerPage).Execute()
 
 Retrieves the collection of EnvironmentAccessDatabase resources.
 
@@ -30,7 +30,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
@@ -44,7 +44,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `EnvironmentAccessDatabaseApi.ApiEnvironmentAccessDatabasesGetCollection``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiEnvironmentAccessDatabasesGetCollection`: ApiEnvironmentAccessDatabasesGetCollection200Response
+    // response from `ApiEnvironmentAccessDatabasesGetCollection`: []EnvironmentAccessDatabase
     fmt.Fprintf(os.Stdout, "Response from `EnvironmentAccessDatabaseApi.ApiEnvironmentAccessDatabasesGetCollection`: %v\n", resp)
 }
 ```
@@ -65,7 +65,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ApiEnvironmentAccessDatabasesGetCollection200Response**](ApiEnvironmentAccessDatabasesGetCollection200Response.md)
+[**[]EnvironmentAccessDatabase**](EnvironmentAccessDatabase.md)
 
 ### Authorization
 
@@ -74,7 +74,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
+- **Accept**: application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -98,7 +98,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
@@ -106,7 +106,7 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.EnvironmentAccessDatabaseApi.ApiEnvironmentAccessDatabasesIdDelete(context.Background(), id).Execute()
+    r, err := apiClient.EnvironmentAccessDatabaseApi.ApiEnvironmentAccessDatabasesIdDelete(context.Background(), id).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `EnvironmentAccessDatabaseApi.ApiEnvironmentAccessDatabasesIdDelete``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -151,7 +151,7 @@ Name | Type | Description  | Notes
 
 ## ApiEnvironmentAccessDatabasesIdGet
 
-> EnvironmentAccessDatabaseJsonhal ApiEnvironmentAccessDatabasesIdGet(ctx, id).Execute()
+> EnvironmentAccessDatabase ApiEnvironmentAccessDatabasesIdGet(ctx, id).Execute()
 
 Retrieves a EnvironmentAccessDatabase resource.
 
@@ -166,7 +166,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
@@ -179,7 +179,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `EnvironmentAccessDatabaseApi.ApiEnvironmentAccessDatabasesIdGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiEnvironmentAccessDatabasesIdGet`: EnvironmentAccessDatabaseJsonhal
+    // response from `ApiEnvironmentAccessDatabasesIdGet`: EnvironmentAccessDatabase
     fmt.Fprintf(os.Stdout, "Response from `EnvironmentAccessDatabaseApi.ApiEnvironmentAccessDatabasesIdGet`: %v\n", resp)
 }
 ```
@@ -203,7 +203,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**EnvironmentAccessDatabaseJsonhal**](EnvironmentAccessDatabaseJsonhal.md)
+[**EnvironmentAccessDatabase**](EnvironmentAccessDatabase.md)
 
 ### Authorization
 
@@ -212,7 +212,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
+- **Accept**: application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -221,7 +221,7 @@ Name | Type | Description  | Notes
 
 ## ApiEnvironmentAccessDatabasesIdPatch
 
-> EnvironmentAccessDatabaseJsonhal ApiEnvironmentAccessDatabasesIdPatch(ctx, id).EnvironmentAccessDatabase(environmentAccessDatabase).Execute()
+> EnvironmentAccessDatabase ApiEnvironmentAccessDatabasesIdPatch(ctx, id).EnvironmentAccessDatabase(environmentAccessDatabase).Execute()
 
 Updates the EnvironmentAccessDatabase resource.
 
@@ -236,12 +236,12 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    id := "id_example" // string | EnvironmentAccessDatabase identifier
     environmentAccessDatabase := *openapiclient.NewEnvironmentAccessDatabase() // EnvironmentAccessDatabase | The updated EnvironmentAccessDatabase resource
+    id := "id_example" // string | EnvironmentAccessDatabase identifier
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -250,7 +250,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `EnvironmentAccessDatabaseApi.ApiEnvironmentAccessDatabasesIdPatch``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiEnvironmentAccessDatabasesIdPatch`: EnvironmentAccessDatabaseJsonhal
+    // response from `ApiEnvironmentAccessDatabasesIdPatch`: EnvironmentAccessDatabase
     fmt.Fprintf(os.Stdout, "Response from `EnvironmentAccessDatabaseApi.ApiEnvironmentAccessDatabasesIdPatch`: %v\n", resp)
 }
 ```
@@ -270,12 +270,12 @@ Other parameters are passed through a pointer to a apiApiEnvironmentAccessDataba
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-
  **environmentAccessDatabase** | [**EnvironmentAccessDatabase**](EnvironmentAccessDatabase.md) | The updated EnvironmentAccessDatabase resource | 
+
 
 ### Return type
 
-[**EnvironmentAccessDatabaseJsonhal**](EnvironmentAccessDatabaseJsonhal.md)
+[**EnvironmentAccessDatabase**](EnvironmentAccessDatabase.md)
 
 ### Authorization
 
@@ -283,8 +283,8 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: application/vnd.api+json
-- **Accept**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
+- **Content-Type**: application/merge-patch+json, application/vnd.api+json
+- **Accept**: application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -293,7 +293,7 @@ Name | Type | Description  | Notes
 
 ## ApiEnvironmentAccessDatabasesIdPut
 
-> EnvironmentAccessDatabaseJsonhal ApiEnvironmentAccessDatabasesIdPut(ctx, id).EnvironmentAccessDatabaseJsonhal(environmentAccessDatabaseJsonhal).Execute()
+> EnvironmentAccessDatabase ApiEnvironmentAccessDatabasesIdPut(ctx, id).EnvironmentAccessDatabase(environmentAccessDatabase).Execute()
 
 Replaces the EnvironmentAccessDatabase resource.
 
@@ -308,21 +308,21 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
+    environmentAccessDatabase := *openapiclient.NewEnvironmentAccessDatabase() // EnvironmentAccessDatabase | The updated EnvironmentAccessDatabase resource
     id := "id_example" // string | EnvironmentAccessDatabase identifier
-    environmentAccessDatabaseJsonhal := *openapiclient.NewEnvironmentAccessDatabaseJsonhal() // EnvironmentAccessDatabaseJsonhal | The updated EnvironmentAccessDatabase resource
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.EnvironmentAccessDatabaseApi.ApiEnvironmentAccessDatabasesIdPut(context.Background(), id).EnvironmentAccessDatabaseJsonhal(environmentAccessDatabaseJsonhal).Execute()
+    resp, r, err := apiClient.EnvironmentAccessDatabaseApi.ApiEnvironmentAccessDatabasesIdPut(context.Background(), id).EnvironmentAccessDatabase(environmentAccessDatabase).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `EnvironmentAccessDatabaseApi.ApiEnvironmentAccessDatabasesIdPut``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiEnvironmentAccessDatabasesIdPut`: EnvironmentAccessDatabaseJsonhal
+    // response from `ApiEnvironmentAccessDatabasesIdPut`: EnvironmentAccessDatabase
     fmt.Fprintf(os.Stdout, "Response from `EnvironmentAccessDatabaseApi.ApiEnvironmentAccessDatabasesIdPut`: %v\n", resp)
 }
 ```
@@ -342,12 +342,12 @@ Other parameters are passed through a pointer to a apiApiEnvironmentAccessDataba
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **environmentAccessDatabase** | [**EnvironmentAccessDatabase**](EnvironmentAccessDatabase.md) | The updated EnvironmentAccessDatabase resource | 
 
- **environmentAccessDatabaseJsonhal** | [**EnvironmentAccessDatabaseJsonhal**](EnvironmentAccessDatabaseJsonhal.md) | The updated EnvironmentAccessDatabase resource | 
 
 ### Return type
 
-[**EnvironmentAccessDatabaseJsonhal**](EnvironmentAccessDatabaseJsonhal.md)
+[**EnvironmentAccessDatabase**](EnvironmentAccessDatabase.md)
 
 ### Authorization
 
@@ -355,8 +355,8 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
-- **Accept**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
+- **Content-Type**: application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
+- **Accept**: application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -365,7 +365,7 @@ Name | Type | Description  | Notes
 
 ## ApiEnvironmentAccessDatabasesPost
 
-> EnvironmentAccessDatabaseJsonhal ApiEnvironmentAccessDatabasesPost(ctx).EnvironmentAccessDatabaseJsonhal(environmentAccessDatabaseJsonhal).Execute()
+> EnvironmentAccessDatabase ApiEnvironmentAccessDatabasesPost(ctx).EnvironmentAccessDatabase(environmentAccessDatabase).Execute()
 
 Creates a EnvironmentAccessDatabase resource.
 
@@ -380,20 +380,20 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    environmentAccessDatabaseJsonhal := *openapiclient.NewEnvironmentAccessDatabaseJsonhal() // EnvironmentAccessDatabaseJsonhal | The new EnvironmentAccessDatabase resource
+    environmentAccessDatabase := *openapiclient.NewEnvironmentAccessDatabase() // EnvironmentAccessDatabase | The new EnvironmentAccessDatabase resource
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.EnvironmentAccessDatabaseApi.ApiEnvironmentAccessDatabasesPost(context.Background()).EnvironmentAccessDatabaseJsonhal(environmentAccessDatabaseJsonhal).Execute()
+    resp, r, err := apiClient.EnvironmentAccessDatabaseApi.ApiEnvironmentAccessDatabasesPost(context.Background()).EnvironmentAccessDatabase(environmentAccessDatabase).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `EnvironmentAccessDatabaseApi.ApiEnvironmentAccessDatabasesPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiEnvironmentAccessDatabasesPost`: EnvironmentAccessDatabaseJsonhal
+    // response from `ApiEnvironmentAccessDatabasesPost`: EnvironmentAccessDatabase
     fmt.Fprintf(os.Stdout, "Response from `EnvironmentAccessDatabaseApi.ApiEnvironmentAccessDatabasesPost`: %v\n", resp)
 }
 ```
@@ -409,11 +409,11 @@ Other parameters are passed through a pointer to a apiApiEnvironmentAccessDataba
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **environmentAccessDatabaseJsonhal** | [**EnvironmentAccessDatabaseJsonhal**](EnvironmentAccessDatabaseJsonhal.md) | The new EnvironmentAccessDatabase resource | 
+ **environmentAccessDatabase** | [**EnvironmentAccessDatabase**](EnvironmentAccessDatabase.md) | The new EnvironmentAccessDatabase resource | 
 
 ### Return type
 
-[**EnvironmentAccessDatabaseJsonhal**](EnvironmentAccessDatabaseJsonhal.md)
+[**EnvironmentAccessDatabase**](EnvironmentAccessDatabase.md)
 
 ### Authorization
 
@@ -421,8 +421,8 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
-- **Accept**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
+- **Content-Type**: application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
+- **Accept**: application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)

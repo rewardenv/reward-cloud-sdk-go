@@ -13,7 +13,7 @@ package rewardcloud
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"strings"
@@ -22,7 +22,7 @@ import (
 // EnvironmentAccessRedisApiService EnvironmentAccessRedisApi service
 type EnvironmentAccessRedisApiService service
 
-type ApiApiEnvironmentAccessRedisGetCollectionRequest struct {
+type EnvironmentAccessRedisApiApiEnvironmentAccessRedisGetCollectionRequest struct {
 	ctx          context.Context
 	ApiService   *EnvironmentAccessRedisApiService
 	page         *int32
@@ -30,18 +30,18 @@ type ApiApiEnvironmentAccessRedisGetCollectionRequest struct {
 }
 
 // The collection page number
-func (r ApiApiEnvironmentAccessRedisGetCollectionRequest) Page(page int32) ApiApiEnvironmentAccessRedisGetCollectionRequest {
+func (r EnvironmentAccessRedisApiApiEnvironmentAccessRedisGetCollectionRequest) Page(page int32) EnvironmentAccessRedisApiApiEnvironmentAccessRedisGetCollectionRequest {
 	r.page = &page
 	return r
 }
 
 // The number of items per page
-func (r ApiApiEnvironmentAccessRedisGetCollectionRequest) ItemsPerPage(itemsPerPage int32) ApiApiEnvironmentAccessRedisGetCollectionRequest {
+func (r EnvironmentAccessRedisApiApiEnvironmentAccessRedisGetCollectionRequest) ItemsPerPage(itemsPerPage int32) EnvironmentAccessRedisApiApiEnvironmentAccessRedisGetCollectionRequest {
 	r.itemsPerPage = &itemsPerPage
 	return r
 }
 
-func (r ApiApiEnvironmentAccessRedisGetCollectionRequest) Execute() (*ApiEnvironmentAccessRedisGetCollection200Response, *http.Response, error) {
+func (r EnvironmentAccessRedisApiApiEnvironmentAccessRedisGetCollectionRequest) Execute() ([]EnvironmentAccessRedis, *http.Response, error) {
 	return r.ApiService.ApiEnvironmentAccessRedisGetCollectionExecute(r)
 }
 
@@ -51,10 +51,10 @@ ApiEnvironmentAccessRedisGetCollection Retrieves the collection of EnvironmentAc
 Retrieves the collection of EnvironmentAccessRedis resources.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiApiEnvironmentAccessRedisGetCollectionRequest
+	@return EnvironmentAccessRedisApiApiEnvironmentAccessRedisGetCollectionRequest
 */
-func (a *EnvironmentAccessRedisApiService) ApiEnvironmentAccessRedisGetCollection(ctx context.Context) ApiApiEnvironmentAccessRedisGetCollectionRequest {
-	return ApiApiEnvironmentAccessRedisGetCollectionRequest{
+func (a *EnvironmentAccessRedisApiService) ApiEnvironmentAccessRedisGetCollection(ctx context.Context) EnvironmentAccessRedisApiApiEnvironmentAccessRedisGetCollectionRequest {
+	return EnvironmentAccessRedisApiApiEnvironmentAccessRedisGetCollectionRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -62,13 +62,13 @@ func (a *EnvironmentAccessRedisApiService) ApiEnvironmentAccessRedisGetCollectio
 
 // Execute executes the request
 //
-//	@return ApiEnvironmentAccessRedisGetCollection200Response
-func (a *EnvironmentAccessRedisApiService) ApiEnvironmentAccessRedisGetCollectionExecute(r ApiApiEnvironmentAccessRedisGetCollectionRequest) (*ApiEnvironmentAccessRedisGetCollection200Response, *http.Response, error) {
+//	@return []EnvironmentAccessRedis
+func (a *EnvironmentAccessRedisApiService) ApiEnvironmentAccessRedisGetCollectionExecute(r EnvironmentAccessRedisApiApiEnvironmentAccessRedisGetCollectionRequest) ([]EnvironmentAccessRedis, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *ApiEnvironmentAccessRedisGetCollection200Response
+		localVarReturnValue []EnvironmentAccessRedis
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnvironmentAccessRedisApiService.ApiEnvironmentAccessRedisGetCollection")
@@ -83,10 +83,10 @@ func (a *EnvironmentAccessRedisApiService) ApiEnvironmentAccessRedisGetCollectio
 	localVarFormParams := url.Values{}
 
 	if r.page != nil {
-		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
 	}
 	if r.itemsPerPage != nil {
-		localVarQueryParams.Add("itemsPerPage", parameterToString(*r.itemsPerPage, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "itemsPerPage", r.itemsPerPage, "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -98,7 +98,7 @@ func (a *EnvironmentAccessRedisApiService) ApiEnvironmentAccessRedisGetCollectio
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/hal+json", "application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
+	localVarHTTPHeaderAccepts := []string{"application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -129,9 +129,9 @@ func (a *EnvironmentAccessRedisApiService) ApiEnvironmentAccessRedisGetCollectio
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -156,13 +156,13 @@ func (a *EnvironmentAccessRedisApiService) ApiEnvironmentAccessRedisGetCollectio
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiApiEnvironmentAccessRedisIdDeleteRequest struct {
+type EnvironmentAccessRedisApiApiEnvironmentAccessRedisIdDeleteRequest struct {
 	ctx        context.Context
 	ApiService *EnvironmentAccessRedisApiService
 	id         string
 }
 
-func (r ApiApiEnvironmentAccessRedisIdDeleteRequest) Execute() (*http.Response, error) {
+func (r EnvironmentAccessRedisApiApiEnvironmentAccessRedisIdDeleteRequest) Execute() (*http.Response, error) {
 	return r.ApiService.ApiEnvironmentAccessRedisIdDeleteExecute(r)
 }
 
@@ -173,10 +173,10 @@ Removes the EnvironmentAccessRedis resource.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id EnvironmentAccessRedis identifier
-	@return ApiApiEnvironmentAccessRedisIdDeleteRequest
+	@return EnvironmentAccessRedisApiApiEnvironmentAccessRedisIdDeleteRequest
 */
-func (a *EnvironmentAccessRedisApiService) ApiEnvironmentAccessRedisIdDelete(ctx context.Context, id string) ApiApiEnvironmentAccessRedisIdDeleteRequest {
-	return ApiApiEnvironmentAccessRedisIdDeleteRequest{
+func (a *EnvironmentAccessRedisApiService) ApiEnvironmentAccessRedisIdDelete(ctx context.Context, id string) EnvironmentAccessRedisApiApiEnvironmentAccessRedisIdDeleteRequest {
+	return EnvironmentAccessRedisApiApiEnvironmentAccessRedisIdDeleteRequest{
 		ApiService: a,
 		ctx:        ctx,
 		id:         id,
@@ -184,7 +184,7 @@ func (a *EnvironmentAccessRedisApiService) ApiEnvironmentAccessRedisIdDelete(ctx
 }
 
 // Execute executes the request
-func (a *EnvironmentAccessRedisApiService) ApiEnvironmentAccessRedisIdDeleteExecute(r ApiApiEnvironmentAccessRedisIdDeleteRequest) (*http.Response, error) {
+func (a *EnvironmentAccessRedisApiService) ApiEnvironmentAccessRedisIdDeleteExecute(r EnvironmentAccessRedisApiApiEnvironmentAccessRedisIdDeleteRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
 		localVarPostBody   interface{}
@@ -197,7 +197,7 @@ func (a *EnvironmentAccessRedisApiService) ApiEnvironmentAccessRedisIdDeleteExec
 	}
 
 	localVarPath := localBasePath + "/api/environment_access_redis/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -244,9 +244,9 @@ func (a *EnvironmentAccessRedisApiService) ApiEnvironmentAccessRedisIdDeleteExec
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -262,13 +262,13 @@ func (a *EnvironmentAccessRedisApiService) ApiEnvironmentAccessRedisIdDeleteExec
 	return localVarHTTPResponse, nil
 }
 
-type ApiApiEnvironmentAccessRedisIdGetRequest struct {
+type EnvironmentAccessRedisApiApiEnvironmentAccessRedisIdGetRequest struct {
 	ctx        context.Context
 	ApiService *EnvironmentAccessRedisApiService
 	id         string
 }
 
-func (r ApiApiEnvironmentAccessRedisIdGetRequest) Execute() (*EnvironmentAccessRedisJsonhal, *http.Response, error) {
+func (r EnvironmentAccessRedisApiApiEnvironmentAccessRedisIdGetRequest) Execute() (*EnvironmentAccessRedis, *http.Response, error) {
 	return r.ApiService.ApiEnvironmentAccessRedisIdGetExecute(r)
 }
 
@@ -279,10 +279,10 @@ Retrieves a EnvironmentAccessRedis resource.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id EnvironmentAccessRedis identifier
-	@return ApiApiEnvironmentAccessRedisIdGetRequest
+	@return EnvironmentAccessRedisApiApiEnvironmentAccessRedisIdGetRequest
 */
-func (a *EnvironmentAccessRedisApiService) ApiEnvironmentAccessRedisIdGet(ctx context.Context, id string) ApiApiEnvironmentAccessRedisIdGetRequest {
-	return ApiApiEnvironmentAccessRedisIdGetRequest{
+func (a *EnvironmentAccessRedisApiService) ApiEnvironmentAccessRedisIdGet(ctx context.Context, id string) EnvironmentAccessRedisApiApiEnvironmentAccessRedisIdGetRequest {
+	return EnvironmentAccessRedisApiApiEnvironmentAccessRedisIdGetRequest{
 		ApiService: a,
 		ctx:        ctx,
 		id:         id,
@@ -291,13 +291,13 @@ func (a *EnvironmentAccessRedisApiService) ApiEnvironmentAccessRedisIdGet(ctx co
 
 // Execute executes the request
 //
-//	@return EnvironmentAccessRedisJsonhal
-func (a *EnvironmentAccessRedisApiService) ApiEnvironmentAccessRedisIdGetExecute(r ApiApiEnvironmentAccessRedisIdGetRequest) (*EnvironmentAccessRedisJsonhal, *http.Response, error) {
+//	@return EnvironmentAccessRedis
+func (a *EnvironmentAccessRedisApiService) ApiEnvironmentAccessRedisIdGetExecute(r EnvironmentAccessRedisApiApiEnvironmentAccessRedisIdGetRequest) (*EnvironmentAccessRedis, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *EnvironmentAccessRedisJsonhal
+		localVarReturnValue *EnvironmentAccessRedis
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnvironmentAccessRedisApiService.ApiEnvironmentAccessRedisIdGet")
@@ -306,7 +306,7 @@ func (a *EnvironmentAccessRedisApiService) ApiEnvironmentAccessRedisIdGetExecute
 	}
 
 	localVarPath := localBasePath + "/api/environment_access_redis/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -322,7 +322,7 @@ func (a *EnvironmentAccessRedisApiService) ApiEnvironmentAccessRedisIdGetExecute
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/hal+json", "application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
+	localVarHTTPHeaderAccepts := []string{"application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -353,9 +353,9 @@ func (a *EnvironmentAccessRedisApiService) ApiEnvironmentAccessRedisIdGetExecute
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -380,20 +380,20 @@ func (a *EnvironmentAccessRedisApiService) ApiEnvironmentAccessRedisIdGetExecute
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiApiEnvironmentAccessRedisIdPatchRequest struct {
+type EnvironmentAccessRedisApiApiEnvironmentAccessRedisIdPatchRequest struct {
 	ctx                    context.Context
 	ApiService             *EnvironmentAccessRedisApiService
-	id                     string
 	environmentAccessRedis *EnvironmentAccessRedis
+	id                     string
 }
 
 // The updated EnvironmentAccessRedis resource
-func (r ApiApiEnvironmentAccessRedisIdPatchRequest) EnvironmentAccessRedis(environmentAccessRedis EnvironmentAccessRedis) ApiApiEnvironmentAccessRedisIdPatchRequest {
+func (r EnvironmentAccessRedisApiApiEnvironmentAccessRedisIdPatchRequest) EnvironmentAccessRedis(environmentAccessRedis EnvironmentAccessRedis) EnvironmentAccessRedisApiApiEnvironmentAccessRedisIdPatchRequest {
 	r.environmentAccessRedis = &environmentAccessRedis
 	return r
 }
 
-func (r ApiApiEnvironmentAccessRedisIdPatchRequest) Execute() (*EnvironmentAccessRedisJsonhal, *http.Response, error) {
+func (r EnvironmentAccessRedisApiApiEnvironmentAccessRedisIdPatchRequest) Execute() (*EnvironmentAccessRedis, *http.Response, error) {
 	return r.ApiService.ApiEnvironmentAccessRedisIdPatchExecute(r)
 }
 
@@ -404,10 +404,10 @@ Updates the EnvironmentAccessRedis resource.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id EnvironmentAccessRedis identifier
-	@return ApiApiEnvironmentAccessRedisIdPatchRequest
+	@return EnvironmentAccessRedisApiApiEnvironmentAccessRedisIdPatchRequest
 */
-func (a *EnvironmentAccessRedisApiService) ApiEnvironmentAccessRedisIdPatch(ctx context.Context, id string) ApiApiEnvironmentAccessRedisIdPatchRequest {
-	return ApiApiEnvironmentAccessRedisIdPatchRequest{
+func (a *EnvironmentAccessRedisApiService) ApiEnvironmentAccessRedisIdPatch(ctx context.Context, id string) EnvironmentAccessRedisApiApiEnvironmentAccessRedisIdPatchRequest {
+	return EnvironmentAccessRedisApiApiEnvironmentAccessRedisIdPatchRequest{
 		ApiService: a,
 		ctx:        ctx,
 		id:         id,
@@ -416,13 +416,13 @@ func (a *EnvironmentAccessRedisApiService) ApiEnvironmentAccessRedisIdPatch(ctx 
 
 // Execute executes the request
 //
-//	@return EnvironmentAccessRedisJsonhal
-func (a *EnvironmentAccessRedisApiService) ApiEnvironmentAccessRedisIdPatchExecute(r ApiApiEnvironmentAccessRedisIdPatchRequest) (*EnvironmentAccessRedisJsonhal, *http.Response, error) {
+//	@return EnvironmentAccessRedis
+func (a *EnvironmentAccessRedisApiService) ApiEnvironmentAccessRedisIdPatchExecute(r EnvironmentAccessRedisApiApiEnvironmentAccessRedisIdPatchRequest) (*EnvironmentAccessRedis, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *EnvironmentAccessRedisJsonhal
+		localVarReturnValue *EnvironmentAccessRedis
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnvironmentAccessRedisApiService.ApiEnvironmentAccessRedisIdPatch")
@@ -431,7 +431,7 @@ func (a *EnvironmentAccessRedisApiService) ApiEnvironmentAccessRedisIdPatchExecu
 	}
 
 	localVarPath := localBasePath + "/api/environment_access_redis/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -441,7 +441,7 @@ func (a *EnvironmentAccessRedisApiService) ApiEnvironmentAccessRedisIdPatchExecu
 	}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/vnd.api+json"}
+	localVarHTTPContentTypes := []string{"application/merge-patch+json", "application/vnd.api+json"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -450,7 +450,7 @@ func (a *EnvironmentAccessRedisApiService) ApiEnvironmentAccessRedisIdPatchExecu
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/hal+json", "application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
+	localVarHTTPHeaderAccepts := []string{"application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -483,9 +483,9 @@ func (a *EnvironmentAccessRedisApiService) ApiEnvironmentAccessRedisIdPatchExecu
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -510,20 +510,20 @@ func (a *EnvironmentAccessRedisApiService) ApiEnvironmentAccessRedisIdPatchExecu
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiApiEnvironmentAccessRedisIdPutRequest struct {
-	ctx                           context.Context
-	ApiService                    *EnvironmentAccessRedisApiService
-	id                            string
-	environmentAccessRedisJsonhal *EnvironmentAccessRedisJsonhal
+type EnvironmentAccessRedisApiApiEnvironmentAccessRedisIdPutRequest struct {
+	ctx                    context.Context
+	ApiService             *EnvironmentAccessRedisApiService
+	environmentAccessRedis *EnvironmentAccessRedis
+	id                     string
 }
 
 // The updated EnvironmentAccessRedis resource
-func (r ApiApiEnvironmentAccessRedisIdPutRequest) EnvironmentAccessRedisJsonhal(environmentAccessRedisJsonhal EnvironmentAccessRedisJsonhal) ApiApiEnvironmentAccessRedisIdPutRequest {
-	r.environmentAccessRedisJsonhal = &environmentAccessRedisJsonhal
+func (r EnvironmentAccessRedisApiApiEnvironmentAccessRedisIdPutRequest) EnvironmentAccessRedis(environmentAccessRedis EnvironmentAccessRedis) EnvironmentAccessRedisApiApiEnvironmentAccessRedisIdPutRequest {
+	r.environmentAccessRedis = &environmentAccessRedis
 	return r
 }
 
-func (r ApiApiEnvironmentAccessRedisIdPutRequest) Execute() (*EnvironmentAccessRedisJsonhal, *http.Response, error) {
+func (r EnvironmentAccessRedisApiApiEnvironmentAccessRedisIdPutRequest) Execute() (*EnvironmentAccessRedis, *http.Response, error) {
 	return r.ApiService.ApiEnvironmentAccessRedisIdPutExecute(r)
 }
 
@@ -534,10 +534,10 @@ Replaces the EnvironmentAccessRedis resource.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id EnvironmentAccessRedis identifier
-	@return ApiApiEnvironmentAccessRedisIdPutRequest
+	@return EnvironmentAccessRedisApiApiEnvironmentAccessRedisIdPutRequest
 */
-func (a *EnvironmentAccessRedisApiService) ApiEnvironmentAccessRedisIdPut(ctx context.Context, id string) ApiApiEnvironmentAccessRedisIdPutRequest {
-	return ApiApiEnvironmentAccessRedisIdPutRequest{
+func (a *EnvironmentAccessRedisApiService) ApiEnvironmentAccessRedisIdPut(ctx context.Context, id string) EnvironmentAccessRedisApiApiEnvironmentAccessRedisIdPutRequest {
+	return EnvironmentAccessRedisApiApiEnvironmentAccessRedisIdPutRequest{
 		ApiService: a,
 		ctx:        ctx,
 		id:         id,
@@ -546,13 +546,13 @@ func (a *EnvironmentAccessRedisApiService) ApiEnvironmentAccessRedisIdPut(ctx co
 
 // Execute executes the request
 //
-//	@return EnvironmentAccessRedisJsonhal
-func (a *EnvironmentAccessRedisApiService) ApiEnvironmentAccessRedisIdPutExecute(r ApiApiEnvironmentAccessRedisIdPutRequest) (*EnvironmentAccessRedisJsonhal, *http.Response, error) {
+//	@return EnvironmentAccessRedis
+func (a *EnvironmentAccessRedisApiService) ApiEnvironmentAccessRedisIdPutExecute(r EnvironmentAccessRedisApiApiEnvironmentAccessRedisIdPutRequest) (*EnvironmentAccessRedis, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *EnvironmentAccessRedisJsonhal
+		localVarReturnValue *EnvironmentAccessRedis
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnvironmentAccessRedisApiService.ApiEnvironmentAccessRedisIdPut")
@@ -561,17 +561,17 @@ func (a *EnvironmentAccessRedisApiService) ApiEnvironmentAccessRedisIdPutExecute
 	}
 
 	localVarPath := localBasePath + "/api/environment_access_redis/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.environmentAccessRedisJsonhal == nil {
-		return localVarReturnValue, nil, reportError("environmentAccessRedisJsonhal is required and must be specified")
+	if r.environmentAccessRedis == nil {
+		return localVarReturnValue, nil, reportError("environmentAccessRedis is required and must be specified")
 	}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/hal+json", "application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
+	localVarHTTPContentTypes := []string{"application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -580,7 +580,7 @@ func (a *EnvironmentAccessRedisApiService) ApiEnvironmentAccessRedisIdPutExecute
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/hal+json", "application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
+	localVarHTTPHeaderAccepts := []string{"application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -588,7 +588,7 @@ func (a *EnvironmentAccessRedisApiService) ApiEnvironmentAccessRedisIdPutExecute
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.environmentAccessRedisJsonhal
+	localVarPostBody = r.environmentAccessRedis
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
@@ -613,9 +613,9 @@ func (a *EnvironmentAccessRedisApiService) ApiEnvironmentAccessRedisIdPutExecute
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -640,19 +640,19 @@ func (a *EnvironmentAccessRedisApiService) ApiEnvironmentAccessRedisIdPutExecute
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiApiEnvironmentAccessRedisPostRequest struct {
-	ctx                           context.Context
-	ApiService                    *EnvironmentAccessRedisApiService
-	environmentAccessRedisJsonhal *EnvironmentAccessRedisJsonhal
+type EnvironmentAccessRedisApiApiEnvironmentAccessRedisPostRequest struct {
+	ctx                    context.Context
+	ApiService             *EnvironmentAccessRedisApiService
+	environmentAccessRedis *EnvironmentAccessRedis
 }
 
 // The new EnvironmentAccessRedis resource
-func (r ApiApiEnvironmentAccessRedisPostRequest) EnvironmentAccessRedisJsonhal(environmentAccessRedisJsonhal EnvironmentAccessRedisJsonhal) ApiApiEnvironmentAccessRedisPostRequest {
-	r.environmentAccessRedisJsonhal = &environmentAccessRedisJsonhal
+func (r EnvironmentAccessRedisApiApiEnvironmentAccessRedisPostRequest) EnvironmentAccessRedis(environmentAccessRedis EnvironmentAccessRedis) EnvironmentAccessRedisApiApiEnvironmentAccessRedisPostRequest {
+	r.environmentAccessRedis = &environmentAccessRedis
 	return r
 }
 
-func (r ApiApiEnvironmentAccessRedisPostRequest) Execute() (*EnvironmentAccessRedisJsonhal, *http.Response, error) {
+func (r EnvironmentAccessRedisApiApiEnvironmentAccessRedisPostRequest) Execute() (*EnvironmentAccessRedis, *http.Response, error) {
 	return r.ApiService.ApiEnvironmentAccessRedisPostExecute(r)
 }
 
@@ -662,10 +662,10 @@ ApiEnvironmentAccessRedisPost Creates a EnvironmentAccessRedis resource.
 Creates a EnvironmentAccessRedis resource.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiApiEnvironmentAccessRedisPostRequest
+	@return EnvironmentAccessRedisApiApiEnvironmentAccessRedisPostRequest
 */
-func (a *EnvironmentAccessRedisApiService) ApiEnvironmentAccessRedisPost(ctx context.Context) ApiApiEnvironmentAccessRedisPostRequest {
-	return ApiApiEnvironmentAccessRedisPostRequest{
+func (a *EnvironmentAccessRedisApiService) ApiEnvironmentAccessRedisPost(ctx context.Context) EnvironmentAccessRedisApiApiEnvironmentAccessRedisPostRequest {
+	return EnvironmentAccessRedisApiApiEnvironmentAccessRedisPostRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -673,13 +673,13 @@ func (a *EnvironmentAccessRedisApiService) ApiEnvironmentAccessRedisPost(ctx con
 
 // Execute executes the request
 //
-//	@return EnvironmentAccessRedisJsonhal
-func (a *EnvironmentAccessRedisApiService) ApiEnvironmentAccessRedisPostExecute(r ApiApiEnvironmentAccessRedisPostRequest) (*EnvironmentAccessRedisJsonhal, *http.Response, error) {
+//	@return EnvironmentAccessRedis
+func (a *EnvironmentAccessRedisApiService) ApiEnvironmentAccessRedisPostExecute(r EnvironmentAccessRedisApiApiEnvironmentAccessRedisPostRequest) (*EnvironmentAccessRedis, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *EnvironmentAccessRedisJsonhal
+		localVarReturnValue *EnvironmentAccessRedis
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnvironmentAccessRedisApiService.ApiEnvironmentAccessRedisPost")
@@ -692,12 +692,12 @@ func (a *EnvironmentAccessRedisApiService) ApiEnvironmentAccessRedisPostExecute(
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.environmentAccessRedisJsonhal == nil {
-		return localVarReturnValue, nil, reportError("environmentAccessRedisJsonhal is required and must be specified")
+	if r.environmentAccessRedis == nil {
+		return localVarReturnValue, nil, reportError("environmentAccessRedis is required and must be specified")
 	}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/hal+json", "application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
+	localVarHTTPContentTypes := []string{"application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -706,7 +706,7 @@ func (a *EnvironmentAccessRedisApiService) ApiEnvironmentAccessRedisPostExecute(
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/hal+json", "application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
+	localVarHTTPHeaderAccepts := []string{"application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -714,7 +714,7 @@ func (a *EnvironmentAccessRedisApiService) ApiEnvironmentAccessRedisPostExecute(
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.environmentAccessRedisJsonhal
+	localVarPostBody = r.environmentAccessRedis
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
@@ -739,9 +739,9 @@ func (a *EnvironmentAccessRedisApiService) ApiEnvironmentAccessRedisPostExecute(
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}

@@ -13,7 +13,7 @@ package rewardcloud
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"reflect"
@@ -23,7 +23,7 @@ import (
 // ImportedDataApiService ImportedDataApi service
 type ImportedDataApiService service
 
-type ApiApiImportedDatasGetCollectionRequest struct {
+type ImportedDataApiApiImportedDatasGetCollectionRequest struct {
 	ctx                   context.Context
 	ApiService            *ImportedDataApiService
 	page                  *int32
@@ -39,58 +39,58 @@ type ApiApiImportedDatasGetCollectionRequest struct {
 }
 
 // The collection page number
-func (r ApiApiImportedDatasGetCollectionRequest) Page(page int32) ApiApiImportedDatasGetCollectionRequest {
+func (r ImportedDataApiApiImportedDatasGetCollectionRequest) Page(page int32) ImportedDataApiApiImportedDatasGetCollectionRequest {
 	r.page = &page
 	return r
 }
 
 // The number of items per page
-func (r ApiApiImportedDatasGetCollectionRequest) ItemsPerPage(itemsPerPage int32) ApiApiImportedDatasGetCollectionRequest {
+func (r ImportedDataApiApiImportedDatasGetCollectionRequest) ItemsPerPage(itemsPerPage int32) ImportedDataApiApiImportedDatasGetCollectionRequest {
 	r.itemsPerPage = &itemsPerPage
 	return r
 }
 
-func (r ApiApiImportedDatasGetCollectionRequest) Environment(environment string) ApiApiImportedDatasGetCollectionRequest {
+func (r ImportedDataApiApiImportedDatasGetCollectionRequest) Environment(environment string) ImportedDataApiApiImportedDatasGetCollectionRequest {
 	r.environment = &environment
 	return r
 }
 
-func (r ApiApiImportedDatasGetCollectionRequest) Environment2(environment2 []string) ApiApiImportedDatasGetCollectionRequest {
+func (r ImportedDataApiApiImportedDatasGetCollectionRequest) Environment2(environment2 []string) ImportedDataApiApiImportedDatasGetCollectionRequest {
 	r.environment2 = &environment2
 	return r
 }
 
-func (r ApiApiImportedDatasGetCollectionRequest) DataTransferDataType(dataTransferDataType string) ApiApiImportedDatasGetCollectionRequest {
+func (r ImportedDataApiApiImportedDatasGetCollectionRequest) DataTransferDataType(dataTransferDataType string) ImportedDataApiApiImportedDatasGetCollectionRequest {
 	r.dataTransferDataType = &dataTransferDataType
 	return r
 }
 
-func (r ApiApiImportedDatasGetCollectionRequest) DataTransferDataType2(dataTransferDataType2 []string) ApiApiImportedDatasGetCollectionRequest {
+func (r ImportedDataApiApiImportedDatasGetCollectionRequest) DataTransferDataType2(dataTransferDataType2 []string) ImportedDataApiApiImportedDatasGetCollectionRequest {
 	r.dataTransferDataType2 = &dataTransferDataType2
 	return r
 }
 
-func (r ApiApiImportedDatasGetCollectionRequest) State(state string) ApiApiImportedDatasGetCollectionRequest {
+func (r ImportedDataApiApiImportedDatasGetCollectionRequest) State(state string) ImportedDataApiApiImportedDatasGetCollectionRequest {
 	r.state = &state
 	return r
 }
 
-func (r ApiApiImportedDatasGetCollectionRequest) State2(state2 []string) ApiApiImportedDatasGetCollectionRequest {
+func (r ImportedDataApiApiImportedDatasGetCollectionRequest) State2(state2 []string) ImportedDataApiApiImportedDatasGetCollectionRequest {
 	r.state2 = &state2
 	return r
 }
 
-func (r ApiApiImportedDatasGetCollectionRequest) OrderCreatedAt(orderCreatedAt string) ApiApiImportedDatasGetCollectionRequest {
+func (r ImportedDataApiApiImportedDatasGetCollectionRequest) OrderCreatedAt(orderCreatedAt string) ImportedDataApiApiImportedDatasGetCollectionRequest {
 	r.orderCreatedAt = &orderCreatedAt
 	return r
 }
 
-func (r ApiApiImportedDatasGetCollectionRequest) OrderUpdatedAt(orderUpdatedAt string) ApiApiImportedDatasGetCollectionRequest {
+func (r ImportedDataApiApiImportedDatasGetCollectionRequest) OrderUpdatedAt(orderUpdatedAt string) ImportedDataApiApiImportedDatasGetCollectionRequest {
 	r.orderUpdatedAt = &orderUpdatedAt
 	return r
 }
 
-func (r ApiApiImportedDatasGetCollectionRequest) Execute() (*ApiImportedDatasGetCollection200Response, *http.Response, error) {
+func (r ImportedDataApiApiImportedDatasGetCollectionRequest) Execute() ([]ImportedData, *http.Response, error) {
 	return r.ApiService.ApiImportedDatasGetCollectionExecute(r)
 }
 
@@ -100,10 +100,10 @@ ApiImportedDatasGetCollection Retrieves the collection of ImportedData resources
 Retrieves the collection of ImportedData resources.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiApiImportedDatasGetCollectionRequest
+	@return ImportedDataApiApiImportedDatasGetCollectionRequest
 */
-func (a *ImportedDataApiService) ApiImportedDatasGetCollection(ctx context.Context) ApiApiImportedDatasGetCollectionRequest {
-	return ApiApiImportedDatasGetCollectionRequest{
+func (a *ImportedDataApiService) ApiImportedDatasGetCollection(ctx context.Context) ImportedDataApiApiImportedDatasGetCollectionRequest {
+	return ImportedDataApiApiImportedDatasGetCollectionRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -111,13 +111,13 @@ func (a *ImportedDataApiService) ApiImportedDatasGetCollection(ctx context.Conte
 
 // Execute executes the request
 //
-//	@return ApiImportedDatasGetCollection200Response
-func (a *ImportedDataApiService) ApiImportedDatasGetCollectionExecute(r ApiApiImportedDatasGetCollectionRequest) (*ApiImportedDatasGetCollection200Response, *http.Response, error) {
+//	@return []ImportedData
+func (a *ImportedDataApiService) ApiImportedDatasGetCollectionExecute(r ImportedDataApiApiImportedDatasGetCollectionRequest) ([]ImportedData, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *ApiImportedDatasGetCollection200Response
+		localVarReturnValue []ImportedData
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ImportedDataApiService.ApiImportedDatasGetCollection")
@@ -132,58 +132,58 @@ func (a *ImportedDataApiService) ApiImportedDatasGetCollectionExecute(r ApiApiIm
 	localVarFormParams := url.Values{}
 
 	if r.page != nil {
-		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
 	}
 	if r.itemsPerPage != nil {
-		localVarQueryParams.Add("itemsPerPage", parameterToString(*r.itemsPerPage, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "itemsPerPage", r.itemsPerPage, "")
 	}
 	if r.environment != nil {
-		localVarQueryParams.Add("environment", parameterToString(*r.environment, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "environment", r.environment, "")
 	}
 	if r.environment2 != nil {
 		t := *r.environment2
 		if reflect.TypeOf(t).Kind() == reflect.Slice {
 			s := reflect.ValueOf(t)
 			for i := 0; i < s.Len(); i++ {
-				localVarQueryParams.Add("environment[]", parameterToString(s.Index(i), "multi"))
+				parameterAddToHeaderOrQuery(localVarQueryParams, "environment[]", s.Index(i), "multi")
 			}
 		} else {
-			localVarQueryParams.Add("environment[]", parameterToString(t, "multi"))
+			parameterAddToHeaderOrQuery(localVarQueryParams, "environment[]", t, "multi")
 		}
 	}
 	if r.dataTransferDataType != nil {
-		localVarQueryParams.Add("dataTransferDataType", parameterToString(*r.dataTransferDataType, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "dataTransferDataType", r.dataTransferDataType, "")
 	}
 	if r.dataTransferDataType2 != nil {
 		t := *r.dataTransferDataType2
 		if reflect.TypeOf(t).Kind() == reflect.Slice {
 			s := reflect.ValueOf(t)
 			for i := 0; i < s.Len(); i++ {
-				localVarQueryParams.Add("dataTransferDataType[]", parameterToString(s.Index(i), "multi"))
+				parameterAddToHeaderOrQuery(localVarQueryParams, "dataTransferDataType[]", s.Index(i), "multi")
 			}
 		} else {
-			localVarQueryParams.Add("dataTransferDataType[]", parameterToString(t, "multi"))
+			parameterAddToHeaderOrQuery(localVarQueryParams, "dataTransferDataType[]", t, "multi")
 		}
 	}
 	if r.state != nil {
-		localVarQueryParams.Add("state", parameterToString(*r.state, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "state", r.state, "")
 	}
 	if r.state2 != nil {
 		t := *r.state2
 		if reflect.TypeOf(t).Kind() == reflect.Slice {
 			s := reflect.ValueOf(t)
 			for i := 0; i < s.Len(); i++ {
-				localVarQueryParams.Add("state[]", parameterToString(s.Index(i), "multi"))
+				parameterAddToHeaderOrQuery(localVarQueryParams, "state[]", s.Index(i), "multi")
 			}
 		} else {
-			localVarQueryParams.Add("state[]", parameterToString(t, "multi"))
+			parameterAddToHeaderOrQuery(localVarQueryParams, "state[]", t, "multi")
 		}
 	}
 	if r.orderCreatedAt != nil {
-		localVarQueryParams.Add("order[createdAt]", parameterToString(*r.orderCreatedAt, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "order[createdAt]", r.orderCreatedAt, "")
 	}
 	if r.orderUpdatedAt != nil {
-		localVarQueryParams.Add("order[updatedAt]", parameterToString(*r.orderUpdatedAt, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "order[updatedAt]", r.orderUpdatedAt, "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -195,7 +195,7 @@ func (a *ImportedDataApiService) ApiImportedDatasGetCollectionExecute(r ApiApiIm
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/hal+json", "application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
+	localVarHTTPHeaderAccepts := []string{"application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -226,9 +226,9 @@ func (a *ImportedDataApiService) ApiImportedDatasGetCollectionExecute(r ApiApiIm
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -253,13 +253,13 @@ func (a *ImportedDataApiService) ApiImportedDatasGetCollectionExecute(r ApiApiIm
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiApiImportedDatasIdDeleteRequest struct {
+type ImportedDataApiApiImportedDatasIdDeleteRequest struct {
 	ctx        context.Context
 	ApiService *ImportedDataApiService
 	id         string
 }
 
-func (r ApiApiImportedDatasIdDeleteRequest) Execute() (*http.Response, error) {
+func (r ImportedDataApiApiImportedDatasIdDeleteRequest) Execute() (*http.Response, error) {
 	return r.ApiService.ApiImportedDatasIdDeleteExecute(r)
 }
 
@@ -270,10 +270,10 @@ Removes the ImportedData resource.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id ImportedData identifier
-	@return ApiApiImportedDatasIdDeleteRequest
+	@return ImportedDataApiApiImportedDatasIdDeleteRequest
 */
-func (a *ImportedDataApiService) ApiImportedDatasIdDelete(ctx context.Context, id string) ApiApiImportedDatasIdDeleteRequest {
-	return ApiApiImportedDatasIdDeleteRequest{
+func (a *ImportedDataApiService) ApiImportedDatasIdDelete(ctx context.Context, id string) ImportedDataApiApiImportedDatasIdDeleteRequest {
+	return ImportedDataApiApiImportedDatasIdDeleteRequest{
 		ApiService: a,
 		ctx:        ctx,
 		id:         id,
@@ -281,7 +281,7 @@ func (a *ImportedDataApiService) ApiImportedDatasIdDelete(ctx context.Context, i
 }
 
 // Execute executes the request
-func (a *ImportedDataApiService) ApiImportedDatasIdDeleteExecute(r ApiApiImportedDatasIdDeleteRequest) (*http.Response, error) {
+func (a *ImportedDataApiService) ApiImportedDatasIdDeleteExecute(r ImportedDataApiApiImportedDatasIdDeleteRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
 		localVarPostBody   interface{}
@@ -294,7 +294,7 @@ func (a *ImportedDataApiService) ApiImportedDatasIdDeleteExecute(r ApiApiImporte
 	}
 
 	localVarPath := localBasePath + "/api/imported_datas/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -341,9 +341,9 @@ func (a *ImportedDataApiService) ApiImportedDatasIdDeleteExecute(r ApiApiImporte
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -359,13 +359,13 @@ func (a *ImportedDataApiService) ApiImportedDatasIdDeleteExecute(r ApiApiImporte
 	return localVarHTTPResponse, nil
 }
 
-type ApiApiImportedDatasIdGetRequest struct {
+type ImportedDataApiApiImportedDatasIdGetRequest struct {
 	ctx        context.Context
 	ApiService *ImportedDataApiService
 	id         string
 }
 
-func (r ApiApiImportedDatasIdGetRequest) Execute() (*ImportedDataJsonhal, *http.Response, error) {
+func (r ImportedDataApiApiImportedDatasIdGetRequest) Execute() (*ImportedData, *http.Response, error) {
 	return r.ApiService.ApiImportedDatasIdGetExecute(r)
 }
 
@@ -376,10 +376,10 @@ Retrieves a ImportedData resource.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id ImportedData identifier
-	@return ApiApiImportedDatasIdGetRequest
+	@return ImportedDataApiApiImportedDatasIdGetRequest
 */
-func (a *ImportedDataApiService) ApiImportedDatasIdGet(ctx context.Context, id string) ApiApiImportedDatasIdGetRequest {
-	return ApiApiImportedDatasIdGetRequest{
+func (a *ImportedDataApiService) ApiImportedDatasIdGet(ctx context.Context, id string) ImportedDataApiApiImportedDatasIdGetRequest {
+	return ImportedDataApiApiImportedDatasIdGetRequest{
 		ApiService: a,
 		ctx:        ctx,
 		id:         id,
@@ -388,13 +388,13 @@ func (a *ImportedDataApiService) ApiImportedDatasIdGet(ctx context.Context, id s
 
 // Execute executes the request
 //
-//	@return ImportedDataJsonhal
-func (a *ImportedDataApiService) ApiImportedDatasIdGetExecute(r ApiApiImportedDatasIdGetRequest) (*ImportedDataJsonhal, *http.Response, error) {
+//	@return ImportedData
+func (a *ImportedDataApiService) ApiImportedDatasIdGetExecute(r ImportedDataApiApiImportedDatasIdGetRequest) (*ImportedData, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *ImportedDataJsonhal
+		localVarReturnValue *ImportedData
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ImportedDataApiService.ApiImportedDatasIdGet")
@@ -403,7 +403,7 @@ func (a *ImportedDataApiService) ApiImportedDatasIdGetExecute(r ApiApiImportedDa
 	}
 
 	localVarPath := localBasePath + "/api/imported_datas/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -419,7 +419,7 @@ func (a *ImportedDataApiService) ApiImportedDatasIdGetExecute(r ApiApiImportedDa
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/hal+json", "application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
+	localVarHTTPHeaderAccepts := []string{"application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -450,9 +450,9 @@ func (a *ImportedDataApiService) ApiImportedDatasIdGetExecute(r ApiApiImportedDa
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -477,20 +477,20 @@ func (a *ImportedDataApiService) ApiImportedDatasIdGetExecute(r ApiApiImportedDa
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiApiImportedDatasIdPatchRequest struct {
+type ImportedDataApiApiImportedDatasIdPatchRequest struct {
 	ctx          context.Context
 	ApiService   *ImportedDataApiService
-	id           string
 	importedData *ImportedData
+	id           string
 }
 
 // The updated ImportedData resource
-func (r ApiApiImportedDatasIdPatchRequest) ImportedData(importedData ImportedData) ApiApiImportedDatasIdPatchRequest {
+func (r ImportedDataApiApiImportedDatasIdPatchRequest) ImportedData(importedData ImportedData) ImportedDataApiApiImportedDatasIdPatchRequest {
 	r.importedData = &importedData
 	return r
 }
 
-func (r ApiApiImportedDatasIdPatchRequest) Execute() (*ImportedDataJsonhal, *http.Response, error) {
+func (r ImportedDataApiApiImportedDatasIdPatchRequest) Execute() (*ImportedData, *http.Response, error) {
 	return r.ApiService.ApiImportedDatasIdPatchExecute(r)
 }
 
@@ -501,10 +501,10 @@ Updates the ImportedData resource.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id ImportedData identifier
-	@return ApiApiImportedDatasIdPatchRequest
+	@return ImportedDataApiApiImportedDatasIdPatchRequest
 */
-func (a *ImportedDataApiService) ApiImportedDatasIdPatch(ctx context.Context, id string) ApiApiImportedDatasIdPatchRequest {
-	return ApiApiImportedDatasIdPatchRequest{
+func (a *ImportedDataApiService) ApiImportedDatasIdPatch(ctx context.Context, id string) ImportedDataApiApiImportedDatasIdPatchRequest {
+	return ImportedDataApiApiImportedDatasIdPatchRequest{
 		ApiService: a,
 		ctx:        ctx,
 		id:         id,
@@ -513,13 +513,13 @@ func (a *ImportedDataApiService) ApiImportedDatasIdPatch(ctx context.Context, id
 
 // Execute executes the request
 //
-//	@return ImportedDataJsonhal
-func (a *ImportedDataApiService) ApiImportedDatasIdPatchExecute(r ApiApiImportedDatasIdPatchRequest) (*ImportedDataJsonhal, *http.Response, error) {
+//	@return ImportedData
+func (a *ImportedDataApiService) ApiImportedDatasIdPatchExecute(r ImportedDataApiApiImportedDatasIdPatchRequest) (*ImportedData, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *ImportedDataJsonhal
+		localVarReturnValue *ImportedData
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ImportedDataApiService.ApiImportedDatasIdPatch")
@@ -528,7 +528,7 @@ func (a *ImportedDataApiService) ApiImportedDatasIdPatchExecute(r ApiApiImported
 	}
 
 	localVarPath := localBasePath + "/api/imported_datas/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -538,7 +538,7 @@ func (a *ImportedDataApiService) ApiImportedDatasIdPatchExecute(r ApiApiImported
 	}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/vnd.api+json"}
+	localVarHTTPContentTypes := []string{"application/merge-patch+json", "application/vnd.api+json"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -547,7 +547,7 @@ func (a *ImportedDataApiService) ApiImportedDatasIdPatchExecute(r ApiApiImported
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/hal+json", "application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
+	localVarHTTPHeaderAccepts := []string{"application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -580,9 +580,9 @@ func (a *ImportedDataApiService) ApiImportedDatasIdPatchExecute(r ApiApiImported
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -607,20 +607,20 @@ func (a *ImportedDataApiService) ApiImportedDatasIdPatchExecute(r ApiApiImported
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiApiImportedDatasIdPutRequest struct {
-	ctx                 context.Context
-	ApiService          *ImportedDataApiService
-	id                  string
-	importedDataJsonhal *ImportedDataJsonhal
+type ImportedDataApiApiImportedDatasIdPutRequest struct {
+	ctx          context.Context
+	ApiService   *ImportedDataApiService
+	importedData *ImportedData
+	id           string
 }
 
 // The updated ImportedData resource
-func (r ApiApiImportedDatasIdPutRequest) ImportedDataJsonhal(importedDataJsonhal ImportedDataJsonhal) ApiApiImportedDatasIdPutRequest {
-	r.importedDataJsonhal = &importedDataJsonhal
+func (r ImportedDataApiApiImportedDatasIdPutRequest) ImportedData(importedData ImportedData) ImportedDataApiApiImportedDatasIdPutRequest {
+	r.importedData = &importedData
 	return r
 }
 
-func (r ApiApiImportedDatasIdPutRequest) Execute() (*ImportedDataJsonhal, *http.Response, error) {
+func (r ImportedDataApiApiImportedDatasIdPutRequest) Execute() (*ImportedData, *http.Response, error) {
 	return r.ApiService.ApiImportedDatasIdPutExecute(r)
 }
 
@@ -631,10 +631,10 @@ Replaces the ImportedData resource.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id ImportedData identifier
-	@return ApiApiImportedDatasIdPutRequest
+	@return ImportedDataApiApiImportedDatasIdPutRequest
 */
-func (a *ImportedDataApiService) ApiImportedDatasIdPut(ctx context.Context, id string) ApiApiImportedDatasIdPutRequest {
-	return ApiApiImportedDatasIdPutRequest{
+func (a *ImportedDataApiService) ApiImportedDatasIdPut(ctx context.Context, id string) ImportedDataApiApiImportedDatasIdPutRequest {
+	return ImportedDataApiApiImportedDatasIdPutRequest{
 		ApiService: a,
 		ctx:        ctx,
 		id:         id,
@@ -643,13 +643,13 @@ func (a *ImportedDataApiService) ApiImportedDatasIdPut(ctx context.Context, id s
 
 // Execute executes the request
 //
-//	@return ImportedDataJsonhal
-func (a *ImportedDataApiService) ApiImportedDatasIdPutExecute(r ApiApiImportedDatasIdPutRequest) (*ImportedDataJsonhal, *http.Response, error) {
+//	@return ImportedData
+func (a *ImportedDataApiService) ApiImportedDatasIdPutExecute(r ImportedDataApiApiImportedDatasIdPutRequest) (*ImportedData, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *ImportedDataJsonhal
+		localVarReturnValue *ImportedData
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ImportedDataApiService.ApiImportedDatasIdPut")
@@ -658,17 +658,17 @@ func (a *ImportedDataApiService) ApiImportedDatasIdPutExecute(r ApiApiImportedDa
 	}
 
 	localVarPath := localBasePath + "/api/imported_datas/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.importedDataJsonhal == nil {
-		return localVarReturnValue, nil, reportError("importedDataJsonhal is required and must be specified")
+	if r.importedData == nil {
+		return localVarReturnValue, nil, reportError("importedData is required and must be specified")
 	}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/hal+json", "application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
+	localVarHTTPContentTypes := []string{"application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -677,7 +677,7 @@ func (a *ImportedDataApiService) ApiImportedDatasIdPutExecute(r ApiApiImportedDa
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/hal+json", "application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
+	localVarHTTPHeaderAccepts := []string{"application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -685,7 +685,7 @@ func (a *ImportedDataApiService) ApiImportedDatasIdPutExecute(r ApiApiImportedDa
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.importedDataJsonhal
+	localVarPostBody = r.importedData
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
@@ -710,9 +710,9 @@ func (a *ImportedDataApiService) ApiImportedDatasIdPutExecute(r ApiApiImportedDa
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -737,19 +737,19 @@ func (a *ImportedDataApiService) ApiImportedDatasIdPutExecute(r ApiApiImportedDa
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiApiImportedDatasPostRequest struct {
-	ctx                 context.Context
-	ApiService          *ImportedDataApiService
-	importedDataJsonhal *ImportedDataJsonhal
+type ImportedDataApiApiImportedDatasPostRequest struct {
+	ctx          context.Context
+	ApiService   *ImportedDataApiService
+	importedData *ImportedData
 }
 
 // The new ImportedData resource
-func (r ApiApiImportedDatasPostRequest) ImportedDataJsonhal(importedDataJsonhal ImportedDataJsonhal) ApiApiImportedDatasPostRequest {
-	r.importedDataJsonhal = &importedDataJsonhal
+func (r ImportedDataApiApiImportedDatasPostRequest) ImportedData(importedData ImportedData) ImportedDataApiApiImportedDatasPostRequest {
+	r.importedData = &importedData
 	return r
 }
 
-func (r ApiApiImportedDatasPostRequest) Execute() (*ImportedDataJsonhal, *http.Response, error) {
+func (r ImportedDataApiApiImportedDatasPostRequest) Execute() (*ImportedData, *http.Response, error) {
 	return r.ApiService.ApiImportedDatasPostExecute(r)
 }
 
@@ -759,10 +759,10 @@ ApiImportedDatasPost Creates a ImportedData resource.
 Creates a ImportedData resource.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiApiImportedDatasPostRequest
+	@return ImportedDataApiApiImportedDatasPostRequest
 */
-func (a *ImportedDataApiService) ApiImportedDatasPost(ctx context.Context) ApiApiImportedDatasPostRequest {
-	return ApiApiImportedDatasPostRequest{
+func (a *ImportedDataApiService) ApiImportedDatasPost(ctx context.Context) ImportedDataApiApiImportedDatasPostRequest {
+	return ImportedDataApiApiImportedDatasPostRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -770,13 +770,13 @@ func (a *ImportedDataApiService) ApiImportedDatasPost(ctx context.Context) ApiAp
 
 // Execute executes the request
 //
-//	@return ImportedDataJsonhal
-func (a *ImportedDataApiService) ApiImportedDatasPostExecute(r ApiApiImportedDatasPostRequest) (*ImportedDataJsonhal, *http.Response, error) {
+//	@return ImportedData
+func (a *ImportedDataApiService) ApiImportedDatasPostExecute(r ImportedDataApiApiImportedDatasPostRequest) (*ImportedData, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *ImportedDataJsonhal
+		localVarReturnValue *ImportedData
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ImportedDataApiService.ApiImportedDatasPost")
@@ -789,12 +789,12 @@ func (a *ImportedDataApiService) ApiImportedDatasPostExecute(r ApiApiImportedDat
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.importedDataJsonhal == nil {
-		return localVarReturnValue, nil, reportError("importedDataJsonhal is required and must be specified")
+	if r.importedData == nil {
+		return localVarReturnValue, nil, reportError("importedData is required and must be specified")
 	}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/hal+json", "application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
+	localVarHTTPContentTypes := []string{"application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -803,7 +803,7 @@ func (a *ImportedDataApiService) ApiImportedDatasPostExecute(r ApiApiImportedDat
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/hal+json", "application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
+	localVarHTTPHeaderAccepts := []string{"application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -811,7 +811,7 @@ func (a *ImportedDataApiService) ApiImportedDatasPostExecute(r ApiApiImportedDat
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.importedDataJsonhal
+	localVarPostBody = r.importedData
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
@@ -836,9 +836,9 @@ func (a *ImportedDataApiService) ApiImportedDatasPostExecute(r ApiApiImportedDat
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}

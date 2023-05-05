@@ -13,7 +13,7 @@ package rewardcloud
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"strings"
@@ -22,7 +22,7 @@ import (
 // EnvironmentAccessRabbitApiService EnvironmentAccessRabbitApi service
 type EnvironmentAccessRabbitApiService service
 
-type ApiApiEnvironmentAccessRabbitsGetCollectionRequest struct {
+type EnvironmentAccessRabbitApiApiEnvironmentAccessRabbitsGetCollectionRequest struct {
 	ctx          context.Context
 	ApiService   *EnvironmentAccessRabbitApiService
 	page         *int32
@@ -30,18 +30,18 @@ type ApiApiEnvironmentAccessRabbitsGetCollectionRequest struct {
 }
 
 // The collection page number
-func (r ApiApiEnvironmentAccessRabbitsGetCollectionRequest) Page(page int32) ApiApiEnvironmentAccessRabbitsGetCollectionRequest {
+func (r EnvironmentAccessRabbitApiApiEnvironmentAccessRabbitsGetCollectionRequest) Page(page int32) EnvironmentAccessRabbitApiApiEnvironmentAccessRabbitsGetCollectionRequest {
 	r.page = &page
 	return r
 }
 
 // The number of items per page
-func (r ApiApiEnvironmentAccessRabbitsGetCollectionRequest) ItemsPerPage(itemsPerPage int32) ApiApiEnvironmentAccessRabbitsGetCollectionRequest {
+func (r EnvironmentAccessRabbitApiApiEnvironmentAccessRabbitsGetCollectionRequest) ItemsPerPage(itemsPerPage int32) EnvironmentAccessRabbitApiApiEnvironmentAccessRabbitsGetCollectionRequest {
 	r.itemsPerPage = &itemsPerPage
 	return r
 }
 
-func (r ApiApiEnvironmentAccessRabbitsGetCollectionRequest) Execute() (*ApiEnvironmentAccessRabbitsGetCollection200Response, *http.Response, error) {
+func (r EnvironmentAccessRabbitApiApiEnvironmentAccessRabbitsGetCollectionRequest) Execute() ([]EnvironmentAccessRabbit, *http.Response, error) {
 	return r.ApiService.ApiEnvironmentAccessRabbitsGetCollectionExecute(r)
 }
 
@@ -51,10 +51,10 @@ ApiEnvironmentAccessRabbitsGetCollection Retrieves the collection of Environment
 Retrieves the collection of EnvironmentAccessRabbit resources.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiApiEnvironmentAccessRabbitsGetCollectionRequest
+	@return EnvironmentAccessRabbitApiApiEnvironmentAccessRabbitsGetCollectionRequest
 */
-func (a *EnvironmentAccessRabbitApiService) ApiEnvironmentAccessRabbitsGetCollection(ctx context.Context) ApiApiEnvironmentAccessRabbitsGetCollectionRequest {
-	return ApiApiEnvironmentAccessRabbitsGetCollectionRequest{
+func (a *EnvironmentAccessRabbitApiService) ApiEnvironmentAccessRabbitsGetCollection(ctx context.Context) EnvironmentAccessRabbitApiApiEnvironmentAccessRabbitsGetCollectionRequest {
+	return EnvironmentAccessRabbitApiApiEnvironmentAccessRabbitsGetCollectionRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -62,13 +62,13 @@ func (a *EnvironmentAccessRabbitApiService) ApiEnvironmentAccessRabbitsGetCollec
 
 // Execute executes the request
 //
-//	@return ApiEnvironmentAccessRabbitsGetCollection200Response
-func (a *EnvironmentAccessRabbitApiService) ApiEnvironmentAccessRabbitsGetCollectionExecute(r ApiApiEnvironmentAccessRabbitsGetCollectionRequest) (*ApiEnvironmentAccessRabbitsGetCollection200Response, *http.Response, error) {
+//	@return []EnvironmentAccessRabbit
+func (a *EnvironmentAccessRabbitApiService) ApiEnvironmentAccessRabbitsGetCollectionExecute(r EnvironmentAccessRabbitApiApiEnvironmentAccessRabbitsGetCollectionRequest) ([]EnvironmentAccessRabbit, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *ApiEnvironmentAccessRabbitsGetCollection200Response
+		localVarReturnValue []EnvironmentAccessRabbit
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnvironmentAccessRabbitApiService.ApiEnvironmentAccessRabbitsGetCollection")
@@ -83,10 +83,10 @@ func (a *EnvironmentAccessRabbitApiService) ApiEnvironmentAccessRabbitsGetCollec
 	localVarFormParams := url.Values{}
 
 	if r.page != nil {
-		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
 	}
 	if r.itemsPerPage != nil {
-		localVarQueryParams.Add("itemsPerPage", parameterToString(*r.itemsPerPage, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "itemsPerPage", r.itemsPerPage, "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -98,7 +98,7 @@ func (a *EnvironmentAccessRabbitApiService) ApiEnvironmentAccessRabbitsGetCollec
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/hal+json", "application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
+	localVarHTTPHeaderAccepts := []string{"application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -129,9 +129,9 @@ func (a *EnvironmentAccessRabbitApiService) ApiEnvironmentAccessRabbitsGetCollec
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -156,13 +156,13 @@ func (a *EnvironmentAccessRabbitApiService) ApiEnvironmentAccessRabbitsGetCollec
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiApiEnvironmentAccessRabbitsIdDeleteRequest struct {
+type EnvironmentAccessRabbitApiApiEnvironmentAccessRabbitsIdDeleteRequest struct {
 	ctx        context.Context
 	ApiService *EnvironmentAccessRabbitApiService
 	id         string
 }
 
-func (r ApiApiEnvironmentAccessRabbitsIdDeleteRequest) Execute() (*http.Response, error) {
+func (r EnvironmentAccessRabbitApiApiEnvironmentAccessRabbitsIdDeleteRequest) Execute() (*http.Response, error) {
 	return r.ApiService.ApiEnvironmentAccessRabbitsIdDeleteExecute(r)
 }
 
@@ -173,10 +173,10 @@ Removes the EnvironmentAccessRabbit resource.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id EnvironmentAccessRabbit identifier
-	@return ApiApiEnvironmentAccessRabbitsIdDeleteRequest
+	@return EnvironmentAccessRabbitApiApiEnvironmentAccessRabbitsIdDeleteRequest
 */
-func (a *EnvironmentAccessRabbitApiService) ApiEnvironmentAccessRabbitsIdDelete(ctx context.Context, id string) ApiApiEnvironmentAccessRabbitsIdDeleteRequest {
-	return ApiApiEnvironmentAccessRabbitsIdDeleteRequest{
+func (a *EnvironmentAccessRabbitApiService) ApiEnvironmentAccessRabbitsIdDelete(ctx context.Context, id string) EnvironmentAccessRabbitApiApiEnvironmentAccessRabbitsIdDeleteRequest {
+	return EnvironmentAccessRabbitApiApiEnvironmentAccessRabbitsIdDeleteRequest{
 		ApiService: a,
 		ctx:        ctx,
 		id:         id,
@@ -184,7 +184,7 @@ func (a *EnvironmentAccessRabbitApiService) ApiEnvironmentAccessRabbitsIdDelete(
 }
 
 // Execute executes the request
-func (a *EnvironmentAccessRabbitApiService) ApiEnvironmentAccessRabbitsIdDeleteExecute(r ApiApiEnvironmentAccessRabbitsIdDeleteRequest) (*http.Response, error) {
+func (a *EnvironmentAccessRabbitApiService) ApiEnvironmentAccessRabbitsIdDeleteExecute(r EnvironmentAccessRabbitApiApiEnvironmentAccessRabbitsIdDeleteRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
 		localVarPostBody   interface{}
@@ -197,7 +197,7 @@ func (a *EnvironmentAccessRabbitApiService) ApiEnvironmentAccessRabbitsIdDeleteE
 	}
 
 	localVarPath := localBasePath + "/api/environment_access_rabbits/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -244,9 +244,9 @@ func (a *EnvironmentAccessRabbitApiService) ApiEnvironmentAccessRabbitsIdDeleteE
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -262,13 +262,13 @@ func (a *EnvironmentAccessRabbitApiService) ApiEnvironmentAccessRabbitsIdDeleteE
 	return localVarHTTPResponse, nil
 }
 
-type ApiApiEnvironmentAccessRabbitsIdGetRequest struct {
+type EnvironmentAccessRabbitApiApiEnvironmentAccessRabbitsIdGetRequest struct {
 	ctx        context.Context
 	ApiService *EnvironmentAccessRabbitApiService
 	id         string
 }
 
-func (r ApiApiEnvironmentAccessRabbitsIdGetRequest) Execute() (*EnvironmentAccessRabbitJsonhal, *http.Response, error) {
+func (r EnvironmentAccessRabbitApiApiEnvironmentAccessRabbitsIdGetRequest) Execute() (*EnvironmentAccessRabbit, *http.Response, error) {
 	return r.ApiService.ApiEnvironmentAccessRabbitsIdGetExecute(r)
 }
 
@@ -279,10 +279,10 @@ Retrieves a EnvironmentAccessRabbit resource.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id EnvironmentAccessRabbit identifier
-	@return ApiApiEnvironmentAccessRabbitsIdGetRequest
+	@return EnvironmentAccessRabbitApiApiEnvironmentAccessRabbitsIdGetRequest
 */
-func (a *EnvironmentAccessRabbitApiService) ApiEnvironmentAccessRabbitsIdGet(ctx context.Context, id string) ApiApiEnvironmentAccessRabbitsIdGetRequest {
-	return ApiApiEnvironmentAccessRabbitsIdGetRequest{
+func (a *EnvironmentAccessRabbitApiService) ApiEnvironmentAccessRabbitsIdGet(ctx context.Context, id string) EnvironmentAccessRabbitApiApiEnvironmentAccessRabbitsIdGetRequest {
+	return EnvironmentAccessRabbitApiApiEnvironmentAccessRabbitsIdGetRequest{
 		ApiService: a,
 		ctx:        ctx,
 		id:         id,
@@ -291,13 +291,13 @@ func (a *EnvironmentAccessRabbitApiService) ApiEnvironmentAccessRabbitsIdGet(ctx
 
 // Execute executes the request
 //
-//	@return EnvironmentAccessRabbitJsonhal
-func (a *EnvironmentAccessRabbitApiService) ApiEnvironmentAccessRabbitsIdGetExecute(r ApiApiEnvironmentAccessRabbitsIdGetRequest) (*EnvironmentAccessRabbitJsonhal, *http.Response, error) {
+//	@return EnvironmentAccessRabbit
+func (a *EnvironmentAccessRabbitApiService) ApiEnvironmentAccessRabbitsIdGetExecute(r EnvironmentAccessRabbitApiApiEnvironmentAccessRabbitsIdGetRequest) (*EnvironmentAccessRabbit, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *EnvironmentAccessRabbitJsonhal
+		localVarReturnValue *EnvironmentAccessRabbit
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnvironmentAccessRabbitApiService.ApiEnvironmentAccessRabbitsIdGet")
@@ -306,7 +306,7 @@ func (a *EnvironmentAccessRabbitApiService) ApiEnvironmentAccessRabbitsIdGetExec
 	}
 
 	localVarPath := localBasePath + "/api/environment_access_rabbits/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -322,7 +322,7 @@ func (a *EnvironmentAccessRabbitApiService) ApiEnvironmentAccessRabbitsIdGetExec
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/hal+json", "application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
+	localVarHTTPHeaderAccepts := []string{"application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -353,9 +353,9 @@ func (a *EnvironmentAccessRabbitApiService) ApiEnvironmentAccessRabbitsIdGetExec
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -380,20 +380,20 @@ func (a *EnvironmentAccessRabbitApiService) ApiEnvironmentAccessRabbitsIdGetExec
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiApiEnvironmentAccessRabbitsIdPatchRequest struct {
+type EnvironmentAccessRabbitApiApiEnvironmentAccessRabbitsIdPatchRequest struct {
 	ctx                     context.Context
 	ApiService              *EnvironmentAccessRabbitApiService
-	id                      string
 	environmentAccessRabbit *EnvironmentAccessRabbit
+	id                      string
 }
 
 // The updated EnvironmentAccessRabbit resource
-func (r ApiApiEnvironmentAccessRabbitsIdPatchRequest) EnvironmentAccessRabbit(environmentAccessRabbit EnvironmentAccessRabbit) ApiApiEnvironmentAccessRabbitsIdPatchRequest {
+func (r EnvironmentAccessRabbitApiApiEnvironmentAccessRabbitsIdPatchRequest) EnvironmentAccessRabbit(environmentAccessRabbit EnvironmentAccessRabbit) EnvironmentAccessRabbitApiApiEnvironmentAccessRabbitsIdPatchRequest {
 	r.environmentAccessRabbit = &environmentAccessRabbit
 	return r
 }
 
-func (r ApiApiEnvironmentAccessRabbitsIdPatchRequest) Execute() (*EnvironmentAccessRabbitJsonhal, *http.Response, error) {
+func (r EnvironmentAccessRabbitApiApiEnvironmentAccessRabbitsIdPatchRequest) Execute() (*EnvironmentAccessRabbit, *http.Response, error) {
 	return r.ApiService.ApiEnvironmentAccessRabbitsIdPatchExecute(r)
 }
 
@@ -404,10 +404,10 @@ Updates the EnvironmentAccessRabbit resource.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id EnvironmentAccessRabbit identifier
-	@return ApiApiEnvironmentAccessRabbitsIdPatchRequest
+	@return EnvironmentAccessRabbitApiApiEnvironmentAccessRabbitsIdPatchRequest
 */
-func (a *EnvironmentAccessRabbitApiService) ApiEnvironmentAccessRabbitsIdPatch(ctx context.Context, id string) ApiApiEnvironmentAccessRabbitsIdPatchRequest {
-	return ApiApiEnvironmentAccessRabbitsIdPatchRequest{
+func (a *EnvironmentAccessRabbitApiService) ApiEnvironmentAccessRabbitsIdPatch(ctx context.Context, id string) EnvironmentAccessRabbitApiApiEnvironmentAccessRabbitsIdPatchRequest {
+	return EnvironmentAccessRabbitApiApiEnvironmentAccessRabbitsIdPatchRequest{
 		ApiService: a,
 		ctx:        ctx,
 		id:         id,
@@ -416,13 +416,13 @@ func (a *EnvironmentAccessRabbitApiService) ApiEnvironmentAccessRabbitsIdPatch(c
 
 // Execute executes the request
 //
-//	@return EnvironmentAccessRabbitJsonhal
-func (a *EnvironmentAccessRabbitApiService) ApiEnvironmentAccessRabbitsIdPatchExecute(r ApiApiEnvironmentAccessRabbitsIdPatchRequest) (*EnvironmentAccessRabbitJsonhal, *http.Response, error) {
+//	@return EnvironmentAccessRabbit
+func (a *EnvironmentAccessRabbitApiService) ApiEnvironmentAccessRabbitsIdPatchExecute(r EnvironmentAccessRabbitApiApiEnvironmentAccessRabbitsIdPatchRequest) (*EnvironmentAccessRabbit, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *EnvironmentAccessRabbitJsonhal
+		localVarReturnValue *EnvironmentAccessRabbit
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnvironmentAccessRabbitApiService.ApiEnvironmentAccessRabbitsIdPatch")
@@ -431,7 +431,7 @@ func (a *EnvironmentAccessRabbitApiService) ApiEnvironmentAccessRabbitsIdPatchEx
 	}
 
 	localVarPath := localBasePath + "/api/environment_access_rabbits/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -441,7 +441,7 @@ func (a *EnvironmentAccessRabbitApiService) ApiEnvironmentAccessRabbitsIdPatchEx
 	}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/vnd.api+json"}
+	localVarHTTPContentTypes := []string{"application/merge-patch+json", "application/vnd.api+json"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -450,7 +450,7 @@ func (a *EnvironmentAccessRabbitApiService) ApiEnvironmentAccessRabbitsIdPatchEx
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/hal+json", "application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
+	localVarHTTPHeaderAccepts := []string{"application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -483,9 +483,9 @@ func (a *EnvironmentAccessRabbitApiService) ApiEnvironmentAccessRabbitsIdPatchEx
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -510,20 +510,20 @@ func (a *EnvironmentAccessRabbitApiService) ApiEnvironmentAccessRabbitsIdPatchEx
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiApiEnvironmentAccessRabbitsIdPutRequest struct {
-	ctx                            context.Context
-	ApiService                     *EnvironmentAccessRabbitApiService
-	id                             string
-	environmentAccessRabbitJsonhal *EnvironmentAccessRabbitJsonhal
+type EnvironmentAccessRabbitApiApiEnvironmentAccessRabbitsIdPutRequest struct {
+	ctx                     context.Context
+	ApiService              *EnvironmentAccessRabbitApiService
+	environmentAccessRabbit *EnvironmentAccessRabbit
+	id                      string
 }
 
 // The updated EnvironmentAccessRabbit resource
-func (r ApiApiEnvironmentAccessRabbitsIdPutRequest) EnvironmentAccessRabbitJsonhal(environmentAccessRabbitJsonhal EnvironmentAccessRabbitJsonhal) ApiApiEnvironmentAccessRabbitsIdPutRequest {
-	r.environmentAccessRabbitJsonhal = &environmentAccessRabbitJsonhal
+func (r EnvironmentAccessRabbitApiApiEnvironmentAccessRabbitsIdPutRequest) EnvironmentAccessRabbit(environmentAccessRabbit EnvironmentAccessRabbit) EnvironmentAccessRabbitApiApiEnvironmentAccessRabbitsIdPutRequest {
+	r.environmentAccessRabbit = &environmentAccessRabbit
 	return r
 }
 
-func (r ApiApiEnvironmentAccessRabbitsIdPutRequest) Execute() (*EnvironmentAccessRabbitJsonhal, *http.Response, error) {
+func (r EnvironmentAccessRabbitApiApiEnvironmentAccessRabbitsIdPutRequest) Execute() (*EnvironmentAccessRabbit, *http.Response, error) {
 	return r.ApiService.ApiEnvironmentAccessRabbitsIdPutExecute(r)
 }
 
@@ -534,10 +534,10 @@ Replaces the EnvironmentAccessRabbit resource.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id EnvironmentAccessRabbit identifier
-	@return ApiApiEnvironmentAccessRabbitsIdPutRequest
+	@return EnvironmentAccessRabbitApiApiEnvironmentAccessRabbitsIdPutRequest
 */
-func (a *EnvironmentAccessRabbitApiService) ApiEnvironmentAccessRabbitsIdPut(ctx context.Context, id string) ApiApiEnvironmentAccessRabbitsIdPutRequest {
-	return ApiApiEnvironmentAccessRabbitsIdPutRequest{
+func (a *EnvironmentAccessRabbitApiService) ApiEnvironmentAccessRabbitsIdPut(ctx context.Context, id string) EnvironmentAccessRabbitApiApiEnvironmentAccessRabbitsIdPutRequest {
+	return EnvironmentAccessRabbitApiApiEnvironmentAccessRabbitsIdPutRequest{
 		ApiService: a,
 		ctx:        ctx,
 		id:         id,
@@ -546,13 +546,13 @@ func (a *EnvironmentAccessRabbitApiService) ApiEnvironmentAccessRabbitsIdPut(ctx
 
 // Execute executes the request
 //
-//	@return EnvironmentAccessRabbitJsonhal
-func (a *EnvironmentAccessRabbitApiService) ApiEnvironmentAccessRabbitsIdPutExecute(r ApiApiEnvironmentAccessRabbitsIdPutRequest) (*EnvironmentAccessRabbitJsonhal, *http.Response, error) {
+//	@return EnvironmentAccessRabbit
+func (a *EnvironmentAccessRabbitApiService) ApiEnvironmentAccessRabbitsIdPutExecute(r EnvironmentAccessRabbitApiApiEnvironmentAccessRabbitsIdPutRequest) (*EnvironmentAccessRabbit, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *EnvironmentAccessRabbitJsonhal
+		localVarReturnValue *EnvironmentAccessRabbit
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnvironmentAccessRabbitApiService.ApiEnvironmentAccessRabbitsIdPut")
@@ -561,17 +561,17 @@ func (a *EnvironmentAccessRabbitApiService) ApiEnvironmentAccessRabbitsIdPutExec
 	}
 
 	localVarPath := localBasePath + "/api/environment_access_rabbits/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.environmentAccessRabbitJsonhal == nil {
-		return localVarReturnValue, nil, reportError("environmentAccessRabbitJsonhal is required and must be specified")
+	if r.environmentAccessRabbit == nil {
+		return localVarReturnValue, nil, reportError("environmentAccessRabbit is required and must be specified")
 	}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/hal+json", "application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
+	localVarHTTPContentTypes := []string{"application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -580,7 +580,7 @@ func (a *EnvironmentAccessRabbitApiService) ApiEnvironmentAccessRabbitsIdPutExec
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/hal+json", "application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
+	localVarHTTPHeaderAccepts := []string{"application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -588,7 +588,7 @@ func (a *EnvironmentAccessRabbitApiService) ApiEnvironmentAccessRabbitsIdPutExec
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.environmentAccessRabbitJsonhal
+	localVarPostBody = r.environmentAccessRabbit
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
@@ -613,9 +613,9 @@ func (a *EnvironmentAccessRabbitApiService) ApiEnvironmentAccessRabbitsIdPutExec
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -640,19 +640,19 @@ func (a *EnvironmentAccessRabbitApiService) ApiEnvironmentAccessRabbitsIdPutExec
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiApiEnvironmentAccessRabbitsPostRequest struct {
-	ctx                            context.Context
-	ApiService                     *EnvironmentAccessRabbitApiService
-	environmentAccessRabbitJsonhal *EnvironmentAccessRabbitJsonhal
+type EnvironmentAccessRabbitApiApiEnvironmentAccessRabbitsPostRequest struct {
+	ctx                     context.Context
+	ApiService              *EnvironmentAccessRabbitApiService
+	environmentAccessRabbit *EnvironmentAccessRabbit
 }
 
 // The new EnvironmentAccessRabbit resource
-func (r ApiApiEnvironmentAccessRabbitsPostRequest) EnvironmentAccessRabbitJsonhal(environmentAccessRabbitJsonhal EnvironmentAccessRabbitJsonhal) ApiApiEnvironmentAccessRabbitsPostRequest {
-	r.environmentAccessRabbitJsonhal = &environmentAccessRabbitJsonhal
+func (r EnvironmentAccessRabbitApiApiEnvironmentAccessRabbitsPostRequest) EnvironmentAccessRabbit(environmentAccessRabbit EnvironmentAccessRabbit) EnvironmentAccessRabbitApiApiEnvironmentAccessRabbitsPostRequest {
+	r.environmentAccessRabbit = &environmentAccessRabbit
 	return r
 }
 
-func (r ApiApiEnvironmentAccessRabbitsPostRequest) Execute() (*EnvironmentAccessRabbitJsonhal, *http.Response, error) {
+func (r EnvironmentAccessRabbitApiApiEnvironmentAccessRabbitsPostRequest) Execute() (*EnvironmentAccessRabbit, *http.Response, error) {
 	return r.ApiService.ApiEnvironmentAccessRabbitsPostExecute(r)
 }
 
@@ -662,10 +662,10 @@ ApiEnvironmentAccessRabbitsPost Creates a EnvironmentAccessRabbit resource.
 Creates a EnvironmentAccessRabbit resource.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiApiEnvironmentAccessRabbitsPostRequest
+	@return EnvironmentAccessRabbitApiApiEnvironmentAccessRabbitsPostRequest
 */
-func (a *EnvironmentAccessRabbitApiService) ApiEnvironmentAccessRabbitsPost(ctx context.Context) ApiApiEnvironmentAccessRabbitsPostRequest {
-	return ApiApiEnvironmentAccessRabbitsPostRequest{
+func (a *EnvironmentAccessRabbitApiService) ApiEnvironmentAccessRabbitsPost(ctx context.Context) EnvironmentAccessRabbitApiApiEnvironmentAccessRabbitsPostRequest {
+	return EnvironmentAccessRabbitApiApiEnvironmentAccessRabbitsPostRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -673,13 +673,13 @@ func (a *EnvironmentAccessRabbitApiService) ApiEnvironmentAccessRabbitsPost(ctx 
 
 // Execute executes the request
 //
-//	@return EnvironmentAccessRabbitJsonhal
-func (a *EnvironmentAccessRabbitApiService) ApiEnvironmentAccessRabbitsPostExecute(r ApiApiEnvironmentAccessRabbitsPostRequest) (*EnvironmentAccessRabbitJsonhal, *http.Response, error) {
+//	@return EnvironmentAccessRabbit
+func (a *EnvironmentAccessRabbitApiService) ApiEnvironmentAccessRabbitsPostExecute(r EnvironmentAccessRabbitApiApiEnvironmentAccessRabbitsPostRequest) (*EnvironmentAccessRabbit, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *EnvironmentAccessRabbitJsonhal
+		localVarReturnValue *EnvironmentAccessRabbit
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnvironmentAccessRabbitApiService.ApiEnvironmentAccessRabbitsPost")
@@ -692,12 +692,12 @@ func (a *EnvironmentAccessRabbitApiService) ApiEnvironmentAccessRabbitsPostExecu
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.environmentAccessRabbitJsonhal == nil {
-		return localVarReturnValue, nil, reportError("environmentAccessRabbitJsonhal is required and must be specified")
+	if r.environmentAccessRabbit == nil {
+		return localVarReturnValue, nil, reportError("environmentAccessRabbit is required and must be specified")
 	}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/hal+json", "application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
+	localVarHTTPContentTypes := []string{"application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -706,7 +706,7 @@ func (a *EnvironmentAccessRabbitApiService) ApiEnvironmentAccessRabbitsPostExecu
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/hal+json", "application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
+	localVarHTTPHeaderAccepts := []string{"application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -714,7 +714,7 @@ func (a *EnvironmentAccessRabbitApiService) ApiEnvironmentAccessRabbitsPostExecu
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.environmentAccessRabbitJsonhal
+	localVarPostBody = r.environmentAccessRabbit
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
@@ -739,9 +739,9 @@ func (a *EnvironmentAccessRabbitApiService) ApiEnvironmentAccessRabbitsPostExecu
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}

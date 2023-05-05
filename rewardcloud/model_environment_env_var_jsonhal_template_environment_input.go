@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the EnvironmentEnvVarJsonhalTemplateEnvironmentInput type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &EnvironmentEnvVarJsonhalTemplateEnvironmentInput{}
+
 // EnvironmentEnvVarJsonhalTemplateEnvironmentInput
 type EnvironmentEnvVarJsonhalTemplateEnvironmentInput struct {
 	Links       *AbstractEnvironmentJsonhalLinks `json:"_links,omitempty"`
@@ -42,7 +45,7 @@ func NewEnvironmentEnvVarJsonhalTemplateEnvironmentInputWithDefaults() *Environm
 
 // GetLinks returns the Links field value if set, zero value otherwise.
 func (o *EnvironmentEnvVarJsonhalTemplateEnvironmentInput) GetLinks() AbstractEnvironmentJsonhalLinks {
-	if o == nil || isNil(o.Links) {
+	if o == nil || IsNil(o.Links) {
 		var ret AbstractEnvironmentJsonhalLinks
 		return ret
 	}
@@ -52,7 +55,7 @@ func (o *EnvironmentEnvVarJsonhalTemplateEnvironmentInput) GetLinks() AbstractEn
 // GetLinksOk returns a tuple with the Links field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EnvironmentEnvVarJsonhalTemplateEnvironmentInput) GetLinksOk() (*AbstractEnvironmentJsonhalLinks, bool) {
-	if o == nil || isNil(o.Links) {
+	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
 	return o.Links, true
@@ -60,7 +63,7 @@ func (o *EnvironmentEnvVarJsonhalTemplateEnvironmentInput) GetLinksOk() (*Abstra
 
 // HasLinks returns a boolean if a field has been set.
 func (o *EnvironmentEnvVarJsonhalTemplateEnvironmentInput) HasLinks() bool {
-	if o != nil && !isNil(o.Links) {
+	if o != nil && !IsNil(o.Links) {
 		return true
 	}
 
@@ -74,7 +77,7 @@ func (o *EnvironmentEnvVarJsonhalTemplateEnvironmentInput) SetLinks(v AbstractEn
 
 // GetKey returns the Key field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *EnvironmentEnvVarJsonhalTemplateEnvironmentInput) GetKey() string {
-	if o == nil || isNil(o.Key.Get()) {
+	if o == nil || IsNil(o.Key.Get()) {
 		var ret string
 		return ret
 	}
@@ -117,7 +120,7 @@ func (o *EnvironmentEnvVarJsonhalTemplateEnvironmentInput) UnsetKey() {
 
 // GetValue returns the Value field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *EnvironmentEnvVarJsonhalTemplateEnvironmentInput) GetValue() string {
-	if o == nil || isNil(o.Value.Get()) {
+	if o == nil || IsNil(o.Value.Get()) {
 		var ret string
 		return ret
 	}
@@ -160,7 +163,7 @@ func (o *EnvironmentEnvVarJsonhalTemplateEnvironmentInput) UnsetValue() {
 
 // GetIsEncrypted returns the IsEncrypted field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *EnvironmentEnvVarJsonhalTemplateEnvironmentInput) GetIsEncrypted() bool {
-	if o == nil || isNil(o.IsEncrypted.Get()) {
+	if o == nil || IsNil(o.IsEncrypted.Get()) {
 		var ret bool
 		return ret
 	}
@@ -203,7 +206,7 @@ func (o *EnvironmentEnvVarJsonhalTemplateEnvironmentInput) UnsetIsEncrypted() {
 
 // GetEnvVarType returns the EnvVarType field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *EnvironmentEnvVarJsonhalTemplateEnvironmentInput) GetEnvVarType() string {
-	if o == nil || isNil(o.EnvVarType.Get()) {
+	if o == nil || IsNil(o.EnvVarType.Get()) {
 		var ret string
 		return ret
 	}
@@ -245,8 +248,16 @@ func (o *EnvironmentEnvVarJsonhalTemplateEnvironmentInput) UnsetEnvVarType() {
 }
 
 func (o EnvironmentEnvVarJsonhalTemplateEnvironmentInput) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o EnvironmentEnvVarJsonhalTemplateEnvironmentInput) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Links) {
+	if !IsNil(o.Links) {
 		toSerialize["_links"] = o.Links
 	}
 	if o.Key.IsSet() {
@@ -261,7 +272,7 @@ func (o EnvironmentEnvVarJsonhalTemplateEnvironmentInput) MarshalJSON() ([]byte,
 	if o.EnvVarType.IsSet() {
 		toSerialize["envVarType"] = o.EnvVarType.Get()
 	}
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 type NullableEnvironmentEnvVarJsonhalTemplateEnvironmentInput struct {

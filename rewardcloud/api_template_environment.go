@@ -13,7 +13,7 @@ package rewardcloud
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"reflect"
@@ -23,7 +23,7 @@ import (
 // TemplateEnvironmentApiService TemplateEnvironmentApi service
 type TemplateEnvironmentApiService service
 
-type ApiApiTemplateEnvironmentsGetCollectionRequest struct {
+type TemplateEnvironmentApiApiTemplateEnvironmentsGetCollectionRequest struct {
 	ctx              context.Context
 	ApiService       *TemplateEnvironmentApiService
 	page             *int32
@@ -36,43 +36,43 @@ type ApiApiTemplateEnvironmentsGetCollectionRequest struct {
 }
 
 // The collection page number
-func (r ApiApiTemplateEnvironmentsGetCollectionRequest) Page(page int32) ApiApiTemplateEnvironmentsGetCollectionRequest {
+func (r TemplateEnvironmentApiApiTemplateEnvironmentsGetCollectionRequest) Page(page int32) TemplateEnvironmentApiApiTemplateEnvironmentsGetCollectionRequest {
 	r.page = &page
 	return r
 }
 
 // The number of items per page
-func (r ApiApiTemplateEnvironmentsGetCollectionRequest) ItemsPerPage(itemsPerPage int32) ApiApiTemplateEnvironmentsGetCollectionRequest {
+func (r TemplateEnvironmentApiApiTemplateEnvironmentsGetCollectionRequest) ItemsPerPage(itemsPerPage int32) TemplateEnvironmentApiApiTemplateEnvironmentsGetCollectionRequest {
 	r.itemsPerPage = &itemsPerPage
 	return r
 }
 
-func (r ApiApiTemplateEnvironmentsGetCollectionRequest) Id(id int32) ApiApiTemplateEnvironmentsGetCollectionRequest {
+func (r TemplateEnvironmentApiApiTemplateEnvironmentsGetCollectionRequest) Id(id int32) TemplateEnvironmentApiApiTemplateEnvironmentsGetCollectionRequest {
 	r.id = &id
 	return r
 }
 
-func (r ApiApiTemplateEnvironmentsGetCollectionRequest) Id2(id2 []int32) ApiApiTemplateEnvironmentsGetCollectionRequest {
+func (r TemplateEnvironmentApiApiTemplateEnvironmentsGetCollectionRequest) Id2(id2 []int32) TemplateEnvironmentApiApiTemplateEnvironmentsGetCollectionRequest {
 	r.id2 = &id2
 	return r
 }
 
-func (r ApiApiTemplateEnvironmentsGetCollectionRequest) TemplateProject(templateProject string) ApiApiTemplateEnvironmentsGetCollectionRequest {
+func (r TemplateEnvironmentApiApiTemplateEnvironmentsGetCollectionRequest) TemplateProject(templateProject string) TemplateEnvironmentApiApiTemplateEnvironmentsGetCollectionRequest {
 	r.templateProject = &templateProject
 	return r
 }
 
-func (r ApiApiTemplateEnvironmentsGetCollectionRequest) TemplateProject2(templateProject2 []string) ApiApiTemplateEnvironmentsGetCollectionRequest {
+func (r TemplateEnvironmentApiApiTemplateEnvironmentsGetCollectionRequest) TemplateProject2(templateProject2 []string) TemplateEnvironmentApiApiTemplateEnvironmentsGetCollectionRequest {
 	r.templateProject2 = &templateProject2
 	return r
 }
 
-func (r ApiApiTemplateEnvironmentsGetCollectionRequest) OrderUpdatedAt(orderUpdatedAt string) ApiApiTemplateEnvironmentsGetCollectionRequest {
+func (r TemplateEnvironmentApiApiTemplateEnvironmentsGetCollectionRequest) OrderUpdatedAt(orderUpdatedAt string) TemplateEnvironmentApiApiTemplateEnvironmentsGetCollectionRequest {
 	r.orderUpdatedAt = &orderUpdatedAt
 	return r
 }
 
-func (r ApiApiTemplateEnvironmentsGetCollectionRequest) Execute() (*ApiTemplateEnvironmentsGetCollection200Response, *http.Response, error) {
+func (r TemplateEnvironmentApiApiTemplateEnvironmentsGetCollectionRequest) Execute() ([]TemplateEnvironmentTemplateEnvironmentOutput, *http.Response, error) {
 	return r.ApiService.ApiTemplateEnvironmentsGetCollectionExecute(r)
 }
 
@@ -82,10 +82,10 @@ ApiTemplateEnvironmentsGetCollection Retrieves the collection of TemplateEnviron
 Retrieves the collection of TemplateEnvironment resources.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiApiTemplateEnvironmentsGetCollectionRequest
+	@return TemplateEnvironmentApiApiTemplateEnvironmentsGetCollectionRequest
 */
-func (a *TemplateEnvironmentApiService) ApiTemplateEnvironmentsGetCollection(ctx context.Context) ApiApiTemplateEnvironmentsGetCollectionRequest {
-	return ApiApiTemplateEnvironmentsGetCollectionRequest{
+func (a *TemplateEnvironmentApiService) ApiTemplateEnvironmentsGetCollection(ctx context.Context) TemplateEnvironmentApiApiTemplateEnvironmentsGetCollectionRequest {
+	return TemplateEnvironmentApiApiTemplateEnvironmentsGetCollectionRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -93,13 +93,13 @@ func (a *TemplateEnvironmentApiService) ApiTemplateEnvironmentsGetCollection(ctx
 
 // Execute executes the request
 //
-//	@return ApiTemplateEnvironmentsGetCollection200Response
-func (a *TemplateEnvironmentApiService) ApiTemplateEnvironmentsGetCollectionExecute(r ApiApiTemplateEnvironmentsGetCollectionRequest) (*ApiTemplateEnvironmentsGetCollection200Response, *http.Response, error) {
+//	@return []TemplateEnvironmentTemplateEnvironmentOutput
+func (a *TemplateEnvironmentApiService) ApiTemplateEnvironmentsGetCollectionExecute(r TemplateEnvironmentApiApiTemplateEnvironmentsGetCollectionRequest) ([]TemplateEnvironmentTemplateEnvironmentOutput, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *ApiTemplateEnvironmentsGetCollection200Response
+		localVarReturnValue []TemplateEnvironmentTemplateEnvironmentOutput
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TemplateEnvironmentApiService.ApiTemplateEnvironmentsGetCollection")
@@ -114,41 +114,41 @@ func (a *TemplateEnvironmentApiService) ApiTemplateEnvironmentsGetCollectionExec
 	localVarFormParams := url.Values{}
 
 	if r.page != nil {
-		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
 	}
 	if r.itemsPerPage != nil {
-		localVarQueryParams.Add("itemsPerPage", parameterToString(*r.itemsPerPage, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "itemsPerPage", r.itemsPerPage, "")
 	}
 	if r.id != nil {
-		localVarQueryParams.Add("id", parameterToString(*r.id, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "id", r.id, "")
 	}
 	if r.id2 != nil {
 		t := *r.id2
 		if reflect.TypeOf(t).Kind() == reflect.Slice {
 			s := reflect.ValueOf(t)
 			for i := 0; i < s.Len(); i++ {
-				localVarQueryParams.Add("id[]", parameterToString(s.Index(i), "multi"))
+				parameterAddToHeaderOrQuery(localVarQueryParams, "id[]", s.Index(i), "multi")
 			}
 		} else {
-			localVarQueryParams.Add("id[]", parameterToString(t, "multi"))
+			parameterAddToHeaderOrQuery(localVarQueryParams, "id[]", t, "multi")
 		}
 	}
 	if r.templateProject != nil {
-		localVarQueryParams.Add("templateProject", parameterToString(*r.templateProject, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "templateProject", r.templateProject, "")
 	}
 	if r.templateProject2 != nil {
 		t := *r.templateProject2
 		if reflect.TypeOf(t).Kind() == reflect.Slice {
 			s := reflect.ValueOf(t)
 			for i := 0; i < s.Len(); i++ {
-				localVarQueryParams.Add("templateProject[]", parameterToString(s.Index(i), "multi"))
+				parameterAddToHeaderOrQuery(localVarQueryParams, "templateProject[]", s.Index(i), "multi")
 			}
 		} else {
-			localVarQueryParams.Add("templateProject[]", parameterToString(t, "multi"))
+			parameterAddToHeaderOrQuery(localVarQueryParams, "templateProject[]", t, "multi")
 		}
 	}
 	if r.orderUpdatedAt != nil {
-		localVarQueryParams.Add("order[updatedAt]", parameterToString(*r.orderUpdatedAt, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "order[updatedAt]", r.orderUpdatedAt, "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -160,7 +160,7 @@ func (a *TemplateEnvironmentApiService) ApiTemplateEnvironmentsGetCollectionExec
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/hal+json", "application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
+	localVarHTTPHeaderAccepts := []string{"application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -191,9 +191,9 @@ func (a *TemplateEnvironmentApiService) ApiTemplateEnvironmentsGetCollectionExec
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -218,13 +218,13 @@ func (a *TemplateEnvironmentApiService) ApiTemplateEnvironmentsGetCollectionExec
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiApiTemplateEnvironmentsIdDeleteRequest struct {
+type TemplateEnvironmentApiApiTemplateEnvironmentsIdDeleteRequest struct {
 	ctx        context.Context
 	ApiService *TemplateEnvironmentApiService
 	id         string
 }
 
-func (r ApiApiTemplateEnvironmentsIdDeleteRequest) Execute() (*http.Response, error) {
+func (r TemplateEnvironmentApiApiTemplateEnvironmentsIdDeleteRequest) Execute() (*http.Response, error) {
 	return r.ApiService.ApiTemplateEnvironmentsIdDeleteExecute(r)
 }
 
@@ -235,10 +235,10 @@ Removes the TemplateEnvironment resource.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id TemplateEnvironment identifier
-	@return ApiApiTemplateEnvironmentsIdDeleteRequest
+	@return TemplateEnvironmentApiApiTemplateEnvironmentsIdDeleteRequest
 */
-func (a *TemplateEnvironmentApiService) ApiTemplateEnvironmentsIdDelete(ctx context.Context, id string) ApiApiTemplateEnvironmentsIdDeleteRequest {
-	return ApiApiTemplateEnvironmentsIdDeleteRequest{
+func (a *TemplateEnvironmentApiService) ApiTemplateEnvironmentsIdDelete(ctx context.Context, id string) TemplateEnvironmentApiApiTemplateEnvironmentsIdDeleteRequest {
+	return TemplateEnvironmentApiApiTemplateEnvironmentsIdDeleteRequest{
 		ApiService: a,
 		ctx:        ctx,
 		id:         id,
@@ -246,7 +246,7 @@ func (a *TemplateEnvironmentApiService) ApiTemplateEnvironmentsIdDelete(ctx cont
 }
 
 // Execute executes the request
-func (a *TemplateEnvironmentApiService) ApiTemplateEnvironmentsIdDeleteExecute(r ApiApiTemplateEnvironmentsIdDeleteRequest) (*http.Response, error) {
+func (a *TemplateEnvironmentApiService) ApiTemplateEnvironmentsIdDeleteExecute(r TemplateEnvironmentApiApiTemplateEnvironmentsIdDeleteRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
 		localVarPostBody   interface{}
@@ -259,7 +259,7 @@ func (a *TemplateEnvironmentApiService) ApiTemplateEnvironmentsIdDeleteExecute(r
 	}
 
 	localVarPath := localBasePath + "/api/template_environments/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -306,9 +306,9 @@ func (a *TemplateEnvironmentApiService) ApiTemplateEnvironmentsIdDeleteExecute(r
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -324,13 +324,13 @@ func (a *TemplateEnvironmentApiService) ApiTemplateEnvironmentsIdDeleteExecute(r
 	return localVarHTTPResponse, nil
 }
 
-type ApiApiTemplateEnvironmentsIdGetRequest struct {
+type TemplateEnvironmentApiApiTemplateEnvironmentsIdGetRequest struct {
 	ctx        context.Context
 	ApiService *TemplateEnvironmentApiService
 	id         string
 }
 
-func (r ApiApiTemplateEnvironmentsIdGetRequest) Execute() (*TemplateEnvironmentJsonhalTemplateEnvironmentOutput, *http.Response, error) {
+func (r TemplateEnvironmentApiApiTemplateEnvironmentsIdGetRequest) Execute() (*TemplateEnvironmentTemplateEnvironmentOutput, *http.Response, error) {
 	return r.ApiService.ApiTemplateEnvironmentsIdGetExecute(r)
 }
 
@@ -341,10 +341,10 @@ Retrieves a TemplateEnvironment resource.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id TemplateEnvironment identifier
-	@return ApiApiTemplateEnvironmentsIdGetRequest
+	@return TemplateEnvironmentApiApiTemplateEnvironmentsIdGetRequest
 */
-func (a *TemplateEnvironmentApiService) ApiTemplateEnvironmentsIdGet(ctx context.Context, id string) ApiApiTemplateEnvironmentsIdGetRequest {
-	return ApiApiTemplateEnvironmentsIdGetRequest{
+func (a *TemplateEnvironmentApiService) ApiTemplateEnvironmentsIdGet(ctx context.Context, id string) TemplateEnvironmentApiApiTemplateEnvironmentsIdGetRequest {
+	return TemplateEnvironmentApiApiTemplateEnvironmentsIdGetRequest{
 		ApiService: a,
 		ctx:        ctx,
 		id:         id,
@@ -353,13 +353,13 @@ func (a *TemplateEnvironmentApiService) ApiTemplateEnvironmentsIdGet(ctx context
 
 // Execute executes the request
 //
-//	@return TemplateEnvironmentJsonhalTemplateEnvironmentOutput
-func (a *TemplateEnvironmentApiService) ApiTemplateEnvironmentsIdGetExecute(r ApiApiTemplateEnvironmentsIdGetRequest) (*TemplateEnvironmentJsonhalTemplateEnvironmentOutput, *http.Response, error) {
+//	@return TemplateEnvironmentTemplateEnvironmentOutput
+func (a *TemplateEnvironmentApiService) ApiTemplateEnvironmentsIdGetExecute(r TemplateEnvironmentApiApiTemplateEnvironmentsIdGetRequest) (*TemplateEnvironmentTemplateEnvironmentOutput, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *TemplateEnvironmentJsonhalTemplateEnvironmentOutput
+		localVarReturnValue *TemplateEnvironmentTemplateEnvironmentOutput
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TemplateEnvironmentApiService.ApiTemplateEnvironmentsIdGet")
@@ -368,7 +368,7 @@ func (a *TemplateEnvironmentApiService) ApiTemplateEnvironmentsIdGetExecute(r Ap
 	}
 
 	localVarPath := localBasePath + "/api/template_environments/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -384,7 +384,7 @@ func (a *TemplateEnvironmentApiService) ApiTemplateEnvironmentsIdGetExecute(r Ap
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/hal+json", "application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
+	localVarHTTPHeaderAccepts := []string{"application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -415,9 +415,9 @@ func (a *TemplateEnvironmentApiService) ApiTemplateEnvironmentsIdGetExecute(r Ap
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -442,20 +442,20 @@ func (a *TemplateEnvironmentApiService) ApiTemplateEnvironmentsIdGetExecute(r Ap
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiApiTemplateEnvironmentsIdPatchRequest struct {
+type TemplateEnvironmentApiApiTemplateEnvironmentsIdPatchRequest struct {
 	ctx                                         context.Context
 	ApiService                                  *TemplateEnvironmentApiService
-	id                                          string
 	templateEnvironmentTemplateEnvironmentInput *TemplateEnvironmentTemplateEnvironmentInput
+	id                                          string
 }
 
 // The updated TemplateEnvironment resource
-func (r ApiApiTemplateEnvironmentsIdPatchRequest) TemplateEnvironmentTemplateEnvironmentInput(templateEnvironmentTemplateEnvironmentInput TemplateEnvironmentTemplateEnvironmentInput) ApiApiTemplateEnvironmentsIdPatchRequest {
+func (r TemplateEnvironmentApiApiTemplateEnvironmentsIdPatchRequest) TemplateEnvironmentTemplateEnvironmentInput(templateEnvironmentTemplateEnvironmentInput TemplateEnvironmentTemplateEnvironmentInput) TemplateEnvironmentApiApiTemplateEnvironmentsIdPatchRequest {
 	r.templateEnvironmentTemplateEnvironmentInput = &templateEnvironmentTemplateEnvironmentInput
 	return r
 }
 
-func (r ApiApiTemplateEnvironmentsIdPatchRequest) Execute() (*TemplateEnvironmentJsonhalTemplateEnvironmentOutput, *http.Response, error) {
+func (r TemplateEnvironmentApiApiTemplateEnvironmentsIdPatchRequest) Execute() (*TemplateEnvironmentTemplateEnvironmentOutput, *http.Response, error) {
 	return r.ApiService.ApiTemplateEnvironmentsIdPatchExecute(r)
 }
 
@@ -466,10 +466,10 @@ Updates the TemplateEnvironment resource.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id TemplateEnvironment identifier
-	@return ApiApiTemplateEnvironmentsIdPatchRequest
+	@return TemplateEnvironmentApiApiTemplateEnvironmentsIdPatchRequest
 */
-func (a *TemplateEnvironmentApiService) ApiTemplateEnvironmentsIdPatch(ctx context.Context, id string) ApiApiTemplateEnvironmentsIdPatchRequest {
-	return ApiApiTemplateEnvironmentsIdPatchRequest{
+func (a *TemplateEnvironmentApiService) ApiTemplateEnvironmentsIdPatch(ctx context.Context, id string) TemplateEnvironmentApiApiTemplateEnvironmentsIdPatchRequest {
+	return TemplateEnvironmentApiApiTemplateEnvironmentsIdPatchRequest{
 		ApiService: a,
 		ctx:        ctx,
 		id:         id,
@@ -478,13 +478,13 @@ func (a *TemplateEnvironmentApiService) ApiTemplateEnvironmentsIdPatch(ctx conte
 
 // Execute executes the request
 //
-//	@return TemplateEnvironmentJsonhalTemplateEnvironmentOutput
-func (a *TemplateEnvironmentApiService) ApiTemplateEnvironmentsIdPatchExecute(r ApiApiTemplateEnvironmentsIdPatchRequest) (*TemplateEnvironmentJsonhalTemplateEnvironmentOutput, *http.Response, error) {
+//	@return TemplateEnvironmentTemplateEnvironmentOutput
+func (a *TemplateEnvironmentApiService) ApiTemplateEnvironmentsIdPatchExecute(r TemplateEnvironmentApiApiTemplateEnvironmentsIdPatchRequest) (*TemplateEnvironmentTemplateEnvironmentOutput, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *TemplateEnvironmentJsonhalTemplateEnvironmentOutput
+		localVarReturnValue *TemplateEnvironmentTemplateEnvironmentOutput
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TemplateEnvironmentApiService.ApiTemplateEnvironmentsIdPatch")
@@ -493,7 +493,7 @@ func (a *TemplateEnvironmentApiService) ApiTemplateEnvironmentsIdPatchExecute(r 
 	}
 
 	localVarPath := localBasePath + "/api/template_environments/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -503,7 +503,7 @@ func (a *TemplateEnvironmentApiService) ApiTemplateEnvironmentsIdPatchExecute(r 
 	}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/vnd.api+json"}
+	localVarHTTPContentTypes := []string{"application/merge-patch+json", "application/vnd.api+json"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -512,7 +512,7 @@ func (a *TemplateEnvironmentApiService) ApiTemplateEnvironmentsIdPatchExecute(r 
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/hal+json", "application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
+	localVarHTTPHeaderAccepts := []string{"application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -545,9 +545,9 @@ func (a *TemplateEnvironmentApiService) ApiTemplateEnvironmentsIdPatchExecute(r 
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -572,20 +572,20 @@ func (a *TemplateEnvironmentApiService) ApiTemplateEnvironmentsIdPatchExecute(r 
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiApiTemplateEnvironmentsIdPutRequest struct {
-	ctx                                                context.Context
-	ApiService                                         *TemplateEnvironmentApiService
-	id                                                 string
-	templateEnvironmentJsonhalTemplateEnvironmentInput *TemplateEnvironmentJsonhalTemplateEnvironmentInput
+type TemplateEnvironmentApiApiTemplateEnvironmentsIdPutRequest struct {
+	ctx                                         context.Context
+	ApiService                                  *TemplateEnvironmentApiService
+	templateEnvironmentTemplateEnvironmentInput *TemplateEnvironmentTemplateEnvironmentInput
+	id                                          string
 }
 
 // The updated TemplateEnvironment resource
-func (r ApiApiTemplateEnvironmentsIdPutRequest) TemplateEnvironmentJsonhalTemplateEnvironmentInput(templateEnvironmentJsonhalTemplateEnvironmentInput TemplateEnvironmentJsonhalTemplateEnvironmentInput) ApiApiTemplateEnvironmentsIdPutRequest {
-	r.templateEnvironmentJsonhalTemplateEnvironmentInput = &templateEnvironmentJsonhalTemplateEnvironmentInput
+func (r TemplateEnvironmentApiApiTemplateEnvironmentsIdPutRequest) TemplateEnvironmentTemplateEnvironmentInput(templateEnvironmentTemplateEnvironmentInput TemplateEnvironmentTemplateEnvironmentInput) TemplateEnvironmentApiApiTemplateEnvironmentsIdPutRequest {
+	r.templateEnvironmentTemplateEnvironmentInput = &templateEnvironmentTemplateEnvironmentInput
 	return r
 }
 
-func (r ApiApiTemplateEnvironmentsIdPutRequest) Execute() (*TemplateEnvironmentJsonhalTemplateEnvironmentOutput, *http.Response, error) {
+func (r TemplateEnvironmentApiApiTemplateEnvironmentsIdPutRequest) Execute() (*TemplateEnvironmentTemplateEnvironmentOutput, *http.Response, error) {
 	return r.ApiService.ApiTemplateEnvironmentsIdPutExecute(r)
 }
 
@@ -596,10 +596,10 @@ Replaces the TemplateEnvironment resource.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id TemplateEnvironment identifier
-	@return ApiApiTemplateEnvironmentsIdPutRequest
+	@return TemplateEnvironmentApiApiTemplateEnvironmentsIdPutRequest
 */
-func (a *TemplateEnvironmentApiService) ApiTemplateEnvironmentsIdPut(ctx context.Context, id string) ApiApiTemplateEnvironmentsIdPutRequest {
-	return ApiApiTemplateEnvironmentsIdPutRequest{
+func (a *TemplateEnvironmentApiService) ApiTemplateEnvironmentsIdPut(ctx context.Context, id string) TemplateEnvironmentApiApiTemplateEnvironmentsIdPutRequest {
+	return TemplateEnvironmentApiApiTemplateEnvironmentsIdPutRequest{
 		ApiService: a,
 		ctx:        ctx,
 		id:         id,
@@ -608,13 +608,13 @@ func (a *TemplateEnvironmentApiService) ApiTemplateEnvironmentsIdPut(ctx context
 
 // Execute executes the request
 //
-//	@return TemplateEnvironmentJsonhalTemplateEnvironmentOutput
-func (a *TemplateEnvironmentApiService) ApiTemplateEnvironmentsIdPutExecute(r ApiApiTemplateEnvironmentsIdPutRequest) (*TemplateEnvironmentJsonhalTemplateEnvironmentOutput, *http.Response, error) {
+//	@return TemplateEnvironmentTemplateEnvironmentOutput
+func (a *TemplateEnvironmentApiService) ApiTemplateEnvironmentsIdPutExecute(r TemplateEnvironmentApiApiTemplateEnvironmentsIdPutRequest) (*TemplateEnvironmentTemplateEnvironmentOutput, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *TemplateEnvironmentJsonhalTemplateEnvironmentOutput
+		localVarReturnValue *TemplateEnvironmentTemplateEnvironmentOutput
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TemplateEnvironmentApiService.ApiTemplateEnvironmentsIdPut")
@@ -623,17 +623,17 @@ func (a *TemplateEnvironmentApiService) ApiTemplateEnvironmentsIdPutExecute(r Ap
 	}
 
 	localVarPath := localBasePath + "/api/template_environments/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.templateEnvironmentJsonhalTemplateEnvironmentInput == nil {
-		return localVarReturnValue, nil, reportError("templateEnvironmentJsonhalTemplateEnvironmentInput is required and must be specified")
+	if r.templateEnvironmentTemplateEnvironmentInput == nil {
+		return localVarReturnValue, nil, reportError("templateEnvironmentTemplateEnvironmentInput is required and must be specified")
 	}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/hal+json", "application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
+	localVarHTTPContentTypes := []string{"application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -642,7 +642,7 @@ func (a *TemplateEnvironmentApiService) ApiTemplateEnvironmentsIdPutExecute(r Ap
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/hal+json", "application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
+	localVarHTTPHeaderAccepts := []string{"application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -650,7 +650,7 @@ func (a *TemplateEnvironmentApiService) ApiTemplateEnvironmentsIdPutExecute(r Ap
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.templateEnvironmentJsonhalTemplateEnvironmentInput
+	localVarPostBody = r.templateEnvironmentTemplateEnvironmentInput
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
@@ -675,9 +675,9 @@ func (a *TemplateEnvironmentApiService) ApiTemplateEnvironmentsIdPutExecute(r Ap
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -702,19 +702,19 @@ func (a *TemplateEnvironmentApiService) ApiTemplateEnvironmentsIdPutExecute(r Ap
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiApiTemplateEnvironmentsPostRequest struct {
-	ctx                                                context.Context
-	ApiService                                         *TemplateEnvironmentApiService
-	templateEnvironmentJsonhalTemplateEnvironmentInput *TemplateEnvironmentJsonhalTemplateEnvironmentInput
+type TemplateEnvironmentApiApiTemplateEnvironmentsPostRequest struct {
+	ctx                                         context.Context
+	ApiService                                  *TemplateEnvironmentApiService
+	templateEnvironmentTemplateEnvironmentInput *TemplateEnvironmentTemplateEnvironmentInput
 }
 
 // The new TemplateEnvironment resource
-func (r ApiApiTemplateEnvironmentsPostRequest) TemplateEnvironmentJsonhalTemplateEnvironmentInput(templateEnvironmentJsonhalTemplateEnvironmentInput TemplateEnvironmentJsonhalTemplateEnvironmentInput) ApiApiTemplateEnvironmentsPostRequest {
-	r.templateEnvironmentJsonhalTemplateEnvironmentInput = &templateEnvironmentJsonhalTemplateEnvironmentInput
+func (r TemplateEnvironmentApiApiTemplateEnvironmentsPostRequest) TemplateEnvironmentTemplateEnvironmentInput(templateEnvironmentTemplateEnvironmentInput TemplateEnvironmentTemplateEnvironmentInput) TemplateEnvironmentApiApiTemplateEnvironmentsPostRequest {
+	r.templateEnvironmentTemplateEnvironmentInput = &templateEnvironmentTemplateEnvironmentInput
 	return r
 }
 
-func (r ApiApiTemplateEnvironmentsPostRequest) Execute() (*TemplateEnvironmentJsonhalTemplateEnvironmentOutput, *http.Response, error) {
+func (r TemplateEnvironmentApiApiTemplateEnvironmentsPostRequest) Execute() (*TemplateEnvironmentTemplateEnvironmentOutput, *http.Response, error) {
 	return r.ApiService.ApiTemplateEnvironmentsPostExecute(r)
 }
 
@@ -724,10 +724,10 @@ ApiTemplateEnvironmentsPost Creates a TemplateEnvironment resource.
 Creates a TemplateEnvironment resource.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiApiTemplateEnvironmentsPostRequest
+	@return TemplateEnvironmentApiApiTemplateEnvironmentsPostRequest
 */
-func (a *TemplateEnvironmentApiService) ApiTemplateEnvironmentsPost(ctx context.Context) ApiApiTemplateEnvironmentsPostRequest {
-	return ApiApiTemplateEnvironmentsPostRequest{
+func (a *TemplateEnvironmentApiService) ApiTemplateEnvironmentsPost(ctx context.Context) TemplateEnvironmentApiApiTemplateEnvironmentsPostRequest {
+	return TemplateEnvironmentApiApiTemplateEnvironmentsPostRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -735,13 +735,13 @@ func (a *TemplateEnvironmentApiService) ApiTemplateEnvironmentsPost(ctx context.
 
 // Execute executes the request
 //
-//	@return TemplateEnvironmentJsonhalTemplateEnvironmentOutput
-func (a *TemplateEnvironmentApiService) ApiTemplateEnvironmentsPostExecute(r ApiApiTemplateEnvironmentsPostRequest) (*TemplateEnvironmentJsonhalTemplateEnvironmentOutput, *http.Response, error) {
+//	@return TemplateEnvironmentTemplateEnvironmentOutput
+func (a *TemplateEnvironmentApiService) ApiTemplateEnvironmentsPostExecute(r TemplateEnvironmentApiApiTemplateEnvironmentsPostRequest) (*TemplateEnvironmentTemplateEnvironmentOutput, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *TemplateEnvironmentJsonhalTemplateEnvironmentOutput
+		localVarReturnValue *TemplateEnvironmentTemplateEnvironmentOutput
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TemplateEnvironmentApiService.ApiTemplateEnvironmentsPost")
@@ -754,12 +754,12 @@ func (a *TemplateEnvironmentApiService) ApiTemplateEnvironmentsPostExecute(r Api
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.templateEnvironmentJsonhalTemplateEnvironmentInput == nil {
-		return localVarReturnValue, nil, reportError("templateEnvironmentJsonhalTemplateEnvironmentInput is required and must be specified")
+	if r.templateEnvironmentTemplateEnvironmentInput == nil {
+		return localVarReturnValue, nil, reportError("templateEnvironmentTemplateEnvironmentInput is required and must be specified")
 	}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/hal+json", "application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
+	localVarHTTPContentTypes := []string{"application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -768,7 +768,7 @@ func (a *TemplateEnvironmentApiService) ApiTemplateEnvironmentsPostExecute(r Api
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/hal+json", "application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
+	localVarHTTPHeaderAccepts := []string{"application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -776,7 +776,7 @@ func (a *TemplateEnvironmentApiService) ApiTemplateEnvironmentsPostExecute(r Api
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.templateEnvironmentJsonhalTemplateEnvironmentInput
+	localVarPostBody = r.templateEnvironmentTemplateEnvironmentInput
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
@@ -801,9 +801,9 @@ func (a *TemplateEnvironmentApiService) ApiTemplateEnvironmentsPostExecute(r Api
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}

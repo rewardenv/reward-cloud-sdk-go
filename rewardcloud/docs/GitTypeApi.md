@@ -15,7 +15,7 @@ Method | HTTP request | Description
 
 ## ApiGitTypesGetCollection
 
-> ApiGitTypesGetCollection200Response ApiGitTypesGetCollection(ctx).Page(page).ItemsPerPage(itemsPerPage).Execute()
+> []GitType ApiGitTypesGetCollection(ctx).Page(page).ItemsPerPage(itemsPerPage).Execute()
 
 Retrieves the collection of GitType resources.
 
@@ -30,7 +30,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
@@ -44,7 +44,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `GitTypeApi.ApiGitTypesGetCollection``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiGitTypesGetCollection`: ApiGitTypesGetCollection200Response
+    // response from `ApiGitTypesGetCollection`: []GitType
     fmt.Fprintf(os.Stdout, "Response from `GitTypeApi.ApiGitTypesGetCollection`: %v\n", resp)
 }
 ```
@@ -65,7 +65,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ApiGitTypesGetCollection200Response**](ApiGitTypesGetCollection200Response.md)
+[**[]GitType**](GitType.md)
 
 ### Authorization
 
@@ -74,7 +74,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
+- **Accept**: application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -98,7 +98,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
@@ -106,7 +106,7 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.GitTypeApi.ApiGitTypesIdDelete(context.Background(), id).Execute()
+    r, err := apiClient.GitTypeApi.ApiGitTypesIdDelete(context.Background(), id).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `GitTypeApi.ApiGitTypesIdDelete``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -151,7 +151,7 @@ Name | Type | Description  | Notes
 
 ## ApiGitTypesIdGet
 
-> GitTypeJsonhal ApiGitTypesIdGet(ctx, id).Execute()
+> GitType ApiGitTypesIdGet(ctx, id).Execute()
 
 Retrieves a GitType resource.
 
@@ -166,7 +166,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
@@ -179,7 +179,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `GitTypeApi.ApiGitTypesIdGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiGitTypesIdGet`: GitTypeJsonhal
+    // response from `ApiGitTypesIdGet`: GitType
     fmt.Fprintf(os.Stdout, "Response from `GitTypeApi.ApiGitTypesIdGet`: %v\n", resp)
 }
 ```
@@ -203,7 +203,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GitTypeJsonhal**](GitTypeJsonhal.md)
+[**GitType**](GitType.md)
 
 ### Authorization
 
@@ -212,7 +212,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
+- **Accept**: application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -221,7 +221,7 @@ Name | Type | Description  | Notes
 
 ## ApiGitTypesIdPatch
 
-> GitTypeJsonhal ApiGitTypesIdPatch(ctx, id).GitType(gitType).Execute()
+> GitType ApiGitTypesIdPatch(ctx, id).GitType(gitType).Execute()
 
 Updates the GitType resource.
 
@@ -236,12 +236,12 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    id := "id_example" // string | GitType identifier
     gitType := *openapiclient.NewGitType() // GitType | The updated GitType resource
+    id := "id_example" // string | GitType identifier
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -250,7 +250,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `GitTypeApi.ApiGitTypesIdPatch``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiGitTypesIdPatch`: GitTypeJsonhal
+    // response from `ApiGitTypesIdPatch`: GitType
     fmt.Fprintf(os.Stdout, "Response from `GitTypeApi.ApiGitTypesIdPatch`: %v\n", resp)
 }
 ```
@@ -270,12 +270,12 @@ Other parameters are passed through a pointer to a apiApiGitTypesIdPatchRequest 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-
  **gitType** | [**GitType**](GitType.md) | The updated GitType resource | 
+
 
 ### Return type
 
-[**GitTypeJsonhal**](GitTypeJsonhal.md)
+[**GitType**](GitType.md)
 
 ### Authorization
 
@@ -283,8 +283,8 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: application/vnd.api+json
-- **Accept**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
+- **Content-Type**: application/merge-patch+json, application/vnd.api+json
+- **Accept**: application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -293,7 +293,7 @@ Name | Type | Description  | Notes
 
 ## ApiGitTypesIdPut
 
-> GitTypeJsonhal ApiGitTypesIdPut(ctx, id).GitTypeJsonhal(gitTypeJsonhal).Execute()
+> GitType ApiGitTypesIdPut(ctx, id).GitType(gitType).Execute()
 
 Replaces the GitType resource.
 
@@ -308,21 +308,21 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
+    gitType := *openapiclient.NewGitType() // GitType | The updated GitType resource
     id := "id_example" // string | GitType identifier
-    gitTypeJsonhal := *openapiclient.NewGitTypeJsonhal() // GitTypeJsonhal | The updated GitType resource
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.GitTypeApi.ApiGitTypesIdPut(context.Background(), id).GitTypeJsonhal(gitTypeJsonhal).Execute()
+    resp, r, err := apiClient.GitTypeApi.ApiGitTypesIdPut(context.Background(), id).GitType(gitType).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `GitTypeApi.ApiGitTypesIdPut``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiGitTypesIdPut`: GitTypeJsonhal
+    // response from `ApiGitTypesIdPut`: GitType
     fmt.Fprintf(os.Stdout, "Response from `GitTypeApi.ApiGitTypesIdPut`: %v\n", resp)
 }
 ```
@@ -342,12 +342,12 @@ Other parameters are passed through a pointer to a apiApiGitTypesIdPutRequest st
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **gitType** | [**GitType**](GitType.md) | The updated GitType resource | 
 
- **gitTypeJsonhal** | [**GitTypeJsonhal**](GitTypeJsonhal.md) | The updated GitType resource | 
 
 ### Return type
 
-[**GitTypeJsonhal**](GitTypeJsonhal.md)
+[**GitType**](GitType.md)
 
 ### Authorization
 
@@ -355,8 +355,8 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
-- **Accept**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
+- **Content-Type**: application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
+- **Accept**: application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -365,7 +365,7 @@ Name | Type | Description  | Notes
 
 ## ApiGitTypesPost
 
-> GitTypeJsonhal ApiGitTypesPost(ctx).GitTypeJsonhal(gitTypeJsonhal).Execute()
+> GitType ApiGitTypesPost(ctx).GitType(gitType).Execute()
 
 Creates a GitType resource.
 
@@ -380,20 +380,20 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    gitTypeJsonhal := *openapiclient.NewGitTypeJsonhal() // GitTypeJsonhal | The new GitType resource
+    gitType := *openapiclient.NewGitType() // GitType | The new GitType resource
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.GitTypeApi.ApiGitTypesPost(context.Background()).GitTypeJsonhal(gitTypeJsonhal).Execute()
+    resp, r, err := apiClient.GitTypeApi.ApiGitTypesPost(context.Background()).GitType(gitType).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `GitTypeApi.ApiGitTypesPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiGitTypesPost`: GitTypeJsonhal
+    // response from `ApiGitTypesPost`: GitType
     fmt.Fprintf(os.Stdout, "Response from `GitTypeApi.ApiGitTypesPost`: %v\n", resp)
 }
 ```
@@ -409,11 +409,11 @@ Other parameters are passed through a pointer to a apiApiGitTypesPostRequest str
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **gitTypeJsonhal** | [**GitTypeJsonhal**](GitTypeJsonhal.md) | The new GitType resource | 
+ **gitType** | [**GitType**](GitType.md) | The new GitType resource | 
 
 ### Return type
 
-[**GitTypeJsonhal**](GitTypeJsonhal.md)
+[**GitType**](GitType.md)
 
 ### Authorization
 
@@ -421,8 +421,8 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
-- **Accept**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
+- **Content-Type**: application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
+- **Accept**: application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)

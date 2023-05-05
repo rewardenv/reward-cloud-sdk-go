@@ -13,7 +13,7 @@ package rewardcloud
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"reflect"
@@ -23,7 +23,7 @@ import (
 // ProjectTypeVersionApiService ProjectTypeVersionApi service
 type ProjectTypeVersionApiService service
 
-type ApiApiProjectTypeVersionsGetCollectionRequest struct {
+type ProjectTypeVersionApiApiProjectTypeVersionsGetCollectionRequest struct {
 	ctx          context.Context
 	ApiService   *ProjectTypeVersionApiService
 	page         *int32
@@ -33,28 +33,28 @@ type ApiApiProjectTypeVersionsGetCollectionRequest struct {
 }
 
 // The collection page number
-func (r ApiApiProjectTypeVersionsGetCollectionRequest) Page(page int32) ApiApiProjectTypeVersionsGetCollectionRequest {
+func (r ProjectTypeVersionApiApiProjectTypeVersionsGetCollectionRequest) Page(page int32) ProjectTypeVersionApiApiProjectTypeVersionsGetCollectionRequest {
 	r.page = &page
 	return r
 }
 
 // The number of items per page
-func (r ApiApiProjectTypeVersionsGetCollectionRequest) ItemsPerPage(itemsPerPage int32) ApiApiProjectTypeVersionsGetCollectionRequest {
+func (r ProjectTypeVersionApiApiProjectTypeVersionsGetCollectionRequest) ItemsPerPage(itemsPerPage int32) ProjectTypeVersionApiApiProjectTypeVersionsGetCollectionRequest {
 	r.itemsPerPage = &itemsPerPage
 	return r
 }
 
-func (r ApiApiProjectTypeVersionsGetCollectionRequest) ProjectType(projectType string) ApiApiProjectTypeVersionsGetCollectionRequest {
+func (r ProjectTypeVersionApiApiProjectTypeVersionsGetCollectionRequest) ProjectType(projectType string) ProjectTypeVersionApiApiProjectTypeVersionsGetCollectionRequest {
 	r.projectType = &projectType
 	return r
 }
 
-func (r ApiApiProjectTypeVersionsGetCollectionRequest) ProjectType2(projectType2 []string) ApiApiProjectTypeVersionsGetCollectionRequest {
+func (r ProjectTypeVersionApiApiProjectTypeVersionsGetCollectionRequest) ProjectType2(projectType2 []string) ProjectTypeVersionApiApiProjectTypeVersionsGetCollectionRequest {
 	r.projectType2 = &projectType2
 	return r
 }
 
-func (r ApiApiProjectTypeVersionsGetCollectionRequest) Execute() (*ApiProjectTypeVersionsGetCollection200Response, *http.Response, error) {
+func (r ProjectTypeVersionApiApiProjectTypeVersionsGetCollectionRequest) Execute() ([]ProjectTypeVersion, *http.Response, error) {
 	return r.ApiService.ApiProjectTypeVersionsGetCollectionExecute(r)
 }
 
@@ -64,10 +64,10 @@ ApiProjectTypeVersionsGetCollection Retrieves the collection of ProjectTypeVersi
 Retrieves the collection of ProjectTypeVersion resources.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiApiProjectTypeVersionsGetCollectionRequest
+	@return ProjectTypeVersionApiApiProjectTypeVersionsGetCollectionRequest
 */
-func (a *ProjectTypeVersionApiService) ApiProjectTypeVersionsGetCollection(ctx context.Context) ApiApiProjectTypeVersionsGetCollectionRequest {
-	return ApiApiProjectTypeVersionsGetCollectionRequest{
+func (a *ProjectTypeVersionApiService) ApiProjectTypeVersionsGetCollection(ctx context.Context) ProjectTypeVersionApiApiProjectTypeVersionsGetCollectionRequest {
+	return ProjectTypeVersionApiApiProjectTypeVersionsGetCollectionRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -75,13 +75,13 @@ func (a *ProjectTypeVersionApiService) ApiProjectTypeVersionsGetCollection(ctx c
 
 // Execute executes the request
 //
-//	@return ApiProjectTypeVersionsGetCollection200Response
-func (a *ProjectTypeVersionApiService) ApiProjectTypeVersionsGetCollectionExecute(r ApiApiProjectTypeVersionsGetCollectionRequest) (*ApiProjectTypeVersionsGetCollection200Response, *http.Response, error) {
+//	@return []ProjectTypeVersion
+func (a *ProjectTypeVersionApiService) ApiProjectTypeVersionsGetCollectionExecute(r ProjectTypeVersionApiApiProjectTypeVersionsGetCollectionRequest) ([]ProjectTypeVersion, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *ApiProjectTypeVersionsGetCollection200Response
+		localVarReturnValue []ProjectTypeVersion
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectTypeVersionApiService.ApiProjectTypeVersionsGetCollection")
@@ -96,23 +96,23 @@ func (a *ProjectTypeVersionApiService) ApiProjectTypeVersionsGetCollectionExecut
 	localVarFormParams := url.Values{}
 
 	if r.page != nil {
-		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
 	}
 	if r.itemsPerPage != nil {
-		localVarQueryParams.Add("itemsPerPage", parameterToString(*r.itemsPerPage, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "itemsPerPage", r.itemsPerPage, "")
 	}
 	if r.projectType != nil {
-		localVarQueryParams.Add("projectType", parameterToString(*r.projectType, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "projectType", r.projectType, "")
 	}
 	if r.projectType2 != nil {
 		t := *r.projectType2
 		if reflect.TypeOf(t).Kind() == reflect.Slice {
 			s := reflect.ValueOf(t)
 			for i := 0; i < s.Len(); i++ {
-				localVarQueryParams.Add("projectType[]", parameterToString(s.Index(i), "multi"))
+				parameterAddToHeaderOrQuery(localVarQueryParams, "projectType[]", s.Index(i), "multi")
 			}
 		} else {
-			localVarQueryParams.Add("projectType[]", parameterToString(t, "multi"))
+			parameterAddToHeaderOrQuery(localVarQueryParams, "projectType[]", t, "multi")
 		}
 	}
 	// to determine the Content-Type header
@@ -125,7 +125,7 @@ func (a *ProjectTypeVersionApiService) ApiProjectTypeVersionsGetCollectionExecut
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/hal+json", "application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
+	localVarHTTPHeaderAccepts := []string{"application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -156,9 +156,9 @@ func (a *ProjectTypeVersionApiService) ApiProjectTypeVersionsGetCollectionExecut
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -183,13 +183,13 @@ func (a *ProjectTypeVersionApiService) ApiProjectTypeVersionsGetCollectionExecut
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiApiProjectTypeVersionsIdDeleteRequest struct {
+type ProjectTypeVersionApiApiProjectTypeVersionsIdDeleteRequest struct {
 	ctx        context.Context
 	ApiService *ProjectTypeVersionApiService
 	id         string
 }
 
-func (r ApiApiProjectTypeVersionsIdDeleteRequest) Execute() (*http.Response, error) {
+func (r ProjectTypeVersionApiApiProjectTypeVersionsIdDeleteRequest) Execute() (*http.Response, error) {
 	return r.ApiService.ApiProjectTypeVersionsIdDeleteExecute(r)
 }
 
@@ -200,10 +200,10 @@ Removes the ProjectTypeVersion resource.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id ProjectTypeVersion identifier
-	@return ApiApiProjectTypeVersionsIdDeleteRequest
+	@return ProjectTypeVersionApiApiProjectTypeVersionsIdDeleteRequest
 */
-func (a *ProjectTypeVersionApiService) ApiProjectTypeVersionsIdDelete(ctx context.Context, id string) ApiApiProjectTypeVersionsIdDeleteRequest {
-	return ApiApiProjectTypeVersionsIdDeleteRequest{
+func (a *ProjectTypeVersionApiService) ApiProjectTypeVersionsIdDelete(ctx context.Context, id string) ProjectTypeVersionApiApiProjectTypeVersionsIdDeleteRequest {
+	return ProjectTypeVersionApiApiProjectTypeVersionsIdDeleteRequest{
 		ApiService: a,
 		ctx:        ctx,
 		id:         id,
@@ -211,7 +211,7 @@ func (a *ProjectTypeVersionApiService) ApiProjectTypeVersionsIdDelete(ctx contex
 }
 
 // Execute executes the request
-func (a *ProjectTypeVersionApiService) ApiProjectTypeVersionsIdDeleteExecute(r ApiApiProjectTypeVersionsIdDeleteRequest) (*http.Response, error) {
+func (a *ProjectTypeVersionApiService) ApiProjectTypeVersionsIdDeleteExecute(r ProjectTypeVersionApiApiProjectTypeVersionsIdDeleteRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
 		localVarPostBody   interface{}
@@ -224,7 +224,7 @@ func (a *ProjectTypeVersionApiService) ApiProjectTypeVersionsIdDeleteExecute(r A
 	}
 
 	localVarPath := localBasePath + "/api/project_type_versions/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -271,9 +271,9 @@ func (a *ProjectTypeVersionApiService) ApiProjectTypeVersionsIdDeleteExecute(r A
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -289,13 +289,13 @@ func (a *ProjectTypeVersionApiService) ApiProjectTypeVersionsIdDeleteExecute(r A
 	return localVarHTTPResponse, nil
 }
 
-type ApiApiProjectTypeVersionsIdGetRequest struct {
+type ProjectTypeVersionApiApiProjectTypeVersionsIdGetRequest struct {
 	ctx        context.Context
 	ApiService *ProjectTypeVersionApiService
 	id         string
 }
 
-func (r ApiApiProjectTypeVersionsIdGetRequest) Execute() (*ProjectTypeVersionJsonhal, *http.Response, error) {
+func (r ProjectTypeVersionApiApiProjectTypeVersionsIdGetRequest) Execute() (*ProjectTypeVersion, *http.Response, error) {
 	return r.ApiService.ApiProjectTypeVersionsIdGetExecute(r)
 }
 
@@ -306,10 +306,10 @@ Retrieves a ProjectTypeVersion resource.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id ProjectTypeVersion identifier
-	@return ApiApiProjectTypeVersionsIdGetRequest
+	@return ProjectTypeVersionApiApiProjectTypeVersionsIdGetRequest
 */
-func (a *ProjectTypeVersionApiService) ApiProjectTypeVersionsIdGet(ctx context.Context, id string) ApiApiProjectTypeVersionsIdGetRequest {
-	return ApiApiProjectTypeVersionsIdGetRequest{
+func (a *ProjectTypeVersionApiService) ApiProjectTypeVersionsIdGet(ctx context.Context, id string) ProjectTypeVersionApiApiProjectTypeVersionsIdGetRequest {
+	return ProjectTypeVersionApiApiProjectTypeVersionsIdGetRequest{
 		ApiService: a,
 		ctx:        ctx,
 		id:         id,
@@ -318,13 +318,13 @@ func (a *ProjectTypeVersionApiService) ApiProjectTypeVersionsIdGet(ctx context.C
 
 // Execute executes the request
 //
-//	@return ProjectTypeVersionJsonhal
-func (a *ProjectTypeVersionApiService) ApiProjectTypeVersionsIdGetExecute(r ApiApiProjectTypeVersionsIdGetRequest) (*ProjectTypeVersionJsonhal, *http.Response, error) {
+//	@return ProjectTypeVersion
+func (a *ProjectTypeVersionApiService) ApiProjectTypeVersionsIdGetExecute(r ProjectTypeVersionApiApiProjectTypeVersionsIdGetRequest) (*ProjectTypeVersion, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *ProjectTypeVersionJsonhal
+		localVarReturnValue *ProjectTypeVersion
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectTypeVersionApiService.ApiProjectTypeVersionsIdGet")
@@ -333,7 +333,7 @@ func (a *ProjectTypeVersionApiService) ApiProjectTypeVersionsIdGetExecute(r ApiA
 	}
 
 	localVarPath := localBasePath + "/api/project_type_versions/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -349,7 +349,7 @@ func (a *ProjectTypeVersionApiService) ApiProjectTypeVersionsIdGetExecute(r ApiA
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/hal+json", "application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
+	localVarHTTPHeaderAccepts := []string{"application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -380,9 +380,9 @@ func (a *ProjectTypeVersionApiService) ApiProjectTypeVersionsIdGetExecute(r ApiA
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -407,20 +407,20 @@ func (a *ProjectTypeVersionApiService) ApiProjectTypeVersionsIdGetExecute(r ApiA
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiApiProjectTypeVersionsIdPatchRequest struct {
+type ProjectTypeVersionApiApiProjectTypeVersionsIdPatchRequest struct {
 	ctx                context.Context
 	ApiService         *ProjectTypeVersionApiService
-	id                 string
 	projectTypeVersion *ProjectTypeVersion
+	id                 string
 }
 
 // The updated ProjectTypeVersion resource
-func (r ApiApiProjectTypeVersionsIdPatchRequest) ProjectTypeVersion(projectTypeVersion ProjectTypeVersion) ApiApiProjectTypeVersionsIdPatchRequest {
+func (r ProjectTypeVersionApiApiProjectTypeVersionsIdPatchRequest) ProjectTypeVersion(projectTypeVersion ProjectTypeVersion) ProjectTypeVersionApiApiProjectTypeVersionsIdPatchRequest {
 	r.projectTypeVersion = &projectTypeVersion
 	return r
 }
 
-func (r ApiApiProjectTypeVersionsIdPatchRequest) Execute() (*ProjectTypeVersionJsonhal, *http.Response, error) {
+func (r ProjectTypeVersionApiApiProjectTypeVersionsIdPatchRequest) Execute() (*ProjectTypeVersion, *http.Response, error) {
 	return r.ApiService.ApiProjectTypeVersionsIdPatchExecute(r)
 }
 
@@ -431,10 +431,10 @@ Updates the ProjectTypeVersion resource.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id ProjectTypeVersion identifier
-	@return ApiApiProjectTypeVersionsIdPatchRequest
+	@return ProjectTypeVersionApiApiProjectTypeVersionsIdPatchRequest
 */
-func (a *ProjectTypeVersionApiService) ApiProjectTypeVersionsIdPatch(ctx context.Context, id string) ApiApiProjectTypeVersionsIdPatchRequest {
-	return ApiApiProjectTypeVersionsIdPatchRequest{
+func (a *ProjectTypeVersionApiService) ApiProjectTypeVersionsIdPatch(ctx context.Context, id string) ProjectTypeVersionApiApiProjectTypeVersionsIdPatchRequest {
+	return ProjectTypeVersionApiApiProjectTypeVersionsIdPatchRequest{
 		ApiService: a,
 		ctx:        ctx,
 		id:         id,
@@ -443,13 +443,13 @@ func (a *ProjectTypeVersionApiService) ApiProjectTypeVersionsIdPatch(ctx context
 
 // Execute executes the request
 //
-//	@return ProjectTypeVersionJsonhal
-func (a *ProjectTypeVersionApiService) ApiProjectTypeVersionsIdPatchExecute(r ApiApiProjectTypeVersionsIdPatchRequest) (*ProjectTypeVersionJsonhal, *http.Response, error) {
+//	@return ProjectTypeVersion
+func (a *ProjectTypeVersionApiService) ApiProjectTypeVersionsIdPatchExecute(r ProjectTypeVersionApiApiProjectTypeVersionsIdPatchRequest) (*ProjectTypeVersion, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *ProjectTypeVersionJsonhal
+		localVarReturnValue *ProjectTypeVersion
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectTypeVersionApiService.ApiProjectTypeVersionsIdPatch")
@@ -458,7 +458,7 @@ func (a *ProjectTypeVersionApiService) ApiProjectTypeVersionsIdPatchExecute(r Ap
 	}
 
 	localVarPath := localBasePath + "/api/project_type_versions/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -468,7 +468,7 @@ func (a *ProjectTypeVersionApiService) ApiProjectTypeVersionsIdPatchExecute(r Ap
 	}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/vnd.api+json"}
+	localVarHTTPContentTypes := []string{"application/merge-patch+json", "application/vnd.api+json"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -477,7 +477,7 @@ func (a *ProjectTypeVersionApiService) ApiProjectTypeVersionsIdPatchExecute(r Ap
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/hal+json", "application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
+	localVarHTTPHeaderAccepts := []string{"application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -510,9 +510,9 @@ func (a *ProjectTypeVersionApiService) ApiProjectTypeVersionsIdPatchExecute(r Ap
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -537,20 +537,20 @@ func (a *ProjectTypeVersionApiService) ApiProjectTypeVersionsIdPatchExecute(r Ap
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiApiProjectTypeVersionsIdPutRequest struct {
-	ctx                       context.Context
-	ApiService                *ProjectTypeVersionApiService
-	id                        string
-	projectTypeVersionJsonhal *ProjectTypeVersionJsonhal
+type ProjectTypeVersionApiApiProjectTypeVersionsIdPutRequest struct {
+	ctx                context.Context
+	ApiService         *ProjectTypeVersionApiService
+	projectTypeVersion *ProjectTypeVersion
+	id                 string
 }
 
 // The updated ProjectTypeVersion resource
-func (r ApiApiProjectTypeVersionsIdPutRequest) ProjectTypeVersionJsonhal(projectTypeVersionJsonhal ProjectTypeVersionJsonhal) ApiApiProjectTypeVersionsIdPutRequest {
-	r.projectTypeVersionJsonhal = &projectTypeVersionJsonhal
+func (r ProjectTypeVersionApiApiProjectTypeVersionsIdPutRequest) ProjectTypeVersion(projectTypeVersion ProjectTypeVersion) ProjectTypeVersionApiApiProjectTypeVersionsIdPutRequest {
+	r.projectTypeVersion = &projectTypeVersion
 	return r
 }
 
-func (r ApiApiProjectTypeVersionsIdPutRequest) Execute() (*ProjectTypeVersionJsonhal, *http.Response, error) {
+func (r ProjectTypeVersionApiApiProjectTypeVersionsIdPutRequest) Execute() (*ProjectTypeVersion, *http.Response, error) {
 	return r.ApiService.ApiProjectTypeVersionsIdPutExecute(r)
 }
 
@@ -561,10 +561,10 @@ Replaces the ProjectTypeVersion resource.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id ProjectTypeVersion identifier
-	@return ApiApiProjectTypeVersionsIdPutRequest
+	@return ProjectTypeVersionApiApiProjectTypeVersionsIdPutRequest
 */
-func (a *ProjectTypeVersionApiService) ApiProjectTypeVersionsIdPut(ctx context.Context, id string) ApiApiProjectTypeVersionsIdPutRequest {
-	return ApiApiProjectTypeVersionsIdPutRequest{
+func (a *ProjectTypeVersionApiService) ApiProjectTypeVersionsIdPut(ctx context.Context, id string) ProjectTypeVersionApiApiProjectTypeVersionsIdPutRequest {
+	return ProjectTypeVersionApiApiProjectTypeVersionsIdPutRequest{
 		ApiService: a,
 		ctx:        ctx,
 		id:         id,
@@ -573,13 +573,13 @@ func (a *ProjectTypeVersionApiService) ApiProjectTypeVersionsIdPut(ctx context.C
 
 // Execute executes the request
 //
-//	@return ProjectTypeVersionJsonhal
-func (a *ProjectTypeVersionApiService) ApiProjectTypeVersionsIdPutExecute(r ApiApiProjectTypeVersionsIdPutRequest) (*ProjectTypeVersionJsonhal, *http.Response, error) {
+//	@return ProjectTypeVersion
+func (a *ProjectTypeVersionApiService) ApiProjectTypeVersionsIdPutExecute(r ProjectTypeVersionApiApiProjectTypeVersionsIdPutRequest) (*ProjectTypeVersion, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *ProjectTypeVersionJsonhal
+		localVarReturnValue *ProjectTypeVersion
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectTypeVersionApiService.ApiProjectTypeVersionsIdPut")
@@ -588,17 +588,17 @@ func (a *ProjectTypeVersionApiService) ApiProjectTypeVersionsIdPutExecute(r ApiA
 	}
 
 	localVarPath := localBasePath + "/api/project_type_versions/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.projectTypeVersionJsonhal == nil {
-		return localVarReturnValue, nil, reportError("projectTypeVersionJsonhal is required and must be specified")
+	if r.projectTypeVersion == nil {
+		return localVarReturnValue, nil, reportError("projectTypeVersion is required and must be specified")
 	}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/hal+json", "application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
+	localVarHTTPContentTypes := []string{"application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -607,7 +607,7 @@ func (a *ProjectTypeVersionApiService) ApiProjectTypeVersionsIdPutExecute(r ApiA
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/hal+json", "application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
+	localVarHTTPHeaderAccepts := []string{"application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -615,7 +615,7 @@ func (a *ProjectTypeVersionApiService) ApiProjectTypeVersionsIdPutExecute(r ApiA
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.projectTypeVersionJsonhal
+	localVarPostBody = r.projectTypeVersion
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
@@ -640,9 +640,9 @@ func (a *ProjectTypeVersionApiService) ApiProjectTypeVersionsIdPutExecute(r ApiA
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -667,19 +667,19 @@ func (a *ProjectTypeVersionApiService) ApiProjectTypeVersionsIdPutExecute(r ApiA
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiApiProjectTypeVersionsPostRequest struct {
-	ctx                       context.Context
-	ApiService                *ProjectTypeVersionApiService
-	projectTypeVersionJsonhal *ProjectTypeVersionJsonhal
+type ProjectTypeVersionApiApiProjectTypeVersionsPostRequest struct {
+	ctx                context.Context
+	ApiService         *ProjectTypeVersionApiService
+	projectTypeVersion *ProjectTypeVersion
 }
 
 // The new ProjectTypeVersion resource
-func (r ApiApiProjectTypeVersionsPostRequest) ProjectTypeVersionJsonhal(projectTypeVersionJsonhal ProjectTypeVersionJsonhal) ApiApiProjectTypeVersionsPostRequest {
-	r.projectTypeVersionJsonhal = &projectTypeVersionJsonhal
+func (r ProjectTypeVersionApiApiProjectTypeVersionsPostRequest) ProjectTypeVersion(projectTypeVersion ProjectTypeVersion) ProjectTypeVersionApiApiProjectTypeVersionsPostRequest {
+	r.projectTypeVersion = &projectTypeVersion
 	return r
 }
 
-func (r ApiApiProjectTypeVersionsPostRequest) Execute() (*ProjectTypeVersionJsonhal, *http.Response, error) {
+func (r ProjectTypeVersionApiApiProjectTypeVersionsPostRequest) Execute() (*ProjectTypeVersion, *http.Response, error) {
 	return r.ApiService.ApiProjectTypeVersionsPostExecute(r)
 }
 
@@ -689,10 +689,10 @@ ApiProjectTypeVersionsPost Creates a ProjectTypeVersion resource.
 Creates a ProjectTypeVersion resource.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiApiProjectTypeVersionsPostRequest
+	@return ProjectTypeVersionApiApiProjectTypeVersionsPostRequest
 */
-func (a *ProjectTypeVersionApiService) ApiProjectTypeVersionsPost(ctx context.Context) ApiApiProjectTypeVersionsPostRequest {
-	return ApiApiProjectTypeVersionsPostRequest{
+func (a *ProjectTypeVersionApiService) ApiProjectTypeVersionsPost(ctx context.Context) ProjectTypeVersionApiApiProjectTypeVersionsPostRequest {
+	return ProjectTypeVersionApiApiProjectTypeVersionsPostRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -700,13 +700,13 @@ func (a *ProjectTypeVersionApiService) ApiProjectTypeVersionsPost(ctx context.Co
 
 // Execute executes the request
 //
-//	@return ProjectTypeVersionJsonhal
-func (a *ProjectTypeVersionApiService) ApiProjectTypeVersionsPostExecute(r ApiApiProjectTypeVersionsPostRequest) (*ProjectTypeVersionJsonhal, *http.Response, error) {
+//	@return ProjectTypeVersion
+func (a *ProjectTypeVersionApiService) ApiProjectTypeVersionsPostExecute(r ProjectTypeVersionApiApiProjectTypeVersionsPostRequest) (*ProjectTypeVersion, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *ProjectTypeVersionJsonhal
+		localVarReturnValue *ProjectTypeVersion
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectTypeVersionApiService.ApiProjectTypeVersionsPost")
@@ -719,12 +719,12 @@ func (a *ProjectTypeVersionApiService) ApiProjectTypeVersionsPostExecute(r ApiAp
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.projectTypeVersionJsonhal == nil {
-		return localVarReturnValue, nil, reportError("projectTypeVersionJsonhal is required and must be specified")
+	if r.projectTypeVersion == nil {
+		return localVarReturnValue, nil, reportError("projectTypeVersion is required and must be specified")
 	}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/hal+json", "application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
+	localVarHTTPContentTypes := []string{"application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -733,7 +733,7 @@ func (a *ProjectTypeVersionApiService) ApiProjectTypeVersionsPostExecute(r ApiAp
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/hal+json", "application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
+	localVarHTTPHeaderAccepts := []string{"application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -741,7 +741,7 @@ func (a *ProjectTypeVersionApiService) ApiProjectTypeVersionsPostExecute(r ApiAp
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.projectTypeVersionJsonhal
+	localVarPostBody = r.projectTypeVersion
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
@@ -766,9 +766,9 @@ func (a *ProjectTypeVersionApiService) ApiProjectTypeVersionsPostExecute(r ApiAp
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}

@@ -15,7 +15,7 @@ Method | HTTP request | Description
 
 ## ApiExportedDatasGetCollection
 
-> ApiExportedDatasGetCollection200Response ApiExportedDatasGetCollection(ctx).Page(page).ItemsPerPage(itemsPerPage).DataTransferDataType(dataTransferDataType).DataTransferDataType2(dataTransferDataType2).Environment(environment).Environment2(environment2).OrderCreatedAt(orderCreatedAt).OrderUpdatedAt(orderUpdatedAt).Execute()
+> []ExportedData ApiExportedDatasGetCollection(ctx).Page(page).ItemsPerPage(itemsPerPage).DataTransferDataType(dataTransferDataType).DataTransferDataType2(dataTransferDataType2).Environment(environment).Environment2(environment2).OrderCreatedAt(orderCreatedAt).OrderUpdatedAt(orderUpdatedAt).Execute()
 
 Retrieves the collection of ExportedData resources.
 
@@ -30,7 +30,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
@@ -50,7 +50,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `ExportedDataApi.ApiExportedDatasGetCollection``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiExportedDatasGetCollection`: ApiExportedDatasGetCollection200Response
+    // response from `ApiExportedDatasGetCollection`: []ExportedData
     fmt.Fprintf(os.Stdout, "Response from `ExportedDataApi.ApiExportedDatasGetCollection`: %v\n", resp)
 }
 ```
@@ -77,7 +77,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ApiExportedDatasGetCollection200Response**](ApiExportedDatasGetCollection200Response.md)
+[**[]ExportedData**](ExportedData.md)
 
 ### Authorization
 
@@ -86,7 +86,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
+- **Accept**: application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -110,7 +110,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
@@ -118,7 +118,7 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ExportedDataApi.ApiExportedDatasIdDelete(context.Background(), id).Execute()
+    r, err := apiClient.ExportedDataApi.ApiExportedDatasIdDelete(context.Background(), id).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ExportedDataApi.ApiExportedDatasIdDelete``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -163,7 +163,7 @@ Name | Type | Description  | Notes
 
 ## ApiExportedDatasIdGet
 
-> ExportedDataJsonhal ApiExportedDatasIdGet(ctx, id).Execute()
+> ExportedData ApiExportedDatasIdGet(ctx, id).Execute()
 
 Retrieves a ExportedData resource.
 
@@ -178,7 +178,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
@@ -191,7 +191,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `ExportedDataApi.ApiExportedDatasIdGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiExportedDatasIdGet`: ExportedDataJsonhal
+    // response from `ApiExportedDatasIdGet`: ExportedData
     fmt.Fprintf(os.Stdout, "Response from `ExportedDataApi.ApiExportedDatasIdGet`: %v\n", resp)
 }
 ```
@@ -215,7 +215,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ExportedDataJsonhal**](ExportedDataJsonhal.md)
+[**ExportedData**](ExportedData.md)
 
 ### Authorization
 
@@ -224,7 +224,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
+- **Accept**: application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -233,7 +233,7 @@ Name | Type | Description  | Notes
 
 ## ApiExportedDatasIdPatch
 
-> ExportedDataJsonhal ApiExportedDatasIdPatch(ctx, id).ExportedData(exportedData).Execute()
+> ExportedData ApiExportedDatasIdPatch(ctx, id).ExportedData(exportedData).Execute()
 
 Updates the ExportedData resource.
 
@@ -248,12 +248,12 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    id := "id_example" // string | ExportedData identifier
     exportedData := *openapiclient.NewExportedData() // ExportedData | The updated ExportedData resource
+    id := "id_example" // string | ExportedData identifier
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -262,7 +262,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `ExportedDataApi.ApiExportedDatasIdPatch``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiExportedDatasIdPatch`: ExportedDataJsonhal
+    // response from `ApiExportedDatasIdPatch`: ExportedData
     fmt.Fprintf(os.Stdout, "Response from `ExportedDataApi.ApiExportedDatasIdPatch`: %v\n", resp)
 }
 ```
@@ -282,12 +282,12 @@ Other parameters are passed through a pointer to a apiApiExportedDatasIdPatchReq
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-
  **exportedData** | [**ExportedData**](ExportedData.md) | The updated ExportedData resource | 
+
 
 ### Return type
 
-[**ExportedDataJsonhal**](ExportedDataJsonhal.md)
+[**ExportedData**](ExportedData.md)
 
 ### Authorization
 
@@ -295,8 +295,8 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: application/vnd.api+json
-- **Accept**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
+- **Content-Type**: application/merge-patch+json, application/vnd.api+json
+- **Accept**: application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -305,7 +305,7 @@ Name | Type | Description  | Notes
 
 ## ApiExportedDatasIdPut
 
-> ExportedDataJsonhal ApiExportedDatasIdPut(ctx, id).ExportedDataJsonhal(exportedDataJsonhal).Execute()
+> ExportedData ApiExportedDatasIdPut(ctx, id).ExportedData(exportedData).Execute()
 
 Replaces the ExportedData resource.
 
@@ -320,21 +320,21 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
+    exportedData := *openapiclient.NewExportedData() // ExportedData | The updated ExportedData resource
     id := "id_example" // string | ExportedData identifier
-    exportedDataJsonhal := *openapiclient.NewExportedDataJsonhal() // ExportedDataJsonhal | The updated ExportedData resource
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ExportedDataApi.ApiExportedDatasIdPut(context.Background(), id).ExportedDataJsonhal(exportedDataJsonhal).Execute()
+    resp, r, err := apiClient.ExportedDataApi.ApiExportedDatasIdPut(context.Background(), id).ExportedData(exportedData).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ExportedDataApi.ApiExportedDatasIdPut``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiExportedDatasIdPut`: ExportedDataJsonhal
+    // response from `ApiExportedDatasIdPut`: ExportedData
     fmt.Fprintf(os.Stdout, "Response from `ExportedDataApi.ApiExportedDatasIdPut`: %v\n", resp)
 }
 ```
@@ -354,12 +354,12 @@ Other parameters are passed through a pointer to a apiApiExportedDatasIdPutReque
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **exportedData** | [**ExportedData**](ExportedData.md) | The updated ExportedData resource | 
 
- **exportedDataJsonhal** | [**ExportedDataJsonhal**](ExportedDataJsonhal.md) | The updated ExportedData resource | 
 
 ### Return type
 
-[**ExportedDataJsonhal**](ExportedDataJsonhal.md)
+[**ExportedData**](ExportedData.md)
 
 ### Authorization
 
@@ -367,8 +367,8 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
-- **Accept**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
+- **Content-Type**: application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
+- **Accept**: application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -377,7 +377,7 @@ Name | Type | Description  | Notes
 
 ## ApiExportedDatasPost
 
-> ExportedDataJsonhal ApiExportedDatasPost(ctx).ExportedDataJsonhal(exportedDataJsonhal).Execute()
+> ExportedData ApiExportedDatasPost(ctx).ExportedData(exportedData).Execute()
 
 Creates a ExportedData resource.
 
@@ -392,20 +392,20 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    exportedDataJsonhal := *openapiclient.NewExportedDataJsonhal() // ExportedDataJsonhal | The new ExportedData resource
+    exportedData := *openapiclient.NewExportedData() // ExportedData | The new ExportedData resource
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ExportedDataApi.ApiExportedDatasPost(context.Background()).ExportedDataJsonhal(exportedDataJsonhal).Execute()
+    resp, r, err := apiClient.ExportedDataApi.ApiExportedDatasPost(context.Background()).ExportedData(exportedData).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ExportedDataApi.ApiExportedDatasPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiExportedDatasPost`: ExportedDataJsonhal
+    // response from `ApiExportedDatasPost`: ExportedData
     fmt.Fprintf(os.Stdout, "Response from `ExportedDataApi.ApiExportedDatasPost`: %v\n", resp)
 }
 ```
@@ -421,11 +421,11 @@ Other parameters are passed through a pointer to a apiApiExportedDatasPostReques
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **exportedDataJsonhal** | [**ExportedDataJsonhal**](ExportedDataJsonhal.md) | The new ExportedData resource | 
+ **exportedData** | [**ExportedData**](ExportedData.md) | The new ExportedData resource | 
 
 ### Return type
 
-[**ExportedDataJsonhal**](ExportedDataJsonhal.md)
+[**ExportedData**](ExportedData.md)
 
 ### Authorization
 
@@ -433,8 +433,8 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
-- **Accept**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
+- **Content-Type**: application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
+- **Accept**: application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)

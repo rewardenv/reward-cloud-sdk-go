@@ -15,7 +15,7 @@ Method | HTTP request | Description
 
 ## ApiServiceAccountRegistriesGetCollection
 
-> ApiServiceAccountRegistriesGetCollection200Response ApiServiceAccountRegistriesGetCollection(ctx).Page(page).ItemsPerPage(itemsPerPage).ServiceAccount(serviceAccount).ServiceAccount2(serviceAccount2).Execute()
+> []ServiceAccountRegistry ApiServiceAccountRegistriesGetCollection(ctx).Page(page).ItemsPerPage(itemsPerPage).ServiceAccount(serviceAccount).ServiceAccount2(serviceAccount2).Execute()
 
 Retrieves the collection of ServiceAccountRegistry resources.
 
@@ -30,7 +30,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
@@ -46,7 +46,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `ServiceAccountRegistryApi.ApiServiceAccountRegistriesGetCollection``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiServiceAccountRegistriesGetCollection`: ApiServiceAccountRegistriesGetCollection200Response
+    // response from `ApiServiceAccountRegistriesGetCollection`: []ServiceAccountRegistry
     fmt.Fprintf(os.Stdout, "Response from `ServiceAccountRegistryApi.ApiServiceAccountRegistriesGetCollection`: %v\n", resp)
 }
 ```
@@ -69,7 +69,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ApiServiceAccountRegistriesGetCollection200Response**](ApiServiceAccountRegistriesGetCollection200Response.md)
+[**[]ServiceAccountRegistry**](ServiceAccountRegistry.md)
 
 ### Authorization
 
@@ -78,7 +78,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
+- **Accept**: application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -102,7 +102,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
@@ -110,7 +110,7 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ServiceAccountRegistryApi.ApiServiceAccountRegistriesIdDelete(context.Background(), id).Execute()
+    r, err := apiClient.ServiceAccountRegistryApi.ApiServiceAccountRegistriesIdDelete(context.Background(), id).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ServiceAccountRegistryApi.ApiServiceAccountRegistriesIdDelete``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -155,7 +155,7 @@ Name | Type | Description  | Notes
 
 ## ApiServiceAccountRegistriesIdGet
 
-> ServiceAccountRegistryJsonhal ApiServiceAccountRegistriesIdGet(ctx, id).Execute()
+> ServiceAccountRegistry ApiServiceAccountRegistriesIdGet(ctx, id).Execute()
 
 Retrieves a ServiceAccountRegistry resource.
 
@@ -170,7 +170,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
@@ -183,7 +183,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `ServiceAccountRegistryApi.ApiServiceAccountRegistriesIdGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiServiceAccountRegistriesIdGet`: ServiceAccountRegistryJsonhal
+    // response from `ApiServiceAccountRegistriesIdGet`: ServiceAccountRegistry
     fmt.Fprintf(os.Stdout, "Response from `ServiceAccountRegistryApi.ApiServiceAccountRegistriesIdGet`: %v\n", resp)
 }
 ```
@@ -207,7 +207,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ServiceAccountRegistryJsonhal**](ServiceAccountRegistryJsonhal.md)
+[**ServiceAccountRegistry**](ServiceAccountRegistry.md)
 
 ### Authorization
 
@@ -216,7 +216,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
+- **Accept**: application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -225,7 +225,7 @@ Name | Type | Description  | Notes
 
 ## ApiServiceAccountRegistriesIdPatch
 
-> ServiceAccountRegistryJsonhal ApiServiceAccountRegistriesIdPatch(ctx, id).ServiceAccountRegistry(serviceAccountRegistry).Execute()
+> ServiceAccountRegistry ApiServiceAccountRegistriesIdPatch(ctx, id).ServiceAccountRegistry(serviceAccountRegistry).Execute()
 
 Updates the ServiceAccountRegistry resource.
 
@@ -240,12 +240,12 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    id := "id_example" // string | ServiceAccountRegistry identifier
     serviceAccountRegistry := *openapiclient.NewServiceAccountRegistry() // ServiceAccountRegistry | The updated ServiceAccountRegistry resource
+    id := "id_example" // string | ServiceAccountRegistry identifier
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -254,7 +254,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `ServiceAccountRegistryApi.ApiServiceAccountRegistriesIdPatch``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiServiceAccountRegistriesIdPatch`: ServiceAccountRegistryJsonhal
+    // response from `ApiServiceAccountRegistriesIdPatch`: ServiceAccountRegistry
     fmt.Fprintf(os.Stdout, "Response from `ServiceAccountRegistryApi.ApiServiceAccountRegistriesIdPatch`: %v\n", resp)
 }
 ```
@@ -274,12 +274,12 @@ Other parameters are passed through a pointer to a apiApiServiceAccountRegistrie
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-
  **serviceAccountRegistry** | [**ServiceAccountRegistry**](ServiceAccountRegistry.md) | The updated ServiceAccountRegistry resource | 
+
 
 ### Return type
 
-[**ServiceAccountRegistryJsonhal**](ServiceAccountRegistryJsonhal.md)
+[**ServiceAccountRegistry**](ServiceAccountRegistry.md)
 
 ### Authorization
 
@@ -287,8 +287,8 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: application/vnd.api+json
-- **Accept**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
+- **Content-Type**: application/merge-patch+json, application/vnd.api+json
+- **Accept**: application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -297,7 +297,7 @@ Name | Type | Description  | Notes
 
 ## ApiServiceAccountRegistriesIdPut
 
-> ServiceAccountRegistryJsonhal ApiServiceAccountRegistriesIdPut(ctx, id).ServiceAccountRegistryJsonhal(serviceAccountRegistryJsonhal).Execute()
+> ServiceAccountRegistry ApiServiceAccountRegistriesIdPut(ctx, id).ServiceAccountRegistry(serviceAccountRegistry).Execute()
 
 Replaces the ServiceAccountRegistry resource.
 
@@ -312,21 +312,21 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
+    serviceAccountRegistry := *openapiclient.NewServiceAccountRegistry() // ServiceAccountRegistry | The updated ServiceAccountRegistry resource
     id := "id_example" // string | ServiceAccountRegistry identifier
-    serviceAccountRegistryJsonhal := *openapiclient.NewServiceAccountRegistryJsonhal() // ServiceAccountRegistryJsonhal | The updated ServiceAccountRegistry resource
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ServiceAccountRegistryApi.ApiServiceAccountRegistriesIdPut(context.Background(), id).ServiceAccountRegistryJsonhal(serviceAccountRegistryJsonhal).Execute()
+    resp, r, err := apiClient.ServiceAccountRegistryApi.ApiServiceAccountRegistriesIdPut(context.Background(), id).ServiceAccountRegistry(serviceAccountRegistry).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ServiceAccountRegistryApi.ApiServiceAccountRegistriesIdPut``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiServiceAccountRegistriesIdPut`: ServiceAccountRegistryJsonhal
+    // response from `ApiServiceAccountRegistriesIdPut`: ServiceAccountRegistry
     fmt.Fprintf(os.Stdout, "Response from `ServiceAccountRegistryApi.ApiServiceAccountRegistriesIdPut`: %v\n", resp)
 }
 ```
@@ -346,12 +346,12 @@ Other parameters are passed through a pointer to a apiApiServiceAccountRegistrie
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **serviceAccountRegistry** | [**ServiceAccountRegistry**](ServiceAccountRegistry.md) | The updated ServiceAccountRegistry resource | 
 
- **serviceAccountRegistryJsonhal** | [**ServiceAccountRegistryJsonhal**](ServiceAccountRegistryJsonhal.md) | The updated ServiceAccountRegistry resource | 
 
 ### Return type
 
-[**ServiceAccountRegistryJsonhal**](ServiceAccountRegistryJsonhal.md)
+[**ServiceAccountRegistry**](ServiceAccountRegistry.md)
 
 ### Authorization
 
@@ -359,8 +359,8 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
-- **Accept**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
+- **Content-Type**: application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
+- **Accept**: application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -369,7 +369,7 @@ Name | Type | Description  | Notes
 
 ## ApiServiceAccountRegistriesPost
 
-> ServiceAccountRegistryJsonhal ApiServiceAccountRegistriesPost(ctx).ServiceAccountRegistryJsonhal(serviceAccountRegistryJsonhal).Execute()
+> ServiceAccountRegistry ApiServiceAccountRegistriesPost(ctx).ServiceAccountRegistry(serviceAccountRegistry).Execute()
 
 Creates a ServiceAccountRegistry resource.
 
@@ -384,20 +384,20 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    serviceAccountRegistryJsonhal := *openapiclient.NewServiceAccountRegistryJsonhal() // ServiceAccountRegistryJsonhal | The new ServiceAccountRegistry resource
+    serviceAccountRegistry := *openapiclient.NewServiceAccountRegistry() // ServiceAccountRegistry | The new ServiceAccountRegistry resource
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ServiceAccountRegistryApi.ApiServiceAccountRegistriesPost(context.Background()).ServiceAccountRegistryJsonhal(serviceAccountRegistryJsonhal).Execute()
+    resp, r, err := apiClient.ServiceAccountRegistryApi.ApiServiceAccountRegistriesPost(context.Background()).ServiceAccountRegistry(serviceAccountRegistry).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ServiceAccountRegistryApi.ApiServiceAccountRegistriesPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiServiceAccountRegistriesPost`: ServiceAccountRegistryJsonhal
+    // response from `ApiServiceAccountRegistriesPost`: ServiceAccountRegistry
     fmt.Fprintf(os.Stdout, "Response from `ServiceAccountRegistryApi.ApiServiceAccountRegistriesPost`: %v\n", resp)
 }
 ```
@@ -413,11 +413,11 @@ Other parameters are passed through a pointer to a apiApiServiceAccountRegistrie
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **serviceAccountRegistryJsonhal** | [**ServiceAccountRegistryJsonhal**](ServiceAccountRegistryJsonhal.md) | The new ServiceAccountRegistry resource | 
+ **serviceAccountRegistry** | [**ServiceAccountRegistry**](ServiceAccountRegistry.md) | The new ServiceAccountRegistry resource | 
 
 ### Return type
 
-[**ServiceAccountRegistryJsonhal**](ServiceAccountRegistryJsonhal.md)
+[**ServiceAccountRegistry**](ServiceAccountRegistry.md)
 
 ### Authorization
 
@@ -425,8 +425,8 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
-- **Accept**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
+- **Content-Type**: application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
+- **Accept**: application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)

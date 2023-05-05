@@ -15,7 +15,7 @@ Method | HTTP request | Description
 
 ## ApiProjectTypeVersionsGetCollection
 
-> ApiProjectTypeVersionsGetCollection200Response ApiProjectTypeVersionsGetCollection(ctx).Page(page).ItemsPerPage(itemsPerPage).ProjectType(projectType).ProjectType2(projectType2).Execute()
+> []ProjectTypeVersion ApiProjectTypeVersionsGetCollection(ctx).Page(page).ItemsPerPage(itemsPerPage).ProjectType(projectType).ProjectType2(projectType2).Execute()
 
 Retrieves the collection of ProjectTypeVersion resources.
 
@@ -30,7 +30,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
@@ -46,7 +46,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `ProjectTypeVersionApi.ApiProjectTypeVersionsGetCollection``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiProjectTypeVersionsGetCollection`: ApiProjectTypeVersionsGetCollection200Response
+    // response from `ApiProjectTypeVersionsGetCollection`: []ProjectTypeVersion
     fmt.Fprintf(os.Stdout, "Response from `ProjectTypeVersionApi.ApiProjectTypeVersionsGetCollection`: %v\n", resp)
 }
 ```
@@ -69,7 +69,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ApiProjectTypeVersionsGetCollection200Response**](ApiProjectTypeVersionsGetCollection200Response.md)
+[**[]ProjectTypeVersion**](ProjectTypeVersion.md)
 
 ### Authorization
 
@@ -78,7 +78,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
+- **Accept**: application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -102,7 +102,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
@@ -110,7 +110,7 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ProjectTypeVersionApi.ApiProjectTypeVersionsIdDelete(context.Background(), id).Execute()
+    r, err := apiClient.ProjectTypeVersionApi.ApiProjectTypeVersionsIdDelete(context.Background(), id).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ProjectTypeVersionApi.ApiProjectTypeVersionsIdDelete``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -155,7 +155,7 @@ Name | Type | Description  | Notes
 
 ## ApiProjectTypeVersionsIdGet
 
-> ProjectTypeVersionJsonhal ApiProjectTypeVersionsIdGet(ctx, id).Execute()
+> ProjectTypeVersion ApiProjectTypeVersionsIdGet(ctx, id).Execute()
 
 Retrieves a ProjectTypeVersion resource.
 
@@ -170,7 +170,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
@@ -183,7 +183,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `ProjectTypeVersionApi.ApiProjectTypeVersionsIdGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiProjectTypeVersionsIdGet`: ProjectTypeVersionJsonhal
+    // response from `ApiProjectTypeVersionsIdGet`: ProjectTypeVersion
     fmt.Fprintf(os.Stdout, "Response from `ProjectTypeVersionApi.ApiProjectTypeVersionsIdGet`: %v\n", resp)
 }
 ```
@@ -207,7 +207,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ProjectTypeVersionJsonhal**](ProjectTypeVersionJsonhal.md)
+[**ProjectTypeVersion**](ProjectTypeVersion.md)
 
 ### Authorization
 
@@ -216,7 +216,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
+- **Accept**: application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -225,7 +225,7 @@ Name | Type | Description  | Notes
 
 ## ApiProjectTypeVersionsIdPatch
 
-> ProjectTypeVersionJsonhal ApiProjectTypeVersionsIdPatch(ctx, id).ProjectTypeVersion(projectTypeVersion).Execute()
+> ProjectTypeVersion ApiProjectTypeVersionsIdPatch(ctx, id).ProjectTypeVersion(projectTypeVersion).Execute()
 
 Updates the ProjectTypeVersion resource.
 
@@ -240,12 +240,12 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    id := "id_example" // string | ProjectTypeVersion identifier
     projectTypeVersion := *openapiclient.NewProjectTypeVersion() // ProjectTypeVersion | The updated ProjectTypeVersion resource
+    id := "id_example" // string | ProjectTypeVersion identifier
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -254,7 +254,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `ProjectTypeVersionApi.ApiProjectTypeVersionsIdPatch``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiProjectTypeVersionsIdPatch`: ProjectTypeVersionJsonhal
+    // response from `ApiProjectTypeVersionsIdPatch`: ProjectTypeVersion
     fmt.Fprintf(os.Stdout, "Response from `ProjectTypeVersionApi.ApiProjectTypeVersionsIdPatch`: %v\n", resp)
 }
 ```
@@ -274,12 +274,12 @@ Other parameters are passed through a pointer to a apiApiProjectTypeVersionsIdPa
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-
  **projectTypeVersion** | [**ProjectTypeVersion**](ProjectTypeVersion.md) | The updated ProjectTypeVersion resource | 
+
 
 ### Return type
 
-[**ProjectTypeVersionJsonhal**](ProjectTypeVersionJsonhal.md)
+[**ProjectTypeVersion**](ProjectTypeVersion.md)
 
 ### Authorization
 
@@ -287,8 +287,8 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: application/vnd.api+json
-- **Accept**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
+- **Content-Type**: application/merge-patch+json, application/vnd.api+json
+- **Accept**: application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -297,7 +297,7 @@ Name | Type | Description  | Notes
 
 ## ApiProjectTypeVersionsIdPut
 
-> ProjectTypeVersionJsonhal ApiProjectTypeVersionsIdPut(ctx, id).ProjectTypeVersionJsonhal(projectTypeVersionJsonhal).Execute()
+> ProjectTypeVersion ApiProjectTypeVersionsIdPut(ctx, id).ProjectTypeVersion(projectTypeVersion).Execute()
 
 Replaces the ProjectTypeVersion resource.
 
@@ -312,21 +312,21 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
+    projectTypeVersion := *openapiclient.NewProjectTypeVersion() // ProjectTypeVersion | The updated ProjectTypeVersion resource
     id := "id_example" // string | ProjectTypeVersion identifier
-    projectTypeVersionJsonhal := *openapiclient.NewProjectTypeVersionJsonhal() // ProjectTypeVersionJsonhal | The updated ProjectTypeVersion resource
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ProjectTypeVersionApi.ApiProjectTypeVersionsIdPut(context.Background(), id).ProjectTypeVersionJsonhal(projectTypeVersionJsonhal).Execute()
+    resp, r, err := apiClient.ProjectTypeVersionApi.ApiProjectTypeVersionsIdPut(context.Background(), id).ProjectTypeVersion(projectTypeVersion).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ProjectTypeVersionApi.ApiProjectTypeVersionsIdPut``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiProjectTypeVersionsIdPut`: ProjectTypeVersionJsonhal
+    // response from `ApiProjectTypeVersionsIdPut`: ProjectTypeVersion
     fmt.Fprintf(os.Stdout, "Response from `ProjectTypeVersionApi.ApiProjectTypeVersionsIdPut`: %v\n", resp)
 }
 ```
@@ -346,12 +346,12 @@ Other parameters are passed through a pointer to a apiApiProjectTypeVersionsIdPu
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **projectTypeVersion** | [**ProjectTypeVersion**](ProjectTypeVersion.md) | The updated ProjectTypeVersion resource | 
 
- **projectTypeVersionJsonhal** | [**ProjectTypeVersionJsonhal**](ProjectTypeVersionJsonhal.md) | The updated ProjectTypeVersion resource | 
 
 ### Return type
 
-[**ProjectTypeVersionJsonhal**](ProjectTypeVersionJsonhal.md)
+[**ProjectTypeVersion**](ProjectTypeVersion.md)
 
 ### Authorization
 
@@ -359,8 +359,8 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
-- **Accept**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
+- **Content-Type**: application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
+- **Accept**: application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -369,7 +369,7 @@ Name | Type | Description  | Notes
 
 ## ApiProjectTypeVersionsPost
 
-> ProjectTypeVersionJsonhal ApiProjectTypeVersionsPost(ctx).ProjectTypeVersionJsonhal(projectTypeVersionJsonhal).Execute()
+> ProjectTypeVersion ApiProjectTypeVersionsPost(ctx).ProjectTypeVersion(projectTypeVersion).Execute()
 
 Creates a ProjectTypeVersion resource.
 
@@ -384,20 +384,20 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    projectTypeVersionJsonhal := *openapiclient.NewProjectTypeVersionJsonhal() // ProjectTypeVersionJsonhal | The new ProjectTypeVersion resource
+    projectTypeVersion := *openapiclient.NewProjectTypeVersion() // ProjectTypeVersion | The new ProjectTypeVersion resource
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ProjectTypeVersionApi.ApiProjectTypeVersionsPost(context.Background()).ProjectTypeVersionJsonhal(projectTypeVersionJsonhal).Execute()
+    resp, r, err := apiClient.ProjectTypeVersionApi.ApiProjectTypeVersionsPost(context.Background()).ProjectTypeVersion(projectTypeVersion).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ProjectTypeVersionApi.ApiProjectTypeVersionsPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiProjectTypeVersionsPost`: ProjectTypeVersionJsonhal
+    // response from `ApiProjectTypeVersionsPost`: ProjectTypeVersion
     fmt.Fprintf(os.Stdout, "Response from `ProjectTypeVersionApi.ApiProjectTypeVersionsPost`: %v\n", resp)
 }
 ```
@@ -413,11 +413,11 @@ Other parameters are passed through a pointer to a apiApiProjectTypeVersionsPost
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **projectTypeVersionJsonhal** | [**ProjectTypeVersionJsonhal**](ProjectTypeVersionJsonhal.md) | The new ProjectTypeVersion resource | 
+ **projectTypeVersion** | [**ProjectTypeVersion**](ProjectTypeVersion.md) | The new ProjectTypeVersion resource | 
 
 ### Return type
 
-[**ProjectTypeVersionJsonhal**](ProjectTypeVersionJsonhal.md)
+[**ProjectTypeVersion**](ProjectTypeVersion.md)
 
 ### Authorization
 
@@ -425,8 +425,8 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
-- **Accept**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
+- **Content-Type**: application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
+- **Accept**: application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)

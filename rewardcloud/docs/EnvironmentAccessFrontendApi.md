@@ -15,7 +15,7 @@ Method | HTTP request | Description
 
 ## ApiEnvironmentAccessFrontendsGetCollection
 
-> ApiEnvironmentAccessFrontendsGetCollection200Response ApiEnvironmentAccessFrontendsGetCollection(ctx).Page(page).ItemsPerPage(itemsPerPage).Execute()
+> []EnvironmentAccessFrontend ApiEnvironmentAccessFrontendsGetCollection(ctx).Page(page).ItemsPerPage(itemsPerPage).Execute()
 
 Retrieves the collection of EnvironmentAccessFrontend resources.
 
@@ -30,7 +30,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
@@ -44,7 +44,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `EnvironmentAccessFrontendApi.ApiEnvironmentAccessFrontendsGetCollection``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiEnvironmentAccessFrontendsGetCollection`: ApiEnvironmentAccessFrontendsGetCollection200Response
+    // response from `ApiEnvironmentAccessFrontendsGetCollection`: []EnvironmentAccessFrontend
     fmt.Fprintf(os.Stdout, "Response from `EnvironmentAccessFrontendApi.ApiEnvironmentAccessFrontendsGetCollection`: %v\n", resp)
 }
 ```
@@ -65,7 +65,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ApiEnvironmentAccessFrontendsGetCollection200Response**](ApiEnvironmentAccessFrontendsGetCollection200Response.md)
+[**[]EnvironmentAccessFrontend**](EnvironmentAccessFrontend.md)
 
 ### Authorization
 
@@ -74,7 +74,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
+- **Accept**: application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -98,7 +98,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
@@ -106,7 +106,7 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.EnvironmentAccessFrontendApi.ApiEnvironmentAccessFrontendsIdDelete(context.Background(), id).Execute()
+    r, err := apiClient.EnvironmentAccessFrontendApi.ApiEnvironmentAccessFrontendsIdDelete(context.Background(), id).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `EnvironmentAccessFrontendApi.ApiEnvironmentAccessFrontendsIdDelete``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -151,7 +151,7 @@ Name | Type | Description  | Notes
 
 ## ApiEnvironmentAccessFrontendsIdGet
 
-> EnvironmentAccessFrontendJsonhal ApiEnvironmentAccessFrontendsIdGet(ctx, id).Execute()
+> EnvironmentAccessFrontend ApiEnvironmentAccessFrontendsIdGet(ctx, id).Execute()
 
 Retrieves a EnvironmentAccessFrontend resource.
 
@@ -166,7 +166,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
@@ -179,7 +179,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `EnvironmentAccessFrontendApi.ApiEnvironmentAccessFrontendsIdGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiEnvironmentAccessFrontendsIdGet`: EnvironmentAccessFrontendJsonhal
+    // response from `ApiEnvironmentAccessFrontendsIdGet`: EnvironmentAccessFrontend
     fmt.Fprintf(os.Stdout, "Response from `EnvironmentAccessFrontendApi.ApiEnvironmentAccessFrontendsIdGet`: %v\n", resp)
 }
 ```
@@ -203,7 +203,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**EnvironmentAccessFrontendJsonhal**](EnvironmentAccessFrontendJsonhal.md)
+[**EnvironmentAccessFrontend**](EnvironmentAccessFrontend.md)
 
 ### Authorization
 
@@ -212,7 +212,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
+- **Accept**: application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -221,7 +221,7 @@ Name | Type | Description  | Notes
 
 ## ApiEnvironmentAccessFrontendsIdPatch
 
-> EnvironmentAccessFrontendJsonhal ApiEnvironmentAccessFrontendsIdPatch(ctx, id).EnvironmentAccessFrontend(environmentAccessFrontend).Execute()
+> EnvironmentAccessFrontend ApiEnvironmentAccessFrontendsIdPatch(ctx, id).EnvironmentAccessFrontend(environmentAccessFrontend).Execute()
 
 Updates the EnvironmentAccessFrontend resource.
 
@@ -236,12 +236,12 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    id := "id_example" // string | EnvironmentAccessFrontend identifier
     environmentAccessFrontend := *openapiclient.NewEnvironmentAccessFrontend() // EnvironmentAccessFrontend | The updated EnvironmentAccessFrontend resource
+    id := "id_example" // string | EnvironmentAccessFrontend identifier
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -250,7 +250,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `EnvironmentAccessFrontendApi.ApiEnvironmentAccessFrontendsIdPatch``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiEnvironmentAccessFrontendsIdPatch`: EnvironmentAccessFrontendJsonhal
+    // response from `ApiEnvironmentAccessFrontendsIdPatch`: EnvironmentAccessFrontend
     fmt.Fprintf(os.Stdout, "Response from `EnvironmentAccessFrontendApi.ApiEnvironmentAccessFrontendsIdPatch`: %v\n", resp)
 }
 ```
@@ -270,12 +270,12 @@ Other parameters are passed through a pointer to a apiApiEnvironmentAccessFronte
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-
  **environmentAccessFrontend** | [**EnvironmentAccessFrontend**](EnvironmentAccessFrontend.md) | The updated EnvironmentAccessFrontend resource | 
+
 
 ### Return type
 
-[**EnvironmentAccessFrontendJsonhal**](EnvironmentAccessFrontendJsonhal.md)
+[**EnvironmentAccessFrontend**](EnvironmentAccessFrontend.md)
 
 ### Authorization
 
@@ -283,8 +283,8 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: application/vnd.api+json
-- **Accept**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
+- **Content-Type**: application/merge-patch+json, application/vnd.api+json
+- **Accept**: application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -293,7 +293,7 @@ Name | Type | Description  | Notes
 
 ## ApiEnvironmentAccessFrontendsIdPut
 
-> EnvironmentAccessFrontendJsonhal ApiEnvironmentAccessFrontendsIdPut(ctx, id).EnvironmentAccessFrontendJsonhal(environmentAccessFrontendJsonhal).Execute()
+> EnvironmentAccessFrontend ApiEnvironmentAccessFrontendsIdPut(ctx, id).EnvironmentAccessFrontend(environmentAccessFrontend).Execute()
 
 Replaces the EnvironmentAccessFrontend resource.
 
@@ -308,21 +308,21 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
+    environmentAccessFrontend := *openapiclient.NewEnvironmentAccessFrontend() // EnvironmentAccessFrontend | The updated EnvironmentAccessFrontend resource
     id := "id_example" // string | EnvironmentAccessFrontend identifier
-    environmentAccessFrontendJsonhal := *openapiclient.NewEnvironmentAccessFrontendJsonhal() // EnvironmentAccessFrontendJsonhal | The updated EnvironmentAccessFrontend resource
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.EnvironmentAccessFrontendApi.ApiEnvironmentAccessFrontendsIdPut(context.Background(), id).EnvironmentAccessFrontendJsonhal(environmentAccessFrontendJsonhal).Execute()
+    resp, r, err := apiClient.EnvironmentAccessFrontendApi.ApiEnvironmentAccessFrontendsIdPut(context.Background(), id).EnvironmentAccessFrontend(environmentAccessFrontend).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `EnvironmentAccessFrontendApi.ApiEnvironmentAccessFrontendsIdPut``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiEnvironmentAccessFrontendsIdPut`: EnvironmentAccessFrontendJsonhal
+    // response from `ApiEnvironmentAccessFrontendsIdPut`: EnvironmentAccessFrontend
     fmt.Fprintf(os.Stdout, "Response from `EnvironmentAccessFrontendApi.ApiEnvironmentAccessFrontendsIdPut`: %v\n", resp)
 }
 ```
@@ -342,12 +342,12 @@ Other parameters are passed through a pointer to a apiApiEnvironmentAccessFronte
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **environmentAccessFrontend** | [**EnvironmentAccessFrontend**](EnvironmentAccessFrontend.md) | The updated EnvironmentAccessFrontend resource | 
 
- **environmentAccessFrontendJsonhal** | [**EnvironmentAccessFrontendJsonhal**](EnvironmentAccessFrontendJsonhal.md) | The updated EnvironmentAccessFrontend resource | 
 
 ### Return type
 
-[**EnvironmentAccessFrontendJsonhal**](EnvironmentAccessFrontendJsonhal.md)
+[**EnvironmentAccessFrontend**](EnvironmentAccessFrontend.md)
 
 ### Authorization
 
@@ -355,8 +355,8 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
-- **Accept**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
+- **Content-Type**: application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
+- **Accept**: application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -365,7 +365,7 @@ Name | Type | Description  | Notes
 
 ## ApiEnvironmentAccessFrontendsPost
 
-> EnvironmentAccessFrontendJsonhal ApiEnvironmentAccessFrontendsPost(ctx).EnvironmentAccessFrontendJsonhal(environmentAccessFrontendJsonhal).Execute()
+> EnvironmentAccessFrontend ApiEnvironmentAccessFrontendsPost(ctx).EnvironmentAccessFrontend(environmentAccessFrontend).Execute()
 
 Creates a EnvironmentAccessFrontend resource.
 
@@ -380,20 +380,20 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    environmentAccessFrontendJsonhal := *openapiclient.NewEnvironmentAccessFrontendJsonhal() // EnvironmentAccessFrontendJsonhal | The new EnvironmentAccessFrontend resource
+    environmentAccessFrontend := *openapiclient.NewEnvironmentAccessFrontend() // EnvironmentAccessFrontend | The new EnvironmentAccessFrontend resource
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.EnvironmentAccessFrontendApi.ApiEnvironmentAccessFrontendsPost(context.Background()).EnvironmentAccessFrontendJsonhal(environmentAccessFrontendJsonhal).Execute()
+    resp, r, err := apiClient.EnvironmentAccessFrontendApi.ApiEnvironmentAccessFrontendsPost(context.Background()).EnvironmentAccessFrontend(environmentAccessFrontend).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `EnvironmentAccessFrontendApi.ApiEnvironmentAccessFrontendsPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiEnvironmentAccessFrontendsPost`: EnvironmentAccessFrontendJsonhal
+    // response from `ApiEnvironmentAccessFrontendsPost`: EnvironmentAccessFrontend
     fmt.Fprintf(os.Stdout, "Response from `EnvironmentAccessFrontendApi.ApiEnvironmentAccessFrontendsPost`: %v\n", resp)
 }
 ```
@@ -409,11 +409,11 @@ Other parameters are passed through a pointer to a apiApiEnvironmentAccessFronte
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **environmentAccessFrontendJsonhal** | [**EnvironmentAccessFrontendJsonhal**](EnvironmentAccessFrontendJsonhal.md) | The new EnvironmentAccessFrontend resource | 
+ **environmentAccessFrontend** | [**EnvironmentAccessFrontend**](EnvironmentAccessFrontend.md) | The new EnvironmentAccessFrontend resource | 
 
 ### Return type
 
-[**EnvironmentAccessFrontendJsonhal**](EnvironmentAccessFrontendJsonhal.md)
+[**EnvironmentAccessFrontend**](EnvironmentAccessFrontend.md)
 
 ### Authorization
 
@@ -421,8 +421,8 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
-- **Accept**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
+- **Content-Type**: application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
+- **Accept**: application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)

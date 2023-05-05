@@ -15,7 +15,7 @@ Method | HTTP request | Description
 
 ## ApiComponentVersionsGetCollection
 
-> ApiComponentVersionsGetCollection200Response ApiComponentVersionsGetCollection(ctx).Page(page).ItemsPerPage(itemsPerPage).Component(component).Component2(component2).Execute()
+> []ComponentVersion ApiComponentVersionsGetCollection(ctx).Page(page).ItemsPerPage(itemsPerPage).Component(component).Component2(component2).Execute()
 
 Retrieves the collection of ComponentVersion resources.
 
@@ -30,7 +30,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
@@ -46,7 +46,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `ComponentVersionApi.ApiComponentVersionsGetCollection``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiComponentVersionsGetCollection`: ApiComponentVersionsGetCollection200Response
+    // response from `ApiComponentVersionsGetCollection`: []ComponentVersion
     fmt.Fprintf(os.Stdout, "Response from `ComponentVersionApi.ApiComponentVersionsGetCollection`: %v\n", resp)
 }
 ```
@@ -69,7 +69,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ApiComponentVersionsGetCollection200Response**](ApiComponentVersionsGetCollection200Response.md)
+[**[]ComponentVersion**](ComponentVersion.md)
 
 ### Authorization
 
@@ -78,7 +78,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
+- **Accept**: application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -102,7 +102,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
@@ -110,7 +110,7 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ComponentVersionApi.ApiComponentVersionsIdDelete(context.Background(), id).Execute()
+    r, err := apiClient.ComponentVersionApi.ApiComponentVersionsIdDelete(context.Background(), id).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ComponentVersionApi.ApiComponentVersionsIdDelete``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -155,7 +155,7 @@ Name | Type | Description  | Notes
 
 ## ApiComponentVersionsIdGet
 
-> ComponentVersionJsonhal ApiComponentVersionsIdGet(ctx, id).Execute()
+> ComponentVersion ApiComponentVersionsIdGet(ctx, id).Execute()
 
 Retrieves a ComponentVersion resource.
 
@@ -170,7 +170,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
@@ -183,7 +183,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `ComponentVersionApi.ApiComponentVersionsIdGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiComponentVersionsIdGet`: ComponentVersionJsonhal
+    // response from `ApiComponentVersionsIdGet`: ComponentVersion
     fmt.Fprintf(os.Stdout, "Response from `ComponentVersionApi.ApiComponentVersionsIdGet`: %v\n", resp)
 }
 ```
@@ -207,7 +207,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ComponentVersionJsonhal**](ComponentVersionJsonhal.md)
+[**ComponentVersion**](ComponentVersion.md)
 
 ### Authorization
 
@@ -216,7 +216,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
+- **Accept**: application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -225,7 +225,7 @@ Name | Type | Description  | Notes
 
 ## ApiComponentVersionsIdPatch
 
-> ComponentVersionJsonhal ApiComponentVersionsIdPatch(ctx, id).ComponentVersion(componentVersion).Execute()
+> ComponentVersion ApiComponentVersionsIdPatch(ctx, id).ComponentVersion(componentVersion).Execute()
 
 Updates the ComponentVersion resource.
 
@@ -240,12 +240,12 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    id := "id_example" // string | ComponentVersion identifier
     componentVersion := *openapiclient.NewComponentVersion() // ComponentVersion | The updated ComponentVersion resource
+    id := "id_example" // string | ComponentVersion identifier
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -254,7 +254,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `ComponentVersionApi.ApiComponentVersionsIdPatch``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiComponentVersionsIdPatch`: ComponentVersionJsonhal
+    // response from `ApiComponentVersionsIdPatch`: ComponentVersion
     fmt.Fprintf(os.Stdout, "Response from `ComponentVersionApi.ApiComponentVersionsIdPatch`: %v\n", resp)
 }
 ```
@@ -274,12 +274,12 @@ Other parameters are passed through a pointer to a apiApiComponentVersionsIdPatc
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-
  **componentVersion** | [**ComponentVersion**](ComponentVersion.md) | The updated ComponentVersion resource | 
+
 
 ### Return type
 
-[**ComponentVersionJsonhal**](ComponentVersionJsonhal.md)
+[**ComponentVersion**](ComponentVersion.md)
 
 ### Authorization
 
@@ -287,8 +287,8 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: application/vnd.api+json
-- **Accept**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
+- **Content-Type**: application/merge-patch+json, application/vnd.api+json
+- **Accept**: application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -297,7 +297,7 @@ Name | Type | Description  | Notes
 
 ## ApiComponentVersionsIdPut
 
-> ComponentVersionJsonhal ApiComponentVersionsIdPut(ctx, id).ComponentVersionJsonhal(componentVersionJsonhal).Execute()
+> ComponentVersion ApiComponentVersionsIdPut(ctx, id).ComponentVersion(componentVersion).Execute()
 
 Replaces the ComponentVersion resource.
 
@@ -312,21 +312,21 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
+    componentVersion := *openapiclient.NewComponentVersion() // ComponentVersion | The updated ComponentVersion resource
     id := "id_example" // string | ComponentVersion identifier
-    componentVersionJsonhal := *openapiclient.NewComponentVersionJsonhal() // ComponentVersionJsonhal | The updated ComponentVersion resource
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ComponentVersionApi.ApiComponentVersionsIdPut(context.Background(), id).ComponentVersionJsonhal(componentVersionJsonhal).Execute()
+    resp, r, err := apiClient.ComponentVersionApi.ApiComponentVersionsIdPut(context.Background(), id).ComponentVersion(componentVersion).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ComponentVersionApi.ApiComponentVersionsIdPut``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiComponentVersionsIdPut`: ComponentVersionJsonhal
+    // response from `ApiComponentVersionsIdPut`: ComponentVersion
     fmt.Fprintf(os.Stdout, "Response from `ComponentVersionApi.ApiComponentVersionsIdPut`: %v\n", resp)
 }
 ```
@@ -346,12 +346,12 @@ Other parameters are passed through a pointer to a apiApiComponentVersionsIdPutR
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **componentVersion** | [**ComponentVersion**](ComponentVersion.md) | The updated ComponentVersion resource | 
 
- **componentVersionJsonhal** | [**ComponentVersionJsonhal**](ComponentVersionJsonhal.md) | The updated ComponentVersion resource | 
 
 ### Return type
 
-[**ComponentVersionJsonhal**](ComponentVersionJsonhal.md)
+[**ComponentVersion**](ComponentVersion.md)
 
 ### Authorization
 
@@ -359,8 +359,8 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
-- **Accept**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
+- **Content-Type**: application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
+- **Accept**: application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -369,7 +369,7 @@ Name | Type | Description  | Notes
 
 ## ApiComponentVersionsPost
 
-> ComponentVersionJsonhal ApiComponentVersionsPost(ctx).ComponentVersionJsonhal(componentVersionJsonhal).Execute()
+> ComponentVersion ApiComponentVersionsPost(ctx).ComponentVersion(componentVersion).Execute()
 
 Creates a ComponentVersion resource.
 
@@ -384,20 +384,20 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    componentVersionJsonhal := *openapiclient.NewComponentVersionJsonhal() // ComponentVersionJsonhal | The new ComponentVersion resource
+    componentVersion := *openapiclient.NewComponentVersion() // ComponentVersion | The new ComponentVersion resource
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ComponentVersionApi.ApiComponentVersionsPost(context.Background()).ComponentVersionJsonhal(componentVersionJsonhal).Execute()
+    resp, r, err := apiClient.ComponentVersionApi.ApiComponentVersionsPost(context.Background()).ComponentVersion(componentVersion).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ComponentVersionApi.ApiComponentVersionsPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiComponentVersionsPost`: ComponentVersionJsonhal
+    // response from `ApiComponentVersionsPost`: ComponentVersion
     fmt.Fprintf(os.Stdout, "Response from `ComponentVersionApi.ApiComponentVersionsPost`: %v\n", resp)
 }
 ```
@@ -413,11 +413,11 @@ Other parameters are passed through a pointer to a apiApiComponentVersionsPostRe
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **componentVersionJsonhal** | [**ComponentVersionJsonhal**](ComponentVersionJsonhal.md) | The new ComponentVersion resource | 
+ **componentVersion** | [**ComponentVersion**](ComponentVersion.md) | The new ComponentVersion resource | 
 
 ### Return type
 
-[**ComponentVersionJsonhal**](ComponentVersionJsonhal.md)
+[**ComponentVersion**](ComponentVersion.md)
 
 ### Authorization
 
@@ -425,8 +425,8 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
-- **Accept**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
+- **Content-Type**: application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
+- **Accept**: application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)

@@ -14,9 +14,12 @@ import (
 	"encoding/json"
 )
 
+// checks if the AbstractEnvironmentJsonhalLinks type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &AbstractEnvironmentJsonhalLinks{}
+
 // AbstractEnvironmentJsonhalLinks struct for AbstractEnvironmentJsonhalLinks
 type AbstractEnvironmentJsonhalLinks struct {
-	Self *ApiComponentResourceLimitsGetCollection200ResponseLinksSelf `json:"self,omitempty"`
+	Self *AbstractEnvironmentJsonhalLinksSelf `json:"self,omitempty"`
 }
 
 // NewAbstractEnvironmentJsonhalLinks instantiates a new AbstractEnvironmentJsonhalLinks object
@@ -37,9 +40,9 @@ func NewAbstractEnvironmentJsonhalLinksWithDefaults() *AbstractEnvironmentJsonha
 }
 
 // GetSelf returns the Self field value if set, zero value otherwise.
-func (o *AbstractEnvironmentJsonhalLinks) GetSelf() ApiComponentResourceLimitsGetCollection200ResponseLinksSelf {
-	if o == nil || isNil(o.Self) {
-		var ret ApiComponentResourceLimitsGetCollection200ResponseLinksSelf
+func (o *AbstractEnvironmentJsonhalLinks) GetSelf() AbstractEnvironmentJsonhalLinksSelf {
+	if o == nil || IsNil(o.Self) {
+		var ret AbstractEnvironmentJsonhalLinksSelf
 		return ret
 	}
 	return *o.Self
@@ -47,8 +50,8 @@ func (o *AbstractEnvironmentJsonhalLinks) GetSelf() ApiComponentResourceLimitsGe
 
 // GetSelfOk returns a tuple with the Self field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AbstractEnvironmentJsonhalLinks) GetSelfOk() (*ApiComponentResourceLimitsGetCollection200ResponseLinksSelf, bool) {
-	if o == nil || isNil(o.Self) {
+func (o *AbstractEnvironmentJsonhalLinks) GetSelfOk() (*AbstractEnvironmentJsonhalLinksSelf, bool) {
+	if o == nil || IsNil(o.Self) {
 		return nil, false
 	}
 	return o.Self, true
@@ -56,24 +59,32 @@ func (o *AbstractEnvironmentJsonhalLinks) GetSelfOk() (*ApiComponentResourceLimi
 
 // HasSelf returns a boolean if a field has been set.
 func (o *AbstractEnvironmentJsonhalLinks) HasSelf() bool {
-	if o != nil && !isNil(o.Self) {
+	if o != nil && !IsNil(o.Self) {
 		return true
 	}
 
 	return false
 }
 
-// SetSelf gets a reference to the given ApiComponentResourceLimitsGetCollection200ResponseLinksSelf and assigns it to the Self field.
-func (o *AbstractEnvironmentJsonhalLinks) SetSelf(v ApiComponentResourceLimitsGetCollection200ResponseLinksSelf) {
+// SetSelf gets a reference to the given AbstractEnvironmentJsonhalLinksSelf and assigns it to the Self field.
+func (o *AbstractEnvironmentJsonhalLinks) SetSelf(v AbstractEnvironmentJsonhalLinksSelf) {
 	o.Self = &v
 }
 
 func (o AbstractEnvironmentJsonhalLinks) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.Self) {
-		toSerialize["self"] = o.Self
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o AbstractEnvironmentJsonhalLinks) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Self) {
+		toSerialize["self"] = o.Self
+	}
+	return toSerialize, nil
 }
 
 type NullableAbstractEnvironmentJsonhalLinks struct {

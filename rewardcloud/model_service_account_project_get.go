@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ServiceAccountProjectGet type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ServiceAccountProjectGet{}
+
 // ServiceAccountProjectGet
 type ServiceAccountProjectGet struct {
 	ServiceAccountGit      NullableServiceAccountProjectGetServiceAccountGit      `json:"serviceAccountGit,omitempty"`
@@ -39,7 +42,7 @@ func NewServiceAccountProjectGetWithDefaults() *ServiceAccountProjectGet {
 
 // GetServiceAccountGit returns the ServiceAccountGit field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ServiceAccountProjectGet) GetServiceAccountGit() ServiceAccountProjectGetServiceAccountGit {
-	if o == nil || isNil(o.ServiceAccountGit.Get()) {
+	if o == nil || IsNil(o.ServiceAccountGit.Get()) {
 		var ret ServiceAccountProjectGetServiceAccountGit
 		return ret
 	}
@@ -82,7 +85,7 @@ func (o *ServiceAccountProjectGet) UnsetServiceAccountGit() {
 
 // GetServiceAccountRegistry returns the ServiceAccountRegistry field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ServiceAccountProjectGet) GetServiceAccountRegistry() ServiceAccountProjectGetServiceAccountRegistry {
-	if o == nil || isNil(o.ServiceAccountRegistry.Get()) {
+	if o == nil || IsNil(o.ServiceAccountRegistry.Get()) {
 		var ret ServiceAccountProjectGetServiceAccountRegistry
 		return ret
 	}
@@ -124,6 +127,14 @@ func (o *ServiceAccountProjectGet) UnsetServiceAccountRegistry() {
 }
 
 func (o ServiceAccountProjectGet) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o ServiceAccountProjectGet) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if o.ServiceAccountGit.IsSet() {
 		toSerialize["serviceAccountGit"] = o.ServiceAccountGit.Get()
@@ -131,7 +142,7 @@ func (o ServiceAccountProjectGet) MarshalJSON() ([]byte, error) {
 	if o.ServiceAccountRegistry.IsSet() {
 		toSerialize["serviceAccountRegistry"] = o.ServiceAccountRegistry.Get()
 	}
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 type NullableServiceAccountProjectGet struct {

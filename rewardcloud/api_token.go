@@ -13,7 +13,7 @@ package rewardcloud
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 )
@@ -21,19 +21,19 @@ import (
 // TokenApiService TokenApi service
 type TokenApiService service
 
-type ApiPostCredentialsItemRequest struct {
+type TokenApiPostCredentialsItemRequest struct {
 	ctx         context.Context
 	ApiService  *TokenApiService
 	credentials *Credentials
 }
 
 // Generate new JWT Token
-func (r ApiPostCredentialsItemRequest) Credentials(credentials Credentials) ApiPostCredentialsItemRequest {
+func (r TokenApiPostCredentialsItemRequest) Credentials(credentials Credentials) TokenApiPostCredentialsItemRequest {
 	r.credentials = &credentials
 	return r
 }
 
-func (r ApiPostCredentialsItemRequest) Execute() (*Token, *http.Response, error) {
+func (r TokenApiPostCredentialsItemRequest) Execute() (*Token, *http.Response, error) {
 	return r.ApiService.PostCredentialsItemExecute(r)
 }
 
@@ -41,10 +41,10 @@ func (r ApiPostCredentialsItemRequest) Execute() (*Token, *http.Response, error)
 PostCredentialsItem Get JWT token to login.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiPostCredentialsItemRequest
+	@return TokenApiPostCredentialsItemRequest
 */
-func (a *TokenApiService) PostCredentialsItem(ctx context.Context) ApiPostCredentialsItemRequest {
-	return ApiPostCredentialsItemRequest{
+func (a *TokenApiService) PostCredentialsItem(ctx context.Context) TokenApiPostCredentialsItemRequest {
+	return TokenApiPostCredentialsItemRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -53,7 +53,7 @@ func (a *TokenApiService) PostCredentialsItem(ctx context.Context) ApiPostCreden
 // Execute executes the request
 //
 //	@return Token
-func (a *TokenApiService) PostCredentialsItemExecute(r ApiPostCredentialsItemRequest) (*Token, *http.Response, error) {
+func (a *TokenApiService) PostCredentialsItemExecute(r TokenApiPostCredentialsItemRequest) (*Token, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -101,9 +101,9 @@ func (a *TokenApiService) PostCredentialsItemExecute(r ApiPostCredentialsItemReq
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}

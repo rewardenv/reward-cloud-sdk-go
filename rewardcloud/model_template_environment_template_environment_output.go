@@ -15,6 +15,9 @@ import (
 	"time"
 )
 
+// checks if the TemplateEnvironmentTemplateEnvironmentOutput type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &TemplateEnvironmentTemplateEnvironmentOutput{}
+
 // TemplateEnvironmentTemplateEnvironmentOutput Class TemplateEnvironment
 type TemplateEnvironmentTemplateEnvironmentOutput struct {
 	TemplateProject       NullableString                                  `json:"templateProject,omitempty"`
@@ -53,7 +56,7 @@ func NewTemplateEnvironmentTemplateEnvironmentOutputWithDefaults() *TemplateEnvi
 
 // GetTemplateProject returns the TemplateProject field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *TemplateEnvironmentTemplateEnvironmentOutput) GetTemplateProject() string {
-	if o == nil || isNil(o.TemplateProject.Get()) {
+	if o == nil || IsNil(o.TemplateProject.Get()) {
 		var ret string
 		return ret
 	}
@@ -96,7 +99,7 @@ func (o *TemplateEnvironmentTemplateEnvironmentOutput) UnsetTemplateProject() {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *TemplateEnvironmentTemplateEnvironmentOutput) GetId() int32 {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		var ret int32
 		return ret
 	}
@@ -106,7 +109,7 @@ func (o *TemplateEnvironmentTemplateEnvironmentOutput) GetId() int32 {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TemplateEnvironmentTemplateEnvironmentOutput) GetIdOk() (*int32, bool) {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
 	return o.Id, true
@@ -114,7 +117,7 @@ func (o *TemplateEnvironmentTemplateEnvironmentOutput) GetIdOk() (*int32, bool) 
 
 // HasId returns a boolean if a field has been set.
 func (o *TemplateEnvironmentTemplateEnvironmentOutput) HasId() bool {
-	if o != nil && !isNil(o.Id) {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -128,7 +131,7 @@ func (o *TemplateEnvironmentTemplateEnvironmentOutput) SetId(v int32) {
 
 // GetUuid returns the Uuid field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *TemplateEnvironmentTemplateEnvironmentOutput) GetUuid() string {
-	if o == nil || isNil(o.Uuid.Get()) {
+	if o == nil || IsNil(o.Uuid.Get()) {
 		var ret string
 		return ret
 	}
@@ -171,7 +174,7 @@ func (o *TemplateEnvironmentTemplateEnvironmentOutput) UnsetUuid() {
 
 // GetName returns the Name field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *TemplateEnvironmentTemplateEnvironmentOutput) GetName() string {
-	if o == nil || isNil(o.Name.Get()) {
+	if o == nil || IsNil(o.Name.Get()) {
 		var ret string
 		return ret
 	}
@@ -214,7 +217,7 @@ func (o *TemplateEnvironmentTemplateEnvironmentOutput) UnsetName() {
 
 // GetCpu returns the Cpu field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *TemplateEnvironmentTemplateEnvironmentOutput) GetCpu() int32 {
-	if o == nil || isNil(o.Cpu.Get()) {
+	if o == nil || IsNil(o.Cpu.Get()) {
 		var ret int32
 		return ret
 	}
@@ -257,7 +260,7 @@ func (o *TemplateEnvironmentTemplateEnvironmentOutput) UnsetCpu() {
 
 // GetMemory returns the Memory field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *TemplateEnvironmentTemplateEnvironmentOutput) GetMemory() int32 {
-	if o == nil || isNil(o.Memory.Get()) {
+	if o == nil || IsNil(o.Memory.Get()) {
 		var ret int32
 		return ret
 	}
@@ -300,7 +303,7 @@ func (o *TemplateEnvironmentTemplateEnvironmentOutput) UnsetMemory() {
 
 // GetStorage returns the Storage field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *TemplateEnvironmentTemplateEnvironmentOutput) GetStorage() int32 {
-	if o == nil || isNil(o.Storage.Get()) {
+	if o == nil || IsNil(o.Storage.Get()) {
 		var ret int32
 		return ret
 	}
@@ -343,7 +346,7 @@ func (o *TemplateEnvironmentTemplateEnvironmentOutput) UnsetStorage() {
 
 // GetDataTransferSettings returns the DataTransferSettings field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *TemplateEnvironmentTemplateEnvironmentOutput) GetDataTransferSettings() string {
-	if o == nil || isNil(o.DataTransferSettings.Get()) {
+	if o == nil || IsNil(o.DataTransferSettings.Get()) {
 		var ret string
 		return ret
 	}
@@ -386,7 +389,7 @@ func (o *TemplateEnvironmentTemplateEnvironmentOutput) UnsetDataTransferSettings
 
 // GetIsStripDatabase returns the IsStripDatabase field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *TemplateEnvironmentTemplateEnvironmentOutput) GetIsStripDatabase() bool {
-	if o == nil || isNil(o.IsStripDatabase.Get()) {
+	if o == nil || IsNil(o.IsStripDatabase.Get()) {
 		var ret bool
 		return ret
 	}
@@ -429,7 +432,7 @@ func (o *TemplateEnvironmentTemplateEnvironmentOutput) UnsetIsStripDatabase() {
 
 // GetIsAllowOutgoingEmails returns the IsAllowOutgoingEmails field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *TemplateEnvironmentTemplateEnvironmentOutput) GetIsAllowOutgoingEmails() bool {
-	if o == nil || isNil(o.IsAllowOutgoingEmails.Get()) {
+	if o == nil || IsNil(o.IsAllowOutgoingEmails.Get()) {
 		var ret bool
 		return ret
 	}
@@ -472,7 +475,7 @@ func (o *TemplateEnvironmentTemplateEnvironmentOutput) UnsetIsAllowOutgoingEmail
 
 // GetIsInitSampleData returns the IsInitSampleData field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *TemplateEnvironmentTemplateEnvironmentOutput) GetIsInitSampleData() bool {
-	if o == nil || isNil(o.IsInitSampleData.Get()) {
+	if o == nil || IsNil(o.IsInitSampleData.Get()) {
 		var ret bool
 		return ret
 	}
@@ -515,7 +518,7 @@ func (o *TemplateEnvironmentTemplateEnvironmentOutput) UnsetIsInitSampleData() {
 
 // GetCreatedAt returns the CreatedAt field value if set, zero value otherwise.
 func (o *TemplateEnvironmentTemplateEnvironmentOutput) GetCreatedAt() time.Time {
-	if o == nil || isNil(o.CreatedAt) {
+	if o == nil || IsNil(o.CreatedAt) {
 		var ret time.Time
 		return ret
 	}
@@ -525,7 +528,7 @@ func (o *TemplateEnvironmentTemplateEnvironmentOutput) GetCreatedAt() time.Time 
 // GetCreatedAtOk returns a tuple with the CreatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TemplateEnvironmentTemplateEnvironmentOutput) GetCreatedAtOk() (*time.Time, bool) {
-	if o == nil || isNil(o.CreatedAt) {
+	if o == nil || IsNil(o.CreatedAt) {
 		return nil, false
 	}
 	return o.CreatedAt, true
@@ -533,7 +536,7 @@ func (o *TemplateEnvironmentTemplateEnvironmentOutput) GetCreatedAtOk() (*time.T
 
 // HasCreatedAt returns a boolean if a field has been set.
 func (o *TemplateEnvironmentTemplateEnvironmentOutput) HasCreatedAt() bool {
-	if o != nil && !isNil(o.CreatedAt) {
+	if o != nil && !IsNil(o.CreatedAt) {
 		return true
 	}
 
@@ -547,7 +550,7 @@ func (o *TemplateEnvironmentTemplateEnvironmentOutput) SetCreatedAt(v time.Time)
 
 // GetUpdatedAt returns the UpdatedAt field value if set, zero value otherwise.
 func (o *TemplateEnvironmentTemplateEnvironmentOutput) GetUpdatedAt() time.Time {
-	if o == nil || isNil(o.UpdatedAt) {
+	if o == nil || IsNil(o.UpdatedAt) {
 		var ret time.Time
 		return ret
 	}
@@ -557,7 +560,7 @@ func (o *TemplateEnvironmentTemplateEnvironmentOutput) GetUpdatedAt() time.Time 
 // GetUpdatedAtOk returns a tuple with the UpdatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TemplateEnvironmentTemplateEnvironmentOutput) GetUpdatedAtOk() (*time.Time, bool) {
-	if o == nil || isNil(o.UpdatedAt) {
+	if o == nil || IsNil(o.UpdatedAt) {
 		return nil, false
 	}
 	return o.UpdatedAt, true
@@ -565,7 +568,7 @@ func (o *TemplateEnvironmentTemplateEnvironmentOutput) GetUpdatedAtOk() (*time.T
 
 // HasUpdatedAt returns a boolean if a field has been set.
 func (o *TemplateEnvironmentTemplateEnvironmentOutput) HasUpdatedAt() bool {
-	if o != nil && !isNil(o.UpdatedAt) {
+	if o != nil && !IsNil(o.UpdatedAt) {
 		return true
 	}
 
@@ -579,7 +582,7 @@ func (o *TemplateEnvironmentTemplateEnvironmentOutput) SetUpdatedAt(v time.Time)
 
 // GetEnvVar returns the EnvVar field value if set, zero value otherwise.
 func (o *TemplateEnvironmentTemplateEnvironmentOutput) GetEnvVar() []EnvironmentEnvVarTemplateEnvironmentOutput {
-	if o == nil || isNil(o.EnvVar) {
+	if o == nil || IsNil(o.EnvVar) {
 		var ret []EnvironmentEnvVarTemplateEnvironmentOutput
 		return ret
 	}
@@ -589,7 +592,7 @@ func (o *TemplateEnvironmentTemplateEnvironmentOutput) GetEnvVar() []Environment
 // GetEnvVarOk returns a tuple with the EnvVar field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TemplateEnvironmentTemplateEnvironmentOutput) GetEnvVarOk() ([]EnvironmentEnvVarTemplateEnvironmentOutput, bool) {
-	if o == nil || isNil(o.EnvVar) {
+	if o == nil || IsNil(o.EnvVar) {
 		return nil, false
 	}
 	return o.EnvVar, true
@@ -597,7 +600,7 @@ func (o *TemplateEnvironmentTemplateEnvironmentOutput) GetEnvVarOk() ([]Environm
 
 // HasEnvVar returns a boolean if a field has been set.
 func (o *TemplateEnvironmentTemplateEnvironmentOutput) HasEnvVar() bool {
-	if o != nil && !isNil(o.EnvVar) {
+	if o != nil && !IsNil(o.EnvVar) {
 		return true
 	}
 
@@ -611,7 +614,7 @@ func (o *TemplateEnvironmentTemplateEnvironmentOutput) SetEnvVar(v []Environment
 
 // GetEnvironmentComponent returns the EnvironmentComponent field value if set, zero value otherwise.
 func (o *TemplateEnvironmentTemplateEnvironmentOutput) GetEnvironmentComponent() []EnvironmentComponentTemplateEnvironmentOutput {
-	if o == nil || isNil(o.EnvironmentComponent) {
+	if o == nil || IsNil(o.EnvironmentComponent) {
 		var ret []EnvironmentComponentTemplateEnvironmentOutput
 		return ret
 	}
@@ -621,7 +624,7 @@ func (o *TemplateEnvironmentTemplateEnvironmentOutput) GetEnvironmentComponent()
 // GetEnvironmentComponentOk returns a tuple with the EnvironmentComponent field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TemplateEnvironmentTemplateEnvironmentOutput) GetEnvironmentComponentOk() ([]EnvironmentComponentTemplateEnvironmentOutput, bool) {
-	if o == nil || isNil(o.EnvironmentComponent) {
+	if o == nil || IsNil(o.EnvironmentComponent) {
 		return nil, false
 	}
 	return o.EnvironmentComponent, true
@@ -629,7 +632,7 @@ func (o *TemplateEnvironmentTemplateEnvironmentOutput) GetEnvironmentComponentOk
 
 // HasEnvironmentComponent returns a boolean if a field has been set.
 func (o *TemplateEnvironmentTemplateEnvironmentOutput) HasEnvironmentComponent() bool {
-	if o != nil && !isNil(o.EnvironmentComponent) {
+	if o != nil && !IsNil(o.EnvironmentComponent) {
 		return true
 	}
 
@@ -642,13 +645,19 @@ func (o *TemplateEnvironmentTemplateEnvironmentOutput) SetEnvironmentComponent(v
 }
 
 func (o TemplateEnvironmentTemplateEnvironmentOutput) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o TemplateEnvironmentTemplateEnvironmentOutput) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if o.TemplateProject.IsSet() {
 		toSerialize["templateProject"] = o.TemplateProject.Get()
 	}
-	if !isNil(o.Id) {
-		toSerialize["id"] = o.Id
-	}
+	// skip: id is readOnly
 	if o.Uuid.IsSet() {
 		toSerialize["uuid"] = o.Uuid.Get()
 	}
@@ -676,19 +685,19 @@ func (o TemplateEnvironmentTemplateEnvironmentOutput) MarshalJSON() ([]byte, err
 	if o.IsInitSampleData.IsSet() {
 		toSerialize["isInitSampleData"] = o.IsInitSampleData.Get()
 	}
-	if !isNil(o.CreatedAt) {
+	if !IsNil(o.CreatedAt) {
 		toSerialize["createdAt"] = o.CreatedAt
 	}
-	if !isNil(o.UpdatedAt) {
+	if !IsNil(o.UpdatedAt) {
 		toSerialize["updatedAt"] = o.UpdatedAt
 	}
-	if !isNil(o.EnvVar) {
+	if !IsNil(o.EnvVar) {
 		toSerialize["envVar"] = o.EnvVar
 	}
-	if !isNil(o.EnvironmentComponent) {
+	if !IsNil(o.EnvironmentComponent) {
 		toSerialize["environmentComponent"] = o.EnvironmentComponent
 	}
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 type NullableTemplateEnvironmentTemplateEnvironmentOutput struct {

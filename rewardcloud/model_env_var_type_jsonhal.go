@@ -15,6 +15,9 @@ import (
 	"time"
 )
 
+// checks if the EnvVarTypeJsonhal type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &EnvVarTypeJsonhal{}
+
 // EnvVarTypeJsonhal Class EnvVarType
 type EnvVarTypeJsonhal struct {
 	Links                  *AbstractEnvironmentJsonhalLinks `json:"_links,omitempty"`
@@ -53,7 +56,7 @@ func NewEnvVarTypeJsonhalWithDefaults() *EnvVarTypeJsonhal {
 
 // GetLinks returns the Links field value if set, zero value otherwise.
 func (o *EnvVarTypeJsonhal) GetLinks() AbstractEnvironmentJsonhalLinks {
-	if o == nil || isNil(o.Links) {
+	if o == nil || IsNil(o.Links) {
 		var ret AbstractEnvironmentJsonhalLinks
 		return ret
 	}
@@ -63,7 +66,7 @@ func (o *EnvVarTypeJsonhal) GetLinks() AbstractEnvironmentJsonhalLinks {
 // GetLinksOk returns a tuple with the Links field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EnvVarTypeJsonhal) GetLinksOk() (*AbstractEnvironmentJsonhalLinks, bool) {
-	if o == nil || isNil(o.Links) {
+	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
 	return o.Links, true
@@ -71,7 +74,7 @@ func (o *EnvVarTypeJsonhal) GetLinksOk() (*AbstractEnvironmentJsonhalLinks, bool
 
 // HasLinks returns a boolean if a field has been set.
 func (o *EnvVarTypeJsonhal) HasLinks() bool {
-	if o != nil && !isNil(o.Links) {
+	if o != nil && !IsNil(o.Links) {
 		return true
 	}
 
@@ -85,7 +88,7 @@ func (o *EnvVarTypeJsonhal) SetLinks(v AbstractEnvironmentJsonhalLinks) {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *EnvVarTypeJsonhal) GetId() int32 {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		var ret int32
 		return ret
 	}
@@ -95,7 +98,7 @@ func (o *EnvVarTypeJsonhal) GetId() int32 {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EnvVarTypeJsonhal) GetIdOk() (*int32, bool) {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
 	return o.Id, true
@@ -103,7 +106,7 @@ func (o *EnvVarTypeJsonhal) GetIdOk() (*int32, bool) {
 
 // HasId returns a boolean if a field has been set.
 func (o *EnvVarTypeJsonhal) HasId() bool {
-	if o != nil && !isNil(o.Id) {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -117,7 +120,7 @@ func (o *EnvVarTypeJsonhal) SetId(v int32) {
 
 // GetUuid returns the Uuid field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *EnvVarTypeJsonhal) GetUuid() string {
-	if o == nil || isNil(o.Uuid.Get()) {
+	if o == nil || IsNil(o.Uuid.Get()) {
 		var ret string
 		return ret
 	}
@@ -160,7 +163,7 @@ func (o *EnvVarTypeJsonhal) UnsetUuid() {
 
 // GetName returns the Name field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *EnvVarTypeJsonhal) GetName() string {
-	if o == nil || isNil(o.Name.Get()) {
+	if o == nil || IsNil(o.Name.Get()) {
 		var ret string
 		return ret
 	}
@@ -203,7 +206,7 @@ func (o *EnvVarTypeJsonhal) UnsetName() {
 
 // GetCodeName returns the CodeName field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *EnvVarTypeJsonhal) GetCodeName() string {
-	if o == nil || isNil(o.CodeName.Get()) {
+	if o == nil || IsNil(o.CodeName.Get()) {
 		var ret string
 		return ret
 	}
@@ -246,7 +249,7 @@ func (o *EnvVarTypeJsonhal) UnsetCodeName() {
 
 // GetIsDefault returns the IsDefault field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *EnvVarTypeJsonhal) GetIsDefault() bool {
-	if o == nil || isNil(o.IsDefault.Get()) {
+	if o == nil || IsNil(o.IsDefault.Get()) {
 		var ret bool
 		return ret
 	}
@@ -289,7 +292,7 @@ func (o *EnvVarTypeJsonhal) UnsetIsDefault() {
 
 // GetProjectEnvVar returns the ProjectEnvVar field value if set, zero value otherwise.
 func (o *EnvVarTypeJsonhal) GetProjectEnvVar() []string {
-	if o == nil || isNil(o.ProjectEnvVar) {
+	if o == nil || IsNil(o.ProjectEnvVar) {
 		var ret []string
 		return ret
 	}
@@ -299,7 +302,7 @@ func (o *EnvVarTypeJsonhal) GetProjectEnvVar() []string {
 // GetProjectEnvVarOk returns a tuple with the ProjectEnvVar field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EnvVarTypeJsonhal) GetProjectEnvVarOk() ([]string, bool) {
-	if o == nil || isNil(o.ProjectEnvVar) {
+	if o == nil || IsNil(o.ProjectEnvVar) {
 		return nil, false
 	}
 	return o.ProjectEnvVar, true
@@ -307,7 +310,7 @@ func (o *EnvVarTypeJsonhal) GetProjectEnvVarOk() ([]string, bool) {
 
 // HasProjectEnvVar returns a boolean if a field has been set.
 func (o *EnvVarTypeJsonhal) HasProjectEnvVar() bool {
-	if o != nil && !isNil(o.ProjectEnvVar) {
+	if o != nil && !IsNil(o.ProjectEnvVar) {
 		return true
 	}
 
@@ -321,7 +324,7 @@ func (o *EnvVarTypeJsonhal) SetProjectEnvVar(v []string) {
 
 // GetEnvironmentEnvVar returns the EnvironmentEnvVar field value if set, zero value otherwise.
 func (o *EnvVarTypeJsonhal) GetEnvironmentEnvVar() []string {
-	if o == nil || isNil(o.EnvironmentEnvVar) {
+	if o == nil || IsNil(o.EnvironmentEnvVar) {
 		var ret []string
 		return ret
 	}
@@ -331,7 +334,7 @@ func (o *EnvVarTypeJsonhal) GetEnvironmentEnvVar() []string {
 // GetEnvironmentEnvVarOk returns a tuple with the EnvironmentEnvVar field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EnvVarTypeJsonhal) GetEnvironmentEnvVarOk() ([]string, bool) {
-	if o == nil || isNil(o.EnvironmentEnvVar) {
+	if o == nil || IsNil(o.EnvironmentEnvVar) {
 		return nil, false
 	}
 	return o.EnvironmentEnvVar, true
@@ -339,7 +342,7 @@ func (o *EnvVarTypeJsonhal) GetEnvironmentEnvVarOk() ([]string, bool) {
 
 // HasEnvironmentEnvVar returns a boolean if a field has been set.
 func (o *EnvVarTypeJsonhal) HasEnvironmentEnvVar() bool {
-	if o != nil && !isNil(o.EnvironmentEnvVar) {
+	if o != nil && !IsNil(o.EnvironmentEnvVar) {
 		return true
 	}
 
@@ -353,7 +356,7 @@ func (o *EnvVarTypeJsonhal) SetEnvironmentEnvVar(v []string) {
 
 // GetComponentVersionEnvVar returns the ComponentVersionEnvVar field value if set, zero value otherwise.
 func (o *EnvVarTypeJsonhal) GetComponentVersionEnvVar() []string {
-	if o == nil || isNil(o.ComponentVersionEnvVar) {
+	if o == nil || IsNil(o.ComponentVersionEnvVar) {
 		var ret []string
 		return ret
 	}
@@ -363,7 +366,7 @@ func (o *EnvVarTypeJsonhal) GetComponentVersionEnvVar() []string {
 // GetComponentVersionEnvVarOk returns a tuple with the ComponentVersionEnvVar field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EnvVarTypeJsonhal) GetComponentVersionEnvVarOk() ([]string, bool) {
-	if o == nil || isNil(o.ComponentVersionEnvVar) {
+	if o == nil || IsNil(o.ComponentVersionEnvVar) {
 		return nil, false
 	}
 	return o.ComponentVersionEnvVar, true
@@ -371,7 +374,7 @@ func (o *EnvVarTypeJsonhal) GetComponentVersionEnvVarOk() ([]string, bool) {
 
 // HasComponentVersionEnvVar returns a boolean if a field has been set.
 func (o *EnvVarTypeJsonhal) HasComponentVersionEnvVar() bool {
-	if o != nil && !isNil(o.ComponentVersionEnvVar) {
+	if o != nil && !IsNil(o.ComponentVersionEnvVar) {
 		return true
 	}
 
@@ -385,7 +388,7 @@ func (o *EnvVarTypeJsonhal) SetComponentVersionEnvVar(v []string) {
 
 // GetOrganisationEnvVar returns the OrganisationEnvVar field value if set, zero value otherwise.
 func (o *EnvVarTypeJsonhal) GetOrganisationEnvVar() []string {
-	if o == nil || isNil(o.OrganisationEnvVar) {
+	if o == nil || IsNil(o.OrganisationEnvVar) {
 		var ret []string
 		return ret
 	}
@@ -395,7 +398,7 @@ func (o *EnvVarTypeJsonhal) GetOrganisationEnvVar() []string {
 // GetOrganisationEnvVarOk returns a tuple with the OrganisationEnvVar field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EnvVarTypeJsonhal) GetOrganisationEnvVarOk() ([]string, bool) {
-	if o == nil || isNil(o.OrganisationEnvVar) {
+	if o == nil || IsNil(o.OrganisationEnvVar) {
 		return nil, false
 	}
 	return o.OrganisationEnvVar, true
@@ -403,7 +406,7 @@ func (o *EnvVarTypeJsonhal) GetOrganisationEnvVarOk() ([]string, bool) {
 
 // HasOrganisationEnvVar returns a boolean if a field has been set.
 func (o *EnvVarTypeJsonhal) HasOrganisationEnvVar() bool {
-	if o != nil && !isNil(o.OrganisationEnvVar) {
+	if o != nil && !IsNil(o.OrganisationEnvVar) {
 		return true
 	}
 
@@ -417,7 +420,7 @@ func (o *EnvVarTypeJsonhal) SetOrganisationEnvVar(v []string) {
 
 // GetTeamEnvVar returns the TeamEnvVar field value if set, zero value otherwise.
 func (o *EnvVarTypeJsonhal) GetTeamEnvVar() []string {
-	if o == nil || isNil(o.TeamEnvVar) {
+	if o == nil || IsNil(o.TeamEnvVar) {
 		var ret []string
 		return ret
 	}
@@ -427,7 +430,7 @@ func (o *EnvVarTypeJsonhal) GetTeamEnvVar() []string {
 // GetTeamEnvVarOk returns a tuple with the TeamEnvVar field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EnvVarTypeJsonhal) GetTeamEnvVarOk() ([]string, bool) {
-	if o == nil || isNil(o.TeamEnvVar) {
+	if o == nil || IsNil(o.TeamEnvVar) {
 		return nil, false
 	}
 	return o.TeamEnvVar, true
@@ -435,7 +438,7 @@ func (o *EnvVarTypeJsonhal) GetTeamEnvVarOk() ([]string, bool) {
 
 // HasTeamEnvVar returns a boolean if a field has been set.
 func (o *EnvVarTypeJsonhal) HasTeamEnvVar() bool {
-	if o != nil && !isNil(o.TeamEnvVar) {
+	if o != nil && !IsNil(o.TeamEnvVar) {
 		return true
 	}
 
@@ -449,7 +452,7 @@ func (o *EnvVarTypeJsonhal) SetTeamEnvVar(v []string) {
 
 // GetCreatedBy returns the CreatedBy field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *EnvVarTypeJsonhal) GetCreatedBy() string {
-	if o == nil || isNil(o.CreatedBy.Get()) {
+	if o == nil || IsNil(o.CreatedBy.Get()) {
 		var ret string
 		return ret
 	}
@@ -492,7 +495,7 @@ func (o *EnvVarTypeJsonhal) UnsetCreatedBy() {
 
 // GetUpdatedBy returns the UpdatedBy field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *EnvVarTypeJsonhal) GetUpdatedBy() string {
-	if o == nil || isNil(o.UpdatedBy.Get()) {
+	if o == nil || IsNil(o.UpdatedBy.Get()) {
 		var ret string
 		return ret
 	}
@@ -535,7 +538,7 @@ func (o *EnvVarTypeJsonhal) UnsetUpdatedBy() {
 
 // GetCreatedAt returns the CreatedAt field value if set, zero value otherwise.
 func (o *EnvVarTypeJsonhal) GetCreatedAt() time.Time {
-	if o == nil || isNil(o.CreatedAt) {
+	if o == nil || IsNil(o.CreatedAt) {
 		var ret time.Time
 		return ret
 	}
@@ -545,7 +548,7 @@ func (o *EnvVarTypeJsonhal) GetCreatedAt() time.Time {
 // GetCreatedAtOk returns a tuple with the CreatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EnvVarTypeJsonhal) GetCreatedAtOk() (*time.Time, bool) {
-	if o == nil || isNil(o.CreatedAt) {
+	if o == nil || IsNil(o.CreatedAt) {
 		return nil, false
 	}
 	return o.CreatedAt, true
@@ -553,7 +556,7 @@ func (o *EnvVarTypeJsonhal) GetCreatedAtOk() (*time.Time, bool) {
 
 // HasCreatedAt returns a boolean if a field has been set.
 func (o *EnvVarTypeJsonhal) HasCreatedAt() bool {
-	if o != nil && !isNil(o.CreatedAt) {
+	if o != nil && !IsNil(o.CreatedAt) {
 		return true
 	}
 
@@ -567,7 +570,7 @@ func (o *EnvVarTypeJsonhal) SetCreatedAt(v time.Time) {
 
 // GetUpdatedAt returns the UpdatedAt field value if set, zero value otherwise.
 func (o *EnvVarTypeJsonhal) GetUpdatedAt() time.Time {
-	if o == nil || isNil(o.UpdatedAt) {
+	if o == nil || IsNil(o.UpdatedAt) {
 		var ret time.Time
 		return ret
 	}
@@ -577,7 +580,7 @@ func (o *EnvVarTypeJsonhal) GetUpdatedAt() time.Time {
 // GetUpdatedAtOk returns a tuple with the UpdatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EnvVarTypeJsonhal) GetUpdatedAtOk() (*time.Time, bool) {
-	if o == nil || isNil(o.UpdatedAt) {
+	if o == nil || IsNil(o.UpdatedAt) {
 		return nil, false
 	}
 	return o.UpdatedAt, true
@@ -585,7 +588,7 @@ func (o *EnvVarTypeJsonhal) GetUpdatedAtOk() (*time.Time, bool) {
 
 // HasUpdatedAt returns a boolean if a field has been set.
 func (o *EnvVarTypeJsonhal) HasUpdatedAt() bool {
-	if o != nil && !isNil(o.UpdatedAt) {
+	if o != nil && !IsNil(o.UpdatedAt) {
 		return true
 	}
 
@@ -598,13 +601,19 @@ func (o *EnvVarTypeJsonhal) SetUpdatedAt(v time.Time) {
 }
 
 func (o EnvVarTypeJsonhal) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o EnvVarTypeJsonhal) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Links) {
+	if !IsNil(o.Links) {
 		toSerialize["_links"] = o.Links
 	}
-	if !isNil(o.Id) {
-		toSerialize["id"] = o.Id
-	}
+	// skip: id is readOnly
 	if o.Uuid.IsSet() {
 		toSerialize["uuid"] = o.Uuid.Get()
 	}
@@ -617,19 +626,19 @@ func (o EnvVarTypeJsonhal) MarshalJSON() ([]byte, error) {
 	if o.IsDefault.IsSet() {
 		toSerialize["isDefault"] = o.IsDefault.Get()
 	}
-	if !isNil(o.ProjectEnvVar) {
+	if !IsNil(o.ProjectEnvVar) {
 		toSerialize["projectEnvVar"] = o.ProjectEnvVar
 	}
-	if !isNil(o.EnvironmentEnvVar) {
+	if !IsNil(o.EnvironmentEnvVar) {
 		toSerialize["environmentEnvVar"] = o.EnvironmentEnvVar
 	}
-	if !isNil(o.ComponentVersionEnvVar) {
+	if !IsNil(o.ComponentVersionEnvVar) {
 		toSerialize["componentVersionEnvVar"] = o.ComponentVersionEnvVar
 	}
-	if !isNil(o.OrganisationEnvVar) {
+	if !IsNil(o.OrganisationEnvVar) {
 		toSerialize["organisationEnvVar"] = o.OrganisationEnvVar
 	}
-	if !isNil(o.TeamEnvVar) {
+	if !IsNil(o.TeamEnvVar) {
 		toSerialize["teamEnvVar"] = o.TeamEnvVar
 	}
 	if o.CreatedBy.IsSet() {
@@ -638,13 +647,13 @@ func (o EnvVarTypeJsonhal) MarshalJSON() ([]byte, error) {
 	if o.UpdatedBy.IsSet() {
 		toSerialize["updatedBy"] = o.UpdatedBy.Get()
 	}
-	if !isNil(o.CreatedAt) {
+	if !IsNil(o.CreatedAt) {
 		toSerialize["createdAt"] = o.CreatedAt
 	}
-	if !isNil(o.UpdatedAt) {
+	if !IsNil(o.UpdatedAt) {
 		toSerialize["updatedAt"] = o.UpdatedAt
 	}
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 type NullableEnvVarTypeJsonhal struct {

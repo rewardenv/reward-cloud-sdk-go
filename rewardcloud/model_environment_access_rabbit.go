@@ -15,6 +15,9 @@ import (
 	"time"
 )
 
+// checks if the EnvironmentAccessRabbit type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &EnvironmentAccessRabbit{}
+
 // EnvironmentAccessRabbit Class EnvironmentAccessRabbit
 type EnvironmentAccessRabbit struct {
 	Id                *int32         `json:"id,omitempty"`
@@ -50,7 +53,7 @@ func NewEnvironmentAccessRabbitWithDefaults() *EnvironmentAccessRabbit {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *EnvironmentAccessRabbit) GetId() int32 {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		var ret int32
 		return ret
 	}
@@ -60,7 +63,7 @@ func (o *EnvironmentAccessRabbit) GetId() int32 {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EnvironmentAccessRabbit) GetIdOk() (*int32, bool) {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
 	return o.Id, true
@@ -68,7 +71,7 @@ func (o *EnvironmentAccessRabbit) GetIdOk() (*int32, bool) {
 
 // HasId returns a boolean if a field has been set.
 func (o *EnvironmentAccessRabbit) HasId() bool {
-	if o != nil && !isNil(o.Id) {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -82,7 +85,7 @@ func (o *EnvironmentAccessRabbit) SetId(v int32) {
 
 // GetUuid returns the Uuid field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *EnvironmentAccessRabbit) GetUuid() string {
-	if o == nil || isNil(o.Uuid.Get()) {
+	if o == nil || IsNil(o.Uuid.Get()) {
 		var ret string
 		return ret
 	}
@@ -125,7 +128,7 @@ func (o *EnvironmentAccessRabbit) UnsetUuid() {
 
 // GetUrl returns the Url field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *EnvironmentAccessRabbit) GetUrl() string {
-	if o == nil || isNil(o.Url.Get()) {
+	if o == nil || IsNil(o.Url.Get()) {
 		var ret string
 		return ret
 	}
@@ -168,7 +171,7 @@ func (o *EnvironmentAccessRabbit) UnsetUrl() {
 
 // GetHost returns the Host field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *EnvironmentAccessRabbit) GetHost() string {
-	if o == nil || isNil(o.Host.Get()) {
+	if o == nil || IsNil(o.Host.Get()) {
 		var ret string
 		return ret
 	}
@@ -211,7 +214,7 @@ func (o *EnvironmentAccessRabbit) UnsetHost() {
 
 // GetPort returns the Port field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *EnvironmentAccessRabbit) GetPort() int32 {
-	if o == nil || isNil(o.Port.Get()) {
+	if o == nil || IsNil(o.Port.Get()) {
 		var ret int32
 		return ret
 	}
@@ -254,7 +257,7 @@ func (o *EnvironmentAccessRabbit) UnsetPort() {
 
 // GetUsername returns the Username field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *EnvironmentAccessRabbit) GetUsername() string {
-	if o == nil || isNil(o.Username.Get()) {
+	if o == nil || IsNil(o.Username.Get()) {
 		var ret string
 		return ret
 	}
@@ -297,7 +300,7 @@ func (o *EnvironmentAccessRabbit) UnsetUsername() {
 
 // GetPassword returns the Password field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *EnvironmentAccessRabbit) GetPassword() string {
-	if o == nil || isNil(o.Password.Get()) {
+	if o == nil || IsNil(o.Password.Get()) {
 		var ret string
 		return ret
 	}
@@ -340,7 +343,7 @@ func (o *EnvironmentAccessRabbit) UnsetPassword() {
 
 // GetEnvironmentAccess returns the EnvironmentAccess field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *EnvironmentAccessRabbit) GetEnvironmentAccess() string {
-	if o == nil || isNil(o.EnvironmentAccess.Get()) {
+	if o == nil || IsNil(o.EnvironmentAccess.Get()) {
 		var ret string
 		return ret
 	}
@@ -383,7 +386,7 @@ func (o *EnvironmentAccessRabbit) UnsetEnvironmentAccess() {
 
 // GetCreatedBy returns the CreatedBy field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *EnvironmentAccessRabbit) GetCreatedBy() string {
-	if o == nil || isNil(o.CreatedBy.Get()) {
+	if o == nil || IsNil(o.CreatedBy.Get()) {
 		var ret string
 		return ret
 	}
@@ -426,7 +429,7 @@ func (o *EnvironmentAccessRabbit) UnsetCreatedBy() {
 
 // GetUpdatedBy returns the UpdatedBy field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *EnvironmentAccessRabbit) GetUpdatedBy() string {
-	if o == nil || isNil(o.UpdatedBy.Get()) {
+	if o == nil || IsNil(o.UpdatedBy.Get()) {
 		var ret string
 		return ret
 	}
@@ -469,7 +472,7 @@ func (o *EnvironmentAccessRabbit) UnsetUpdatedBy() {
 
 // GetCreatedAt returns the CreatedAt field value if set, zero value otherwise.
 func (o *EnvironmentAccessRabbit) GetCreatedAt() time.Time {
-	if o == nil || isNil(o.CreatedAt) {
+	if o == nil || IsNil(o.CreatedAt) {
 		var ret time.Time
 		return ret
 	}
@@ -479,7 +482,7 @@ func (o *EnvironmentAccessRabbit) GetCreatedAt() time.Time {
 // GetCreatedAtOk returns a tuple with the CreatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EnvironmentAccessRabbit) GetCreatedAtOk() (*time.Time, bool) {
-	if o == nil || isNil(o.CreatedAt) {
+	if o == nil || IsNil(o.CreatedAt) {
 		return nil, false
 	}
 	return o.CreatedAt, true
@@ -487,7 +490,7 @@ func (o *EnvironmentAccessRabbit) GetCreatedAtOk() (*time.Time, bool) {
 
 // HasCreatedAt returns a boolean if a field has been set.
 func (o *EnvironmentAccessRabbit) HasCreatedAt() bool {
-	if o != nil && !isNil(o.CreatedAt) {
+	if o != nil && !IsNil(o.CreatedAt) {
 		return true
 	}
 
@@ -501,7 +504,7 @@ func (o *EnvironmentAccessRabbit) SetCreatedAt(v time.Time) {
 
 // GetUpdatedAt returns the UpdatedAt field value if set, zero value otherwise.
 func (o *EnvironmentAccessRabbit) GetUpdatedAt() time.Time {
-	if o == nil || isNil(o.UpdatedAt) {
+	if o == nil || IsNil(o.UpdatedAt) {
 		var ret time.Time
 		return ret
 	}
@@ -511,7 +514,7 @@ func (o *EnvironmentAccessRabbit) GetUpdatedAt() time.Time {
 // GetUpdatedAtOk returns a tuple with the UpdatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EnvironmentAccessRabbit) GetUpdatedAtOk() (*time.Time, bool) {
-	if o == nil || isNil(o.UpdatedAt) {
+	if o == nil || IsNil(o.UpdatedAt) {
 		return nil, false
 	}
 	return o.UpdatedAt, true
@@ -519,7 +522,7 @@ func (o *EnvironmentAccessRabbit) GetUpdatedAtOk() (*time.Time, bool) {
 
 // HasUpdatedAt returns a boolean if a field has been set.
 func (o *EnvironmentAccessRabbit) HasUpdatedAt() bool {
-	if o != nil && !isNil(o.UpdatedAt) {
+	if o != nil && !IsNil(o.UpdatedAt) {
 		return true
 	}
 
@@ -532,10 +535,16 @@ func (o *EnvironmentAccessRabbit) SetUpdatedAt(v time.Time) {
 }
 
 func (o EnvironmentAccessRabbit) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.Id) {
-		toSerialize["id"] = o.Id
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
+	return json.Marshal(toSerialize)
+}
+
+func (o EnvironmentAccessRabbit) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	// skip: id is readOnly
 	if o.Uuid.IsSet() {
 		toSerialize["uuid"] = o.Uuid.Get()
 	}
@@ -563,13 +572,13 @@ func (o EnvironmentAccessRabbit) MarshalJSON() ([]byte, error) {
 	if o.UpdatedBy.IsSet() {
 		toSerialize["updatedBy"] = o.UpdatedBy.Get()
 	}
-	if !isNil(o.CreatedAt) {
+	if !IsNil(o.CreatedAt) {
 		toSerialize["createdAt"] = o.CreatedAt
 	}
-	if !isNil(o.UpdatedAt) {
+	if !IsNil(o.UpdatedAt) {
 		toSerialize["updatedAt"] = o.UpdatedAt
 	}
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 type NullableEnvironmentAccessRabbit struct {

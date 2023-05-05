@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the TeamEnvVarJsonhalTeamGet type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &TeamEnvVarJsonhalTeamGet{}
+
 // TeamEnvVarJsonhalTeamGet
 type TeamEnvVarJsonhalTeamGet struct {
 	Links       *AbstractEnvironmentJsonhalLinks `json:"_links,omitempty"`
@@ -42,7 +45,7 @@ func NewTeamEnvVarJsonhalTeamGetWithDefaults() *TeamEnvVarJsonhalTeamGet {
 
 // GetLinks returns the Links field value if set, zero value otherwise.
 func (o *TeamEnvVarJsonhalTeamGet) GetLinks() AbstractEnvironmentJsonhalLinks {
-	if o == nil || isNil(o.Links) {
+	if o == nil || IsNil(o.Links) {
 		var ret AbstractEnvironmentJsonhalLinks
 		return ret
 	}
@@ -52,7 +55,7 @@ func (o *TeamEnvVarJsonhalTeamGet) GetLinks() AbstractEnvironmentJsonhalLinks {
 // GetLinksOk returns a tuple with the Links field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TeamEnvVarJsonhalTeamGet) GetLinksOk() (*AbstractEnvironmentJsonhalLinks, bool) {
-	if o == nil || isNil(o.Links) {
+	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
 	return o.Links, true
@@ -60,7 +63,7 @@ func (o *TeamEnvVarJsonhalTeamGet) GetLinksOk() (*AbstractEnvironmentJsonhalLink
 
 // HasLinks returns a boolean if a field has been set.
 func (o *TeamEnvVarJsonhalTeamGet) HasLinks() bool {
-	if o != nil && !isNil(o.Links) {
+	if o != nil && !IsNil(o.Links) {
 		return true
 	}
 
@@ -74,7 +77,7 @@ func (o *TeamEnvVarJsonhalTeamGet) SetLinks(v AbstractEnvironmentJsonhalLinks) {
 
 // GetKey returns the Key field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *TeamEnvVarJsonhalTeamGet) GetKey() string {
-	if o == nil || isNil(o.Key.Get()) {
+	if o == nil || IsNil(o.Key.Get()) {
 		var ret string
 		return ret
 	}
@@ -117,7 +120,7 @@ func (o *TeamEnvVarJsonhalTeamGet) UnsetKey() {
 
 // GetValue returns the Value field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *TeamEnvVarJsonhalTeamGet) GetValue() string {
-	if o == nil || isNil(o.Value.Get()) {
+	if o == nil || IsNil(o.Value.Get()) {
 		var ret string
 		return ret
 	}
@@ -160,7 +163,7 @@ func (o *TeamEnvVarJsonhalTeamGet) UnsetValue() {
 
 // GetIsEncrypted returns the IsEncrypted field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *TeamEnvVarJsonhalTeamGet) GetIsEncrypted() bool {
-	if o == nil || isNil(o.IsEncrypted.Get()) {
+	if o == nil || IsNil(o.IsEncrypted.Get()) {
 		var ret bool
 		return ret
 	}
@@ -203,7 +206,7 @@ func (o *TeamEnvVarJsonhalTeamGet) UnsetIsEncrypted() {
 
 // GetEnvVarType returns the EnvVarType field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *TeamEnvVarJsonhalTeamGet) GetEnvVarType() string {
-	if o == nil || isNil(o.EnvVarType.Get()) {
+	if o == nil || IsNil(o.EnvVarType.Get()) {
 		var ret string
 		return ret
 	}
@@ -245,8 +248,16 @@ func (o *TeamEnvVarJsonhalTeamGet) UnsetEnvVarType() {
 }
 
 func (o TeamEnvVarJsonhalTeamGet) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o TeamEnvVarJsonhalTeamGet) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Links) {
+	if !IsNil(o.Links) {
 		toSerialize["_links"] = o.Links
 	}
 	if o.Key.IsSet() {
@@ -261,7 +272,7 @@ func (o TeamEnvVarJsonhalTeamGet) MarshalJSON() ([]byte, error) {
 	if o.EnvVarType.IsSet() {
 		toSerialize["envVarType"] = o.EnvVarType.Get()
 	}
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 type NullableTeamEnvVarJsonhalTeamGet struct {

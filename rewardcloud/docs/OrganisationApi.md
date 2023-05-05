@@ -15,7 +15,7 @@ Method | HTTP request | Description
 
 ## ApiOrganisationsGetCollection
 
-> ApiOrganisationsGetCollection200Response ApiOrganisationsGetCollection(ctx).Page(page).ItemsPerPage(itemsPerPage).Execute()
+> []OrganisationOrganisationGet ApiOrganisationsGetCollection(ctx).Page(page).ItemsPerPage(itemsPerPage).Execute()
 
 Retrieves the collection of Organisation resources.
 
@@ -30,7 +30,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
@@ -44,7 +44,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `OrganisationApi.ApiOrganisationsGetCollection``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiOrganisationsGetCollection`: ApiOrganisationsGetCollection200Response
+    // response from `ApiOrganisationsGetCollection`: []OrganisationOrganisationGet
     fmt.Fprintf(os.Stdout, "Response from `OrganisationApi.ApiOrganisationsGetCollection`: %v\n", resp)
 }
 ```
@@ -65,7 +65,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ApiOrganisationsGetCollection200Response**](ApiOrganisationsGetCollection200Response.md)
+[**[]OrganisationOrganisationGet**](OrganisationOrganisationGet.md)
 
 ### Authorization
 
@@ -74,7 +74,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
+- **Accept**: application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -98,7 +98,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
@@ -106,7 +106,7 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.OrganisationApi.ApiOrganisationsIdDelete(context.Background(), id).Execute()
+    r, err := apiClient.OrganisationApi.ApiOrganisationsIdDelete(context.Background(), id).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `OrganisationApi.ApiOrganisationsIdDelete``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -151,7 +151,7 @@ Name | Type | Description  | Notes
 
 ## ApiOrganisationsIdGet
 
-> OrganisationJsonhalOrganisationGet ApiOrganisationsIdGet(ctx, id).Execute()
+> OrganisationOrganisationGet ApiOrganisationsIdGet(ctx, id).Execute()
 
 Retrieves a Organisation resource.
 
@@ -166,7 +166,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
@@ -179,7 +179,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `OrganisationApi.ApiOrganisationsIdGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiOrganisationsIdGet`: OrganisationJsonhalOrganisationGet
+    // response from `ApiOrganisationsIdGet`: OrganisationOrganisationGet
     fmt.Fprintf(os.Stdout, "Response from `OrganisationApi.ApiOrganisationsIdGet`: %v\n", resp)
 }
 ```
@@ -203,7 +203,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**OrganisationJsonhalOrganisationGet**](OrganisationJsonhalOrganisationGet.md)
+[**OrganisationOrganisationGet**](OrganisationOrganisationGet.md)
 
 ### Authorization
 
@@ -212,7 +212,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
+- **Accept**: application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -221,7 +221,7 @@ Name | Type | Description  | Notes
 
 ## ApiOrganisationsIdPatch
 
-> OrganisationJsonhalOrganisationGet ApiOrganisationsIdPatch(ctx, id).OrganisationOrganisationPost(organisationOrganisationPost).Execute()
+> OrganisationOrganisationGet ApiOrganisationsIdPatch(ctx, id).OrganisationOrganisationPost(organisationOrganisationPost).Execute()
 
 Updates the Organisation resource.
 
@@ -236,12 +236,12 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    id := "id_example" // string | Organisation identifier
     organisationOrganisationPost := *openapiclient.NewOrganisationOrganisationPost() // OrganisationOrganisationPost | The updated Organisation resource
+    id := "id_example" // string | Organisation identifier
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -250,7 +250,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `OrganisationApi.ApiOrganisationsIdPatch``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiOrganisationsIdPatch`: OrganisationJsonhalOrganisationGet
+    // response from `ApiOrganisationsIdPatch`: OrganisationOrganisationGet
     fmt.Fprintf(os.Stdout, "Response from `OrganisationApi.ApiOrganisationsIdPatch`: %v\n", resp)
 }
 ```
@@ -270,12 +270,12 @@ Other parameters are passed through a pointer to a apiApiOrganisationsIdPatchReq
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-
  **organisationOrganisationPost** | [**OrganisationOrganisationPost**](OrganisationOrganisationPost.md) | The updated Organisation resource | 
+
 
 ### Return type
 
-[**OrganisationJsonhalOrganisationGet**](OrganisationJsonhalOrganisationGet.md)
+[**OrganisationOrganisationGet**](OrganisationOrganisationGet.md)
 
 ### Authorization
 
@@ -283,8 +283,8 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: application/vnd.api+json
-- **Accept**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
+- **Content-Type**: application/merge-patch+json, application/vnd.api+json
+- **Accept**: application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -293,7 +293,7 @@ Name | Type | Description  | Notes
 
 ## ApiOrganisationsIdPut
 
-> OrganisationJsonhalOrganisationGet ApiOrganisationsIdPut(ctx, id).OrganisationJsonhalOrganisationPost(organisationJsonhalOrganisationPost).Execute()
+> OrganisationOrganisationGet ApiOrganisationsIdPut(ctx, id).OrganisationOrganisationPost(organisationOrganisationPost).Execute()
 
 Replaces the Organisation resource.
 
@@ -308,21 +308,21 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
+    organisationOrganisationPost := *openapiclient.NewOrganisationOrganisationPost() // OrganisationOrganisationPost | The updated Organisation resource
     id := "id_example" // string | Organisation identifier
-    organisationJsonhalOrganisationPost := *openapiclient.NewOrganisationJsonhalOrganisationPost() // OrganisationJsonhalOrganisationPost | The updated Organisation resource
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.OrganisationApi.ApiOrganisationsIdPut(context.Background(), id).OrganisationJsonhalOrganisationPost(organisationJsonhalOrganisationPost).Execute()
+    resp, r, err := apiClient.OrganisationApi.ApiOrganisationsIdPut(context.Background(), id).OrganisationOrganisationPost(organisationOrganisationPost).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `OrganisationApi.ApiOrganisationsIdPut``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiOrganisationsIdPut`: OrganisationJsonhalOrganisationGet
+    // response from `ApiOrganisationsIdPut`: OrganisationOrganisationGet
     fmt.Fprintf(os.Stdout, "Response from `OrganisationApi.ApiOrganisationsIdPut`: %v\n", resp)
 }
 ```
@@ -342,12 +342,12 @@ Other parameters are passed through a pointer to a apiApiOrganisationsIdPutReque
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **organisationOrganisationPost** | [**OrganisationOrganisationPost**](OrganisationOrganisationPost.md) | The updated Organisation resource | 
 
- **organisationJsonhalOrganisationPost** | [**OrganisationJsonhalOrganisationPost**](OrganisationJsonhalOrganisationPost.md) | The updated Organisation resource | 
 
 ### Return type
 
-[**OrganisationJsonhalOrganisationGet**](OrganisationJsonhalOrganisationGet.md)
+[**OrganisationOrganisationGet**](OrganisationOrganisationGet.md)
 
 ### Authorization
 
@@ -355,8 +355,8 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
-- **Accept**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
+- **Content-Type**: application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
+- **Accept**: application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -365,7 +365,7 @@ Name | Type | Description  | Notes
 
 ## ApiOrganisationsPost
 
-> OrganisationJsonhalOrganisationGet ApiOrganisationsPost(ctx).OrganisationJsonhalOrganisationPost(organisationJsonhalOrganisationPost).Execute()
+> OrganisationOrganisationGet ApiOrganisationsPost(ctx).OrganisationOrganisationPost(organisationOrganisationPost).Execute()
 
 Creates a Organisation resource.
 
@@ -380,20 +380,20 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    organisationJsonhalOrganisationPost := *openapiclient.NewOrganisationJsonhalOrganisationPost() // OrganisationJsonhalOrganisationPost | The new Organisation resource
+    organisationOrganisationPost := *openapiclient.NewOrganisationOrganisationPost() // OrganisationOrganisationPost | The new Organisation resource
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.OrganisationApi.ApiOrganisationsPost(context.Background()).OrganisationJsonhalOrganisationPost(organisationJsonhalOrganisationPost).Execute()
+    resp, r, err := apiClient.OrganisationApi.ApiOrganisationsPost(context.Background()).OrganisationOrganisationPost(organisationOrganisationPost).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `OrganisationApi.ApiOrganisationsPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiOrganisationsPost`: OrganisationJsonhalOrganisationGet
+    // response from `ApiOrganisationsPost`: OrganisationOrganisationGet
     fmt.Fprintf(os.Stdout, "Response from `OrganisationApi.ApiOrganisationsPost`: %v\n", resp)
 }
 ```
@@ -409,11 +409,11 @@ Other parameters are passed through a pointer to a apiApiOrganisationsPostReques
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **organisationJsonhalOrganisationPost** | [**OrganisationJsonhalOrganisationPost**](OrganisationJsonhalOrganisationPost.md) | The new Organisation resource | 
+ **organisationOrganisationPost** | [**OrganisationOrganisationPost**](OrganisationOrganisationPost.md) | The new Organisation resource | 
 
 ### Return type
 
-[**OrganisationJsonhalOrganisationGet**](OrganisationJsonhalOrganisationGet.md)
+[**OrganisationOrganisationGet**](OrganisationOrganisationGet.md)
 
 ### Authorization
 
@@ -421,8 +421,8 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
-- **Accept**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
+- **Content-Type**: application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
+- **Accept**: application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)

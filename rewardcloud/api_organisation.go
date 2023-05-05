@@ -13,7 +13,7 @@ package rewardcloud
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"strings"
@@ -22,7 +22,7 @@ import (
 // OrganisationApiService OrganisationApi service
 type OrganisationApiService service
 
-type ApiApiOrganisationsGetCollectionRequest struct {
+type OrganisationApiApiOrganisationsGetCollectionRequest struct {
 	ctx          context.Context
 	ApiService   *OrganisationApiService
 	page         *int32
@@ -30,18 +30,18 @@ type ApiApiOrganisationsGetCollectionRequest struct {
 }
 
 // The collection page number
-func (r ApiApiOrganisationsGetCollectionRequest) Page(page int32) ApiApiOrganisationsGetCollectionRequest {
+func (r OrganisationApiApiOrganisationsGetCollectionRequest) Page(page int32) OrganisationApiApiOrganisationsGetCollectionRequest {
 	r.page = &page
 	return r
 }
 
 // The number of items per page
-func (r ApiApiOrganisationsGetCollectionRequest) ItemsPerPage(itemsPerPage int32) ApiApiOrganisationsGetCollectionRequest {
+func (r OrganisationApiApiOrganisationsGetCollectionRequest) ItemsPerPage(itemsPerPage int32) OrganisationApiApiOrganisationsGetCollectionRequest {
 	r.itemsPerPage = &itemsPerPage
 	return r
 }
 
-func (r ApiApiOrganisationsGetCollectionRequest) Execute() (*ApiOrganisationsGetCollection200Response, *http.Response, error) {
+func (r OrganisationApiApiOrganisationsGetCollectionRequest) Execute() ([]OrganisationOrganisationGet, *http.Response, error) {
 	return r.ApiService.ApiOrganisationsGetCollectionExecute(r)
 }
 
@@ -51,10 +51,10 @@ ApiOrganisationsGetCollection Retrieves the collection of Organisation resources
 Retrieves the collection of Organisation resources.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiApiOrganisationsGetCollectionRequest
+	@return OrganisationApiApiOrganisationsGetCollectionRequest
 */
-func (a *OrganisationApiService) ApiOrganisationsGetCollection(ctx context.Context) ApiApiOrganisationsGetCollectionRequest {
-	return ApiApiOrganisationsGetCollectionRequest{
+func (a *OrganisationApiService) ApiOrganisationsGetCollection(ctx context.Context) OrganisationApiApiOrganisationsGetCollectionRequest {
+	return OrganisationApiApiOrganisationsGetCollectionRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -62,13 +62,13 @@ func (a *OrganisationApiService) ApiOrganisationsGetCollection(ctx context.Conte
 
 // Execute executes the request
 //
-//	@return ApiOrganisationsGetCollection200Response
-func (a *OrganisationApiService) ApiOrganisationsGetCollectionExecute(r ApiApiOrganisationsGetCollectionRequest) (*ApiOrganisationsGetCollection200Response, *http.Response, error) {
+//	@return []OrganisationOrganisationGet
+func (a *OrganisationApiService) ApiOrganisationsGetCollectionExecute(r OrganisationApiApiOrganisationsGetCollectionRequest) ([]OrganisationOrganisationGet, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *ApiOrganisationsGetCollection200Response
+		localVarReturnValue []OrganisationOrganisationGet
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganisationApiService.ApiOrganisationsGetCollection")
@@ -83,10 +83,10 @@ func (a *OrganisationApiService) ApiOrganisationsGetCollectionExecute(r ApiApiOr
 	localVarFormParams := url.Values{}
 
 	if r.page != nil {
-		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
 	}
 	if r.itemsPerPage != nil {
-		localVarQueryParams.Add("itemsPerPage", parameterToString(*r.itemsPerPage, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "itemsPerPage", r.itemsPerPage, "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -98,7 +98,7 @@ func (a *OrganisationApiService) ApiOrganisationsGetCollectionExecute(r ApiApiOr
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/hal+json", "application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
+	localVarHTTPHeaderAccepts := []string{"application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -129,9 +129,9 @@ func (a *OrganisationApiService) ApiOrganisationsGetCollectionExecute(r ApiApiOr
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -156,13 +156,13 @@ func (a *OrganisationApiService) ApiOrganisationsGetCollectionExecute(r ApiApiOr
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiApiOrganisationsIdDeleteRequest struct {
+type OrganisationApiApiOrganisationsIdDeleteRequest struct {
 	ctx        context.Context
 	ApiService *OrganisationApiService
 	id         string
 }
 
-func (r ApiApiOrganisationsIdDeleteRequest) Execute() (*http.Response, error) {
+func (r OrganisationApiApiOrganisationsIdDeleteRequest) Execute() (*http.Response, error) {
 	return r.ApiService.ApiOrganisationsIdDeleteExecute(r)
 }
 
@@ -173,10 +173,10 @@ Removes the Organisation resource.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id Organisation identifier
-	@return ApiApiOrganisationsIdDeleteRequest
+	@return OrganisationApiApiOrganisationsIdDeleteRequest
 */
-func (a *OrganisationApiService) ApiOrganisationsIdDelete(ctx context.Context, id string) ApiApiOrganisationsIdDeleteRequest {
-	return ApiApiOrganisationsIdDeleteRequest{
+func (a *OrganisationApiService) ApiOrganisationsIdDelete(ctx context.Context, id string) OrganisationApiApiOrganisationsIdDeleteRequest {
+	return OrganisationApiApiOrganisationsIdDeleteRequest{
 		ApiService: a,
 		ctx:        ctx,
 		id:         id,
@@ -184,7 +184,7 @@ func (a *OrganisationApiService) ApiOrganisationsIdDelete(ctx context.Context, i
 }
 
 // Execute executes the request
-func (a *OrganisationApiService) ApiOrganisationsIdDeleteExecute(r ApiApiOrganisationsIdDeleteRequest) (*http.Response, error) {
+func (a *OrganisationApiService) ApiOrganisationsIdDeleteExecute(r OrganisationApiApiOrganisationsIdDeleteRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
 		localVarPostBody   interface{}
@@ -197,7 +197,7 @@ func (a *OrganisationApiService) ApiOrganisationsIdDeleteExecute(r ApiApiOrganis
 	}
 
 	localVarPath := localBasePath + "/api/organisations/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -244,9 +244,9 @@ func (a *OrganisationApiService) ApiOrganisationsIdDeleteExecute(r ApiApiOrganis
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -262,13 +262,13 @@ func (a *OrganisationApiService) ApiOrganisationsIdDeleteExecute(r ApiApiOrganis
 	return localVarHTTPResponse, nil
 }
 
-type ApiApiOrganisationsIdGetRequest struct {
+type OrganisationApiApiOrganisationsIdGetRequest struct {
 	ctx        context.Context
 	ApiService *OrganisationApiService
 	id         string
 }
 
-func (r ApiApiOrganisationsIdGetRequest) Execute() (*OrganisationJsonhalOrganisationGet, *http.Response, error) {
+func (r OrganisationApiApiOrganisationsIdGetRequest) Execute() (*OrganisationOrganisationGet, *http.Response, error) {
 	return r.ApiService.ApiOrganisationsIdGetExecute(r)
 }
 
@@ -279,10 +279,10 @@ Retrieves a Organisation resource.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id Organisation identifier
-	@return ApiApiOrganisationsIdGetRequest
+	@return OrganisationApiApiOrganisationsIdGetRequest
 */
-func (a *OrganisationApiService) ApiOrganisationsIdGet(ctx context.Context, id string) ApiApiOrganisationsIdGetRequest {
-	return ApiApiOrganisationsIdGetRequest{
+func (a *OrganisationApiService) ApiOrganisationsIdGet(ctx context.Context, id string) OrganisationApiApiOrganisationsIdGetRequest {
+	return OrganisationApiApiOrganisationsIdGetRequest{
 		ApiService: a,
 		ctx:        ctx,
 		id:         id,
@@ -291,13 +291,13 @@ func (a *OrganisationApiService) ApiOrganisationsIdGet(ctx context.Context, id s
 
 // Execute executes the request
 //
-//	@return OrganisationJsonhalOrganisationGet
-func (a *OrganisationApiService) ApiOrganisationsIdGetExecute(r ApiApiOrganisationsIdGetRequest) (*OrganisationJsonhalOrganisationGet, *http.Response, error) {
+//	@return OrganisationOrganisationGet
+func (a *OrganisationApiService) ApiOrganisationsIdGetExecute(r OrganisationApiApiOrganisationsIdGetRequest) (*OrganisationOrganisationGet, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *OrganisationJsonhalOrganisationGet
+		localVarReturnValue *OrganisationOrganisationGet
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganisationApiService.ApiOrganisationsIdGet")
@@ -306,7 +306,7 @@ func (a *OrganisationApiService) ApiOrganisationsIdGetExecute(r ApiApiOrganisati
 	}
 
 	localVarPath := localBasePath + "/api/organisations/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -322,7 +322,7 @@ func (a *OrganisationApiService) ApiOrganisationsIdGetExecute(r ApiApiOrganisati
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/hal+json", "application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
+	localVarHTTPHeaderAccepts := []string{"application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -353,9 +353,9 @@ func (a *OrganisationApiService) ApiOrganisationsIdGetExecute(r ApiApiOrganisati
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -380,20 +380,20 @@ func (a *OrganisationApiService) ApiOrganisationsIdGetExecute(r ApiApiOrganisati
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiApiOrganisationsIdPatchRequest struct {
+type OrganisationApiApiOrganisationsIdPatchRequest struct {
 	ctx                          context.Context
 	ApiService                   *OrganisationApiService
-	id                           string
 	organisationOrganisationPost *OrganisationOrganisationPost
+	id                           string
 }
 
 // The updated Organisation resource
-func (r ApiApiOrganisationsIdPatchRequest) OrganisationOrganisationPost(organisationOrganisationPost OrganisationOrganisationPost) ApiApiOrganisationsIdPatchRequest {
+func (r OrganisationApiApiOrganisationsIdPatchRequest) OrganisationOrganisationPost(organisationOrganisationPost OrganisationOrganisationPost) OrganisationApiApiOrganisationsIdPatchRequest {
 	r.organisationOrganisationPost = &organisationOrganisationPost
 	return r
 }
 
-func (r ApiApiOrganisationsIdPatchRequest) Execute() (*OrganisationJsonhalOrganisationGet, *http.Response, error) {
+func (r OrganisationApiApiOrganisationsIdPatchRequest) Execute() (*OrganisationOrganisationGet, *http.Response, error) {
 	return r.ApiService.ApiOrganisationsIdPatchExecute(r)
 }
 
@@ -404,10 +404,10 @@ Updates the Organisation resource.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id Organisation identifier
-	@return ApiApiOrganisationsIdPatchRequest
+	@return OrganisationApiApiOrganisationsIdPatchRequest
 */
-func (a *OrganisationApiService) ApiOrganisationsIdPatch(ctx context.Context, id string) ApiApiOrganisationsIdPatchRequest {
-	return ApiApiOrganisationsIdPatchRequest{
+func (a *OrganisationApiService) ApiOrganisationsIdPatch(ctx context.Context, id string) OrganisationApiApiOrganisationsIdPatchRequest {
+	return OrganisationApiApiOrganisationsIdPatchRequest{
 		ApiService: a,
 		ctx:        ctx,
 		id:         id,
@@ -416,13 +416,13 @@ func (a *OrganisationApiService) ApiOrganisationsIdPatch(ctx context.Context, id
 
 // Execute executes the request
 //
-//	@return OrganisationJsonhalOrganisationGet
-func (a *OrganisationApiService) ApiOrganisationsIdPatchExecute(r ApiApiOrganisationsIdPatchRequest) (*OrganisationJsonhalOrganisationGet, *http.Response, error) {
+//	@return OrganisationOrganisationGet
+func (a *OrganisationApiService) ApiOrganisationsIdPatchExecute(r OrganisationApiApiOrganisationsIdPatchRequest) (*OrganisationOrganisationGet, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *OrganisationJsonhalOrganisationGet
+		localVarReturnValue *OrganisationOrganisationGet
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganisationApiService.ApiOrganisationsIdPatch")
@@ -431,7 +431,7 @@ func (a *OrganisationApiService) ApiOrganisationsIdPatchExecute(r ApiApiOrganisa
 	}
 
 	localVarPath := localBasePath + "/api/organisations/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -441,7 +441,7 @@ func (a *OrganisationApiService) ApiOrganisationsIdPatchExecute(r ApiApiOrganisa
 	}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/vnd.api+json"}
+	localVarHTTPContentTypes := []string{"application/merge-patch+json", "application/vnd.api+json"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -450,7 +450,7 @@ func (a *OrganisationApiService) ApiOrganisationsIdPatchExecute(r ApiApiOrganisa
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/hal+json", "application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
+	localVarHTTPHeaderAccepts := []string{"application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -483,9 +483,9 @@ func (a *OrganisationApiService) ApiOrganisationsIdPatchExecute(r ApiApiOrganisa
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -510,20 +510,20 @@ func (a *OrganisationApiService) ApiOrganisationsIdPatchExecute(r ApiApiOrganisa
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiApiOrganisationsIdPutRequest struct {
-	ctx                                 context.Context
-	ApiService                          *OrganisationApiService
-	id                                  string
-	organisationJsonhalOrganisationPost *OrganisationJsonhalOrganisationPost
+type OrganisationApiApiOrganisationsIdPutRequest struct {
+	ctx                          context.Context
+	ApiService                   *OrganisationApiService
+	organisationOrganisationPost *OrganisationOrganisationPost
+	id                           string
 }
 
 // The updated Organisation resource
-func (r ApiApiOrganisationsIdPutRequest) OrganisationJsonhalOrganisationPost(organisationJsonhalOrganisationPost OrganisationJsonhalOrganisationPost) ApiApiOrganisationsIdPutRequest {
-	r.organisationJsonhalOrganisationPost = &organisationJsonhalOrganisationPost
+func (r OrganisationApiApiOrganisationsIdPutRequest) OrganisationOrganisationPost(organisationOrganisationPost OrganisationOrganisationPost) OrganisationApiApiOrganisationsIdPutRequest {
+	r.organisationOrganisationPost = &organisationOrganisationPost
 	return r
 }
 
-func (r ApiApiOrganisationsIdPutRequest) Execute() (*OrganisationJsonhalOrganisationGet, *http.Response, error) {
+func (r OrganisationApiApiOrganisationsIdPutRequest) Execute() (*OrganisationOrganisationGet, *http.Response, error) {
 	return r.ApiService.ApiOrganisationsIdPutExecute(r)
 }
 
@@ -534,10 +534,10 @@ Replaces the Organisation resource.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id Organisation identifier
-	@return ApiApiOrganisationsIdPutRequest
+	@return OrganisationApiApiOrganisationsIdPutRequest
 */
-func (a *OrganisationApiService) ApiOrganisationsIdPut(ctx context.Context, id string) ApiApiOrganisationsIdPutRequest {
-	return ApiApiOrganisationsIdPutRequest{
+func (a *OrganisationApiService) ApiOrganisationsIdPut(ctx context.Context, id string) OrganisationApiApiOrganisationsIdPutRequest {
+	return OrganisationApiApiOrganisationsIdPutRequest{
 		ApiService: a,
 		ctx:        ctx,
 		id:         id,
@@ -546,13 +546,13 @@ func (a *OrganisationApiService) ApiOrganisationsIdPut(ctx context.Context, id s
 
 // Execute executes the request
 //
-//	@return OrganisationJsonhalOrganisationGet
-func (a *OrganisationApiService) ApiOrganisationsIdPutExecute(r ApiApiOrganisationsIdPutRequest) (*OrganisationJsonhalOrganisationGet, *http.Response, error) {
+//	@return OrganisationOrganisationGet
+func (a *OrganisationApiService) ApiOrganisationsIdPutExecute(r OrganisationApiApiOrganisationsIdPutRequest) (*OrganisationOrganisationGet, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *OrganisationJsonhalOrganisationGet
+		localVarReturnValue *OrganisationOrganisationGet
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganisationApiService.ApiOrganisationsIdPut")
@@ -561,17 +561,17 @@ func (a *OrganisationApiService) ApiOrganisationsIdPutExecute(r ApiApiOrganisati
 	}
 
 	localVarPath := localBasePath + "/api/organisations/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.organisationJsonhalOrganisationPost == nil {
-		return localVarReturnValue, nil, reportError("organisationJsonhalOrganisationPost is required and must be specified")
+	if r.organisationOrganisationPost == nil {
+		return localVarReturnValue, nil, reportError("organisationOrganisationPost is required and must be specified")
 	}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/hal+json", "application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
+	localVarHTTPContentTypes := []string{"application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -580,7 +580,7 @@ func (a *OrganisationApiService) ApiOrganisationsIdPutExecute(r ApiApiOrganisati
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/hal+json", "application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
+	localVarHTTPHeaderAccepts := []string{"application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -588,7 +588,7 @@ func (a *OrganisationApiService) ApiOrganisationsIdPutExecute(r ApiApiOrganisati
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.organisationJsonhalOrganisationPost
+	localVarPostBody = r.organisationOrganisationPost
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
@@ -613,9 +613,9 @@ func (a *OrganisationApiService) ApiOrganisationsIdPutExecute(r ApiApiOrganisati
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -640,19 +640,19 @@ func (a *OrganisationApiService) ApiOrganisationsIdPutExecute(r ApiApiOrganisati
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiApiOrganisationsPostRequest struct {
-	ctx                                 context.Context
-	ApiService                          *OrganisationApiService
-	organisationJsonhalOrganisationPost *OrganisationJsonhalOrganisationPost
+type OrganisationApiApiOrganisationsPostRequest struct {
+	ctx                          context.Context
+	ApiService                   *OrganisationApiService
+	organisationOrganisationPost *OrganisationOrganisationPost
 }
 
 // The new Organisation resource
-func (r ApiApiOrganisationsPostRequest) OrganisationJsonhalOrganisationPost(organisationJsonhalOrganisationPost OrganisationJsonhalOrganisationPost) ApiApiOrganisationsPostRequest {
-	r.organisationJsonhalOrganisationPost = &organisationJsonhalOrganisationPost
+func (r OrganisationApiApiOrganisationsPostRequest) OrganisationOrganisationPost(organisationOrganisationPost OrganisationOrganisationPost) OrganisationApiApiOrganisationsPostRequest {
+	r.organisationOrganisationPost = &organisationOrganisationPost
 	return r
 }
 
-func (r ApiApiOrganisationsPostRequest) Execute() (*OrganisationJsonhalOrganisationGet, *http.Response, error) {
+func (r OrganisationApiApiOrganisationsPostRequest) Execute() (*OrganisationOrganisationGet, *http.Response, error) {
 	return r.ApiService.ApiOrganisationsPostExecute(r)
 }
 
@@ -662,10 +662,10 @@ ApiOrganisationsPost Creates a Organisation resource.
 Creates a Organisation resource.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiApiOrganisationsPostRequest
+	@return OrganisationApiApiOrganisationsPostRequest
 */
-func (a *OrganisationApiService) ApiOrganisationsPost(ctx context.Context) ApiApiOrganisationsPostRequest {
-	return ApiApiOrganisationsPostRequest{
+func (a *OrganisationApiService) ApiOrganisationsPost(ctx context.Context) OrganisationApiApiOrganisationsPostRequest {
+	return OrganisationApiApiOrganisationsPostRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -673,13 +673,13 @@ func (a *OrganisationApiService) ApiOrganisationsPost(ctx context.Context) ApiAp
 
 // Execute executes the request
 //
-//	@return OrganisationJsonhalOrganisationGet
-func (a *OrganisationApiService) ApiOrganisationsPostExecute(r ApiApiOrganisationsPostRequest) (*OrganisationJsonhalOrganisationGet, *http.Response, error) {
+//	@return OrganisationOrganisationGet
+func (a *OrganisationApiService) ApiOrganisationsPostExecute(r OrganisationApiApiOrganisationsPostRequest) (*OrganisationOrganisationGet, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *OrganisationJsonhalOrganisationGet
+		localVarReturnValue *OrganisationOrganisationGet
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganisationApiService.ApiOrganisationsPost")
@@ -692,12 +692,12 @@ func (a *OrganisationApiService) ApiOrganisationsPostExecute(r ApiApiOrganisatio
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.organisationJsonhalOrganisationPost == nil {
-		return localVarReturnValue, nil, reportError("organisationJsonhalOrganisationPost is required and must be specified")
+	if r.organisationOrganisationPost == nil {
+		return localVarReturnValue, nil, reportError("organisationOrganisationPost is required and must be specified")
 	}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/hal+json", "application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
+	localVarHTTPContentTypes := []string{"application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -706,7 +706,7 @@ func (a *OrganisationApiService) ApiOrganisationsPostExecute(r ApiApiOrganisatio
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/hal+json", "application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
+	localVarHTTPHeaderAccepts := []string{"application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -714,7 +714,7 @@ func (a *OrganisationApiService) ApiOrganisationsPostExecute(r ApiApiOrganisatio
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.organisationJsonhalOrganisationPost
+	localVarPostBody = r.organisationOrganisationPost
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
@@ -739,9 +739,9 @@ func (a *OrganisationApiService) ApiOrganisationsPostExecute(r ApiApiOrganisatio
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}

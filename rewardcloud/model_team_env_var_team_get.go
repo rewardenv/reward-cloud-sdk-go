@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the TeamEnvVarTeamGet type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &TeamEnvVarTeamGet{}
+
 // TeamEnvVarTeamGet
 type TeamEnvVarTeamGet struct {
 	Key         NullableString `json:"key,omitempty"`
@@ -41,7 +44,7 @@ func NewTeamEnvVarTeamGetWithDefaults() *TeamEnvVarTeamGet {
 
 // GetKey returns the Key field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *TeamEnvVarTeamGet) GetKey() string {
-	if o == nil || isNil(o.Key.Get()) {
+	if o == nil || IsNil(o.Key.Get()) {
 		var ret string
 		return ret
 	}
@@ -84,7 +87,7 @@ func (o *TeamEnvVarTeamGet) UnsetKey() {
 
 // GetValue returns the Value field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *TeamEnvVarTeamGet) GetValue() string {
-	if o == nil || isNil(o.Value.Get()) {
+	if o == nil || IsNil(o.Value.Get()) {
 		var ret string
 		return ret
 	}
@@ -127,7 +130,7 @@ func (o *TeamEnvVarTeamGet) UnsetValue() {
 
 // GetIsEncrypted returns the IsEncrypted field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *TeamEnvVarTeamGet) GetIsEncrypted() bool {
-	if o == nil || isNil(o.IsEncrypted.Get()) {
+	if o == nil || IsNil(o.IsEncrypted.Get()) {
 		var ret bool
 		return ret
 	}
@@ -170,7 +173,7 @@ func (o *TeamEnvVarTeamGet) UnsetIsEncrypted() {
 
 // GetEnvVarType returns the EnvVarType field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *TeamEnvVarTeamGet) GetEnvVarType() string {
-	if o == nil || isNil(o.EnvVarType.Get()) {
+	if o == nil || IsNil(o.EnvVarType.Get()) {
 		var ret string
 		return ret
 	}
@@ -212,6 +215,14 @@ func (o *TeamEnvVarTeamGet) UnsetEnvVarType() {
 }
 
 func (o TeamEnvVarTeamGet) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o TeamEnvVarTeamGet) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Key.IsSet() {
 		toSerialize["key"] = o.Key.Get()
@@ -225,7 +236,7 @@ func (o TeamEnvVarTeamGet) MarshalJSON() ([]byte, error) {
 	if o.EnvVarType.IsSet() {
 		toSerialize["envVarType"] = o.EnvVarType.Get()
 	}
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 type NullableTeamEnvVarTeamGet struct {

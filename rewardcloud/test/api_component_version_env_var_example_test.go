@@ -10,8 +10,8 @@ Testing ComponentVersionEnvVarExampleApiService
 package rewardcloud
 
 import (
-	openapiclient "./openapi"
 	"context"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"testing"
@@ -40,10 +40,9 @@ func Test_rewardcloud_ComponentVersionEnvVarExampleApiService(t *testing.T) {
 
 		var id string
 
-		resp, httpRes, err := apiClient.ComponentVersionEnvVarExampleApi.ApiComponentVersionEnvVarExamplesIdDelete(context.Background(), id).Execute()
+		httpRes, err := apiClient.ComponentVersionEnvVarExampleApi.ApiComponentVersionEnvVarExamplesIdDelete(context.Background(), id).Execute()
 
 		require.Nil(t, err)
-		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})

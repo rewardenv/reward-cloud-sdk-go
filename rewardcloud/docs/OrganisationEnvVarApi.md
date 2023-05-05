@@ -15,7 +15,7 @@ Method | HTTP request | Description
 
 ## ApiOrganisationEnvVarsGetCollection
 
-> ApiOrganisationEnvVarsGetCollection200Response ApiOrganisationEnvVarsGetCollection(ctx).Page(page).ItemsPerPage(itemsPerPage).Organisation(organisation).Organisation2(organisation2).EnvVarType(envVarType).EnvVarType2(envVarType2).Execute()
+> []OrganisationEnvVar ApiOrganisationEnvVarsGetCollection(ctx).Page(page).ItemsPerPage(itemsPerPage).Organisation(organisation).Organisation2(organisation2).EnvVarType(envVarType).EnvVarType2(envVarType2).Execute()
 
 Retrieves the collection of OrganisationEnvVar resources.
 
@@ -30,7 +30,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
@@ -48,7 +48,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `OrganisationEnvVarApi.ApiOrganisationEnvVarsGetCollection``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiOrganisationEnvVarsGetCollection`: ApiOrganisationEnvVarsGetCollection200Response
+    // response from `ApiOrganisationEnvVarsGetCollection`: []OrganisationEnvVar
     fmt.Fprintf(os.Stdout, "Response from `OrganisationEnvVarApi.ApiOrganisationEnvVarsGetCollection`: %v\n", resp)
 }
 ```
@@ -73,7 +73,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ApiOrganisationEnvVarsGetCollection200Response**](ApiOrganisationEnvVarsGetCollection200Response.md)
+[**[]OrganisationEnvVar**](OrganisationEnvVar.md)
 
 ### Authorization
 
@@ -82,7 +82,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
+- **Accept**: application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -106,7 +106,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
@@ -114,7 +114,7 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.OrganisationEnvVarApi.ApiOrganisationEnvVarsIdDelete(context.Background(), id).Execute()
+    r, err := apiClient.OrganisationEnvVarApi.ApiOrganisationEnvVarsIdDelete(context.Background(), id).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `OrganisationEnvVarApi.ApiOrganisationEnvVarsIdDelete``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -159,7 +159,7 @@ Name | Type | Description  | Notes
 
 ## ApiOrganisationEnvVarsIdGet
 
-> OrganisationEnvVarJsonhal ApiOrganisationEnvVarsIdGet(ctx, id).Execute()
+> OrganisationEnvVar ApiOrganisationEnvVarsIdGet(ctx, id).Execute()
 
 Retrieves a OrganisationEnvVar resource.
 
@@ -174,7 +174,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
@@ -187,7 +187,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `OrganisationEnvVarApi.ApiOrganisationEnvVarsIdGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiOrganisationEnvVarsIdGet`: OrganisationEnvVarJsonhal
+    // response from `ApiOrganisationEnvVarsIdGet`: OrganisationEnvVar
     fmt.Fprintf(os.Stdout, "Response from `OrganisationEnvVarApi.ApiOrganisationEnvVarsIdGet`: %v\n", resp)
 }
 ```
@@ -211,7 +211,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**OrganisationEnvVarJsonhal**](OrganisationEnvVarJsonhal.md)
+[**OrganisationEnvVar**](OrganisationEnvVar.md)
 
 ### Authorization
 
@@ -220,7 +220,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
+- **Accept**: application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -229,7 +229,7 @@ Name | Type | Description  | Notes
 
 ## ApiOrganisationEnvVarsIdPatch
 
-> OrganisationEnvVarJsonhal ApiOrganisationEnvVarsIdPatch(ctx, id).OrganisationEnvVar(organisationEnvVar).Execute()
+> OrganisationEnvVar ApiOrganisationEnvVarsIdPatch(ctx, id).OrganisationEnvVar(organisationEnvVar).Execute()
 
 Updates the OrganisationEnvVar resource.
 
@@ -244,12 +244,12 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    id := "id_example" // string | OrganisationEnvVar identifier
     organisationEnvVar := *openapiclient.NewOrganisationEnvVar() // OrganisationEnvVar | The updated OrganisationEnvVar resource
+    id := "id_example" // string | OrganisationEnvVar identifier
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -258,7 +258,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `OrganisationEnvVarApi.ApiOrganisationEnvVarsIdPatch``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiOrganisationEnvVarsIdPatch`: OrganisationEnvVarJsonhal
+    // response from `ApiOrganisationEnvVarsIdPatch`: OrganisationEnvVar
     fmt.Fprintf(os.Stdout, "Response from `OrganisationEnvVarApi.ApiOrganisationEnvVarsIdPatch`: %v\n", resp)
 }
 ```
@@ -278,12 +278,12 @@ Other parameters are passed through a pointer to a apiApiOrganisationEnvVarsIdPa
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-
  **organisationEnvVar** | [**OrganisationEnvVar**](OrganisationEnvVar.md) | The updated OrganisationEnvVar resource | 
+
 
 ### Return type
 
-[**OrganisationEnvVarJsonhal**](OrganisationEnvVarJsonhal.md)
+[**OrganisationEnvVar**](OrganisationEnvVar.md)
 
 ### Authorization
 
@@ -291,8 +291,8 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: application/vnd.api+json
-- **Accept**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
+- **Content-Type**: application/merge-patch+json, application/vnd.api+json
+- **Accept**: application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -301,7 +301,7 @@ Name | Type | Description  | Notes
 
 ## ApiOrganisationEnvVarsIdPut
 
-> OrganisationEnvVarJsonhal ApiOrganisationEnvVarsIdPut(ctx, id).OrganisationEnvVarJsonhal(organisationEnvVarJsonhal).Execute()
+> OrganisationEnvVar ApiOrganisationEnvVarsIdPut(ctx, id).OrganisationEnvVar(organisationEnvVar).Execute()
 
 Replaces the OrganisationEnvVar resource.
 
@@ -316,21 +316,21 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
+    organisationEnvVar := *openapiclient.NewOrganisationEnvVar() // OrganisationEnvVar | The updated OrganisationEnvVar resource
     id := "id_example" // string | OrganisationEnvVar identifier
-    organisationEnvVarJsonhal := *openapiclient.NewOrganisationEnvVarJsonhal() // OrganisationEnvVarJsonhal | The updated OrganisationEnvVar resource
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.OrganisationEnvVarApi.ApiOrganisationEnvVarsIdPut(context.Background(), id).OrganisationEnvVarJsonhal(organisationEnvVarJsonhal).Execute()
+    resp, r, err := apiClient.OrganisationEnvVarApi.ApiOrganisationEnvVarsIdPut(context.Background(), id).OrganisationEnvVar(organisationEnvVar).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `OrganisationEnvVarApi.ApiOrganisationEnvVarsIdPut``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiOrganisationEnvVarsIdPut`: OrganisationEnvVarJsonhal
+    // response from `ApiOrganisationEnvVarsIdPut`: OrganisationEnvVar
     fmt.Fprintf(os.Stdout, "Response from `OrganisationEnvVarApi.ApiOrganisationEnvVarsIdPut`: %v\n", resp)
 }
 ```
@@ -350,12 +350,12 @@ Other parameters are passed through a pointer to a apiApiOrganisationEnvVarsIdPu
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **organisationEnvVar** | [**OrganisationEnvVar**](OrganisationEnvVar.md) | The updated OrganisationEnvVar resource | 
 
- **organisationEnvVarJsonhal** | [**OrganisationEnvVarJsonhal**](OrganisationEnvVarJsonhal.md) | The updated OrganisationEnvVar resource | 
 
 ### Return type
 
-[**OrganisationEnvVarJsonhal**](OrganisationEnvVarJsonhal.md)
+[**OrganisationEnvVar**](OrganisationEnvVar.md)
 
 ### Authorization
 
@@ -363,8 +363,8 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
-- **Accept**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
+- **Content-Type**: application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
+- **Accept**: application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -373,7 +373,7 @@ Name | Type | Description  | Notes
 
 ## ApiOrganisationEnvVarsPost
 
-> OrganisationEnvVarJsonhal ApiOrganisationEnvVarsPost(ctx).OrganisationEnvVarJsonhal(organisationEnvVarJsonhal).Execute()
+> OrganisationEnvVar ApiOrganisationEnvVarsPost(ctx).OrganisationEnvVar(organisationEnvVar).Execute()
 
 Creates a OrganisationEnvVar resource.
 
@@ -388,20 +388,20 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    organisationEnvVarJsonhal := *openapiclient.NewOrganisationEnvVarJsonhal() // OrganisationEnvVarJsonhal | The new OrganisationEnvVar resource
+    organisationEnvVar := *openapiclient.NewOrganisationEnvVar() // OrganisationEnvVar | The new OrganisationEnvVar resource
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.OrganisationEnvVarApi.ApiOrganisationEnvVarsPost(context.Background()).OrganisationEnvVarJsonhal(organisationEnvVarJsonhal).Execute()
+    resp, r, err := apiClient.OrganisationEnvVarApi.ApiOrganisationEnvVarsPost(context.Background()).OrganisationEnvVar(organisationEnvVar).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `OrganisationEnvVarApi.ApiOrganisationEnvVarsPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiOrganisationEnvVarsPost`: OrganisationEnvVarJsonhal
+    // response from `ApiOrganisationEnvVarsPost`: OrganisationEnvVar
     fmt.Fprintf(os.Stdout, "Response from `OrganisationEnvVarApi.ApiOrganisationEnvVarsPost`: %v\n", resp)
 }
 ```
@@ -417,11 +417,11 @@ Other parameters are passed through a pointer to a apiApiOrganisationEnvVarsPost
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **organisationEnvVarJsonhal** | [**OrganisationEnvVarJsonhal**](OrganisationEnvVarJsonhal.md) | The new OrganisationEnvVar resource | 
+ **organisationEnvVar** | [**OrganisationEnvVar**](OrganisationEnvVar.md) | The new OrganisationEnvVar resource | 
 
 ### Return type
 
-[**OrganisationEnvVarJsonhal**](OrganisationEnvVarJsonhal.md)
+[**OrganisationEnvVar**](OrganisationEnvVar.md)
 
 ### Authorization
 
@@ -429,8 +429,8 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
-- **Accept**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
+- **Content-Type**: application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
+- **Accept**: application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)

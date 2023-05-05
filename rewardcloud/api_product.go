@@ -13,7 +13,7 @@ package rewardcloud
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"reflect"
@@ -23,7 +23,7 @@ import (
 // ProductApiService ProductApi service
 type ProductApiService service
 
-type ApiApiProductsGetCollectionRequest struct {
+type ProductApiApiProductsGetCollectionRequest struct {
 	ctx           context.Context
 	ApiService    *ProductApiService
 	page          *int32
@@ -35,38 +35,38 @@ type ApiApiProductsGetCollectionRequest struct {
 }
 
 // The collection page number
-func (r ApiApiProductsGetCollectionRequest) Page(page int32) ApiApiProductsGetCollectionRequest {
+func (r ProductApiApiProductsGetCollectionRequest) Page(page int32) ProductApiApiProductsGetCollectionRequest {
 	r.page = &page
 	return r
 }
 
 // The number of items per page
-func (r ApiApiProductsGetCollectionRequest) ItemsPerPage(itemsPerPage int32) ApiApiProductsGetCollectionRequest {
+func (r ProductApiApiProductsGetCollectionRequest) ItemsPerPage(itemsPerPage int32) ProductApiApiProductsGetCollectionRequest {
 	r.itemsPerPage = &itemsPerPage
 	return r
 }
 
-func (r ApiApiProductsGetCollectionRequest) DefaultPrice(defaultPrice string) ApiApiProductsGetCollectionRequest {
+func (r ProductApiApiProductsGetCollectionRequest) DefaultPrice(defaultPrice string) ProductApiApiProductsGetCollectionRequest {
 	r.defaultPrice = &defaultPrice
 	return r
 }
 
-func (r ApiApiProductsGetCollectionRequest) DefaultPrice2(defaultPrice2 []string) ApiApiProductsGetCollectionRequest {
+func (r ProductApiApiProductsGetCollectionRequest) DefaultPrice2(defaultPrice2 []string) ProductApiApiProductsGetCollectionRequest {
 	r.defaultPrice2 = &defaultPrice2
 	return r
 }
 
-func (r ApiApiProductsGetCollectionRequest) Region(region string) ApiApiProductsGetCollectionRequest {
+func (r ProductApiApiProductsGetCollectionRequest) Region(region string) ProductApiApiProductsGetCollectionRequest {
 	r.region = &region
 	return r
 }
 
-func (r ApiApiProductsGetCollectionRequest) Region2(region2 []string) ApiApiProductsGetCollectionRequest {
+func (r ProductApiApiProductsGetCollectionRequest) Region2(region2 []string) ProductApiApiProductsGetCollectionRequest {
 	r.region2 = &region2
 	return r
 }
 
-func (r ApiApiProductsGetCollectionRequest) Execute() (*ApiProductsGetCollection200Response, *http.Response, error) {
+func (r ProductApiApiProductsGetCollectionRequest) Execute() ([]ProductProductOutput, *http.Response, error) {
 	return r.ApiService.ApiProductsGetCollectionExecute(r)
 }
 
@@ -76,10 +76,10 @@ ApiProductsGetCollection Retrieves the collection of Product resources.
 Retrieves the collection of Product resources.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiApiProductsGetCollectionRequest
+	@return ProductApiApiProductsGetCollectionRequest
 */
-func (a *ProductApiService) ApiProductsGetCollection(ctx context.Context) ApiApiProductsGetCollectionRequest {
-	return ApiApiProductsGetCollectionRequest{
+func (a *ProductApiService) ApiProductsGetCollection(ctx context.Context) ProductApiApiProductsGetCollectionRequest {
+	return ProductApiApiProductsGetCollectionRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -87,13 +87,13 @@ func (a *ProductApiService) ApiProductsGetCollection(ctx context.Context) ApiApi
 
 // Execute executes the request
 //
-//	@return ApiProductsGetCollection200Response
-func (a *ProductApiService) ApiProductsGetCollectionExecute(r ApiApiProductsGetCollectionRequest) (*ApiProductsGetCollection200Response, *http.Response, error) {
+//	@return []ProductProductOutput
+func (a *ProductApiService) ApiProductsGetCollectionExecute(r ProductApiApiProductsGetCollectionRequest) ([]ProductProductOutput, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *ApiProductsGetCollection200Response
+		localVarReturnValue []ProductProductOutput
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProductApiService.ApiProductsGetCollection")
@@ -108,37 +108,37 @@ func (a *ProductApiService) ApiProductsGetCollectionExecute(r ApiApiProductsGetC
 	localVarFormParams := url.Values{}
 
 	if r.page != nil {
-		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
 	}
 	if r.itemsPerPage != nil {
-		localVarQueryParams.Add("itemsPerPage", parameterToString(*r.itemsPerPage, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "itemsPerPage", r.itemsPerPage, "")
 	}
 	if r.defaultPrice != nil {
-		localVarQueryParams.Add("defaultPrice", parameterToString(*r.defaultPrice, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "defaultPrice", r.defaultPrice, "")
 	}
 	if r.defaultPrice2 != nil {
 		t := *r.defaultPrice2
 		if reflect.TypeOf(t).Kind() == reflect.Slice {
 			s := reflect.ValueOf(t)
 			for i := 0; i < s.Len(); i++ {
-				localVarQueryParams.Add("defaultPrice[]", parameterToString(s.Index(i), "multi"))
+				parameterAddToHeaderOrQuery(localVarQueryParams, "defaultPrice[]", s.Index(i), "multi")
 			}
 		} else {
-			localVarQueryParams.Add("defaultPrice[]", parameterToString(t, "multi"))
+			parameterAddToHeaderOrQuery(localVarQueryParams, "defaultPrice[]", t, "multi")
 		}
 	}
 	if r.region != nil {
-		localVarQueryParams.Add("region", parameterToString(*r.region, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "region", r.region, "")
 	}
 	if r.region2 != nil {
 		t := *r.region2
 		if reflect.TypeOf(t).Kind() == reflect.Slice {
 			s := reflect.ValueOf(t)
 			for i := 0; i < s.Len(); i++ {
-				localVarQueryParams.Add("region[]", parameterToString(s.Index(i), "multi"))
+				parameterAddToHeaderOrQuery(localVarQueryParams, "region[]", s.Index(i), "multi")
 			}
 		} else {
-			localVarQueryParams.Add("region[]", parameterToString(t, "multi"))
+			parameterAddToHeaderOrQuery(localVarQueryParams, "region[]", t, "multi")
 		}
 	}
 	// to determine the Content-Type header
@@ -151,7 +151,7 @@ func (a *ProductApiService) ApiProductsGetCollectionExecute(r ApiApiProductsGetC
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/hal+json", "application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
+	localVarHTTPHeaderAccepts := []string{"application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -182,9 +182,9 @@ func (a *ProductApiService) ApiProductsGetCollectionExecute(r ApiApiProductsGetC
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -209,13 +209,13 @@ func (a *ProductApiService) ApiProductsGetCollectionExecute(r ApiApiProductsGetC
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiApiProductsIdDeleteRequest struct {
+type ProductApiApiProductsIdDeleteRequest struct {
 	ctx        context.Context
 	ApiService *ProductApiService
 	id         string
 }
 
-func (r ApiApiProductsIdDeleteRequest) Execute() (*http.Response, error) {
+func (r ProductApiApiProductsIdDeleteRequest) Execute() (*http.Response, error) {
 	return r.ApiService.ApiProductsIdDeleteExecute(r)
 }
 
@@ -226,10 +226,10 @@ Removes the Product resource.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id Product identifier
-	@return ApiApiProductsIdDeleteRequest
+	@return ProductApiApiProductsIdDeleteRequest
 */
-func (a *ProductApiService) ApiProductsIdDelete(ctx context.Context, id string) ApiApiProductsIdDeleteRequest {
-	return ApiApiProductsIdDeleteRequest{
+func (a *ProductApiService) ApiProductsIdDelete(ctx context.Context, id string) ProductApiApiProductsIdDeleteRequest {
+	return ProductApiApiProductsIdDeleteRequest{
 		ApiService: a,
 		ctx:        ctx,
 		id:         id,
@@ -237,7 +237,7 @@ func (a *ProductApiService) ApiProductsIdDelete(ctx context.Context, id string) 
 }
 
 // Execute executes the request
-func (a *ProductApiService) ApiProductsIdDeleteExecute(r ApiApiProductsIdDeleteRequest) (*http.Response, error) {
+func (a *ProductApiService) ApiProductsIdDeleteExecute(r ProductApiApiProductsIdDeleteRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
 		localVarPostBody   interface{}
@@ -250,7 +250,7 @@ func (a *ProductApiService) ApiProductsIdDeleteExecute(r ApiApiProductsIdDeleteR
 	}
 
 	localVarPath := localBasePath + "/api/products/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -297,9 +297,9 @@ func (a *ProductApiService) ApiProductsIdDeleteExecute(r ApiApiProductsIdDeleteR
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -315,13 +315,13 @@ func (a *ProductApiService) ApiProductsIdDeleteExecute(r ApiApiProductsIdDeleteR
 	return localVarHTTPResponse, nil
 }
 
-type ApiApiProductsIdGetRequest struct {
+type ProductApiApiProductsIdGetRequest struct {
 	ctx        context.Context
 	ApiService *ProductApiService
 	id         string
 }
 
-func (r ApiApiProductsIdGetRequest) Execute() (*ProductJsonhalProductOutput, *http.Response, error) {
+func (r ProductApiApiProductsIdGetRequest) Execute() (*ProductProductOutput, *http.Response, error) {
 	return r.ApiService.ApiProductsIdGetExecute(r)
 }
 
@@ -332,10 +332,10 @@ Retrieves a Product resource.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id Product identifier
-	@return ApiApiProductsIdGetRequest
+	@return ProductApiApiProductsIdGetRequest
 */
-func (a *ProductApiService) ApiProductsIdGet(ctx context.Context, id string) ApiApiProductsIdGetRequest {
-	return ApiApiProductsIdGetRequest{
+func (a *ProductApiService) ApiProductsIdGet(ctx context.Context, id string) ProductApiApiProductsIdGetRequest {
+	return ProductApiApiProductsIdGetRequest{
 		ApiService: a,
 		ctx:        ctx,
 		id:         id,
@@ -344,13 +344,13 @@ func (a *ProductApiService) ApiProductsIdGet(ctx context.Context, id string) Api
 
 // Execute executes the request
 //
-//	@return ProductJsonhalProductOutput
-func (a *ProductApiService) ApiProductsIdGetExecute(r ApiApiProductsIdGetRequest) (*ProductJsonhalProductOutput, *http.Response, error) {
+//	@return ProductProductOutput
+func (a *ProductApiService) ApiProductsIdGetExecute(r ProductApiApiProductsIdGetRequest) (*ProductProductOutput, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *ProductJsonhalProductOutput
+		localVarReturnValue *ProductProductOutput
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProductApiService.ApiProductsIdGet")
@@ -359,7 +359,7 @@ func (a *ProductApiService) ApiProductsIdGetExecute(r ApiApiProductsIdGetRequest
 	}
 
 	localVarPath := localBasePath + "/api/products/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -375,7 +375,7 @@ func (a *ProductApiService) ApiProductsIdGetExecute(r ApiApiProductsIdGetRequest
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/hal+json", "application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
+	localVarHTTPHeaderAccepts := []string{"application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -406,9 +406,9 @@ func (a *ProductApiService) ApiProductsIdGetExecute(r ApiApiProductsIdGetRequest
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -433,20 +433,20 @@ func (a *ProductApiService) ApiProductsIdGetExecute(r ApiApiProductsIdGetRequest
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiApiProductsIdPatchRequest struct {
+type ProductApiApiProductsIdPatchRequest struct {
 	ctx                 context.Context
 	ApiService          *ProductApiService
-	id                  string
 	productProductInput *ProductProductInput
+	id                  string
 }
 
 // The updated Product resource
-func (r ApiApiProductsIdPatchRequest) ProductProductInput(productProductInput ProductProductInput) ApiApiProductsIdPatchRequest {
+func (r ProductApiApiProductsIdPatchRequest) ProductProductInput(productProductInput ProductProductInput) ProductApiApiProductsIdPatchRequest {
 	r.productProductInput = &productProductInput
 	return r
 }
 
-func (r ApiApiProductsIdPatchRequest) Execute() (*ProductJsonhalProductOutput, *http.Response, error) {
+func (r ProductApiApiProductsIdPatchRequest) Execute() (*ProductProductOutput, *http.Response, error) {
 	return r.ApiService.ApiProductsIdPatchExecute(r)
 }
 
@@ -457,10 +457,10 @@ Updates the Product resource.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id Product identifier
-	@return ApiApiProductsIdPatchRequest
+	@return ProductApiApiProductsIdPatchRequest
 */
-func (a *ProductApiService) ApiProductsIdPatch(ctx context.Context, id string) ApiApiProductsIdPatchRequest {
-	return ApiApiProductsIdPatchRequest{
+func (a *ProductApiService) ApiProductsIdPatch(ctx context.Context, id string) ProductApiApiProductsIdPatchRequest {
+	return ProductApiApiProductsIdPatchRequest{
 		ApiService: a,
 		ctx:        ctx,
 		id:         id,
@@ -469,13 +469,13 @@ func (a *ProductApiService) ApiProductsIdPatch(ctx context.Context, id string) A
 
 // Execute executes the request
 //
-//	@return ProductJsonhalProductOutput
-func (a *ProductApiService) ApiProductsIdPatchExecute(r ApiApiProductsIdPatchRequest) (*ProductJsonhalProductOutput, *http.Response, error) {
+//	@return ProductProductOutput
+func (a *ProductApiService) ApiProductsIdPatchExecute(r ProductApiApiProductsIdPatchRequest) (*ProductProductOutput, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *ProductJsonhalProductOutput
+		localVarReturnValue *ProductProductOutput
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProductApiService.ApiProductsIdPatch")
@@ -484,7 +484,7 @@ func (a *ProductApiService) ApiProductsIdPatchExecute(r ApiApiProductsIdPatchReq
 	}
 
 	localVarPath := localBasePath + "/api/products/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -494,7 +494,7 @@ func (a *ProductApiService) ApiProductsIdPatchExecute(r ApiApiProductsIdPatchReq
 	}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/vnd.api+json"}
+	localVarHTTPContentTypes := []string{"application/merge-patch+json", "application/vnd.api+json"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -503,7 +503,7 @@ func (a *ProductApiService) ApiProductsIdPatchExecute(r ApiApiProductsIdPatchReq
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/hal+json", "application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
+	localVarHTTPHeaderAccepts := []string{"application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -536,9 +536,9 @@ func (a *ProductApiService) ApiProductsIdPatchExecute(r ApiApiProductsIdPatchReq
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -563,20 +563,20 @@ func (a *ProductApiService) ApiProductsIdPatchExecute(r ApiApiProductsIdPatchReq
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiApiProductsIdPutRequest struct {
-	ctx                        context.Context
-	ApiService                 *ProductApiService
-	id                         string
-	productJsonhalProductInput *ProductJsonhalProductInput
+type ProductApiApiProductsIdPutRequest struct {
+	ctx                 context.Context
+	ApiService          *ProductApiService
+	productProductInput *ProductProductInput
+	id                  string
 }
 
 // The updated Product resource
-func (r ApiApiProductsIdPutRequest) ProductJsonhalProductInput(productJsonhalProductInput ProductJsonhalProductInput) ApiApiProductsIdPutRequest {
-	r.productJsonhalProductInput = &productJsonhalProductInput
+func (r ProductApiApiProductsIdPutRequest) ProductProductInput(productProductInput ProductProductInput) ProductApiApiProductsIdPutRequest {
+	r.productProductInput = &productProductInput
 	return r
 }
 
-func (r ApiApiProductsIdPutRequest) Execute() (*ProductJsonhalProductOutput, *http.Response, error) {
+func (r ProductApiApiProductsIdPutRequest) Execute() (*ProductProductOutput, *http.Response, error) {
 	return r.ApiService.ApiProductsIdPutExecute(r)
 }
 
@@ -587,10 +587,10 @@ Replaces the Product resource.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id Product identifier
-	@return ApiApiProductsIdPutRequest
+	@return ProductApiApiProductsIdPutRequest
 */
-func (a *ProductApiService) ApiProductsIdPut(ctx context.Context, id string) ApiApiProductsIdPutRequest {
-	return ApiApiProductsIdPutRequest{
+func (a *ProductApiService) ApiProductsIdPut(ctx context.Context, id string) ProductApiApiProductsIdPutRequest {
+	return ProductApiApiProductsIdPutRequest{
 		ApiService: a,
 		ctx:        ctx,
 		id:         id,
@@ -599,13 +599,13 @@ func (a *ProductApiService) ApiProductsIdPut(ctx context.Context, id string) Api
 
 // Execute executes the request
 //
-//	@return ProductJsonhalProductOutput
-func (a *ProductApiService) ApiProductsIdPutExecute(r ApiApiProductsIdPutRequest) (*ProductJsonhalProductOutput, *http.Response, error) {
+//	@return ProductProductOutput
+func (a *ProductApiService) ApiProductsIdPutExecute(r ProductApiApiProductsIdPutRequest) (*ProductProductOutput, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *ProductJsonhalProductOutput
+		localVarReturnValue *ProductProductOutput
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProductApiService.ApiProductsIdPut")
@@ -614,17 +614,17 @@ func (a *ProductApiService) ApiProductsIdPutExecute(r ApiApiProductsIdPutRequest
 	}
 
 	localVarPath := localBasePath + "/api/products/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.productJsonhalProductInput == nil {
-		return localVarReturnValue, nil, reportError("productJsonhalProductInput is required and must be specified")
+	if r.productProductInput == nil {
+		return localVarReturnValue, nil, reportError("productProductInput is required and must be specified")
 	}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/hal+json", "application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
+	localVarHTTPContentTypes := []string{"application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -633,7 +633,7 @@ func (a *ProductApiService) ApiProductsIdPutExecute(r ApiApiProductsIdPutRequest
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/hal+json", "application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
+	localVarHTTPHeaderAccepts := []string{"application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -641,7 +641,7 @@ func (a *ProductApiService) ApiProductsIdPutExecute(r ApiApiProductsIdPutRequest
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.productJsonhalProductInput
+	localVarPostBody = r.productProductInput
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
@@ -666,9 +666,9 @@ func (a *ProductApiService) ApiProductsIdPutExecute(r ApiApiProductsIdPutRequest
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -693,19 +693,19 @@ func (a *ProductApiService) ApiProductsIdPutExecute(r ApiApiProductsIdPutRequest
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiApiProductsPostRequest struct {
-	ctx                        context.Context
-	ApiService                 *ProductApiService
-	productJsonhalProductInput *ProductJsonhalProductInput
+type ProductApiApiProductsPostRequest struct {
+	ctx                 context.Context
+	ApiService          *ProductApiService
+	productProductInput *ProductProductInput
 }
 
 // The new Product resource
-func (r ApiApiProductsPostRequest) ProductJsonhalProductInput(productJsonhalProductInput ProductJsonhalProductInput) ApiApiProductsPostRequest {
-	r.productJsonhalProductInput = &productJsonhalProductInput
+func (r ProductApiApiProductsPostRequest) ProductProductInput(productProductInput ProductProductInput) ProductApiApiProductsPostRequest {
+	r.productProductInput = &productProductInput
 	return r
 }
 
-func (r ApiApiProductsPostRequest) Execute() (*ProductJsonhalProductOutput, *http.Response, error) {
+func (r ProductApiApiProductsPostRequest) Execute() (*ProductProductOutput, *http.Response, error) {
 	return r.ApiService.ApiProductsPostExecute(r)
 }
 
@@ -715,10 +715,10 @@ ApiProductsPost Creates a Product resource.
 Creates a Product resource.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiApiProductsPostRequest
+	@return ProductApiApiProductsPostRequest
 */
-func (a *ProductApiService) ApiProductsPost(ctx context.Context) ApiApiProductsPostRequest {
-	return ApiApiProductsPostRequest{
+func (a *ProductApiService) ApiProductsPost(ctx context.Context) ProductApiApiProductsPostRequest {
+	return ProductApiApiProductsPostRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -726,13 +726,13 @@ func (a *ProductApiService) ApiProductsPost(ctx context.Context) ApiApiProductsP
 
 // Execute executes the request
 //
-//	@return ProductJsonhalProductOutput
-func (a *ProductApiService) ApiProductsPostExecute(r ApiApiProductsPostRequest) (*ProductJsonhalProductOutput, *http.Response, error) {
+//	@return ProductProductOutput
+func (a *ProductApiService) ApiProductsPostExecute(r ProductApiApiProductsPostRequest) (*ProductProductOutput, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *ProductJsonhalProductOutput
+		localVarReturnValue *ProductProductOutput
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProductApiService.ApiProductsPost")
@@ -745,12 +745,12 @@ func (a *ProductApiService) ApiProductsPostExecute(r ApiApiProductsPostRequest) 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.productJsonhalProductInput == nil {
-		return localVarReturnValue, nil, reportError("productJsonhalProductInput is required and must be specified")
+	if r.productProductInput == nil {
+		return localVarReturnValue, nil, reportError("productProductInput is required and must be specified")
 	}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/hal+json", "application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
+	localVarHTTPContentTypes := []string{"application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -759,7 +759,7 @@ func (a *ProductApiService) ApiProductsPostExecute(r ApiApiProductsPostRequest) 
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/hal+json", "application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
+	localVarHTTPHeaderAccepts := []string{"application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -767,7 +767,7 @@ func (a *ProductApiService) ApiProductsPostExecute(r ApiApiProductsPostRequest) 
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.productJsonhalProductInput
+	localVarPostBody = r.productProductInput
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
@@ -792,9 +792,9 @@ func (a *ProductApiService) ApiProductsPostExecute(r ApiApiProductsPostRequest) 
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}

@@ -13,7 +13,7 @@ package rewardcloud
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"reflect"
@@ -23,7 +23,7 @@ import (
 // ComponentResourceLimitApiService ComponentResourceLimitApi service
 type ComponentResourceLimitApiService service
 
-type ApiApiComponentResourceLimitsGetCollectionRequest struct {
+type ComponentResourceLimitApiApiComponentResourceLimitsGetCollectionRequest struct {
 	ctx                 context.Context
 	ApiService          *ComponentResourceLimitApiService
 	page                *int32
@@ -37,48 +37,48 @@ type ApiApiComponentResourceLimitsGetCollectionRequest struct {
 }
 
 // The collection page number
-func (r ApiApiComponentResourceLimitsGetCollectionRequest) Page(page int32) ApiApiComponentResourceLimitsGetCollectionRequest {
+func (r ComponentResourceLimitApiApiComponentResourceLimitsGetCollectionRequest) Page(page int32) ComponentResourceLimitApiApiComponentResourceLimitsGetCollectionRequest {
 	r.page = &page
 	return r
 }
 
 // The number of items per page
-func (r ApiApiComponentResourceLimitsGetCollectionRequest) ItemsPerPage(itemsPerPage int32) ApiApiComponentResourceLimitsGetCollectionRequest {
+func (r ComponentResourceLimitApiApiComponentResourceLimitsGetCollectionRequest) ItemsPerPage(itemsPerPage int32) ComponentResourceLimitApiApiComponentResourceLimitsGetCollectionRequest {
 	r.itemsPerPage = &itemsPerPage
 	return r
 }
 
-func (r ApiApiComponentResourceLimitsGetCollectionRequest) ProjectTypeVersion(projectTypeVersion string) ApiApiComponentResourceLimitsGetCollectionRequest {
+func (r ComponentResourceLimitApiApiComponentResourceLimitsGetCollectionRequest) ProjectTypeVersion(projectTypeVersion string) ComponentResourceLimitApiApiComponentResourceLimitsGetCollectionRequest {
 	r.projectTypeVersion = &projectTypeVersion
 	return r
 }
 
-func (r ApiApiComponentResourceLimitsGetCollectionRequest) ProjectTypeVersion2(projectTypeVersion2 []string) ApiApiComponentResourceLimitsGetCollectionRequest {
+func (r ComponentResourceLimitApiApiComponentResourceLimitsGetCollectionRequest) ProjectTypeVersion2(projectTypeVersion2 []string) ComponentResourceLimitApiApiComponentResourceLimitsGetCollectionRequest {
 	r.projectTypeVersion2 = &projectTypeVersion2
 	return r
 }
 
-func (r ApiApiComponentResourceLimitsGetCollectionRequest) ResourceType(resourceType string) ApiApiComponentResourceLimitsGetCollectionRequest {
+func (r ComponentResourceLimitApiApiComponentResourceLimitsGetCollectionRequest) ResourceType(resourceType string) ComponentResourceLimitApiApiComponentResourceLimitsGetCollectionRequest {
 	r.resourceType = &resourceType
 	return r
 }
 
-func (r ApiApiComponentResourceLimitsGetCollectionRequest) ResourceType2(resourceType2 []string) ApiApiComponentResourceLimitsGetCollectionRequest {
+func (r ComponentResourceLimitApiApiComponentResourceLimitsGetCollectionRequest) ResourceType2(resourceType2 []string) ComponentResourceLimitApiApiComponentResourceLimitsGetCollectionRequest {
 	r.resourceType2 = &resourceType2
 	return r
 }
 
-func (r ApiApiComponentResourceLimitsGetCollectionRequest) ComponentVersion(componentVersion string) ApiApiComponentResourceLimitsGetCollectionRequest {
+func (r ComponentResourceLimitApiApiComponentResourceLimitsGetCollectionRequest) ComponentVersion(componentVersion string) ComponentResourceLimitApiApiComponentResourceLimitsGetCollectionRequest {
 	r.componentVersion = &componentVersion
 	return r
 }
 
-func (r ApiApiComponentResourceLimitsGetCollectionRequest) ComponentVersion2(componentVersion2 []string) ApiApiComponentResourceLimitsGetCollectionRequest {
+func (r ComponentResourceLimitApiApiComponentResourceLimitsGetCollectionRequest) ComponentVersion2(componentVersion2 []string) ComponentResourceLimitApiApiComponentResourceLimitsGetCollectionRequest {
 	r.componentVersion2 = &componentVersion2
 	return r
 }
 
-func (r ApiApiComponentResourceLimitsGetCollectionRequest) Execute() (*ApiComponentResourceLimitsGetCollection200Response, *http.Response, error) {
+func (r ComponentResourceLimitApiApiComponentResourceLimitsGetCollectionRequest) Execute() ([]ComponentResourceLimit, *http.Response, error) {
 	return r.ApiService.ApiComponentResourceLimitsGetCollectionExecute(r)
 }
 
@@ -88,10 +88,10 @@ ApiComponentResourceLimitsGetCollection Retrieves the collection of ComponentRes
 Retrieves the collection of ComponentResourceLimit resources.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiApiComponentResourceLimitsGetCollectionRequest
+	@return ComponentResourceLimitApiApiComponentResourceLimitsGetCollectionRequest
 */
-func (a *ComponentResourceLimitApiService) ApiComponentResourceLimitsGetCollection(ctx context.Context) ApiApiComponentResourceLimitsGetCollectionRequest {
-	return ApiApiComponentResourceLimitsGetCollectionRequest{
+func (a *ComponentResourceLimitApiService) ApiComponentResourceLimitsGetCollection(ctx context.Context) ComponentResourceLimitApiApiComponentResourceLimitsGetCollectionRequest {
+	return ComponentResourceLimitApiApiComponentResourceLimitsGetCollectionRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -99,13 +99,13 @@ func (a *ComponentResourceLimitApiService) ApiComponentResourceLimitsGetCollecti
 
 // Execute executes the request
 //
-//	@return ApiComponentResourceLimitsGetCollection200Response
-func (a *ComponentResourceLimitApiService) ApiComponentResourceLimitsGetCollectionExecute(r ApiApiComponentResourceLimitsGetCollectionRequest) (*ApiComponentResourceLimitsGetCollection200Response, *http.Response, error) {
+//	@return []ComponentResourceLimit
+func (a *ComponentResourceLimitApiService) ApiComponentResourceLimitsGetCollectionExecute(r ComponentResourceLimitApiApiComponentResourceLimitsGetCollectionRequest) ([]ComponentResourceLimit, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *ApiComponentResourceLimitsGetCollection200Response
+		localVarReturnValue []ComponentResourceLimit
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ComponentResourceLimitApiService.ApiComponentResourceLimitsGetCollection")
@@ -120,51 +120,51 @@ func (a *ComponentResourceLimitApiService) ApiComponentResourceLimitsGetCollecti
 	localVarFormParams := url.Values{}
 
 	if r.page != nil {
-		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
 	}
 	if r.itemsPerPage != nil {
-		localVarQueryParams.Add("itemsPerPage", parameterToString(*r.itemsPerPage, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "itemsPerPage", r.itemsPerPage, "")
 	}
 	if r.projectTypeVersion != nil {
-		localVarQueryParams.Add("projectTypeVersion", parameterToString(*r.projectTypeVersion, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "projectTypeVersion", r.projectTypeVersion, "")
 	}
 	if r.projectTypeVersion2 != nil {
 		t := *r.projectTypeVersion2
 		if reflect.TypeOf(t).Kind() == reflect.Slice {
 			s := reflect.ValueOf(t)
 			for i := 0; i < s.Len(); i++ {
-				localVarQueryParams.Add("projectTypeVersion[]", parameterToString(s.Index(i), "multi"))
+				parameterAddToHeaderOrQuery(localVarQueryParams, "projectTypeVersion[]", s.Index(i), "multi")
 			}
 		} else {
-			localVarQueryParams.Add("projectTypeVersion[]", parameterToString(t, "multi"))
+			parameterAddToHeaderOrQuery(localVarQueryParams, "projectTypeVersion[]", t, "multi")
 		}
 	}
 	if r.resourceType != nil {
-		localVarQueryParams.Add("resourceType", parameterToString(*r.resourceType, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "resourceType", r.resourceType, "")
 	}
 	if r.resourceType2 != nil {
 		t := *r.resourceType2
 		if reflect.TypeOf(t).Kind() == reflect.Slice {
 			s := reflect.ValueOf(t)
 			for i := 0; i < s.Len(); i++ {
-				localVarQueryParams.Add("resourceType[]", parameterToString(s.Index(i), "multi"))
+				parameterAddToHeaderOrQuery(localVarQueryParams, "resourceType[]", s.Index(i), "multi")
 			}
 		} else {
-			localVarQueryParams.Add("resourceType[]", parameterToString(t, "multi"))
+			parameterAddToHeaderOrQuery(localVarQueryParams, "resourceType[]", t, "multi")
 		}
 	}
 	if r.componentVersion != nil {
-		localVarQueryParams.Add("componentVersion", parameterToString(*r.componentVersion, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "componentVersion", r.componentVersion, "")
 	}
 	if r.componentVersion2 != nil {
 		t := *r.componentVersion2
 		if reflect.TypeOf(t).Kind() == reflect.Slice {
 			s := reflect.ValueOf(t)
 			for i := 0; i < s.Len(); i++ {
-				localVarQueryParams.Add("componentVersion[]", parameterToString(s.Index(i), "multi"))
+				parameterAddToHeaderOrQuery(localVarQueryParams, "componentVersion[]", s.Index(i), "multi")
 			}
 		} else {
-			localVarQueryParams.Add("componentVersion[]", parameterToString(t, "multi"))
+			parameterAddToHeaderOrQuery(localVarQueryParams, "componentVersion[]", t, "multi")
 		}
 	}
 	// to determine the Content-Type header
@@ -177,7 +177,7 @@ func (a *ComponentResourceLimitApiService) ApiComponentResourceLimitsGetCollecti
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/hal+json", "application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
+	localVarHTTPHeaderAccepts := []string{"application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -208,9 +208,9 @@ func (a *ComponentResourceLimitApiService) ApiComponentResourceLimitsGetCollecti
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -235,13 +235,13 @@ func (a *ComponentResourceLimitApiService) ApiComponentResourceLimitsGetCollecti
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiApiComponentResourceLimitsIdDeleteRequest struct {
+type ComponentResourceLimitApiApiComponentResourceLimitsIdDeleteRequest struct {
 	ctx        context.Context
 	ApiService *ComponentResourceLimitApiService
 	id         string
 }
 
-func (r ApiApiComponentResourceLimitsIdDeleteRequest) Execute() (*http.Response, error) {
+func (r ComponentResourceLimitApiApiComponentResourceLimitsIdDeleteRequest) Execute() (*http.Response, error) {
 	return r.ApiService.ApiComponentResourceLimitsIdDeleteExecute(r)
 }
 
@@ -252,10 +252,10 @@ Removes the ComponentResourceLimit resource.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id ComponentResourceLimit identifier
-	@return ApiApiComponentResourceLimitsIdDeleteRequest
+	@return ComponentResourceLimitApiApiComponentResourceLimitsIdDeleteRequest
 */
-func (a *ComponentResourceLimitApiService) ApiComponentResourceLimitsIdDelete(ctx context.Context, id string) ApiApiComponentResourceLimitsIdDeleteRequest {
-	return ApiApiComponentResourceLimitsIdDeleteRequest{
+func (a *ComponentResourceLimitApiService) ApiComponentResourceLimitsIdDelete(ctx context.Context, id string) ComponentResourceLimitApiApiComponentResourceLimitsIdDeleteRequest {
+	return ComponentResourceLimitApiApiComponentResourceLimitsIdDeleteRequest{
 		ApiService: a,
 		ctx:        ctx,
 		id:         id,
@@ -263,7 +263,7 @@ func (a *ComponentResourceLimitApiService) ApiComponentResourceLimitsIdDelete(ct
 }
 
 // Execute executes the request
-func (a *ComponentResourceLimitApiService) ApiComponentResourceLimitsIdDeleteExecute(r ApiApiComponentResourceLimitsIdDeleteRequest) (*http.Response, error) {
+func (a *ComponentResourceLimitApiService) ApiComponentResourceLimitsIdDeleteExecute(r ComponentResourceLimitApiApiComponentResourceLimitsIdDeleteRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
 		localVarPostBody   interface{}
@@ -276,7 +276,7 @@ func (a *ComponentResourceLimitApiService) ApiComponentResourceLimitsIdDeleteExe
 	}
 
 	localVarPath := localBasePath + "/api/component_resource_limits/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -323,9 +323,9 @@ func (a *ComponentResourceLimitApiService) ApiComponentResourceLimitsIdDeleteExe
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -341,13 +341,13 @@ func (a *ComponentResourceLimitApiService) ApiComponentResourceLimitsIdDeleteExe
 	return localVarHTTPResponse, nil
 }
 
-type ApiApiComponentResourceLimitsIdGetRequest struct {
+type ComponentResourceLimitApiApiComponentResourceLimitsIdGetRequest struct {
 	ctx        context.Context
 	ApiService *ComponentResourceLimitApiService
 	id         string
 }
 
-func (r ApiApiComponentResourceLimitsIdGetRequest) Execute() (*ComponentResourceLimitJsonhal, *http.Response, error) {
+func (r ComponentResourceLimitApiApiComponentResourceLimitsIdGetRequest) Execute() (*ComponentResourceLimit, *http.Response, error) {
 	return r.ApiService.ApiComponentResourceLimitsIdGetExecute(r)
 }
 
@@ -358,10 +358,10 @@ Retrieves a ComponentResourceLimit resource.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id ComponentResourceLimit identifier
-	@return ApiApiComponentResourceLimitsIdGetRequest
+	@return ComponentResourceLimitApiApiComponentResourceLimitsIdGetRequest
 */
-func (a *ComponentResourceLimitApiService) ApiComponentResourceLimitsIdGet(ctx context.Context, id string) ApiApiComponentResourceLimitsIdGetRequest {
-	return ApiApiComponentResourceLimitsIdGetRequest{
+func (a *ComponentResourceLimitApiService) ApiComponentResourceLimitsIdGet(ctx context.Context, id string) ComponentResourceLimitApiApiComponentResourceLimitsIdGetRequest {
+	return ComponentResourceLimitApiApiComponentResourceLimitsIdGetRequest{
 		ApiService: a,
 		ctx:        ctx,
 		id:         id,
@@ -370,13 +370,13 @@ func (a *ComponentResourceLimitApiService) ApiComponentResourceLimitsIdGet(ctx c
 
 // Execute executes the request
 //
-//	@return ComponentResourceLimitJsonhal
-func (a *ComponentResourceLimitApiService) ApiComponentResourceLimitsIdGetExecute(r ApiApiComponentResourceLimitsIdGetRequest) (*ComponentResourceLimitJsonhal, *http.Response, error) {
+//	@return ComponentResourceLimit
+func (a *ComponentResourceLimitApiService) ApiComponentResourceLimitsIdGetExecute(r ComponentResourceLimitApiApiComponentResourceLimitsIdGetRequest) (*ComponentResourceLimit, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *ComponentResourceLimitJsonhal
+		localVarReturnValue *ComponentResourceLimit
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ComponentResourceLimitApiService.ApiComponentResourceLimitsIdGet")
@@ -385,7 +385,7 @@ func (a *ComponentResourceLimitApiService) ApiComponentResourceLimitsIdGetExecut
 	}
 
 	localVarPath := localBasePath + "/api/component_resource_limits/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -401,7 +401,7 @@ func (a *ComponentResourceLimitApiService) ApiComponentResourceLimitsIdGetExecut
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/hal+json", "application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
+	localVarHTTPHeaderAccepts := []string{"application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -432,9 +432,9 @@ func (a *ComponentResourceLimitApiService) ApiComponentResourceLimitsIdGetExecut
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -459,20 +459,20 @@ func (a *ComponentResourceLimitApiService) ApiComponentResourceLimitsIdGetExecut
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiApiComponentResourceLimitsIdPatchRequest struct {
+type ComponentResourceLimitApiApiComponentResourceLimitsIdPatchRequest struct {
 	ctx                    context.Context
 	ApiService             *ComponentResourceLimitApiService
-	id                     string
 	componentResourceLimit *ComponentResourceLimit
+	id                     string
 }
 
 // The updated ComponentResourceLimit resource
-func (r ApiApiComponentResourceLimitsIdPatchRequest) ComponentResourceLimit(componentResourceLimit ComponentResourceLimit) ApiApiComponentResourceLimitsIdPatchRequest {
+func (r ComponentResourceLimitApiApiComponentResourceLimitsIdPatchRequest) ComponentResourceLimit(componentResourceLimit ComponentResourceLimit) ComponentResourceLimitApiApiComponentResourceLimitsIdPatchRequest {
 	r.componentResourceLimit = &componentResourceLimit
 	return r
 }
 
-func (r ApiApiComponentResourceLimitsIdPatchRequest) Execute() (*ComponentResourceLimitJsonhal, *http.Response, error) {
+func (r ComponentResourceLimitApiApiComponentResourceLimitsIdPatchRequest) Execute() (*ComponentResourceLimit, *http.Response, error) {
 	return r.ApiService.ApiComponentResourceLimitsIdPatchExecute(r)
 }
 
@@ -483,10 +483,10 @@ Updates the ComponentResourceLimit resource.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id ComponentResourceLimit identifier
-	@return ApiApiComponentResourceLimitsIdPatchRequest
+	@return ComponentResourceLimitApiApiComponentResourceLimitsIdPatchRequest
 */
-func (a *ComponentResourceLimitApiService) ApiComponentResourceLimitsIdPatch(ctx context.Context, id string) ApiApiComponentResourceLimitsIdPatchRequest {
-	return ApiApiComponentResourceLimitsIdPatchRequest{
+func (a *ComponentResourceLimitApiService) ApiComponentResourceLimitsIdPatch(ctx context.Context, id string) ComponentResourceLimitApiApiComponentResourceLimitsIdPatchRequest {
+	return ComponentResourceLimitApiApiComponentResourceLimitsIdPatchRequest{
 		ApiService: a,
 		ctx:        ctx,
 		id:         id,
@@ -495,13 +495,13 @@ func (a *ComponentResourceLimitApiService) ApiComponentResourceLimitsIdPatch(ctx
 
 // Execute executes the request
 //
-//	@return ComponentResourceLimitJsonhal
-func (a *ComponentResourceLimitApiService) ApiComponentResourceLimitsIdPatchExecute(r ApiApiComponentResourceLimitsIdPatchRequest) (*ComponentResourceLimitJsonhal, *http.Response, error) {
+//	@return ComponentResourceLimit
+func (a *ComponentResourceLimitApiService) ApiComponentResourceLimitsIdPatchExecute(r ComponentResourceLimitApiApiComponentResourceLimitsIdPatchRequest) (*ComponentResourceLimit, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *ComponentResourceLimitJsonhal
+		localVarReturnValue *ComponentResourceLimit
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ComponentResourceLimitApiService.ApiComponentResourceLimitsIdPatch")
@@ -510,7 +510,7 @@ func (a *ComponentResourceLimitApiService) ApiComponentResourceLimitsIdPatchExec
 	}
 
 	localVarPath := localBasePath + "/api/component_resource_limits/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -520,7 +520,7 @@ func (a *ComponentResourceLimitApiService) ApiComponentResourceLimitsIdPatchExec
 	}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/vnd.api+json"}
+	localVarHTTPContentTypes := []string{"application/merge-patch+json", "application/vnd.api+json"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -529,7 +529,7 @@ func (a *ComponentResourceLimitApiService) ApiComponentResourceLimitsIdPatchExec
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/hal+json", "application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
+	localVarHTTPHeaderAccepts := []string{"application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -562,9 +562,9 @@ func (a *ComponentResourceLimitApiService) ApiComponentResourceLimitsIdPatchExec
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -589,20 +589,20 @@ func (a *ComponentResourceLimitApiService) ApiComponentResourceLimitsIdPatchExec
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiApiComponentResourceLimitsIdPutRequest struct {
-	ctx                           context.Context
-	ApiService                    *ComponentResourceLimitApiService
-	id                            string
-	componentResourceLimitJsonhal *ComponentResourceLimitJsonhal
+type ComponentResourceLimitApiApiComponentResourceLimitsIdPutRequest struct {
+	ctx                    context.Context
+	ApiService             *ComponentResourceLimitApiService
+	componentResourceLimit *ComponentResourceLimit
+	id                     string
 }
 
 // The updated ComponentResourceLimit resource
-func (r ApiApiComponentResourceLimitsIdPutRequest) ComponentResourceLimitJsonhal(componentResourceLimitJsonhal ComponentResourceLimitJsonhal) ApiApiComponentResourceLimitsIdPutRequest {
-	r.componentResourceLimitJsonhal = &componentResourceLimitJsonhal
+func (r ComponentResourceLimitApiApiComponentResourceLimitsIdPutRequest) ComponentResourceLimit(componentResourceLimit ComponentResourceLimit) ComponentResourceLimitApiApiComponentResourceLimitsIdPutRequest {
+	r.componentResourceLimit = &componentResourceLimit
 	return r
 }
 
-func (r ApiApiComponentResourceLimitsIdPutRequest) Execute() (*ComponentResourceLimitJsonhal, *http.Response, error) {
+func (r ComponentResourceLimitApiApiComponentResourceLimitsIdPutRequest) Execute() (*ComponentResourceLimit, *http.Response, error) {
 	return r.ApiService.ApiComponentResourceLimitsIdPutExecute(r)
 }
 
@@ -613,10 +613,10 @@ Replaces the ComponentResourceLimit resource.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id ComponentResourceLimit identifier
-	@return ApiApiComponentResourceLimitsIdPutRequest
+	@return ComponentResourceLimitApiApiComponentResourceLimitsIdPutRequest
 */
-func (a *ComponentResourceLimitApiService) ApiComponentResourceLimitsIdPut(ctx context.Context, id string) ApiApiComponentResourceLimitsIdPutRequest {
-	return ApiApiComponentResourceLimitsIdPutRequest{
+func (a *ComponentResourceLimitApiService) ApiComponentResourceLimitsIdPut(ctx context.Context, id string) ComponentResourceLimitApiApiComponentResourceLimitsIdPutRequest {
+	return ComponentResourceLimitApiApiComponentResourceLimitsIdPutRequest{
 		ApiService: a,
 		ctx:        ctx,
 		id:         id,
@@ -625,13 +625,13 @@ func (a *ComponentResourceLimitApiService) ApiComponentResourceLimitsIdPut(ctx c
 
 // Execute executes the request
 //
-//	@return ComponentResourceLimitJsonhal
-func (a *ComponentResourceLimitApiService) ApiComponentResourceLimitsIdPutExecute(r ApiApiComponentResourceLimitsIdPutRequest) (*ComponentResourceLimitJsonhal, *http.Response, error) {
+//	@return ComponentResourceLimit
+func (a *ComponentResourceLimitApiService) ApiComponentResourceLimitsIdPutExecute(r ComponentResourceLimitApiApiComponentResourceLimitsIdPutRequest) (*ComponentResourceLimit, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *ComponentResourceLimitJsonhal
+		localVarReturnValue *ComponentResourceLimit
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ComponentResourceLimitApiService.ApiComponentResourceLimitsIdPut")
@@ -640,17 +640,17 @@ func (a *ComponentResourceLimitApiService) ApiComponentResourceLimitsIdPutExecut
 	}
 
 	localVarPath := localBasePath + "/api/component_resource_limits/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.componentResourceLimitJsonhal == nil {
-		return localVarReturnValue, nil, reportError("componentResourceLimitJsonhal is required and must be specified")
+	if r.componentResourceLimit == nil {
+		return localVarReturnValue, nil, reportError("componentResourceLimit is required and must be specified")
 	}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/hal+json", "application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
+	localVarHTTPContentTypes := []string{"application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -659,7 +659,7 @@ func (a *ComponentResourceLimitApiService) ApiComponentResourceLimitsIdPutExecut
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/hal+json", "application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
+	localVarHTTPHeaderAccepts := []string{"application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -667,7 +667,7 @@ func (a *ComponentResourceLimitApiService) ApiComponentResourceLimitsIdPutExecut
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.componentResourceLimitJsonhal
+	localVarPostBody = r.componentResourceLimit
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
@@ -692,9 +692,9 @@ func (a *ComponentResourceLimitApiService) ApiComponentResourceLimitsIdPutExecut
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -719,19 +719,19 @@ func (a *ComponentResourceLimitApiService) ApiComponentResourceLimitsIdPutExecut
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiApiComponentResourceLimitsPostRequest struct {
-	ctx                           context.Context
-	ApiService                    *ComponentResourceLimitApiService
-	componentResourceLimitJsonhal *ComponentResourceLimitJsonhal
+type ComponentResourceLimitApiApiComponentResourceLimitsPostRequest struct {
+	ctx                    context.Context
+	ApiService             *ComponentResourceLimitApiService
+	componentResourceLimit *ComponentResourceLimit
 }
 
 // The new ComponentResourceLimit resource
-func (r ApiApiComponentResourceLimitsPostRequest) ComponentResourceLimitJsonhal(componentResourceLimitJsonhal ComponentResourceLimitJsonhal) ApiApiComponentResourceLimitsPostRequest {
-	r.componentResourceLimitJsonhal = &componentResourceLimitJsonhal
+func (r ComponentResourceLimitApiApiComponentResourceLimitsPostRequest) ComponentResourceLimit(componentResourceLimit ComponentResourceLimit) ComponentResourceLimitApiApiComponentResourceLimitsPostRequest {
+	r.componentResourceLimit = &componentResourceLimit
 	return r
 }
 
-func (r ApiApiComponentResourceLimitsPostRequest) Execute() (*ComponentResourceLimitJsonhal, *http.Response, error) {
+func (r ComponentResourceLimitApiApiComponentResourceLimitsPostRequest) Execute() (*ComponentResourceLimit, *http.Response, error) {
 	return r.ApiService.ApiComponentResourceLimitsPostExecute(r)
 }
 
@@ -741,10 +741,10 @@ ApiComponentResourceLimitsPost Creates a ComponentResourceLimit resource.
 Creates a ComponentResourceLimit resource.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiApiComponentResourceLimitsPostRequest
+	@return ComponentResourceLimitApiApiComponentResourceLimitsPostRequest
 */
-func (a *ComponentResourceLimitApiService) ApiComponentResourceLimitsPost(ctx context.Context) ApiApiComponentResourceLimitsPostRequest {
-	return ApiApiComponentResourceLimitsPostRequest{
+func (a *ComponentResourceLimitApiService) ApiComponentResourceLimitsPost(ctx context.Context) ComponentResourceLimitApiApiComponentResourceLimitsPostRequest {
+	return ComponentResourceLimitApiApiComponentResourceLimitsPostRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -752,13 +752,13 @@ func (a *ComponentResourceLimitApiService) ApiComponentResourceLimitsPost(ctx co
 
 // Execute executes the request
 //
-//	@return ComponentResourceLimitJsonhal
-func (a *ComponentResourceLimitApiService) ApiComponentResourceLimitsPostExecute(r ApiApiComponentResourceLimitsPostRequest) (*ComponentResourceLimitJsonhal, *http.Response, error) {
+//	@return ComponentResourceLimit
+func (a *ComponentResourceLimitApiService) ApiComponentResourceLimitsPostExecute(r ComponentResourceLimitApiApiComponentResourceLimitsPostRequest) (*ComponentResourceLimit, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *ComponentResourceLimitJsonhal
+		localVarReturnValue *ComponentResourceLimit
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ComponentResourceLimitApiService.ApiComponentResourceLimitsPost")
@@ -771,12 +771,12 @@ func (a *ComponentResourceLimitApiService) ApiComponentResourceLimitsPostExecute
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.componentResourceLimitJsonhal == nil {
-		return localVarReturnValue, nil, reportError("componentResourceLimitJsonhal is required and must be specified")
+	if r.componentResourceLimit == nil {
+		return localVarReturnValue, nil, reportError("componentResourceLimit is required and must be specified")
 	}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/hal+json", "application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
+	localVarHTTPContentTypes := []string{"application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -785,7 +785,7 @@ func (a *ComponentResourceLimitApiService) ApiComponentResourceLimitsPostExecute
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/hal+json", "application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
+	localVarHTTPHeaderAccepts := []string{"application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -793,7 +793,7 @@ func (a *ComponentResourceLimitApiService) ApiComponentResourceLimitsPostExecute
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.componentResourceLimitJsonhal
+	localVarPostBody = r.componentResourceLimit
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
@@ -818,9 +818,9 @@ func (a *ComponentResourceLimitApiService) ApiComponentResourceLimitsPostExecute
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}

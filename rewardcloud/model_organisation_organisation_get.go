@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the OrganisationOrganisationGet type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &OrganisationOrganisationGet{}
+
 // OrganisationOrganisationGet Class Organisation
 type OrganisationOrganisationGet struct {
 	Id                 *int32                              `json:"id,omitempty"`
@@ -44,7 +47,7 @@ func NewOrganisationOrganisationGetWithDefaults() *OrganisationOrganisationGet {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *OrganisationOrganisationGet) GetId() int32 {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		var ret int32
 		return ret
 	}
@@ -54,7 +57,7 @@ func (o *OrganisationOrganisationGet) GetId() int32 {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *OrganisationOrganisationGet) GetIdOk() (*int32, bool) {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
 	return o.Id, true
@@ -62,7 +65,7 @@ func (o *OrganisationOrganisationGet) GetIdOk() (*int32, bool) {
 
 // HasId returns a boolean if a field has been set.
 func (o *OrganisationOrganisationGet) HasId() bool {
-	if o != nil && !isNil(o.Id) {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -76,7 +79,7 @@ func (o *OrganisationOrganisationGet) SetId(v int32) {
 
 // GetUuid returns the Uuid field value if set, zero value otherwise.
 func (o *OrganisationOrganisationGet) GetUuid() string {
-	if o == nil || isNil(o.Uuid) {
+	if o == nil || IsNil(o.Uuid) {
 		var ret string
 		return ret
 	}
@@ -86,7 +89,7 @@ func (o *OrganisationOrganisationGet) GetUuid() string {
 // GetUuidOk returns a tuple with the Uuid field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *OrganisationOrganisationGet) GetUuidOk() (*string, bool) {
-	if o == nil || isNil(o.Uuid) {
+	if o == nil || IsNil(o.Uuid) {
 		return nil, false
 	}
 	return o.Uuid, true
@@ -94,7 +97,7 @@ func (o *OrganisationOrganisationGet) GetUuidOk() (*string, bool) {
 
 // HasUuid returns a boolean if a field has been set.
 func (o *OrganisationOrganisationGet) HasUuid() bool {
-	if o != nil && !isNil(o.Uuid) {
+	if o != nil && !IsNil(o.Uuid) {
 		return true
 	}
 
@@ -108,7 +111,7 @@ func (o *OrganisationOrganisationGet) SetUuid(v string) {
 
 // GetName returns the Name field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *OrganisationOrganisationGet) GetName() string {
-	if o == nil || isNil(o.Name.Get()) {
+	if o == nil || IsNil(o.Name.Get()) {
 		var ret string
 		return ret
 	}
@@ -151,7 +154,7 @@ func (o *OrganisationOrganisationGet) UnsetName() {
 
 // GetCodeName returns the CodeName field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *OrganisationOrganisationGet) GetCodeName() string {
-	if o == nil || isNil(o.CodeName.Get()) {
+	if o == nil || IsNil(o.CodeName.Get()) {
 		var ret string
 		return ret
 	}
@@ -194,7 +197,7 @@ func (o *OrganisationOrganisationGet) UnsetCodeName() {
 
 // GetIsDefault returns the IsDefault field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *OrganisationOrganisationGet) GetIsDefault() bool {
-	if o == nil || isNil(o.IsDefault.Get()) {
+	if o == nil || IsNil(o.IsDefault.Get()) {
 		var ret bool
 		return ret
 	}
@@ -237,7 +240,7 @@ func (o *OrganisationOrganisationGet) UnsetIsDefault() {
 
 // GetTeam returns the Team field value if set, zero value otherwise.
 func (o *OrganisationOrganisationGet) GetTeam() []string {
-	if o == nil || isNil(o.Team) {
+	if o == nil || IsNil(o.Team) {
 		var ret []string
 		return ret
 	}
@@ -247,7 +250,7 @@ func (o *OrganisationOrganisationGet) GetTeam() []string {
 // GetTeamOk returns a tuple with the Team field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *OrganisationOrganisationGet) GetTeamOk() ([]string, bool) {
-	if o == nil || isNil(o.Team) {
+	if o == nil || IsNil(o.Team) {
 		return nil, false
 	}
 	return o.Team, true
@@ -255,7 +258,7 @@ func (o *OrganisationOrganisationGet) GetTeamOk() ([]string, bool) {
 
 // HasTeam returns a boolean if a field has been set.
 func (o *OrganisationOrganisationGet) HasTeam() bool {
-	if o != nil && !isNil(o.Team) {
+	if o != nil && !IsNil(o.Team) {
 		return true
 	}
 
@@ -269,7 +272,7 @@ func (o *OrganisationOrganisationGet) SetTeam(v []string) {
 
 // GetOrganisationEnvVar returns the OrganisationEnvVar field value if set, zero value otherwise.
 func (o *OrganisationOrganisationGet) GetOrganisationEnvVar() []OrganisationEnvVarOrganisationGet {
-	if o == nil || isNil(o.OrganisationEnvVar) {
+	if o == nil || IsNil(o.OrganisationEnvVar) {
 		var ret []OrganisationEnvVarOrganisationGet
 		return ret
 	}
@@ -279,7 +282,7 @@ func (o *OrganisationOrganisationGet) GetOrganisationEnvVar() []OrganisationEnvV
 // GetOrganisationEnvVarOk returns a tuple with the OrganisationEnvVar field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *OrganisationOrganisationGet) GetOrganisationEnvVarOk() ([]OrganisationEnvVarOrganisationGet, bool) {
-	if o == nil || isNil(o.OrganisationEnvVar) {
+	if o == nil || IsNil(o.OrganisationEnvVar) {
 		return nil, false
 	}
 	return o.OrganisationEnvVar, true
@@ -287,7 +290,7 @@ func (o *OrganisationOrganisationGet) GetOrganisationEnvVarOk() ([]OrganisationE
 
 // HasOrganisationEnvVar returns a boolean if a field has been set.
 func (o *OrganisationOrganisationGet) HasOrganisationEnvVar() bool {
-	if o != nil && !isNil(o.OrganisationEnvVar) {
+	if o != nil && !IsNil(o.OrganisationEnvVar) {
 		return true
 	}
 
@@ -300,13 +303,17 @@ func (o *OrganisationOrganisationGet) SetOrganisationEnvVar(v []OrganisationEnvV
 }
 
 func (o OrganisationOrganisationGet) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o OrganisationOrganisationGet) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Id) {
-		toSerialize["id"] = o.Id
-	}
-	if !isNil(o.Uuid) {
-		toSerialize["uuid"] = o.Uuid
-	}
+	// skip: id is readOnly
+	// skip: uuid is readOnly
 	if o.Name.IsSet() {
 		toSerialize["name"] = o.Name.Get()
 	}
@@ -316,13 +323,13 @@ func (o OrganisationOrganisationGet) MarshalJSON() ([]byte, error) {
 	if o.IsDefault.IsSet() {
 		toSerialize["isDefault"] = o.IsDefault.Get()
 	}
-	if !isNil(o.Team) {
+	if !IsNil(o.Team) {
 		toSerialize["team"] = o.Team
 	}
-	if !isNil(o.OrganisationEnvVar) {
+	if !IsNil(o.OrganisationEnvVar) {
 		toSerialize["organisationEnvVar"] = o.OrganisationEnvVar
 	}
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 type NullableOrganisationOrganisationGet struct {

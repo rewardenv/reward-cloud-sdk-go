@@ -15,7 +15,7 @@ Method | HTTP request | Description
 
 ## ApiEnvVarTypesGetCollection
 
-> ApiEnvVarTypesGetCollection200Response ApiEnvVarTypesGetCollection(ctx).Page(page).ItemsPerPage(itemsPerPage).Execute()
+> []EnvVarType ApiEnvVarTypesGetCollection(ctx).Page(page).ItemsPerPage(itemsPerPage).Execute()
 
 Retrieves the collection of EnvVarType resources.
 
@@ -30,7 +30,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
@@ -44,7 +44,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `EnvVarTypeApi.ApiEnvVarTypesGetCollection``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiEnvVarTypesGetCollection`: ApiEnvVarTypesGetCollection200Response
+    // response from `ApiEnvVarTypesGetCollection`: []EnvVarType
     fmt.Fprintf(os.Stdout, "Response from `EnvVarTypeApi.ApiEnvVarTypesGetCollection`: %v\n", resp)
 }
 ```
@@ -65,7 +65,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ApiEnvVarTypesGetCollection200Response**](ApiEnvVarTypesGetCollection200Response.md)
+[**[]EnvVarType**](EnvVarType.md)
 
 ### Authorization
 
@@ -74,7 +74,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
+- **Accept**: application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -98,7 +98,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
@@ -106,7 +106,7 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.EnvVarTypeApi.ApiEnvVarTypesIdDelete(context.Background(), id).Execute()
+    r, err := apiClient.EnvVarTypeApi.ApiEnvVarTypesIdDelete(context.Background(), id).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `EnvVarTypeApi.ApiEnvVarTypesIdDelete``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -151,7 +151,7 @@ Name | Type | Description  | Notes
 
 ## ApiEnvVarTypesIdGet
 
-> EnvVarTypeJsonhal ApiEnvVarTypesIdGet(ctx, id).Execute()
+> EnvVarType ApiEnvVarTypesIdGet(ctx, id).Execute()
 
 Retrieves a EnvVarType resource.
 
@@ -166,7 +166,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
@@ -179,7 +179,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `EnvVarTypeApi.ApiEnvVarTypesIdGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiEnvVarTypesIdGet`: EnvVarTypeJsonhal
+    // response from `ApiEnvVarTypesIdGet`: EnvVarType
     fmt.Fprintf(os.Stdout, "Response from `EnvVarTypeApi.ApiEnvVarTypesIdGet`: %v\n", resp)
 }
 ```
@@ -203,7 +203,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**EnvVarTypeJsonhal**](EnvVarTypeJsonhal.md)
+[**EnvVarType**](EnvVarType.md)
 
 ### Authorization
 
@@ -212,7 +212,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
+- **Accept**: application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -221,7 +221,7 @@ Name | Type | Description  | Notes
 
 ## ApiEnvVarTypesIdPatch
 
-> EnvVarTypeJsonhal ApiEnvVarTypesIdPatch(ctx, id).EnvVarType(envVarType).Execute()
+> EnvVarType ApiEnvVarTypesIdPatch(ctx, id).EnvVarType(envVarType).Execute()
 
 Updates the EnvVarType resource.
 
@@ -236,12 +236,12 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    id := "id_example" // string | EnvVarType identifier
     envVarType := *openapiclient.NewEnvVarType() // EnvVarType | The updated EnvVarType resource
+    id := "id_example" // string | EnvVarType identifier
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -250,7 +250,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `EnvVarTypeApi.ApiEnvVarTypesIdPatch``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiEnvVarTypesIdPatch`: EnvVarTypeJsonhal
+    // response from `ApiEnvVarTypesIdPatch`: EnvVarType
     fmt.Fprintf(os.Stdout, "Response from `EnvVarTypeApi.ApiEnvVarTypesIdPatch`: %v\n", resp)
 }
 ```
@@ -270,12 +270,12 @@ Other parameters are passed through a pointer to a apiApiEnvVarTypesIdPatchReque
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-
  **envVarType** | [**EnvVarType**](EnvVarType.md) | The updated EnvVarType resource | 
+
 
 ### Return type
 
-[**EnvVarTypeJsonhal**](EnvVarTypeJsonhal.md)
+[**EnvVarType**](EnvVarType.md)
 
 ### Authorization
 
@@ -283,8 +283,8 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: application/vnd.api+json
-- **Accept**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
+- **Content-Type**: application/merge-patch+json, application/vnd.api+json
+- **Accept**: application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -293,7 +293,7 @@ Name | Type | Description  | Notes
 
 ## ApiEnvVarTypesIdPut
 
-> EnvVarTypeJsonhal ApiEnvVarTypesIdPut(ctx, id).EnvVarTypeJsonhal(envVarTypeJsonhal).Execute()
+> EnvVarType ApiEnvVarTypesIdPut(ctx, id).EnvVarType(envVarType).Execute()
 
 Replaces the EnvVarType resource.
 
@@ -308,21 +308,21 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
+    envVarType := *openapiclient.NewEnvVarType() // EnvVarType | The updated EnvVarType resource
     id := "id_example" // string | EnvVarType identifier
-    envVarTypeJsonhal := *openapiclient.NewEnvVarTypeJsonhal() // EnvVarTypeJsonhal | The updated EnvVarType resource
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.EnvVarTypeApi.ApiEnvVarTypesIdPut(context.Background(), id).EnvVarTypeJsonhal(envVarTypeJsonhal).Execute()
+    resp, r, err := apiClient.EnvVarTypeApi.ApiEnvVarTypesIdPut(context.Background(), id).EnvVarType(envVarType).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `EnvVarTypeApi.ApiEnvVarTypesIdPut``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiEnvVarTypesIdPut`: EnvVarTypeJsonhal
+    // response from `ApiEnvVarTypesIdPut`: EnvVarType
     fmt.Fprintf(os.Stdout, "Response from `EnvVarTypeApi.ApiEnvVarTypesIdPut`: %v\n", resp)
 }
 ```
@@ -342,12 +342,12 @@ Other parameters are passed through a pointer to a apiApiEnvVarTypesIdPutRequest
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **envVarType** | [**EnvVarType**](EnvVarType.md) | The updated EnvVarType resource | 
 
- **envVarTypeJsonhal** | [**EnvVarTypeJsonhal**](EnvVarTypeJsonhal.md) | The updated EnvVarType resource | 
 
 ### Return type
 
-[**EnvVarTypeJsonhal**](EnvVarTypeJsonhal.md)
+[**EnvVarType**](EnvVarType.md)
 
 ### Authorization
 
@@ -355,8 +355,8 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
-- **Accept**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
+- **Content-Type**: application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
+- **Accept**: application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -365,7 +365,7 @@ Name | Type | Description  | Notes
 
 ## ApiEnvVarTypesPost
 
-> EnvVarTypeJsonhal ApiEnvVarTypesPost(ctx).EnvVarTypeJsonhal(envVarTypeJsonhal).Execute()
+> EnvVarType ApiEnvVarTypesPost(ctx).EnvVarType(envVarType).Execute()
 
 Creates a EnvVarType resource.
 
@@ -380,20 +380,20 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    envVarTypeJsonhal := *openapiclient.NewEnvVarTypeJsonhal() // EnvVarTypeJsonhal | The new EnvVarType resource
+    envVarType := *openapiclient.NewEnvVarType() // EnvVarType | The new EnvVarType resource
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.EnvVarTypeApi.ApiEnvVarTypesPost(context.Background()).EnvVarTypeJsonhal(envVarTypeJsonhal).Execute()
+    resp, r, err := apiClient.EnvVarTypeApi.ApiEnvVarTypesPost(context.Background()).EnvVarType(envVarType).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `EnvVarTypeApi.ApiEnvVarTypesPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiEnvVarTypesPost`: EnvVarTypeJsonhal
+    // response from `ApiEnvVarTypesPost`: EnvVarType
     fmt.Fprintf(os.Stdout, "Response from `EnvVarTypeApi.ApiEnvVarTypesPost`: %v\n", resp)
 }
 ```
@@ -409,11 +409,11 @@ Other parameters are passed through a pointer to a apiApiEnvVarTypesPostRequest 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **envVarTypeJsonhal** | [**EnvVarTypeJsonhal**](EnvVarTypeJsonhal.md) | The new EnvVarType resource | 
+ **envVarType** | [**EnvVarType**](EnvVarType.md) | The new EnvVarType resource | 
 
 ### Return type
 
-[**EnvVarTypeJsonhal**](EnvVarTypeJsonhal.md)
+[**EnvVarType**](EnvVarType.md)
 
 ### Authorization
 
@@ -421,8 +421,8 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
-- **Accept**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
+- **Content-Type**: application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
+- **Accept**: application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)

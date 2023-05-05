@@ -13,7 +13,7 @@ package rewardcloud
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"reflect"
@@ -23,7 +23,7 @@ import (
 // RegionApiService RegionApi service
 type RegionApiService service
 
-type ApiApiRegionsGetCollectionRequest struct {
+type RegionApiApiRegionsGetCollectionRequest struct {
 	ctx          context.Context
 	ApiService   *RegionApiService
 	page         *int32
@@ -33,28 +33,28 @@ type ApiApiRegionsGetCollectionRequest struct {
 }
 
 // The collection page number
-func (r ApiApiRegionsGetCollectionRequest) Page(page int32) ApiApiRegionsGetCollectionRequest {
+func (r RegionApiApiRegionsGetCollectionRequest) Page(page int32) RegionApiApiRegionsGetCollectionRequest {
 	r.page = &page
 	return r
 }
 
 // The number of items per page
-func (r ApiApiRegionsGetCollectionRequest) ItemsPerPage(itemsPerPage int32) ApiApiRegionsGetCollectionRequest {
+func (r RegionApiApiRegionsGetCollectionRequest) ItemsPerPage(itemsPerPage int32) RegionApiApiRegionsGetCollectionRequest {
 	r.itemsPerPage = &itemsPerPage
 	return r
 }
 
-func (r ApiApiRegionsGetCollectionRequest) Provider(provider string) ApiApiRegionsGetCollectionRequest {
+func (r RegionApiApiRegionsGetCollectionRequest) Provider(provider string) RegionApiApiRegionsGetCollectionRequest {
 	r.provider = &provider
 	return r
 }
 
-func (r ApiApiRegionsGetCollectionRequest) Provider2(provider2 []string) ApiApiRegionsGetCollectionRequest {
+func (r RegionApiApiRegionsGetCollectionRequest) Provider2(provider2 []string) RegionApiApiRegionsGetCollectionRequest {
 	r.provider2 = &provider2
 	return r
 }
 
-func (r ApiApiRegionsGetCollectionRequest) Execute() (*ApiRegionsGetCollection200Response, *http.Response, error) {
+func (r RegionApiApiRegionsGetCollectionRequest) Execute() ([]Region, *http.Response, error) {
 	return r.ApiService.ApiRegionsGetCollectionExecute(r)
 }
 
@@ -64,10 +64,10 @@ ApiRegionsGetCollection Retrieves the collection of Region resources.
 Retrieves the collection of Region resources.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiApiRegionsGetCollectionRequest
+	@return RegionApiApiRegionsGetCollectionRequest
 */
-func (a *RegionApiService) ApiRegionsGetCollection(ctx context.Context) ApiApiRegionsGetCollectionRequest {
-	return ApiApiRegionsGetCollectionRequest{
+func (a *RegionApiService) ApiRegionsGetCollection(ctx context.Context) RegionApiApiRegionsGetCollectionRequest {
+	return RegionApiApiRegionsGetCollectionRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -75,13 +75,13 @@ func (a *RegionApiService) ApiRegionsGetCollection(ctx context.Context) ApiApiRe
 
 // Execute executes the request
 //
-//	@return ApiRegionsGetCollection200Response
-func (a *RegionApiService) ApiRegionsGetCollectionExecute(r ApiApiRegionsGetCollectionRequest) (*ApiRegionsGetCollection200Response, *http.Response, error) {
+//	@return []Region
+func (a *RegionApiService) ApiRegionsGetCollectionExecute(r RegionApiApiRegionsGetCollectionRequest) ([]Region, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *ApiRegionsGetCollection200Response
+		localVarReturnValue []Region
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RegionApiService.ApiRegionsGetCollection")
@@ -96,23 +96,23 @@ func (a *RegionApiService) ApiRegionsGetCollectionExecute(r ApiApiRegionsGetColl
 	localVarFormParams := url.Values{}
 
 	if r.page != nil {
-		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
 	}
 	if r.itemsPerPage != nil {
-		localVarQueryParams.Add("itemsPerPage", parameterToString(*r.itemsPerPage, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "itemsPerPage", r.itemsPerPage, "")
 	}
 	if r.provider != nil {
-		localVarQueryParams.Add("provider", parameterToString(*r.provider, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "provider", r.provider, "")
 	}
 	if r.provider2 != nil {
 		t := *r.provider2
 		if reflect.TypeOf(t).Kind() == reflect.Slice {
 			s := reflect.ValueOf(t)
 			for i := 0; i < s.Len(); i++ {
-				localVarQueryParams.Add("provider[]", parameterToString(s.Index(i), "multi"))
+				parameterAddToHeaderOrQuery(localVarQueryParams, "provider[]", s.Index(i), "multi")
 			}
 		} else {
-			localVarQueryParams.Add("provider[]", parameterToString(t, "multi"))
+			parameterAddToHeaderOrQuery(localVarQueryParams, "provider[]", t, "multi")
 		}
 	}
 	// to determine the Content-Type header
@@ -125,7 +125,7 @@ func (a *RegionApiService) ApiRegionsGetCollectionExecute(r ApiApiRegionsGetColl
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/hal+json", "application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
+	localVarHTTPHeaderAccepts := []string{"application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -156,9 +156,9 @@ func (a *RegionApiService) ApiRegionsGetCollectionExecute(r ApiApiRegionsGetColl
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -183,13 +183,13 @@ func (a *RegionApiService) ApiRegionsGetCollectionExecute(r ApiApiRegionsGetColl
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiApiRegionsIdDeleteRequest struct {
+type RegionApiApiRegionsIdDeleteRequest struct {
 	ctx        context.Context
 	ApiService *RegionApiService
 	id         string
 }
 
-func (r ApiApiRegionsIdDeleteRequest) Execute() (*http.Response, error) {
+func (r RegionApiApiRegionsIdDeleteRequest) Execute() (*http.Response, error) {
 	return r.ApiService.ApiRegionsIdDeleteExecute(r)
 }
 
@@ -200,10 +200,10 @@ Removes the Region resource.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id Region identifier
-	@return ApiApiRegionsIdDeleteRequest
+	@return RegionApiApiRegionsIdDeleteRequest
 */
-func (a *RegionApiService) ApiRegionsIdDelete(ctx context.Context, id string) ApiApiRegionsIdDeleteRequest {
-	return ApiApiRegionsIdDeleteRequest{
+func (a *RegionApiService) ApiRegionsIdDelete(ctx context.Context, id string) RegionApiApiRegionsIdDeleteRequest {
+	return RegionApiApiRegionsIdDeleteRequest{
 		ApiService: a,
 		ctx:        ctx,
 		id:         id,
@@ -211,7 +211,7 @@ func (a *RegionApiService) ApiRegionsIdDelete(ctx context.Context, id string) Ap
 }
 
 // Execute executes the request
-func (a *RegionApiService) ApiRegionsIdDeleteExecute(r ApiApiRegionsIdDeleteRequest) (*http.Response, error) {
+func (a *RegionApiService) ApiRegionsIdDeleteExecute(r RegionApiApiRegionsIdDeleteRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
 		localVarPostBody   interface{}
@@ -224,7 +224,7 @@ func (a *RegionApiService) ApiRegionsIdDeleteExecute(r ApiApiRegionsIdDeleteRequ
 	}
 
 	localVarPath := localBasePath + "/api/regions/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -271,9 +271,9 @@ func (a *RegionApiService) ApiRegionsIdDeleteExecute(r ApiApiRegionsIdDeleteRequ
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -289,13 +289,13 @@ func (a *RegionApiService) ApiRegionsIdDeleteExecute(r ApiApiRegionsIdDeleteRequ
 	return localVarHTTPResponse, nil
 }
 
-type ApiApiRegionsIdGetRequest struct {
+type RegionApiApiRegionsIdGetRequest struct {
 	ctx        context.Context
 	ApiService *RegionApiService
 	id         string
 }
 
-func (r ApiApiRegionsIdGetRequest) Execute() (*RegionJsonhal, *http.Response, error) {
+func (r RegionApiApiRegionsIdGetRequest) Execute() (*Region, *http.Response, error) {
 	return r.ApiService.ApiRegionsIdGetExecute(r)
 }
 
@@ -306,10 +306,10 @@ Retrieves a Region resource.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id Region identifier
-	@return ApiApiRegionsIdGetRequest
+	@return RegionApiApiRegionsIdGetRequest
 */
-func (a *RegionApiService) ApiRegionsIdGet(ctx context.Context, id string) ApiApiRegionsIdGetRequest {
-	return ApiApiRegionsIdGetRequest{
+func (a *RegionApiService) ApiRegionsIdGet(ctx context.Context, id string) RegionApiApiRegionsIdGetRequest {
+	return RegionApiApiRegionsIdGetRequest{
 		ApiService: a,
 		ctx:        ctx,
 		id:         id,
@@ -318,13 +318,13 @@ func (a *RegionApiService) ApiRegionsIdGet(ctx context.Context, id string) ApiAp
 
 // Execute executes the request
 //
-//	@return RegionJsonhal
-func (a *RegionApiService) ApiRegionsIdGetExecute(r ApiApiRegionsIdGetRequest) (*RegionJsonhal, *http.Response, error) {
+//	@return Region
+func (a *RegionApiService) ApiRegionsIdGetExecute(r RegionApiApiRegionsIdGetRequest) (*Region, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *RegionJsonhal
+		localVarReturnValue *Region
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RegionApiService.ApiRegionsIdGet")
@@ -333,7 +333,7 @@ func (a *RegionApiService) ApiRegionsIdGetExecute(r ApiApiRegionsIdGetRequest) (
 	}
 
 	localVarPath := localBasePath + "/api/regions/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -349,7 +349,7 @@ func (a *RegionApiService) ApiRegionsIdGetExecute(r ApiApiRegionsIdGetRequest) (
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/hal+json", "application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
+	localVarHTTPHeaderAccepts := []string{"application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -380,9 +380,9 @@ func (a *RegionApiService) ApiRegionsIdGetExecute(r ApiApiRegionsIdGetRequest) (
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -407,20 +407,20 @@ func (a *RegionApiService) ApiRegionsIdGetExecute(r ApiApiRegionsIdGetRequest) (
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiApiRegionsIdPatchRequest struct {
+type RegionApiApiRegionsIdPatchRequest struct {
 	ctx        context.Context
 	ApiService *RegionApiService
-	id         string
 	region     *Region
+	id         string
 }
 
 // The updated Region resource
-func (r ApiApiRegionsIdPatchRequest) Region(region Region) ApiApiRegionsIdPatchRequest {
+func (r RegionApiApiRegionsIdPatchRequest) Region(region Region) RegionApiApiRegionsIdPatchRequest {
 	r.region = &region
 	return r
 }
 
-func (r ApiApiRegionsIdPatchRequest) Execute() (*RegionJsonhal, *http.Response, error) {
+func (r RegionApiApiRegionsIdPatchRequest) Execute() (*Region, *http.Response, error) {
 	return r.ApiService.ApiRegionsIdPatchExecute(r)
 }
 
@@ -431,10 +431,10 @@ Updates the Region resource.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id Region identifier
-	@return ApiApiRegionsIdPatchRequest
+	@return RegionApiApiRegionsIdPatchRequest
 */
-func (a *RegionApiService) ApiRegionsIdPatch(ctx context.Context, id string) ApiApiRegionsIdPatchRequest {
-	return ApiApiRegionsIdPatchRequest{
+func (a *RegionApiService) ApiRegionsIdPatch(ctx context.Context, id string) RegionApiApiRegionsIdPatchRequest {
+	return RegionApiApiRegionsIdPatchRequest{
 		ApiService: a,
 		ctx:        ctx,
 		id:         id,
@@ -443,13 +443,13 @@ func (a *RegionApiService) ApiRegionsIdPatch(ctx context.Context, id string) Api
 
 // Execute executes the request
 //
-//	@return RegionJsonhal
-func (a *RegionApiService) ApiRegionsIdPatchExecute(r ApiApiRegionsIdPatchRequest) (*RegionJsonhal, *http.Response, error) {
+//	@return Region
+func (a *RegionApiService) ApiRegionsIdPatchExecute(r RegionApiApiRegionsIdPatchRequest) (*Region, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *RegionJsonhal
+		localVarReturnValue *Region
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RegionApiService.ApiRegionsIdPatch")
@@ -458,7 +458,7 @@ func (a *RegionApiService) ApiRegionsIdPatchExecute(r ApiApiRegionsIdPatchReques
 	}
 
 	localVarPath := localBasePath + "/api/regions/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -468,7 +468,7 @@ func (a *RegionApiService) ApiRegionsIdPatchExecute(r ApiApiRegionsIdPatchReques
 	}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/vnd.api+json"}
+	localVarHTTPContentTypes := []string{"application/merge-patch+json", "application/vnd.api+json"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -477,7 +477,7 @@ func (a *RegionApiService) ApiRegionsIdPatchExecute(r ApiApiRegionsIdPatchReques
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/hal+json", "application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
+	localVarHTTPHeaderAccepts := []string{"application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -510,9 +510,9 @@ func (a *RegionApiService) ApiRegionsIdPatchExecute(r ApiApiRegionsIdPatchReques
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -537,20 +537,20 @@ func (a *RegionApiService) ApiRegionsIdPatchExecute(r ApiApiRegionsIdPatchReques
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiApiRegionsIdPutRequest struct {
-	ctx           context.Context
-	ApiService    *RegionApiService
-	id            string
-	regionJsonhal *RegionJsonhal
+type RegionApiApiRegionsIdPutRequest struct {
+	ctx        context.Context
+	ApiService *RegionApiService
+	region     *Region
+	id         string
 }
 
 // The updated Region resource
-func (r ApiApiRegionsIdPutRequest) RegionJsonhal(regionJsonhal RegionJsonhal) ApiApiRegionsIdPutRequest {
-	r.regionJsonhal = &regionJsonhal
+func (r RegionApiApiRegionsIdPutRequest) Region(region Region) RegionApiApiRegionsIdPutRequest {
+	r.region = &region
 	return r
 }
 
-func (r ApiApiRegionsIdPutRequest) Execute() (*RegionJsonhal, *http.Response, error) {
+func (r RegionApiApiRegionsIdPutRequest) Execute() (*Region, *http.Response, error) {
 	return r.ApiService.ApiRegionsIdPutExecute(r)
 }
 
@@ -561,10 +561,10 @@ Replaces the Region resource.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id Region identifier
-	@return ApiApiRegionsIdPutRequest
+	@return RegionApiApiRegionsIdPutRequest
 */
-func (a *RegionApiService) ApiRegionsIdPut(ctx context.Context, id string) ApiApiRegionsIdPutRequest {
-	return ApiApiRegionsIdPutRequest{
+func (a *RegionApiService) ApiRegionsIdPut(ctx context.Context, id string) RegionApiApiRegionsIdPutRequest {
+	return RegionApiApiRegionsIdPutRequest{
 		ApiService: a,
 		ctx:        ctx,
 		id:         id,
@@ -573,13 +573,13 @@ func (a *RegionApiService) ApiRegionsIdPut(ctx context.Context, id string) ApiAp
 
 // Execute executes the request
 //
-//	@return RegionJsonhal
-func (a *RegionApiService) ApiRegionsIdPutExecute(r ApiApiRegionsIdPutRequest) (*RegionJsonhal, *http.Response, error) {
+//	@return Region
+func (a *RegionApiService) ApiRegionsIdPutExecute(r RegionApiApiRegionsIdPutRequest) (*Region, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *RegionJsonhal
+		localVarReturnValue *Region
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RegionApiService.ApiRegionsIdPut")
@@ -588,17 +588,17 @@ func (a *RegionApiService) ApiRegionsIdPutExecute(r ApiApiRegionsIdPutRequest) (
 	}
 
 	localVarPath := localBasePath + "/api/regions/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.regionJsonhal == nil {
-		return localVarReturnValue, nil, reportError("regionJsonhal is required and must be specified")
+	if r.region == nil {
+		return localVarReturnValue, nil, reportError("region is required and must be specified")
 	}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/hal+json", "application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
+	localVarHTTPContentTypes := []string{"application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -607,7 +607,7 @@ func (a *RegionApiService) ApiRegionsIdPutExecute(r ApiApiRegionsIdPutRequest) (
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/hal+json", "application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
+	localVarHTTPHeaderAccepts := []string{"application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -615,7 +615,7 @@ func (a *RegionApiService) ApiRegionsIdPutExecute(r ApiApiRegionsIdPutRequest) (
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.regionJsonhal
+	localVarPostBody = r.region
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
@@ -640,9 +640,9 @@ func (a *RegionApiService) ApiRegionsIdPutExecute(r ApiApiRegionsIdPutRequest) (
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -667,12 +667,12 @@ func (a *RegionApiService) ApiRegionsIdPutExecute(r ApiApiRegionsIdPutRequest) (
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiApiRegionsIdgetWithProviderGetRequest struct {
+type RegionApiApiRegionsIdgetWithProviderGetRequest struct {
 	ctx        context.Context
 	ApiService *RegionApiService
 }
 
-func (r ApiApiRegionsIdgetWithProviderGetRequest) Execute() (*RegionJsonhal, *http.Response, error) {
+func (r RegionApiApiRegionsIdgetWithProviderGetRequest) Execute() (*Region, *http.Response, error) {
 	return r.ApiService.ApiRegionsIdgetWithProviderGetExecute(r)
 }
 
@@ -682,10 +682,10 @@ ApiRegionsIdgetWithProviderGet Retrieves a Region resource.
 Retrieves a Region resource.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiApiRegionsIdgetWithProviderGetRequest
+	@return RegionApiApiRegionsIdgetWithProviderGetRequest
 */
-func (a *RegionApiService) ApiRegionsIdgetWithProviderGet(ctx context.Context) ApiApiRegionsIdgetWithProviderGetRequest {
-	return ApiApiRegionsIdgetWithProviderGetRequest{
+func (a *RegionApiService) ApiRegionsIdgetWithProviderGet(ctx context.Context) RegionApiApiRegionsIdgetWithProviderGetRequest {
+	return RegionApiApiRegionsIdgetWithProviderGetRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -693,13 +693,13 @@ func (a *RegionApiService) ApiRegionsIdgetWithProviderGet(ctx context.Context) A
 
 // Execute executes the request
 //
-//	@return RegionJsonhal
-func (a *RegionApiService) ApiRegionsIdgetWithProviderGetExecute(r ApiApiRegionsIdgetWithProviderGetRequest) (*RegionJsonhal, *http.Response, error) {
+//	@return Region
+func (a *RegionApiService) ApiRegionsIdgetWithProviderGetExecute(r RegionApiApiRegionsIdgetWithProviderGetRequest) (*Region, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *RegionJsonhal
+		localVarReturnValue *Region
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RegionApiService.ApiRegionsIdgetWithProviderGet")
@@ -723,7 +723,7 @@ func (a *RegionApiService) ApiRegionsIdgetWithProviderGetExecute(r ApiApiRegions
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/hal+json", "application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
+	localVarHTTPHeaderAccepts := []string{"application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -754,9 +754,9 @@ func (a *RegionApiService) ApiRegionsIdgetWithProviderGetExecute(r ApiApiRegions
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -781,19 +781,19 @@ func (a *RegionApiService) ApiRegionsIdgetWithProviderGetExecute(r ApiApiRegions
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiApiRegionsPostRequest struct {
-	ctx           context.Context
-	ApiService    *RegionApiService
-	regionJsonhal *RegionJsonhal
+type RegionApiApiRegionsPostRequest struct {
+	ctx        context.Context
+	ApiService *RegionApiService
+	region     *Region
 }
 
 // The new Region resource
-func (r ApiApiRegionsPostRequest) RegionJsonhal(regionJsonhal RegionJsonhal) ApiApiRegionsPostRequest {
-	r.regionJsonhal = &regionJsonhal
+func (r RegionApiApiRegionsPostRequest) Region(region Region) RegionApiApiRegionsPostRequest {
+	r.region = &region
 	return r
 }
 
-func (r ApiApiRegionsPostRequest) Execute() (*RegionJsonhal, *http.Response, error) {
+func (r RegionApiApiRegionsPostRequest) Execute() (*Region, *http.Response, error) {
 	return r.ApiService.ApiRegionsPostExecute(r)
 }
 
@@ -803,10 +803,10 @@ ApiRegionsPost Creates a Region resource.
 Creates a Region resource.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiApiRegionsPostRequest
+	@return RegionApiApiRegionsPostRequest
 */
-func (a *RegionApiService) ApiRegionsPost(ctx context.Context) ApiApiRegionsPostRequest {
-	return ApiApiRegionsPostRequest{
+func (a *RegionApiService) ApiRegionsPost(ctx context.Context) RegionApiApiRegionsPostRequest {
+	return RegionApiApiRegionsPostRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -814,13 +814,13 @@ func (a *RegionApiService) ApiRegionsPost(ctx context.Context) ApiApiRegionsPost
 
 // Execute executes the request
 //
-//	@return RegionJsonhal
-func (a *RegionApiService) ApiRegionsPostExecute(r ApiApiRegionsPostRequest) (*RegionJsonhal, *http.Response, error) {
+//	@return Region
+func (a *RegionApiService) ApiRegionsPostExecute(r RegionApiApiRegionsPostRequest) (*Region, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *RegionJsonhal
+		localVarReturnValue *Region
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RegionApiService.ApiRegionsPost")
@@ -833,12 +833,12 @@ func (a *RegionApiService) ApiRegionsPostExecute(r ApiApiRegionsPostRequest) (*R
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.regionJsonhal == nil {
-		return localVarReturnValue, nil, reportError("regionJsonhal is required and must be specified")
+	if r.region == nil {
+		return localVarReturnValue, nil, reportError("region is required and must be specified")
 	}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/hal+json", "application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
+	localVarHTTPContentTypes := []string{"application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -847,7 +847,7 @@ func (a *RegionApiService) ApiRegionsPostExecute(r ApiApiRegionsPostRequest) (*R
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/hal+json", "application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
+	localVarHTTPHeaderAccepts := []string{"application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -855,7 +855,7 @@ func (a *RegionApiService) ApiRegionsPostExecute(r ApiApiRegionsPostRequest) (*R
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.regionJsonhal
+	localVarPostBody = r.region
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
@@ -880,9 +880,9 @@ func (a *RegionApiService) ApiRegionsPostExecute(r ApiApiRegionsPostRequest) (*R
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -907,12 +907,12 @@ func (a *RegionApiService) ApiRegionsPostExecute(r ApiApiRegionsPostRequest) (*R
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiApiRegionsgetWithProviderGetRequest struct {
+type RegionApiApiRegionsgetWithProviderGetRequest struct {
 	ctx        context.Context
 	ApiService *RegionApiService
 }
 
-func (r ApiApiRegionsgetWithProviderGetRequest) Execute() (*RegionJsonhal, *http.Response, error) {
+func (r RegionApiApiRegionsgetWithProviderGetRequest) Execute() (*Region, *http.Response, error) {
 	return r.ApiService.ApiRegionsgetWithProviderGetExecute(r)
 }
 
@@ -922,10 +922,10 @@ ApiRegionsgetWithProviderGet Retrieves a Region resource.
 Retrieves a Region resource.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiApiRegionsgetWithProviderGetRequest
+	@return RegionApiApiRegionsgetWithProviderGetRequest
 */
-func (a *RegionApiService) ApiRegionsgetWithProviderGet(ctx context.Context) ApiApiRegionsgetWithProviderGetRequest {
-	return ApiApiRegionsgetWithProviderGetRequest{
+func (a *RegionApiService) ApiRegionsgetWithProviderGet(ctx context.Context) RegionApiApiRegionsgetWithProviderGetRequest {
+	return RegionApiApiRegionsgetWithProviderGetRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -933,13 +933,13 @@ func (a *RegionApiService) ApiRegionsgetWithProviderGet(ctx context.Context) Api
 
 // Execute executes the request
 //
-//	@return RegionJsonhal
-func (a *RegionApiService) ApiRegionsgetWithProviderGetExecute(r ApiApiRegionsgetWithProviderGetRequest) (*RegionJsonhal, *http.Response, error) {
+//	@return Region
+func (a *RegionApiService) ApiRegionsgetWithProviderGetExecute(r RegionApiApiRegionsgetWithProviderGetRequest) (*Region, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *RegionJsonhal
+		localVarReturnValue *Region
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RegionApiService.ApiRegionsgetWithProviderGet")
@@ -963,7 +963,7 @@ func (a *RegionApiService) ApiRegionsgetWithProviderGetExecute(r ApiApiRegionsge
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/hal+json", "application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
+	localVarHTTPHeaderAccepts := []string{"application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -994,9 +994,9 @@ func (a *RegionApiService) ApiRegionsgetWithProviderGetExecute(r ApiApiRegionsge
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}

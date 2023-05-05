@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ProductJsonhalProductOutput type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ProductJsonhalProductOutput{}
+
 // ProductJsonhalProductOutput Class Product
 type ProductJsonhalProductOutput struct {
 	Links        *AbstractEnvironmentJsonhalLinks                `json:"_links,omitempty"`
@@ -46,7 +49,7 @@ func NewProductJsonhalProductOutputWithDefaults() *ProductJsonhalProductOutput {
 
 // GetLinks returns the Links field value if set, zero value otherwise.
 func (o *ProductJsonhalProductOutput) GetLinks() AbstractEnvironmentJsonhalLinks {
-	if o == nil || isNil(o.Links) {
+	if o == nil || IsNil(o.Links) {
 		var ret AbstractEnvironmentJsonhalLinks
 		return ret
 	}
@@ -56,7 +59,7 @@ func (o *ProductJsonhalProductOutput) GetLinks() AbstractEnvironmentJsonhalLinks
 // GetLinksOk returns a tuple with the Links field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ProductJsonhalProductOutput) GetLinksOk() (*AbstractEnvironmentJsonhalLinks, bool) {
-	if o == nil || isNil(o.Links) {
+	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
 	return o.Links, true
@@ -64,7 +67,7 @@ func (o *ProductJsonhalProductOutput) GetLinksOk() (*AbstractEnvironmentJsonhalL
 
 // HasLinks returns a boolean if a field has been set.
 func (o *ProductJsonhalProductOutput) HasLinks() bool {
-	if o != nil && !isNil(o.Links) {
+	if o != nil && !IsNil(o.Links) {
 		return true
 	}
 
@@ -78,7 +81,7 @@ func (o *ProductJsonhalProductOutput) SetLinks(v AbstractEnvironmentJsonhalLinks
 
 // GetPaymentId returns the PaymentId field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ProductJsonhalProductOutput) GetPaymentId() string {
-	if o == nil || isNil(o.PaymentId.Get()) {
+	if o == nil || IsNil(o.PaymentId.Get()) {
 		var ret string
 		return ret
 	}
@@ -121,7 +124,7 @@ func (o *ProductJsonhalProductOutput) UnsetPaymentId() {
 
 // GetName returns the Name field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ProductJsonhalProductOutput) GetName() string {
-	if o == nil || isNil(o.Name.Get()) {
+	if o == nil || IsNil(o.Name.Get()) {
 		var ret string
 		return ret
 	}
@@ -164,7 +167,7 @@ func (o *ProductJsonhalProductOutput) UnsetName() {
 
 // GetDescription returns the Description field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ProductJsonhalProductOutput) GetDescription() string {
-	if o == nil || isNil(o.Description.Get()) {
+	if o == nil || IsNil(o.Description.Get()) {
 		var ret string
 		return ret
 	}
@@ -218,7 +221,7 @@ func (o *ProductJsonhalProductOutput) GetMetadata() []string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ProductJsonhalProductOutput) GetMetadataOk() ([]string, bool) {
-	if o == nil || isNil(o.Metadata) {
+	if o == nil || IsNil(o.Metadata) {
 		return nil, false
 	}
 	return o.Metadata, true
@@ -226,7 +229,7 @@ func (o *ProductJsonhalProductOutput) GetMetadataOk() ([]string, bool) {
 
 // HasMetadata returns a boolean if a field has been set.
 func (o *ProductJsonhalProductOutput) HasMetadata() bool {
-	if o != nil && isNil(o.Metadata) {
+	if o != nil && IsNil(o.Metadata) {
 		return true
 	}
 
@@ -240,7 +243,7 @@ func (o *ProductJsonhalProductOutput) SetMetadata(v []string) {
 
 // GetIsActive returns the IsActive field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ProductJsonhalProductOutput) GetIsActive() bool {
-	if o == nil || isNil(o.IsActive.Get()) {
+	if o == nil || IsNil(o.IsActive.Get()) {
 		var ret bool
 		return ret
 	}
@@ -283,7 +286,7 @@ func (o *ProductJsonhalProductOutput) UnsetIsActive() {
 
 // GetPrices returns the Prices field value if set, zero value otherwise.
 func (o *ProductJsonhalProductOutput) GetPrices() []PriceJsonhalProductOutput {
-	if o == nil || isNil(o.Prices) {
+	if o == nil || IsNil(o.Prices) {
 		var ret []PriceJsonhalProductOutput
 		return ret
 	}
@@ -293,7 +296,7 @@ func (o *ProductJsonhalProductOutput) GetPrices() []PriceJsonhalProductOutput {
 // GetPricesOk returns a tuple with the Prices field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ProductJsonhalProductOutput) GetPricesOk() ([]PriceJsonhalProductOutput, bool) {
-	if o == nil || isNil(o.Prices) {
+	if o == nil || IsNil(o.Prices) {
 		return nil, false
 	}
 	return o.Prices, true
@@ -301,7 +304,7 @@ func (o *ProductJsonhalProductOutput) GetPricesOk() ([]PriceJsonhalProductOutput
 
 // HasPrices returns a boolean if a field has been set.
 func (o *ProductJsonhalProductOutput) HasPrices() bool {
-	if o != nil && !isNil(o.Prices) {
+	if o != nil && !IsNil(o.Prices) {
 		return true
 	}
 
@@ -315,7 +318,7 @@ func (o *ProductJsonhalProductOutput) SetPrices(v []PriceJsonhalProductOutput) {
 
 // GetDefaultPrice returns the DefaultPrice field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ProductJsonhalProductOutput) GetDefaultPrice() ProductJsonhalProductOutputDefaultPrice {
-	if o == nil || isNil(o.DefaultPrice.Get()) {
+	if o == nil || IsNil(o.DefaultPrice.Get()) {
 		var ret ProductJsonhalProductOutputDefaultPrice
 		return ret
 	}
@@ -358,7 +361,7 @@ func (o *ProductJsonhalProductOutput) UnsetDefaultPrice() {
 
 // GetRegion returns the Region field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ProductJsonhalProductOutput) GetRegion() string {
-	if o == nil || isNil(o.Region.Get()) {
+	if o == nil || IsNil(o.Region.Get()) {
 		var ret string
 		return ret
 	}
@@ -400,8 +403,16 @@ func (o *ProductJsonhalProductOutput) UnsetRegion() {
 }
 
 func (o ProductJsonhalProductOutput) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o ProductJsonhalProductOutput) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Links) {
+	if !IsNil(o.Links) {
 		toSerialize["_links"] = o.Links
 	}
 	if o.PaymentId.IsSet() {
@@ -419,7 +430,7 @@ func (o ProductJsonhalProductOutput) MarshalJSON() ([]byte, error) {
 	if o.IsActive.IsSet() {
 		toSerialize["isActive"] = o.IsActive.Get()
 	}
-	if !isNil(o.Prices) {
+	if !IsNil(o.Prices) {
 		toSerialize["prices"] = o.Prices
 	}
 	if o.DefaultPrice.IsSet() {
@@ -428,7 +439,7 @@ func (o ProductJsonhalProductOutput) MarshalJSON() ([]byte, error) {
 	if o.Region.IsSet() {
 		toSerialize["region"] = o.Region.Get()
 	}
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 type NullableProductJsonhalProductOutput struct {

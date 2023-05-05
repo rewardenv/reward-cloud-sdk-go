@@ -15,7 +15,7 @@ Method | HTTP request | Description
 
 ## ApiImportedDatasGetCollection
 
-> ApiImportedDatasGetCollection200Response ApiImportedDatasGetCollection(ctx).Page(page).ItemsPerPage(itemsPerPage).Environment(environment).Environment2(environment2).DataTransferDataType(dataTransferDataType).DataTransferDataType2(dataTransferDataType2).State(state).State2(state2).OrderCreatedAt(orderCreatedAt).OrderUpdatedAt(orderUpdatedAt).Execute()
+> []ImportedData ApiImportedDatasGetCollection(ctx).Page(page).ItemsPerPage(itemsPerPage).Environment(environment).Environment2(environment2).DataTransferDataType(dataTransferDataType).DataTransferDataType2(dataTransferDataType2).State(state).State2(state2).OrderCreatedAt(orderCreatedAt).OrderUpdatedAt(orderUpdatedAt).Execute()
 
 Retrieves the collection of ImportedData resources.
 
@@ -30,7 +30,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
@@ -52,7 +52,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `ImportedDataApi.ApiImportedDatasGetCollection``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiImportedDatasGetCollection`: ApiImportedDatasGetCollection200Response
+    // response from `ApiImportedDatasGetCollection`: []ImportedData
     fmt.Fprintf(os.Stdout, "Response from `ImportedDataApi.ApiImportedDatasGetCollection`: %v\n", resp)
 }
 ```
@@ -81,7 +81,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ApiImportedDatasGetCollection200Response**](ApiImportedDatasGetCollection200Response.md)
+[**[]ImportedData**](ImportedData.md)
 
 ### Authorization
 
@@ -90,7 +90,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
+- **Accept**: application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -114,7 +114,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
@@ -122,7 +122,7 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ImportedDataApi.ApiImportedDatasIdDelete(context.Background(), id).Execute()
+    r, err := apiClient.ImportedDataApi.ApiImportedDatasIdDelete(context.Background(), id).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ImportedDataApi.ApiImportedDatasIdDelete``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -167,7 +167,7 @@ Name | Type | Description  | Notes
 
 ## ApiImportedDatasIdGet
 
-> ImportedDataJsonhal ApiImportedDatasIdGet(ctx, id).Execute()
+> ImportedData ApiImportedDatasIdGet(ctx, id).Execute()
 
 Retrieves a ImportedData resource.
 
@@ -182,7 +182,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
@@ -195,7 +195,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `ImportedDataApi.ApiImportedDatasIdGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiImportedDatasIdGet`: ImportedDataJsonhal
+    // response from `ApiImportedDatasIdGet`: ImportedData
     fmt.Fprintf(os.Stdout, "Response from `ImportedDataApi.ApiImportedDatasIdGet`: %v\n", resp)
 }
 ```
@@ -219,7 +219,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ImportedDataJsonhal**](ImportedDataJsonhal.md)
+[**ImportedData**](ImportedData.md)
 
 ### Authorization
 
@@ -228,7 +228,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
+- **Accept**: application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -237,7 +237,7 @@ Name | Type | Description  | Notes
 
 ## ApiImportedDatasIdPatch
 
-> ImportedDataJsonhal ApiImportedDatasIdPatch(ctx, id).ImportedData(importedData).Execute()
+> ImportedData ApiImportedDatasIdPatch(ctx, id).ImportedData(importedData).Execute()
 
 Updates the ImportedData resource.
 
@@ -252,12 +252,12 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    id := "id_example" // string | ImportedData identifier
     importedData := *openapiclient.NewImportedData() // ImportedData | The updated ImportedData resource
+    id := "id_example" // string | ImportedData identifier
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -266,7 +266,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `ImportedDataApi.ApiImportedDatasIdPatch``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiImportedDatasIdPatch`: ImportedDataJsonhal
+    // response from `ApiImportedDatasIdPatch`: ImportedData
     fmt.Fprintf(os.Stdout, "Response from `ImportedDataApi.ApiImportedDatasIdPatch`: %v\n", resp)
 }
 ```
@@ -286,12 +286,12 @@ Other parameters are passed through a pointer to a apiApiImportedDatasIdPatchReq
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-
  **importedData** | [**ImportedData**](ImportedData.md) | The updated ImportedData resource | 
+
 
 ### Return type
 
-[**ImportedDataJsonhal**](ImportedDataJsonhal.md)
+[**ImportedData**](ImportedData.md)
 
 ### Authorization
 
@@ -299,8 +299,8 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: application/vnd.api+json
-- **Accept**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
+- **Content-Type**: application/merge-patch+json, application/vnd.api+json
+- **Accept**: application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -309,7 +309,7 @@ Name | Type | Description  | Notes
 
 ## ApiImportedDatasIdPut
 
-> ImportedDataJsonhal ApiImportedDatasIdPut(ctx, id).ImportedDataJsonhal(importedDataJsonhal).Execute()
+> ImportedData ApiImportedDatasIdPut(ctx, id).ImportedData(importedData).Execute()
 
 Replaces the ImportedData resource.
 
@@ -324,21 +324,21 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
+    importedData := *openapiclient.NewImportedData() // ImportedData | The updated ImportedData resource
     id := "id_example" // string | ImportedData identifier
-    importedDataJsonhal := *openapiclient.NewImportedDataJsonhal() // ImportedDataJsonhal | The updated ImportedData resource
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ImportedDataApi.ApiImportedDatasIdPut(context.Background(), id).ImportedDataJsonhal(importedDataJsonhal).Execute()
+    resp, r, err := apiClient.ImportedDataApi.ApiImportedDatasIdPut(context.Background(), id).ImportedData(importedData).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ImportedDataApi.ApiImportedDatasIdPut``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiImportedDatasIdPut`: ImportedDataJsonhal
+    // response from `ApiImportedDatasIdPut`: ImportedData
     fmt.Fprintf(os.Stdout, "Response from `ImportedDataApi.ApiImportedDatasIdPut`: %v\n", resp)
 }
 ```
@@ -358,12 +358,12 @@ Other parameters are passed through a pointer to a apiApiImportedDatasIdPutReque
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **importedData** | [**ImportedData**](ImportedData.md) | The updated ImportedData resource | 
 
- **importedDataJsonhal** | [**ImportedDataJsonhal**](ImportedDataJsonhal.md) | The updated ImportedData resource | 
 
 ### Return type
 
-[**ImportedDataJsonhal**](ImportedDataJsonhal.md)
+[**ImportedData**](ImportedData.md)
 
 ### Authorization
 
@@ -371,8 +371,8 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
-- **Accept**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
+- **Content-Type**: application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
+- **Accept**: application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -381,7 +381,7 @@ Name | Type | Description  | Notes
 
 ## ApiImportedDatasPost
 
-> ImportedDataJsonhal ApiImportedDatasPost(ctx).ImportedDataJsonhal(importedDataJsonhal).Execute()
+> ImportedData ApiImportedDatasPost(ctx).ImportedData(importedData).Execute()
 
 Creates a ImportedData resource.
 
@@ -396,20 +396,20 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    importedDataJsonhal := *openapiclient.NewImportedDataJsonhal() // ImportedDataJsonhal | The new ImportedData resource
+    importedData := *openapiclient.NewImportedData() // ImportedData | The new ImportedData resource
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ImportedDataApi.ApiImportedDatasPost(context.Background()).ImportedDataJsonhal(importedDataJsonhal).Execute()
+    resp, r, err := apiClient.ImportedDataApi.ApiImportedDatasPost(context.Background()).ImportedData(importedData).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ImportedDataApi.ApiImportedDatasPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiImportedDatasPost`: ImportedDataJsonhal
+    // response from `ApiImportedDatasPost`: ImportedData
     fmt.Fprintf(os.Stdout, "Response from `ImportedDataApi.ApiImportedDatasPost`: %v\n", resp)
 }
 ```
@@ -425,11 +425,11 @@ Other parameters are passed through a pointer to a apiApiImportedDatasPostReques
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **importedDataJsonhal** | [**ImportedDataJsonhal**](ImportedDataJsonhal.md) | The new ImportedData resource | 
+ **importedData** | [**ImportedData**](ImportedData.md) | The new ImportedData resource | 
 
 ### Return type
 
-[**ImportedDataJsonhal**](ImportedDataJsonhal.md)
+[**ImportedData**](ImportedData.md)
 
 ### Authorization
 
@@ -437,8 +437,8 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
-- **Accept**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
+- **Content-Type**: application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
+- **Accept**: application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)

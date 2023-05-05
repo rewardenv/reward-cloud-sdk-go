@@ -15,7 +15,7 @@ Method | HTTP request | Description
 
 ## ApiComponentVersionEnvVarsGetCollection
 
-> ApiComponentVersionEnvVarsGetCollection200Response ApiComponentVersionEnvVarsGetCollection(ctx).Page(page).ItemsPerPage(itemsPerPage).ComponentVersion(componentVersion).ComponentVersion2(componentVersion2).EnvVarType(envVarType).EnvVarType2(envVarType2).Execute()
+> []ComponentVersionEnvVar ApiComponentVersionEnvVarsGetCollection(ctx).Page(page).ItemsPerPage(itemsPerPage).ComponentVersion(componentVersion).ComponentVersion2(componentVersion2).EnvVarType(envVarType).EnvVarType2(envVarType2).Execute()
 
 Retrieves the collection of ComponentVersionEnvVar resources.
 
@@ -30,7 +30,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
@@ -48,7 +48,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `ComponentVersionEnvVarApi.ApiComponentVersionEnvVarsGetCollection``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiComponentVersionEnvVarsGetCollection`: ApiComponentVersionEnvVarsGetCollection200Response
+    // response from `ApiComponentVersionEnvVarsGetCollection`: []ComponentVersionEnvVar
     fmt.Fprintf(os.Stdout, "Response from `ComponentVersionEnvVarApi.ApiComponentVersionEnvVarsGetCollection`: %v\n", resp)
 }
 ```
@@ -73,7 +73,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ApiComponentVersionEnvVarsGetCollection200Response**](ApiComponentVersionEnvVarsGetCollection200Response.md)
+[**[]ComponentVersionEnvVar**](ComponentVersionEnvVar.md)
 
 ### Authorization
 
@@ -82,7 +82,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
+- **Accept**: application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -106,7 +106,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
@@ -114,7 +114,7 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ComponentVersionEnvVarApi.ApiComponentVersionEnvVarsIdDelete(context.Background(), id).Execute()
+    r, err := apiClient.ComponentVersionEnvVarApi.ApiComponentVersionEnvVarsIdDelete(context.Background(), id).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ComponentVersionEnvVarApi.ApiComponentVersionEnvVarsIdDelete``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -159,7 +159,7 @@ Name | Type | Description  | Notes
 
 ## ApiComponentVersionEnvVarsIdGet
 
-> ComponentVersionEnvVarJsonhal ApiComponentVersionEnvVarsIdGet(ctx, id).Execute()
+> ComponentVersionEnvVar ApiComponentVersionEnvVarsIdGet(ctx, id).Execute()
 
 Retrieves a ComponentVersionEnvVar resource.
 
@@ -174,7 +174,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
@@ -187,7 +187,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `ComponentVersionEnvVarApi.ApiComponentVersionEnvVarsIdGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiComponentVersionEnvVarsIdGet`: ComponentVersionEnvVarJsonhal
+    // response from `ApiComponentVersionEnvVarsIdGet`: ComponentVersionEnvVar
     fmt.Fprintf(os.Stdout, "Response from `ComponentVersionEnvVarApi.ApiComponentVersionEnvVarsIdGet`: %v\n", resp)
 }
 ```
@@ -211,7 +211,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ComponentVersionEnvVarJsonhal**](ComponentVersionEnvVarJsonhal.md)
+[**ComponentVersionEnvVar**](ComponentVersionEnvVar.md)
 
 ### Authorization
 
@@ -220,7 +220,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
+- **Accept**: application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -229,7 +229,7 @@ Name | Type | Description  | Notes
 
 ## ApiComponentVersionEnvVarsIdPatch
 
-> ComponentVersionEnvVarJsonhal ApiComponentVersionEnvVarsIdPatch(ctx, id).ComponentVersionEnvVar(componentVersionEnvVar).Execute()
+> ComponentVersionEnvVar ApiComponentVersionEnvVarsIdPatch(ctx, id).ComponentVersionEnvVar(componentVersionEnvVar).Execute()
 
 Updates the ComponentVersionEnvVar resource.
 
@@ -244,12 +244,12 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    id := "id_example" // string | ComponentVersionEnvVar identifier
     componentVersionEnvVar := *openapiclient.NewComponentVersionEnvVar() // ComponentVersionEnvVar | The updated ComponentVersionEnvVar resource
+    id := "id_example" // string | ComponentVersionEnvVar identifier
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -258,7 +258,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `ComponentVersionEnvVarApi.ApiComponentVersionEnvVarsIdPatch``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiComponentVersionEnvVarsIdPatch`: ComponentVersionEnvVarJsonhal
+    // response from `ApiComponentVersionEnvVarsIdPatch`: ComponentVersionEnvVar
     fmt.Fprintf(os.Stdout, "Response from `ComponentVersionEnvVarApi.ApiComponentVersionEnvVarsIdPatch`: %v\n", resp)
 }
 ```
@@ -278,12 +278,12 @@ Other parameters are passed through a pointer to a apiApiComponentVersionEnvVars
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-
  **componentVersionEnvVar** | [**ComponentVersionEnvVar**](ComponentVersionEnvVar.md) | The updated ComponentVersionEnvVar resource | 
+
 
 ### Return type
 
-[**ComponentVersionEnvVarJsonhal**](ComponentVersionEnvVarJsonhal.md)
+[**ComponentVersionEnvVar**](ComponentVersionEnvVar.md)
 
 ### Authorization
 
@@ -291,8 +291,8 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: application/vnd.api+json
-- **Accept**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
+- **Content-Type**: application/merge-patch+json, application/vnd.api+json
+- **Accept**: application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -301,7 +301,7 @@ Name | Type | Description  | Notes
 
 ## ApiComponentVersionEnvVarsIdPut
 
-> ComponentVersionEnvVarJsonhal ApiComponentVersionEnvVarsIdPut(ctx, id).ComponentVersionEnvVarJsonhal(componentVersionEnvVarJsonhal).Execute()
+> ComponentVersionEnvVar ApiComponentVersionEnvVarsIdPut(ctx, id).ComponentVersionEnvVar(componentVersionEnvVar).Execute()
 
 Replaces the ComponentVersionEnvVar resource.
 
@@ -316,21 +316,21 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
+    componentVersionEnvVar := *openapiclient.NewComponentVersionEnvVar() // ComponentVersionEnvVar | The updated ComponentVersionEnvVar resource
     id := "id_example" // string | ComponentVersionEnvVar identifier
-    componentVersionEnvVarJsonhal := *openapiclient.NewComponentVersionEnvVarJsonhal() // ComponentVersionEnvVarJsonhal | The updated ComponentVersionEnvVar resource
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ComponentVersionEnvVarApi.ApiComponentVersionEnvVarsIdPut(context.Background(), id).ComponentVersionEnvVarJsonhal(componentVersionEnvVarJsonhal).Execute()
+    resp, r, err := apiClient.ComponentVersionEnvVarApi.ApiComponentVersionEnvVarsIdPut(context.Background(), id).ComponentVersionEnvVar(componentVersionEnvVar).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ComponentVersionEnvVarApi.ApiComponentVersionEnvVarsIdPut``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiComponentVersionEnvVarsIdPut`: ComponentVersionEnvVarJsonhal
+    // response from `ApiComponentVersionEnvVarsIdPut`: ComponentVersionEnvVar
     fmt.Fprintf(os.Stdout, "Response from `ComponentVersionEnvVarApi.ApiComponentVersionEnvVarsIdPut`: %v\n", resp)
 }
 ```
@@ -350,12 +350,12 @@ Other parameters are passed through a pointer to a apiApiComponentVersionEnvVars
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **componentVersionEnvVar** | [**ComponentVersionEnvVar**](ComponentVersionEnvVar.md) | The updated ComponentVersionEnvVar resource | 
 
- **componentVersionEnvVarJsonhal** | [**ComponentVersionEnvVarJsonhal**](ComponentVersionEnvVarJsonhal.md) | The updated ComponentVersionEnvVar resource | 
 
 ### Return type
 
-[**ComponentVersionEnvVarJsonhal**](ComponentVersionEnvVarJsonhal.md)
+[**ComponentVersionEnvVar**](ComponentVersionEnvVar.md)
 
 ### Authorization
 
@@ -363,8 +363,8 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
-- **Accept**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
+- **Content-Type**: application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
+- **Accept**: application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -373,7 +373,7 @@ Name | Type | Description  | Notes
 
 ## ApiComponentVersionEnvVarsPost
 
-> ComponentVersionEnvVarJsonhal ApiComponentVersionEnvVarsPost(ctx).ComponentVersionEnvVarJsonhal(componentVersionEnvVarJsonhal).Execute()
+> ComponentVersionEnvVar ApiComponentVersionEnvVarsPost(ctx).ComponentVersionEnvVar(componentVersionEnvVar).Execute()
 
 Creates a ComponentVersionEnvVar resource.
 
@@ -388,20 +388,20 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    componentVersionEnvVarJsonhal := *openapiclient.NewComponentVersionEnvVarJsonhal() // ComponentVersionEnvVarJsonhal | The new ComponentVersionEnvVar resource
+    componentVersionEnvVar := *openapiclient.NewComponentVersionEnvVar() // ComponentVersionEnvVar | The new ComponentVersionEnvVar resource
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ComponentVersionEnvVarApi.ApiComponentVersionEnvVarsPost(context.Background()).ComponentVersionEnvVarJsonhal(componentVersionEnvVarJsonhal).Execute()
+    resp, r, err := apiClient.ComponentVersionEnvVarApi.ApiComponentVersionEnvVarsPost(context.Background()).ComponentVersionEnvVar(componentVersionEnvVar).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ComponentVersionEnvVarApi.ApiComponentVersionEnvVarsPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiComponentVersionEnvVarsPost`: ComponentVersionEnvVarJsonhal
+    // response from `ApiComponentVersionEnvVarsPost`: ComponentVersionEnvVar
     fmt.Fprintf(os.Stdout, "Response from `ComponentVersionEnvVarApi.ApiComponentVersionEnvVarsPost`: %v\n", resp)
 }
 ```
@@ -417,11 +417,11 @@ Other parameters are passed through a pointer to a apiApiComponentVersionEnvVars
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **componentVersionEnvVarJsonhal** | [**ComponentVersionEnvVarJsonhal**](ComponentVersionEnvVarJsonhal.md) | The new ComponentVersionEnvVar resource | 
+ **componentVersionEnvVar** | [**ComponentVersionEnvVar**](ComponentVersionEnvVar.md) | The new ComponentVersionEnvVar resource | 
 
 ### Return type
 
-[**ComponentVersionEnvVarJsonhal**](ComponentVersionEnvVarJsonhal.md)
+[**ComponentVersionEnvVar**](ComponentVersionEnvVar.md)
 
 ### Authorization
 
@@ -429,8 +429,8 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
-- **Accept**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
+- **Content-Type**: application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
+- **Accept**: application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)

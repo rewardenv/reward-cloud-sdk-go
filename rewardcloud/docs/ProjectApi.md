@@ -16,7 +16,7 @@ Method | HTTP request | Description
 
 ## ApiProjectsGetCollection
 
-> ApiProjectsGetCollection200Response ApiProjectsGetCollection(ctx).Page(page).ItemsPerPage(itemsPerPage).TeamOrganisationId(teamOrganisationId).TeamOrganisationId2(teamOrganisationId2).State(state).State2(state2).Git(git).Git2(git2).ServiceAccount(serviceAccount).ServiceAccount2(serviceAccount2).Team(team).Team2(team2).ProjectTypeVersion(projectTypeVersion).ProjectTypeVersion2(projectTypeVersion2).OrderUpdatedAt(orderUpdatedAt).Execute()
+> []ProjectProjectGet ApiProjectsGetCollection(ctx).Page(page).ItemsPerPage(itemsPerPage).TeamOrganisationId(teamOrganisationId).TeamOrganisationId2(teamOrganisationId2).State(state).State2(state2).Git(git).Git2(git2).ServiceAccount(serviceAccount).ServiceAccount2(serviceAccount2).Team(team).Team2(team2).ProjectTypeVersion(projectTypeVersion).ProjectTypeVersion2(projectTypeVersion2).OrderUpdatedAt(orderUpdatedAt).Execute()
 
 Retrieves the collection of Project resources.
 
@@ -31,7 +31,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
@@ -58,7 +58,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `ProjectApi.ApiProjectsGetCollection``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiProjectsGetCollection`: ApiProjectsGetCollection200Response
+    // response from `ApiProjectsGetCollection`: []ProjectProjectGet
     fmt.Fprintf(os.Stdout, "Response from `ProjectApi.ApiProjectsGetCollection`: %v\n", resp)
 }
 ```
@@ -92,7 +92,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ApiProjectsGetCollection200Response**](ApiProjectsGetCollection200Response.md)
+[**[]ProjectProjectGet**](ProjectProjectGet.md)
 
 ### Authorization
 
@@ -101,7 +101,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
+- **Accept**: application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -125,7 +125,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
@@ -133,7 +133,7 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ProjectApi.ApiProjectsIdDelete(context.Background(), id).Execute()
+    r, err := apiClient.ProjectApi.ApiProjectsIdDelete(context.Background(), id).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ProjectApi.ApiProjectsIdDelete``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -178,7 +178,7 @@ Name | Type | Description  | Notes
 
 ## ApiProjectsIdGet
 
-> ProjectJsonhalProjectGet ApiProjectsIdGet(ctx, id).Execute()
+> ProjectProjectGet ApiProjectsIdGet(ctx, id).Execute()
 
 Retrieves a Project resource.
 
@@ -193,7 +193,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
@@ -206,7 +206,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `ProjectApi.ApiProjectsIdGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiProjectsIdGet`: ProjectJsonhalProjectGet
+    // response from `ApiProjectsIdGet`: ProjectProjectGet
     fmt.Fprintf(os.Stdout, "Response from `ProjectApi.ApiProjectsIdGet`: %v\n", resp)
 }
 ```
@@ -230,7 +230,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ProjectJsonhalProjectGet**](ProjectJsonhalProjectGet.md)
+[**ProjectProjectGet**](ProjectProjectGet.md)
 
 ### Authorization
 
@@ -239,7 +239,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
+- **Accept**: application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -248,7 +248,7 @@ Name | Type | Description  | Notes
 
 ## ApiProjectsIdPatch
 
-> ProjectJsonhalProjectGet ApiProjectsIdPatch(ctx, id).ProjectProjectPost(projectProjectPost).Execute()
+> ProjectProjectGet ApiProjectsIdPatch(ctx, id).ProjectProjectPost(projectProjectPost).Execute()
 
 Updates the Project resource.
 
@@ -263,12 +263,12 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    id := "id_example" // string | Project identifier
     projectProjectPost := *openapiclient.NewProjectProjectPost() // ProjectProjectPost | The updated Project resource
+    id := "id_example" // string | Project identifier
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -277,7 +277,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `ProjectApi.ApiProjectsIdPatch``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiProjectsIdPatch`: ProjectJsonhalProjectGet
+    // response from `ApiProjectsIdPatch`: ProjectProjectGet
     fmt.Fprintf(os.Stdout, "Response from `ProjectApi.ApiProjectsIdPatch`: %v\n", resp)
 }
 ```
@@ -297,12 +297,12 @@ Other parameters are passed through a pointer to a apiApiProjectsIdPatchRequest 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-
  **projectProjectPost** | [**ProjectProjectPost**](ProjectProjectPost.md) | The updated Project resource | 
+
 
 ### Return type
 
-[**ProjectJsonhalProjectGet**](ProjectJsonhalProjectGet.md)
+[**ProjectProjectGet**](ProjectProjectGet.md)
 
 ### Authorization
 
@@ -310,8 +310,8 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: application/vnd.api+json
-- **Accept**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
+- **Content-Type**: application/merge-patch+json, application/vnd.api+json
+- **Accept**: application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -320,7 +320,7 @@ Name | Type | Description  | Notes
 
 ## ApiProjectsIdPut
 
-> ProjectJsonhalProjectGet ApiProjectsIdPut(ctx, id).ProjectJsonhalProjectPost(projectJsonhalProjectPost).Execute()
+> ProjectProjectGet ApiProjectsIdPut(ctx, id).ProjectProjectPost(projectProjectPost).Execute()
 
 Replaces the Project resource.
 
@@ -335,21 +335,21 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
+    projectProjectPost := *openapiclient.NewProjectProjectPost() // ProjectProjectPost | The updated Project resource
     id := "id_example" // string | Project identifier
-    projectJsonhalProjectPost := *openapiclient.NewProjectJsonhalProjectPost() // ProjectJsonhalProjectPost | The updated Project resource
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ProjectApi.ApiProjectsIdPut(context.Background(), id).ProjectJsonhalProjectPost(projectJsonhalProjectPost).Execute()
+    resp, r, err := apiClient.ProjectApi.ApiProjectsIdPut(context.Background(), id).ProjectProjectPost(projectProjectPost).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ProjectApi.ApiProjectsIdPut``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiProjectsIdPut`: ProjectJsonhalProjectGet
+    // response from `ApiProjectsIdPut`: ProjectProjectGet
     fmt.Fprintf(os.Stdout, "Response from `ProjectApi.ApiProjectsIdPut`: %v\n", resp)
 }
 ```
@@ -369,12 +369,12 @@ Other parameters are passed through a pointer to a apiApiProjectsIdPutRequest st
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **projectProjectPost** | [**ProjectProjectPost**](ProjectProjectPost.md) | The updated Project resource | 
 
- **projectJsonhalProjectPost** | [**ProjectJsonhalProjectPost**](ProjectJsonhalProjectPost.md) | The updated Project resource | 
 
 ### Return type
 
-[**ProjectJsonhalProjectGet**](ProjectJsonhalProjectGet.md)
+[**ProjectProjectGet**](ProjectProjectGet.md)
 
 ### Authorization
 
@@ -382,8 +382,8 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
-- **Accept**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
+- **Content-Type**: application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
+- **Accept**: application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -392,7 +392,7 @@ Name | Type | Description  | Notes
 
 ## ApiProjectsIdcostsGet
 
-> ProjectJsonhalProjectGet ApiProjectsIdcostsGet(ctx, id).Execute()
+> ProjectProjectGet ApiProjectsIdcostsGet(ctx, id).Execute()
 
 Retrieves a Project resource.
 
@@ -407,7 +407,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
@@ -420,7 +420,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `ProjectApi.ApiProjectsIdcostsGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiProjectsIdcostsGet`: ProjectJsonhalProjectGet
+    // response from `ApiProjectsIdcostsGet`: ProjectProjectGet
     fmt.Fprintf(os.Stdout, "Response from `ProjectApi.ApiProjectsIdcostsGet`: %v\n", resp)
 }
 ```
@@ -444,7 +444,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ProjectJsonhalProjectGet**](ProjectJsonhalProjectGet.md)
+[**ProjectProjectGet**](ProjectProjectGet.md)
 
 ### Authorization
 
@@ -453,7 +453,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
+- **Accept**: application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -462,7 +462,7 @@ Name | Type | Description  | Notes
 
 ## ApiProjectsPost
 
-> ProjectJsonhalProjectGet ApiProjectsPost(ctx).ProjectJsonhalProjectPost(projectJsonhalProjectPost).Execute()
+> ProjectProjectGet ApiProjectsPost(ctx).ProjectProjectPost(projectProjectPost).Execute()
 
 Creates a Project resource.
 
@@ -477,20 +477,20 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    projectJsonhalProjectPost := *openapiclient.NewProjectJsonhalProjectPost() // ProjectJsonhalProjectPost | The new Project resource
+    projectProjectPost := *openapiclient.NewProjectProjectPost() // ProjectProjectPost | The new Project resource
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ProjectApi.ApiProjectsPost(context.Background()).ProjectJsonhalProjectPost(projectJsonhalProjectPost).Execute()
+    resp, r, err := apiClient.ProjectApi.ApiProjectsPost(context.Background()).ProjectProjectPost(projectProjectPost).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ProjectApi.ApiProjectsPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiProjectsPost`: ProjectJsonhalProjectGet
+    // response from `ApiProjectsPost`: ProjectProjectGet
     fmt.Fprintf(os.Stdout, "Response from `ProjectApi.ApiProjectsPost`: %v\n", resp)
 }
 ```
@@ -506,11 +506,11 @@ Other parameters are passed through a pointer to a apiApiProjectsPostRequest str
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **projectJsonhalProjectPost** | [**ProjectJsonhalProjectPost**](ProjectJsonhalProjectPost.md) | The new Project resource | 
+ **projectProjectPost** | [**ProjectProjectPost**](ProjectProjectPost.md) | The new Project resource | 
 
 ### Return type
 
-[**ProjectJsonhalProjectGet**](ProjectJsonhalProjectGet.md)
+[**ProjectProjectGet**](ProjectProjectGet.md)
 
 ### Authorization
 
@@ -518,8 +518,8 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
-- **Accept**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
+- **Content-Type**: application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
+- **Accept**: application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)

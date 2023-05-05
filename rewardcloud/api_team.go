@@ -13,7 +13,7 @@ package rewardcloud
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"reflect"
@@ -23,7 +23,7 @@ import (
 // TeamApiService TeamApi service
 type TeamApiService service
 
-type ApiApiTeamsGetCollectionRequest struct {
+type TeamApiApiTeamsGetCollectionRequest struct {
 	ctx                context.Context
 	ApiService         *TeamApiService
 	page               *int32
@@ -37,48 +37,48 @@ type ApiApiTeamsGetCollectionRequest struct {
 }
 
 // The collection page number
-func (r ApiApiTeamsGetCollectionRequest) Page(page int32) ApiApiTeamsGetCollectionRequest {
+func (r TeamApiApiTeamsGetCollectionRequest) Page(page int32) TeamApiApiTeamsGetCollectionRequest {
 	r.page = &page
 	return r
 }
 
 // The number of items per page
-func (r ApiApiTeamsGetCollectionRequest) ItemsPerPage(itemsPerPage int32) ApiApiTeamsGetCollectionRequest {
+func (r TeamApiApiTeamsGetCollectionRequest) ItemsPerPage(itemsPerPage int32) TeamApiApiTeamsGetCollectionRequest {
 	r.itemsPerPage = &itemsPerPage
 	return r
 }
 
-func (r ApiApiTeamsGetCollectionRequest) ExistsOrganisation(existsOrganisation bool) ApiApiTeamsGetCollectionRequest {
+func (r TeamApiApiTeamsGetCollectionRequest) ExistsOrganisation(existsOrganisation bool) TeamApiApiTeamsGetCollectionRequest {
 	r.existsOrganisation = &existsOrganisation
 	return r
 }
 
-func (r ApiApiTeamsGetCollectionRequest) Name(name string) ApiApiTeamsGetCollectionRequest {
+func (r TeamApiApiTeamsGetCollectionRequest) Name(name string) TeamApiApiTeamsGetCollectionRequest {
 	r.name = &name
 	return r
 }
 
-func (r ApiApiTeamsGetCollectionRequest) User(user string) ApiApiTeamsGetCollectionRequest {
+func (r TeamApiApiTeamsGetCollectionRequest) User(user string) TeamApiApiTeamsGetCollectionRequest {
 	r.user = &user
 	return r
 }
 
-func (r ApiApiTeamsGetCollectionRequest) User2(user2 []string) ApiApiTeamsGetCollectionRequest {
+func (r TeamApiApiTeamsGetCollectionRequest) User2(user2 []string) TeamApiApiTeamsGetCollectionRequest {
 	r.user2 = &user2
 	return r
 }
 
-func (r ApiApiTeamsGetCollectionRequest) Organisation(organisation string) ApiApiTeamsGetCollectionRequest {
+func (r TeamApiApiTeamsGetCollectionRequest) Organisation(organisation string) TeamApiApiTeamsGetCollectionRequest {
 	r.organisation = &organisation
 	return r
 }
 
-func (r ApiApiTeamsGetCollectionRequest) Organisation2(organisation2 []string) ApiApiTeamsGetCollectionRequest {
+func (r TeamApiApiTeamsGetCollectionRequest) Organisation2(organisation2 []string) TeamApiApiTeamsGetCollectionRequest {
 	r.organisation2 = &organisation2
 	return r
 }
 
-func (r ApiApiTeamsGetCollectionRequest) Execute() (*ApiTeamsGetCollection200Response, *http.Response, error) {
+func (r TeamApiApiTeamsGetCollectionRequest) Execute() ([]TeamTeamGet, *http.Response, error) {
 	return r.ApiService.ApiTeamsGetCollectionExecute(r)
 }
 
@@ -88,10 +88,10 @@ ApiTeamsGetCollection Retrieves the collection of Team resources.
 Retrieves the collection of Team resources.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiApiTeamsGetCollectionRequest
+	@return TeamApiApiTeamsGetCollectionRequest
 */
-func (a *TeamApiService) ApiTeamsGetCollection(ctx context.Context) ApiApiTeamsGetCollectionRequest {
-	return ApiApiTeamsGetCollectionRequest{
+func (a *TeamApiService) ApiTeamsGetCollection(ctx context.Context) TeamApiApiTeamsGetCollectionRequest {
+	return TeamApiApiTeamsGetCollectionRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -99,13 +99,13 @@ func (a *TeamApiService) ApiTeamsGetCollection(ctx context.Context) ApiApiTeamsG
 
 // Execute executes the request
 //
-//	@return ApiTeamsGetCollection200Response
-func (a *TeamApiService) ApiTeamsGetCollectionExecute(r ApiApiTeamsGetCollectionRequest) (*ApiTeamsGetCollection200Response, *http.Response, error) {
+//	@return []TeamTeamGet
+func (a *TeamApiService) ApiTeamsGetCollectionExecute(r TeamApiApiTeamsGetCollectionRequest) ([]TeamTeamGet, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *ApiTeamsGetCollection200Response
+		localVarReturnValue []TeamTeamGet
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TeamApiService.ApiTeamsGetCollection")
@@ -120,43 +120,43 @@ func (a *TeamApiService) ApiTeamsGetCollectionExecute(r ApiApiTeamsGetCollection
 	localVarFormParams := url.Values{}
 
 	if r.page != nil {
-		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
 	}
 	if r.itemsPerPage != nil {
-		localVarQueryParams.Add("itemsPerPage", parameterToString(*r.itemsPerPage, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "itemsPerPage", r.itemsPerPage, "")
 	}
 	if r.existsOrganisation != nil {
-		localVarQueryParams.Add("exists[organisation]", parameterToString(*r.existsOrganisation, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "exists[organisation]", r.existsOrganisation, "")
 	}
 	if r.name != nil {
-		localVarQueryParams.Add("name", parameterToString(*r.name, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "name", r.name, "")
 	}
 	if r.user != nil {
-		localVarQueryParams.Add("user", parameterToString(*r.user, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "user", r.user, "")
 	}
 	if r.user2 != nil {
 		t := *r.user2
 		if reflect.TypeOf(t).Kind() == reflect.Slice {
 			s := reflect.ValueOf(t)
 			for i := 0; i < s.Len(); i++ {
-				localVarQueryParams.Add("user[]", parameterToString(s.Index(i), "multi"))
+				parameterAddToHeaderOrQuery(localVarQueryParams, "user[]", s.Index(i), "multi")
 			}
 		} else {
-			localVarQueryParams.Add("user[]", parameterToString(t, "multi"))
+			parameterAddToHeaderOrQuery(localVarQueryParams, "user[]", t, "multi")
 		}
 	}
 	if r.organisation != nil {
-		localVarQueryParams.Add("organisation", parameterToString(*r.organisation, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "organisation", r.organisation, "")
 	}
 	if r.organisation2 != nil {
 		t := *r.organisation2
 		if reflect.TypeOf(t).Kind() == reflect.Slice {
 			s := reflect.ValueOf(t)
 			for i := 0; i < s.Len(); i++ {
-				localVarQueryParams.Add("organisation[]", parameterToString(s.Index(i), "multi"))
+				parameterAddToHeaderOrQuery(localVarQueryParams, "organisation[]", s.Index(i), "multi")
 			}
 		} else {
-			localVarQueryParams.Add("organisation[]", parameterToString(t, "multi"))
+			parameterAddToHeaderOrQuery(localVarQueryParams, "organisation[]", t, "multi")
 		}
 	}
 	// to determine the Content-Type header
@@ -169,7 +169,7 @@ func (a *TeamApiService) ApiTeamsGetCollectionExecute(r ApiApiTeamsGetCollection
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/hal+json", "application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
+	localVarHTTPHeaderAccepts := []string{"application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -200,9 +200,9 @@ func (a *TeamApiService) ApiTeamsGetCollectionExecute(r ApiApiTeamsGetCollection
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -227,13 +227,13 @@ func (a *TeamApiService) ApiTeamsGetCollectionExecute(r ApiApiTeamsGetCollection
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiApiTeamsIdDeleteRequest struct {
+type TeamApiApiTeamsIdDeleteRequest struct {
 	ctx        context.Context
 	ApiService *TeamApiService
 	id         string
 }
 
-func (r ApiApiTeamsIdDeleteRequest) Execute() (*http.Response, error) {
+func (r TeamApiApiTeamsIdDeleteRequest) Execute() (*http.Response, error) {
 	return r.ApiService.ApiTeamsIdDeleteExecute(r)
 }
 
@@ -244,10 +244,10 @@ Removes the Team resource.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id Team identifier
-	@return ApiApiTeamsIdDeleteRequest
+	@return TeamApiApiTeamsIdDeleteRequest
 */
-func (a *TeamApiService) ApiTeamsIdDelete(ctx context.Context, id string) ApiApiTeamsIdDeleteRequest {
-	return ApiApiTeamsIdDeleteRequest{
+func (a *TeamApiService) ApiTeamsIdDelete(ctx context.Context, id string) TeamApiApiTeamsIdDeleteRequest {
+	return TeamApiApiTeamsIdDeleteRequest{
 		ApiService: a,
 		ctx:        ctx,
 		id:         id,
@@ -255,7 +255,7 @@ func (a *TeamApiService) ApiTeamsIdDelete(ctx context.Context, id string) ApiApi
 }
 
 // Execute executes the request
-func (a *TeamApiService) ApiTeamsIdDeleteExecute(r ApiApiTeamsIdDeleteRequest) (*http.Response, error) {
+func (a *TeamApiService) ApiTeamsIdDeleteExecute(r TeamApiApiTeamsIdDeleteRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
 		localVarPostBody   interface{}
@@ -268,7 +268,7 @@ func (a *TeamApiService) ApiTeamsIdDeleteExecute(r ApiApiTeamsIdDeleteRequest) (
 	}
 
 	localVarPath := localBasePath + "/api/teams/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -315,9 +315,9 @@ func (a *TeamApiService) ApiTeamsIdDeleteExecute(r ApiApiTeamsIdDeleteRequest) (
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -333,13 +333,13 @@ func (a *TeamApiService) ApiTeamsIdDeleteExecute(r ApiApiTeamsIdDeleteRequest) (
 	return localVarHTTPResponse, nil
 }
 
-type ApiApiTeamsIdGetRequest struct {
+type TeamApiApiTeamsIdGetRequest struct {
 	ctx        context.Context
 	ApiService *TeamApiService
 	id         string
 }
 
-func (r ApiApiTeamsIdGetRequest) Execute() (*TeamJsonhalTeamGet, *http.Response, error) {
+func (r TeamApiApiTeamsIdGetRequest) Execute() (*TeamTeamGet, *http.Response, error) {
 	return r.ApiService.ApiTeamsIdGetExecute(r)
 }
 
@@ -350,10 +350,10 @@ Retrieves a Team resource.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id Team identifier
-	@return ApiApiTeamsIdGetRequest
+	@return TeamApiApiTeamsIdGetRequest
 */
-func (a *TeamApiService) ApiTeamsIdGet(ctx context.Context, id string) ApiApiTeamsIdGetRequest {
-	return ApiApiTeamsIdGetRequest{
+func (a *TeamApiService) ApiTeamsIdGet(ctx context.Context, id string) TeamApiApiTeamsIdGetRequest {
+	return TeamApiApiTeamsIdGetRequest{
 		ApiService: a,
 		ctx:        ctx,
 		id:         id,
@@ -362,13 +362,13 @@ func (a *TeamApiService) ApiTeamsIdGet(ctx context.Context, id string) ApiApiTea
 
 // Execute executes the request
 //
-//	@return TeamJsonhalTeamGet
-func (a *TeamApiService) ApiTeamsIdGetExecute(r ApiApiTeamsIdGetRequest) (*TeamJsonhalTeamGet, *http.Response, error) {
+//	@return TeamTeamGet
+func (a *TeamApiService) ApiTeamsIdGetExecute(r TeamApiApiTeamsIdGetRequest) (*TeamTeamGet, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *TeamJsonhalTeamGet
+		localVarReturnValue *TeamTeamGet
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TeamApiService.ApiTeamsIdGet")
@@ -377,7 +377,7 @@ func (a *TeamApiService) ApiTeamsIdGetExecute(r ApiApiTeamsIdGetRequest) (*TeamJ
 	}
 
 	localVarPath := localBasePath + "/api/teams/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -393,7 +393,7 @@ func (a *TeamApiService) ApiTeamsIdGetExecute(r ApiApiTeamsIdGetRequest) (*TeamJ
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/hal+json", "application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
+	localVarHTTPHeaderAccepts := []string{"application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -424,9 +424,9 @@ func (a *TeamApiService) ApiTeamsIdGetExecute(r ApiApiTeamsIdGetRequest) (*TeamJ
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -451,20 +451,20 @@ func (a *TeamApiService) ApiTeamsIdGetExecute(r ApiApiTeamsIdGetRequest) (*TeamJ
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiApiTeamsIdPatchRequest struct {
+type TeamApiApiTeamsIdPatchRequest struct {
 	ctx          context.Context
 	ApiService   *TeamApiService
-	id           string
 	teamTeamPost *TeamTeamPost
+	id           string
 }
 
 // The updated Team resource
-func (r ApiApiTeamsIdPatchRequest) TeamTeamPost(teamTeamPost TeamTeamPost) ApiApiTeamsIdPatchRequest {
+func (r TeamApiApiTeamsIdPatchRequest) TeamTeamPost(teamTeamPost TeamTeamPost) TeamApiApiTeamsIdPatchRequest {
 	r.teamTeamPost = &teamTeamPost
 	return r
 }
 
-func (r ApiApiTeamsIdPatchRequest) Execute() (*TeamJsonhalTeamGet, *http.Response, error) {
+func (r TeamApiApiTeamsIdPatchRequest) Execute() (*TeamTeamGet, *http.Response, error) {
 	return r.ApiService.ApiTeamsIdPatchExecute(r)
 }
 
@@ -475,10 +475,10 @@ Updates the Team resource.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id Team identifier
-	@return ApiApiTeamsIdPatchRequest
+	@return TeamApiApiTeamsIdPatchRequest
 */
-func (a *TeamApiService) ApiTeamsIdPatch(ctx context.Context, id string) ApiApiTeamsIdPatchRequest {
-	return ApiApiTeamsIdPatchRequest{
+func (a *TeamApiService) ApiTeamsIdPatch(ctx context.Context, id string) TeamApiApiTeamsIdPatchRequest {
+	return TeamApiApiTeamsIdPatchRequest{
 		ApiService: a,
 		ctx:        ctx,
 		id:         id,
@@ -487,13 +487,13 @@ func (a *TeamApiService) ApiTeamsIdPatch(ctx context.Context, id string) ApiApiT
 
 // Execute executes the request
 //
-//	@return TeamJsonhalTeamGet
-func (a *TeamApiService) ApiTeamsIdPatchExecute(r ApiApiTeamsIdPatchRequest) (*TeamJsonhalTeamGet, *http.Response, error) {
+//	@return TeamTeamGet
+func (a *TeamApiService) ApiTeamsIdPatchExecute(r TeamApiApiTeamsIdPatchRequest) (*TeamTeamGet, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *TeamJsonhalTeamGet
+		localVarReturnValue *TeamTeamGet
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TeamApiService.ApiTeamsIdPatch")
@@ -502,7 +502,7 @@ func (a *TeamApiService) ApiTeamsIdPatchExecute(r ApiApiTeamsIdPatchRequest) (*T
 	}
 
 	localVarPath := localBasePath + "/api/teams/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -512,7 +512,7 @@ func (a *TeamApiService) ApiTeamsIdPatchExecute(r ApiApiTeamsIdPatchRequest) (*T
 	}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/vnd.api+json"}
+	localVarHTTPContentTypes := []string{"application/merge-patch+json", "application/vnd.api+json"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -521,7 +521,7 @@ func (a *TeamApiService) ApiTeamsIdPatchExecute(r ApiApiTeamsIdPatchRequest) (*T
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/hal+json", "application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
+	localVarHTTPHeaderAccepts := []string{"application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -554,9 +554,9 @@ func (a *TeamApiService) ApiTeamsIdPatchExecute(r ApiApiTeamsIdPatchRequest) (*T
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -581,20 +581,20 @@ func (a *TeamApiService) ApiTeamsIdPatchExecute(r ApiApiTeamsIdPatchRequest) (*T
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiApiTeamsIdPutRequest struct {
-	ctx                 context.Context
-	ApiService          *TeamApiService
-	id                  string
-	teamJsonhalTeamPost *TeamJsonhalTeamPost
+type TeamApiApiTeamsIdPutRequest struct {
+	ctx          context.Context
+	ApiService   *TeamApiService
+	teamTeamPost *TeamTeamPost
+	id           string
 }
 
 // The updated Team resource
-func (r ApiApiTeamsIdPutRequest) TeamJsonhalTeamPost(teamJsonhalTeamPost TeamJsonhalTeamPost) ApiApiTeamsIdPutRequest {
-	r.teamJsonhalTeamPost = &teamJsonhalTeamPost
+func (r TeamApiApiTeamsIdPutRequest) TeamTeamPost(teamTeamPost TeamTeamPost) TeamApiApiTeamsIdPutRequest {
+	r.teamTeamPost = &teamTeamPost
 	return r
 }
 
-func (r ApiApiTeamsIdPutRequest) Execute() (*TeamJsonhalTeamGet, *http.Response, error) {
+func (r TeamApiApiTeamsIdPutRequest) Execute() (*TeamTeamGet, *http.Response, error) {
 	return r.ApiService.ApiTeamsIdPutExecute(r)
 }
 
@@ -605,10 +605,10 @@ Replaces the Team resource.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id Team identifier
-	@return ApiApiTeamsIdPutRequest
+	@return TeamApiApiTeamsIdPutRequest
 */
-func (a *TeamApiService) ApiTeamsIdPut(ctx context.Context, id string) ApiApiTeamsIdPutRequest {
-	return ApiApiTeamsIdPutRequest{
+func (a *TeamApiService) ApiTeamsIdPut(ctx context.Context, id string) TeamApiApiTeamsIdPutRequest {
+	return TeamApiApiTeamsIdPutRequest{
 		ApiService: a,
 		ctx:        ctx,
 		id:         id,
@@ -617,13 +617,13 @@ func (a *TeamApiService) ApiTeamsIdPut(ctx context.Context, id string) ApiApiTea
 
 // Execute executes the request
 //
-//	@return TeamJsonhalTeamGet
-func (a *TeamApiService) ApiTeamsIdPutExecute(r ApiApiTeamsIdPutRequest) (*TeamJsonhalTeamGet, *http.Response, error) {
+//	@return TeamTeamGet
+func (a *TeamApiService) ApiTeamsIdPutExecute(r TeamApiApiTeamsIdPutRequest) (*TeamTeamGet, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *TeamJsonhalTeamGet
+		localVarReturnValue *TeamTeamGet
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TeamApiService.ApiTeamsIdPut")
@@ -632,17 +632,17 @@ func (a *TeamApiService) ApiTeamsIdPutExecute(r ApiApiTeamsIdPutRequest) (*TeamJ
 	}
 
 	localVarPath := localBasePath + "/api/teams/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.teamJsonhalTeamPost == nil {
-		return localVarReturnValue, nil, reportError("teamJsonhalTeamPost is required and must be specified")
+	if r.teamTeamPost == nil {
+		return localVarReturnValue, nil, reportError("teamTeamPost is required and must be specified")
 	}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/hal+json", "application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
+	localVarHTTPContentTypes := []string{"application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -651,7 +651,7 @@ func (a *TeamApiService) ApiTeamsIdPutExecute(r ApiApiTeamsIdPutRequest) (*TeamJ
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/hal+json", "application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
+	localVarHTTPHeaderAccepts := []string{"application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -659,7 +659,7 @@ func (a *TeamApiService) ApiTeamsIdPutExecute(r ApiApiTeamsIdPutRequest) (*TeamJ
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.teamJsonhalTeamPost
+	localVarPostBody = r.teamTeamPost
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
@@ -684,9 +684,9 @@ func (a *TeamApiService) ApiTeamsIdPutExecute(r ApiApiTeamsIdPutRequest) (*TeamJ
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -711,19 +711,19 @@ func (a *TeamApiService) ApiTeamsIdPutExecute(r ApiApiTeamsIdPutRequest) (*TeamJ
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiApiTeamsPostRequest struct {
-	ctx                 context.Context
-	ApiService          *TeamApiService
-	teamJsonhalTeamPost *TeamJsonhalTeamPost
+type TeamApiApiTeamsPostRequest struct {
+	ctx          context.Context
+	ApiService   *TeamApiService
+	teamTeamPost *TeamTeamPost
 }
 
 // The new Team resource
-func (r ApiApiTeamsPostRequest) TeamJsonhalTeamPost(teamJsonhalTeamPost TeamJsonhalTeamPost) ApiApiTeamsPostRequest {
-	r.teamJsonhalTeamPost = &teamJsonhalTeamPost
+func (r TeamApiApiTeamsPostRequest) TeamTeamPost(teamTeamPost TeamTeamPost) TeamApiApiTeamsPostRequest {
+	r.teamTeamPost = &teamTeamPost
 	return r
 }
 
-func (r ApiApiTeamsPostRequest) Execute() (*TeamJsonhalTeamGet, *http.Response, error) {
+func (r TeamApiApiTeamsPostRequest) Execute() (*TeamTeamGet, *http.Response, error) {
 	return r.ApiService.ApiTeamsPostExecute(r)
 }
 
@@ -733,10 +733,10 @@ ApiTeamsPost Creates a Team resource.
 Creates a Team resource.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiApiTeamsPostRequest
+	@return TeamApiApiTeamsPostRequest
 */
-func (a *TeamApiService) ApiTeamsPost(ctx context.Context) ApiApiTeamsPostRequest {
-	return ApiApiTeamsPostRequest{
+func (a *TeamApiService) ApiTeamsPost(ctx context.Context) TeamApiApiTeamsPostRequest {
+	return TeamApiApiTeamsPostRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -744,13 +744,13 @@ func (a *TeamApiService) ApiTeamsPost(ctx context.Context) ApiApiTeamsPostReques
 
 // Execute executes the request
 //
-//	@return TeamJsonhalTeamGet
-func (a *TeamApiService) ApiTeamsPostExecute(r ApiApiTeamsPostRequest) (*TeamJsonhalTeamGet, *http.Response, error) {
+//	@return TeamTeamGet
+func (a *TeamApiService) ApiTeamsPostExecute(r TeamApiApiTeamsPostRequest) (*TeamTeamGet, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *TeamJsonhalTeamGet
+		localVarReturnValue *TeamTeamGet
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TeamApiService.ApiTeamsPost")
@@ -763,12 +763,12 @@ func (a *TeamApiService) ApiTeamsPostExecute(r ApiApiTeamsPostRequest) (*TeamJso
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.teamJsonhalTeamPost == nil {
-		return localVarReturnValue, nil, reportError("teamJsonhalTeamPost is required and must be specified")
+	if r.teamTeamPost == nil {
+		return localVarReturnValue, nil, reportError("teamTeamPost is required and must be specified")
 	}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/hal+json", "application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
+	localVarHTTPContentTypes := []string{"application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -777,7 +777,7 @@ func (a *TeamApiService) ApiTeamsPostExecute(r ApiApiTeamsPostRequest) (*TeamJso
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/hal+json", "application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
+	localVarHTTPHeaderAccepts := []string{"application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -785,7 +785,7 @@ func (a *TeamApiService) ApiTeamsPostExecute(r ApiApiTeamsPostRequest) (*TeamJso
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.teamJsonhalTeamPost
+	localVarPostBody = r.teamTeamPost
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
@@ -810,9 +810,9 @@ func (a *TeamApiService) ApiTeamsPostExecute(r ApiApiTeamsPostRequest) (*TeamJso
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}

@@ -13,7 +13,7 @@ package rewardcloud
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"reflect"
@@ -23,7 +23,7 @@ import (
 // GitApiService GitApi service
 type GitApiService service
 
-type ApiApiGitsGetCollectionRequest struct {
+type GitApiApiGitsGetCollectionRequest struct {
 	ctx             context.Context
 	ApiService      *GitApiService
 	page            *int32
@@ -37,48 +37,48 @@ type ApiApiGitsGetCollectionRequest struct {
 }
 
 // The collection page number
-func (r ApiApiGitsGetCollectionRequest) Page(page int32) ApiApiGitsGetCollectionRequest {
+func (r GitApiApiGitsGetCollectionRequest) Page(page int32) GitApiApiGitsGetCollectionRequest {
 	r.page = &page
 	return r
 }
 
 // The number of items per page
-func (r ApiApiGitsGetCollectionRequest) ItemsPerPage(itemsPerPage int32) ApiApiGitsGetCollectionRequest {
+func (r GitApiApiGitsGetCollectionRequest) ItemsPerPage(itemsPerPage int32) GitApiApiGitsGetCollectionRequest {
 	r.itemsPerPage = &itemsPerPage
 	return r
 }
 
-func (r ApiApiGitsGetCollectionRequest) Project(project string) ApiApiGitsGetCollectionRequest {
+func (r GitApiApiGitsGetCollectionRequest) Project(project string) GitApiApiGitsGetCollectionRequest {
 	r.project = &project
 	return r
 }
 
-func (r ApiApiGitsGetCollectionRequest) Project2(project2 []string) ApiApiGitsGetCollectionRequest {
+func (r GitApiApiGitsGetCollectionRequest) Project2(project2 []string) GitApiApiGitsGetCollectionRequest {
 	r.project2 = &project2
 	return r
 }
 
-func (r ApiApiGitsGetCollectionRequest) GitType(gitType string) ApiApiGitsGetCollectionRequest {
+func (r GitApiApiGitsGetCollectionRequest) GitType(gitType string) GitApiApiGitsGetCollectionRequest {
 	r.gitType = &gitType
 	return r
 }
 
-func (r ApiApiGitsGetCollectionRequest) GitType2(gitType2 []string) ApiApiGitsGetCollectionRequest {
+func (r GitApiApiGitsGetCollectionRequest) GitType2(gitType2 []string) GitApiApiGitsGetCollectionRequest {
 	r.gitType2 = &gitType2
 	return r
 }
 
-func (r ApiApiGitsGetCollectionRequest) CredentialType(credentialType string) ApiApiGitsGetCollectionRequest {
+func (r GitApiApiGitsGetCollectionRequest) CredentialType(credentialType string) GitApiApiGitsGetCollectionRequest {
 	r.credentialType = &credentialType
 	return r
 }
 
-func (r ApiApiGitsGetCollectionRequest) CredentialType2(credentialType2 []string) ApiApiGitsGetCollectionRequest {
+func (r GitApiApiGitsGetCollectionRequest) CredentialType2(credentialType2 []string) GitApiApiGitsGetCollectionRequest {
 	r.credentialType2 = &credentialType2
 	return r
 }
 
-func (r ApiApiGitsGetCollectionRequest) Execute() (*ApiGitsGetCollection200Response, *http.Response, error) {
+func (r GitApiApiGitsGetCollectionRequest) Execute() ([]Git, *http.Response, error) {
 	return r.ApiService.ApiGitsGetCollectionExecute(r)
 }
 
@@ -88,10 +88,10 @@ ApiGitsGetCollection Retrieves the collection of Git resources.
 Retrieves the collection of Git resources.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiApiGitsGetCollectionRequest
+	@return GitApiApiGitsGetCollectionRequest
 */
-func (a *GitApiService) ApiGitsGetCollection(ctx context.Context) ApiApiGitsGetCollectionRequest {
-	return ApiApiGitsGetCollectionRequest{
+func (a *GitApiService) ApiGitsGetCollection(ctx context.Context) GitApiApiGitsGetCollectionRequest {
+	return GitApiApiGitsGetCollectionRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -99,13 +99,13 @@ func (a *GitApiService) ApiGitsGetCollection(ctx context.Context) ApiApiGitsGetC
 
 // Execute executes the request
 //
-//	@return ApiGitsGetCollection200Response
-func (a *GitApiService) ApiGitsGetCollectionExecute(r ApiApiGitsGetCollectionRequest) (*ApiGitsGetCollection200Response, *http.Response, error) {
+//	@return []Git
+func (a *GitApiService) ApiGitsGetCollectionExecute(r GitApiApiGitsGetCollectionRequest) ([]Git, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *ApiGitsGetCollection200Response
+		localVarReturnValue []Git
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "GitApiService.ApiGitsGetCollection")
@@ -120,51 +120,51 @@ func (a *GitApiService) ApiGitsGetCollectionExecute(r ApiApiGitsGetCollectionReq
 	localVarFormParams := url.Values{}
 
 	if r.page != nil {
-		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
 	}
 	if r.itemsPerPage != nil {
-		localVarQueryParams.Add("itemsPerPage", parameterToString(*r.itemsPerPage, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "itemsPerPage", r.itemsPerPage, "")
 	}
 	if r.project != nil {
-		localVarQueryParams.Add("project", parameterToString(*r.project, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "project", r.project, "")
 	}
 	if r.project2 != nil {
 		t := *r.project2
 		if reflect.TypeOf(t).Kind() == reflect.Slice {
 			s := reflect.ValueOf(t)
 			for i := 0; i < s.Len(); i++ {
-				localVarQueryParams.Add("project[]", parameterToString(s.Index(i), "multi"))
+				parameterAddToHeaderOrQuery(localVarQueryParams, "project[]", s.Index(i), "multi")
 			}
 		} else {
-			localVarQueryParams.Add("project[]", parameterToString(t, "multi"))
+			parameterAddToHeaderOrQuery(localVarQueryParams, "project[]", t, "multi")
 		}
 	}
 	if r.gitType != nil {
-		localVarQueryParams.Add("gitType", parameterToString(*r.gitType, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "gitType", r.gitType, "")
 	}
 	if r.gitType2 != nil {
 		t := *r.gitType2
 		if reflect.TypeOf(t).Kind() == reflect.Slice {
 			s := reflect.ValueOf(t)
 			for i := 0; i < s.Len(); i++ {
-				localVarQueryParams.Add("gitType[]", parameterToString(s.Index(i), "multi"))
+				parameterAddToHeaderOrQuery(localVarQueryParams, "gitType[]", s.Index(i), "multi")
 			}
 		} else {
-			localVarQueryParams.Add("gitType[]", parameterToString(t, "multi"))
+			parameterAddToHeaderOrQuery(localVarQueryParams, "gitType[]", t, "multi")
 		}
 	}
 	if r.credentialType != nil {
-		localVarQueryParams.Add("credentialType", parameterToString(*r.credentialType, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "credentialType", r.credentialType, "")
 	}
 	if r.credentialType2 != nil {
 		t := *r.credentialType2
 		if reflect.TypeOf(t).Kind() == reflect.Slice {
 			s := reflect.ValueOf(t)
 			for i := 0; i < s.Len(); i++ {
-				localVarQueryParams.Add("credentialType[]", parameterToString(s.Index(i), "multi"))
+				parameterAddToHeaderOrQuery(localVarQueryParams, "credentialType[]", s.Index(i), "multi")
 			}
 		} else {
-			localVarQueryParams.Add("credentialType[]", parameterToString(t, "multi"))
+			parameterAddToHeaderOrQuery(localVarQueryParams, "credentialType[]", t, "multi")
 		}
 	}
 	// to determine the Content-Type header
@@ -177,7 +177,7 @@ func (a *GitApiService) ApiGitsGetCollectionExecute(r ApiApiGitsGetCollectionReq
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/hal+json", "application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
+	localVarHTTPHeaderAccepts := []string{"application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -208,9 +208,9 @@ func (a *GitApiService) ApiGitsGetCollectionExecute(r ApiApiGitsGetCollectionReq
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -235,13 +235,13 @@ func (a *GitApiService) ApiGitsGetCollectionExecute(r ApiApiGitsGetCollectionReq
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiApiGitsIdDeleteRequest struct {
+type GitApiApiGitsIdDeleteRequest struct {
 	ctx        context.Context
 	ApiService *GitApiService
 	id         string
 }
 
-func (r ApiApiGitsIdDeleteRequest) Execute() (*http.Response, error) {
+func (r GitApiApiGitsIdDeleteRequest) Execute() (*http.Response, error) {
 	return r.ApiService.ApiGitsIdDeleteExecute(r)
 }
 
@@ -252,10 +252,10 @@ Removes the Git resource.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id Git identifier
-	@return ApiApiGitsIdDeleteRequest
+	@return GitApiApiGitsIdDeleteRequest
 */
-func (a *GitApiService) ApiGitsIdDelete(ctx context.Context, id string) ApiApiGitsIdDeleteRequest {
-	return ApiApiGitsIdDeleteRequest{
+func (a *GitApiService) ApiGitsIdDelete(ctx context.Context, id string) GitApiApiGitsIdDeleteRequest {
+	return GitApiApiGitsIdDeleteRequest{
 		ApiService: a,
 		ctx:        ctx,
 		id:         id,
@@ -263,7 +263,7 @@ func (a *GitApiService) ApiGitsIdDelete(ctx context.Context, id string) ApiApiGi
 }
 
 // Execute executes the request
-func (a *GitApiService) ApiGitsIdDeleteExecute(r ApiApiGitsIdDeleteRequest) (*http.Response, error) {
+func (a *GitApiService) ApiGitsIdDeleteExecute(r GitApiApiGitsIdDeleteRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
 		localVarPostBody   interface{}
@@ -276,7 +276,7 @@ func (a *GitApiService) ApiGitsIdDeleteExecute(r ApiApiGitsIdDeleteRequest) (*ht
 	}
 
 	localVarPath := localBasePath + "/api/gits/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -323,9 +323,9 @@ func (a *GitApiService) ApiGitsIdDeleteExecute(r ApiApiGitsIdDeleteRequest) (*ht
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -341,13 +341,13 @@ func (a *GitApiService) ApiGitsIdDeleteExecute(r ApiApiGitsIdDeleteRequest) (*ht
 	return localVarHTTPResponse, nil
 }
 
-type ApiApiGitsIdGetRequest struct {
+type GitApiApiGitsIdGetRequest struct {
 	ctx        context.Context
 	ApiService *GitApiService
 	id         string
 }
 
-func (r ApiApiGitsIdGetRequest) Execute() (*GitJsonhal, *http.Response, error) {
+func (r GitApiApiGitsIdGetRequest) Execute() (*Git, *http.Response, error) {
 	return r.ApiService.ApiGitsIdGetExecute(r)
 }
 
@@ -358,10 +358,10 @@ Retrieves a Git resource.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id Git identifier
-	@return ApiApiGitsIdGetRequest
+	@return GitApiApiGitsIdGetRequest
 */
-func (a *GitApiService) ApiGitsIdGet(ctx context.Context, id string) ApiApiGitsIdGetRequest {
-	return ApiApiGitsIdGetRequest{
+func (a *GitApiService) ApiGitsIdGet(ctx context.Context, id string) GitApiApiGitsIdGetRequest {
+	return GitApiApiGitsIdGetRequest{
 		ApiService: a,
 		ctx:        ctx,
 		id:         id,
@@ -370,13 +370,13 @@ func (a *GitApiService) ApiGitsIdGet(ctx context.Context, id string) ApiApiGitsI
 
 // Execute executes the request
 //
-//	@return GitJsonhal
-func (a *GitApiService) ApiGitsIdGetExecute(r ApiApiGitsIdGetRequest) (*GitJsonhal, *http.Response, error) {
+//	@return Git
+func (a *GitApiService) ApiGitsIdGetExecute(r GitApiApiGitsIdGetRequest) (*Git, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *GitJsonhal
+		localVarReturnValue *Git
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "GitApiService.ApiGitsIdGet")
@@ -385,7 +385,7 @@ func (a *GitApiService) ApiGitsIdGetExecute(r ApiApiGitsIdGetRequest) (*GitJsonh
 	}
 
 	localVarPath := localBasePath + "/api/gits/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -401,7 +401,7 @@ func (a *GitApiService) ApiGitsIdGetExecute(r ApiApiGitsIdGetRequest) (*GitJsonh
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/hal+json", "application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
+	localVarHTTPHeaderAccepts := []string{"application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -432,9 +432,9 @@ func (a *GitApiService) ApiGitsIdGetExecute(r ApiApiGitsIdGetRequest) (*GitJsonh
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -459,20 +459,20 @@ func (a *GitApiService) ApiGitsIdGetExecute(r ApiApiGitsIdGetRequest) (*GitJsonh
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiApiGitsIdPatchRequest struct {
+type GitApiApiGitsIdPatchRequest struct {
 	ctx        context.Context
 	ApiService *GitApiService
-	id         string
 	git        *Git
+	id         string
 }
 
 // The updated Git resource
-func (r ApiApiGitsIdPatchRequest) Git(git Git) ApiApiGitsIdPatchRequest {
+func (r GitApiApiGitsIdPatchRequest) Git(git Git) GitApiApiGitsIdPatchRequest {
 	r.git = &git
 	return r
 }
 
-func (r ApiApiGitsIdPatchRequest) Execute() (*GitJsonhal, *http.Response, error) {
+func (r GitApiApiGitsIdPatchRequest) Execute() (*Git, *http.Response, error) {
 	return r.ApiService.ApiGitsIdPatchExecute(r)
 }
 
@@ -483,10 +483,10 @@ Updates the Git resource.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id Git identifier
-	@return ApiApiGitsIdPatchRequest
+	@return GitApiApiGitsIdPatchRequest
 */
-func (a *GitApiService) ApiGitsIdPatch(ctx context.Context, id string) ApiApiGitsIdPatchRequest {
-	return ApiApiGitsIdPatchRequest{
+func (a *GitApiService) ApiGitsIdPatch(ctx context.Context, id string) GitApiApiGitsIdPatchRequest {
+	return GitApiApiGitsIdPatchRequest{
 		ApiService: a,
 		ctx:        ctx,
 		id:         id,
@@ -495,13 +495,13 @@ func (a *GitApiService) ApiGitsIdPatch(ctx context.Context, id string) ApiApiGit
 
 // Execute executes the request
 //
-//	@return GitJsonhal
-func (a *GitApiService) ApiGitsIdPatchExecute(r ApiApiGitsIdPatchRequest) (*GitJsonhal, *http.Response, error) {
+//	@return Git
+func (a *GitApiService) ApiGitsIdPatchExecute(r GitApiApiGitsIdPatchRequest) (*Git, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *GitJsonhal
+		localVarReturnValue *Git
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "GitApiService.ApiGitsIdPatch")
@@ -510,7 +510,7 @@ func (a *GitApiService) ApiGitsIdPatchExecute(r ApiApiGitsIdPatchRequest) (*GitJ
 	}
 
 	localVarPath := localBasePath + "/api/gits/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -520,7 +520,7 @@ func (a *GitApiService) ApiGitsIdPatchExecute(r ApiApiGitsIdPatchRequest) (*GitJ
 	}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/vnd.api+json"}
+	localVarHTTPContentTypes := []string{"application/merge-patch+json", "application/vnd.api+json"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -529,7 +529,7 @@ func (a *GitApiService) ApiGitsIdPatchExecute(r ApiApiGitsIdPatchRequest) (*GitJ
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/hal+json", "application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
+	localVarHTTPHeaderAccepts := []string{"application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -562,9 +562,9 @@ func (a *GitApiService) ApiGitsIdPatchExecute(r ApiApiGitsIdPatchRequest) (*GitJ
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -589,20 +589,20 @@ func (a *GitApiService) ApiGitsIdPatchExecute(r ApiApiGitsIdPatchRequest) (*GitJ
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiApiGitsIdPutRequest struct {
+type GitApiApiGitsIdPutRequest struct {
 	ctx        context.Context
 	ApiService *GitApiService
+	git        *Git
 	id         string
-	gitJsonhal *GitJsonhal
 }
 
 // The updated Git resource
-func (r ApiApiGitsIdPutRequest) GitJsonhal(gitJsonhal GitJsonhal) ApiApiGitsIdPutRequest {
-	r.gitJsonhal = &gitJsonhal
+func (r GitApiApiGitsIdPutRequest) Git(git Git) GitApiApiGitsIdPutRequest {
+	r.git = &git
 	return r
 }
 
-func (r ApiApiGitsIdPutRequest) Execute() (*GitJsonhal, *http.Response, error) {
+func (r GitApiApiGitsIdPutRequest) Execute() (*Git, *http.Response, error) {
 	return r.ApiService.ApiGitsIdPutExecute(r)
 }
 
@@ -613,10 +613,10 @@ Replaces the Git resource.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id Git identifier
-	@return ApiApiGitsIdPutRequest
+	@return GitApiApiGitsIdPutRequest
 */
-func (a *GitApiService) ApiGitsIdPut(ctx context.Context, id string) ApiApiGitsIdPutRequest {
-	return ApiApiGitsIdPutRequest{
+func (a *GitApiService) ApiGitsIdPut(ctx context.Context, id string) GitApiApiGitsIdPutRequest {
+	return GitApiApiGitsIdPutRequest{
 		ApiService: a,
 		ctx:        ctx,
 		id:         id,
@@ -625,13 +625,13 @@ func (a *GitApiService) ApiGitsIdPut(ctx context.Context, id string) ApiApiGitsI
 
 // Execute executes the request
 //
-//	@return GitJsonhal
-func (a *GitApiService) ApiGitsIdPutExecute(r ApiApiGitsIdPutRequest) (*GitJsonhal, *http.Response, error) {
+//	@return Git
+func (a *GitApiService) ApiGitsIdPutExecute(r GitApiApiGitsIdPutRequest) (*Git, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *GitJsonhal
+		localVarReturnValue *Git
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "GitApiService.ApiGitsIdPut")
@@ -640,17 +640,17 @@ func (a *GitApiService) ApiGitsIdPutExecute(r ApiApiGitsIdPutRequest) (*GitJsonh
 	}
 
 	localVarPath := localBasePath + "/api/gits/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.gitJsonhal == nil {
-		return localVarReturnValue, nil, reportError("gitJsonhal is required and must be specified")
+	if r.git == nil {
+		return localVarReturnValue, nil, reportError("git is required and must be specified")
 	}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/hal+json", "application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
+	localVarHTTPContentTypes := []string{"application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -659,7 +659,7 @@ func (a *GitApiService) ApiGitsIdPutExecute(r ApiApiGitsIdPutRequest) (*GitJsonh
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/hal+json", "application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
+	localVarHTTPHeaderAccepts := []string{"application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -667,7 +667,7 @@ func (a *GitApiService) ApiGitsIdPutExecute(r ApiApiGitsIdPutRequest) (*GitJsonh
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.gitJsonhal
+	localVarPostBody = r.git
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
@@ -692,9 +692,9 @@ func (a *GitApiService) ApiGitsIdPutExecute(r ApiApiGitsIdPutRequest) (*GitJsonh
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -719,19 +719,19 @@ func (a *GitApiService) ApiGitsIdPutExecute(r ApiApiGitsIdPutRequest) (*GitJsonh
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiApiGitsPostRequest struct {
+type GitApiApiGitsPostRequest struct {
 	ctx        context.Context
 	ApiService *GitApiService
-	gitJsonhal *GitJsonhal
+	git        *Git
 }
 
 // The new Git resource
-func (r ApiApiGitsPostRequest) GitJsonhal(gitJsonhal GitJsonhal) ApiApiGitsPostRequest {
-	r.gitJsonhal = &gitJsonhal
+func (r GitApiApiGitsPostRequest) Git(git Git) GitApiApiGitsPostRequest {
+	r.git = &git
 	return r
 }
 
-func (r ApiApiGitsPostRequest) Execute() (*GitJsonhal, *http.Response, error) {
+func (r GitApiApiGitsPostRequest) Execute() (*Git, *http.Response, error) {
 	return r.ApiService.ApiGitsPostExecute(r)
 }
 
@@ -741,10 +741,10 @@ ApiGitsPost Creates a Git resource.
 Creates a Git resource.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiApiGitsPostRequest
+	@return GitApiApiGitsPostRequest
 */
-func (a *GitApiService) ApiGitsPost(ctx context.Context) ApiApiGitsPostRequest {
-	return ApiApiGitsPostRequest{
+func (a *GitApiService) ApiGitsPost(ctx context.Context) GitApiApiGitsPostRequest {
+	return GitApiApiGitsPostRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -752,13 +752,13 @@ func (a *GitApiService) ApiGitsPost(ctx context.Context) ApiApiGitsPostRequest {
 
 // Execute executes the request
 //
-//	@return GitJsonhal
-func (a *GitApiService) ApiGitsPostExecute(r ApiApiGitsPostRequest) (*GitJsonhal, *http.Response, error) {
+//	@return Git
+func (a *GitApiService) ApiGitsPostExecute(r GitApiApiGitsPostRequest) (*Git, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *GitJsonhal
+		localVarReturnValue *Git
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "GitApiService.ApiGitsPost")
@@ -771,12 +771,12 @@ func (a *GitApiService) ApiGitsPostExecute(r ApiApiGitsPostRequest) (*GitJsonhal
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.gitJsonhal == nil {
-		return localVarReturnValue, nil, reportError("gitJsonhal is required and must be specified")
+	if r.git == nil {
+		return localVarReturnValue, nil, reportError("git is required and must be specified")
 	}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/hal+json", "application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
+	localVarHTTPContentTypes := []string{"application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -785,7 +785,7 @@ func (a *GitApiService) ApiGitsPostExecute(r ApiApiGitsPostRequest) (*GitJsonhal
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/hal+json", "application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
+	localVarHTTPHeaderAccepts := []string{"application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -793,7 +793,7 @@ func (a *GitApiService) ApiGitsPostExecute(r ApiApiGitsPostRequest) (*GitJsonhal
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.gitJsonhal
+	localVarPostBody = r.git
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
@@ -818,9 +818,9 @@ func (a *GitApiService) ApiGitsPostExecute(r ApiApiGitsPostRequest) (*GitJsonhal
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}

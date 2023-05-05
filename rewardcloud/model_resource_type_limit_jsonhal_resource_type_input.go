@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ResourceTypeLimitJsonhalResourceTypeInput type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ResourceTypeLimitJsonhalResourceTypeInput{}
+
 // ResourceTypeLimitJsonhalResourceTypeInput
 type ResourceTypeLimitJsonhalResourceTypeInput struct {
 	Links               *AbstractEnvironmentJsonhalLinks `json:"_links,omitempty"`
@@ -44,7 +47,7 @@ func NewResourceTypeLimitJsonhalResourceTypeInputWithDefaults() *ResourceTypeLim
 
 // GetLinks returns the Links field value if set, zero value otherwise.
 func (o *ResourceTypeLimitJsonhalResourceTypeInput) GetLinks() AbstractEnvironmentJsonhalLinks {
-	if o == nil || isNil(o.Links) {
+	if o == nil || IsNil(o.Links) {
 		var ret AbstractEnvironmentJsonhalLinks
 		return ret
 	}
@@ -54,7 +57,7 @@ func (o *ResourceTypeLimitJsonhalResourceTypeInput) GetLinks() AbstractEnvironme
 // GetLinksOk returns a tuple with the Links field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ResourceTypeLimitJsonhalResourceTypeInput) GetLinksOk() (*AbstractEnvironmentJsonhalLinks, bool) {
-	if o == nil || isNil(o.Links) {
+	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
 	return o.Links, true
@@ -62,7 +65,7 @@ func (o *ResourceTypeLimitJsonhalResourceTypeInput) GetLinksOk() (*AbstractEnvir
 
 // HasLinks returns a boolean if a field has been set.
 func (o *ResourceTypeLimitJsonhalResourceTypeInput) HasLinks() bool {
-	if o != nil && !isNil(o.Links) {
+	if o != nil && !IsNil(o.Links) {
 		return true
 	}
 
@@ -76,7 +79,7 @@ func (o *ResourceTypeLimitJsonhalResourceTypeInput) SetLinks(v AbstractEnvironme
 
 // GetProjectMinValue returns the ProjectMinValue field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ResourceTypeLimitJsonhalResourceTypeInput) GetProjectMinValue() int32 {
-	if o == nil || isNil(o.ProjectMinValue.Get()) {
+	if o == nil || IsNil(o.ProjectMinValue.Get()) {
 		var ret int32
 		return ret
 	}
@@ -119,7 +122,7 @@ func (o *ResourceTypeLimitJsonhalResourceTypeInput) UnsetProjectMinValue() {
 
 // GetProjectMaxValue returns the ProjectMaxValue field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ResourceTypeLimitJsonhalResourceTypeInput) GetProjectMaxValue() int32 {
-	if o == nil || isNil(o.ProjectMaxValue.Get()) {
+	if o == nil || IsNil(o.ProjectMaxValue.Get()) {
 		var ret int32
 		return ret
 	}
@@ -162,7 +165,7 @@ func (o *ResourceTypeLimitJsonhalResourceTypeInput) UnsetProjectMaxValue() {
 
 // GetEnvironmentMinValue returns the EnvironmentMinValue field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ResourceTypeLimitJsonhalResourceTypeInput) GetEnvironmentMinValue() int32 {
-	if o == nil || isNil(o.EnvironmentMinValue.Get()) {
+	if o == nil || IsNil(o.EnvironmentMinValue.Get()) {
 		var ret int32
 		return ret
 	}
@@ -205,7 +208,7 @@ func (o *ResourceTypeLimitJsonhalResourceTypeInput) UnsetEnvironmentMinValue() {
 
 // GetEnvironmentMaxValue returns the EnvironmentMaxValue field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ResourceTypeLimitJsonhalResourceTypeInput) GetEnvironmentMaxValue() int32 {
-	if o == nil || isNil(o.EnvironmentMaxValue.Get()) {
+	if o == nil || IsNil(o.EnvironmentMaxValue.Get()) {
 		var ret int32
 		return ret
 	}
@@ -248,7 +251,7 @@ func (o *ResourceTypeLimitJsonhalResourceTypeInput) UnsetEnvironmentMaxValue() {
 
 // GetComponentMinValue returns the ComponentMinValue field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ResourceTypeLimitJsonhalResourceTypeInput) GetComponentMinValue() int32 {
-	if o == nil || isNil(o.ComponentMinValue.Get()) {
+	if o == nil || IsNil(o.ComponentMinValue.Get()) {
 		var ret int32
 		return ret
 	}
@@ -291,7 +294,7 @@ func (o *ResourceTypeLimitJsonhalResourceTypeInput) UnsetComponentMinValue() {
 
 // GetComponentMaxValue returns the ComponentMaxValue field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ResourceTypeLimitJsonhalResourceTypeInput) GetComponentMaxValue() int32 {
-	if o == nil || isNil(o.ComponentMaxValue.Get()) {
+	if o == nil || IsNil(o.ComponentMaxValue.Get()) {
 		var ret int32
 		return ret
 	}
@@ -333,8 +336,16 @@ func (o *ResourceTypeLimitJsonhalResourceTypeInput) UnsetComponentMaxValue() {
 }
 
 func (o ResourceTypeLimitJsonhalResourceTypeInput) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o ResourceTypeLimitJsonhalResourceTypeInput) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Links) {
+	if !IsNil(o.Links) {
 		toSerialize["_links"] = o.Links
 	}
 	if o.ProjectMinValue.IsSet() {
@@ -355,7 +366,7 @@ func (o ResourceTypeLimitJsonhalResourceTypeInput) MarshalJSON() ([]byte, error)
 	if o.ComponentMaxValue.IsSet() {
 		toSerialize["componentMaxValue"] = o.ComponentMaxValue.Get()
 	}
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 type NullableResourceTypeLimitJsonhalResourceTypeInput struct {

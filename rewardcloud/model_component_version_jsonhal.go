@@ -15,6 +15,9 @@ import (
 	"time"
 )
 
+// checks if the ComponentVersionJsonhal type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ComponentVersionJsonhal{}
+
 // ComponentVersionJsonhal Class ComponentVersion
 type ComponentVersionJsonhal struct {
 	Links                  *AbstractEnvironmentJsonhalLinks `json:"_links,omitempty"`
@@ -51,7 +54,7 @@ func NewComponentVersionJsonhalWithDefaults() *ComponentVersionJsonhal {
 
 // GetLinks returns the Links field value if set, zero value otherwise.
 func (o *ComponentVersionJsonhal) GetLinks() AbstractEnvironmentJsonhalLinks {
-	if o == nil || isNil(o.Links) {
+	if o == nil || IsNil(o.Links) {
 		var ret AbstractEnvironmentJsonhalLinks
 		return ret
 	}
@@ -61,7 +64,7 @@ func (o *ComponentVersionJsonhal) GetLinks() AbstractEnvironmentJsonhalLinks {
 // GetLinksOk returns a tuple with the Links field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComponentVersionJsonhal) GetLinksOk() (*AbstractEnvironmentJsonhalLinks, bool) {
-	if o == nil || isNil(o.Links) {
+	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
 	return o.Links, true
@@ -69,7 +72,7 @@ func (o *ComponentVersionJsonhal) GetLinksOk() (*AbstractEnvironmentJsonhalLinks
 
 // HasLinks returns a boolean if a field has been set.
 func (o *ComponentVersionJsonhal) HasLinks() bool {
-	if o != nil && !isNil(o.Links) {
+	if o != nil && !IsNil(o.Links) {
 		return true
 	}
 
@@ -83,7 +86,7 @@ func (o *ComponentVersionJsonhal) SetLinks(v AbstractEnvironmentJsonhalLinks) {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *ComponentVersionJsonhal) GetId() int32 {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		var ret int32
 		return ret
 	}
@@ -93,7 +96,7 @@ func (o *ComponentVersionJsonhal) GetId() int32 {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComponentVersionJsonhal) GetIdOk() (*int32, bool) {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
 	return o.Id, true
@@ -101,7 +104,7 @@ func (o *ComponentVersionJsonhal) GetIdOk() (*int32, bool) {
 
 // HasId returns a boolean if a field has been set.
 func (o *ComponentVersionJsonhal) HasId() bool {
-	if o != nil && !isNil(o.Id) {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -115,7 +118,7 @@ func (o *ComponentVersionJsonhal) SetId(v int32) {
 
 // GetUuid returns the Uuid field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ComponentVersionJsonhal) GetUuid() string {
-	if o == nil || isNil(o.Uuid.Get()) {
+	if o == nil || IsNil(o.Uuid.Get()) {
 		var ret string
 		return ret
 	}
@@ -158,7 +161,7 @@ func (o *ComponentVersionJsonhal) UnsetUuid() {
 
 // GetVersion returns the Version field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ComponentVersionJsonhal) GetVersion() string {
-	if o == nil || isNil(o.Version.Get()) {
+	if o == nil || IsNil(o.Version.Get()) {
 		var ret string
 		return ret
 	}
@@ -201,7 +204,7 @@ func (o *ComponentVersionJsonhal) UnsetVersion() {
 
 // GetComponent returns the Component field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ComponentVersionJsonhal) GetComponent() string {
-	if o == nil || isNil(o.Component.Get()) {
+	if o == nil || IsNil(o.Component.Get()) {
 		var ret string
 		return ret
 	}
@@ -244,7 +247,7 @@ func (o *ComponentVersionJsonhal) UnsetComponent() {
 
 // GetComponentVersionEnvVar returns the ComponentVersionEnvVar field value if set, zero value otherwise.
 func (o *ComponentVersionJsonhal) GetComponentVersionEnvVar() []string {
-	if o == nil || isNil(o.ComponentVersionEnvVar) {
+	if o == nil || IsNil(o.ComponentVersionEnvVar) {
 		var ret []string
 		return ret
 	}
@@ -254,7 +257,7 @@ func (o *ComponentVersionJsonhal) GetComponentVersionEnvVar() []string {
 // GetComponentVersionEnvVarOk returns a tuple with the ComponentVersionEnvVar field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComponentVersionJsonhal) GetComponentVersionEnvVarOk() ([]string, bool) {
-	if o == nil || isNil(o.ComponentVersionEnvVar) {
+	if o == nil || IsNil(o.ComponentVersionEnvVar) {
 		return nil, false
 	}
 	return o.ComponentVersionEnvVar, true
@@ -262,7 +265,7 @@ func (o *ComponentVersionJsonhal) GetComponentVersionEnvVarOk() ([]string, bool)
 
 // HasComponentVersionEnvVar returns a boolean if a field has been set.
 func (o *ComponentVersionJsonhal) HasComponentVersionEnvVar() bool {
-	if o != nil && !isNil(o.ComponentVersionEnvVar) {
+	if o != nil && !IsNil(o.ComponentVersionEnvVar) {
 		return true
 	}
 
@@ -276,7 +279,7 @@ func (o *ComponentVersionJsonhal) SetComponentVersionEnvVar(v []string) {
 
 // GetProject returns the Project field value if set, zero value otherwise.
 func (o *ComponentVersionJsonhal) GetProject() []AbstractProjectJsonhal {
-	if o == nil || isNil(o.Project) {
+	if o == nil || IsNil(o.Project) {
 		var ret []AbstractProjectJsonhal
 		return ret
 	}
@@ -286,7 +289,7 @@ func (o *ComponentVersionJsonhal) GetProject() []AbstractProjectJsonhal {
 // GetProjectOk returns a tuple with the Project field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComponentVersionJsonhal) GetProjectOk() ([]AbstractProjectJsonhal, bool) {
-	if o == nil || isNil(o.Project) {
+	if o == nil || IsNil(o.Project) {
 		return nil, false
 	}
 	return o.Project, true
@@ -294,7 +297,7 @@ func (o *ComponentVersionJsonhal) GetProjectOk() ([]AbstractProjectJsonhal, bool
 
 // HasProject returns a boolean if a field has been set.
 func (o *ComponentVersionJsonhal) HasProject() bool {
-	if o != nil && !isNil(o.Project) {
+	if o != nil && !IsNil(o.Project) {
 		return true
 	}
 
@@ -308,7 +311,7 @@ func (o *ComponentVersionJsonhal) SetProject(v []AbstractProjectJsonhal) {
 
 // GetEnvironmentComponent returns the EnvironmentComponent field value if set, zero value otherwise.
 func (o *ComponentVersionJsonhal) GetEnvironmentComponent() []string {
-	if o == nil || isNil(o.EnvironmentComponent) {
+	if o == nil || IsNil(o.EnvironmentComponent) {
 		var ret []string
 		return ret
 	}
@@ -318,7 +321,7 @@ func (o *ComponentVersionJsonhal) GetEnvironmentComponent() []string {
 // GetEnvironmentComponentOk returns a tuple with the EnvironmentComponent field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComponentVersionJsonhal) GetEnvironmentComponentOk() ([]string, bool) {
-	if o == nil || isNil(o.EnvironmentComponent) {
+	if o == nil || IsNil(o.EnvironmentComponent) {
 		return nil, false
 	}
 	return o.EnvironmentComponent, true
@@ -326,7 +329,7 @@ func (o *ComponentVersionJsonhal) GetEnvironmentComponentOk() ([]string, bool) {
 
 // HasEnvironmentComponent returns a boolean if a field has been set.
 func (o *ComponentVersionJsonhal) HasEnvironmentComponent() bool {
-	if o != nil && !isNil(o.EnvironmentComponent) {
+	if o != nil && !IsNil(o.EnvironmentComponent) {
 		return true
 	}
 
@@ -340,7 +343,7 @@ func (o *ComponentVersionJsonhal) SetEnvironmentComponent(v []string) {
 
 // GetComponentResourceLimit returns the ComponentResourceLimit field value if set, zero value otherwise.
 func (o *ComponentVersionJsonhal) GetComponentResourceLimit() []string {
-	if o == nil || isNil(o.ComponentResourceLimit) {
+	if o == nil || IsNil(o.ComponentResourceLimit) {
 		var ret []string
 		return ret
 	}
@@ -350,7 +353,7 @@ func (o *ComponentVersionJsonhal) GetComponentResourceLimit() []string {
 // GetComponentResourceLimitOk returns a tuple with the ComponentResourceLimit field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComponentVersionJsonhal) GetComponentResourceLimitOk() ([]string, bool) {
-	if o == nil || isNil(o.ComponentResourceLimit) {
+	if o == nil || IsNil(o.ComponentResourceLimit) {
 		return nil, false
 	}
 	return o.ComponentResourceLimit, true
@@ -358,7 +361,7 @@ func (o *ComponentVersionJsonhal) GetComponentResourceLimitOk() ([]string, bool)
 
 // HasComponentResourceLimit returns a boolean if a field has been set.
 func (o *ComponentVersionJsonhal) HasComponentResourceLimit() bool {
-	if o != nil && !isNil(o.ComponentResourceLimit) {
+	if o != nil && !IsNil(o.ComponentResourceLimit) {
 		return true
 	}
 
@@ -372,7 +375,7 @@ func (o *ComponentVersionJsonhal) SetComponentResourceLimit(v []string) {
 
 // GetCreatedBy returns the CreatedBy field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ComponentVersionJsonhal) GetCreatedBy() string {
-	if o == nil || isNil(o.CreatedBy.Get()) {
+	if o == nil || IsNil(o.CreatedBy.Get()) {
 		var ret string
 		return ret
 	}
@@ -415,7 +418,7 @@ func (o *ComponentVersionJsonhal) UnsetCreatedBy() {
 
 // GetUpdatedBy returns the UpdatedBy field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ComponentVersionJsonhal) GetUpdatedBy() string {
-	if o == nil || isNil(o.UpdatedBy.Get()) {
+	if o == nil || IsNil(o.UpdatedBy.Get()) {
 		var ret string
 		return ret
 	}
@@ -458,7 +461,7 @@ func (o *ComponentVersionJsonhal) UnsetUpdatedBy() {
 
 // GetCreatedAt returns the CreatedAt field value if set, zero value otherwise.
 func (o *ComponentVersionJsonhal) GetCreatedAt() time.Time {
-	if o == nil || isNil(o.CreatedAt) {
+	if o == nil || IsNil(o.CreatedAt) {
 		var ret time.Time
 		return ret
 	}
@@ -468,7 +471,7 @@ func (o *ComponentVersionJsonhal) GetCreatedAt() time.Time {
 // GetCreatedAtOk returns a tuple with the CreatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComponentVersionJsonhal) GetCreatedAtOk() (*time.Time, bool) {
-	if o == nil || isNil(o.CreatedAt) {
+	if o == nil || IsNil(o.CreatedAt) {
 		return nil, false
 	}
 	return o.CreatedAt, true
@@ -476,7 +479,7 @@ func (o *ComponentVersionJsonhal) GetCreatedAtOk() (*time.Time, bool) {
 
 // HasCreatedAt returns a boolean if a field has been set.
 func (o *ComponentVersionJsonhal) HasCreatedAt() bool {
-	if o != nil && !isNil(o.CreatedAt) {
+	if o != nil && !IsNil(o.CreatedAt) {
 		return true
 	}
 
@@ -490,7 +493,7 @@ func (o *ComponentVersionJsonhal) SetCreatedAt(v time.Time) {
 
 // GetUpdatedAt returns the UpdatedAt field value if set, zero value otherwise.
 func (o *ComponentVersionJsonhal) GetUpdatedAt() time.Time {
-	if o == nil || isNil(o.UpdatedAt) {
+	if o == nil || IsNil(o.UpdatedAt) {
 		var ret time.Time
 		return ret
 	}
@@ -500,7 +503,7 @@ func (o *ComponentVersionJsonhal) GetUpdatedAt() time.Time {
 // GetUpdatedAtOk returns a tuple with the UpdatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComponentVersionJsonhal) GetUpdatedAtOk() (*time.Time, bool) {
-	if o == nil || isNil(o.UpdatedAt) {
+	if o == nil || IsNil(o.UpdatedAt) {
 		return nil, false
 	}
 	return o.UpdatedAt, true
@@ -508,7 +511,7 @@ func (o *ComponentVersionJsonhal) GetUpdatedAtOk() (*time.Time, bool) {
 
 // HasUpdatedAt returns a boolean if a field has been set.
 func (o *ComponentVersionJsonhal) HasUpdatedAt() bool {
-	if o != nil && !isNil(o.UpdatedAt) {
+	if o != nil && !IsNil(o.UpdatedAt) {
 		return true
 	}
 
@@ -521,13 +524,19 @@ func (o *ComponentVersionJsonhal) SetUpdatedAt(v time.Time) {
 }
 
 func (o ComponentVersionJsonhal) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o ComponentVersionJsonhal) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Links) {
+	if !IsNil(o.Links) {
 		toSerialize["_links"] = o.Links
 	}
-	if !isNil(o.Id) {
-		toSerialize["id"] = o.Id
-	}
+	// skip: id is readOnly
 	if o.Uuid.IsSet() {
 		toSerialize["uuid"] = o.Uuid.Get()
 	}
@@ -537,16 +546,16 @@ func (o ComponentVersionJsonhal) MarshalJSON() ([]byte, error) {
 	if o.Component.IsSet() {
 		toSerialize["component"] = o.Component.Get()
 	}
-	if !isNil(o.ComponentVersionEnvVar) {
+	if !IsNil(o.ComponentVersionEnvVar) {
 		toSerialize["componentVersionEnvVar"] = o.ComponentVersionEnvVar
 	}
-	if !isNil(o.Project) {
+	if !IsNil(o.Project) {
 		toSerialize["project"] = o.Project
 	}
-	if !isNil(o.EnvironmentComponent) {
+	if !IsNil(o.EnvironmentComponent) {
 		toSerialize["environmentComponent"] = o.EnvironmentComponent
 	}
-	if !isNil(o.ComponentResourceLimit) {
+	if !IsNil(o.ComponentResourceLimit) {
 		toSerialize["componentResourceLimit"] = o.ComponentResourceLimit
 	}
 	if o.CreatedBy.IsSet() {
@@ -555,13 +564,13 @@ func (o ComponentVersionJsonhal) MarshalJSON() ([]byte, error) {
 	if o.UpdatedBy.IsSet() {
 		toSerialize["updatedBy"] = o.UpdatedBy.Get()
 	}
-	if !isNil(o.CreatedAt) {
+	if !IsNil(o.CreatedAt) {
 		toSerialize["createdAt"] = o.CreatedAt
 	}
-	if !isNil(o.UpdatedAt) {
+	if !IsNil(o.UpdatedAt) {
 		toSerialize["updatedAt"] = o.UpdatedAt
 	}
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 type NullableComponentVersionJsonhal struct {

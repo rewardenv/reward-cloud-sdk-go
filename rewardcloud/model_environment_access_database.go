@@ -15,6 +15,9 @@ import (
 	"time"
 )
 
+// checks if the EnvironmentAccessDatabase type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &EnvironmentAccessDatabase{}
+
 // EnvironmentAccessDatabase Class EnvironmentAccessDatabase
 type EnvironmentAccessDatabase struct {
 	Id                *int32         `json:"id,omitempty"`
@@ -52,7 +55,7 @@ func NewEnvironmentAccessDatabaseWithDefaults() *EnvironmentAccessDatabase {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *EnvironmentAccessDatabase) GetId() int32 {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		var ret int32
 		return ret
 	}
@@ -62,7 +65,7 @@ func (o *EnvironmentAccessDatabase) GetId() int32 {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EnvironmentAccessDatabase) GetIdOk() (*int32, bool) {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
 	return o.Id, true
@@ -70,7 +73,7 @@ func (o *EnvironmentAccessDatabase) GetIdOk() (*int32, bool) {
 
 // HasId returns a boolean if a field has been set.
 func (o *EnvironmentAccessDatabase) HasId() bool {
-	if o != nil && !isNil(o.Id) {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -84,7 +87,7 @@ func (o *EnvironmentAccessDatabase) SetId(v int32) {
 
 // GetUuid returns the Uuid field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *EnvironmentAccessDatabase) GetUuid() string {
-	if o == nil || isNil(o.Uuid.Get()) {
+	if o == nil || IsNil(o.Uuid.Get()) {
 		var ret string
 		return ret
 	}
@@ -127,7 +130,7 @@ func (o *EnvironmentAccessDatabase) UnsetUuid() {
 
 // GetUrl returns the Url field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *EnvironmentAccessDatabase) GetUrl() string {
-	if o == nil || isNil(o.Url.Get()) {
+	if o == nil || IsNil(o.Url.Get()) {
 		var ret string
 		return ret
 	}
@@ -170,7 +173,7 @@ func (o *EnvironmentAccessDatabase) UnsetUrl() {
 
 // GetHost returns the Host field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *EnvironmentAccessDatabase) GetHost() string {
-	if o == nil || isNil(o.Host.Get()) {
+	if o == nil || IsNil(o.Host.Get()) {
 		var ret string
 		return ret
 	}
@@ -213,7 +216,7 @@ func (o *EnvironmentAccessDatabase) UnsetHost() {
 
 // GetPort returns the Port field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *EnvironmentAccessDatabase) GetPort() int32 {
-	if o == nil || isNil(o.Port.Get()) {
+	if o == nil || IsNil(o.Port.Get()) {
 		var ret int32
 		return ret
 	}
@@ -256,7 +259,7 @@ func (o *EnvironmentAccessDatabase) UnsetPort() {
 
 // GetScheme returns the Scheme field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *EnvironmentAccessDatabase) GetScheme() string {
-	if o == nil || isNil(o.Scheme.Get()) {
+	if o == nil || IsNil(o.Scheme.Get()) {
 		var ret string
 		return ret
 	}
@@ -299,7 +302,7 @@ func (o *EnvironmentAccessDatabase) UnsetScheme() {
 
 // GetUsername returns the Username field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *EnvironmentAccessDatabase) GetUsername() string {
-	if o == nil || isNil(o.Username.Get()) {
+	if o == nil || IsNil(o.Username.Get()) {
 		var ret string
 		return ret
 	}
@@ -342,7 +345,7 @@ func (o *EnvironmentAccessDatabase) UnsetUsername() {
 
 // GetPassword returns the Password field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *EnvironmentAccessDatabase) GetPassword() string {
-	if o == nil || isNil(o.Password.Get()) {
+	if o == nil || IsNil(o.Password.Get()) {
 		var ret string
 		return ret
 	}
@@ -385,7 +388,7 @@ func (o *EnvironmentAccessDatabase) UnsetPassword() {
 
 // GetRootPassword returns the RootPassword field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *EnvironmentAccessDatabase) GetRootPassword() string {
-	if o == nil || isNil(o.RootPassword.Get()) {
+	if o == nil || IsNil(o.RootPassword.Get()) {
 		var ret string
 		return ret
 	}
@@ -428,7 +431,7 @@ func (o *EnvironmentAccessDatabase) UnsetRootPassword() {
 
 // GetEnvironmentAccess returns the EnvironmentAccess field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *EnvironmentAccessDatabase) GetEnvironmentAccess() string {
-	if o == nil || isNil(o.EnvironmentAccess.Get()) {
+	if o == nil || IsNil(o.EnvironmentAccess.Get()) {
 		var ret string
 		return ret
 	}
@@ -471,7 +474,7 @@ func (o *EnvironmentAccessDatabase) UnsetEnvironmentAccess() {
 
 // GetCreatedBy returns the CreatedBy field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *EnvironmentAccessDatabase) GetCreatedBy() string {
-	if o == nil || isNil(o.CreatedBy.Get()) {
+	if o == nil || IsNil(o.CreatedBy.Get()) {
 		var ret string
 		return ret
 	}
@@ -514,7 +517,7 @@ func (o *EnvironmentAccessDatabase) UnsetCreatedBy() {
 
 // GetUpdatedBy returns the UpdatedBy field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *EnvironmentAccessDatabase) GetUpdatedBy() string {
-	if o == nil || isNil(o.UpdatedBy.Get()) {
+	if o == nil || IsNil(o.UpdatedBy.Get()) {
 		var ret string
 		return ret
 	}
@@ -557,7 +560,7 @@ func (o *EnvironmentAccessDatabase) UnsetUpdatedBy() {
 
 // GetCreatedAt returns the CreatedAt field value if set, zero value otherwise.
 func (o *EnvironmentAccessDatabase) GetCreatedAt() time.Time {
-	if o == nil || isNil(o.CreatedAt) {
+	if o == nil || IsNil(o.CreatedAt) {
 		var ret time.Time
 		return ret
 	}
@@ -567,7 +570,7 @@ func (o *EnvironmentAccessDatabase) GetCreatedAt() time.Time {
 // GetCreatedAtOk returns a tuple with the CreatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EnvironmentAccessDatabase) GetCreatedAtOk() (*time.Time, bool) {
-	if o == nil || isNil(o.CreatedAt) {
+	if o == nil || IsNil(o.CreatedAt) {
 		return nil, false
 	}
 	return o.CreatedAt, true
@@ -575,7 +578,7 @@ func (o *EnvironmentAccessDatabase) GetCreatedAtOk() (*time.Time, bool) {
 
 // HasCreatedAt returns a boolean if a field has been set.
 func (o *EnvironmentAccessDatabase) HasCreatedAt() bool {
-	if o != nil && !isNil(o.CreatedAt) {
+	if o != nil && !IsNil(o.CreatedAt) {
 		return true
 	}
 
@@ -589,7 +592,7 @@ func (o *EnvironmentAccessDatabase) SetCreatedAt(v time.Time) {
 
 // GetUpdatedAt returns the UpdatedAt field value if set, zero value otherwise.
 func (o *EnvironmentAccessDatabase) GetUpdatedAt() time.Time {
-	if o == nil || isNil(o.UpdatedAt) {
+	if o == nil || IsNil(o.UpdatedAt) {
 		var ret time.Time
 		return ret
 	}
@@ -599,7 +602,7 @@ func (o *EnvironmentAccessDatabase) GetUpdatedAt() time.Time {
 // GetUpdatedAtOk returns a tuple with the UpdatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EnvironmentAccessDatabase) GetUpdatedAtOk() (*time.Time, bool) {
-	if o == nil || isNil(o.UpdatedAt) {
+	if o == nil || IsNil(o.UpdatedAt) {
 		return nil, false
 	}
 	return o.UpdatedAt, true
@@ -607,7 +610,7 @@ func (o *EnvironmentAccessDatabase) GetUpdatedAtOk() (*time.Time, bool) {
 
 // HasUpdatedAt returns a boolean if a field has been set.
 func (o *EnvironmentAccessDatabase) HasUpdatedAt() bool {
-	if o != nil && !isNil(o.UpdatedAt) {
+	if o != nil && !IsNil(o.UpdatedAt) {
 		return true
 	}
 
@@ -620,10 +623,16 @@ func (o *EnvironmentAccessDatabase) SetUpdatedAt(v time.Time) {
 }
 
 func (o EnvironmentAccessDatabase) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.Id) {
-		toSerialize["id"] = o.Id
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
+	return json.Marshal(toSerialize)
+}
+
+func (o EnvironmentAccessDatabase) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	// skip: id is readOnly
 	if o.Uuid.IsSet() {
 		toSerialize["uuid"] = o.Uuid.Get()
 	}
@@ -657,13 +666,13 @@ func (o EnvironmentAccessDatabase) MarshalJSON() ([]byte, error) {
 	if o.UpdatedBy.IsSet() {
 		toSerialize["updatedBy"] = o.UpdatedBy.Get()
 	}
-	if !isNil(o.CreatedAt) {
+	if !IsNil(o.CreatedAt) {
 		toSerialize["createdAt"] = o.CreatedAt
 	}
-	if !isNil(o.UpdatedAt) {
+	if !IsNil(o.UpdatedAt) {
 		toSerialize["updatedAt"] = o.UpdatedAt
 	}
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 type NullableEnvironmentAccessDatabase struct {

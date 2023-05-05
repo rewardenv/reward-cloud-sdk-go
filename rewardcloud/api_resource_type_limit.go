@@ -13,7 +13,7 @@ package rewardcloud
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"strings"
@@ -22,7 +22,7 @@ import (
 // ResourceTypeLimitApiService ResourceTypeLimitApi service
 type ResourceTypeLimitApiService service
 
-type ApiApiResourceTypeLimitsGetCollectionRequest struct {
+type ResourceTypeLimitApiApiResourceTypeLimitsGetCollectionRequest struct {
 	ctx          context.Context
 	ApiService   *ResourceTypeLimitApiService
 	page         *int32
@@ -30,18 +30,18 @@ type ApiApiResourceTypeLimitsGetCollectionRequest struct {
 }
 
 // The collection page number
-func (r ApiApiResourceTypeLimitsGetCollectionRequest) Page(page int32) ApiApiResourceTypeLimitsGetCollectionRequest {
+func (r ResourceTypeLimitApiApiResourceTypeLimitsGetCollectionRequest) Page(page int32) ResourceTypeLimitApiApiResourceTypeLimitsGetCollectionRequest {
 	r.page = &page
 	return r
 }
 
 // The number of items per page
-func (r ApiApiResourceTypeLimitsGetCollectionRequest) ItemsPerPage(itemsPerPage int32) ApiApiResourceTypeLimitsGetCollectionRequest {
+func (r ResourceTypeLimitApiApiResourceTypeLimitsGetCollectionRequest) ItemsPerPage(itemsPerPage int32) ResourceTypeLimitApiApiResourceTypeLimitsGetCollectionRequest {
 	r.itemsPerPage = &itemsPerPage
 	return r
 }
 
-func (r ApiApiResourceTypeLimitsGetCollectionRequest) Execute() (*ApiResourceTypeLimitsGetCollection200Response, *http.Response, error) {
+func (r ResourceTypeLimitApiApiResourceTypeLimitsGetCollectionRequest) Execute() ([]ResourceTypeLimit, *http.Response, error) {
 	return r.ApiService.ApiResourceTypeLimitsGetCollectionExecute(r)
 }
 
@@ -51,10 +51,10 @@ ApiResourceTypeLimitsGetCollection Retrieves the collection of ResourceTypeLimit
 Retrieves the collection of ResourceTypeLimit resources.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiApiResourceTypeLimitsGetCollectionRequest
+	@return ResourceTypeLimitApiApiResourceTypeLimitsGetCollectionRequest
 */
-func (a *ResourceTypeLimitApiService) ApiResourceTypeLimitsGetCollection(ctx context.Context) ApiApiResourceTypeLimitsGetCollectionRequest {
-	return ApiApiResourceTypeLimitsGetCollectionRequest{
+func (a *ResourceTypeLimitApiService) ApiResourceTypeLimitsGetCollection(ctx context.Context) ResourceTypeLimitApiApiResourceTypeLimitsGetCollectionRequest {
+	return ResourceTypeLimitApiApiResourceTypeLimitsGetCollectionRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -62,13 +62,13 @@ func (a *ResourceTypeLimitApiService) ApiResourceTypeLimitsGetCollection(ctx con
 
 // Execute executes the request
 //
-//	@return ApiResourceTypeLimitsGetCollection200Response
-func (a *ResourceTypeLimitApiService) ApiResourceTypeLimitsGetCollectionExecute(r ApiApiResourceTypeLimitsGetCollectionRequest) (*ApiResourceTypeLimitsGetCollection200Response, *http.Response, error) {
+//	@return []ResourceTypeLimit
+func (a *ResourceTypeLimitApiService) ApiResourceTypeLimitsGetCollectionExecute(r ResourceTypeLimitApiApiResourceTypeLimitsGetCollectionRequest) ([]ResourceTypeLimit, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *ApiResourceTypeLimitsGetCollection200Response
+		localVarReturnValue []ResourceTypeLimit
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ResourceTypeLimitApiService.ApiResourceTypeLimitsGetCollection")
@@ -83,10 +83,10 @@ func (a *ResourceTypeLimitApiService) ApiResourceTypeLimitsGetCollectionExecute(
 	localVarFormParams := url.Values{}
 
 	if r.page != nil {
-		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
 	}
 	if r.itemsPerPage != nil {
-		localVarQueryParams.Add("itemsPerPage", parameterToString(*r.itemsPerPage, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "itemsPerPage", r.itemsPerPage, "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -98,7 +98,7 @@ func (a *ResourceTypeLimitApiService) ApiResourceTypeLimitsGetCollectionExecute(
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/hal+json", "application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
+	localVarHTTPHeaderAccepts := []string{"application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -129,9 +129,9 @@ func (a *ResourceTypeLimitApiService) ApiResourceTypeLimitsGetCollectionExecute(
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -156,13 +156,13 @@ func (a *ResourceTypeLimitApiService) ApiResourceTypeLimitsGetCollectionExecute(
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiApiResourceTypeLimitsIdDeleteRequest struct {
+type ResourceTypeLimitApiApiResourceTypeLimitsIdDeleteRequest struct {
 	ctx        context.Context
 	ApiService *ResourceTypeLimitApiService
 	id         string
 }
 
-func (r ApiApiResourceTypeLimitsIdDeleteRequest) Execute() (*http.Response, error) {
+func (r ResourceTypeLimitApiApiResourceTypeLimitsIdDeleteRequest) Execute() (*http.Response, error) {
 	return r.ApiService.ApiResourceTypeLimitsIdDeleteExecute(r)
 }
 
@@ -173,10 +173,10 @@ Removes the ResourceTypeLimit resource.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id ResourceTypeLimit identifier
-	@return ApiApiResourceTypeLimitsIdDeleteRequest
+	@return ResourceTypeLimitApiApiResourceTypeLimitsIdDeleteRequest
 */
-func (a *ResourceTypeLimitApiService) ApiResourceTypeLimitsIdDelete(ctx context.Context, id string) ApiApiResourceTypeLimitsIdDeleteRequest {
-	return ApiApiResourceTypeLimitsIdDeleteRequest{
+func (a *ResourceTypeLimitApiService) ApiResourceTypeLimitsIdDelete(ctx context.Context, id string) ResourceTypeLimitApiApiResourceTypeLimitsIdDeleteRequest {
+	return ResourceTypeLimitApiApiResourceTypeLimitsIdDeleteRequest{
 		ApiService: a,
 		ctx:        ctx,
 		id:         id,
@@ -184,7 +184,7 @@ func (a *ResourceTypeLimitApiService) ApiResourceTypeLimitsIdDelete(ctx context.
 }
 
 // Execute executes the request
-func (a *ResourceTypeLimitApiService) ApiResourceTypeLimitsIdDeleteExecute(r ApiApiResourceTypeLimitsIdDeleteRequest) (*http.Response, error) {
+func (a *ResourceTypeLimitApiService) ApiResourceTypeLimitsIdDeleteExecute(r ResourceTypeLimitApiApiResourceTypeLimitsIdDeleteRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
 		localVarPostBody   interface{}
@@ -197,7 +197,7 @@ func (a *ResourceTypeLimitApiService) ApiResourceTypeLimitsIdDeleteExecute(r Api
 	}
 
 	localVarPath := localBasePath + "/api/resource_type_limits/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -244,9 +244,9 @@ func (a *ResourceTypeLimitApiService) ApiResourceTypeLimitsIdDeleteExecute(r Api
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -262,13 +262,13 @@ func (a *ResourceTypeLimitApiService) ApiResourceTypeLimitsIdDeleteExecute(r Api
 	return localVarHTTPResponse, nil
 }
 
-type ApiApiResourceTypeLimitsIdGetRequest struct {
+type ResourceTypeLimitApiApiResourceTypeLimitsIdGetRequest struct {
 	ctx        context.Context
 	ApiService *ResourceTypeLimitApiService
 	id         string
 }
 
-func (r ApiApiResourceTypeLimitsIdGetRequest) Execute() (*ResourceTypeLimitJsonhal, *http.Response, error) {
+func (r ResourceTypeLimitApiApiResourceTypeLimitsIdGetRequest) Execute() (*ResourceTypeLimit, *http.Response, error) {
 	return r.ApiService.ApiResourceTypeLimitsIdGetExecute(r)
 }
 
@@ -279,10 +279,10 @@ Retrieves a ResourceTypeLimit resource.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id ResourceTypeLimit identifier
-	@return ApiApiResourceTypeLimitsIdGetRequest
+	@return ResourceTypeLimitApiApiResourceTypeLimitsIdGetRequest
 */
-func (a *ResourceTypeLimitApiService) ApiResourceTypeLimitsIdGet(ctx context.Context, id string) ApiApiResourceTypeLimitsIdGetRequest {
-	return ApiApiResourceTypeLimitsIdGetRequest{
+func (a *ResourceTypeLimitApiService) ApiResourceTypeLimitsIdGet(ctx context.Context, id string) ResourceTypeLimitApiApiResourceTypeLimitsIdGetRequest {
+	return ResourceTypeLimitApiApiResourceTypeLimitsIdGetRequest{
 		ApiService: a,
 		ctx:        ctx,
 		id:         id,
@@ -291,13 +291,13 @@ func (a *ResourceTypeLimitApiService) ApiResourceTypeLimitsIdGet(ctx context.Con
 
 // Execute executes the request
 //
-//	@return ResourceTypeLimitJsonhal
-func (a *ResourceTypeLimitApiService) ApiResourceTypeLimitsIdGetExecute(r ApiApiResourceTypeLimitsIdGetRequest) (*ResourceTypeLimitJsonhal, *http.Response, error) {
+//	@return ResourceTypeLimit
+func (a *ResourceTypeLimitApiService) ApiResourceTypeLimitsIdGetExecute(r ResourceTypeLimitApiApiResourceTypeLimitsIdGetRequest) (*ResourceTypeLimit, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *ResourceTypeLimitJsonhal
+		localVarReturnValue *ResourceTypeLimit
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ResourceTypeLimitApiService.ApiResourceTypeLimitsIdGet")
@@ -306,7 +306,7 @@ func (a *ResourceTypeLimitApiService) ApiResourceTypeLimitsIdGetExecute(r ApiApi
 	}
 
 	localVarPath := localBasePath + "/api/resource_type_limits/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -322,7 +322,7 @@ func (a *ResourceTypeLimitApiService) ApiResourceTypeLimitsIdGetExecute(r ApiApi
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/hal+json", "application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
+	localVarHTTPHeaderAccepts := []string{"application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -353,9 +353,9 @@ func (a *ResourceTypeLimitApiService) ApiResourceTypeLimitsIdGetExecute(r ApiApi
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -380,20 +380,20 @@ func (a *ResourceTypeLimitApiService) ApiResourceTypeLimitsIdGetExecute(r ApiApi
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiApiResourceTypeLimitsIdPatchRequest struct {
+type ResourceTypeLimitApiApiResourceTypeLimitsIdPatchRequest struct {
 	ctx               context.Context
 	ApiService        *ResourceTypeLimitApiService
-	id                string
 	resourceTypeLimit *ResourceTypeLimit
+	id                string
 }
 
 // The updated ResourceTypeLimit resource
-func (r ApiApiResourceTypeLimitsIdPatchRequest) ResourceTypeLimit(resourceTypeLimit ResourceTypeLimit) ApiApiResourceTypeLimitsIdPatchRequest {
+func (r ResourceTypeLimitApiApiResourceTypeLimitsIdPatchRequest) ResourceTypeLimit(resourceTypeLimit ResourceTypeLimit) ResourceTypeLimitApiApiResourceTypeLimitsIdPatchRequest {
 	r.resourceTypeLimit = &resourceTypeLimit
 	return r
 }
 
-func (r ApiApiResourceTypeLimitsIdPatchRequest) Execute() (*ResourceTypeLimitJsonhal, *http.Response, error) {
+func (r ResourceTypeLimitApiApiResourceTypeLimitsIdPatchRequest) Execute() (*ResourceTypeLimit, *http.Response, error) {
 	return r.ApiService.ApiResourceTypeLimitsIdPatchExecute(r)
 }
 
@@ -404,10 +404,10 @@ Updates the ResourceTypeLimit resource.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id ResourceTypeLimit identifier
-	@return ApiApiResourceTypeLimitsIdPatchRequest
+	@return ResourceTypeLimitApiApiResourceTypeLimitsIdPatchRequest
 */
-func (a *ResourceTypeLimitApiService) ApiResourceTypeLimitsIdPatch(ctx context.Context, id string) ApiApiResourceTypeLimitsIdPatchRequest {
-	return ApiApiResourceTypeLimitsIdPatchRequest{
+func (a *ResourceTypeLimitApiService) ApiResourceTypeLimitsIdPatch(ctx context.Context, id string) ResourceTypeLimitApiApiResourceTypeLimitsIdPatchRequest {
+	return ResourceTypeLimitApiApiResourceTypeLimitsIdPatchRequest{
 		ApiService: a,
 		ctx:        ctx,
 		id:         id,
@@ -416,13 +416,13 @@ func (a *ResourceTypeLimitApiService) ApiResourceTypeLimitsIdPatch(ctx context.C
 
 // Execute executes the request
 //
-//	@return ResourceTypeLimitJsonhal
-func (a *ResourceTypeLimitApiService) ApiResourceTypeLimitsIdPatchExecute(r ApiApiResourceTypeLimitsIdPatchRequest) (*ResourceTypeLimitJsonhal, *http.Response, error) {
+//	@return ResourceTypeLimit
+func (a *ResourceTypeLimitApiService) ApiResourceTypeLimitsIdPatchExecute(r ResourceTypeLimitApiApiResourceTypeLimitsIdPatchRequest) (*ResourceTypeLimit, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *ResourceTypeLimitJsonhal
+		localVarReturnValue *ResourceTypeLimit
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ResourceTypeLimitApiService.ApiResourceTypeLimitsIdPatch")
@@ -431,7 +431,7 @@ func (a *ResourceTypeLimitApiService) ApiResourceTypeLimitsIdPatchExecute(r ApiA
 	}
 
 	localVarPath := localBasePath + "/api/resource_type_limits/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -441,7 +441,7 @@ func (a *ResourceTypeLimitApiService) ApiResourceTypeLimitsIdPatchExecute(r ApiA
 	}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/vnd.api+json"}
+	localVarHTTPContentTypes := []string{"application/merge-patch+json", "application/vnd.api+json"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -450,7 +450,7 @@ func (a *ResourceTypeLimitApiService) ApiResourceTypeLimitsIdPatchExecute(r ApiA
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/hal+json", "application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
+	localVarHTTPHeaderAccepts := []string{"application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -483,9 +483,9 @@ func (a *ResourceTypeLimitApiService) ApiResourceTypeLimitsIdPatchExecute(r ApiA
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -510,20 +510,20 @@ func (a *ResourceTypeLimitApiService) ApiResourceTypeLimitsIdPatchExecute(r ApiA
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiApiResourceTypeLimitsIdPutRequest struct {
-	ctx                      context.Context
-	ApiService               *ResourceTypeLimitApiService
-	id                       string
-	resourceTypeLimitJsonhal *ResourceTypeLimitJsonhal
+type ResourceTypeLimitApiApiResourceTypeLimitsIdPutRequest struct {
+	ctx               context.Context
+	ApiService        *ResourceTypeLimitApiService
+	resourceTypeLimit *ResourceTypeLimit
+	id                string
 }
 
 // The updated ResourceTypeLimit resource
-func (r ApiApiResourceTypeLimitsIdPutRequest) ResourceTypeLimitJsonhal(resourceTypeLimitJsonhal ResourceTypeLimitJsonhal) ApiApiResourceTypeLimitsIdPutRequest {
-	r.resourceTypeLimitJsonhal = &resourceTypeLimitJsonhal
+func (r ResourceTypeLimitApiApiResourceTypeLimitsIdPutRequest) ResourceTypeLimit(resourceTypeLimit ResourceTypeLimit) ResourceTypeLimitApiApiResourceTypeLimitsIdPutRequest {
+	r.resourceTypeLimit = &resourceTypeLimit
 	return r
 }
 
-func (r ApiApiResourceTypeLimitsIdPutRequest) Execute() (*ResourceTypeLimitJsonhal, *http.Response, error) {
+func (r ResourceTypeLimitApiApiResourceTypeLimitsIdPutRequest) Execute() (*ResourceTypeLimit, *http.Response, error) {
 	return r.ApiService.ApiResourceTypeLimitsIdPutExecute(r)
 }
 
@@ -534,10 +534,10 @@ Replaces the ResourceTypeLimit resource.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id ResourceTypeLimit identifier
-	@return ApiApiResourceTypeLimitsIdPutRequest
+	@return ResourceTypeLimitApiApiResourceTypeLimitsIdPutRequest
 */
-func (a *ResourceTypeLimitApiService) ApiResourceTypeLimitsIdPut(ctx context.Context, id string) ApiApiResourceTypeLimitsIdPutRequest {
-	return ApiApiResourceTypeLimitsIdPutRequest{
+func (a *ResourceTypeLimitApiService) ApiResourceTypeLimitsIdPut(ctx context.Context, id string) ResourceTypeLimitApiApiResourceTypeLimitsIdPutRequest {
+	return ResourceTypeLimitApiApiResourceTypeLimitsIdPutRequest{
 		ApiService: a,
 		ctx:        ctx,
 		id:         id,
@@ -546,13 +546,13 @@ func (a *ResourceTypeLimitApiService) ApiResourceTypeLimitsIdPut(ctx context.Con
 
 // Execute executes the request
 //
-//	@return ResourceTypeLimitJsonhal
-func (a *ResourceTypeLimitApiService) ApiResourceTypeLimitsIdPutExecute(r ApiApiResourceTypeLimitsIdPutRequest) (*ResourceTypeLimitJsonhal, *http.Response, error) {
+//	@return ResourceTypeLimit
+func (a *ResourceTypeLimitApiService) ApiResourceTypeLimitsIdPutExecute(r ResourceTypeLimitApiApiResourceTypeLimitsIdPutRequest) (*ResourceTypeLimit, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *ResourceTypeLimitJsonhal
+		localVarReturnValue *ResourceTypeLimit
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ResourceTypeLimitApiService.ApiResourceTypeLimitsIdPut")
@@ -561,17 +561,17 @@ func (a *ResourceTypeLimitApiService) ApiResourceTypeLimitsIdPutExecute(r ApiApi
 	}
 
 	localVarPath := localBasePath + "/api/resource_type_limits/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.resourceTypeLimitJsonhal == nil {
-		return localVarReturnValue, nil, reportError("resourceTypeLimitJsonhal is required and must be specified")
+	if r.resourceTypeLimit == nil {
+		return localVarReturnValue, nil, reportError("resourceTypeLimit is required and must be specified")
 	}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/hal+json", "application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
+	localVarHTTPContentTypes := []string{"application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -580,7 +580,7 @@ func (a *ResourceTypeLimitApiService) ApiResourceTypeLimitsIdPutExecute(r ApiApi
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/hal+json", "application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
+	localVarHTTPHeaderAccepts := []string{"application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -588,7 +588,7 @@ func (a *ResourceTypeLimitApiService) ApiResourceTypeLimitsIdPutExecute(r ApiApi
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.resourceTypeLimitJsonhal
+	localVarPostBody = r.resourceTypeLimit
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
@@ -613,9 +613,9 @@ func (a *ResourceTypeLimitApiService) ApiResourceTypeLimitsIdPutExecute(r ApiApi
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -640,19 +640,19 @@ func (a *ResourceTypeLimitApiService) ApiResourceTypeLimitsIdPutExecute(r ApiApi
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiApiResourceTypeLimitsPostRequest struct {
-	ctx                      context.Context
-	ApiService               *ResourceTypeLimitApiService
-	resourceTypeLimitJsonhal *ResourceTypeLimitJsonhal
+type ResourceTypeLimitApiApiResourceTypeLimitsPostRequest struct {
+	ctx               context.Context
+	ApiService        *ResourceTypeLimitApiService
+	resourceTypeLimit *ResourceTypeLimit
 }
 
 // The new ResourceTypeLimit resource
-func (r ApiApiResourceTypeLimitsPostRequest) ResourceTypeLimitJsonhal(resourceTypeLimitJsonhal ResourceTypeLimitJsonhal) ApiApiResourceTypeLimitsPostRequest {
-	r.resourceTypeLimitJsonhal = &resourceTypeLimitJsonhal
+func (r ResourceTypeLimitApiApiResourceTypeLimitsPostRequest) ResourceTypeLimit(resourceTypeLimit ResourceTypeLimit) ResourceTypeLimitApiApiResourceTypeLimitsPostRequest {
+	r.resourceTypeLimit = &resourceTypeLimit
 	return r
 }
 
-func (r ApiApiResourceTypeLimitsPostRequest) Execute() (*ResourceTypeLimitJsonhal, *http.Response, error) {
+func (r ResourceTypeLimitApiApiResourceTypeLimitsPostRequest) Execute() (*ResourceTypeLimit, *http.Response, error) {
 	return r.ApiService.ApiResourceTypeLimitsPostExecute(r)
 }
 
@@ -662,10 +662,10 @@ ApiResourceTypeLimitsPost Creates a ResourceTypeLimit resource.
 Creates a ResourceTypeLimit resource.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiApiResourceTypeLimitsPostRequest
+	@return ResourceTypeLimitApiApiResourceTypeLimitsPostRequest
 */
-func (a *ResourceTypeLimitApiService) ApiResourceTypeLimitsPost(ctx context.Context) ApiApiResourceTypeLimitsPostRequest {
-	return ApiApiResourceTypeLimitsPostRequest{
+func (a *ResourceTypeLimitApiService) ApiResourceTypeLimitsPost(ctx context.Context) ResourceTypeLimitApiApiResourceTypeLimitsPostRequest {
+	return ResourceTypeLimitApiApiResourceTypeLimitsPostRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -673,13 +673,13 @@ func (a *ResourceTypeLimitApiService) ApiResourceTypeLimitsPost(ctx context.Cont
 
 // Execute executes the request
 //
-//	@return ResourceTypeLimitJsonhal
-func (a *ResourceTypeLimitApiService) ApiResourceTypeLimitsPostExecute(r ApiApiResourceTypeLimitsPostRequest) (*ResourceTypeLimitJsonhal, *http.Response, error) {
+//	@return ResourceTypeLimit
+func (a *ResourceTypeLimitApiService) ApiResourceTypeLimitsPostExecute(r ResourceTypeLimitApiApiResourceTypeLimitsPostRequest) (*ResourceTypeLimit, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *ResourceTypeLimitJsonhal
+		localVarReturnValue *ResourceTypeLimit
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ResourceTypeLimitApiService.ApiResourceTypeLimitsPost")
@@ -692,12 +692,12 @@ func (a *ResourceTypeLimitApiService) ApiResourceTypeLimitsPostExecute(r ApiApiR
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.resourceTypeLimitJsonhal == nil {
-		return localVarReturnValue, nil, reportError("resourceTypeLimitJsonhal is required and must be specified")
+	if r.resourceTypeLimit == nil {
+		return localVarReturnValue, nil, reportError("resourceTypeLimit is required and must be specified")
 	}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/hal+json", "application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
+	localVarHTTPContentTypes := []string{"application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -706,7 +706,7 @@ func (a *ResourceTypeLimitApiService) ApiResourceTypeLimitsPostExecute(r ApiApiR
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/hal+json", "application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
+	localVarHTTPHeaderAccepts := []string{"application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -714,7 +714,7 @@ func (a *ResourceTypeLimitApiService) ApiResourceTypeLimitsPostExecute(r ApiApiR
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.resourceTypeLimitJsonhal
+	localVarPostBody = r.resourceTypeLimit
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
@@ -739,9 +739,9 @@ func (a *ResourceTypeLimitApiService) ApiResourceTypeLimitsPostExecute(r ApiApiR
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}

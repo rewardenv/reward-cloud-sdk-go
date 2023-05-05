@@ -20,7 +20,7 @@ Method | HTTP request | Description
 
 ## ApiEnvironmentsGetCollection
 
-> ApiEnvironmentsGetCollection200Response ApiEnvironmentsGetCollection(ctx).Page(page).ItemsPerPage(itemsPerPage).Id(id).Id2(id2).Project(project).Project2(project2).ProjectTeamId(projectTeamId).ProjectTeamId2(projectTeamId2).Provider(provider).Provider2(provider2).State(state).State2(state2).Region(region).Region2(region2).EnvironmentAccess(environmentAccess).EnvironmentAccess2(environmentAccess2).OrderUpdatedAt(orderUpdatedAt).Execute()
+> []EnvironmentEnvironmentGet ApiEnvironmentsGetCollection(ctx).Page(page).ItemsPerPage(itemsPerPage).Id(id).Id2(id2).Project(project).Project2(project2).ProjectTeamId(projectTeamId).ProjectTeamId2(projectTeamId2).Provider(provider).Provider2(provider2).State(state).State2(state2).Region(region).Region2(region2).EnvironmentAccess(environmentAccess).EnvironmentAccess2(environmentAccess2).OrderUpdatedAt(orderUpdatedAt).Execute()
 
 Retrieves the collection of Environment resources.
 
@@ -35,7 +35,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
@@ -64,7 +64,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `EnvironmentApi.ApiEnvironmentsGetCollection``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiEnvironmentsGetCollection`: ApiEnvironmentsGetCollection200Response
+    // response from `ApiEnvironmentsGetCollection`: []EnvironmentEnvironmentGet
     fmt.Fprintf(os.Stdout, "Response from `EnvironmentApi.ApiEnvironmentsGetCollection`: %v\n", resp)
 }
 ```
@@ -100,7 +100,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ApiEnvironmentsGetCollection200Response**](ApiEnvironmentsGetCollection200Response.md)
+[**[]EnvironmentEnvironmentGet**](EnvironmentEnvironmentGet.md)
 
 ### Authorization
 
@@ -109,7 +109,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
+- **Accept**: application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -133,7 +133,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
@@ -141,7 +141,7 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.EnvironmentApi.ApiEnvironmentsIdDelete(context.Background(), id).Execute()
+    r, err := apiClient.EnvironmentApi.ApiEnvironmentsIdDelete(context.Background(), id).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `EnvironmentApi.ApiEnvironmentsIdDelete``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -186,7 +186,7 @@ Name | Type | Description  | Notes
 
 ## ApiEnvironmentsIdGet
 
-> EnvironmentJsonhalEnvironmentGet ApiEnvironmentsIdGet(ctx, id).Execute()
+> EnvironmentEnvironmentGet ApiEnvironmentsIdGet(ctx, id).Execute()
 
 Retrieves a Environment resource.
 
@@ -201,7 +201,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
@@ -214,7 +214,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `EnvironmentApi.ApiEnvironmentsIdGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiEnvironmentsIdGet`: EnvironmentJsonhalEnvironmentGet
+    // response from `ApiEnvironmentsIdGet`: EnvironmentEnvironmentGet
     fmt.Fprintf(os.Stdout, "Response from `EnvironmentApi.ApiEnvironmentsIdGet`: %v\n", resp)
 }
 ```
@@ -238,7 +238,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**EnvironmentJsonhalEnvironmentGet**](EnvironmentJsonhalEnvironmentGet.md)
+[**EnvironmentEnvironmentGet**](EnvironmentEnvironmentGet.md)
 
 ### Authorization
 
@@ -247,7 +247,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
+- **Accept**: application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -256,7 +256,7 @@ Name | Type | Description  | Notes
 
 ## ApiEnvironmentsIdPatch
 
-> EnvironmentJsonhalEnvironmentGet ApiEnvironmentsIdPatch(ctx, id).EnvironmentEnvironmentPost(environmentEnvironmentPost).Execute()
+> EnvironmentEnvironmentGet ApiEnvironmentsIdPatch(ctx, id).EnvironmentEnvironmentPost(environmentEnvironmentPost).Execute()
 
 Updates the Environment resource.
 
@@ -271,12 +271,12 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    id := "id_example" // string | Environment identifier
     environmentEnvironmentPost := *openapiclient.NewEnvironmentEnvironmentPost() // EnvironmentEnvironmentPost | The updated Environment resource
+    id := "id_example" // string | Environment identifier
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -285,7 +285,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `EnvironmentApi.ApiEnvironmentsIdPatch``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiEnvironmentsIdPatch`: EnvironmentJsonhalEnvironmentGet
+    // response from `ApiEnvironmentsIdPatch`: EnvironmentEnvironmentGet
     fmt.Fprintf(os.Stdout, "Response from `EnvironmentApi.ApiEnvironmentsIdPatch`: %v\n", resp)
 }
 ```
@@ -305,12 +305,12 @@ Other parameters are passed through a pointer to a apiApiEnvironmentsIdPatchRequ
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-
  **environmentEnvironmentPost** | [**EnvironmentEnvironmentPost**](EnvironmentEnvironmentPost.md) | The updated Environment resource | 
+
 
 ### Return type
 
-[**EnvironmentJsonhalEnvironmentGet**](EnvironmentJsonhalEnvironmentGet.md)
+[**EnvironmentEnvironmentGet**](EnvironmentEnvironmentGet.md)
 
 ### Authorization
 
@@ -318,8 +318,8 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: application/vnd.api+json
-- **Accept**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
+- **Content-Type**: application/merge-patch+json, application/vnd.api+json
+- **Accept**: application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -328,7 +328,7 @@ Name | Type | Description  | Notes
 
 ## ApiEnvironmentsIdPut
 
-> EnvironmentJsonhalEnvironmentGet ApiEnvironmentsIdPut(ctx, id).EnvironmentJsonhalEnvironmentPost(environmentJsonhalEnvironmentPost).Execute()
+> EnvironmentEnvironmentGet ApiEnvironmentsIdPut(ctx, id).EnvironmentEnvironmentPost(environmentEnvironmentPost).Execute()
 
 Replaces the Environment resource.
 
@@ -343,21 +343,21 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
+    environmentEnvironmentPost := *openapiclient.NewEnvironmentEnvironmentPost() // EnvironmentEnvironmentPost | The updated Environment resource
     id := "id_example" // string | Environment identifier
-    environmentJsonhalEnvironmentPost := *openapiclient.NewEnvironmentJsonhalEnvironmentPost() // EnvironmentJsonhalEnvironmentPost | The updated Environment resource
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.EnvironmentApi.ApiEnvironmentsIdPut(context.Background(), id).EnvironmentJsonhalEnvironmentPost(environmentJsonhalEnvironmentPost).Execute()
+    resp, r, err := apiClient.EnvironmentApi.ApiEnvironmentsIdPut(context.Background(), id).EnvironmentEnvironmentPost(environmentEnvironmentPost).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `EnvironmentApi.ApiEnvironmentsIdPut``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiEnvironmentsIdPut`: EnvironmentJsonhalEnvironmentGet
+    // response from `ApiEnvironmentsIdPut`: EnvironmentEnvironmentGet
     fmt.Fprintf(os.Stdout, "Response from `EnvironmentApi.ApiEnvironmentsIdPut`: %v\n", resp)
 }
 ```
@@ -377,12 +377,12 @@ Other parameters are passed through a pointer to a apiApiEnvironmentsIdPutReques
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **environmentEnvironmentPost** | [**EnvironmentEnvironmentPost**](EnvironmentEnvironmentPost.md) | The updated Environment resource | 
 
- **environmentJsonhalEnvironmentPost** | [**EnvironmentJsonhalEnvironmentPost**](EnvironmentJsonhalEnvironmentPost.md) | The updated Environment resource | 
 
 ### Return type
 
-[**EnvironmentJsonhalEnvironmentGet**](EnvironmentJsonhalEnvironmentGet.md)
+[**EnvironmentEnvironmentGet**](EnvironmentEnvironmentGet.md)
 
 ### Authorization
 
@@ -390,8 +390,8 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
-- **Accept**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
+- **Content-Type**: application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
+- **Accept**: application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -400,7 +400,7 @@ Name | Type | Description  | Notes
 
 ## ApiEnvironmentsIdcostsGet
 
-> EnvironmentJsonhalEnvironmentGet ApiEnvironmentsIdcostsGet(ctx, id).Execute()
+> EnvironmentEnvironmentGet ApiEnvironmentsIdcostsGet(ctx, id).Execute()
 
 Retrieves a Environment resource.
 
@@ -415,7 +415,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
@@ -428,7 +428,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `EnvironmentApi.ApiEnvironmentsIdcostsGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiEnvironmentsIdcostsGet`: EnvironmentJsonhalEnvironmentGet
+    // response from `ApiEnvironmentsIdcostsGet`: EnvironmentEnvironmentGet
     fmt.Fprintf(os.Stdout, "Response from `EnvironmentApi.ApiEnvironmentsIdcostsGet`: %v\n", resp)
 }
 ```
@@ -452,7 +452,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**EnvironmentJsonhalEnvironmentGet**](EnvironmentJsonhalEnvironmentGet.md)
+[**EnvironmentEnvironmentGet**](EnvironmentEnvironmentGet.md)
 
 ### Authorization
 
@@ -461,7 +461,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
+- **Accept**: application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -470,7 +470,7 @@ Name | Type | Description  | Notes
 
 ## ApiEnvironmentsIdexportDatabasePut
 
-> EnvironmentJsonhalEnvironmentGet ApiEnvironmentsIdexportDatabasePut(ctx, id).EnvironmentJsonhalEnvironmentPost(environmentJsonhalEnvironmentPost).Execute()
+> EnvironmentEnvironmentGet ApiEnvironmentsIdexportDatabasePut(ctx, id).EnvironmentEnvironmentPost(environmentEnvironmentPost).Execute()
 
 Replaces the Environment resource.
 
@@ -485,21 +485,21 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
+    environmentEnvironmentPost := *openapiclient.NewEnvironmentEnvironmentPost() // EnvironmentEnvironmentPost | The updated Environment resource
     id := "id_example" // string | Environment identifier
-    environmentJsonhalEnvironmentPost := *openapiclient.NewEnvironmentJsonhalEnvironmentPost() // EnvironmentJsonhalEnvironmentPost | The updated Environment resource
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.EnvironmentApi.ApiEnvironmentsIdexportDatabasePut(context.Background(), id).EnvironmentJsonhalEnvironmentPost(environmentJsonhalEnvironmentPost).Execute()
+    resp, r, err := apiClient.EnvironmentApi.ApiEnvironmentsIdexportDatabasePut(context.Background(), id).EnvironmentEnvironmentPost(environmentEnvironmentPost).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `EnvironmentApi.ApiEnvironmentsIdexportDatabasePut``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiEnvironmentsIdexportDatabasePut`: EnvironmentJsonhalEnvironmentGet
+    // response from `ApiEnvironmentsIdexportDatabasePut`: EnvironmentEnvironmentGet
     fmt.Fprintf(os.Stdout, "Response from `EnvironmentApi.ApiEnvironmentsIdexportDatabasePut`: %v\n", resp)
 }
 ```
@@ -519,12 +519,12 @@ Other parameters are passed through a pointer to a apiApiEnvironmentsIdexportDat
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **environmentEnvironmentPost** | [**EnvironmentEnvironmentPost**](EnvironmentEnvironmentPost.md) | The updated Environment resource | 
 
- **environmentJsonhalEnvironmentPost** | [**EnvironmentJsonhalEnvironmentPost**](EnvironmentJsonhalEnvironmentPost.md) | The updated Environment resource | 
 
 ### Return type
 
-[**EnvironmentJsonhalEnvironmentGet**](EnvironmentJsonhalEnvironmentGet.md)
+[**EnvironmentEnvironmentGet**](EnvironmentEnvironmentGet.md)
 
 ### Authorization
 
@@ -532,8 +532,8 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
-- **Accept**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
+- **Content-Type**: application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
+- **Accept**: application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -542,7 +542,7 @@ Name | Type | Description  | Notes
 
 ## ApiEnvironmentsIdexportMediaPut
 
-> EnvironmentJsonhalEnvironmentGet ApiEnvironmentsIdexportMediaPut(ctx, id).EnvironmentJsonhalEnvironmentPost(environmentJsonhalEnvironmentPost).Execute()
+> EnvironmentEnvironmentGet ApiEnvironmentsIdexportMediaPut(ctx, id).EnvironmentEnvironmentPost(environmentEnvironmentPost).Execute()
 
 Replaces the Environment resource.
 
@@ -557,21 +557,21 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
+    environmentEnvironmentPost := *openapiclient.NewEnvironmentEnvironmentPost() // EnvironmentEnvironmentPost | The updated Environment resource
     id := "id_example" // string | Environment identifier
-    environmentJsonhalEnvironmentPost := *openapiclient.NewEnvironmentJsonhalEnvironmentPost() // EnvironmentJsonhalEnvironmentPost | The updated Environment resource
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.EnvironmentApi.ApiEnvironmentsIdexportMediaPut(context.Background(), id).EnvironmentJsonhalEnvironmentPost(environmentJsonhalEnvironmentPost).Execute()
+    resp, r, err := apiClient.EnvironmentApi.ApiEnvironmentsIdexportMediaPut(context.Background(), id).EnvironmentEnvironmentPost(environmentEnvironmentPost).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `EnvironmentApi.ApiEnvironmentsIdexportMediaPut``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiEnvironmentsIdexportMediaPut`: EnvironmentJsonhalEnvironmentGet
+    // response from `ApiEnvironmentsIdexportMediaPut`: EnvironmentEnvironmentGet
     fmt.Fprintf(os.Stdout, "Response from `EnvironmentApi.ApiEnvironmentsIdexportMediaPut`: %v\n", resp)
 }
 ```
@@ -591,12 +591,12 @@ Other parameters are passed through a pointer to a apiApiEnvironmentsIdexportMed
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **environmentEnvironmentPost** | [**EnvironmentEnvironmentPost**](EnvironmentEnvironmentPost.md) | The updated Environment resource | 
 
- **environmentJsonhalEnvironmentPost** | [**EnvironmentJsonhalEnvironmentPost**](EnvironmentJsonhalEnvironmentPost.md) | The updated Environment resource | 
 
 ### Return type
 
-[**EnvironmentJsonhalEnvironmentGet**](EnvironmentJsonhalEnvironmentGet.md)
+[**EnvironmentEnvironmentGet**](EnvironmentEnvironmentGet.md)
 
 ### Authorization
 
@@ -604,8 +604,8 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
-- **Accept**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
+- **Content-Type**: application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
+- **Accept**: application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -614,7 +614,7 @@ Name | Type | Description  | Notes
 
 ## ApiEnvironmentsIdimportDatabasePost
 
-> EnvironmentJsonhalEnvironmentGet ApiEnvironmentsIdimportDatabasePost(ctx, id).TemplateIri(templateIri).Project(project).Provider(provider).State(state).Region(region).ExportedData(exportedData).ImportedData(importedData).Name(name).Cpu(cpu).Memory(memory).Storage(storage).DataTransferSettings(dataTransferSettings).IsStripDatabase(isStripDatabase).IsAllowOutgoingEmails(isAllowOutgoingEmails).IsInitSampleData(isInitSampleData).EnvVar(envVar).EnvironmentComponent(environmentComponent).Execute()
+> EnvironmentEnvironmentGet ApiEnvironmentsIdimportDatabasePost(ctx, id).TemplateIri(templateIri).Project(project).Provider(provider).State(state).Region(region).ExportedData(exportedData).ImportedData(importedData).Name(name).Cpu(cpu).Memory(memory).Storage(storage).DataTransferSettings(dataTransferSettings).IsStripDatabase(isStripDatabase).IsAllowOutgoingEmails(isAllowOutgoingEmails).IsInitSampleData(isInitSampleData).EnvVar(envVar).EnvironmentComponent(environmentComponent).Execute()
 
 Creates a Environment resource.
 
@@ -629,7 +629,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
@@ -659,7 +659,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `EnvironmentApi.ApiEnvironmentsIdimportDatabasePost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiEnvironmentsIdimportDatabasePost`: EnvironmentJsonhalEnvironmentGet
+    // response from `ApiEnvironmentsIdimportDatabasePost`: EnvironmentEnvironmentGet
     fmt.Fprintf(os.Stdout, "Response from `EnvironmentApi.ApiEnvironmentsIdimportDatabasePost`: %v\n", resp)
 }
 ```
@@ -700,7 +700,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**EnvironmentJsonhalEnvironmentGet**](EnvironmentJsonhalEnvironmentGet.md)
+[**EnvironmentEnvironmentGet**](EnvironmentEnvironmentGet.md)
 
 ### Authorization
 
@@ -709,7 +709,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: multipart/form-data
-- **Accept**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
+- **Accept**: application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -718,7 +718,7 @@ Name | Type | Description  | Notes
 
 ## ApiEnvironmentsIdimportMediaPost
 
-> EnvironmentJsonhalEnvironmentGet ApiEnvironmentsIdimportMediaPost(ctx, id).TemplateIri(templateIri).Project(project).Provider(provider).State(state).Region(region).ExportedData(exportedData).ImportedData(importedData).Name(name).Cpu(cpu).Memory(memory).Storage(storage).DataTransferSettings(dataTransferSettings).IsStripDatabase(isStripDatabase).IsAllowOutgoingEmails(isAllowOutgoingEmails).IsInitSampleData(isInitSampleData).EnvVar(envVar).EnvironmentComponent(environmentComponent).Execute()
+> EnvironmentEnvironmentGet ApiEnvironmentsIdimportMediaPost(ctx, id).TemplateIri(templateIri).Project(project).Provider(provider).State(state).Region(region).ExportedData(exportedData).ImportedData(importedData).Name(name).Cpu(cpu).Memory(memory).Storage(storage).DataTransferSettings(dataTransferSettings).IsStripDatabase(isStripDatabase).IsAllowOutgoingEmails(isAllowOutgoingEmails).IsInitSampleData(isInitSampleData).EnvVar(envVar).EnvironmentComponent(environmentComponent).Execute()
 
 Creates a Environment resource.
 
@@ -733,7 +733,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
@@ -763,7 +763,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `EnvironmentApi.ApiEnvironmentsIdimportMediaPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiEnvironmentsIdimportMediaPost`: EnvironmentJsonhalEnvironmentGet
+    // response from `ApiEnvironmentsIdimportMediaPost`: EnvironmentEnvironmentGet
     fmt.Fprintf(os.Stdout, "Response from `EnvironmentApi.ApiEnvironmentsIdimportMediaPost`: %v\n", resp)
 }
 ```
@@ -804,7 +804,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**EnvironmentJsonhalEnvironmentGet**](EnvironmentJsonhalEnvironmentGet.md)
+[**EnvironmentEnvironmentGet**](EnvironmentEnvironmentGet.md)
 
 ### Authorization
 
@@ -813,7 +813,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: multipart/form-data
-- **Accept**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
+- **Accept**: application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -822,7 +822,7 @@ Name | Type | Description  | Notes
 
 ## ApiEnvironmentsPost
 
-> EnvironmentJsonhalEnvironmentGet ApiEnvironmentsPost(ctx).EnvironmentJsonhalEnvironmentPost(environmentJsonhalEnvironmentPost).Execute()
+> EnvironmentEnvironmentGet ApiEnvironmentsPost(ctx).EnvironmentEnvironmentPost(environmentEnvironmentPost).Execute()
 
 Creates a Environment resource.
 
@@ -837,20 +837,20 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    environmentJsonhalEnvironmentPost := *openapiclient.NewEnvironmentJsonhalEnvironmentPost() // EnvironmentJsonhalEnvironmentPost | The new Environment resource
+    environmentEnvironmentPost := *openapiclient.NewEnvironmentEnvironmentPost() // EnvironmentEnvironmentPost | The new Environment resource
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.EnvironmentApi.ApiEnvironmentsPost(context.Background()).EnvironmentJsonhalEnvironmentPost(environmentJsonhalEnvironmentPost).Execute()
+    resp, r, err := apiClient.EnvironmentApi.ApiEnvironmentsPost(context.Background()).EnvironmentEnvironmentPost(environmentEnvironmentPost).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `EnvironmentApi.ApiEnvironmentsPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiEnvironmentsPost`: EnvironmentJsonhalEnvironmentGet
+    // response from `ApiEnvironmentsPost`: EnvironmentEnvironmentGet
     fmt.Fprintf(os.Stdout, "Response from `EnvironmentApi.ApiEnvironmentsPost`: %v\n", resp)
 }
 ```
@@ -866,11 +866,11 @@ Other parameters are passed through a pointer to a apiApiEnvironmentsPostRequest
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **environmentJsonhalEnvironmentPost** | [**EnvironmentJsonhalEnvironmentPost**](EnvironmentJsonhalEnvironmentPost.md) | The new Environment resource | 
+ **environmentEnvironmentPost** | [**EnvironmentEnvironmentPost**](EnvironmentEnvironmentPost.md) | The new Environment resource | 
 
 ### Return type
 
-[**EnvironmentJsonhalEnvironmentGet**](EnvironmentJsonhalEnvironmentGet.md)
+[**EnvironmentEnvironmentGet**](EnvironmentEnvironmentGet.md)
 
 ### Authorization
 
@@ -878,8 +878,8 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
-- **Accept**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
+- **Content-Type**: application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
+- **Accept**: application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)

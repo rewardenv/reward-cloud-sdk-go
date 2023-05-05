@@ -15,7 +15,7 @@ Method | HTTP request | Description
 
 ## ApiDataTransferDataTypesGetCollection
 
-> ApiDataTransferDataTypesGetCollection200Response ApiDataTransferDataTypesGetCollection(ctx).Page(page).ItemsPerPage(itemsPerPage).Execute()
+> []DataTransferDataType ApiDataTransferDataTypesGetCollection(ctx).Page(page).ItemsPerPage(itemsPerPage).Execute()
 
 Retrieves the collection of DataTransferDataType resources.
 
@@ -30,7 +30,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
@@ -44,7 +44,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `DataTransferDataTypeApi.ApiDataTransferDataTypesGetCollection``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiDataTransferDataTypesGetCollection`: ApiDataTransferDataTypesGetCollection200Response
+    // response from `ApiDataTransferDataTypesGetCollection`: []DataTransferDataType
     fmt.Fprintf(os.Stdout, "Response from `DataTransferDataTypeApi.ApiDataTransferDataTypesGetCollection`: %v\n", resp)
 }
 ```
@@ -65,7 +65,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ApiDataTransferDataTypesGetCollection200Response**](ApiDataTransferDataTypesGetCollection200Response.md)
+[**[]DataTransferDataType**](DataTransferDataType.md)
 
 ### Authorization
 
@@ -74,7 +74,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
+- **Accept**: application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -98,7 +98,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
@@ -106,7 +106,7 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.DataTransferDataTypeApi.ApiDataTransferDataTypesIdDelete(context.Background(), id).Execute()
+    r, err := apiClient.DataTransferDataTypeApi.ApiDataTransferDataTypesIdDelete(context.Background(), id).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `DataTransferDataTypeApi.ApiDataTransferDataTypesIdDelete``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -151,7 +151,7 @@ Name | Type | Description  | Notes
 
 ## ApiDataTransferDataTypesIdGet
 
-> DataTransferDataTypeJsonhal ApiDataTransferDataTypesIdGet(ctx, id).Execute()
+> DataTransferDataType ApiDataTransferDataTypesIdGet(ctx, id).Execute()
 
 Retrieves a DataTransferDataType resource.
 
@@ -166,7 +166,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
@@ -179,7 +179,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `DataTransferDataTypeApi.ApiDataTransferDataTypesIdGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiDataTransferDataTypesIdGet`: DataTransferDataTypeJsonhal
+    // response from `ApiDataTransferDataTypesIdGet`: DataTransferDataType
     fmt.Fprintf(os.Stdout, "Response from `DataTransferDataTypeApi.ApiDataTransferDataTypesIdGet`: %v\n", resp)
 }
 ```
@@ -203,7 +203,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**DataTransferDataTypeJsonhal**](DataTransferDataTypeJsonhal.md)
+[**DataTransferDataType**](DataTransferDataType.md)
 
 ### Authorization
 
@@ -212,7 +212,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
+- **Accept**: application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -221,7 +221,7 @@ Name | Type | Description  | Notes
 
 ## ApiDataTransferDataTypesIdPatch
 
-> DataTransferDataTypeJsonhal ApiDataTransferDataTypesIdPatch(ctx, id).DataTransferDataType(dataTransferDataType).Execute()
+> DataTransferDataType ApiDataTransferDataTypesIdPatch(ctx, id).DataTransferDataType(dataTransferDataType).Execute()
 
 Updates the DataTransferDataType resource.
 
@@ -236,12 +236,12 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    id := "id_example" // string | DataTransferDataType identifier
     dataTransferDataType := *openapiclient.NewDataTransferDataType() // DataTransferDataType | The updated DataTransferDataType resource
+    id := "id_example" // string | DataTransferDataType identifier
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -250,7 +250,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `DataTransferDataTypeApi.ApiDataTransferDataTypesIdPatch``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiDataTransferDataTypesIdPatch`: DataTransferDataTypeJsonhal
+    // response from `ApiDataTransferDataTypesIdPatch`: DataTransferDataType
     fmt.Fprintf(os.Stdout, "Response from `DataTransferDataTypeApi.ApiDataTransferDataTypesIdPatch`: %v\n", resp)
 }
 ```
@@ -270,12 +270,12 @@ Other parameters are passed through a pointer to a apiApiDataTransferDataTypesId
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-
  **dataTransferDataType** | [**DataTransferDataType**](DataTransferDataType.md) | The updated DataTransferDataType resource | 
+
 
 ### Return type
 
-[**DataTransferDataTypeJsonhal**](DataTransferDataTypeJsonhal.md)
+[**DataTransferDataType**](DataTransferDataType.md)
 
 ### Authorization
 
@@ -283,8 +283,8 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: application/vnd.api+json
-- **Accept**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
+- **Content-Type**: application/merge-patch+json, application/vnd.api+json
+- **Accept**: application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -293,7 +293,7 @@ Name | Type | Description  | Notes
 
 ## ApiDataTransferDataTypesIdPut
 
-> DataTransferDataTypeJsonhal ApiDataTransferDataTypesIdPut(ctx, id).DataTransferDataTypeJsonhal(dataTransferDataTypeJsonhal).Execute()
+> DataTransferDataType ApiDataTransferDataTypesIdPut(ctx, id).DataTransferDataType(dataTransferDataType).Execute()
 
 Replaces the DataTransferDataType resource.
 
@@ -308,21 +308,21 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
+    dataTransferDataType := *openapiclient.NewDataTransferDataType() // DataTransferDataType | The updated DataTransferDataType resource
     id := "id_example" // string | DataTransferDataType identifier
-    dataTransferDataTypeJsonhal := *openapiclient.NewDataTransferDataTypeJsonhal() // DataTransferDataTypeJsonhal | The updated DataTransferDataType resource
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.DataTransferDataTypeApi.ApiDataTransferDataTypesIdPut(context.Background(), id).DataTransferDataTypeJsonhal(dataTransferDataTypeJsonhal).Execute()
+    resp, r, err := apiClient.DataTransferDataTypeApi.ApiDataTransferDataTypesIdPut(context.Background(), id).DataTransferDataType(dataTransferDataType).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `DataTransferDataTypeApi.ApiDataTransferDataTypesIdPut``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiDataTransferDataTypesIdPut`: DataTransferDataTypeJsonhal
+    // response from `ApiDataTransferDataTypesIdPut`: DataTransferDataType
     fmt.Fprintf(os.Stdout, "Response from `DataTransferDataTypeApi.ApiDataTransferDataTypesIdPut`: %v\n", resp)
 }
 ```
@@ -342,12 +342,12 @@ Other parameters are passed through a pointer to a apiApiDataTransferDataTypesId
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **dataTransferDataType** | [**DataTransferDataType**](DataTransferDataType.md) | The updated DataTransferDataType resource | 
 
- **dataTransferDataTypeJsonhal** | [**DataTransferDataTypeJsonhal**](DataTransferDataTypeJsonhal.md) | The updated DataTransferDataType resource | 
 
 ### Return type
 
-[**DataTransferDataTypeJsonhal**](DataTransferDataTypeJsonhal.md)
+[**DataTransferDataType**](DataTransferDataType.md)
 
 ### Authorization
 
@@ -355,8 +355,8 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
-- **Accept**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
+- **Content-Type**: application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
+- **Accept**: application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -365,7 +365,7 @@ Name | Type | Description  | Notes
 
 ## ApiDataTransferDataTypesPost
 
-> DataTransferDataTypeJsonhal ApiDataTransferDataTypesPost(ctx).DataTransferDataTypeJsonhal(dataTransferDataTypeJsonhal).Execute()
+> DataTransferDataType ApiDataTransferDataTypesPost(ctx).DataTransferDataType(dataTransferDataType).Execute()
 
 Creates a DataTransferDataType resource.
 
@@ -380,20 +380,20 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    dataTransferDataTypeJsonhal := *openapiclient.NewDataTransferDataTypeJsonhal() // DataTransferDataTypeJsonhal | The new DataTransferDataType resource
+    dataTransferDataType := *openapiclient.NewDataTransferDataType() // DataTransferDataType | The new DataTransferDataType resource
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.DataTransferDataTypeApi.ApiDataTransferDataTypesPost(context.Background()).DataTransferDataTypeJsonhal(dataTransferDataTypeJsonhal).Execute()
+    resp, r, err := apiClient.DataTransferDataTypeApi.ApiDataTransferDataTypesPost(context.Background()).DataTransferDataType(dataTransferDataType).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `DataTransferDataTypeApi.ApiDataTransferDataTypesPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiDataTransferDataTypesPost`: DataTransferDataTypeJsonhal
+    // response from `ApiDataTransferDataTypesPost`: DataTransferDataType
     fmt.Fprintf(os.Stdout, "Response from `DataTransferDataTypeApi.ApiDataTransferDataTypesPost`: %v\n", resp)
 }
 ```
@@ -409,11 +409,11 @@ Other parameters are passed through a pointer to a apiApiDataTransferDataTypesPo
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **dataTransferDataTypeJsonhal** | [**DataTransferDataTypeJsonhal**](DataTransferDataTypeJsonhal.md) | The new DataTransferDataType resource | 
+ **dataTransferDataType** | [**DataTransferDataType**](DataTransferDataType.md) | The new DataTransferDataType resource | 
 
 ### Return type
 
-[**DataTransferDataTypeJsonhal**](DataTransferDataTypeJsonhal.md)
+[**DataTransferDataType**](DataTransferDataType.md)
 
 ### Authorization
 
@@ -421,8 +421,8 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
-- **Accept**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
+- **Content-Type**: application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
+- **Accept**: application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)

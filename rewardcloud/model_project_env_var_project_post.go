@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ProjectEnvVarProjectPost type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ProjectEnvVarProjectPost{}
+
 // ProjectEnvVarProjectPost
 type ProjectEnvVarProjectPost struct {
 	Key         NullableString `json:"key,omitempty"`
@@ -41,7 +44,7 @@ func NewProjectEnvVarProjectPostWithDefaults() *ProjectEnvVarProjectPost {
 
 // GetKey returns the Key field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ProjectEnvVarProjectPost) GetKey() string {
-	if o == nil || isNil(o.Key.Get()) {
+	if o == nil || IsNil(o.Key.Get()) {
 		var ret string
 		return ret
 	}
@@ -84,7 +87,7 @@ func (o *ProjectEnvVarProjectPost) UnsetKey() {
 
 // GetValue returns the Value field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ProjectEnvVarProjectPost) GetValue() string {
-	if o == nil || isNil(o.Value.Get()) {
+	if o == nil || IsNil(o.Value.Get()) {
 		var ret string
 		return ret
 	}
@@ -127,7 +130,7 @@ func (o *ProjectEnvVarProjectPost) UnsetValue() {
 
 // GetIsEncrypted returns the IsEncrypted field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ProjectEnvVarProjectPost) GetIsEncrypted() bool {
-	if o == nil || isNil(o.IsEncrypted.Get()) {
+	if o == nil || IsNil(o.IsEncrypted.Get()) {
 		var ret bool
 		return ret
 	}
@@ -170,7 +173,7 @@ func (o *ProjectEnvVarProjectPost) UnsetIsEncrypted() {
 
 // GetEnvVarType returns the EnvVarType field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ProjectEnvVarProjectPost) GetEnvVarType() string {
-	if o == nil || isNil(o.EnvVarType.Get()) {
+	if o == nil || IsNil(o.EnvVarType.Get()) {
 		var ret string
 		return ret
 	}
@@ -212,6 +215,14 @@ func (o *ProjectEnvVarProjectPost) UnsetEnvVarType() {
 }
 
 func (o ProjectEnvVarProjectPost) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o ProjectEnvVarProjectPost) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Key.IsSet() {
 		toSerialize["key"] = o.Key.Get()
@@ -225,7 +236,7 @@ func (o ProjectEnvVarProjectPost) MarshalJSON() ([]byte, error) {
 	if o.EnvVarType.IsSet() {
 		toSerialize["envVarType"] = o.EnvVarType.Get()
 	}
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 type NullableProjectEnvVarProjectPost struct {

@@ -13,7 +13,7 @@ package rewardcloud
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"reflect"
@@ -23,7 +23,7 @@ import (
 // UserApiService UserApi service
 type UserApiService service
 
-type ApiApiUsersGetCollectionRequest struct {
+type UserApiApiUsersGetCollectionRequest struct {
 	ctx          context.Context
 	ApiService   *UserApiService
 	page         *int32
@@ -33,28 +33,28 @@ type ApiApiUsersGetCollectionRequest struct {
 }
 
 // The collection page number
-func (r ApiApiUsersGetCollectionRequest) Page(page int32) ApiApiUsersGetCollectionRequest {
+func (r UserApiApiUsersGetCollectionRequest) Page(page int32) UserApiApiUsersGetCollectionRequest {
 	r.page = &page
 	return r
 }
 
 // The number of items per page
-func (r ApiApiUsersGetCollectionRequest) ItemsPerPage(itemsPerPage int32) ApiApiUsersGetCollectionRequest {
+func (r UserApiApiUsersGetCollectionRequest) ItemsPerPage(itemsPerPage int32) UserApiApiUsersGetCollectionRequest {
 	r.itemsPerPage = &itemsPerPage
 	return r
 }
 
-func (r ApiApiUsersGetCollectionRequest) RoleGroup(roleGroup string) ApiApiUsersGetCollectionRequest {
+func (r UserApiApiUsersGetCollectionRequest) RoleGroup(roleGroup string) UserApiApiUsersGetCollectionRequest {
 	r.roleGroup = &roleGroup
 	return r
 }
 
-func (r ApiApiUsersGetCollectionRequest) RoleGroup2(roleGroup2 []string) ApiApiUsersGetCollectionRequest {
+func (r UserApiApiUsersGetCollectionRequest) RoleGroup2(roleGroup2 []string) UserApiApiUsersGetCollectionRequest {
 	r.roleGroup2 = &roleGroup2
 	return r
 }
 
-func (r ApiApiUsersGetCollectionRequest) Execute() (*ApiUsersGetCollection200Response, *http.Response, error) {
+func (r UserApiApiUsersGetCollectionRequest) Execute() ([]User, *http.Response, error) {
 	return r.ApiService.ApiUsersGetCollectionExecute(r)
 }
 
@@ -64,10 +64,10 @@ ApiUsersGetCollection Retrieves the collection of User resources.
 Retrieves the collection of User resources.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiApiUsersGetCollectionRequest
+	@return UserApiApiUsersGetCollectionRequest
 */
-func (a *UserApiService) ApiUsersGetCollection(ctx context.Context) ApiApiUsersGetCollectionRequest {
-	return ApiApiUsersGetCollectionRequest{
+func (a *UserApiService) ApiUsersGetCollection(ctx context.Context) UserApiApiUsersGetCollectionRequest {
+	return UserApiApiUsersGetCollectionRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -75,13 +75,13 @@ func (a *UserApiService) ApiUsersGetCollection(ctx context.Context) ApiApiUsersG
 
 // Execute executes the request
 //
-//	@return ApiUsersGetCollection200Response
-func (a *UserApiService) ApiUsersGetCollectionExecute(r ApiApiUsersGetCollectionRequest) (*ApiUsersGetCollection200Response, *http.Response, error) {
+//	@return []User
+func (a *UserApiService) ApiUsersGetCollectionExecute(r UserApiApiUsersGetCollectionRequest) ([]User, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *ApiUsersGetCollection200Response
+		localVarReturnValue []User
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "UserApiService.ApiUsersGetCollection")
@@ -96,23 +96,23 @@ func (a *UserApiService) ApiUsersGetCollectionExecute(r ApiApiUsersGetCollection
 	localVarFormParams := url.Values{}
 
 	if r.page != nil {
-		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
 	}
 	if r.itemsPerPage != nil {
-		localVarQueryParams.Add("itemsPerPage", parameterToString(*r.itemsPerPage, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "itemsPerPage", r.itemsPerPage, "")
 	}
 	if r.roleGroup != nil {
-		localVarQueryParams.Add("roleGroup", parameterToString(*r.roleGroup, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "roleGroup", r.roleGroup, "")
 	}
 	if r.roleGroup2 != nil {
 		t := *r.roleGroup2
 		if reflect.TypeOf(t).Kind() == reflect.Slice {
 			s := reflect.ValueOf(t)
 			for i := 0; i < s.Len(); i++ {
-				localVarQueryParams.Add("roleGroup[]", parameterToString(s.Index(i), "multi"))
+				parameterAddToHeaderOrQuery(localVarQueryParams, "roleGroup[]", s.Index(i), "multi")
 			}
 		} else {
-			localVarQueryParams.Add("roleGroup[]", parameterToString(t, "multi"))
+			parameterAddToHeaderOrQuery(localVarQueryParams, "roleGroup[]", t, "multi")
 		}
 	}
 	// to determine the Content-Type header
@@ -125,7 +125,7 @@ func (a *UserApiService) ApiUsersGetCollectionExecute(r ApiApiUsersGetCollection
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/hal+json", "application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
+	localVarHTTPHeaderAccepts := []string{"application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -156,9 +156,9 @@ func (a *UserApiService) ApiUsersGetCollectionExecute(r ApiApiUsersGetCollection
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -183,13 +183,13 @@ func (a *UserApiService) ApiUsersGetCollectionExecute(r ApiApiUsersGetCollection
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiApiUsersIdDeleteRequest struct {
+type UserApiApiUsersIdDeleteRequest struct {
 	ctx        context.Context
 	ApiService *UserApiService
 	id         string
 }
 
-func (r ApiApiUsersIdDeleteRequest) Execute() (*http.Response, error) {
+func (r UserApiApiUsersIdDeleteRequest) Execute() (*http.Response, error) {
 	return r.ApiService.ApiUsersIdDeleteExecute(r)
 }
 
@@ -200,10 +200,10 @@ Removes the User resource.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id User identifier
-	@return ApiApiUsersIdDeleteRequest
+	@return UserApiApiUsersIdDeleteRequest
 */
-func (a *UserApiService) ApiUsersIdDelete(ctx context.Context, id string) ApiApiUsersIdDeleteRequest {
-	return ApiApiUsersIdDeleteRequest{
+func (a *UserApiService) ApiUsersIdDelete(ctx context.Context, id string) UserApiApiUsersIdDeleteRequest {
+	return UserApiApiUsersIdDeleteRequest{
 		ApiService: a,
 		ctx:        ctx,
 		id:         id,
@@ -211,7 +211,7 @@ func (a *UserApiService) ApiUsersIdDelete(ctx context.Context, id string) ApiApi
 }
 
 // Execute executes the request
-func (a *UserApiService) ApiUsersIdDeleteExecute(r ApiApiUsersIdDeleteRequest) (*http.Response, error) {
+func (a *UserApiService) ApiUsersIdDeleteExecute(r UserApiApiUsersIdDeleteRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
 		localVarPostBody   interface{}
@@ -224,7 +224,7 @@ func (a *UserApiService) ApiUsersIdDeleteExecute(r ApiApiUsersIdDeleteRequest) (
 	}
 
 	localVarPath := localBasePath + "/api/users/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -271,9 +271,9 @@ func (a *UserApiService) ApiUsersIdDeleteExecute(r ApiApiUsersIdDeleteRequest) (
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -289,13 +289,13 @@ func (a *UserApiService) ApiUsersIdDeleteExecute(r ApiApiUsersIdDeleteRequest) (
 	return localVarHTTPResponse, nil
 }
 
-type ApiApiUsersIdGetRequest struct {
+type UserApiApiUsersIdGetRequest struct {
 	ctx        context.Context
 	ApiService *UserApiService
 	id         string
 }
 
-func (r ApiApiUsersIdGetRequest) Execute() (*UserJsonhal, *http.Response, error) {
+func (r UserApiApiUsersIdGetRequest) Execute() (*User, *http.Response, error) {
 	return r.ApiService.ApiUsersIdGetExecute(r)
 }
 
@@ -306,10 +306,10 @@ Retrieves a User resource.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id User identifier
-	@return ApiApiUsersIdGetRequest
+	@return UserApiApiUsersIdGetRequest
 */
-func (a *UserApiService) ApiUsersIdGet(ctx context.Context, id string) ApiApiUsersIdGetRequest {
-	return ApiApiUsersIdGetRequest{
+func (a *UserApiService) ApiUsersIdGet(ctx context.Context, id string) UserApiApiUsersIdGetRequest {
+	return UserApiApiUsersIdGetRequest{
 		ApiService: a,
 		ctx:        ctx,
 		id:         id,
@@ -318,13 +318,13 @@ func (a *UserApiService) ApiUsersIdGet(ctx context.Context, id string) ApiApiUse
 
 // Execute executes the request
 //
-//	@return UserJsonhal
-func (a *UserApiService) ApiUsersIdGetExecute(r ApiApiUsersIdGetRequest) (*UserJsonhal, *http.Response, error) {
+//	@return User
+func (a *UserApiService) ApiUsersIdGetExecute(r UserApiApiUsersIdGetRequest) (*User, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *UserJsonhal
+		localVarReturnValue *User
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "UserApiService.ApiUsersIdGet")
@@ -333,7 +333,7 @@ func (a *UserApiService) ApiUsersIdGetExecute(r ApiApiUsersIdGetRequest) (*UserJ
 	}
 
 	localVarPath := localBasePath + "/api/users/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -349,7 +349,7 @@ func (a *UserApiService) ApiUsersIdGetExecute(r ApiApiUsersIdGetRequest) (*UserJ
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/hal+json", "application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
+	localVarHTTPHeaderAccepts := []string{"application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -380,9 +380,9 @@ func (a *UserApiService) ApiUsersIdGetExecute(r ApiApiUsersIdGetRequest) (*UserJ
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -407,20 +407,20 @@ func (a *UserApiService) ApiUsersIdGetExecute(r ApiApiUsersIdGetRequest) (*UserJ
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiApiUsersIdPatchRequest struct {
+type UserApiApiUsersIdPatchRequest struct {
 	ctx        context.Context
 	ApiService *UserApiService
-	id         string
 	user       *User
+	id         string
 }
 
 // The updated User resource
-func (r ApiApiUsersIdPatchRequest) User(user User) ApiApiUsersIdPatchRequest {
+func (r UserApiApiUsersIdPatchRequest) User(user User) UserApiApiUsersIdPatchRequest {
 	r.user = &user
 	return r
 }
 
-func (r ApiApiUsersIdPatchRequest) Execute() (*UserJsonhal, *http.Response, error) {
+func (r UserApiApiUsersIdPatchRequest) Execute() (*User, *http.Response, error) {
 	return r.ApiService.ApiUsersIdPatchExecute(r)
 }
 
@@ -431,10 +431,10 @@ Updates the User resource.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id User identifier
-	@return ApiApiUsersIdPatchRequest
+	@return UserApiApiUsersIdPatchRequest
 */
-func (a *UserApiService) ApiUsersIdPatch(ctx context.Context, id string) ApiApiUsersIdPatchRequest {
-	return ApiApiUsersIdPatchRequest{
+func (a *UserApiService) ApiUsersIdPatch(ctx context.Context, id string) UserApiApiUsersIdPatchRequest {
+	return UserApiApiUsersIdPatchRequest{
 		ApiService: a,
 		ctx:        ctx,
 		id:         id,
@@ -443,13 +443,13 @@ func (a *UserApiService) ApiUsersIdPatch(ctx context.Context, id string) ApiApiU
 
 // Execute executes the request
 //
-//	@return UserJsonhal
-func (a *UserApiService) ApiUsersIdPatchExecute(r ApiApiUsersIdPatchRequest) (*UserJsonhal, *http.Response, error) {
+//	@return User
+func (a *UserApiService) ApiUsersIdPatchExecute(r UserApiApiUsersIdPatchRequest) (*User, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *UserJsonhal
+		localVarReturnValue *User
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "UserApiService.ApiUsersIdPatch")
@@ -458,7 +458,7 @@ func (a *UserApiService) ApiUsersIdPatchExecute(r ApiApiUsersIdPatchRequest) (*U
 	}
 
 	localVarPath := localBasePath + "/api/users/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -468,7 +468,7 @@ func (a *UserApiService) ApiUsersIdPatchExecute(r ApiApiUsersIdPatchRequest) (*U
 	}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/vnd.api+json"}
+	localVarHTTPContentTypes := []string{"application/merge-patch+json", "application/vnd.api+json"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -477,7 +477,7 @@ func (a *UserApiService) ApiUsersIdPatchExecute(r ApiApiUsersIdPatchRequest) (*U
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/hal+json", "application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
+	localVarHTTPHeaderAccepts := []string{"application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -510,9 +510,9 @@ func (a *UserApiService) ApiUsersIdPatchExecute(r ApiApiUsersIdPatchRequest) (*U
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -537,20 +537,20 @@ func (a *UserApiService) ApiUsersIdPatchExecute(r ApiApiUsersIdPatchRequest) (*U
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiApiUsersIdPutRequest struct {
-	ctx         context.Context
-	ApiService  *UserApiService
-	id          string
-	userJsonhal *UserJsonhal
+type UserApiApiUsersIdPutRequest struct {
+	ctx        context.Context
+	ApiService *UserApiService
+	user       *User
+	id         string
 }
 
 // The updated User resource
-func (r ApiApiUsersIdPutRequest) UserJsonhal(userJsonhal UserJsonhal) ApiApiUsersIdPutRequest {
-	r.userJsonhal = &userJsonhal
+func (r UserApiApiUsersIdPutRequest) User(user User) UserApiApiUsersIdPutRequest {
+	r.user = &user
 	return r
 }
 
-func (r ApiApiUsersIdPutRequest) Execute() (*UserJsonhal, *http.Response, error) {
+func (r UserApiApiUsersIdPutRequest) Execute() (*User, *http.Response, error) {
 	return r.ApiService.ApiUsersIdPutExecute(r)
 }
 
@@ -561,10 +561,10 @@ Replaces the User resource.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id User identifier
-	@return ApiApiUsersIdPutRequest
+	@return UserApiApiUsersIdPutRequest
 */
-func (a *UserApiService) ApiUsersIdPut(ctx context.Context, id string) ApiApiUsersIdPutRequest {
-	return ApiApiUsersIdPutRequest{
+func (a *UserApiService) ApiUsersIdPut(ctx context.Context, id string) UserApiApiUsersIdPutRequest {
+	return UserApiApiUsersIdPutRequest{
 		ApiService: a,
 		ctx:        ctx,
 		id:         id,
@@ -573,13 +573,13 @@ func (a *UserApiService) ApiUsersIdPut(ctx context.Context, id string) ApiApiUse
 
 // Execute executes the request
 //
-//	@return UserJsonhal
-func (a *UserApiService) ApiUsersIdPutExecute(r ApiApiUsersIdPutRequest) (*UserJsonhal, *http.Response, error) {
+//	@return User
+func (a *UserApiService) ApiUsersIdPutExecute(r UserApiApiUsersIdPutRequest) (*User, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *UserJsonhal
+		localVarReturnValue *User
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "UserApiService.ApiUsersIdPut")
@@ -588,17 +588,17 @@ func (a *UserApiService) ApiUsersIdPutExecute(r ApiApiUsersIdPutRequest) (*UserJ
 	}
 
 	localVarPath := localBasePath + "/api/users/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.userJsonhal == nil {
-		return localVarReturnValue, nil, reportError("userJsonhal is required and must be specified")
+	if r.user == nil {
+		return localVarReturnValue, nil, reportError("user is required and must be specified")
 	}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/hal+json", "application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
+	localVarHTTPContentTypes := []string{"application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -607,7 +607,7 @@ func (a *UserApiService) ApiUsersIdPutExecute(r ApiApiUsersIdPutRequest) (*UserJ
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/hal+json", "application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
+	localVarHTTPHeaderAccepts := []string{"application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -615,7 +615,7 @@ func (a *UserApiService) ApiUsersIdPutExecute(r ApiApiUsersIdPutRequest) (*UserJ
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.userJsonhal
+	localVarPostBody = r.user
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
@@ -640,9 +640,9 @@ func (a *UserApiService) ApiUsersIdPutExecute(r ApiApiUsersIdPutRequest) (*UserJ
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -667,13 +667,13 @@ func (a *UserApiService) ApiUsersIdPutExecute(r ApiApiUsersIdPutRequest) (*UserJ
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiApiUsersIdadministrateGetRequest struct {
+type UserApiApiUsersIdadministrateGetRequest struct {
 	ctx        context.Context
 	ApiService *UserApiService
 	id         string
 }
 
-func (r ApiApiUsersIdadministrateGetRequest) Execute() (*UserJsonhal, *http.Response, error) {
+func (r UserApiApiUsersIdadministrateGetRequest) Execute() (*User, *http.Response, error) {
 	return r.ApiService.ApiUsersIdadministrateGetExecute(r)
 }
 
@@ -684,10 +684,10 @@ Retrieves a User resource.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id User identifier
-	@return ApiApiUsersIdadministrateGetRequest
+	@return UserApiApiUsersIdadministrateGetRequest
 */
-func (a *UserApiService) ApiUsersIdadministrateGet(ctx context.Context, id string) ApiApiUsersIdadministrateGetRequest {
-	return ApiApiUsersIdadministrateGetRequest{
+func (a *UserApiService) ApiUsersIdadministrateGet(ctx context.Context, id string) UserApiApiUsersIdadministrateGetRequest {
+	return UserApiApiUsersIdadministrateGetRequest{
 		ApiService: a,
 		ctx:        ctx,
 		id:         id,
@@ -696,13 +696,13 @@ func (a *UserApiService) ApiUsersIdadministrateGet(ctx context.Context, id strin
 
 // Execute executes the request
 //
-//	@return UserJsonhal
-func (a *UserApiService) ApiUsersIdadministrateGetExecute(r ApiApiUsersIdadministrateGetRequest) (*UserJsonhal, *http.Response, error) {
+//	@return User
+func (a *UserApiService) ApiUsersIdadministrateGetExecute(r UserApiApiUsersIdadministrateGetRequest) (*User, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *UserJsonhal
+		localVarReturnValue *User
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "UserApiService.ApiUsersIdadministrateGet")
@@ -711,7 +711,7 @@ func (a *UserApiService) ApiUsersIdadministrateGetExecute(r ApiApiUsersIdadminis
 	}
 
 	localVarPath := localBasePath + "/api/users/{id}/administrate"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -727,7 +727,7 @@ func (a *UserApiService) ApiUsersIdadministrateGetExecute(r ApiApiUsersIdadminis
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/hal+json", "application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
+	localVarHTTPHeaderAccepts := []string{"application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -758,9 +758,9 @@ func (a *UserApiService) ApiUsersIdadministrateGetExecute(r ApiApiUsersIdadminis
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -785,13 +785,13 @@ func (a *UserApiService) ApiUsersIdadministrateGetExecute(r ApiApiUsersIdadminis
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiApiUsersIdfinancecostsGetRequest struct {
+type UserApiApiUsersIdfinancecostsGetRequest struct {
 	ctx        context.Context
 	ApiService *UserApiService
 	id         string
 }
 
-func (r ApiApiUsersIdfinancecostsGetRequest) Execute() (*UserJsonhal, *http.Response, error) {
+func (r UserApiApiUsersIdfinancecostsGetRequest) Execute() (*User, *http.Response, error) {
 	return r.ApiService.ApiUsersIdfinancecostsGetExecute(r)
 }
 
@@ -802,10 +802,10 @@ Retrieves a User resource.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id User identifier
-	@return ApiApiUsersIdfinancecostsGetRequest
+	@return UserApiApiUsersIdfinancecostsGetRequest
 */
-func (a *UserApiService) ApiUsersIdfinancecostsGet(ctx context.Context, id string) ApiApiUsersIdfinancecostsGetRequest {
-	return ApiApiUsersIdfinancecostsGetRequest{
+func (a *UserApiService) ApiUsersIdfinancecostsGet(ctx context.Context, id string) UserApiApiUsersIdfinancecostsGetRequest {
+	return UserApiApiUsersIdfinancecostsGetRequest{
 		ApiService: a,
 		ctx:        ctx,
 		id:         id,
@@ -814,13 +814,13 @@ func (a *UserApiService) ApiUsersIdfinancecostsGet(ctx context.Context, id strin
 
 // Execute executes the request
 //
-//	@return UserJsonhal
-func (a *UserApiService) ApiUsersIdfinancecostsGetExecute(r ApiApiUsersIdfinancecostsGetRequest) (*UserJsonhal, *http.Response, error) {
+//	@return User
+func (a *UserApiService) ApiUsersIdfinancecostsGetExecute(r UserApiApiUsersIdfinancecostsGetRequest) (*User, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *UserJsonhal
+		localVarReturnValue *User
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "UserApiService.ApiUsersIdfinancecostsGet")
@@ -829,7 +829,7 @@ func (a *UserApiService) ApiUsersIdfinancecostsGetExecute(r ApiApiUsersIdfinance
 	}
 
 	localVarPath := localBasePath + "/api/users/{id}/finance/costs"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -845,7 +845,7 @@ func (a *UserApiService) ApiUsersIdfinancecostsGetExecute(r ApiApiUsersIdfinance
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/hal+json", "application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
+	localVarHTTPHeaderAccepts := []string{"application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -876,9 +876,9 @@ func (a *UserApiService) ApiUsersIdfinancecostsGetExecute(r ApiApiUsersIdfinance
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -903,13 +903,13 @@ func (a *UserApiService) ApiUsersIdfinancecostsGetExecute(r ApiApiUsersIdfinance
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiApiUsersIdfinanceinvoicesGetRequest struct {
+type UserApiApiUsersIdfinanceinvoicesGetRequest struct {
 	ctx        context.Context
 	ApiService *UserApiService
 	id         string
 }
 
-func (r ApiApiUsersIdfinanceinvoicesGetRequest) Execute() (*UserJsonhal, *http.Response, error) {
+func (r UserApiApiUsersIdfinanceinvoicesGetRequest) Execute() (*User, *http.Response, error) {
 	return r.ApiService.ApiUsersIdfinanceinvoicesGetExecute(r)
 }
 
@@ -920,10 +920,10 @@ Retrieves a User resource.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id User identifier
-	@return ApiApiUsersIdfinanceinvoicesGetRequest
+	@return UserApiApiUsersIdfinanceinvoicesGetRequest
 */
-func (a *UserApiService) ApiUsersIdfinanceinvoicesGet(ctx context.Context, id string) ApiApiUsersIdfinanceinvoicesGetRequest {
-	return ApiApiUsersIdfinanceinvoicesGetRequest{
+func (a *UserApiService) ApiUsersIdfinanceinvoicesGet(ctx context.Context, id string) UserApiApiUsersIdfinanceinvoicesGetRequest {
+	return UserApiApiUsersIdfinanceinvoicesGetRequest{
 		ApiService: a,
 		ctx:        ctx,
 		id:         id,
@@ -932,13 +932,13 @@ func (a *UserApiService) ApiUsersIdfinanceinvoicesGet(ctx context.Context, id st
 
 // Execute executes the request
 //
-//	@return UserJsonhal
-func (a *UserApiService) ApiUsersIdfinanceinvoicesGetExecute(r ApiApiUsersIdfinanceinvoicesGetRequest) (*UserJsonhal, *http.Response, error) {
+//	@return User
+func (a *UserApiService) ApiUsersIdfinanceinvoicesGetExecute(r UserApiApiUsersIdfinanceinvoicesGetRequest) (*User, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *UserJsonhal
+		localVarReturnValue *User
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "UserApiService.ApiUsersIdfinanceinvoicesGet")
@@ -947,7 +947,7 @@ func (a *UserApiService) ApiUsersIdfinanceinvoicesGetExecute(r ApiApiUsersIdfina
 	}
 
 	localVarPath := localBasePath + "/api/users/{id}/finance/invoices"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -963,7 +963,7 @@ func (a *UserApiService) ApiUsersIdfinanceinvoicesGetExecute(r ApiApiUsersIdfina
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/hal+json", "application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
+	localVarHTTPHeaderAccepts := []string{"application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -994,9 +994,9 @@ func (a *UserApiService) ApiUsersIdfinanceinvoicesGetExecute(r ApiApiUsersIdfina
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1021,13 +1021,13 @@ func (a *UserApiService) ApiUsersIdfinanceinvoicesGetExecute(r ApiApiUsersIdfina
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiApiUsersIdfinancepayGetRequest struct {
+type UserApiApiUsersIdfinancepayGetRequest struct {
 	ctx        context.Context
 	ApiService *UserApiService
 	id         string
 }
 
-func (r ApiApiUsersIdfinancepayGetRequest) Execute() (*UserJsonhal, *http.Response, error) {
+func (r UserApiApiUsersIdfinancepayGetRequest) Execute() (*User, *http.Response, error) {
 	return r.ApiService.ApiUsersIdfinancepayGetExecute(r)
 }
 
@@ -1038,10 +1038,10 @@ Retrieves a User resource.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id User identifier
-	@return ApiApiUsersIdfinancepayGetRequest
+	@return UserApiApiUsersIdfinancepayGetRequest
 */
-func (a *UserApiService) ApiUsersIdfinancepayGet(ctx context.Context, id string) ApiApiUsersIdfinancepayGetRequest {
-	return ApiApiUsersIdfinancepayGetRequest{
+func (a *UserApiService) ApiUsersIdfinancepayGet(ctx context.Context, id string) UserApiApiUsersIdfinancepayGetRequest {
+	return UserApiApiUsersIdfinancepayGetRequest{
 		ApiService: a,
 		ctx:        ctx,
 		id:         id,
@@ -1050,13 +1050,13 @@ func (a *UserApiService) ApiUsersIdfinancepayGet(ctx context.Context, id string)
 
 // Execute executes the request
 //
-//	@return UserJsonhal
-func (a *UserApiService) ApiUsersIdfinancepayGetExecute(r ApiApiUsersIdfinancepayGetRequest) (*UserJsonhal, *http.Response, error) {
+//	@return User
+func (a *UserApiService) ApiUsersIdfinancepayGetExecute(r UserApiApiUsersIdfinancepayGetRequest) (*User, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *UserJsonhal
+		localVarReturnValue *User
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "UserApiService.ApiUsersIdfinancepayGet")
@@ -1065,7 +1065,7 @@ func (a *UserApiService) ApiUsersIdfinancepayGetExecute(r ApiApiUsersIdfinancepa
 	}
 
 	localVarPath := localBasePath + "/api/users/{id}/finance/pay"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1081,7 +1081,7 @@ func (a *UserApiService) ApiUsersIdfinancepayGetExecute(r ApiApiUsersIdfinancepa
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/hal+json", "application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
+	localVarHTTPHeaderAccepts := []string{"application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -1112,9 +1112,9 @@ func (a *UserApiService) ApiUsersIdfinancepayGetExecute(r ApiApiUsersIdfinancepa
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1139,13 +1139,13 @@ func (a *UserApiService) ApiUsersIdfinancepayGetExecute(r ApiApiUsersIdfinancepa
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiApiUsersIdfinancesubscribeInfoGetRequest struct {
+type UserApiApiUsersIdfinancesubscribeInfoGetRequest struct {
 	ctx        context.Context
 	ApiService *UserApiService
 	id         string
 }
 
-func (r ApiApiUsersIdfinancesubscribeInfoGetRequest) Execute() (*UserJsonhal, *http.Response, error) {
+func (r UserApiApiUsersIdfinancesubscribeInfoGetRequest) Execute() (*User, *http.Response, error) {
 	return r.ApiService.ApiUsersIdfinancesubscribeInfoGetExecute(r)
 }
 
@@ -1156,10 +1156,10 @@ Retrieves a User resource.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id User identifier
-	@return ApiApiUsersIdfinancesubscribeInfoGetRequest
+	@return UserApiApiUsersIdfinancesubscribeInfoGetRequest
 */
-func (a *UserApiService) ApiUsersIdfinancesubscribeInfoGet(ctx context.Context, id string) ApiApiUsersIdfinancesubscribeInfoGetRequest {
-	return ApiApiUsersIdfinancesubscribeInfoGetRequest{
+func (a *UserApiService) ApiUsersIdfinancesubscribeInfoGet(ctx context.Context, id string) UserApiApiUsersIdfinancesubscribeInfoGetRequest {
+	return UserApiApiUsersIdfinancesubscribeInfoGetRequest{
 		ApiService: a,
 		ctx:        ctx,
 		id:         id,
@@ -1168,13 +1168,13 @@ func (a *UserApiService) ApiUsersIdfinancesubscribeInfoGet(ctx context.Context, 
 
 // Execute executes the request
 //
-//	@return UserJsonhal
-func (a *UserApiService) ApiUsersIdfinancesubscribeInfoGetExecute(r ApiApiUsersIdfinancesubscribeInfoGetRequest) (*UserJsonhal, *http.Response, error) {
+//	@return User
+func (a *UserApiService) ApiUsersIdfinancesubscribeInfoGetExecute(r UserApiApiUsersIdfinancesubscribeInfoGetRequest) (*User, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *UserJsonhal
+		localVarReturnValue *User
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "UserApiService.ApiUsersIdfinancesubscribeInfoGet")
@@ -1183,7 +1183,7 @@ func (a *UserApiService) ApiUsersIdfinancesubscribeInfoGetExecute(r ApiApiUsersI
 	}
 
 	localVarPath := localBasePath + "/api/users/{id}/finance/subscribe-info"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1199,7 +1199,7 @@ func (a *UserApiService) ApiUsersIdfinancesubscribeInfoGetExecute(r ApiApiUsersI
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/hal+json", "application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
+	localVarHTTPHeaderAccepts := []string{"application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -1230,9 +1230,9 @@ func (a *UserApiService) ApiUsersIdfinancesubscribeInfoGetExecute(r ApiApiUsersI
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1257,13 +1257,13 @@ func (a *UserApiService) ApiUsersIdfinancesubscribeInfoGetExecute(r ApiApiUsersI
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiApiUsersIdremoveAccountDeleteRequest struct {
+type UserApiApiUsersIdremoveAccountDeleteRequest struct {
 	ctx        context.Context
 	ApiService *UserApiService
 	id         string
 }
 
-func (r ApiApiUsersIdremoveAccountDeleteRequest) Execute() (*http.Response, error) {
+func (r UserApiApiUsersIdremoveAccountDeleteRequest) Execute() (*http.Response, error) {
 	return r.ApiService.ApiUsersIdremoveAccountDeleteExecute(r)
 }
 
@@ -1274,10 +1274,10 @@ Removes the User resource.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id User identifier
-	@return ApiApiUsersIdremoveAccountDeleteRequest
+	@return UserApiApiUsersIdremoveAccountDeleteRequest
 */
-func (a *UserApiService) ApiUsersIdremoveAccountDelete(ctx context.Context, id string) ApiApiUsersIdremoveAccountDeleteRequest {
-	return ApiApiUsersIdremoveAccountDeleteRequest{
+func (a *UserApiService) ApiUsersIdremoveAccountDelete(ctx context.Context, id string) UserApiApiUsersIdremoveAccountDeleteRequest {
+	return UserApiApiUsersIdremoveAccountDeleteRequest{
 		ApiService: a,
 		ctx:        ctx,
 		id:         id,
@@ -1285,7 +1285,7 @@ func (a *UserApiService) ApiUsersIdremoveAccountDelete(ctx context.Context, id s
 }
 
 // Execute executes the request
-func (a *UserApiService) ApiUsersIdremoveAccountDeleteExecute(r ApiApiUsersIdremoveAccountDeleteRequest) (*http.Response, error) {
+func (a *UserApiService) ApiUsersIdremoveAccountDeleteExecute(r UserApiApiUsersIdremoveAccountDeleteRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
 		localVarPostBody   interface{}
@@ -1298,7 +1298,7 @@ func (a *UserApiService) ApiUsersIdremoveAccountDeleteExecute(r ApiApiUsersIdrem
 	}
 
 	localVarPath := localBasePath + "/api/users/{id}/remove-account"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1345,9 +1345,9 @@ func (a *UserApiService) ApiUsersIdremoveAccountDeleteExecute(r ApiApiUsersIdrem
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -1363,19 +1363,19 @@ func (a *UserApiService) ApiUsersIdremoveAccountDeleteExecute(r ApiApiUsersIdrem
 	return localVarHTTPResponse, nil
 }
 
-type ApiApiUsersPostRequest struct {
-	ctx         context.Context
-	ApiService  *UserApiService
-	userJsonhal *UserJsonhal
+type UserApiApiUsersPostRequest struct {
+	ctx        context.Context
+	ApiService *UserApiService
+	user       *User
 }
 
 // The new User resource
-func (r ApiApiUsersPostRequest) UserJsonhal(userJsonhal UserJsonhal) ApiApiUsersPostRequest {
-	r.userJsonhal = &userJsonhal
+func (r UserApiApiUsersPostRequest) User(user User) UserApiApiUsersPostRequest {
+	r.user = &user
 	return r
 }
 
-func (r ApiApiUsersPostRequest) Execute() (*UserJsonhal, *http.Response, error) {
+func (r UserApiApiUsersPostRequest) Execute() (*User, *http.Response, error) {
 	return r.ApiService.ApiUsersPostExecute(r)
 }
 
@@ -1385,10 +1385,10 @@ ApiUsersPost Creates a User resource.
 Creates a User resource.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiApiUsersPostRequest
+	@return UserApiApiUsersPostRequest
 */
-func (a *UserApiService) ApiUsersPost(ctx context.Context) ApiApiUsersPostRequest {
-	return ApiApiUsersPostRequest{
+func (a *UserApiService) ApiUsersPost(ctx context.Context) UserApiApiUsersPostRequest {
+	return UserApiApiUsersPostRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -1396,13 +1396,13 @@ func (a *UserApiService) ApiUsersPost(ctx context.Context) ApiApiUsersPostReques
 
 // Execute executes the request
 //
-//	@return UserJsonhal
-func (a *UserApiService) ApiUsersPostExecute(r ApiApiUsersPostRequest) (*UserJsonhal, *http.Response, error) {
+//	@return User
+func (a *UserApiService) ApiUsersPostExecute(r UserApiApiUsersPostRequest) (*User, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *UserJsonhal
+		localVarReturnValue *User
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "UserApiService.ApiUsersPost")
@@ -1415,12 +1415,12 @@ func (a *UserApiService) ApiUsersPostExecute(r ApiApiUsersPostRequest) (*UserJso
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.userJsonhal == nil {
-		return localVarReturnValue, nil, reportError("userJsonhal is required and must be specified")
+	if r.user == nil {
+		return localVarReturnValue, nil, reportError("user is required and must be specified")
 	}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/hal+json", "application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
+	localVarHTTPContentTypes := []string{"application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -1429,7 +1429,7 @@ func (a *UserApiService) ApiUsersPostExecute(r ApiApiUsersPostRequest) (*UserJso
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/hal+json", "application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
+	localVarHTTPHeaderAccepts := []string{"application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -1437,7 +1437,7 @@ func (a *UserApiService) ApiUsersPostExecute(r ApiApiUsersPostRequest) (*UserJso
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.userJsonhal
+	localVarPostBody = r.user
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
@@ -1462,9 +1462,9 @@ func (a *UserApiService) ApiUsersPostExecute(r ApiApiUsersPostRequest) (*UserJso
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1489,12 +1489,12 @@ func (a *UserApiService) ApiUsersPostExecute(r ApiApiUsersPostRequest) (*UserJso
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiApiUserscheckEmailGetRequest struct {
+type UserApiApiUserscheckEmailGetRequest struct {
 	ctx        context.Context
 	ApiService *UserApiService
 }
 
-func (r ApiApiUserscheckEmailGetRequest) Execute() (*UserJsonhal, *http.Response, error) {
+func (r UserApiApiUserscheckEmailGetRequest) Execute() (*User, *http.Response, error) {
 	return r.ApiService.ApiUserscheckEmailGetExecute(r)
 }
 
@@ -1504,10 +1504,10 @@ ApiUserscheckEmailGet It will check the email is exist in database or not
 It will check the email is exist in database or not
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiApiUserscheckEmailGetRequest
+	@return UserApiApiUserscheckEmailGetRequest
 */
-func (a *UserApiService) ApiUserscheckEmailGet(ctx context.Context) ApiApiUserscheckEmailGetRequest {
-	return ApiApiUserscheckEmailGetRequest{
+func (a *UserApiService) ApiUserscheckEmailGet(ctx context.Context) UserApiApiUserscheckEmailGetRequest {
+	return UserApiApiUserscheckEmailGetRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -1515,13 +1515,13 @@ func (a *UserApiService) ApiUserscheckEmailGet(ctx context.Context) ApiApiUsersc
 
 // Execute executes the request
 //
-//	@return UserJsonhal
-func (a *UserApiService) ApiUserscheckEmailGetExecute(r ApiApiUserscheckEmailGetRequest) (*UserJsonhal, *http.Response, error) {
+//	@return User
+func (a *UserApiService) ApiUserscheckEmailGetExecute(r UserApiApiUserscheckEmailGetRequest) (*User, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *UserJsonhal
+		localVarReturnValue *User
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "UserApiService.ApiUserscheckEmailGet")
@@ -1545,7 +1545,7 @@ func (a *UserApiService) ApiUserscheckEmailGetExecute(r ApiApiUserscheckEmailGet
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/hal+json", "application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
+	localVarHTTPHeaderAccepts := []string{"application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -1576,9 +1576,9 @@ func (a *UserApiService) ApiUserscheckEmailGetExecute(r ApiApiUserscheckEmailGet
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1603,12 +1603,12 @@ func (a *UserApiService) ApiUserscheckEmailGetExecute(r ApiApiUserscheckEmailGet
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiApiUserscheckUsernameGetRequest struct {
+type UserApiApiUserscheckUsernameGetRequest struct {
 	ctx        context.Context
 	ApiService *UserApiService
 }
 
-func (r ApiApiUserscheckUsernameGetRequest) Execute() (*UserJsonhal, *http.Response, error) {
+func (r UserApiApiUserscheckUsernameGetRequest) Execute() (*User, *http.Response, error) {
 	return r.ApiService.ApiUserscheckUsernameGetExecute(r)
 }
 
@@ -1618,10 +1618,10 @@ ApiUserscheckUsernameGet It will check the username is exist in database or not
 It will check the username is exist in database or not
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiApiUserscheckUsernameGetRequest
+	@return UserApiApiUserscheckUsernameGetRequest
 */
-func (a *UserApiService) ApiUserscheckUsernameGet(ctx context.Context) ApiApiUserscheckUsernameGetRequest {
-	return ApiApiUserscheckUsernameGetRequest{
+func (a *UserApiService) ApiUserscheckUsernameGet(ctx context.Context) UserApiApiUserscheckUsernameGetRequest {
+	return UserApiApiUserscheckUsernameGetRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -1629,13 +1629,13 @@ func (a *UserApiService) ApiUserscheckUsernameGet(ctx context.Context) ApiApiUse
 
 // Execute executes the request
 //
-//	@return UserJsonhal
-func (a *UserApiService) ApiUserscheckUsernameGetExecute(r ApiApiUserscheckUsernameGetRequest) (*UserJsonhal, *http.Response, error) {
+//	@return User
+func (a *UserApiService) ApiUserscheckUsernameGetExecute(r UserApiApiUserscheckUsernameGetRequest) (*User, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *UserJsonhal
+		localVarReturnValue *User
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "UserApiService.ApiUserscheckUsernameGet")
@@ -1659,7 +1659,7 @@ func (a *UserApiService) ApiUserscheckUsernameGetExecute(r ApiApiUserscheckUsern
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/hal+json", "application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
+	localVarHTTPHeaderAccepts := []string{"application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -1690,9 +1690,9 @@ func (a *UserApiService) ApiUserscheckUsernameGetExecute(r ApiApiUserscheckUsern
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1717,12 +1717,12 @@ func (a *UserApiService) ApiUserscheckUsernameGetExecute(r ApiApiUserscheckUsern
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiApiUsersdiscoverMercureGetRequest struct {
+type UserApiApiUsersdiscoverMercureGetRequest struct {
 	ctx        context.Context
 	ApiService *UserApiService
 }
 
-func (r ApiApiUsersdiscoverMercureGetRequest) Execute() (*UserJsonhal, *http.Response, error) {
+func (r UserApiApiUsersdiscoverMercureGetRequest) Execute() (*User, *http.Response, error) {
 	return r.ApiService.ApiUsersdiscoverMercureGetExecute(r)
 }
 
@@ -1732,10 +1732,10 @@ ApiUsersdiscoverMercureGet It will discovers for mercure JWT token for you - w/ 
 It will discovers for mercure JWT token for you - w/ take consideration your permissions
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiApiUsersdiscoverMercureGetRequest
+	@return UserApiApiUsersdiscoverMercureGetRequest
 */
-func (a *UserApiService) ApiUsersdiscoverMercureGet(ctx context.Context) ApiApiUsersdiscoverMercureGetRequest {
-	return ApiApiUsersdiscoverMercureGetRequest{
+func (a *UserApiService) ApiUsersdiscoverMercureGet(ctx context.Context) UserApiApiUsersdiscoverMercureGetRequest {
+	return UserApiApiUsersdiscoverMercureGetRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -1743,13 +1743,13 @@ func (a *UserApiService) ApiUsersdiscoverMercureGet(ctx context.Context) ApiApiU
 
 // Execute executes the request
 //
-//	@return UserJsonhal
-func (a *UserApiService) ApiUsersdiscoverMercureGetExecute(r ApiApiUsersdiscoverMercureGetRequest) (*UserJsonhal, *http.Response, error) {
+//	@return User
+func (a *UserApiService) ApiUsersdiscoverMercureGetExecute(r UserApiApiUsersdiscoverMercureGetRequest) (*User, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *UserJsonhal
+		localVarReturnValue *User
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "UserApiService.ApiUsersdiscoverMercureGet")
@@ -1773,7 +1773,7 @@ func (a *UserApiService) ApiUsersdiscoverMercureGetExecute(r ApiApiUsersdiscover
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/hal+json", "application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
+	localVarHTTPHeaderAccepts := []string{"application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -1804,9 +1804,9 @@ func (a *UserApiService) ApiUsersdiscoverMercureGetExecute(r ApiApiUsersdiscover
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1831,19 +1831,19 @@ func (a *UserApiService) ApiUsersdiscoverMercureGetExecute(r ApiApiUsersdiscover
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiApiUsersregisterPostRequest struct {
-	ctx         context.Context
-	ApiService  *UserApiService
-	userJsonhal *UserJsonhal
+type UserApiApiUsersregisterPostRequest struct {
+	ctx        context.Context
+	ApiService *UserApiService
+	user       *User
 }
 
 // The new User resource
-func (r ApiApiUsersregisterPostRequest) UserJsonhal(userJsonhal UserJsonhal) ApiApiUsersregisterPostRequest {
-	r.userJsonhal = &userJsonhal
+func (r UserApiApiUsersregisterPostRequest) User(user User) UserApiApiUsersregisterPostRequest {
+	r.user = &user
 	return r
 }
 
-func (r ApiApiUsersregisterPostRequest) Execute() (*UserJsonhal, *http.Response, error) {
+func (r UserApiApiUsersregisterPostRequest) Execute() (*User, *http.Response, error) {
 	return r.ApiService.ApiUsersregisterPostExecute(r)
 }
 
@@ -1853,10 +1853,10 @@ ApiUsersregisterPost Creates a User resource.
 Creates a User resource.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiApiUsersregisterPostRequest
+	@return UserApiApiUsersregisterPostRequest
 */
-func (a *UserApiService) ApiUsersregisterPost(ctx context.Context) ApiApiUsersregisterPostRequest {
-	return ApiApiUsersregisterPostRequest{
+func (a *UserApiService) ApiUsersregisterPost(ctx context.Context) UserApiApiUsersregisterPostRequest {
+	return UserApiApiUsersregisterPostRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -1864,13 +1864,13 @@ func (a *UserApiService) ApiUsersregisterPost(ctx context.Context) ApiApiUsersre
 
 // Execute executes the request
 //
-//	@return UserJsonhal
-func (a *UserApiService) ApiUsersregisterPostExecute(r ApiApiUsersregisterPostRequest) (*UserJsonhal, *http.Response, error) {
+//	@return User
+func (a *UserApiService) ApiUsersregisterPostExecute(r UserApiApiUsersregisterPostRequest) (*User, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *UserJsonhal
+		localVarReturnValue *User
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "UserApiService.ApiUsersregisterPost")
@@ -1883,12 +1883,12 @@ func (a *UserApiService) ApiUsersregisterPostExecute(r ApiApiUsersregisterPostRe
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.userJsonhal == nil {
-		return localVarReturnValue, nil, reportError("userJsonhal is required and must be specified")
+	if r.user == nil {
+		return localVarReturnValue, nil, reportError("user is required and must be specified")
 	}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/hal+json", "application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
+	localVarHTTPContentTypes := []string{"application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -1897,7 +1897,7 @@ func (a *UserApiService) ApiUsersregisterPostExecute(r ApiApiUsersregisterPostRe
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/hal+json", "application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
+	localVarHTTPHeaderAccepts := []string{"application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -1905,7 +1905,7 @@ func (a *UserApiService) ApiUsersregisterPostExecute(r ApiApiUsersregisterPostRe
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.userJsonhal
+	localVarPostBody = r.user
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
@@ -1930,9 +1930,9 @@ func (a *UserApiService) ApiUsersregisterPostExecute(r ApiApiUsersregisterPostRe
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}

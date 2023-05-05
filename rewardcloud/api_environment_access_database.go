@@ -13,7 +13,7 @@ package rewardcloud
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"strings"
@@ -22,7 +22,7 @@ import (
 // EnvironmentAccessDatabaseApiService EnvironmentAccessDatabaseApi service
 type EnvironmentAccessDatabaseApiService service
 
-type ApiApiEnvironmentAccessDatabasesGetCollectionRequest struct {
+type EnvironmentAccessDatabaseApiApiEnvironmentAccessDatabasesGetCollectionRequest struct {
 	ctx          context.Context
 	ApiService   *EnvironmentAccessDatabaseApiService
 	page         *int32
@@ -30,18 +30,18 @@ type ApiApiEnvironmentAccessDatabasesGetCollectionRequest struct {
 }
 
 // The collection page number
-func (r ApiApiEnvironmentAccessDatabasesGetCollectionRequest) Page(page int32) ApiApiEnvironmentAccessDatabasesGetCollectionRequest {
+func (r EnvironmentAccessDatabaseApiApiEnvironmentAccessDatabasesGetCollectionRequest) Page(page int32) EnvironmentAccessDatabaseApiApiEnvironmentAccessDatabasesGetCollectionRequest {
 	r.page = &page
 	return r
 }
 
 // The number of items per page
-func (r ApiApiEnvironmentAccessDatabasesGetCollectionRequest) ItemsPerPage(itemsPerPage int32) ApiApiEnvironmentAccessDatabasesGetCollectionRequest {
+func (r EnvironmentAccessDatabaseApiApiEnvironmentAccessDatabasesGetCollectionRequest) ItemsPerPage(itemsPerPage int32) EnvironmentAccessDatabaseApiApiEnvironmentAccessDatabasesGetCollectionRequest {
 	r.itemsPerPage = &itemsPerPage
 	return r
 }
 
-func (r ApiApiEnvironmentAccessDatabasesGetCollectionRequest) Execute() (*ApiEnvironmentAccessDatabasesGetCollection200Response, *http.Response, error) {
+func (r EnvironmentAccessDatabaseApiApiEnvironmentAccessDatabasesGetCollectionRequest) Execute() ([]EnvironmentAccessDatabase, *http.Response, error) {
 	return r.ApiService.ApiEnvironmentAccessDatabasesGetCollectionExecute(r)
 }
 
@@ -51,10 +51,10 @@ ApiEnvironmentAccessDatabasesGetCollection Retrieves the collection of Environme
 Retrieves the collection of EnvironmentAccessDatabase resources.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiApiEnvironmentAccessDatabasesGetCollectionRequest
+	@return EnvironmentAccessDatabaseApiApiEnvironmentAccessDatabasesGetCollectionRequest
 */
-func (a *EnvironmentAccessDatabaseApiService) ApiEnvironmentAccessDatabasesGetCollection(ctx context.Context) ApiApiEnvironmentAccessDatabasesGetCollectionRequest {
-	return ApiApiEnvironmentAccessDatabasesGetCollectionRequest{
+func (a *EnvironmentAccessDatabaseApiService) ApiEnvironmentAccessDatabasesGetCollection(ctx context.Context) EnvironmentAccessDatabaseApiApiEnvironmentAccessDatabasesGetCollectionRequest {
+	return EnvironmentAccessDatabaseApiApiEnvironmentAccessDatabasesGetCollectionRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -62,13 +62,13 @@ func (a *EnvironmentAccessDatabaseApiService) ApiEnvironmentAccessDatabasesGetCo
 
 // Execute executes the request
 //
-//	@return ApiEnvironmentAccessDatabasesGetCollection200Response
-func (a *EnvironmentAccessDatabaseApiService) ApiEnvironmentAccessDatabasesGetCollectionExecute(r ApiApiEnvironmentAccessDatabasesGetCollectionRequest) (*ApiEnvironmentAccessDatabasesGetCollection200Response, *http.Response, error) {
+//	@return []EnvironmentAccessDatabase
+func (a *EnvironmentAccessDatabaseApiService) ApiEnvironmentAccessDatabasesGetCollectionExecute(r EnvironmentAccessDatabaseApiApiEnvironmentAccessDatabasesGetCollectionRequest) ([]EnvironmentAccessDatabase, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *ApiEnvironmentAccessDatabasesGetCollection200Response
+		localVarReturnValue []EnvironmentAccessDatabase
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnvironmentAccessDatabaseApiService.ApiEnvironmentAccessDatabasesGetCollection")
@@ -83,10 +83,10 @@ func (a *EnvironmentAccessDatabaseApiService) ApiEnvironmentAccessDatabasesGetCo
 	localVarFormParams := url.Values{}
 
 	if r.page != nil {
-		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
 	}
 	if r.itemsPerPage != nil {
-		localVarQueryParams.Add("itemsPerPage", parameterToString(*r.itemsPerPage, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "itemsPerPage", r.itemsPerPage, "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -98,7 +98,7 @@ func (a *EnvironmentAccessDatabaseApiService) ApiEnvironmentAccessDatabasesGetCo
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/hal+json", "application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
+	localVarHTTPHeaderAccepts := []string{"application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -129,9 +129,9 @@ func (a *EnvironmentAccessDatabaseApiService) ApiEnvironmentAccessDatabasesGetCo
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -156,13 +156,13 @@ func (a *EnvironmentAccessDatabaseApiService) ApiEnvironmentAccessDatabasesGetCo
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiApiEnvironmentAccessDatabasesIdDeleteRequest struct {
+type EnvironmentAccessDatabaseApiApiEnvironmentAccessDatabasesIdDeleteRequest struct {
 	ctx        context.Context
 	ApiService *EnvironmentAccessDatabaseApiService
 	id         string
 }
 
-func (r ApiApiEnvironmentAccessDatabasesIdDeleteRequest) Execute() (*http.Response, error) {
+func (r EnvironmentAccessDatabaseApiApiEnvironmentAccessDatabasesIdDeleteRequest) Execute() (*http.Response, error) {
 	return r.ApiService.ApiEnvironmentAccessDatabasesIdDeleteExecute(r)
 }
 
@@ -173,10 +173,10 @@ Removes the EnvironmentAccessDatabase resource.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id EnvironmentAccessDatabase identifier
-	@return ApiApiEnvironmentAccessDatabasesIdDeleteRequest
+	@return EnvironmentAccessDatabaseApiApiEnvironmentAccessDatabasesIdDeleteRequest
 */
-func (a *EnvironmentAccessDatabaseApiService) ApiEnvironmentAccessDatabasesIdDelete(ctx context.Context, id string) ApiApiEnvironmentAccessDatabasesIdDeleteRequest {
-	return ApiApiEnvironmentAccessDatabasesIdDeleteRequest{
+func (a *EnvironmentAccessDatabaseApiService) ApiEnvironmentAccessDatabasesIdDelete(ctx context.Context, id string) EnvironmentAccessDatabaseApiApiEnvironmentAccessDatabasesIdDeleteRequest {
+	return EnvironmentAccessDatabaseApiApiEnvironmentAccessDatabasesIdDeleteRequest{
 		ApiService: a,
 		ctx:        ctx,
 		id:         id,
@@ -184,7 +184,7 @@ func (a *EnvironmentAccessDatabaseApiService) ApiEnvironmentAccessDatabasesIdDel
 }
 
 // Execute executes the request
-func (a *EnvironmentAccessDatabaseApiService) ApiEnvironmentAccessDatabasesIdDeleteExecute(r ApiApiEnvironmentAccessDatabasesIdDeleteRequest) (*http.Response, error) {
+func (a *EnvironmentAccessDatabaseApiService) ApiEnvironmentAccessDatabasesIdDeleteExecute(r EnvironmentAccessDatabaseApiApiEnvironmentAccessDatabasesIdDeleteRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
 		localVarPostBody   interface{}
@@ -197,7 +197,7 @@ func (a *EnvironmentAccessDatabaseApiService) ApiEnvironmentAccessDatabasesIdDel
 	}
 
 	localVarPath := localBasePath + "/api/environment_access_databases/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -244,9 +244,9 @@ func (a *EnvironmentAccessDatabaseApiService) ApiEnvironmentAccessDatabasesIdDel
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -262,13 +262,13 @@ func (a *EnvironmentAccessDatabaseApiService) ApiEnvironmentAccessDatabasesIdDel
 	return localVarHTTPResponse, nil
 }
 
-type ApiApiEnvironmentAccessDatabasesIdGetRequest struct {
+type EnvironmentAccessDatabaseApiApiEnvironmentAccessDatabasesIdGetRequest struct {
 	ctx        context.Context
 	ApiService *EnvironmentAccessDatabaseApiService
 	id         string
 }
 
-func (r ApiApiEnvironmentAccessDatabasesIdGetRequest) Execute() (*EnvironmentAccessDatabaseJsonhal, *http.Response, error) {
+func (r EnvironmentAccessDatabaseApiApiEnvironmentAccessDatabasesIdGetRequest) Execute() (*EnvironmentAccessDatabase, *http.Response, error) {
 	return r.ApiService.ApiEnvironmentAccessDatabasesIdGetExecute(r)
 }
 
@@ -279,10 +279,10 @@ Retrieves a EnvironmentAccessDatabase resource.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id EnvironmentAccessDatabase identifier
-	@return ApiApiEnvironmentAccessDatabasesIdGetRequest
+	@return EnvironmentAccessDatabaseApiApiEnvironmentAccessDatabasesIdGetRequest
 */
-func (a *EnvironmentAccessDatabaseApiService) ApiEnvironmentAccessDatabasesIdGet(ctx context.Context, id string) ApiApiEnvironmentAccessDatabasesIdGetRequest {
-	return ApiApiEnvironmentAccessDatabasesIdGetRequest{
+func (a *EnvironmentAccessDatabaseApiService) ApiEnvironmentAccessDatabasesIdGet(ctx context.Context, id string) EnvironmentAccessDatabaseApiApiEnvironmentAccessDatabasesIdGetRequest {
+	return EnvironmentAccessDatabaseApiApiEnvironmentAccessDatabasesIdGetRequest{
 		ApiService: a,
 		ctx:        ctx,
 		id:         id,
@@ -291,13 +291,13 @@ func (a *EnvironmentAccessDatabaseApiService) ApiEnvironmentAccessDatabasesIdGet
 
 // Execute executes the request
 //
-//	@return EnvironmentAccessDatabaseJsonhal
-func (a *EnvironmentAccessDatabaseApiService) ApiEnvironmentAccessDatabasesIdGetExecute(r ApiApiEnvironmentAccessDatabasesIdGetRequest) (*EnvironmentAccessDatabaseJsonhal, *http.Response, error) {
+//	@return EnvironmentAccessDatabase
+func (a *EnvironmentAccessDatabaseApiService) ApiEnvironmentAccessDatabasesIdGetExecute(r EnvironmentAccessDatabaseApiApiEnvironmentAccessDatabasesIdGetRequest) (*EnvironmentAccessDatabase, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *EnvironmentAccessDatabaseJsonhal
+		localVarReturnValue *EnvironmentAccessDatabase
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnvironmentAccessDatabaseApiService.ApiEnvironmentAccessDatabasesIdGet")
@@ -306,7 +306,7 @@ func (a *EnvironmentAccessDatabaseApiService) ApiEnvironmentAccessDatabasesIdGet
 	}
 
 	localVarPath := localBasePath + "/api/environment_access_databases/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -322,7 +322,7 @@ func (a *EnvironmentAccessDatabaseApiService) ApiEnvironmentAccessDatabasesIdGet
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/hal+json", "application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
+	localVarHTTPHeaderAccepts := []string{"application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -353,9 +353,9 @@ func (a *EnvironmentAccessDatabaseApiService) ApiEnvironmentAccessDatabasesIdGet
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -380,20 +380,20 @@ func (a *EnvironmentAccessDatabaseApiService) ApiEnvironmentAccessDatabasesIdGet
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiApiEnvironmentAccessDatabasesIdPatchRequest struct {
+type EnvironmentAccessDatabaseApiApiEnvironmentAccessDatabasesIdPatchRequest struct {
 	ctx                       context.Context
 	ApiService                *EnvironmentAccessDatabaseApiService
-	id                        string
 	environmentAccessDatabase *EnvironmentAccessDatabase
+	id                        string
 }
 
 // The updated EnvironmentAccessDatabase resource
-func (r ApiApiEnvironmentAccessDatabasesIdPatchRequest) EnvironmentAccessDatabase(environmentAccessDatabase EnvironmentAccessDatabase) ApiApiEnvironmentAccessDatabasesIdPatchRequest {
+func (r EnvironmentAccessDatabaseApiApiEnvironmentAccessDatabasesIdPatchRequest) EnvironmentAccessDatabase(environmentAccessDatabase EnvironmentAccessDatabase) EnvironmentAccessDatabaseApiApiEnvironmentAccessDatabasesIdPatchRequest {
 	r.environmentAccessDatabase = &environmentAccessDatabase
 	return r
 }
 
-func (r ApiApiEnvironmentAccessDatabasesIdPatchRequest) Execute() (*EnvironmentAccessDatabaseJsonhal, *http.Response, error) {
+func (r EnvironmentAccessDatabaseApiApiEnvironmentAccessDatabasesIdPatchRequest) Execute() (*EnvironmentAccessDatabase, *http.Response, error) {
 	return r.ApiService.ApiEnvironmentAccessDatabasesIdPatchExecute(r)
 }
 
@@ -404,10 +404,10 @@ Updates the EnvironmentAccessDatabase resource.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id EnvironmentAccessDatabase identifier
-	@return ApiApiEnvironmentAccessDatabasesIdPatchRequest
+	@return EnvironmentAccessDatabaseApiApiEnvironmentAccessDatabasesIdPatchRequest
 */
-func (a *EnvironmentAccessDatabaseApiService) ApiEnvironmentAccessDatabasesIdPatch(ctx context.Context, id string) ApiApiEnvironmentAccessDatabasesIdPatchRequest {
-	return ApiApiEnvironmentAccessDatabasesIdPatchRequest{
+func (a *EnvironmentAccessDatabaseApiService) ApiEnvironmentAccessDatabasesIdPatch(ctx context.Context, id string) EnvironmentAccessDatabaseApiApiEnvironmentAccessDatabasesIdPatchRequest {
+	return EnvironmentAccessDatabaseApiApiEnvironmentAccessDatabasesIdPatchRequest{
 		ApiService: a,
 		ctx:        ctx,
 		id:         id,
@@ -416,13 +416,13 @@ func (a *EnvironmentAccessDatabaseApiService) ApiEnvironmentAccessDatabasesIdPat
 
 // Execute executes the request
 //
-//	@return EnvironmentAccessDatabaseJsonhal
-func (a *EnvironmentAccessDatabaseApiService) ApiEnvironmentAccessDatabasesIdPatchExecute(r ApiApiEnvironmentAccessDatabasesIdPatchRequest) (*EnvironmentAccessDatabaseJsonhal, *http.Response, error) {
+//	@return EnvironmentAccessDatabase
+func (a *EnvironmentAccessDatabaseApiService) ApiEnvironmentAccessDatabasesIdPatchExecute(r EnvironmentAccessDatabaseApiApiEnvironmentAccessDatabasesIdPatchRequest) (*EnvironmentAccessDatabase, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *EnvironmentAccessDatabaseJsonhal
+		localVarReturnValue *EnvironmentAccessDatabase
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnvironmentAccessDatabaseApiService.ApiEnvironmentAccessDatabasesIdPatch")
@@ -431,7 +431,7 @@ func (a *EnvironmentAccessDatabaseApiService) ApiEnvironmentAccessDatabasesIdPat
 	}
 
 	localVarPath := localBasePath + "/api/environment_access_databases/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -441,7 +441,7 @@ func (a *EnvironmentAccessDatabaseApiService) ApiEnvironmentAccessDatabasesIdPat
 	}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/vnd.api+json"}
+	localVarHTTPContentTypes := []string{"application/merge-patch+json", "application/vnd.api+json"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -450,7 +450,7 @@ func (a *EnvironmentAccessDatabaseApiService) ApiEnvironmentAccessDatabasesIdPat
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/hal+json", "application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
+	localVarHTTPHeaderAccepts := []string{"application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -483,9 +483,9 @@ func (a *EnvironmentAccessDatabaseApiService) ApiEnvironmentAccessDatabasesIdPat
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -510,20 +510,20 @@ func (a *EnvironmentAccessDatabaseApiService) ApiEnvironmentAccessDatabasesIdPat
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiApiEnvironmentAccessDatabasesIdPutRequest struct {
-	ctx                              context.Context
-	ApiService                       *EnvironmentAccessDatabaseApiService
-	id                               string
-	environmentAccessDatabaseJsonhal *EnvironmentAccessDatabaseJsonhal
+type EnvironmentAccessDatabaseApiApiEnvironmentAccessDatabasesIdPutRequest struct {
+	ctx                       context.Context
+	ApiService                *EnvironmentAccessDatabaseApiService
+	environmentAccessDatabase *EnvironmentAccessDatabase
+	id                        string
 }
 
 // The updated EnvironmentAccessDatabase resource
-func (r ApiApiEnvironmentAccessDatabasesIdPutRequest) EnvironmentAccessDatabaseJsonhal(environmentAccessDatabaseJsonhal EnvironmentAccessDatabaseJsonhal) ApiApiEnvironmentAccessDatabasesIdPutRequest {
-	r.environmentAccessDatabaseJsonhal = &environmentAccessDatabaseJsonhal
+func (r EnvironmentAccessDatabaseApiApiEnvironmentAccessDatabasesIdPutRequest) EnvironmentAccessDatabase(environmentAccessDatabase EnvironmentAccessDatabase) EnvironmentAccessDatabaseApiApiEnvironmentAccessDatabasesIdPutRequest {
+	r.environmentAccessDatabase = &environmentAccessDatabase
 	return r
 }
 
-func (r ApiApiEnvironmentAccessDatabasesIdPutRequest) Execute() (*EnvironmentAccessDatabaseJsonhal, *http.Response, error) {
+func (r EnvironmentAccessDatabaseApiApiEnvironmentAccessDatabasesIdPutRequest) Execute() (*EnvironmentAccessDatabase, *http.Response, error) {
 	return r.ApiService.ApiEnvironmentAccessDatabasesIdPutExecute(r)
 }
 
@@ -534,10 +534,10 @@ Replaces the EnvironmentAccessDatabase resource.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id EnvironmentAccessDatabase identifier
-	@return ApiApiEnvironmentAccessDatabasesIdPutRequest
+	@return EnvironmentAccessDatabaseApiApiEnvironmentAccessDatabasesIdPutRequest
 */
-func (a *EnvironmentAccessDatabaseApiService) ApiEnvironmentAccessDatabasesIdPut(ctx context.Context, id string) ApiApiEnvironmentAccessDatabasesIdPutRequest {
-	return ApiApiEnvironmentAccessDatabasesIdPutRequest{
+func (a *EnvironmentAccessDatabaseApiService) ApiEnvironmentAccessDatabasesIdPut(ctx context.Context, id string) EnvironmentAccessDatabaseApiApiEnvironmentAccessDatabasesIdPutRequest {
+	return EnvironmentAccessDatabaseApiApiEnvironmentAccessDatabasesIdPutRequest{
 		ApiService: a,
 		ctx:        ctx,
 		id:         id,
@@ -546,13 +546,13 @@ func (a *EnvironmentAccessDatabaseApiService) ApiEnvironmentAccessDatabasesIdPut
 
 // Execute executes the request
 //
-//	@return EnvironmentAccessDatabaseJsonhal
-func (a *EnvironmentAccessDatabaseApiService) ApiEnvironmentAccessDatabasesIdPutExecute(r ApiApiEnvironmentAccessDatabasesIdPutRequest) (*EnvironmentAccessDatabaseJsonhal, *http.Response, error) {
+//	@return EnvironmentAccessDatabase
+func (a *EnvironmentAccessDatabaseApiService) ApiEnvironmentAccessDatabasesIdPutExecute(r EnvironmentAccessDatabaseApiApiEnvironmentAccessDatabasesIdPutRequest) (*EnvironmentAccessDatabase, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *EnvironmentAccessDatabaseJsonhal
+		localVarReturnValue *EnvironmentAccessDatabase
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnvironmentAccessDatabaseApiService.ApiEnvironmentAccessDatabasesIdPut")
@@ -561,17 +561,17 @@ func (a *EnvironmentAccessDatabaseApiService) ApiEnvironmentAccessDatabasesIdPut
 	}
 
 	localVarPath := localBasePath + "/api/environment_access_databases/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.environmentAccessDatabaseJsonhal == nil {
-		return localVarReturnValue, nil, reportError("environmentAccessDatabaseJsonhal is required and must be specified")
+	if r.environmentAccessDatabase == nil {
+		return localVarReturnValue, nil, reportError("environmentAccessDatabase is required and must be specified")
 	}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/hal+json", "application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
+	localVarHTTPContentTypes := []string{"application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -580,7 +580,7 @@ func (a *EnvironmentAccessDatabaseApiService) ApiEnvironmentAccessDatabasesIdPut
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/hal+json", "application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
+	localVarHTTPHeaderAccepts := []string{"application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -588,7 +588,7 @@ func (a *EnvironmentAccessDatabaseApiService) ApiEnvironmentAccessDatabasesIdPut
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.environmentAccessDatabaseJsonhal
+	localVarPostBody = r.environmentAccessDatabase
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
@@ -613,9 +613,9 @@ func (a *EnvironmentAccessDatabaseApiService) ApiEnvironmentAccessDatabasesIdPut
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -640,19 +640,19 @@ func (a *EnvironmentAccessDatabaseApiService) ApiEnvironmentAccessDatabasesIdPut
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiApiEnvironmentAccessDatabasesPostRequest struct {
-	ctx                              context.Context
-	ApiService                       *EnvironmentAccessDatabaseApiService
-	environmentAccessDatabaseJsonhal *EnvironmentAccessDatabaseJsonhal
+type EnvironmentAccessDatabaseApiApiEnvironmentAccessDatabasesPostRequest struct {
+	ctx                       context.Context
+	ApiService                *EnvironmentAccessDatabaseApiService
+	environmentAccessDatabase *EnvironmentAccessDatabase
 }
 
 // The new EnvironmentAccessDatabase resource
-func (r ApiApiEnvironmentAccessDatabasesPostRequest) EnvironmentAccessDatabaseJsonhal(environmentAccessDatabaseJsonhal EnvironmentAccessDatabaseJsonhal) ApiApiEnvironmentAccessDatabasesPostRequest {
-	r.environmentAccessDatabaseJsonhal = &environmentAccessDatabaseJsonhal
+func (r EnvironmentAccessDatabaseApiApiEnvironmentAccessDatabasesPostRequest) EnvironmentAccessDatabase(environmentAccessDatabase EnvironmentAccessDatabase) EnvironmentAccessDatabaseApiApiEnvironmentAccessDatabasesPostRequest {
+	r.environmentAccessDatabase = &environmentAccessDatabase
 	return r
 }
 
-func (r ApiApiEnvironmentAccessDatabasesPostRequest) Execute() (*EnvironmentAccessDatabaseJsonhal, *http.Response, error) {
+func (r EnvironmentAccessDatabaseApiApiEnvironmentAccessDatabasesPostRequest) Execute() (*EnvironmentAccessDatabase, *http.Response, error) {
 	return r.ApiService.ApiEnvironmentAccessDatabasesPostExecute(r)
 }
 
@@ -662,10 +662,10 @@ ApiEnvironmentAccessDatabasesPost Creates a EnvironmentAccessDatabase resource.
 Creates a EnvironmentAccessDatabase resource.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiApiEnvironmentAccessDatabasesPostRequest
+	@return EnvironmentAccessDatabaseApiApiEnvironmentAccessDatabasesPostRequest
 */
-func (a *EnvironmentAccessDatabaseApiService) ApiEnvironmentAccessDatabasesPost(ctx context.Context) ApiApiEnvironmentAccessDatabasesPostRequest {
-	return ApiApiEnvironmentAccessDatabasesPostRequest{
+func (a *EnvironmentAccessDatabaseApiService) ApiEnvironmentAccessDatabasesPost(ctx context.Context) EnvironmentAccessDatabaseApiApiEnvironmentAccessDatabasesPostRequest {
+	return EnvironmentAccessDatabaseApiApiEnvironmentAccessDatabasesPostRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -673,13 +673,13 @@ func (a *EnvironmentAccessDatabaseApiService) ApiEnvironmentAccessDatabasesPost(
 
 // Execute executes the request
 //
-//	@return EnvironmentAccessDatabaseJsonhal
-func (a *EnvironmentAccessDatabaseApiService) ApiEnvironmentAccessDatabasesPostExecute(r ApiApiEnvironmentAccessDatabasesPostRequest) (*EnvironmentAccessDatabaseJsonhal, *http.Response, error) {
+//	@return EnvironmentAccessDatabase
+func (a *EnvironmentAccessDatabaseApiService) ApiEnvironmentAccessDatabasesPostExecute(r EnvironmentAccessDatabaseApiApiEnvironmentAccessDatabasesPostRequest) (*EnvironmentAccessDatabase, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *EnvironmentAccessDatabaseJsonhal
+		localVarReturnValue *EnvironmentAccessDatabase
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnvironmentAccessDatabaseApiService.ApiEnvironmentAccessDatabasesPost")
@@ -692,12 +692,12 @@ func (a *EnvironmentAccessDatabaseApiService) ApiEnvironmentAccessDatabasesPostE
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.environmentAccessDatabaseJsonhal == nil {
-		return localVarReturnValue, nil, reportError("environmentAccessDatabaseJsonhal is required and must be specified")
+	if r.environmentAccessDatabase == nil {
+		return localVarReturnValue, nil, reportError("environmentAccessDatabase is required and must be specified")
 	}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/hal+json", "application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
+	localVarHTTPContentTypes := []string{"application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -706,7 +706,7 @@ func (a *EnvironmentAccessDatabaseApiService) ApiEnvironmentAccessDatabasesPostE
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/hal+json", "application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
+	localVarHTTPHeaderAccepts := []string{"application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -714,7 +714,7 @@ func (a *EnvironmentAccessDatabaseApiService) ApiEnvironmentAccessDatabasesPostE
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.environmentAccessDatabaseJsonhal
+	localVarPostBody = r.environmentAccessDatabase
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
@@ -739,9 +739,9 @@ func (a *EnvironmentAccessDatabaseApiService) ApiEnvironmentAccessDatabasesPostE
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}

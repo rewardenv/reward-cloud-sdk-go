@@ -15,7 +15,7 @@ Method | HTTP request | Description
 
 ## ApiProjectTypeVersionEnvVarExamplesGetCollection
 
-> ApiProjectTypeVersionEnvVarExamplesGetCollection200Response ApiProjectTypeVersionEnvVarExamplesGetCollection(ctx).Page(page).ItemsPerPage(itemsPerPage).ProjectTypeVersionEnvVar(projectTypeVersionEnvVar).ProjectTypeVersionEnvVar2(projectTypeVersionEnvVar2).Execute()
+> []ProjectTypeVersionEnvVarExample ApiProjectTypeVersionEnvVarExamplesGetCollection(ctx).Page(page).ItemsPerPage(itemsPerPage).ProjectTypeVersionEnvVar(projectTypeVersionEnvVar).ProjectTypeVersionEnvVar2(projectTypeVersionEnvVar2).Execute()
 
 Retrieves the collection of ProjectTypeVersionEnvVarExample resources.
 
@@ -30,7 +30,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
@@ -46,7 +46,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `ProjectTypeVersionEnvVarExampleApi.ApiProjectTypeVersionEnvVarExamplesGetCollection``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiProjectTypeVersionEnvVarExamplesGetCollection`: ApiProjectTypeVersionEnvVarExamplesGetCollection200Response
+    // response from `ApiProjectTypeVersionEnvVarExamplesGetCollection`: []ProjectTypeVersionEnvVarExample
     fmt.Fprintf(os.Stdout, "Response from `ProjectTypeVersionEnvVarExampleApi.ApiProjectTypeVersionEnvVarExamplesGetCollection`: %v\n", resp)
 }
 ```
@@ -69,7 +69,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ApiProjectTypeVersionEnvVarExamplesGetCollection200Response**](ApiProjectTypeVersionEnvVarExamplesGetCollection200Response.md)
+[**[]ProjectTypeVersionEnvVarExample**](ProjectTypeVersionEnvVarExample.md)
 
 ### Authorization
 
@@ -78,7 +78,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
+- **Accept**: application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -102,7 +102,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
@@ -110,7 +110,7 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ProjectTypeVersionEnvVarExampleApi.ApiProjectTypeVersionEnvVarExamplesIdDelete(context.Background(), id).Execute()
+    r, err := apiClient.ProjectTypeVersionEnvVarExampleApi.ApiProjectTypeVersionEnvVarExamplesIdDelete(context.Background(), id).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ProjectTypeVersionEnvVarExampleApi.ApiProjectTypeVersionEnvVarExamplesIdDelete``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -155,7 +155,7 @@ Name | Type | Description  | Notes
 
 ## ApiProjectTypeVersionEnvVarExamplesIdGet
 
-> ProjectTypeVersionEnvVarExampleJsonhal ApiProjectTypeVersionEnvVarExamplesIdGet(ctx, id).Execute()
+> ProjectTypeVersionEnvVarExample ApiProjectTypeVersionEnvVarExamplesIdGet(ctx, id).Execute()
 
 Retrieves a ProjectTypeVersionEnvVarExample resource.
 
@@ -170,7 +170,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
@@ -183,7 +183,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `ProjectTypeVersionEnvVarExampleApi.ApiProjectTypeVersionEnvVarExamplesIdGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiProjectTypeVersionEnvVarExamplesIdGet`: ProjectTypeVersionEnvVarExampleJsonhal
+    // response from `ApiProjectTypeVersionEnvVarExamplesIdGet`: ProjectTypeVersionEnvVarExample
     fmt.Fprintf(os.Stdout, "Response from `ProjectTypeVersionEnvVarExampleApi.ApiProjectTypeVersionEnvVarExamplesIdGet`: %v\n", resp)
 }
 ```
@@ -207,7 +207,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ProjectTypeVersionEnvVarExampleJsonhal**](ProjectTypeVersionEnvVarExampleJsonhal.md)
+[**ProjectTypeVersionEnvVarExample**](ProjectTypeVersionEnvVarExample.md)
 
 ### Authorization
 
@@ -216,7 +216,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
+- **Accept**: application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -225,7 +225,7 @@ Name | Type | Description  | Notes
 
 ## ApiProjectTypeVersionEnvVarExamplesIdPatch
 
-> ProjectTypeVersionEnvVarExampleJsonhal ApiProjectTypeVersionEnvVarExamplesIdPatch(ctx, id).ProjectTypeVersionEnvVarExample(projectTypeVersionEnvVarExample).Execute()
+> ProjectTypeVersionEnvVarExample ApiProjectTypeVersionEnvVarExamplesIdPatch(ctx, id).ProjectTypeVersionEnvVarExample(projectTypeVersionEnvVarExample).Execute()
 
 Updates the ProjectTypeVersionEnvVarExample resource.
 
@@ -240,12 +240,12 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    id := "id_example" // string | ProjectTypeVersionEnvVarExample identifier
     projectTypeVersionEnvVarExample := *openapiclient.NewProjectTypeVersionEnvVarExample() // ProjectTypeVersionEnvVarExample | The updated ProjectTypeVersionEnvVarExample resource
+    id := "id_example" // string | ProjectTypeVersionEnvVarExample identifier
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -254,7 +254,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `ProjectTypeVersionEnvVarExampleApi.ApiProjectTypeVersionEnvVarExamplesIdPatch``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiProjectTypeVersionEnvVarExamplesIdPatch`: ProjectTypeVersionEnvVarExampleJsonhal
+    // response from `ApiProjectTypeVersionEnvVarExamplesIdPatch`: ProjectTypeVersionEnvVarExample
     fmt.Fprintf(os.Stdout, "Response from `ProjectTypeVersionEnvVarExampleApi.ApiProjectTypeVersionEnvVarExamplesIdPatch`: %v\n", resp)
 }
 ```
@@ -274,12 +274,12 @@ Other parameters are passed through a pointer to a apiApiProjectTypeVersionEnvVa
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-
  **projectTypeVersionEnvVarExample** | [**ProjectTypeVersionEnvVarExample**](ProjectTypeVersionEnvVarExample.md) | The updated ProjectTypeVersionEnvVarExample resource | 
+
 
 ### Return type
 
-[**ProjectTypeVersionEnvVarExampleJsonhal**](ProjectTypeVersionEnvVarExampleJsonhal.md)
+[**ProjectTypeVersionEnvVarExample**](ProjectTypeVersionEnvVarExample.md)
 
 ### Authorization
 
@@ -287,8 +287,8 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: application/vnd.api+json
-- **Accept**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
+- **Content-Type**: application/merge-patch+json, application/vnd.api+json
+- **Accept**: application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -297,7 +297,7 @@ Name | Type | Description  | Notes
 
 ## ApiProjectTypeVersionEnvVarExamplesIdPut
 
-> ProjectTypeVersionEnvVarExampleJsonhal ApiProjectTypeVersionEnvVarExamplesIdPut(ctx, id).ProjectTypeVersionEnvVarExampleJsonhal(projectTypeVersionEnvVarExampleJsonhal).Execute()
+> ProjectTypeVersionEnvVarExample ApiProjectTypeVersionEnvVarExamplesIdPut(ctx, id).ProjectTypeVersionEnvVarExample(projectTypeVersionEnvVarExample).Execute()
 
 Replaces the ProjectTypeVersionEnvVarExample resource.
 
@@ -312,21 +312,21 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
+    projectTypeVersionEnvVarExample := *openapiclient.NewProjectTypeVersionEnvVarExample() // ProjectTypeVersionEnvVarExample | The updated ProjectTypeVersionEnvVarExample resource
     id := "id_example" // string | ProjectTypeVersionEnvVarExample identifier
-    projectTypeVersionEnvVarExampleJsonhal := *openapiclient.NewProjectTypeVersionEnvVarExampleJsonhal() // ProjectTypeVersionEnvVarExampleJsonhal | The updated ProjectTypeVersionEnvVarExample resource
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ProjectTypeVersionEnvVarExampleApi.ApiProjectTypeVersionEnvVarExamplesIdPut(context.Background(), id).ProjectTypeVersionEnvVarExampleJsonhal(projectTypeVersionEnvVarExampleJsonhal).Execute()
+    resp, r, err := apiClient.ProjectTypeVersionEnvVarExampleApi.ApiProjectTypeVersionEnvVarExamplesIdPut(context.Background(), id).ProjectTypeVersionEnvVarExample(projectTypeVersionEnvVarExample).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ProjectTypeVersionEnvVarExampleApi.ApiProjectTypeVersionEnvVarExamplesIdPut``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiProjectTypeVersionEnvVarExamplesIdPut`: ProjectTypeVersionEnvVarExampleJsonhal
+    // response from `ApiProjectTypeVersionEnvVarExamplesIdPut`: ProjectTypeVersionEnvVarExample
     fmt.Fprintf(os.Stdout, "Response from `ProjectTypeVersionEnvVarExampleApi.ApiProjectTypeVersionEnvVarExamplesIdPut`: %v\n", resp)
 }
 ```
@@ -346,12 +346,12 @@ Other parameters are passed through a pointer to a apiApiProjectTypeVersionEnvVa
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **projectTypeVersionEnvVarExample** | [**ProjectTypeVersionEnvVarExample**](ProjectTypeVersionEnvVarExample.md) | The updated ProjectTypeVersionEnvVarExample resource | 
 
- **projectTypeVersionEnvVarExampleJsonhal** | [**ProjectTypeVersionEnvVarExampleJsonhal**](ProjectTypeVersionEnvVarExampleJsonhal.md) | The updated ProjectTypeVersionEnvVarExample resource | 
 
 ### Return type
 
-[**ProjectTypeVersionEnvVarExampleJsonhal**](ProjectTypeVersionEnvVarExampleJsonhal.md)
+[**ProjectTypeVersionEnvVarExample**](ProjectTypeVersionEnvVarExample.md)
 
 ### Authorization
 
@@ -359,8 +359,8 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
-- **Accept**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
+- **Content-Type**: application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
+- **Accept**: application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -369,7 +369,7 @@ Name | Type | Description  | Notes
 
 ## ApiProjectTypeVersionEnvVarExamplesPost
 
-> ProjectTypeVersionEnvVarExampleJsonhal ApiProjectTypeVersionEnvVarExamplesPost(ctx).ProjectTypeVersionEnvVarExampleJsonhal(projectTypeVersionEnvVarExampleJsonhal).Execute()
+> ProjectTypeVersionEnvVarExample ApiProjectTypeVersionEnvVarExamplesPost(ctx).ProjectTypeVersionEnvVarExample(projectTypeVersionEnvVarExample).Execute()
 
 Creates a ProjectTypeVersionEnvVarExample resource.
 
@@ -384,20 +384,20 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    projectTypeVersionEnvVarExampleJsonhal := *openapiclient.NewProjectTypeVersionEnvVarExampleJsonhal() // ProjectTypeVersionEnvVarExampleJsonhal | The new ProjectTypeVersionEnvVarExample resource
+    projectTypeVersionEnvVarExample := *openapiclient.NewProjectTypeVersionEnvVarExample() // ProjectTypeVersionEnvVarExample | The new ProjectTypeVersionEnvVarExample resource
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ProjectTypeVersionEnvVarExampleApi.ApiProjectTypeVersionEnvVarExamplesPost(context.Background()).ProjectTypeVersionEnvVarExampleJsonhal(projectTypeVersionEnvVarExampleJsonhal).Execute()
+    resp, r, err := apiClient.ProjectTypeVersionEnvVarExampleApi.ApiProjectTypeVersionEnvVarExamplesPost(context.Background()).ProjectTypeVersionEnvVarExample(projectTypeVersionEnvVarExample).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ProjectTypeVersionEnvVarExampleApi.ApiProjectTypeVersionEnvVarExamplesPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiProjectTypeVersionEnvVarExamplesPost`: ProjectTypeVersionEnvVarExampleJsonhal
+    // response from `ApiProjectTypeVersionEnvVarExamplesPost`: ProjectTypeVersionEnvVarExample
     fmt.Fprintf(os.Stdout, "Response from `ProjectTypeVersionEnvVarExampleApi.ApiProjectTypeVersionEnvVarExamplesPost`: %v\n", resp)
 }
 ```
@@ -413,11 +413,11 @@ Other parameters are passed through a pointer to a apiApiProjectTypeVersionEnvVa
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **projectTypeVersionEnvVarExampleJsonhal** | [**ProjectTypeVersionEnvVarExampleJsonhal**](ProjectTypeVersionEnvVarExampleJsonhal.md) | The new ProjectTypeVersionEnvVarExample resource | 
+ **projectTypeVersionEnvVarExample** | [**ProjectTypeVersionEnvVarExample**](ProjectTypeVersionEnvVarExample.md) | The new ProjectTypeVersionEnvVarExample resource | 
 
 ### Return type
 
-[**ProjectTypeVersionEnvVarExampleJsonhal**](ProjectTypeVersionEnvVarExampleJsonhal.md)
+[**ProjectTypeVersionEnvVarExample**](ProjectTypeVersionEnvVarExample.md)
 
 ### Authorization
 
@@ -425,8 +425,8 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
-- **Accept**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
+- **Content-Type**: application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
+- **Accept**: application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)

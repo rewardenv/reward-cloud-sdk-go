@@ -13,7 +13,7 @@ package rewardcloud
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"strings"
@@ -22,7 +22,7 @@ import (
 // ProviderApiService ProviderApi service
 type ProviderApiService service
 
-type ApiApiProvidersGetCollectionRequest struct {
+type ProviderApiApiProvidersGetCollectionRequest struct {
 	ctx          context.Context
 	ApiService   *ProviderApiService
 	page         *int32
@@ -30,18 +30,18 @@ type ApiApiProvidersGetCollectionRequest struct {
 }
 
 // The collection page number
-func (r ApiApiProvidersGetCollectionRequest) Page(page int32) ApiApiProvidersGetCollectionRequest {
+func (r ProviderApiApiProvidersGetCollectionRequest) Page(page int32) ProviderApiApiProvidersGetCollectionRequest {
 	r.page = &page
 	return r
 }
 
 // The number of items per page
-func (r ApiApiProvidersGetCollectionRequest) ItemsPerPage(itemsPerPage int32) ApiApiProvidersGetCollectionRequest {
+func (r ProviderApiApiProvidersGetCollectionRequest) ItemsPerPage(itemsPerPage int32) ProviderApiApiProvidersGetCollectionRequest {
 	r.itemsPerPage = &itemsPerPage
 	return r
 }
 
-func (r ApiApiProvidersGetCollectionRequest) Execute() (*ApiProvidersGetCollection200Response, *http.Response, error) {
+func (r ProviderApiApiProvidersGetCollectionRequest) Execute() ([]Provider, *http.Response, error) {
 	return r.ApiService.ApiProvidersGetCollectionExecute(r)
 }
 
@@ -51,10 +51,10 @@ ApiProvidersGetCollection Retrieves the collection of Provider resources.
 Retrieves the collection of Provider resources.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiApiProvidersGetCollectionRequest
+	@return ProviderApiApiProvidersGetCollectionRequest
 */
-func (a *ProviderApiService) ApiProvidersGetCollection(ctx context.Context) ApiApiProvidersGetCollectionRequest {
-	return ApiApiProvidersGetCollectionRequest{
+func (a *ProviderApiService) ApiProvidersGetCollection(ctx context.Context) ProviderApiApiProvidersGetCollectionRequest {
+	return ProviderApiApiProvidersGetCollectionRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -62,13 +62,13 @@ func (a *ProviderApiService) ApiProvidersGetCollection(ctx context.Context) ApiA
 
 // Execute executes the request
 //
-//	@return ApiProvidersGetCollection200Response
-func (a *ProviderApiService) ApiProvidersGetCollectionExecute(r ApiApiProvidersGetCollectionRequest) (*ApiProvidersGetCollection200Response, *http.Response, error) {
+//	@return []Provider
+func (a *ProviderApiService) ApiProvidersGetCollectionExecute(r ProviderApiApiProvidersGetCollectionRequest) ([]Provider, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *ApiProvidersGetCollection200Response
+		localVarReturnValue []Provider
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProviderApiService.ApiProvidersGetCollection")
@@ -83,10 +83,10 @@ func (a *ProviderApiService) ApiProvidersGetCollectionExecute(r ApiApiProvidersG
 	localVarFormParams := url.Values{}
 
 	if r.page != nil {
-		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
 	}
 	if r.itemsPerPage != nil {
-		localVarQueryParams.Add("itemsPerPage", parameterToString(*r.itemsPerPage, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "itemsPerPage", r.itemsPerPage, "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -98,7 +98,7 @@ func (a *ProviderApiService) ApiProvidersGetCollectionExecute(r ApiApiProvidersG
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/hal+json", "application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
+	localVarHTTPHeaderAccepts := []string{"application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -129,9 +129,9 @@ func (a *ProviderApiService) ApiProvidersGetCollectionExecute(r ApiApiProvidersG
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -156,13 +156,13 @@ func (a *ProviderApiService) ApiProvidersGetCollectionExecute(r ApiApiProvidersG
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiApiProvidersIdDeleteRequest struct {
+type ProviderApiApiProvidersIdDeleteRequest struct {
 	ctx        context.Context
 	ApiService *ProviderApiService
 	id         string
 }
 
-func (r ApiApiProvidersIdDeleteRequest) Execute() (*http.Response, error) {
+func (r ProviderApiApiProvidersIdDeleteRequest) Execute() (*http.Response, error) {
 	return r.ApiService.ApiProvidersIdDeleteExecute(r)
 }
 
@@ -173,10 +173,10 @@ Removes the Provider resource.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id Provider identifier
-	@return ApiApiProvidersIdDeleteRequest
+	@return ProviderApiApiProvidersIdDeleteRequest
 */
-func (a *ProviderApiService) ApiProvidersIdDelete(ctx context.Context, id string) ApiApiProvidersIdDeleteRequest {
-	return ApiApiProvidersIdDeleteRequest{
+func (a *ProviderApiService) ApiProvidersIdDelete(ctx context.Context, id string) ProviderApiApiProvidersIdDeleteRequest {
+	return ProviderApiApiProvidersIdDeleteRequest{
 		ApiService: a,
 		ctx:        ctx,
 		id:         id,
@@ -184,7 +184,7 @@ func (a *ProviderApiService) ApiProvidersIdDelete(ctx context.Context, id string
 }
 
 // Execute executes the request
-func (a *ProviderApiService) ApiProvidersIdDeleteExecute(r ApiApiProvidersIdDeleteRequest) (*http.Response, error) {
+func (a *ProviderApiService) ApiProvidersIdDeleteExecute(r ProviderApiApiProvidersIdDeleteRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
 		localVarPostBody   interface{}
@@ -197,7 +197,7 @@ func (a *ProviderApiService) ApiProvidersIdDeleteExecute(r ApiApiProvidersIdDele
 	}
 
 	localVarPath := localBasePath + "/api/providers/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -244,9 +244,9 @@ func (a *ProviderApiService) ApiProvidersIdDeleteExecute(r ApiApiProvidersIdDele
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -262,13 +262,13 @@ func (a *ProviderApiService) ApiProvidersIdDeleteExecute(r ApiApiProvidersIdDele
 	return localVarHTTPResponse, nil
 }
 
-type ApiApiProvidersIdGetRequest struct {
+type ProviderApiApiProvidersIdGetRequest struct {
 	ctx        context.Context
 	ApiService *ProviderApiService
 	id         string
 }
 
-func (r ApiApiProvidersIdGetRequest) Execute() (*ProviderJsonhal, *http.Response, error) {
+func (r ProviderApiApiProvidersIdGetRequest) Execute() (*Provider, *http.Response, error) {
 	return r.ApiService.ApiProvidersIdGetExecute(r)
 }
 
@@ -279,10 +279,10 @@ Retrieves a Provider resource.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id Provider identifier
-	@return ApiApiProvidersIdGetRequest
+	@return ProviderApiApiProvidersIdGetRequest
 */
-func (a *ProviderApiService) ApiProvidersIdGet(ctx context.Context, id string) ApiApiProvidersIdGetRequest {
-	return ApiApiProvidersIdGetRequest{
+func (a *ProviderApiService) ApiProvidersIdGet(ctx context.Context, id string) ProviderApiApiProvidersIdGetRequest {
+	return ProviderApiApiProvidersIdGetRequest{
 		ApiService: a,
 		ctx:        ctx,
 		id:         id,
@@ -291,13 +291,13 @@ func (a *ProviderApiService) ApiProvidersIdGet(ctx context.Context, id string) A
 
 // Execute executes the request
 //
-//	@return ProviderJsonhal
-func (a *ProviderApiService) ApiProvidersIdGetExecute(r ApiApiProvidersIdGetRequest) (*ProviderJsonhal, *http.Response, error) {
+//	@return Provider
+func (a *ProviderApiService) ApiProvidersIdGetExecute(r ProviderApiApiProvidersIdGetRequest) (*Provider, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *ProviderJsonhal
+		localVarReturnValue *Provider
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProviderApiService.ApiProvidersIdGet")
@@ -306,7 +306,7 @@ func (a *ProviderApiService) ApiProvidersIdGetExecute(r ApiApiProvidersIdGetRequ
 	}
 
 	localVarPath := localBasePath + "/api/providers/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -322,7 +322,7 @@ func (a *ProviderApiService) ApiProvidersIdGetExecute(r ApiApiProvidersIdGetRequ
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/hal+json", "application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
+	localVarHTTPHeaderAccepts := []string{"application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -353,9 +353,9 @@ func (a *ProviderApiService) ApiProvidersIdGetExecute(r ApiApiProvidersIdGetRequ
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -380,20 +380,20 @@ func (a *ProviderApiService) ApiProvidersIdGetExecute(r ApiApiProvidersIdGetRequ
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiApiProvidersIdPatchRequest struct {
+type ProviderApiApiProvidersIdPatchRequest struct {
 	ctx        context.Context
 	ApiService *ProviderApiService
-	id         string
 	provider   *Provider
+	id         string
 }
 
 // The updated Provider resource
-func (r ApiApiProvidersIdPatchRequest) Provider(provider Provider) ApiApiProvidersIdPatchRequest {
+func (r ProviderApiApiProvidersIdPatchRequest) Provider(provider Provider) ProviderApiApiProvidersIdPatchRequest {
 	r.provider = &provider
 	return r
 }
 
-func (r ApiApiProvidersIdPatchRequest) Execute() (*ProviderJsonhal, *http.Response, error) {
+func (r ProviderApiApiProvidersIdPatchRequest) Execute() (*Provider, *http.Response, error) {
 	return r.ApiService.ApiProvidersIdPatchExecute(r)
 }
 
@@ -404,10 +404,10 @@ Updates the Provider resource.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id Provider identifier
-	@return ApiApiProvidersIdPatchRequest
+	@return ProviderApiApiProvidersIdPatchRequest
 */
-func (a *ProviderApiService) ApiProvidersIdPatch(ctx context.Context, id string) ApiApiProvidersIdPatchRequest {
-	return ApiApiProvidersIdPatchRequest{
+func (a *ProviderApiService) ApiProvidersIdPatch(ctx context.Context, id string) ProviderApiApiProvidersIdPatchRequest {
+	return ProviderApiApiProvidersIdPatchRequest{
 		ApiService: a,
 		ctx:        ctx,
 		id:         id,
@@ -416,13 +416,13 @@ func (a *ProviderApiService) ApiProvidersIdPatch(ctx context.Context, id string)
 
 // Execute executes the request
 //
-//	@return ProviderJsonhal
-func (a *ProviderApiService) ApiProvidersIdPatchExecute(r ApiApiProvidersIdPatchRequest) (*ProviderJsonhal, *http.Response, error) {
+//	@return Provider
+func (a *ProviderApiService) ApiProvidersIdPatchExecute(r ProviderApiApiProvidersIdPatchRequest) (*Provider, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *ProviderJsonhal
+		localVarReturnValue *Provider
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProviderApiService.ApiProvidersIdPatch")
@@ -431,7 +431,7 @@ func (a *ProviderApiService) ApiProvidersIdPatchExecute(r ApiApiProvidersIdPatch
 	}
 
 	localVarPath := localBasePath + "/api/providers/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -441,7 +441,7 @@ func (a *ProviderApiService) ApiProvidersIdPatchExecute(r ApiApiProvidersIdPatch
 	}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/vnd.api+json"}
+	localVarHTTPContentTypes := []string{"application/merge-patch+json", "application/vnd.api+json"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -450,7 +450,7 @@ func (a *ProviderApiService) ApiProvidersIdPatchExecute(r ApiApiProvidersIdPatch
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/hal+json", "application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
+	localVarHTTPHeaderAccepts := []string{"application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -483,9 +483,9 @@ func (a *ProviderApiService) ApiProvidersIdPatchExecute(r ApiApiProvidersIdPatch
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -510,20 +510,20 @@ func (a *ProviderApiService) ApiProvidersIdPatchExecute(r ApiApiProvidersIdPatch
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiApiProvidersIdPutRequest struct {
-	ctx             context.Context
-	ApiService      *ProviderApiService
-	id              string
-	providerJsonhal *ProviderJsonhal
+type ProviderApiApiProvidersIdPutRequest struct {
+	ctx        context.Context
+	ApiService *ProviderApiService
+	provider   *Provider
+	id         string
 }
 
 // The updated Provider resource
-func (r ApiApiProvidersIdPutRequest) ProviderJsonhal(providerJsonhal ProviderJsonhal) ApiApiProvidersIdPutRequest {
-	r.providerJsonhal = &providerJsonhal
+func (r ProviderApiApiProvidersIdPutRequest) Provider(provider Provider) ProviderApiApiProvidersIdPutRequest {
+	r.provider = &provider
 	return r
 }
 
-func (r ApiApiProvidersIdPutRequest) Execute() (*ProviderJsonhal, *http.Response, error) {
+func (r ProviderApiApiProvidersIdPutRequest) Execute() (*Provider, *http.Response, error) {
 	return r.ApiService.ApiProvidersIdPutExecute(r)
 }
 
@@ -534,10 +534,10 @@ Replaces the Provider resource.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id Provider identifier
-	@return ApiApiProvidersIdPutRequest
+	@return ProviderApiApiProvidersIdPutRequest
 */
-func (a *ProviderApiService) ApiProvidersIdPut(ctx context.Context, id string) ApiApiProvidersIdPutRequest {
-	return ApiApiProvidersIdPutRequest{
+func (a *ProviderApiService) ApiProvidersIdPut(ctx context.Context, id string) ProviderApiApiProvidersIdPutRequest {
+	return ProviderApiApiProvidersIdPutRequest{
 		ApiService: a,
 		ctx:        ctx,
 		id:         id,
@@ -546,13 +546,13 @@ func (a *ProviderApiService) ApiProvidersIdPut(ctx context.Context, id string) A
 
 // Execute executes the request
 //
-//	@return ProviderJsonhal
-func (a *ProviderApiService) ApiProvidersIdPutExecute(r ApiApiProvidersIdPutRequest) (*ProviderJsonhal, *http.Response, error) {
+//	@return Provider
+func (a *ProviderApiService) ApiProvidersIdPutExecute(r ProviderApiApiProvidersIdPutRequest) (*Provider, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *ProviderJsonhal
+		localVarReturnValue *Provider
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProviderApiService.ApiProvidersIdPut")
@@ -561,17 +561,17 @@ func (a *ProviderApiService) ApiProvidersIdPutExecute(r ApiApiProvidersIdPutRequ
 	}
 
 	localVarPath := localBasePath + "/api/providers/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.providerJsonhal == nil {
-		return localVarReturnValue, nil, reportError("providerJsonhal is required and must be specified")
+	if r.provider == nil {
+		return localVarReturnValue, nil, reportError("provider is required and must be specified")
 	}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/hal+json", "application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
+	localVarHTTPContentTypes := []string{"application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -580,7 +580,7 @@ func (a *ProviderApiService) ApiProvidersIdPutExecute(r ApiApiProvidersIdPutRequ
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/hal+json", "application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
+	localVarHTTPHeaderAccepts := []string{"application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -588,7 +588,7 @@ func (a *ProviderApiService) ApiProvidersIdPutExecute(r ApiApiProvidersIdPutRequ
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.providerJsonhal
+	localVarPostBody = r.provider
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
@@ -613,9 +613,9 @@ func (a *ProviderApiService) ApiProvidersIdPutExecute(r ApiApiProvidersIdPutRequ
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -640,19 +640,19 @@ func (a *ProviderApiService) ApiProvidersIdPutExecute(r ApiApiProvidersIdPutRequ
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiApiProvidersPostRequest struct {
-	ctx             context.Context
-	ApiService      *ProviderApiService
-	providerJsonhal *ProviderJsonhal
+type ProviderApiApiProvidersPostRequest struct {
+	ctx        context.Context
+	ApiService *ProviderApiService
+	provider   *Provider
 }
 
 // The new Provider resource
-func (r ApiApiProvidersPostRequest) ProviderJsonhal(providerJsonhal ProviderJsonhal) ApiApiProvidersPostRequest {
-	r.providerJsonhal = &providerJsonhal
+func (r ProviderApiApiProvidersPostRequest) Provider(provider Provider) ProviderApiApiProvidersPostRequest {
+	r.provider = &provider
 	return r
 }
 
-func (r ApiApiProvidersPostRequest) Execute() (*ProviderJsonhal, *http.Response, error) {
+func (r ProviderApiApiProvidersPostRequest) Execute() (*Provider, *http.Response, error) {
 	return r.ApiService.ApiProvidersPostExecute(r)
 }
 
@@ -662,10 +662,10 @@ ApiProvidersPost Creates a Provider resource.
 Creates a Provider resource.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiApiProvidersPostRequest
+	@return ProviderApiApiProvidersPostRequest
 */
-func (a *ProviderApiService) ApiProvidersPost(ctx context.Context) ApiApiProvidersPostRequest {
-	return ApiApiProvidersPostRequest{
+func (a *ProviderApiService) ApiProvidersPost(ctx context.Context) ProviderApiApiProvidersPostRequest {
+	return ProviderApiApiProvidersPostRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -673,13 +673,13 @@ func (a *ProviderApiService) ApiProvidersPost(ctx context.Context) ApiApiProvide
 
 // Execute executes the request
 //
-//	@return ProviderJsonhal
-func (a *ProviderApiService) ApiProvidersPostExecute(r ApiApiProvidersPostRequest) (*ProviderJsonhal, *http.Response, error) {
+//	@return Provider
+func (a *ProviderApiService) ApiProvidersPostExecute(r ProviderApiApiProvidersPostRequest) (*Provider, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *ProviderJsonhal
+		localVarReturnValue *Provider
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProviderApiService.ApiProvidersPost")
@@ -692,12 +692,12 @@ func (a *ProviderApiService) ApiProvidersPostExecute(r ApiApiProvidersPostReques
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.providerJsonhal == nil {
-		return localVarReturnValue, nil, reportError("providerJsonhal is required and must be specified")
+	if r.provider == nil {
+		return localVarReturnValue, nil, reportError("provider is required and must be specified")
 	}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/hal+json", "application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
+	localVarHTTPContentTypes := []string{"application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -706,7 +706,7 @@ func (a *ProviderApiService) ApiProvidersPostExecute(r ApiApiProvidersPostReques
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/hal+json", "application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
+	localVarHTTPHeaderAccepts := []string{"application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -714,7 +714,7 @@ func (a *ProviderApiService) ApiProvidersPostExecute(r ApiApiProvidersPostReques
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.providerJsonhal
+	localVarPostBody = r.provider
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
@@ -739,9 +739,9 @@ func (a *ProviderApiService) ApiProvidersPostExecute(r ApiApiProvidersPostReques
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}

@@ -15,7 +15,7 @@ Method | HTTP request | Description
 
 ## ApiComponentResourceLimitsGetCollection
 
-> ApiComponentResourceLimitsGetCollection200Response ApiComponentResourceLimitsGetCollection(ctx).Page(page).ItemsPerPage(itemsPerPage).ProjectTypeVersion(projectTypeVersion).ProjectTypeVersion2(projectTypeVersion2).ResourceType(resourceType).ResourceType2(resourceType2).ComponentVersion(componentVersion).ComponentVersion2(componentVersion2).Execute()
+> []ComponentResourceLimit ApiComponentResourceLimitsGetCollection(ctx).Page(page).ItemsPerPage(itemsPerPage).ProjectTypeVersion(projectTypeVersion).ProjectTypeVersion2(projectTypeVersion2).ResourceType(resourceType).ResourceType2(resourceType2).ComponentVersion(componentVersion).ComponentVersion2(componentVersion2).Execute()
 
 Retrieves the collection of ComponentResourceLimit resources.
 
@@ -30,7 +30,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
@@ -50,7 +50,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `ComponentResourceLimitApi.ApiComponentResourceLimitsGetCollection``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiComponentResourceLimitsGetCollection`: ApiComponentResourceLimitsGetCollection200Response
+    // response from `ApiComponentResourceLimitsGetCollection`: []ComponentResourceLimit
     fmt.Fprintf(os.Stdout, "Response from `ComponentResourceLimitApi.ApiComponentResourceLimitsGetCollection`: %v\n", resp)
 }
 ```
@@ -77,7 +77,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ApiComponentResourceLimitsGetCollection200Response**](ApiComponentResourceLimitsGetCollection200Response.md)
+[**[]ComponentResourceLimit**](ComponentResourceLimit.md)
 
 ### Authorization
 
@@ -86,7 +86,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
+- **Accept**: application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -110,7 +110,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
@@ -118,7 +118,7 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ComponentResourceLimitApi.ApiComponentResourceLimitsIdDelete(context.Background(), id).Execute()
+    r, err := apiClient.ComponentResourceLimitApi.ApiComponentResourceLimitsIdDelete(context.Background(), id).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ComponentResourceLimitApi.ApiComponentResourceLimitsIdDelete``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -163,7 +163,7 @@ Name | Type | Description  | Notes
 
 ## ApiComponentResourceLimitsIdGet
 
-> ComponentResourceLimitJsonhal ApiComponentResourceLimitsIdGet(ctx, id).Execute()
+> ComponentResourceLimit ApiComponentResourceLimitsIdGet(ctx, id).Execute()
 
 Retrieves a ComponentResourceLimit resource.
 
@@ -178,7 +178,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
@@ -191,7 +191,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `ComponentResourceLimitApi.ApiComponentResourceLimitsIdGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiComponentResourceLimitsIdGet`: ComponentResourceLimitJsonhal
+    // response from `ApiComponentResourceLimitsIdGet`: ComponentResourceLimit
     fmt.Fprintf(os.Stdout, "Response from `ComponentResourceLimitApi.ApiComponentResourceLimitsIdGet`: %v\n", resp)
 }
 ```
@@ -215,7 +215,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ComponentResourceLimitJsonhal**](ComponentResourceLimitJsonhal.md)
+[**ComponentResourceLimit**](ComponentResourceLimit.md)
 
 ### Authorization
 
@@ -224,7 +224,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
+- **Accept**: application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -233,7 +233,7 @@ Name | Type | Description  | Notes
 
 ## ApiComponentResourceLimitsIdPatch
 
-> ComponentResourceLimitJsonhal ApiComponentResourceLimitsIdPatch(ctx, id).ComponentResourceLimit(componentResourceLimit).Execute()
+> ComponentResourceLimit ApiComponentResourceLimitsIdPatch(ctx, id).ComponentResourceLimit(componentResourceLimit).Execute()
 
 Updates the ComponentResourceLimit resource.
 
@@ -248,12 +248,12 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    id := "id_example" // string | ComponentResourceLimit identifier
     componentResourceLimit := *openapiclient.NewComponentResourceLimit() // ComponentResourceLimit | The updated ComponentResourceLimit resource
+    id := "id_example" // string | ComponentResourceLimit identifier
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -262,7 +262,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `ComponentResourceLimitApi.ApiComponentResourceLimitsIdPatch``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiComponentResourceLimitsIdPatch`: ComponentResourceLimitJsonhal
+    // response from `ApiComponentResourceLimitsIdPatch`: ComponentResourceLimit
     fmt.Fprintf(os.Stdout, "Response from `ComponentResourceLimitApi.ApiComponentResourceLimitsIdPatch`: %v\n", resp)
 }
 ```
@@ -282,12 +282,12 @@ Other parameters are passed through a pointer to a apiApiComponentResourceLimits
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-
  **componentResourceLimit** | [**ComponentResourceLimit**](ComponentResourceLimit.md) | The updated ComponentResourceLimit resource | 
+
 
 ### Return type
 
-[**ComponentResourceLimitJsonhal**](ComponentResourceLimitJsonhal.md)
+[**ComponentResourceLimit**](ComponentResourceLimit.md)
 
 ### Authorization
 
@@ -295,8 +295,8 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: application/vnd.api+json
-- **Accept**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
+- **Content-Type**: application/merge-patch+json, application/vnd.api+json
+- **Accept**: application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -305,7 +305,7 @@ Name | Type | Description  | Notes
 
 ## ApiComponentResourceLimitsIdPut
 
-> ComponentResourceLimitJsonhal ApiComponentResourceLimitsIdPut(ctx, id).ComponentResourceLimitJsonhal(componentResourceLimitJsonhal).Execute()
+> ComponentResourceLimit ApiComponentResourceLimitsIdPut(ctx, id).ComponentResourceLimit(componentResourceLimit).Execute()
 
 Replaces the ComponentResourceLimit resource.
 
@@ -320,21 +320,21 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
+    componentResourceLimit := *openapiclient.NewComponentResourceLimit() // ComponentResourceLimit | The updated ComponentResourceLimit resource
     id := "id_example" // string | ComponentResourceLimit identifier
-    componentResourceLimitJsonhal := *openapiclient.NewComponentResourceLimitJsonhal() // ComponentResourceLimitJsonhal | The updated ComponentResourceLimit resource
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ComponentResourceLimitApi.ApiComponentResourceLimitsIdPut(context.Background(), id).ComponentResourceLimitJsonhal(componentResourceLimitJsonhal).Execute()
+    resp, r, err := apiClient.ComponentResourceLimitApi.ApiComponentResourceLimitsIdPut(context.Background(), id).ComponentResourceLimit(componentResourceLimit).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ComponentResourceLimitApi.ApiComponentResourceLimitsIdPut``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiComponentResourceLimitsIdPut`: ComponentResourceLimitJsonhal
+    // response from `ApiComponentResourceLimitsIdPut`: ComponentResourceLimit
     fmt.Fprintf(os.Stdout, "Response from `ComponentResourceLimitApi.ApiComponentResourceLimitsIdPut`: %v\n", resp)
 }
 ```
@@ -354,12 +354,12 @@ Other parameters are passed through a pointer to a apiApiComponentResourceLimits
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **componentResourceLimit** | [**ComponentResourceLimit**](ComponentResourceLimit.md) | The updated ComponentResourceLimit resource | 
 
- **componentResourceLimitJsonhal** | [**ComponentResourceLimitJsonhal**](ComponentResourceLimitJsonhal.md) | The updated ComponentResourceLimit resource | 
 
 ### Return type
 
-[**ComponentResourceLimitJsonhal**](ComponentResourceLimitJsonhal.md)
+[**ComponentResourceLimit**](ComponentResourceLimit.md)
 
 ### Authorization
 
@@ -367,8 +367,8 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
-- **Accept**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
+- **Content-Type**: application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
+- **Accept**: application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -377,7 +377,7 @@ Name | Type | Description  | Notes
 
 ## ApiComponentResourceLimitsPost
 
-> ComponentResourceLimitJsonhal ApiComponentResourceLimitsPost(ctx).ComponentResourceLimitJsonhal(componentResourceLimitJsonhal).Execute()
+> ComponentResourceLimit ApiComponentResourceLimitsPost(ctx).ComponentResourceLimit(componentResourceLimit).Execute()
 
 Creates a ComponentResourceLimit resource.
 
@@ -392,20 +392,20 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    componentResourceLimitJsonhal := *openapiclient.NewComponentResourceLimitJsonhal() // ComponentResourceLimitJsonhal | The new ComponentResourceLimit resource
+    componentResourceLimit := *openapiclient.NewComponentResourceLimit() // ComponentResourceLimit | The new ComponentResourceLimit resource
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ComponentResourceLimitApi.ApiComponentResourceLimitsPost(context.Background()).ComponentResourceLimitJsonhal(componentResourceLimitJsonhal).Execute()
+    resp, r, err := apiClient.ComponentResourceLimitApi.ApiComponentResourceLimitsPost(context.Background()).ComponentResourceLimit(componentResourceLimit).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ComponentResourceLimitApi.ApiComponentResourceLimitsPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiComponentResourceLimitsPost`: ComponentResourceLimitJsonhal
+    // response from `ApiComponentResourceLimitsPost`: ComponentResourceLimit
     fmt.Fprintf(os.Stdout, "Response from `ComponentResourceLimitApi.ApiComponentResourceLimitsPost`: %v\n", resp)
 }
 ```
@@ -421,11 +421,11 @@ Other parameters are passed through a pointer to a apiApiComponentResourceLimits
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **componentResourceLimitJsonhal** | [**ComponentResourceLimitJsonhal**](ComponentResourceLimitJsonhal.md) | The new ComponentResourceLimit resource | 
+ **componentResourceLimit** | [**ComponentResourceLimit**](ComponentResourceLimit.md) | The new ComponentResourceLimit resource | 
 
 ### Return type
 
-[**ComponentResourceLimitJsonhal**](ComponentResourceLimitJsonhal.md)
+[**ComponentResourceLimit**](ComponentResourceLimit.md)
 
 ### Authorization
 
@@ -433,8 +433,8 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
-- **Accept**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
+- **Content-Type**: application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
+- **Accept**: application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)

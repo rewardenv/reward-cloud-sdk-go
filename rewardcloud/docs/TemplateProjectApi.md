@@ -15,7 +15,7 @@ Method | HTTP request | Description
 
 ## ApiTemplateProjectsGetCollection
 
-> ApiTemplateProjectsGetCollection200Response ApiTemplateProjectsGetCollection(ctx).Page(page).ItemsPerPage(itemsPerPage).ProjectTypeVersion(projectTypeVersion).ProjectTypeVersion2(projectTypeVersion2).OrderUpdatedAt(orderUpdatedAt).Execute()
+> []TemplateProjectTemplateProjectOutput ApiTemplateProjectsGetCollection(ctx).Page(page).ItemsPerPage(itemsPerPage).ProjectTypeVersion(projectTypeVersion).ProjectTypeVersion2(projectTypeVersion2).OrderUpdatedAt(orderUpdatedAt).Execute()
 
 Retrieves the collection of TemplateProject resources.
 
@@ -30,7 +30,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
@@ -47,7 +47,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `TemplateProjectApi.ApiTemplateProjectsGetCollection``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiTemplateProjectsGetCollection`: ApiTemplateProjectsGetCollection200Response
+    // response from `ApiTemplateProjectsGetCollection`: []TemplateProjectTemplateProjectOutput
     fmt.Fprintf(os.Stdout, "Response from `TemplateProjectApi.ApiTemplateProjectsGetCollection`: %v\n", resp)
 }
 ```
@@ -71,7 +71,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ApiTemplateProjectsGetCollection200Response**](ApiTemplateProjectsGetCollection200Response.md)
+[**[]TemplateProjectTemplateProjectOutput**](TemplateProjectTemplateProjectOutput.md)
 
 ### Authorization
 
@@ -80,7 +80,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
+- **Accept**: application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -104,7 +104,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
@@ -112,7 +112,7 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.TemplateProjectApi.ApiTemplateProjectsIdDelete(context.Background(), id).Execute()
+    r, err := apiClient.TemplateProjectApi.ApiTemplateProjectsIdDelete(context.Background(), id).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `TemplateProjectApi.ApiTemplateProjectsIdDelete``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -157,7 +157,7 @@ Name | Type | Description  | Notes
 
 ## ApiTemplateProjectsIdGet
 
-> TemplateProjectJsonhalTemplateProjectOutput ApiTemplateProjectsIdGet(ctx, id).Execute()
+> TemplateProjectTemplateProjectOutput ApiTemplateProjectsIdGet(ctx, id).Execute()
 
 Retrieves a TemplateProject resource.
 
@@ -172,7 +172,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
@@ -185,7 +185,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `TemplateProjectApi.ApiTemplateProjectsIdGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiTemplateProjectsIdGet`: TemplateProjectJsonhalTemplateProjectOutput
+    // response from `ApiTemplateProjectsIdGet`: TemplateProjectTemplateProjectOutput
     fmt.Fprintf(os.Stdout, "Response from `TemplateProjectApi.ApiTemplateProjectsIdGet`: %v\n", resp)
 }
 ```
@@ -209,7 +209,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**TemplateProjectJsonhalTemplateProjectOutput**](TemplateProjectJsonhalTemplateProjectOutput.md)
+[**TemplateProjectTemplateProjectOutput**](TemplateProjectTemplateProjectOutput.md)
 
 ### Authorization
 
@@ -218,7 +218,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
+- **Accept**: application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -227,7 +227,7 @@ Name | Type | Description  | Notes
 
 ## ApiTemplateProjectsIdPatch
 
-> TemplateProjectJsonhalTemplateProjectOutput ApiTemplateProjectsIdPatch(ctx, id).TemplateProjectTemplateProjectInput(templateProjectTemplateProjectInput).Execute()
+> TemplateProjectTemplateProjectOutput ApiTemplateProjectsIdPatch(ctx, id).TemplateProjectTemplateProjectInput(templateProjectTemplateProjectInput).Execute()
 
 Updates the TemplateProject resource.
 
@@ -242,12 +242,12 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    id := "id_example" // string | TemplateProject identifier
     templateProjectTemplateProjectInput := *openapiclient.NewTemplateProjectTemplateProjectInput() // TemplateProjectTemplateProjectInput | The updated TemplateProject resource
+    id := "id_example" // string | TemplateProject identifier
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -256,7 +256,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `TemplateProjectApi.ApiTemplateProjectsIdPatch``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiTemplateProjectsIdPatch`: TemplateProjectJsonhalTemplateProjectOutput
+    // response from `ApiTemplateProjectsIdPatch`: TemplateProjectTemplateProjectOutput
     fmt.Fprintf(os.Stdout, "Response from `TemplateProjectApi.ApiTemplateProjectsIdPatch`: %v\n", resp)
 }
 ```
@@ -276,12 +276,12 @@ Other parameters are passed through a pointer to a apiApiTemplateProjectsIdPatch
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-
  **templateProjectTemplateProjectInput** | [**TemplateProjectTemplateProjectInput**](TemplateProjectTemplateProjectInput.md) | The updated TemplateProject resource | 
+
 
 ### Return type
 
-[**TemplateProjectJsonhalTemplateProjectOutput**](TemplateProjectJsonhalTemplateProjectOutput.md)
+[**TemplateProjectTemplateProjectOutput**](TemplateProjectTemplateProjectOutput.md)
 
 ### Authorization
 
@@ -289,8 +289,8 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: application/vnd.api+json
-- **Accept**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
+- **Content-Type**: application/merge-patch+json, application/vnd.api+json
+- **Accept**: application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -299,7 +299,7 @@ Name | Type | Description  | Notes
 
 ## ApiTemplateProjectsIdPut
 
-> TemplateProjectJsonhalTemplateProjectOutput ApiTemplateProjectsIdPut(ctx, id).TemplateProjectJsonhalTemplateProjectInput(templateProjectJsonhalTemplateProjectInput).Execute()
+> TemplateProjectTemplateProjectOutput ApiTemplateProjectsIdPut(ctx, id).TemplateProjectTemplateProjectInput(templateProjectTemplateProjectInput).Execute()
 
 Replaces the TemplateProject resource.
 
@@ -314,21 +314,21 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
+    templateProjectTemplateProjectInput := *openapiclient.NewTemplateProjectTemplateProjectInput() // TemplateProjectTemplateProjectInput | The updated TemplateProject resource
     id := "id_example" // string | TemplateProject identifier
-    templateProjectJsonhalTemplateProjectInput := *openapiclient.NewTemplateProjectJsonhalTemplateProjectInput() // TemplateProjectJsonhalTemplateProjectInput | The updated TemplateProject resource
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.TemplateProjectApi.ApiTemplateProjectsIdPut(context.Background(), id).TemplateProjectJsonhalTemplateProjectInput(templateProjectJsonhalTemplateProjectInput).Execute()
+    resp, r, err := apiClient.TemplateProjectApi.ApiTemplateProjectsIdPut(context.Background(), id).TemplateProjectTemplateProjectInput(templateProjectTemplateProjectInput).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `TemplateProjectApi.ApiTemplateProjectsIdPut``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiTemplateProjectsIdPut`: TemplateProjectJsonhalTemplateProjectOutput
+    // response from `ApiTemplateProjectsIdPut`: TemplateProjectTemplateProjectOutput
     fmt.Fprintf(os.Stdout, "Response from `TemplateProjectApi.ApiTemplateProjectsIdPut`: %v\n", resp)
 }
 ```
@@ -348,12 +348,12 @@ Other parameters are passed through a pointer to a apiApiTemplateProjectsIdPutRe
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **templateProjectTemplateProjectInput** | [**TemplateProjectTemplateProjectInput**](TemplateProjectTemplateProjectInput.md) | The updated TemplateProject resource | 
 
- **templateProjectJsonhalTemplateProjectInput** | [**TemplateProjectJsonhalTemplateProjectInput**](TemplateProjectJsonhalTemplateProjectInput.md) | The updated TemplateProject resource | 
 
 ### Return type
 
-[**TemplateProjectJsonhalTemplateProjectOutput**](TemplateProjectJsonhalTemplateProjectOutput.md)
+[**TemplateProjectTemplateProjectOutput**](TemplateProjectTemplateProjectOutput.md)
 
 ### Authorization
 
@@ -361,8 +361,8 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
-- **Accept**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
+- **Content-Type**: application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
+- **Accept**: application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -371,7 +371,7 @@ Name | Type | Description  | Notes
 
 ## ApiTemplateProjectsPost
 
-> TemplateProjectJsonhalTemplateProjectOutput ApiTemplateProjectsPost(ctx).TemplateProjectJsonhalTemplateProjectInput(templateProjectJsonhalTemplateProjectInput).Execute()
+> TemplateProjectTemplateProjectOutput ApiTemplateProjectsPost(ctx).TemplateProjectTemplateProjectInput(templateProjectTemplateProjectInput).Execute()
 
 Creates a TemplateProject resource.
 
@@ -386,20 +386,20 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    templateProjectJsonhalTemplateProjectInput := *openapiclient.NewTemplateProjectJsonhalTemplateProjectInput() // TemplateProjectJsonhalTemplateProjectInput | The new TemplateProject resource
+    templateProjectTemplateProjectInput := *openapiclient.NewTemplateProjectTemplateProjectInput() // TemplateProjectTemplateProjectInput | The new TemplateProject resource
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.TemplateProjectApi.ApiTemplateProjectsPost(context.Background()).TemplateProjectJsonhalTemplateProjectInput(templateProjectJsonhalTemplateProjectInput).Execute()
+    resp, r, err := apiClient.TemplateProjectApi.ApiTemplateProjectsPost(context.Background()).TemplateProjectTemplateProjectInput(templateProjectTemplateProjectInput).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `TemplateProjectApi.ApiTemplateProjectsPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiTemplateProjectsPost`: TemplateProjectJsonhalTemplateProjectOutput
+    // response from `ApiTemplateProjectsPost`: TemplateProjectTemplateProjectOutput
     fmt.Fprintf(os.Stdout, "Response from `TemplateProjectApi.ApiTemplateProjectsPost`: %v\n", resp)
 }
 ```
@@ -415,11 +415,11 @@ Other parameters are passed through a pointer to a apiApiTemplateProjectsPostReq
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **templateProjectJsonhalTemplateProjectInput** | [**TemplateProjectJsonhalTemplateProjectInput**](TemplateProjectJsonhalTemplateProjectInput.md) | The new TemplateProject resource | 
+ **templateProjectTemplateProjectInput** | [**TemplateProjectTemplateProjectInput**](TemplateProjectTemplateProjectInput.md) | The new TemplateProject resource | 
 
 ### Return type
 
-[**TemplateProjectJsonhalTemplateProjectOutput**](TemplateProjectJsonhalTemplateProjectOutput.md)
+[**TemplateProjectTemplateProjectOutput**](TemplateProjectTemplateProjectOutput.md)
 
 ### Authorization
 
@@ -427,8 +427,8 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
-- **Accept**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
+- **Content-Type**: application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
+- **Accept**: application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)

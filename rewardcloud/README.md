@@ -15,7 +15,6 @@ Install the following dependencies:
 
 ```shell
 go get github.com/stretchr/testify/assert
-go get golang.org/x/oauth2
 go get golang.org/x/net/context
 ```
 
@@ -387,57 +386,9 @@ Class | Method | HTTP request | Description
  - [AbstractEnvironment](docs/AbstractEnvironment.md)
  - [AbstractEnvironmentJsonhal](docs/AbstractEnvironmentJsonhal.md)
  - [AbstractEnvironmentJsonhalLinks](docs/AbstractEnvironmentJsonhalLinks.md)
+ - [AbstractEnvironmentJsonhalLinksSelf](docs/AbstractEnvironmentJsonhalLinksSelf.md)
  - [AbstractProject](docs/AbstractProject.md)
  - [AbstractProjectJsonhal](docs/AbstractProjectJsonhal.md)
- - [ApiComponentResourceLimitsGetCollection200Response](docs/ApiComponentResourceLimitsGetCollection200Response.md)
- - [ApiComponentResourceLimitsGetCollection200ResponseLinks](docs/ApiComponentResourceLimitsGetCollection200ResponseLinks.md)
- - [ApiComponentResourceLimitsGetCollection200ResponseLinksSelf](docs/ApiComponentResourceLimitsGetCollection200ResponseLinksSelf.md)
- - [ApiComponentVersionEnvVarExamplesGetCollection200Response](docs/ApiComponentVersionEnvVarExamplesGetCollection200Response.md)
- - [ApiComponentVersionEnvVarsGetCollection200Response](docs/ApiComponentVersionEnvVarsGetCollection200Response.md)
- - [ApiComponentVersionsGetCollection200Response](docs/ApiComponentVersionsGetCollection200Response.md)
- - [ApiComponentsGetCollection200Response](docs/ApiComponentsGetCollection200Response.md)
- - [ApiCredentialTypesGetCollection200Response](docs/ApiCredentialTypesGetCollection200Response.md)
- - [ApiDataTransferDataTypesGetCollection200Response](docs/ApiDataTransferDataTypesGetCollection200Response.md)
- - [ApiDataTransferTypesGetCollection200Response](docs/ApiDataTransferTypesGetCollection200Response.md)
- - [ApiEnvVarTypesGetCollection200Response](docs/ApiEnvVarTypesGetCollection200Response.md)
- - [ApiEnvironmentAccessBackendsGetCollection200Response](docs/ApiEnvironmentAccessBackendsGetCollection200Response.md)
- - [ApiEnvironmentAccessDatabasesGetCollection200Response](docs/ApiEnvironmentAccessDatabasesGetCollection200Response.md)
- - [ApiEnvironmentAccessDevToolsGetCollection200Response](docs/ApiEnvironmentAccessDevToolsGetCollection200Response.md)
- - [ApiEnvironmentAccessFrontendsGetCollection200Response](docs/ApiEnvironmentAccessFrontendsGetCollection200Response.md)
- - [ApiEnvironmentAccessRabbitsGetCollection200Response](docs/ApiEnvironmentAccessRabbitsGetCollection200Response.md)
- - [ApiEnvironmentAccessRedisGetCollection200Response](docs/ApiEnvironmentAccessRedisGetCollection200Response.md)
- - [ApiEnvironmentAccessesGetCollection200Response](docs/ApiEnvironmentAccessesGetCollection200Response.md)
- - [ApiEnvironmentComponentsGetCollection200Response](docs/ApiEnvironmentComponentsGetCollection200Response.md)
- - [ApiEnvironmentEnvVarsGetCollection200Response](docs/ApiEnvironmentEnvVarsGetCollection200Response.md)
- - [ApiEnvironmentsGetCollection200Response](docs/ApiEnvironmentsGetCollection200Response.md)
- - [ApiExportedDatasGetCollection200Response](docs/ApiExportedDatasGetCollection200Response.md)
- - [ApiGitTypesGetCollection200Response](docs/ApiGitTypesGetCollection200Response.md)
- - [ApiGitsGetCollection200Response](docs/ApiGitsGetCollection200Response.md)
- - [ApiImportedDatasGetCollection200Response](docs/ApiImportedDatasGetCollection200Response.md)
- - [ApiOrganisationEnvVarsGetCollection200Response](docs/ApiOrganisationEnvVarsGetCollection200Response.md)
- - [ApiOrganisationsGetCollection200Response](docs/ApiOrganisationsGetCollection200Response.md)
- - [ApiPricesGetCollection200Response](docs/ApiPricesGetCollection200Response.md)
- - [ApiProductsGetCollection200Response](docs/ApiProductsGetCollection200Response.md)
- - [ApiProjectEnvVarsGetCollection200Response](docs/ApiProjectEnvVarsGetCollection200Response.md)
- - [ApiProjectTypeVersionEnvVarExamplesGetCollection200Response](docs/ApiProjectTypeVersionEnvVarExamplesGetCollection200Response.md)
- - [ApiProjectTypeVersionEnvVarsGetCollection200Response](docs/ApiProjectTypeVersionEnvVarsGetCollection200Response.md)
- - [ApiProjectTypeVersionsGetCollection200Response](docs/ApiProjectTypeVersionsGetCollection200Response.md)
- - [ApiProjectTypesGetCollection200Response](docs/ApiProjectTypesGetCollection200Response.md)
- - [ApiProjectsGetCollection200Response](docs/ApiProjectsGetCollection200Response.md)
- - [ApiProvidersGetCollection200Response](docs/ApiProvidersGetCollection200Response.md)
- - [ApiRegionsGetCollection200Response](docs/ApiRegionsGetCollection200Response.md)
- - [ApiResourceTypeLimitsGetCollection200Response](docs/ApiResourceTypeLimitsGetCollection200Response.md)
- - [ApiResourceTypesGetCollection200Response](docs/ApiResourceTypesGetCollection200Response.md)
- - [ApiRoleGroupsGetCollection200Response](docs/ApiRoleGroupsGetCollection200Response.md)
- - [ApiServiceAccountGitsGetCollection200Response](docs/ApiServiceAccountGitsGetCollection200Response.md)
- - [ApiServiceAccountRegistriesGetCollection200Response](docs/ApiServiceAccountRegistriesGetCollection200Response.md)
- - [ApiServiceAccountsGetCollection200Response](docs/ApiServiceAccountsGetCollection200Response.md)
- - [ApiStatesGetCollection200Response](docs/ApiStatesGetCollection200Response.md)
- - [ApiTeamEnvVarsGetCollection200Response](docs/ApiTeamEnvVarsGetCollection200Response.md)
- - [ApiTeamsGetCollection200Response](docs/ApiTeamsGetCollection200Response.md)
- - [ApiTemplateEnvironmentsGetCollection200Response](docs/ApiTemplateEnvironmentsGetCollection200Response.md)
- - [ApiTemplateProjectsGetCollection200Response](docs/ApiTemplateProjectsGetCollection200Response.md)
- - [ApiUsersGetCollection200Response](docs/ApiUsersGetCollection200Response.md)
  - [Component](docs/Component.md)
  - [ComponentJsonhal](docs/ComponentJsonhal.md)
  - [ComponentResourceLimit](docs/ComponentResourceLimit.md)
@@ -650,6 +601,15 @@ Class | Method | HTTP request | Description
 
 
 
+### apiKey
+
+- **Type**: API key
+- **API key parameter name**: Authorization
+- **Location**: HTTP header
+
+Note, each API key must be added to a map of `map[string]APIKey` where the key is: Authorization and passed in as the auth context for each request.
+
+
 ### JWT
 
 - **Type**: HTTP Bearer token authentication
@@ -660,15 +620,6 @@ Example
 auth := context.WithValue(context.Background(), sw.ContextAccessToken, "BEARER_TOKEN_STRING")
 r, err := client.Service.Operation(auth, args)
 ```
-
-
-### apiKey
-
-- **Type**: API key
-- **API key parameter name**: Authorization
-- **Location**: HTTP header
-
-Note, each API key must be added to a map of `map[string]APIKey` where the key is: Authorization and passed in as the auth context for each request.
 
 
 ## Documentation for Utility Methods

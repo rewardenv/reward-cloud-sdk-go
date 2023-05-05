@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the CredentialTypeProjectPost type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &CredentialTypeProjectPost{}
+
 // CredentialTypeProjectPost
 type CredentialTypeProjectPost struct {
 	Uuid NullableString `json:"uuid,omitempty"`
@@ -39,7 +42,7 @@ func NewCredentialTypeProjectPostWithDefaults() *CredentialTypeProjectPost {
 
 // GetUuid returns the Uuid field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CredentialTypeProjectPost) GetUuid() string {
-	if o == nil || isNil(o.Uuid.Get()) {
+	if o == nil || IsNil(o.Uuid.Get()) {
 		var ret string
 		return ret
 	}
@@ -82,7 +85,7 @@ func (o *CredentialTypeProjectPost) UnsetUuid() {
 
 // GetName returns the Name field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CredentialTypeProjectPost) GetName() string {
-	if o == nil || isNil(o.Name.Get()) {
+	if o == nil || IsNil(o.Name.Get()) {
 		var ret string
 		return ret
 	}
@@ -124,6 +127,14 @@ func (o *CredentialTypeProjectPost) UnsetName() {
 }
 
 func (o CredentialTypeProjectPost) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o CredentialTypeProjectPost) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Uuid.IsSet() {
 		toSerialize["uuid"] = o.Uuid.Get()
@@ -131,7 +142,7 @@ func (o CredentialTypeProjectPost) MarshalJSON() ([]byte, error) {
 	if o.Name.IsSet() {
 		toSerialize["name"] = o.Name.Get()
 	}
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 type NullableCredentialTypeProjectPost struct {

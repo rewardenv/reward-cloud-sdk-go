@@ -15,6 +15,9 @@ import (
 	"time"
 )
 
+// checks if the ComponentResourceLimit type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ComponentResourceLimit{}
+
 // ComponentResourceLimit Class ComponentResourceLimit
 type ComponentResourceLimit struct {
 	Id                 *int32         `json:"id,omitempty"`
@@ -49,7 +52,7 @@ func NewComponentResourceLimitWithDefaults() *ComponentResourceLimit {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *ComponentResourceLimit) GetId() int32 {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		var ret int32
 		return ret
 	}
@@ -59,7 +62,7 @@ func (o *ComponentResourceLimit) GetId() int32 {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComponentResourceLimit) GetIdOk() (*int32, bool) {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
 	return o.Id, true
@@ -67,7 +70,7 @@ func (o *ComponentResourceLimit) GetIdOk() (*int32, bool) {
 
 // HasId returns a boolean if a field has been set.
 func (o *ComponentResourceLimit) HasId() bool {
-	if o != nil && !isNil(o.Id) {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -81,7 +84,7 @@ func (o *ComponentResourceLimit) SetId(v int32) {
 
 // GetUuid returns the Uuid field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ComponentResourceLimit) GetUuid() string {
-	if o == nil || isNil(o.Uuid.Get()) {
+	if o == nil || IsNil(o.Uuid.Get()) {
 		var ret string
 		return ret
 	}
@@ -124,7 +127,7 @@ func (o *ComponentResourceLimit) UnsetUuid() {
 
 // GetMinValue returns the MinValue field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ComponentResourceLimit) GetMinValue() int32 {
-	if o == nil || isNil(o.MinValue.Get()) {
+	if o == nil || IsNil(o.MinValue.Get()) {
 		var ret int32
 		return ret
 	}
@@ -167,7 +170,7 @@ func (o *ComponentResourceLimit) UnsetMinValue() {
 
 // GetMaxValue returns the MaxValue field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ComponentResourceLimit) GetMaxValue() int32 {
-	if o == nil || isNil(o.MaxValue.Get()) {
+	if o == nil || IsNil(o.MaxValue.Get()) {
 		var ret int32
 		return ret
 	}
@@ -210,7 +213,7 @@ func (o *ComponentResourceLimit) UnsetMaxValue() {
 
 // GetProjectTypeVersion returns the ProjectTypeVersion field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ComponentResourceLimit) GetProjectTypeVersion() string {
-	if o == nil || isNil(o.ProjectTypeVersion.Get()) {
+	if o == nil || IsNil(o.ProjectTypeVersion.Get()) {
 		var ret string
 		return ret
 	}
@@ -253,7 +256,7 @@ func (o *ComponentResourceLimit) UnsetProjectTypeVersion() {
 
 // GetResourceType returns the ResourceType field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ComponentResourceLimit) GetResourceType() string {
-	if o == nil || isNil(o.ResourceType.Get()) {
+	if o == nil || IsNil(o.ResourceType.Get()) {
 		var ret string
 		return ret
 	}
@@ -296,7 +299,7 @@ func (o *ComponentResourceLimit) UnsetResourceType() {
 
 // GetComponentVersion returns the ComponentVersion field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ComponentResourceLimit) GetComponentVersion() string {
-	if o == nil || isNil(o.ComponentVersion.Get()) {
+	if o == nil || IsNil(o.ComponentVersion.Get()) {
 		var ret string
 		return ret
 	}
@@ -339,7 +342,7 @@ func (o *ComponentResourceLimit) UnsetComponentVersion() {
 
 // GetCreatedBy returns the CreatedBy field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ComponentResourceLimit) GetCreatedBy() string {
-	if o == nil || isNil(o.CreatedBy.Get()) {
+	if o == nil || IsNil(o.CreatedBy.Get()) {
 		var ret string
 		return ret
 	}
@@ -382,7 +385,7 @@ func (o *ComponentResourceLimit) UnsetCreatedBy() {
 
 // GetUpdatedBy returns the UpdatedBy field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ComponentResourceLimit) GetUpdatedBy() string {
-	if o == nil || isNil(o.UpdatedBy.Get()) {
+	if o == nil || IsNil(o.UpdatedBy.Get()) {
 		var ret string
 		return ret
 	}
@@ -425,7 +428,7 @@ func (o *ComponentResourceLimit) UnsetUpdatedBy() {
 
 // GetCreatedAt returns the CreatedAt field value if set, zero value otherwise.
 func (o *ComponentResourceLimit) GetCreatedAt() time.Time {
-	if o == nil || isNil(o.CreatedAt) {
+	if o == nil || IsNil(o.CreatedAt) {
 		var ret time.Time
 		return ret
 	}
@@ -435,7 +438,7 @@ func (o *ComponentResourceLimit) GetCreatedAt() time.Time {
 // GetCreatedAtOk returns a tuple with the CreatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComponentResourceLimit) GetCreatedAtOk() (*time.Time, bool) {
-	if o == nil || isNil(o.CreatedAt) {
+	if o == nil || IsNil(o.CreatedAt) {
 		return nil, false
 	}
 	return o.CreatedAt, true
@@ -443,7 +446,7 @@ func (o *ComponentResourceLimit) GetCreatedAtOk() (*time.Time, bool) {
 
 // HasCreatedAt returns a boolean if a field has been set.
 func (o *ComponentResourceLimit) HasCreatedAt() bool {
-	if o != nil && !isNil(o.CreatedAt) {
+	if o != nil && !IsNil(o.CreatedAt) {
 		return true
 	}
 
@@ -457,7 +460,7 @@ func (o *ComponentResourceLimit) SetCreatedAt(v time.Time) {
 
 // GetUpdatedAt returns the UpdatedAt field value if set, zero value otherwise.
 func (o *ComponentResourceLimit) GetUpdatedAt() time.Time {
-	if o == nil || isNil(o.UpdatedAt) {
+	if o == nil || IsNil(o.UpdatedAt) {
 		var ret time.Time
 		return ret
 	}
@@ -467,7 +470,7 @@ func (o *ComponentResourceLimit) GetUpdatedAt() time.Time {
 // GetUpdatedAtOk returns a tuple with the UpdatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComponentResourceLimit) GetUpdatedAtOk() (*time.Time, bool) {
-	if o == nil || isNil(o.UpdatedAt) {
+	if o == nil || IsNil(o.UpdatedAt) {
 		return nil, false
 	}
 	return o.UpdatedAt, true
@@ -475,7 +478,7 @@ func (o *ComponentResourceLimit) GetUpdatedAtOk() (*time.Time, bool) {
 
 // HasUpdatedAt returns a boolean if a field has been set.
 func (o *ComponentResourceLimit) HasUpdatedAt() bool {
-	if o != nil && !isNil(o.UpdatedAt) {
+	if o != nil && !IsNil(o.UpdatedAt) {
 		return true
 	}
 
@@ -488,10 +491,16 @@ func (o *ComponentResourceLimit) SetUpdatedAt(v time.Time) {
 }
 
 func (o ComponentResourceLimit) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.Id) {
-		toSerialize["id"] = o.Id
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
+	return json.Marshal(toSerialize)
+}
+
+func (o ComponentResourceLimit) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	// skip: id is readOnly
 	if o.Uuid.IsSet() {
 		toSerialize["uuid"] = o.Uuid.Get()
 	}
@@ -516,13 +525,13 @@ func (o ComponentResourceLimit) MarshalJSON() ([]byte, error) {
 	if o.UpdatedBy.IsSet() {
 		toSerialize["updatedBy"] = o.UpdatedBy.Get()
 	}
-	if !isNil(o.CreatedAt) {
+	if !IsNil(o.CreatedAt) {
 		toSerialize["createdAt"] = o.CreatedAt
 	}
-	if !isNil(o.UpdatedAt) {
+	if !IsNil(o.UpdatedAt) {
 		toSerialize["updatedAt"] = o.UpdatedAt
 	}
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 type NullableComponentResourceLimit struct {

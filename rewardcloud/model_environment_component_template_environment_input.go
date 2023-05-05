@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the EnvironmentComponentTemplateEnvironmentInput type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &EnvironmentComponentTemplateEnvironmentInput{}
+
 // EnvironmentComponentTemplateEnvironmentInput
 type EnvironmentComponentTemplateEnvironmentInput struct {
 	Cpu              NullableInt32  `json:"cpu,omitempty"`
@@ -42,7 +45,7 @@ func NewEnvironmentComponentTemplateEnvironmentInputWithDefaults() *EnvironmentC
 
 // GetCpu returns the Cpu field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *EnvironmentComponentTemplateEnvironmentInput) GetCpu() int32 {
-	if o == nil || isNil(o.Cpu.Get()) {
+	if o == nil || IsNil(o.Cpu.Get()) {
 		var ret int32
 		return ret
 	}
@@ -85,7 +88,7 @@ func (o *EnvironmentComponentTemplateEnvironmentInput) UnsetCpu() {
 
 // GetMemory returns the Memory field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *EnvironmentComponentTemplateEnvironmentInput) GetMemory() int32 {
-	if o == nil || isNil(o.Memory.Get()) {
+	if o == nil || IsNil(o.Memory.Get()) {
 		var ret int32
 		return ret
 	}
@@ -128,7 +131,7 @@ func (o *EnvironmentComponentTemplateEnvironmentInput) UnsetMemory() {
 
 // GetStorage returns the Storage field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *EnvironmentComponentTemplateEnvironmentInput) GetStorage() int32 {
-	if o == nil || isNil(o.Storage.Get()) {
+	if o == nil || IsNil(o.Storage.Get()) {
 		var ret int32
 		return ret
 	}
@@ -171,7 +174,7 @@ func (o *EnvironmentComponentTemplateEnvironmentInput) UnsetStorage() {
 
 // GetNode returns the Node field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *EnvironmentComponentTemplateEnvironmentInput) GetNode() int32 {
-	if o == nil || isNil(o.Node.Get()) {
+	if o == nil || IsNil(o.Node.Get()) {
 		var ret int32
 		return ret
 	}
@@ -214,7 +217,7 @@ func (o *EnvironmentComponentTemplateEnvironmentInput) UnsetNode() {
 
 // GetComponentVersion returns the ComponentVersion field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *EnvironmentComponentTemplateEnvironmentInput) GetComponentVersion() string {
-	if o == nil || isNil(o.ComponentVersion.Get()) {
+	if o == nil || IsNil(o.ComponentVersion.Get()) {
 		var ret string
 		return ret
 	}
@@ -256,6 +259,14 @@ func (o *EnvironmentComponentTemplateEnvironmentInput) UnsetComponentVersion() {
 }
 
 func (o EnvironmentComponentTemplateEnvironmentInput) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o EnvironmentComponentTemplateEnvironmentInput) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Cpu.IsSet() {
 		toSerialize["cpu"] = o.Cpu.Get()
@@ -272,7 +283,7 @@ func (o EnvironmentComponentTemplateEnvironmentInput) MarshalJSON() ([]byte, err
 	if o.ComponentVersion.IsSet() {
 		toSerialize["componentVersion"] = o.ComponentVersion.Get()
 	}
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 type NullableEnvironmentComponentTemplateEnvironmentInput struct {

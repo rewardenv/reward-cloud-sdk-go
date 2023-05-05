@@ -15,6 +15,9 @@ import (
 	"time"
 )
 
+// checks if the ResourceTypeLimit type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ResourceTypeLimit{}
+
 // ResourceTypeLimit Class ResourceTypeLimit
 type ResourceTypeLimit struct {
 	Id                  *int32         `json:"id,omitempty"`
@@ -50,7 +53,7 @@ func NewResourceTypeLimitWithDefaults() *ResourceTypeLimit {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *ResourceTypeLimit) GetId() int32 {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		var ret int32
 		return ret
 	}
@@ -60,7 +63,7 @@ func (o *ResourceTypeLimit) GetId() int32 {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ResourceTypeLimit) GetIdOk() (*int32, bool) {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
 	return o.Id, true
@@ -68,7 +71,7 @@ func (o *ResourceTypeLimit) GetIdOk() (*int32, bool) {
 
 // HasId returns a boolean if a field has been set.
 func (o *ResourceTypeLimit) HasId() bool {
-	if o != nil && !isNil(o.Id) {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -82,7 +85,7 @@ func (o *ResourceTypeLimit) SetId(v int32) {
 
 // GetUuid returns the Uuid field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ResourceTypeLimit) GetUuid() string {
-	if o == nil || isNil(o.Uuid.Get()) {
+	if o == nil || IsNil(o.Uuid.Get()) {
 		var ret string
 		return ret
 	}
@@ -125,7 +128,7 @@ func (o *ResourceTypeLimit) UnsetUuid() {
 
 // GetProjectMinValue returns the ProjectMinValue field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ResourceTypeLimit) GetProjectMinValue() int32 {
-	if o == nil || isNil(o.ProjectMinValue.Get()) {
+	if o == nil || IsNil(o.ProjectMinValue.Get()) {
 		var ret int32
 		return ret
 	}
@@ -168,7 +171,7 @@ func (o *ResourceTypeLimit) UnsetProjectMinValue() {
 
 // GetProjectMaxValue returns the ProjectMaxValue field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ResourceTypeLimit) GetProjectMaxValue() int32 {
-	if o == nil || isNil(o.ProjectMaxValue.Get()) {
+	if o == nil || IsNil(o.ProjectMaxValue.Get()) {
 		var ret int32
 		return ret
 	}
@@ -211,7 +214,7 @@ func (o *ResourceTypeLimit) UnsetProjectMaxValue() {
 
 // GetEnvironmentMinValue returns the EnvironmentMinValue field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ResourceTypeLimit) GetEnvironmentMinValue() int32 {
-	if o == nil || isNil(o.EnvironmentMinValue.Get()) {
+	if o == nil || IsNil(o.EnvironmentMinValue.Get()) {
 		var ret int32
 		return ret
 	}
@@ -254,7 +257,7 @@ func (o *ResourceTypeLimit) UnsetEnvironmentMinValue() {
 
 // GetEnvironmentMaxValue returns the EnvironmentMaxValue field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ResourceTypeLimit) GetEnvironmentMaxValue() int32 {
-	if o == nil || isNil(o.EnvironmentMaxValue.Get()) {
+	if o == nil || IsNil(o.EnvironmentMaxValue.Get()) {
 		var ret int32
 		return ret
 	}
@@ -297,7 +300,7 @@ func (o *ResourceTypeLimit) UnsetEnvironmentMaxValue() {
 
 // GetComponentMinValue returns the ComponentMinValue field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ResourceTypeLimit) GetComponentMinValue() int32 {
-	if o == nil || isNil(o.ComponentMinValue.Get()) {
+	if o == nil || IsNil(o.ComponentMinValue.Get()) {
 		var ret int32
 		return ret
 	}
@@ -340,7 +343,7 @@ func (o *ResourceTypeLimit) UnsetComponentMinValue() {
 
 // GetComponentMaxValue returns the ComponentMaxValue field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ResourceTypeLimit) GetComponentMaxValue() int32 {
-	if o == nil || isNil(o.ComponentMaxValue.Get()) {
+	if o == nil || IsNil(o.ComponentMaxValue.Get()) {
 		var ret int32
 		return ret
 	}
@@ -383,7 +386,7 @@ func (o *ResourceTypeLimit) UnsetComponentMaxValue() {
 
 // GetCreatedBy returns the CreatedBy field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ResourceTypeLimit) GetCreatedBy() string {
-	if o == nil || isNil(o.CreatedBy.Get()) {
+	if o == nil || IsNil(o.CreatedBy.Get()) {
 		var ret string
 		return ret
 	}
@@ -426,7 +429,7 @@ func (o *ResourceTypeLimit) UnsetCreatedBy() {
 
 // GetUpdatedBy returns the UpdatedBy field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ResourceTypeLimit) GetUpdatedBy() string {
-	if o == nil || isNil(o.UpdatedBy.Get()) {
+	if o == nil || IsNil(o.UpdatedBy.Get()) {
 		var ret string
 		return ret
 	}
@@ -469,7 +472,7 @@ func (o *ResourceTypeLimit) UnsetUpdatedBy() {
 
 // GetCreatedAt returns the CreatedAt field value if set, zero value otherwise.
 func (o *ResourceTypeLimit) GetCreatedAt() time.Time {
-	if o == nil || isNil(o.CreatedAt) {
+	if o == nil || IsNil(o.CreatedAt) {
 		var ret time.Time
 		return ret
 	}
@@ -479,7 +482,7 @@ func (o *ResourceTypeLimit) GetCreatedAt() time.Time {
 // GetCreatedAtOk returns a tuple with the CreatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ResourceTypeLimit) GetCreatedAtOk() (*time.Time, bool) {
-	if o == nil || isNil(o.CreatedAt) {
+	if o == nil || IsNil(o.CreatedAt) {
 		return nil, false
 	}
 	return o.CreatedAt, true
@@ -487,7 +490,7 @@ func (o *ResourceTypeLimit) GetCreatedAtOk() (*time.Time, bool) {
 
 // HasCreatedAt returns a boolean if a field has been set.
 func (o *ResourceTypeLimit) HasCreatedAt() bool {
-	if o != nil && !isNil(o.CreatedAt) {
+	if o != nil && !IsNil(o.CreatedAt) {
 		return true
 	}
 
@@ -501,7 +504,7 @@ func (o *ResourceTypeLimit) SetCreatedAt(v time.Time) {
 
 // GetUpdatedAt returns the UpdatedAt field value if set, zero value otherwise.
 func (o *ResourceTypeLimit) GetUpdatedAt() time.Time {
-	if o == nil || isNil(o.UpdatedAt) {
+	if o == nil || IsNil(o.UpdatedAt) {
 		var ret time.Time
 		return ret
 	}
@@ -511,7 +514,7 @@ func (o *ResourceTypeLimit) GetUpdatedAt() time.Time {
 // GetUpdatedAtOk returns a tuple with the UpdatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ResourceTypeLimit) GetUpdatedAtOk() (*time.Time, bool) {
-	if o == nil || isNil(o.UpdatedAt) {
+	if o == nil || IsNil(o.UpdatedAt) {
 		return nil, false
 	}
 	return o.UpdatedAt, true
@@ -519,7 +522,7 @@ func (o *ResourceTypeLimit) GetUpdatedAtOk() (*time.Time, bool) {
 
 // HasUpdatedAt returns a boolean if a field has been set.
 func (o *ResourceTypeLimit) HasUpdatedAt() bool {
-	if o != nil && !isNil(o.UpdatedAt) {
+	if o != nil && !IsNil(o.UpdatedAt) {
 		return true
 	}
 
@@ -532,10 +535,16 @@ func (o *ResourceTypeLimit) SetUpdatedAt(v time.Time) {
 }
 
 func (o ResourceTypeLimit) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.Id) {
-		toSerialize["id"] = o.Id
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
+	return json.Marshal(toSerialize)
+}
+
+func (o ResourceTypeLimit) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	// skip: id is readOnly
 	if o.Uuid.IsSet() {
 		toSerialize["uuid"] = o.Uuid.Get()
 	}
@@ -563,13 +572,13 @@ func (o ResourceTypeLimit) MarshalJSON() ([]byte, error) {
 	if o.UpdatedBy.IsSet() {
 		toSerialize["updatedBy"] = o.UpdatedBy.Get()
 	}
-	if !isNil(o.CreatedAt) {
+	if !IsNil(o.CreatedAt) {
 		toSerialize["createdAt"] = o.CreatedAt
 	}
-	if !isNil(o.UpdatedAt) {
+	if !IsNil(o.UpdatedAt) {
 		toSerialize["updatedAt"] = o.UpdatedAt
 	}
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 type NullableResourceTypeLimit struct {

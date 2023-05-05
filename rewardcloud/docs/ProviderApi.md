@@ -15,7 +15,7 @@ Method | HTTP request | Description
 
 ## ApiProvidersGetCollection
 
-> ApiProvidersGetCollection200Response ApiProvidersGetCollection(ctx).Page(page).ItemsPerPage(itemsPerPage).Execute()
+> []Provider ApiProvidersGetCollection(ctx).Page(page).ItemsPerPage(itemsPerPage).Execute()
 
 Retrieves the collection of Provider resources.
 
@@ -30,7 +30,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
@@ -44,7 +44,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `ProviderApi.ApiProvidersGetCollection``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiProvidersGetCollection`: ApiProvidersGetCollection200Response
+    // response from `ApiProvidersGetCollection`: []Provider
     fmt.Fprintf(os.Stdout, "Response from `ProviderApi.ApiProvidersGetCollection`: %v\n", resp)
 }
 ```
@@ -65,7 +65,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ApiProvidersGetCollection200Response**](ApiProvidersGetCollection200Response.md)
+[**[]Provider**](Provider.md)
 
 ### Authorization
 
@@ -74,7 +74,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
+- **Accept**: application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -98,7 +98,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
@@ -106,7 +106,7 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ProviderApi.ApiProvidersIdDelete(context.Background(), id).Execute()
+    r, err := apiClient.ProviderApi.ApiProvidersIdDelete(context.Background(), id).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ProviderApi.ApiProvidersIdDelete``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -151,7 +151,7 @@ Name | Type | Description  | Notes
 
 ## ApiProvidersIdGet
 
-> ProviderJsonhal ApiProvidersIdGet(ctx, id).Execute()
+> Provider ApiProvidersIdGet(ctx, id).Execute()
 
 Retrieves a Provider resource.
 
@@ -166,7 +166,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
@@ -179,7 +179,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `ProviderApi.ApiProvidersIdGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiProvidersIdGet`: ProviderJsonhal
+    // response from `ApiProvidersIdGet`: Provider
     fmt.Fprintf(os.Stdout, "Response from `ProviderApi.ApiProvidersIdGet`: %v\n", resp)
 }
 ```
@@ -203,7 +203,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ProviderJsonhal**](ProviderJsonhal.md)
+[**Provider**](Provider.md)
 
 ### Authorization
 
@@ -212,7 +212,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
+- **Accept**: application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -221,7 +221,7 @@ Name | Type | Description  | Notes
 
 ## ApiProvidersIdPatch
 
-> ProviderJsonhal ApiProvidersIdPatch(ctx, id).Provider(provider).Execute()
+> Provider ApiProvidersIdPatch(ctx, id).Provider(provider).Execute()
 
 Updates the Provider resource.
 
@@ -236,12 +236,12 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    id := "id_example" // string | Provider identifier
     provider := *openapiclient.NewProvider() // Provider | The updated Provider resource
+    id := "id_example" // string | Provider identifier
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -250,7 +250,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `ProviderApi.ApiProvidersIdPatch``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiProvidersIdPatch`: ProviderJsonhal
+    // response from `ApiProvidersIdPatch`: Provider
     fmt.Fprintf(os.Stdout, "Response from `ProviderApi.ApiProvidersIdPatch`: %v\n", resp)
 }
 ```
@@ -270,12 +270,12 @@ Other parameters are passed through a pointer to a apiApiProvidersIdPatchRequest
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-
  **provider** | [**Provider**](Provider.md) | The updated Provider resource | 
+
 
 ### Return type
 
-[**ProviderJsonhal**](ProviderJsonhal.md)
+[**Provider**](Provider.md)
 
 ### Authorization
 
@@ -283,8 +283,8 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: application/vnd.api+json
-- **Accept**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
+- **Content-Type**: application/merge-patch+json, application/vnd.api+json
+- **Accept**: application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -293,7 +293,7 @@ Name | Type | Description  | Notes
 
 ## ApiProvidersIdPut
 
-> ProviderJsonhal ApiProvidersIdPut(ctx, id).ProviderJsonhal(providerJsonhal).Execute()
+> Provider ApiProvidersIdPut(ctx, id).Provider(provider).Execute()
 
 Replaces the Provider resource.
 
@@ -308,21 +308,21 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
+    provider := *openapiclient.NewProvider() // Provider | The updated Provider resource
     id := "id_example" // string | Provider identifier
-    providerJsonhal := *openapiclient.NewProviderJsonhal() // ProviderJsonhal | The updated Provider resource
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ProviderApi.ApiProvidersIdPut(context.Background(), id).ProviderJsonhal(providerJsonhal).Execute()
+    resp, r, err := apiClient.ProviderApi.ApiProvidersIdPut(context.Background(), id).Provider(provider).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ProviderApi.ApiProvidersIdPut``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiProvidersIdPut`: ProviderJsonhal
+    // response from `ApiProvidersIdPut`: Provider
     fmt.Fprintf(os.Stdout, "Response from `ProviderApi.ApiProvidersIdPut`: %v\n", resp)
 }
 ```
@@ -342,12 +342,12 @@ Other parameters are passed through a pointer to a apiApiProvidersIdPutRequest s
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **provider** | [**Provider**](Provider.md) | The updated Provider resource | 
 
- **providerJsonhal** | [**ProviderJsonhal**](ProviderJsonhal.md) | The updated Provider resource | 
 
 ### Return type
 
-[**ProviderJsonhal**](ProviderJsonhal.md)
+[**Provider**](Provider.md)
 
 ### Authorization
 
@@ -355,8 +355,8 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
-- **Accept**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
+- **Content-Type**: application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
+- **Accept**: application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -365,7 +365,7 @@ Name | Type | Description  | Notes
 
 ## ApiProvidersPost
 
-> ProviderJsonhal ApiProvidersPost(ctx).ProviderJsonhal(providerJsonhal).Execute()
+> Provider ApiProvidersPost(ctx).Provider(provider).Execute()
 
 Creates a Provider resource.
 
@@ -380,20 +380,20 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    providerJsonhal := *openapiclient.NewProviderJsonhal() // ProviderJsonhal | The new Provider resource
+    provider := *openapiclient.NewProvider() // Provider | The new Provider resource
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ProviderApi.ApiProvidersPost(context.Background()).ProviderJsonhal(providerJsonhal).Execute()
+    resp, r, err := apiClient.ProviderApi.ApiProvidersPost(context.Background()).Provider(provider).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ProviderApi.ApiProvidersPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiProvidersPost`: ProviderJsonhal
+    // response from `ApiProvidersPost`: Provider
     fmt.Fprintf(os.Stdout, "Response from `ProviderApi.ApiProvidersPost`: %v\n", resp)
 }
 ```
@@ -409,11 +409,11 @@ Other parameters are passed through a pointer to a apiApiProvidersPostRequest st
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **providerJsonhal** | [**ProviderJsonhal**](ProviderJsonhal.md) | The new Provider resource | 
+ **provider** | [**Provider**](Provider.md) | The new Provider resource | 
 
 ### Return type
 
-[**ProviderJsonhal**](ProviderJsonhal.md)
+[**Provider**](Provider.md)
 
 ### Authorization
 
@@ -421,8 +421,8 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
-- **Accept**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
+- **Content-Type**: application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
+- **Accept**: application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)

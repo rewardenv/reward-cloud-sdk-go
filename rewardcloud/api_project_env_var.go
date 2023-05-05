@@ -13,7 +13,7 @@ package rewardcloud
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"reflect"
@@ -23,7 +23,7 @@ import (
 // ProjectEnvVarApiService ProjectEnvVarApi service
 type ProjectEnvVarApiService service
 
-type ApiApiProjectEnvVarsGetCollectionRequest struct {
+type ProjectEnvVarApiApiProjectEnvVarsGetCollectionRequest struct {
 	ctx          context.Context
 	ApiService   *ProjectEnvVarApiService
 	page         *int32
@@ -35,38 +35,38 @@ type ApiApiProjectEnvVarsGetCollectionRequest struct {
 }
 
 // The collection page number
-func (r ApiApiProjectEnvVarsGetCollectionRequest) Page(page int32) ApiApiProjectEnvVarsGetCollectionRequest {
+func (r ProjectEnvVarApiApiProjectEnvVarsGetCollectionRequest) Page(page int32) ProjectEnvVarApiApiProjectEnvVarsGetCollectionRequest {
 	r.page = &page
 	return r
 }
 
 // The number of items per page
-func (r ApiApiProjectEnvVarsGetCollectionRequest) ItemsPerPage(itemsPerPage int32) ApiApiProjectEnvVarsGetCollectionRequest {
+func (r ProjectEnvVarApiApiProjectEnvVarsGetCollectionRequest) ItemsPerPage(itemsPerPage int32) ProjectEnvVarApiApiProjectEnvVarsGetCollectionRequest {
 	r.itemsPerPage = &itemsPerPage
 	return r
 }
 
-func (r ApiApiProjectEnvVarsGetCollectionRequest) Project(project string) ApiApiProjectEnvVarsGetCollectionRequest {
+func (r ProjectEnvVarApiApiProjectEnvVarsGetCollectionRequest) Project(project string) ProjectEnvVarApiApiProjectEnvVarsGetCollectionRequest {
 	r.project = &project
 	return r
 }
 
-func (r ApiApiProjectEnvVarsGetCollectionRequest) Project2(project2 []string) ApiApiProjectEnvVarsGetCollectionRequest {
+func (r ProjectEnvVarApiApiProjectEnvVarsGetCollectionRequest) Project2(project2 []string) ProjectEnvVarApiApiProjectEnvVarsGetCollectionRequest {
 	r.project2 = &project2
 	return r
 }
 
-func (r ApiApiProjectEnvVarsGetCollectionRequest) EnvVarType(envVarType string) ApiApiProjectEnvVarsGetCollectionRequest {
+func (r ProjectEnvVarApiApiProjectEnvVarsGetCollectionRequest) EnvVarType(envVarType string) ProjectEnvVarApiApiProjectEnvVarsGetCollectionRequest {
 	r.envVarType = &envVarType
 	return r
 }
 
-func (r ApiApiProjectEnvVarsGetCollectionRequest) EnvVarType2(envVarType2 []string) ApiApiProjectEnvVarsGetCollectionRequest {
+func (r ProjectEnvVarApiApiProjectEnvVarsGetCollectionRequest) EnvVarType2(envVarType2 []string) ProjectEnvVarApiApiProjectEnvVarsGetCollectionRequest {
 	r.envVarType2 = &envVarType2
 	return r
 }
 
-func (r ApiApiProjectEnvVarsGetCollectionRequest) Execute() (*ApiProjectEnvVarsGetCollection200Response, *http.Response, error) {
+func (r ProjectEnvVarApiApiProjectEnvVarsGetCollectionRequest) Execute() ([]ProjectEnvVar, *http.Response, error) {
 	return r.ApiService.ApiProjectEnvVarsGetCollectionExecute(r)
 }
 
@@ -76,10 +76,10 @@ ApiProjectEnvVarsGetCollection Retrieves the collection of ProjectEnvVar resourc
 Retrieves the collection of ProjectEnvVar resources.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiApiProjectEnvVarsGetCollectionRequest
+	@return ProjectEnvVarApiApiProjectEnvVarsGetCollectionRequest
 */
-func (a *ProjectEnvVarApiService) ApiProjectEnvVarsGetCollection(ctx context.Context) ApiApiProjectEnvVarsGetCollectionRequest {
-	return ApiApiProjectEnvVarsGetCollectionRequest{
+func (a *ProjectEnvVarApiService) ApiProjectEnvVarsGetCollection(ctx context.Context) ProjectEnvVarApiApiProjectEnvVarsGetCollectionRequest {
+	return ProjectEnvVarApiApiProjectEnvVarsGetCollectionRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -87,13 +87,13 @@ func (a *ProjectEnvVarApiService) ApiProjectEnvVarsGetCollection(ctx context.Con
 
 // Execute executes the request
 //
-//	@return ApiProjectEnvVarsGetCollection200Response
-func (a *ProjectEnvVarApiService) ApiProjectEnvVarsGetCollectionExecute(r ApiApiProjectEnvVarsGetCollectionRequest) (*ApiProjectEnvVarsGetCollection200Response, *http.Response, error) {
+//	@return []ProjectEnvVar
+func (a *ProjectEnvVarApiService) ApiProjectEnvVarsGetCollectionExecute(r ProjectEnvVarApiApiProjectEnvVarsGetCollectionRequest) ([]ProjectEnvVar, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *ApiProjectEnvVarsGetCollection200Response
+		localVarReturnValue []ProjectEnvVar
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectEnvVarApiService.ApiProjectEnvVarsGetCollection")
@@ -108,37 +108,37 @@ func (a *ProjectEnvVarApiService) ApiProjectEnvVarsGetCollectionExecute(r ApiApi
 	localVarFormParams := url.Values{}
 
 	if r.page != nil {
-		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
 	}
 	if r.itemsPerPage != nil {
-		localVarQueryParams.Add("itemsPerPage", parameterToString(*r.itemsPerPage, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "itemsPerPage", r.itemsPerPage, "")
 	}
 	if r.project != nil {
-		localVarQueryParams.Add("project", parameterToString(*r.project, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "project", r.project, "")
 	}
 	if r.project2 != nil {
 		t := *r.project2
 		if reflect.TypeOf(t).Kind() == reflect.Slice {
 			s := reflect.ValueOf(t)
 			for i := 0; i < s.Len(); i++ {
-				localVarQueryParams.Add("project[]", parameterToString(s.Index(i), "multi"))
+				parameterAddToHeaderOrQuery(localVarQueryParams, "project[]", s.Index(i), "multi")
 			}
 		} else {
-			localVarQueryParams.Add("project[]", parameterToString(t, "multi"))
+			parameterAddToHeaderOrQuery(localVarQueryParams, "project[]", t, "multi")
 		}
 	}
 	if r.envVarType != nil {
-		localVarQueryParams.Add("envVarType", parameterToString(*r.envVarType, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "envVarType", r.envVarType, "")
 	}
 	if r.envVarType2 != nil {
 		t := *r.envVarType2
 		if reflect.TypeOf(t).Kind() == reflect.Slice {
 			s := reflect.ValueOf(t)
 			for i := 0; i < s.Len(); i++ {
-				localVarQueryParams.Add("envVarType[]", parameterToString(s.Index(i), "multi"))
+				parameterAddToHeaderOrQuery(localVarQueryParams, "envVarType[]", s.Index(i), "multi")
 			}
 		} else {
-			localVarQueryParams.Add("envVarType[]", parameterToString(t, "multi"))
+			parameterAddToHeaderOrQuery(localVarQueryParams, "envVarType[]", t, "multi")
 		}
 	}
 	// to determine the Content-Type header
@@ -151,7 +151,7 @@ func (a *ProjectEnvVarApiService) ApiProjectEnvVarsGetCollectionExecute(r ApiApi
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/hal+json", "application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
+	localVarHTTPHeaderAccepts := []string{"application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -182,9 +182,9 @@ func (a *ProjectEnvVarApiService) ApiProjectEnvVarsGetCollectionExecute(r ApiApi
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -209,13 +209,13 @@ func (a *ProjectEnvVarApiService) ApiProjectEnvVarsGetCollectionExecute(r ApiApi
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiApiProjectEnvVarsIdDeleteRequest struct {
+type ProjectEnvVarApiApiProjectEnvVarsIdDeleteRequest struct {
 	ctx        context.Context
 	ApiService *ProjectEnvVarApiService
 	id         string
 }
 
-func (r ApiApiProjectEnvVarsIdDeleteRequest) Execute() (*http.Response, error) {
+func (r ProjectEnvVarApiApiProjectEnvVarsIdDeleteRequest) Execute() (*http.Response, error) {
 	return r.ApiService.ApiProjectEnvVarsIdDeleteExecute(r)
 }
 
@@ -226,10 +226,10 @@ Removes the ProjectEnvVar resource.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id ProjectEnvVar identifier
-	@return ApiApiProjectEnvVarsIdDeleteRequest
+	@return ProjectEnvVarApiApiProjectEnvVarsIdDeleteRequest
 */
-func (a *ProjectEnvVarApiService) ApiProjectEnvVarsIdDelete(ctx context.Context, id string) ApiApiProjectEnvVarsIdDeleteRequest {
-	return ApiApiProjectEnvVarsIdDeleteRequest{
+func (a *ProjectEnvVarApiService) ApiProjectEnvVarsIdDelete(ctx context.Context, id string) ProjectEnvVarApiApiProjectEnvVarsIdDeleteRequest {
+	return ProjectEnvVarApiApiProjectEnvVarsIdDeleteRequest{
 		ApiService: a,
 		ctx:        ctx,
 		id:         id,
@@ -237,7 +237,7 @@ func (a *ProjectEnvVarApiService) ApiProjectEnvVarsIdDelete(ctx context.Context,
 }
 
 // Execute executes the request
-func (a *ProjectEnvVarApiService) ApiProjectEnvVarsIdDeleteExecute(r ApiApiProjectEnvVarsIdDeleteRequest) (*http.Response, error) {
+func (a *ProjectEnvVarApiService) ApiProjectEnvVarsIdDeleteExecute(r ProjectEnvVarApiApiProjectEnvVarsIdDeleteRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
 		localVarPostBody   interface{}
@@ -250,7 +250,7 @@ func (a *ProjectEnvVarApiService) ApiProjectEnvVarsIdDeleteExecute(r ApiApiProje
 	}
 
 	localVarPath := localBasePath + "/api/project_env_vars/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -297,9 +297,9 @@ func (a *ProjectEnvVarApiService) ApiProjectEnvVarsIdDeleteExecute(r ApiApiProje
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -315,13 +315,13 @@ func (a *ProjectEnvVarApiService) ApiProjectEnvVarsIdDeleteExecute(r ApiApiProje
 	return localVarHTTPResponse, nil
 }
 
-type ApiApiProjectEnvVarsIdGetRequest struct {
+type ProjectEnvVarApiApiProjectEnvVarsIdGetRequest struct {
 	ctx        context.Context
 	ApiService *ProjectEnvVarApiService
 	id         string
 }
 
-func (r ApiApiProjectEnvVarsIdGetRequest) Execute() (*ProjectEnvVarJsonhal, *http.Response, error) {
+func (r ProjectEnvVarApiApiProjectEnvVarsIdGetRequest) Execute() (*ProjectEnvVar, *http.Response, error) {
 	return r.ApiService.ApiProjectEnvVarsIdGetExecute(r)
 }
 
@@ -332,10 +332,10 @@ Retrieves a ProjectEnvVar resource.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id ProjectEnvVar identifier
-	@return ApiApiProjectEnvVarsIdGetRequest
+	@return ProjectEnvVarApiApiProjectEnvVarsIdGetRequest
 */
-func (a *ProjectEnvVarApiService) ApiProjectEnvVarsIdGet(ctx context.Context, id string) ApiApiProjectEnvVarsIdGetRequest {
-	return ApiApiProjectEnvVarsIdGetRequest{
+func (a *ProjectEnvVarApiService) ApiProjectEnvVarsIdGet(ctx context.Context, id string) ProjectEnvVarApiApiProjectEnvVarsIdGetRequest {
+	return ProjectEnvVarApiApiProjectEnvVarsIdGetRequest{
 		ApiService: a,
 		ctx:        ctx,
 		id:         id,
@@ -344,13 +344,13 @@ func (a *ProjectEnvVarApiService) ApiProjectEnvVarsIdGet(ctx context.Context, id
 
 // Execute executes the request
 //
-//	@return ProjectEnvVarJsonhal
-func (a *ProjectEnvVarApiService) ApiProjectEnvVarsIdGetExecute(r ApiApiProjectEnvVarsIdGetRequest) (*ProjectEnvVarJsonhal, *http.Response, error) {
+//	@return ProjectEnvVar
+func (a *ProjectEnvVarApiService) ApiProjectEnvVarsIdGetExecute(r ProjectEnvVarApiApiProjectEnvVarsIdGetRequest) (*ProjectEnvVar, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *ProjectEnvVarJsonhal
+		localVarReturnValue *ProjectEnvVar
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectEnvVarApiService.ApiProjectEnvVarsIdGet")
@@ -359,7 +359,7 @@ func (a *ProjectEnvVarApiService) ApiProjectEnvVarsIdGetExecute(r ApiApiProjectE
 	}
 
 	localVarPath := localBasePath + "/api/project_env_vars/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -375,7 +375,7 @@ func (a *ProjectEnvVarApiService) ApiProjectEnvVarsIdGetExecute(r ApiApiProjectE
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/hal+json", "application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
+	localVarHTTPHeaderAccepts := []string{"application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -406,9 +406,9 @@ func (a *ProjectEnvVarApiService) ApiProjectEnvVarsIdGetExecute(r ApiApiProjectE
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -433,20 +433,20 @@ func (a *ProjectEnvVarApiService) ApiProjectEnvVarsIdGetExecute(r ApiApiProjectE
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiApiProjectEnvVarsIdPatchRequest struct {
+type ProjectEnvVarApiApiProjectEnvVarsIdPatchRequest struct {
 	ctx           context.Context
 	ApiService    *ProjectEnvVarApiService
-	id            string
 	projectEnvVar *ProjectEnvVar
+	id            string
 }
 
 // The updated ProjectEnvVar resource
-func (r ApiApiProjectEnvVarsIdPatchRequest) ProjectEnvVar(projectEnvVar ProjectEnvVar) ApiApiProjectEnvVarsIdPatchRequest {
+func (r ProjectEnvVarApiApiProjectEnvVarsIdPatchRequest) ProjectEnvVar(projectEnvVar ProjectEnvVar) ProjectEnvVarApiApiProjectEnvVarsIdPatchRequest {
 	r.projectEnvVar = &projectEnvVar
 	return r
 }
 
-func (r ApiApiProjectEnvVarsIdPatchRequest) Execute() (*ProjectEnvVarJsonhal, *http.Response, error) {
+func (r ProjectEnvVarApiApiProjectEnvVarsIdPatchRequest) Execute() (*ProjectEnvVar, *http.Response, error) {
 	return r.ApiService.ApiProjectEnvVarsIdPatchExecute(r)
 }
 
@@ -457,10 +457,10 @@ Updates the ProjectEnvVar resource.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id ProjectEnvVar identifier
-	@return ApiApiProjectEnvVarsIdPatchRequest
+	@return ProjectEnvVarApiApiProjectEnvVarsIdPatchRequest
 */
-func (a *ProjectEnvVarApiService) ApiProjectEnvVarsIdPatch(ctx context.Context, id string) ApiApiProjectEnvVarsIdPatchRequest {
-	return ApiApiProjectEnvVarsIdPatchRequest{
+func (a *ProjectEnvVarApiService) ApiProjectEnvVarsIdPatch(ctx context.Context, id string) ProjectEnvVarApiApiProjectEnvVarsIdPatchRequest {
+	return ProjectEnvVarApiApiProjectEnvVarsIdPatchRequest{
 		ApiService: a,
 		ctx:        ctx,
 		id:         id,
@@ -469,13 +469,13 @@ func (a *ProjectEnvVarApiService) ApiProjectEnvVarsIdPatch(ctx context.Context, 
 
 // Execute executes the request
 //
-//	@return ProjectEnvVarJsonhal
-func (a *ProjectEnvVarApiService) ApiProjectEnvVarsIdPatchExecute(r ApiApiProjectEnvVarsIdPatchRequest) (*ProjectEnvVarJsonhal, *http.Response, error) {
+//	@return ProjectEnvVar
+func (a *ProjectEnvVarApiService) ApiProjectEnvVarsIdPatchExecute(r ProjectEnvVarApiApiProjectEnvVarsIdPatchRequest) (*ProjectEnvVar, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *ProjectEnvVarJsonhal
+		localVarReturnValue *ProjectEnvVar
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectEnvVarApiService.ApiProjectEnvVarsIdPatch")
@@ -484,7 +484,7 @@ func (a *ProjectEnvVarApiService) ApiProjectEnvVarsIdPatchExecute(r ApiApiProjec
 	}
 
 	localVarPath := localBasePath + "/api/project_env_vars/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -494,7 +494,7 @@ func (a *ProjectEnvVarApiService) ApiProjectEnvVarsIdPatchExecute(r ApiApiProjec
 	}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/vnd.api+json"}
+	localVarHTTPContentTypes := []string{"application/merge-patch+json", "application/vnd.api+json"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -503,7 +503,7 @@ func (a *ProjectEnvVarApiService) ApiProjectEnvVarsIdPatchExecute(r ApiApiProjec
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/hal+json", "application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
+	localVarHTTPHeaderAccepts := []string{"application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -536,9 +536,9 @@ func (a *ProjectEnvVarApiService) ApiProjectEnvVarsIdPatchExecute(r ApiApiProjec
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -563,20 +563,20 @@ func (a *ProjectEnvVarApiService) ApiProjectEnvVarsIdPatchExecute(r ApiApiProjec
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiApiProjectEnvVarsIdPutRequest struct {
-	ctx                  context.Context
-	ApiService           *ProjectEnvVarApiService
-	id                   string
-	projectEnvVarJsonhal *ProjectEnvVarJsonhal
+type ProjectEnvVarApiApiProjectEnvVarsIdPutRequest struct {
+	ctx           context.Context
+	ApiService    *ProjectEnvVarApiService
+	projectEnvVar *ProjectEnvVar
+	id            string
 }
 
 // The updated ProjectEnvVar resource
-func (r ApiApiProjectEnvVarsIdPutRequest) ProjectEnvVarJsonhal(projectEnvVarJsonhal ProjectEnvVarJsonhal) ApiApiProjectEnvVarsIdPutRequest {
-	r.projectEnvVarJsonhal = &projectEnvVarJsonhal
+func (r ProjectEnvVarApiApiProjectEnvVarsIdPutRequest) ProjectEnvVar(projectEnvVar ProjectEnvVar) ProjectEnvVarApiApiProjectEnvVarsIdPutRequest {
+	r.projectEnvVar = &projectEnvVar
 	return r
 }
 
-func (r ApiApiProjectEnvVarsIdPutRequest) Execute() (*ProjectEnvVarJsonhal, *http.Response, error) {
+func (r ProjectEnvVarApiApiProjectEnvVarsIdPutRequest) Execute() (*ProjectEnvVar, *http.Response, error) {
 	return r.ApiService.ApiProjectEnvVarsIdPutExecute(r)
 }
 
@@ -587,10 +587,10 @@ Replaces the ProjectEnvVar resource.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id ProjectEnvVar identifier
-	@return ApiApiProjectEnvVarsIdPutRequest
+	@return ProjectEnvVarApiApiProjectEnvVarsIdPutRequest
 */
-func (a *ProjectEnvVarApiService) ApiProjectEnvVarsIdPut(ctx context.Context, id string) ApiApiProjectEnvVarsIdPutRequest {
-	return ApiApiProjectEnvVarsIdPutRequest{
+func (a *ProjectEnvVarApiService) ApiProjectEnvVarsIdPut(ctx context.Context, id string) ProjectEnvVarApiApiProjectEnvVarsIdPutRequest {
+	return ProjectEnvVarApiApiProjectEnvVarsIdPutRequest{
 		ApiService: a,
 		ctx:        ctx,
 		id:         id,
@@ -599,13 +599,13 @@ func (a *ProjectEnvVarApiService) ApiProjectEnvVarsIdPut(ctx context.Context, id
 
 // Execute executes the request
 //
-//	@return ProjectEnvVarJsonhal
-func (a *ProjectEnvVarApiService) ApiProjectEnvVarsIdPutExecute(r ApiApiProjectEnvVarsIdPutRequest) (*ProjectEnvVarJsonhal, *http.Response, error) {
+//	@return ProjectEnvVar
+func (a *ProjectEnvVarApiService) ApiProjectEnvVarsIdPutExecute(r ProjectEnvVarApiApiProjectEnvVarsIdPutRequest) (*ProjectEnvVar, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *ProjectEnvVarJsonhal
+		localVarReturnValue *ProjectEnvVar
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectEnvVarApiService.ApiProjectEnvVarsIdPut")
@@ -614,17 +614,17 @@ func (a *ProjectEnvVarApiService) ApiProjectEnvVarsIdPutExecute(r ApiApiProjectE
 	}
 
 	localVarPath := localBasePath + "/api/project_env_vars/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.projectEnvVarJsonhal == nil {
-		return localVarReturnValue, nil, reportError("projectEnvVarJsonhal is required and must be specified")
+	if r.projectEnvVar == nil {
+		return localVarReturnValue, nil, reportError("projectEnvVar is required and must be specified")
 	}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/hal+json", "application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
+	localVarHTTPContentTypes := []string{"application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -633,7 +633,7 @@ func (a *ProjectEnvVarApiService) ApiProjectEnvVarsIdPutExecute(r ApiApiProjectE
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/hal+json", "application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
+	localVarHTTPHeaderAccepts := []string{"application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -641,7 +641,7 @@ func (a *ProjectEnvVarApiService) ApiProjectEnvVarsIdPutExecute(r ApiApiProjectE
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.projectEnvVarJsonhal
+	localVarPostBody = r.projectEnvVar
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
@@ -666,9 +666,9 @@ func (a *ProjectEnvVarApiService) ApiProjectEnvVarsIdPutExecute(r ApiApiProjectE
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -693,19 +693,19 @@ func (a *ProjectEnvVarApiService) ApiProjectEnvVarsIdPutExecute(r ApiApiProjectE
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiApiProjectEnvVarsPostRequest struct {
-	ctx                  context.Context
-	ApiService           *ProjectEnvVarApiService
-	projectEnvVarJsonhal *ProjectEnvVarJsonhal
+type ProjectEnvVarApiApiProjectEnvVarsPostRequest struct {
+	ctx           context.Context
+	ApiService    *ProjectEnvVarApiService
+	projectEnvVar *ProjectEnvVar
 }
 
 // The new ProjectEnvVar resource
-func (r ApiApiProjectEnvVarsPostRequest) ProjectEnvVarJsonhal(projectEnvVarJsonhal ProjectEnvVarJsonhal) ApiApiProjectEnvVarsPostRequest {
-	r.projectEnvVarJsonhal = &projectEnvVarJsonhal
+func (r ProjectEnvVarApiApiProjectEnvVarsPostRequest) ProjectEnvVar(projectEnvVar ProjectEnvVar) ProjectEnvVarApiApiProjectEnvVarsPostRequest {
+	r.projectEnvVar = &projectEnvVar
 	return r
 }
 
-func (r ApiApiProjectEnvVarsPostRequest) Execute() (*ProjectEnvVarJsonhal, *http.Response, error) {
+func (r ProjectEnvVarApiApiProjectEnvVarsPostRequest) Execute() (*ProjectEnvVar, *http.Response, error) {
 	return r.ApiService.ApiProjectEnvVarsPostExecute(r)
 }
 
@@ -715,10 +715,10 @@ ApiProjectEnvVarsPost Creates a ProjectEnvVar resource.
 Creates a ProjectEnvVar resource.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiApiProjectEnvVarsPostRequest
+	@return ProjectEnvVarApiApiProjectEnvVarsPostRequest
 */
-func (a *ProjectEnvVarApiService) ApiProjectEnvVarsPost(ctx context.Context) ApiApiProjectEnvVarsPostRequest {
-	return ApiApiProjectEnvVarsPostRequest{
+func (a *ProjectEnvVarApiService) ApiProjectEnvVarsPost(ctx context.Context) ProjectEnvVarApiApiProjectEnvVarsPostRequest {
+	return ProjectEnvVarApiApiProjectEnvVarsPostRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -726,13 +726,13 @@ func (a *ProjectEnvVarApiService) ApiProjectEnvVarsPost(ctx context.Context) Api
 
 // Execute executes the request
 //
-//	@return ProjectEnvVarJsonhal
-func (a *ProjectEnvVarApiService) ApiProjectEnvVarsPostExecute(r ApiApiProjectEnvVarsPostRequest) (*ProjectEnvVarJsonhal, *http.Response, error) {
+//	@return ProjectEnvVar
+func (a *ProjectEnvVarApiService) ApiProjectEnvVarsPostExecute(r ProjectEnvVarApiApiProjectEnvVarsPostRequest) (*ProjectEnvVar, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *ProjectEnvVarJsonhal
+		localVarReturnValue *ProjectEnvVar
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectEnvVarApiService.ApiProjectEnvVarsPost")
@@ -745,12 +745,12 @@ func (a *ProjectEnvVarApiService) ApiProjectEnvVarsPostExecute(r ApiApiProjectEn
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.projectEnvVarJsonhal == nil {
-		return localVarReturnValue, nil, reportError("projectEnvVarJsonhal is required and must be specified")
+	if r.projectEnvVar == nil {
+		return localVarReturnValue, nil, reportError("projectEnvVar is required and must be specified")
 	}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/hal+json", "application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
+	localVarHTTPContentTypes := []string{"application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -759,7 +759,7 @@ func (a *ProjectEnvVarApiService) ApiProjectEnvVarsPostExecute(r ApiApiProjectEn
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/hal+json", "application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
+	localVarHTTPHeaderAccepts := []string{"application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -767,7 +767,7 @@ func (a *ProjectEnvVarApiService) ApiProjectEnvVarsPostExecute(r ApiApiProjectEn
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.projectEnvVarJsonhal
+	localVarPostBody = r.projectEnvVar
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
@@ -792,9 +792,9 @@ func (a *ProjectEnvVarApiService) ApiProjectEnvVarsPostExecute(r ApiApiProjectEn
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}

@@ -10,8 +10,8 @@ Testing TokenApiService
 package rewardcloud
 
 import (
-	openapiclient "./openapi"
 	"context"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"testing"

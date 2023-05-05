@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the PriceProductOutput type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &PriceProductOutput{}
+
 // PriceProductOutput
 type PriceProductOutput struct {
 	PaymentId NullableString  `json:"paymentId,omitempty"`
@@ -41,7 +44,7 @@ func NewPriceProductOutputWithDefaults() *PriceProductOutput {
 
 // GetPaymentId returns the PaymentId field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *PriceProductOutput) GetPaymentId() string {
-	if o == nil || isNil(o.PaymentId.Get()) {
+	if o == nil || IsNil(o.PaymentId.Get()) {
 		var ret string
 		return ret
 	}
@@ -84,7 +87,7 @@ func (o *PriceProductOutput) UnsetPaymentId() {
 
 // GetAmount returns the Amount field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *PriceProductOutput) GetAmount() float32 {
-	if o == nil || isNil(o.Amount.Get()) {
+	if o == nil || IsNil(o.Amount.Get()) {
 		var ret float32
 		return ret
 	}
@@ -127,7 +130,7 @@ func (o *PriceProductOutput) UnsetAmount() {
 
 // GetCurrency returns the Currency field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *PriceProductOutput) GetCurrency() string {
-	if o == nil || isNil(o.Currency.Get()) {
+	if o == nil || IsNil(o.Currency.Get()) {
 		var ret string
 		return ret
 	}
@@ -170,7 +173,7 @@ func (o *PriceProductOutput) UnsetCurrency() {
 
 // GetIsActive returns the IsActive field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *PriceProductOutput) GetIsActive() bool {
-	if o == nil || isNil(o.IsActive.Get()) {
+	if o == nil || IsNil(o.IsActive.Get()) {
 		var ret bool
 		return ret
 	}
@@ -212,6 +215,14 @@ func (o *PriceProductOutput) UnsetIsActive() {
 }
 
 func (o PriceProductOutput) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o PriceProductOutput) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if o.PaymentId.IsSet() {
 		toSerialize["paymentId"] = o.PaymentId.Get()
@@ -225,7 +236,7 @@ func (o PriceProductOutput) MarshalJSON() ([]byte, error) {
 	if o.IsActive.IsSet() {
 		toSerialize["isActive"] = o.IsActive.Get()
 	}
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 type NullablePriceProductOutput struct {

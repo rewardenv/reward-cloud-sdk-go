@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ResourceTypeResourceTypeOutput type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ResourceTypeResourceTypeOutput{}
+
 // ResourceTypeResourceTypeOutput Class ResourceType
 type ResourceTypeResourceTypeOutput struct {
 	Name              NullableString                                          `json:"name,omitempty"`
@@ -39,7 +42,7 @@ func NewResourceTypeResourceTypeOutputWithDefaults() *ResourceTypeResourceTypeOu
 
 // GetName returns the Name field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ResourceTypeResourceTypeOutput) GetName() string {
-	if o == nil || isNil(o.Name.Get()) {
+	if o == nil || IsNil(o.Name.Get()) {
 		var ret string
 		return ret
 	}
@@ -82,7 +85,7 @@ func (o *ResourceTypeResourceTypeOutput) UnsetName() {
 
 // GetResourceTypeLimit returns the ResourceTypeLimit field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ResourceTypeResourceTypeOutput) GetResourceTypeLimit() ResourceTypeResourceTypeOutputResourceTypeLimit {
-	if o == nil || isNil(o.ResourceTypeLimit.Get()) {
+	if o == nil || IsNil(o.ResourceTypeLimit.Get()) {
 		var ret ResourceTypeResourceTypeOutputResourceTypeLimit
 		return ret
 	}
@@ -124,6 +127,14 @@ func (o *ResourceTypeResourceTypeOutput) UnsetResourceTypeLimit() {
 }
 
 func (o ResourceTypeResourceTypeOutput) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o ResourceTypeResourceTypeOutput) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Name.IsSet() {
 		toSerialize["name"] = o.Name.Get()
@@ -131,7 +142,7 @@ func (o ResourceTypeResourceTypeOutput) MarshalJSON() ([]byte, error) {
 	if o.ResourceTypeLimit.IsSet() {
 		toSerialize["resourceTypeLimit"] = o.ResourceTypeLimit.Get()
 	}
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 type NullableResourceTypeResourceTypeOutput struct {

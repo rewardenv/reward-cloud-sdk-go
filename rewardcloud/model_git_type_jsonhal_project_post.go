@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the GitTypeJsonhalProjectPost type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &GitTypeJsonhalProjectPost{}
+
 // GitTypeJsonhalProjectPost
 type GitTypeJsonhalProjectPost struct {
 	Links *AbstractEnvironmentJsonhalLinks `json:"_links,omitempty"`
@@ -40,7 +43,7 @@ func NewGitTypeJsonhalProjectPostWithDefaults() *GitTypeJsonhalProjectPost {
 
 // GetLinks returns the Links field value if set, zero value otherwise.
 func (o *GitTypeJsonhalProjectPost) GetLinks() AbstractEnvironmentJsonhalLinks {
-	if o == nil || isNil(o.Links) {
+	if o == nil || IsNil(o.Links) {
 		var ret AbstractEnvironmentJsonhalLinks
 		return ret
 	}
@@ -50,7 +53,7 @@ func (o *GitTypeJsonhalProjectPost) GetLinks() AbstractEnvironmentJsonhalLinks {
 // GetLinksOk returns a tuple with the Links field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *GitTypeJsonhalProjectPost) GetLinksOk() (*AbstractEnvironmentJsonhalLinks, bool) {
-	if o == nil || isNil(o.Links) {
+	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
 	return o.Links, true
@@ -58,7 +61,7 @@ func (o *GitTypeJsonhalProjectPost) GetLinksOk() (*AbstractEnvironmentJsonhalLin
 
 // HasLinks returns a boolean if a field has been set.
 func (o *GitTypeJsonhalProjectPost) HasLinks() bool {
-	if o != nil && !isNil(o.Links) {
+	if o != nil && !IsNil(o.Links) {
 		return true
 	}
 
@@ -72,7 +75,7 @@ func (o *GitTypeJsonhalProjectPost) SetLinks(v AbstractEnvironmentJsonhalLinks) 
 
 // GetUuid returns the Uuid field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *GitTypeJsonhalProjectPost) GetUuid() string {
-	if o == nil || isNil(o.Uuid.Get()) {
+	if o == nil || IsNil(o.Uuid.Get()) {
 		var ret string
 		return ret
 	}
@@ -115,7 +118,7 @@ func (o *GitTypeJsonhalProjectPost) UnsetUuid() {
 
 // GetName returns the Name field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *GitTypeJsonhalProjectPost) GetName() string {
-	if o == nil || isNil(o.Name.Get()) {
+	if o == nil || IsNil(o.Name.Get()) {
 		var ret string
 		return ret
 	}
@@ -157,8 +160,16 @@ func (o *GitTypeJsonhalProjectPost) UnsetName() {
 }
 
 func (o GitTypeJsonhalProjectPost) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o GitTypeJsonhalProjectPost) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Links) {
+	if !IsNil(o.Links) {
 		toSerialize["_links"] = o.Links
 	}
 	if o.Uuid.IsSet() {
@@ -167,7 +178,7 @@ func (o GitTypeJsonhalProjectPost) MarshalJSON() ([]byte, error) {
 	if o.Name.IsSet() {
 		toSerialize["name"] = o.Name.Get()
 	}
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 type NullableGitTypeJsonhalProjectPost struct {

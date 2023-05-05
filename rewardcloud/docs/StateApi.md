@@ -15,7 +15,7 @@ Method | HTTP request | Description
 
 ## ApiStatesGetCollection
 
-> ApiStatesGetCollection200Response ApiStatesGetCollection(ctx).Page(page).ItemsPerPage(itemsPerPage).Execute()
+> []State ApiStatesGetCollection(ctx).Page(page).ItemsPerPage(itemsPerPage).Execute()
 
 Retrieves the collection of State resources.
 
@@ -30,7 +30,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
@@ -44,7 +44,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `StateApi.ApiStatesGetCollection``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiStatesGetCollection`: ApiStatesGetCollection200Response
+    // response from `ApiStatesGetCollection`: []State
     fmt.Fprintf(os.Stdout, "Response from `StateApi.ApiStatesGetCollection`: %v\n", resp)
 }
 ```
@@ -65,7 +65,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ApiStatesGetCollection200Response**](ApiStatesGetCollection200Response.md)
+[**[]State**](State.md)
 
 ### Authorization
 
@@ -74,7 +74,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
+- **Accept**: application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -98,7 +98,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
@@ -106,7 +106,7 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.StateApi.ApiStatesIdDelete(context.Background(), id).Execute()
+    r, err := apiClient.StateApi.ApiStatesIdDelete(context.Background(), id).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `StateApi.ApiStatesIdDelete``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -151,7 +151,7 @@ Name | Type | Description  | Notes
 
 ## ApiStatesIdGet
 
-> StateJsonhal ApiStatesIdGet(ctx, id).Execute()
+> State ApiStatesIdGet(ctx, id).Execute()
 
 Retrieves a State resource.
 
@@ -166,7 +166,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
@@ -179,7 +179,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `StateApi.ApiStatesIdGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiStatesIdGet`: StateJsonhal
+    // response from `ApiStatesIdGet`: State
     fmt.Fprintf(os.Stdout, "Response from `StateApi.ApiStatesIdGet`: %v\n", resp)
 }
 ```
@@ -203,7 +203,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**StateJsonhal**](StateJsonhal.md)
+[**State**](State.md)
 
 ### Authorization
 
@@ -212,7 +212,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
+- **Accept**: application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -221,7 +221,7 @@ Name | Type | Description  | Notes
 
 ## ApiStatesIdPatch
 
-> StateJsonhal ApiStatesIdPatch(ctx, id).State(state).Execute()
+> State ApiStatesIdPatch(ctx, id).State(state).Execute()
 
 Updates the State resource.
 
@@ -236,12 +236,12 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    id := "id_example" // string | State identifier
     state := *openapiclient.NewState() // State | The updated State resource
+    id := "id_example" // string | State identifier
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -250,7 +250,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `StateApi.ApiStatesIdPatch``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiStatesIdPatch`: StateJsonhal
+    // response from `ApiStatesIdPatch`: State
     fmt.Fprintf(os.Stdout, "Response from `StateApi.ApiStatesIdPatch`: %v\n", resp)
 }
 ```
@@ -270,12 +270,12 @@ Other parameters are passed through a pointer to a apiApiStatesIdPatchRequest st
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-
  **state** | [**State**](State.md) | The updated State resource | 
+
 
 ### Return type
 
-[**StateJsonhal**](StateJsonhal.md)
+[**State**](State.md)
 
 ### Authorization
 
@@ -283,8 +283,8 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: application/vnd.api+json
-- **Accept**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
+- **Content-Type**: application/merge-patch+json, application/vnd.api+json
+- **Accept**: application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -293,7 +293,7 @@ Name | Type | Description  | Notes
 
 ## ApiStatesIdPut
 
-> StateJsonhal ApiStatesIdPut(ctx, id).StateJsonhal(stateJsonhal).Execute()
+> State ApiStatesIdPut(ctx, id).State(state).Execute()
 
 Replaces the State resource.
 
@@ -308,21 +308,21 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
+    state := *openapiclient.NewState() // State | The updated State resource
     id := "id_example" // string | State identifier
-    stateJsonhal := *openapiclient.NewStateJsonhal() // StateJsonhal | The updated State resource
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.StateApi.ApiStatesIdPut(context.Background(), id).StateJsonhal(stateJsonhal).Execute()
+    resp, r, err := apiClient.StateApi.ApiStatesIdPut(context.Background(), id).State(state).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `StateApi.ApiStatesIdPut``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiStatesIdPut`: StateJsonhal
+    // response from `ApiStatesIdPut`: State
     fmt.Fprintf(os.Stdout, "Response from `StateApi.ApiStatesIdPut`: %v\n", resp)
 }
 ```
@@ -342,12 +342,12 @@ Other parameters are passed through a pointer to a apiApiStatesIdPutRequest stru
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **state** | [**State**](State.md) | The updated State resource | 
 
- **stateJsonhal** | [**StateJsonhal**](StateJsonhal.md) | The updated State resource | 
 
 ### Return type
 
-[**StateJsonhal**](StateJsonhal.md)
+[**State**](State.md)
 
 ### Authorization
 
@@ -355,8 +355,8 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
-- **Accept**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
+- **Content-Type**: application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
+- **Accept**: application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -365,7 +365,7 @@ Name | Type | Description  | Notes
 
 ## ApiStatesPost
 
-> StateJsonhal ApiStatesPost(ctx).StateJsonhal(stateJsonhal).Execute()
+> State ApiStatesPost(ctx).State(state).Execute()
 
 Creates a State resource.
 
@@ -380,20 +380,20 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    stateJsonhal := *openapiclient.NewStateJsonhal() // StateJsonhal | The new State resource
+    state := *openapiclient.NewState() // State | The new State resource
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.StateApi.ApiStatesPost(context.Background()).StateJsonhal(stateJsonhal).Execute()
+    resp, r, err := apiClient.StateApi.ApiStatesPost(context.Background()).State(state).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `StateApi.ApiStatesPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiStatesPost`: StateJsonhal
+    // response from `ApiStatesPost`: State
     fmt.Fprintf(os.Stdout, "Response from `StateApi.ApiStatesPost`: %v\n", resp)
 }
 ```
@@ -409,11 +409,11 @@ Other parameters are passed through a pointer to a apiApiStatesPostRequest struc
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **stateJsonhal** | [**StateJsonhal**](StateJsonhal.md) | The new State resource | 
+ **state** | [**State**](State.md) | The new State resource | 
 
 ### Return type
 
-[**StateJsonhal**](StateJsonhal.md)
+[**State**](State.md)
 
 ### Authorization
 
@@ -421,8 +421,8 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
-- **Accept**: application/hal+json, application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
+- **Content-Type**: application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
+- **Accept**: application/vnd.api+json, application/json, application/xml, text/xml, application/x-yaml, text/csv, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
