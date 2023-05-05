@@ -3,3 +3,6 @@ dist/
 .vscode/**
 
 archive/**
+api.json
+api.yaml
+reward-api.yaml

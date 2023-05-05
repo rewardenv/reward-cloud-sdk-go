@@ -35,7 +35,7 @@ def rm_merge(d, s):
 
 
 rm_merge(data, 'application/ld+json')
-rm_merge(data, 'application/merge-patch+json')
+# rm_merge(data, 'application/merge-patch+json')
 rm_merge(data, 'application/hal+json')
 rm_merge(data, '.jsonld')
 
