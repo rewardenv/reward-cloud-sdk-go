@@ -169,7 +169,7 @@ func (a *TeamApiService) ApiTeamsGetCollectionExecute(r TeamApiApiTeamsGetCollec
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
+	localVarHTTPHeaderAccepts := []string{"application/json"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -393,7 +393,7 @@ func (a *TeamApiService) ApiTeamsIdGetExecute(r TeamApiApiTeamsIdGetRequest) (*T
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
+	localVarHTTPHeaderAccepts := []string{"application/json"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -512,7 +512,7 @@ func (a *TeamApiService) ApiTeamsIdPatchExecute(r TeamApiApiTeamsIdPatchRequest)
 	}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/merge-patch+json", "application/vnd.api+json"}
+	localVarHTTPContentTypes := []string{"application/merge-patch+json"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -521,7 +521,7 @@ func (a *TeamApiService) ApiTeamsIdPatchExecute(r TeamApiApiTeamsIdPatchRequest)
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
+	localVarHTTPHeaderAccepts := []string{"application/json"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -642,7 +642,7 @@ func (a *TeamApiService) ApiTeamsIdPutExecute(r TeamApiApiTeamsIdPutRequest) (*T
 	}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
+	localVarHTTPContentTypes := []string{"application/json"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -651,7 +651,7 @@ func (a *TeamApiService) ApiTeamsIdPutExecute(r TeamApiApiTeamsIdPutRequest) (*T
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
+	localVarHTTPHeaderAccepts := []string{"application/json"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -768,7 +768,7 @@ func (a *TeamApiService) ApiTeamsPostExecute(r TeamApiApiTeamsPostRequest) (*Tea
 	}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
+	localVarHTTPContentTypes := []string{"application/json"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -777,7 +777,7 @@ func (a *TeamApiService) ApiTeamsPostExecute(r TeamApiApiTeamsPostRequest) (*Tea
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/vnd.api+json", "application/json", "application/xml", "text/xml", "application/x-yaml", "text/csv", "text/html"}
+	localVarHTTPHeaderAccepts := []string{"application/json"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
