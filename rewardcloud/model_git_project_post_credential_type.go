@@ -29,7 +29,7 @@ func (dst *GitProjectPostCredentialType) UnmarshalJSON(data []byte) error {
 	}
 
 	// try to unmarshal JSON data into CredentialTypeProjectPost
-	err = json.Unmarshal(data, &dst.CredentialTypeProjectPost);
+	err = json.Unmarshal(data, &dst.CredentialTypeProjectPost)
 	if err == nil {
 		jsonCredentialTypeProjectPost, _ := json.Marshal(dst.CredentialTypeProjectPost)
 		if string(jsonCredentialTypeProjectPost) == "{}" { // empty struct
@@ -88,5 +88,3 @@ func (v *NullableGitProjectPostCredentialType) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

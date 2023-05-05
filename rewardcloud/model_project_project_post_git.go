@@ -29,7 +29,7 @@ func (dst *ProjectProjectPostGit) UnmarshalJSON(data []byte) error {
 	}
 
 	// try to unmarshal JSON data into GitProjectPost
-	err = json.Unmarshal(data, &dst.GitProjectPost);
+	err = json.Unmarshal(data, &dst.GitProjectPost)
 	if err == nil {
 		jsonGitProjectPost, _ := json.Marshal(dst.GitProjectPost)
 		if string(jsonGitProjectPost) == "{}" { // empty struct
@@ -88,5 +88,3 @@ func (v *NullableProjectProjectPostGit) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

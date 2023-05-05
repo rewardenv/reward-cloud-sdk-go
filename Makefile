@@ -24,6 +24,7 @@ remove-jsonld: ## Remove JSON-LD files
 generate: ## Generate Go code from OpenAPI spec
 	docker run --rm -v "$${PWD}:/local" openapitools/openapi-generator-cli:v6.5.0 generate -i /local/reward-api.yaml -c /local/config.yaml -g go --global-property apiTests=false,apiDocs=false,modelTests=false,modelDocs=false -o /local/rewardcloud
 	rm -f rewardcloud/go.mod && rm -f rewardcloud/go.sum
+	go fmt ./...
 
 .PHONY: convert
 convert: ## Convert json to yaml

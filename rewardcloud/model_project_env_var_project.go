@@ -29,7 +29,7 @@ func (dst *ProjectEnvVarProject) UnmarshalJSON(data []byte) error {
 	}
 
 	// try to unmarshal JSON data into AbstractProject
-	err = json.Unmarshal(data, &dst.AbstractProject);
+	err = json.Unmarshal(data, &dst.AbstractProject)
 	if err == nil {
 		jsonAbstractProject, _ := json.Marshal(dst.AbstractProject)
 		if string(jsonAbstractProject) == "{}" { // empty struct
@@ -88,5 +88,3 @@ func (v *NullableProjectEnvVarProject) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

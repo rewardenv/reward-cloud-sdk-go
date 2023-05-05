@@ -29,7 +29,7 @@ func (dst *EnvironmentComponentEnvironment) UnmarshalJSON(data []byte) error {
 	}
 
 	// try to unmarshal JSON data into AbstractEnvironment
-	err = json.Unmarshal(data, &dst.AbstractEnvironment);
+	err = json.Unmarshal(data, &dst.AbstractEnvironment)
 	if err == nil {
 		jsonAbstractEnvironment, _ := json.Marshal(dst.AbstractEnvironment)
 		if string(jsonAbstractEnvironment) == "{}" { // empty struct
@@ -88,5 +88,3 @@ func (v *NullableEnvironmentComponentEnvironment) UnmarshalJSON(src []byte) erro
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

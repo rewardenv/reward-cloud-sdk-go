@@ -29,7 +29,7 @@ func (dst *ProjectProjectGetServiceAccount) UnmarshalJSON(data []byte) error {
 	}
 
 	// try to unmarshal JSON data into ServiceAccountProjectGet
-	err = json.Unmarshal(data, &dst.ServiceAccountProjectGet);
+	err = json.Unmarshal(data, &dst.ServiceAccountProjectGet)
 	if err == nil {
 		jsonServiceAccountProjectGet, _ := json.Marshal(dst.ServiceAccountProjectGet)
 		if string(jsonServiceAccountProjectGet) == "{}" { // empty struct
@@ -88,5 +88,3 @@ func (v *NullableProjectProjectGetServiceAccount) UnmarshalJSON(src []byte) erro
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

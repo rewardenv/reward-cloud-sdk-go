@@ -29,7 +29,7 @@ func (dst *PriceProduct) UnmarshalJSON(data []byte) error {
 	}
 
 	// try to unmarshal JSON data into Product
-	err = json.Unmarshal(data, &dst.Product);
+	err = json.Unmarshal(data, &dst.Product)
 	if err == nil {
 		jsonProduct, _ := json.Marshal(dst.Product)
 		if string(jsonProduct) == "{}" { // empty struct
@@ -88,5 +88,3 @@ func (v *NullablePriceProduct) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

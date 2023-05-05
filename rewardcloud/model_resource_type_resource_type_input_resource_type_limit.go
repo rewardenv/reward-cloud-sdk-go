@@ -29,7 +29,7 @@ func (dst *ResourceTypeResourceTypeInputResourceTypeLimit) UnmarshalJSON(data []
 	}
 
 	// try to unmarshal JSON data into ResourceTypeLimitResourceTypeInput
-	err = json.Unmarshal(data, &dst.ResourceTypeLimitResourceTypeInput);
+	err = json.Unmarshal(data, &dst.ResourceTypeLimitResourceTypeInput)
 	if err == nil {
 		jsonResourceTypeLimitResourceTypeInput, _ := json.Marshal(dst.ResourceTypeLimitResourceTypeInput)
 		if string(jsonResourceTypeLimitResourceTypeInput) == "{}" { // empty struct
@@ -88,5 +88,3 @@ func (v *NullableResourceTypeResourceTypeInputResourceTypeLimit) UnmarshalJSON(s
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-
