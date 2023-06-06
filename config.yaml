@@ -4,6 +4,6 @@ useOneOfDiscriminatorLookup: true
 isGoSubmodule: false
 enumClassPrefix: false
 structPrefix: true
-validateSpec: false
+validateSpec: true
 generateInterfaces: false
 prependFormOrBodyParameters: true

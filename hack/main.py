@@ -36,5 +36,6 @@ def rm_merge(d, s):
 
 rm_merge(data, 'application/ld+json')
 rm_merge(data, '.jsonld')
+rm_merge(data, 'application/jsonld')
 
 yaml.dump(data, out_file)
